@@ -8,7 +8,7 @@
     "scripts": {
         "build": "honkit build",
         "serve": "honkit serve",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d _book"
     },
     "dependencies": {
         "gh-pages": "^3.2.3"
