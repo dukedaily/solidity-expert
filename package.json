@@ -1,0 +1,16 @@
+{
+    "name": "dukedaily/blockchain_expert",
+    "description": "blockchain toturial for new commers",
+    "homepage": "https://dukedaily.github.io/blockchain_expert",
+    "devDependencies": {
+        "honkit": "^3.7.1"
+    },
+    "scripts": {
+        "build": "honkit build",
+        "serve": "honkit serve",
+        "deploy": "gh-pages -d build"
+    },
+    "dependencies": {
+        "gh-pages": "^3.2.3"
+    }
+}
