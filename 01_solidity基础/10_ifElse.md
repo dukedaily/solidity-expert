@@ -27,6 +27,5 @@ contract IfElse {
         return _x < 10 ? 1 : 2;
     }
 }
-
 ```
 
