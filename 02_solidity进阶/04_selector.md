@@ -1,32 +1,30 @@
 # 第4节：selector
 
-当调用某个function时，具体调用function的信息会被拼装成**calldata**，calldata的前4个字节就是这个function的selector，其中：
+1. 当调用某个function时，具体调用function的信息会被拼装成**calldata**，calldata的前4个字节就是这个function的selector，其中：
 
-1. 通过selector可以知道调用的是哪个function；
-2. calldata 可以通过msg.data获取。
+   1. 通过selector可以知道调用的是哪个function；
+   2. calldata 可以通过msg.data获取。
 
-通过拼装selector和函数参数，我们可以在A合约中得到calldata，并在A合约中通过call方法去调用B合约中的方法，从而实现合约间的调用。
+2. 通过拼装selector和函数参数，我们可以在A合约中得到calldata，并在A合约中通过call方法去调用B合约中的方法，从而实现合约间的调用。举例，下面的代码功能是：在当前合约中使用**call**调用**addr**地址中的**transfer**方法：
 
-举例，下面的代码功能是：在当前合约中使用**call**调用**addr**地址中的**transfer**方法：
+   ```js
+   bytes memory transferSelector = abi.encodeWithSignature("transfer(address,uint256)");
+   addr.call(transferSelector, 0xSomeAddress, 100);
+   // "transferSelector" "0xa9059cbb"
+   
+   // 一般会写成一行
+   // addr.call(abi.encodeWithSignature("transfer(address,uint256)"), 0xSomeAddress, 100);
+   ```
 
-```js
-bytes memory transferSelector = abi.encodeWithSignature("transfer(address,uint256)");
-addr.call(transferSelector, 0xSomeAddress, 100);
-// "transferSelector" "0xa9059cbb"
+   在合约中，一个function的4字节selector可以通过**abi.encodeWithSignature(...)**来获取
 
-// 一般会写成一行
-addr.call(abi.encodeWithSignature("transfer(address,uint256)"), 0xSomeAddress, 100);
-```
+3. 另外一种计算selector的方式为
 
-在合约中，一个function的4字节selector可以通过**abi.encodeWithSignature(...)**来获取
+   ```js
+   bytes4(keccak256(bytes("transfer(address,uint256)")))
+   ```
 
-另外一种计算selector的方式为，
-
-```js
-bytes4(keccak256(bytes("transfer(address,uint256)")))
-```
-
-完整demo：
+### 完整demo：
 
 ```js
 // SPDX-License-Identifier: MIT
@@ -45,7 +43,7 @@ contract FunctionSelector {
 }
 ```
 
-其他知识，
+### 其他知识
 
 1. 一般提到signature的方法指的是函数原型：
 

@@ -1,10 +1,27 @@
 # 第5节：call
 
-**call**是一种底层调用合约的方式，可以在合约内调用其他合约。
+**call**是一种底层调用合约的方式，可以在合约内调用其他合约，call语法为：
+
+```js
+//(bool success, bytes memory data) = addr.call{value: valueAmt, gas: gasAmt}(参数1, 参数2)
+其中：
+1. success：执行结果，一定要校验success是否成功，失败务必要回滚
+2. data：执行调用的返回值，是打包的字节序，需要解析才能得到调用函数的返回值（后续encode_decode详解）
+```
 
 当调用fallback方式给合约转ether的时候，**建议使用call**，而不是使用transfer或send方法
 
+```js
+(bool success, bytes memory data) = addr.call{value: 10}("")
+```
+
 对于存在的方法，不建议使用call方式调用。
+
+```js
+(bool success, bytes memory data) = _addr.call(abi.encodeWithSignature("doesNotExist()"));
+```
+
+### 完整demo:
 
 ```js
 // SPDX-License-Identifier: MIT
