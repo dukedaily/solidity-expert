@@ -8,7 +8,7 @@ https://docs.soliditylang.org/en/latest/security-considerations.html#sending-and
 
 1. transfer（2300 gas， throw error）
 2. send（2300 gas，return bool）
-3. call（传递交易剩余的gas或设置gas，不限定2300gas，return bool）==(推荐使用)==
+3. call（传递交易剩余的gas或设置gas，不限定2300gas，return bool）(推荐使用)
 
 ### 如何接收ether？
 
@@ -25,17 +25,17 @@ contract ReceiveEther {
     /*
     Which function is called, fallback() or receive()?
 
-              sender ether
-                  	|
+                sender ether
+                    |
              msg.data is empty?
-                /  		\
-            yes					no
-             /					 \
-      receive() exist?	fallback()
-          /      \
-        yes       no
-       /         	  \
-  receive()  		   fallback()
+                /       \
+            yes          no
+             /             \
+      receive() exist?     fallback()
+          /    \
+        yes     no
+       /          \
+  receive()     fallback()
   */
 
     string public message;
@@ -74,7 +74,7 @@ contract SendEther {
 
     function sendViaCallFallback(address payable _to) public payable {
         // Call returns a boolean value indicating success or failure.
-        // This is the current recommended method to use.
+        // This is the current recommended method to use. (推荐使用)
         (bool sent, bytes memory data) = _to.call{value: msg.value}(abi.encodeWithSignature("noExistFuncTest()"));
         require(sent, "Failed to send Ether");
     }
@@ -87,4 +87,3 @@ contract SendEther {
     }
 }
 ```
-

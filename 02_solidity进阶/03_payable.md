@@ -1,10 +1,10 @@
-# 第2节：payable
+# 第3节：payable
 
 1. 一个函数（或地址）如果想接收ether，需要将其修饰为：**payable**。
 2. address常用方法：
    1. balance(): 查询当前地址的ether余额
    2. transfer(uint): 合约向当前地址转指定数量的ether，如果失败会回滚
-   3. send(uint): 合约向当前地址转指定数量的ether，如果失败会返回false，不回滚==（不建议使用send）==
+   3. send(uint): 合约向当前地址转指定数量的ether，如果失败会返回false，不回滚（不建议使用send）
 
 ```js
 // SPDX-License-Identifier: MIT

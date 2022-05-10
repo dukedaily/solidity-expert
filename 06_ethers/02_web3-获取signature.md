@@ -13,6 +13,7 @@ async function main() {
   let transferEvent = "Transfer(address,address,uint256)"
   let sig = web3.eth.abi.encodeEventSignature(transferEvent)
   let sig2 = web3.eth.abi.encodeFunctionSignature(transferEvent)
+  
   //should be: 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
   console.log('event sig1:', sig)
   console.log('event sig2:', sig2)
