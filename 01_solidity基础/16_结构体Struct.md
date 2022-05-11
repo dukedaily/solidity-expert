@@ -54,7 +54,7 @@ contract Todos {
 }
 ```
 
-在外面定义结构体：StructDeclaration.sol
+在外面定义结构体：StructDeclaration.sol（说明并不是所有数据都必须写在合约之内的）
 
 ```js
 // SPDX-License-Identifier: MIT
