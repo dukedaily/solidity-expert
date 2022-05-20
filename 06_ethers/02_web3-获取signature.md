@@ -6,8 +6,6 @@
 
 
 
-
-
 ```js
 async function main() {
   let transferEvent = "Transfer(address,address,uint256)"

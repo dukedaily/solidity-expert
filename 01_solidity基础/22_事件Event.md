@@ -30,3 +30,12 @@ contract Event {
 }
 ```
 
+当使用indexed关键字时：
+
+1. 如果是值类型的，则直接进行encode
+2. 如果是非值类型，如：array，string等，则使用keccak256哈希值
+
+参考：
+
+1. https://docs.soliditylang.org/en/v0.8.13/abi-spec.html#indexed-event-encoding
+2. https://docs.soliditylang.org/en/v0.8.13/abi-spec.html#abi-events

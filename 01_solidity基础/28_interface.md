@@ -1,4 +1,4 @@
-# 第27节：Interface
+# 第28节：Interface
 
 可以使用Interface完成多个合约之间进行交互，interface有如下特性：
 

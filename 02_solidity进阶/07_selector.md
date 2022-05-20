@@ -18,10 +18,17 @@
 
    在合约中，一个function的4字节selector可以通过**abi.encodeWithSignature(...)**来获取
 
-3. 另外一种计算selector的方式为
+3. 另外一种计算selector的方式为：（keccak256即sha3哈希算法）
 
    ```js
-   bytes4(keccak256(bytes("transfer(address,uint256)")))
+   bytes4(keccak256(bytes("transfer(address,uint256)"))) //不用关心返回值，不用放在这里面计算。
+   ```
+
+4. 在合约内部也可以直接获取selector
+
+   ```js
+   // 假设当前合约内有transfer函数
+   this.transfer.selector
    ```
 
 ### 完整demo：
