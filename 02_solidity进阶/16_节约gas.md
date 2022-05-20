@@ -1,4 +1,4 @@
-# 第17节：节约gas
+# 第16节：节约gas
 
 1. 使用calldata替换memory
 2. 将状态变量加载到memory中

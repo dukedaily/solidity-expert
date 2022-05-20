@@ -41,7 +41,7 @@
     * [第7节:selector](02_solidity进阶/07_selector.md)
     * [第8节:send_ether](02_solidity进阶/08_send_ether.md)
     * [第9节:delegatecall](02_solidity进阶/09_delegatecall.md)
-    * [第10节:delegatecall](02_solidity进阶/10_fallback.md)
+    * [第10节:fallback](02_solidity进阶/10_fallback.md)
     * [第11节:合约间调用](02_solidity进阶/11_合约间调用.md)
     * [第12节:new_create2](02_solidity进阶/12_new_create2.md)
     * [第13节:delete](02_solidity进阶/13_delete.md)

@@ -1,4 +1,4 @@
-# 第13节：import
+# 第15节：import
 
 我们可以使用import将本地的.sol文件或外部（github或openzeppelin等）.sol导入进来
 

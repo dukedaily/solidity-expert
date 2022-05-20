@@ -1,4 +1,4 @@
-# 第4节：Send Ether（transfer、send、call）
+# 第8节：Send Ether（transfer、send、call）
 
 https://docs.soliditylang.org/en/latest/security-considerations.html#sending-and-receiving-ether
 

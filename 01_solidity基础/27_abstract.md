@@ -1,4 +1,4 @@
-# 第18节：abstract
+# 第27节：abstract
 
 手册：https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=abstract#abstract-contracts
 

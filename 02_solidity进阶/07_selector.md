@@ -1,4 +1,4 @@
-# 第4节：selector
+# 第7节：selector
 
 1. 当调用某个function时，具体调用function的信息会被拼装成**calldata**，calldata的前4个字节就是这个function的selector，其中：
 

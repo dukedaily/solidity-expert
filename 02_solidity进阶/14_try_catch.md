@@ -1,4 +1,4 @@
-# 第12节：try/catch
+# 第14节：try/catch
 
 try/catch仅可以捕捉在调用external函数或创建合约中抛出的异常信息。
 

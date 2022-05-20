@@ -1,4 +1,4 @@
-# 第11节：delete
+# 第13节：delete
 
 1. delete操作符可以用于任何变量(map除外)，将其设置成默认值；
 2. 如果对动态数组使用delete，则删除所有元素，其长度变为0: uint[ ] array0 ;   arry0 = new uint[](10)；

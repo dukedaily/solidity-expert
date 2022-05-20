@@ -1,4 +1,4 @@
-# 第2节: delegatecall
+# 第9节: delegatecall
 
 delegatecall与call相似，也是底层调用合约方式，特点是：
 
