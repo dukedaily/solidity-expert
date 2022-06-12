@@ -49,9 +49,8 @@ async function main() {
 
 ### 方式三：
 
-使用default，只要没有使用default进行导出，那么在import的地方就需要使用花括号包裹，如果使用default则无需花括号
-
-并且在import的时候名字是可以定义别名的，使用.成员形式进行导出对对象的访问。
+1. 使用default，只要没有使用default进行导出，那么在import的地方就需要使用花括号包裹，如果使用default则无需花括号
+2. 并且在import的时候名字是可以定义别名的，使用.成员形式进行导出对对象的访问。
 
 ```js
 export default {
