@@ -10,10 +10,14 @@
 
 5. 使用方式![u7zKBjCAdv](assets/u7zKBjCAdv.png)
 
+6. 使用tenderly可以当做又一个浏览器进行查看，而且对input的解析比etherscan更加强大：
+   1. input对比：
+      1. etherscan无法解析input：https://kovan.etherscan.io/tx/0x3b58560275fece3de720fe0b1afc83e1efc469ed24a5a5d9c01521a79fff24ff
+      2. tenderly可以解析input：https://dashboard.tenderly.co/tx/kovan/0x3b58560275fece3de720fe0b1afc83e1efc469ed24a5a5d9c01521a79fff24ff
+   2. token名字对比：两者可以配合着使用，因为对自定义token的展示，浏览器更加清晰，tenderly却展示unknow
+   3. console.log对比：浏览器无法展示，tenderly可以展示，但是值貌似不对，需要谨慎对待。
+7. 
 
 
----
-
-## 公共浏览器
 
 ​	

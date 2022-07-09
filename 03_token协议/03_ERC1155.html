@@ -518,6 +518,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.30" data-path="../01_solidity基础/30_规范.html">
+            
+                <a href="../01_solidity基础/30_规范.html">
+            
+                    
+                    第30节:规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.31" data-path="../01_solidity基础/31_传递结构体.html">
+            
+                <a href="../01_solidity基础/31_传递结构体.html">
+            
+                    
+                    第31节:传递结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -738,6 +764,32 @@
             
                     
                     第16节:节约gas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../02_solidity进阶/17_type.html">
+            
+                <a href="../02_solidity进阶/17_type.html">
+            
+                    
+                    第17节:type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../02_solidity进阶/18_汇编.html">
+            
+                <a href="../02_solidity进阶/18_汇编.html">
+            
+                    
+                    第18节:汇编
             
                 </a>
             
@@ -1216,9 +1268,12 @@
                                 
                                 <h1 id="第3节语法-erc1155">第3节:语法-ERC1155</h1>
 <ol>
-<li>1155是每个id为一个token组，每个组里面可以包含多个erc20</li>
-<li>mint(to, id, amount)</li>
-<li>setURI(id, uri)</li>
+<li><p>1155是每个id为一个token组，每个组里面可以包含多个erc20</p>
+</li>
+<li><p>mint(to, id, amount)</p>
+</li>
+<li><p>setURI(id, uri)</p>
+</li>
 <li><p>setURI的时候，填写的是metadata.json，不是图片的url，使用pinata服务存储图片和metadata.json：</p>
 <pre><code class="lang-js">{
     <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;this is a nft1155 metadata json desc&quot;</span>,
@@ -1228,10 +1283,11 @@
 }
 </code></pre>
 </li>
-<li>opensea测试网是rinkeby，链接为：<a href="https://testnets.opensea.io" target="_blank">https://testnets.opensea.io</a></li>
-<li>opensea会自动将当前链接的地址账户的nft扫描出来展示在页面上。</li>
-<li>自己部署（示例）：<a href="https://testnets.opensea.io/assets/rinkeby/0x54f1a0ad311e00b68fa940bc969c191863ac84fd/1" target="_blank">https://testnets.opensea.io/assets/rinkeby/0x54f1a0ad311e00b68fa940bc969c191863ac84fd/1</a></li>
-</ol>
+<li><p>opensea测试网是rinkeby，链接为：<a href="https://testnets.opensea.io" target="_blank">https://testnets.opensea.io</a></p>
+</li>
+<li><p>opensea会自动将当前链接的地址账户的nft扫描出来展示在页面上。</p>
+</li>
+<li><p>自己部署（示例）：<a href="https://testnets.opensea.io/assets/rinkeby/0x54f1a0ad311e00b68fa940bc969c191863ac84fd/1" target="_blank">https://testnets.opensea.io/assets/rinkeby/0x54f1a0ad311e00b68fa940bc969c191863ac84fd/1</a></p>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
 
@@ -1279,9 +1335,10 @@ contract NFT1155 is ERC1155, Ownable {
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uri</span>(<span class="hljs-params">uint _id</span>) <span class="hljs-title">public</span> <span class="hljs-title">override</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
     <span class="hljs-keyword">return</span> tokenURI[_id];
   }
-
 }
 </code></pre>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -1325,7 +1382,7 @@ contract NFT1155 is ERC1155, Ownable {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"next":{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},"previous":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/03_ERC1155.md","mtime":"2022-06-12T10:34:33.745Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-06-12T10:52:15.283Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"next":{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},"previous":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/03_ERC1155.md","mtime":"2022-06-21T04:01:07.853Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-07-09T00:33:23.340Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1377,10 +1434,6 @@ contract NFT1155 is ERC1155, Ownable {
     </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
