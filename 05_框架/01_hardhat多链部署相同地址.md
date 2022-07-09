@@ -68,7 +68,11 @@
    npx hardhat xdeploy
    ```
 
-   
+7. 支持的网络
+
+   ```sh
+   localhost,hardhat,rinkeby,ropsten,kovan,goerli,sepolia,bscTestnet,optimismTestnet,arbitrumTestnet,mumbai,hecoTestnet,fantomTestnet,fuji,sokol,moonbaseAlpha,alfajores,auroraTestnet,harmonyTestnet,spark,cronosTestnet,ethMain,bscMain,optimismMain,arbitrumMain,polygon,hecoMain,fantomMain,avalanche,gnosis,moonriver,moonbeam,celo,auroraMain,harmonyMain,autobahn,fuse,cronos.
+   ```
 
 # 原理
 
@@ -76,3 +80,10 @@
 
 目前在bsc主网可以正常部署，但是arbitrium上部署失败，我是通过参考bsc合约的deploy参数，在arbi上手动调用的deploy，也完成 合约的部署和verify。
 
+# 手动地址
+
+xdeployer地址：0x13b0d85ccb8bf860b6b79af3029fca081ae9bef2
+
+1. 找到这个地址
+2. 调用deploy方法：
+   1. 
