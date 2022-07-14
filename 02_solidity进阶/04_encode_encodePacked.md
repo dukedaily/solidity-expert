@@ -72,13 +72,13 @@ contract AbiDecode {
 }
 ```
 
+# 使用三方库：
 
-
-使用三方库：
-
-web3js
+## web3js编码：
 
 ```js
+// encodeFunctionCall( abi ,参数 ) 得到编码
+
 web3.eth.abi.encodeFunctionCall({
     name: 'myMethod',
     type: 'function',
@@ -93,7 +93,28 @@ web3.eth.abi.encodeFunctionCall({
 > "0x24ee0097000000000000000000000000000000000000000000000000000000008bd02b7b0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000748656c6c6f212500000000000000000000000000000000000000000000000000"
 ```
 
-ethersjs
+## web3js解码：
+
+解码时，要将得到的calldata的前四字节去掉，那是函数的selector，不应该参与参数解析。
+
+```js
+//  let res = web3.eth.abi.decodeParameters(abi, calldata)
+
+async function main() {
+  let calldata = '' //太大了，删除，去下面线上链接中获取
+  let abi = [{ "internalType": "string", "name": "_id", "type": "string" }, { "internalType": "string", "name": "_uniqueId", "type": "string" }, { "internalType": "uint8", "name": "_assetFrom", "type": "uint8" }, { "internalType": "uint8", "name": "_action", "type": "uint8" }, { "internalType": "address", "name": "_srcToken", "type": "address" }, { "internalType": "address", "name": "_dstToken", "type": "address" }, { "internalType": "uint256", "name": "_srcAmount", "type": "uint256" }, { "internalType": "uint256", "name": "_srcFeeAmount", "type": "uint256" }, { "internalType": "bytes", "name": "_data", "type": "bytes" }]
+  
+  
+  let res = web3.eth.abi.decodeParameters(abi, calldata)
+  console.log('res:', res)
+}
+```
+
+在线案例：https://web3playground.io/QmSeHtJPLFxweiGB8ocFDXkCZao6Mt5oEJ4Ej66iY3RL1R
+
+
+
+## ethersjs
 
 ```js
 let bytes2 = mock1Inch.interface.encodeFunctionData("swap", [ETH_ADDR, daiToken.address, 90])
