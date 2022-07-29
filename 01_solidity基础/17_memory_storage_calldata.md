@@ -6,7 +6,8 @@ solidity中的存储位置分为三种，使用memory、storage、calldata来进
 - memory：仅存储在内存中，供函数使用，数据不上链，适用于所有类型，包括：
   - 值类型（int，bool，bytes8等）
   - 引用类型（string，bytes，数组，结构体，mapping）
-- calldata：存储函数的参数的位置，是只读的
+- calldata：存储函数的参数的位置，是只读的-
+- 其他：Solidity 变量中 memory 、calldata 2 个表示作用非常类似，都是函数内部临时变量，它们最大的区别就是 calldata 是不可修改的，在某些只读的情况比较省 Gas.
 
 ```js
 // SPDX-License-Identifier: MIT
