@@ -15,7 +15,7 @@
 
 ## 资源
 
-- 代码仓库：
+- 代码仓库：https://github.com/dukedaily/solidity-expert/tree/main/sourcecode
 
 - 在线视频：
 
