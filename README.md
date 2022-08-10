@@ -4,7 +4,7 @@
 
 该项目专注于EVM链（以太坊/BSC/Avalanche等）Dapp开发，通过学习，你可以掌握如下知识点：
 
-1. 智能合约编写：介绍solidity语法等
+1. 智能合约编写：介绍solidity基础语法、高级应用、合约安全等
 2. 第三方工具：框架、安全合约库openzeppelin、基建服务Moralis、Chainlink、tenderly等
 3. 主流web3库：web3.js、ethers.js
 4. 链下工具：subgraph、扫块服务等
