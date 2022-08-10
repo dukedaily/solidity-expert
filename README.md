@@ -19,7 +19,7 @@
 
 - 在线视频：
 
-  1. 油管：TODO
+  1. 油管：https://www.youtube.com/channel/UCSc6tGnLIFvVMXs-ilDyb4A
 
   2. B站：TODO
 
