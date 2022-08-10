@@ -15,15 +15,17 @@
 
 ## 资源
 
-- 代码仓库：https://github.com/dukedaily/solidity-expert/tree/main/sourcecode
+- git仓库：https://github.com/dukedaily/solidity-expert/tree/main/sourcecode
 
-- 在线视频：
+- gitee仓库：https://gitee.com/bwcs/solidity-expert/tree/main/sourcecode
+
+- 视频教程：
 
   1. 油管：https://www.youtube.com/channel/UCSc6tGnLIFvVMXs-ilDyb4A
 
   2. B站：TODO
 
-- 在线教程：https://dukedaily.github.io/solidity-expert/
+- 课件教程：https://dukedaily.github.io/solidity-expert/
 
 
 
