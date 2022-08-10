@@ -1266,7 +1266,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第2节语法-erc721">第2节:语法-ERC721</h1>
+                                <h1 id="第2节语法-erc721（详情见1155）">第2节:语法-ERC721（详情见1155）</h1>
+<p>对于Opeasea而言，测试网目前仅支持Rinkeby，即部署在Rinkeby网络上的nft合约会自动展示在opensea中。</p>
+<p>举例教程：<a href="https://mp.weixin.qq.com/s/T9GEgaqubHAftpMsdLAMIg" target="_blank">https://mp.weixin.qq.com/s/T9GEgaqubHAftpMsdLAMIg</a></p>
 <p>ipfs服务：<a href="https://app.pinata.cloud/pinmanager" target="_blank">https://app.pinata.cloud/pinmanager</a></p>
 <p>标准接口：</p>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
@@ -1393,13 +1395,10 @@ contract SimpleCollectible is ERC721URIStorage {
         <span class="hljs-keyword">return</span> newItemId;
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_baseURI</span>(<span class="hljs-params"></span>) <span class="hljs-title">internal</span> <span class="hljs-title">view</span> <span class="hljs-title">override</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;https://gateway.pinata.cloud/ipfs/&quot;</span>;
-    }
-
-    <span class="hljs-comment">//1. createCollectible(QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta)</span>
-    <span class="hljs-comment">//2. tokenURI(0)</span>
-    <span class="hljs-comment">//3. 浏览器请求：https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta</span>
+  <span class="hljs-comment">// 注释掉</span>
+    <span class="hljs-comment">// function _baseURI() internal view override returns (string memory) {</span>
+    <span class="hljs-comment">//     return &quot;https://gateway.pinata.cloud/ipfs/&quot;;</span>
+    <span class="hljs-comment">// }</span>
 }
 
 contract ERC721Holder is IERC721Receiver {
@@ -1413,6 +1412,28 @@ contract ERC721Holder is IERC721Receiver {
     }
 }
 </code></pre>
+<p>测试：</p>
+<pre><code class="lang-js">      <span class="hljs-comment">// QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB是json文件的hash</span>
+    <span class="hljs-comment">//1. createCollectible(QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB)</span>
+    <span class="hljs-comment">//2. tokenURI(0)</span>
+    <span class="hljs-comment">//3. 浏览器请求：https://gateway.pinata.cloud/ipfs/QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB</span>
+</code></pre>
+<p>其中的hash值为这个nft图片的描述文件的哈希：metadata.json，</p>
+<ol>
+<li>json文件上传后的哈希为：QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB，这个哈希用于作为tokenuri，在合约内部会和baseUrl组装起来。</li>
+<li>图片的哈希为：QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta</li>
+</ol>
+<pre><code class="lang-sh">{
+  <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;this is a nft1155 metadata json desc&quot;</span>,
+  <span class="hljs-string">&quot;image&quot;</span>: <span class="hljs-string">&quot;https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta&quot;</span>,
+  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;duke nft&quot;</span>
+}
+</code></pre>
+<p>总结：</p>
+<ol>
+<li>在页面展示时,url为：<a href="https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta" target="_blank">https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta</a></li>
+<li>实际上的tokenuri为：<a href="https://gateway.pinata.cloud/ipfs/QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB" target="_blank">https://gateway.pinata.cloud/ipfs/QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB</a></li>
+</ol>
 
                                 
                                 </section>
@@ -1456,7 +1477,7 @@ contract ERC721Holder is IERC721Receiver {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"next":{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},"previous":{"title":"第1节:ERC20","level":"1.6.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/02_ERC721.md","mtime":"2022-06-12T23:40:13.906Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-07-09T00:33:23.340Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"next":{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},"previous":{"title":"第1节:ERC20","level":"1.6.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/02_ERC721.md","mtime":"2022-07-29T03:56:44.133Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-10T05:16:06.076Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

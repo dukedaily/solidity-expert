@@ -1288,57 +1288,72 @@
 <li><p>opensea会自动将当前链接的地址账户的nft扫描出来展示在页面上。</p>
 </li>
 <li><p>自己部署（示例）：<a href="https://testnets.opensea.io/assets/rinkeby/0x54f1a0ad311e00b68fa940bc969c191863ac84fd/1" target="_blank">https://testnets.opensea.io/assets/rinkeby/0x54f1a0ad311e00b68fa940bc969c191863ac84fd/1</a></p>
+</li>
+</ol>
+<h2 id="更好的合约：">更好的合约：</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC1155/ERC1155.sol&quot;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol&quot;</span>;
 
-contract NFT1155 is ERC1155, Ownable {
+contract MockErc1155Token is ERC1155URIStorage {
+    string public name;
+    string public symbol;
+    uint256 public tokenCounter;
 
-  string public name;
-  string public symbol;
+    <span class="hljs-title">constructor</span>(<span class="hljs-params">string memory _name, string memory _symbol</span>) <span class="hljs-title">ERC1155</span>(<span class="hljs-params"><span class="hljs-string">&quot;&quot;</span></span>) {
+        name = _name;
+        symbol = _symbol;
+    }
 
-  mapping(<span class="hljs-function"><span class="hljs-params">uint</span> =&gt;</span> string) public tokenURI;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createCollectible</span>(<span class="hljs-params">string memory tokenURI, uint256 _amount</span>)
+        <span class="hljs-title">external</span>
+        <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)
+    </span>{
+        uint256 newItemId = tokenCounter;
+        _mint(_msgSender(), newItemId, _amount, <span class="hljs-string">&quot;&quot;</span>);
+        _setURI(newItemId, tokenURI);
 
-  <span class="hljs-title">constructor</span>(<span class="hljs-params"></span>) <span class="hljs-title">ERC1155</span>(<span class="hljs-params"><span class="hljs-string">&quot;&quot;</span></span>) {
-    name = <span class="hljs-string">&quot;HashItems&quot;</span>;
-    symbol = <span class="hljs-string">&quot;HASHITEMS&quot;</span>;
-  }
+        tokenCounter = tokenCounter + <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> newItemId;
+    }
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mint</span>(<span class="hljs-params">address _to, uint _id, uint _amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span> </span>{
-    _mint(_to, _id, _amount, <span class="hljs-string">&quot;&quot;</span>);
-  }
+    <span class="hljs-comment">// function mint(uint256 _id, uint256 _amount) external {</span>
+    <span class="hljs-comment">//     _mint(_msgSender(), _id, _amount, &quot;&quot;);</span>
+    <span class="hljs-comment">// }</span>
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mintBatch</span>(<span class="hljs-params">address _to, uint[] memory _ids, uint[] memory _amounts</span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span> </span>{
-    _mintBatch(_to, _ids, _amounts, <span class="hljs-string">&quot;&quot;</span>);
-  }
+    <span class="hljs-comment">// function mintBatch(uint256[] memory _ids, uint256[] memory _amounts)</span>
+    <span class="hljs-comment">//     external</span>
+    <span class="hljs-comment">// {</span>
+    <span class="hljs-comment">//     _mintBatch(_msgSender(), _ids, _amounts, &quot;&quot;);</span>
+    <span class="hljs-comment">// }</span>
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burn</span>(<span class="hljs-params">uint _id, uint _amount</span>) <span class="hljs-title">external</span> </span>{
-    _burn(msg.sender, _id, _amount);
-  }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burn</span>(<span class="hljs-params">uint256 _id, uint256 _amount</span>) <span class="hljs-title">external</span> </span>{
+        _burn(msg.sender, _id, _amount);
+    }
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burnBatch</span>(<span class="hljs-params">uint[] memory _ids, uint[] memory _amounts</span>) <span class="hljs-title">external</span> </span>{
-    _burnBatch(msg.sender, _ids, _amounts);
-  }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burnBatch</span>(<span class="hljs-params">uint256[] memory _ids, uint256[] memory _amounts</span>)
+        <span class="hljs-title">external</span>
+    </span>{
+        _burnBatch(msg.sender, _ids, _amounts);
+    }
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burnForMint</span>(<span class="hljs-params">address _from, uint[] memory _burnIds, uint[] memory _burnAmounts, uint[] memory _mintIds, uint[] memory _mintAmounts</span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span> </span>{
-    _burnBatch(_from, _burnIds, _burnAmounts);
-    _mintBatch(_from, _mintIds, _mintAmounts, <span class="hljs-string">&quot;&quot;</span>);
-  }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burnForMint</span>(<span class="hljs-params">
+        address _from,
+        uint256[] memory _burnIds,
+        uint256[] memory _burnAmounts,
+        uint256[] memory _mintIds,
+        uint256[] memory _mintAmounts
+    </span>) <span class="hljs-title">external</span> </span>{
+        _burnBatch(_from, _burnIds, _burnAmounts);
+        _mintBatch(_from, _mintIds, _mintAmounts, <span class="hljs-string">&quot;&quot;</span>);
+    }
 
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setURI</span>(<span class="hljs-params">uint _id, string memory _uri</span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span> </span>{
-    tokenURI[_id] = _uri;
-    emit URI(_uri, _id);
-  }
-
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uri</span>(<span class="hljs-params">uint _id</span>) <span class="hljs-title">public</span> <span class="hljs-title">override</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-    <span class="hljs-keyword">return</span> tokenURI[_id];
-  }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setURI</span>(<span class="hljs-params">uint256 _id, string memory _uri</span>) <span class="hljs-title">external</span> </span>{
+        _setURI(_id, _uri);
+    }
 }
 </code></pre>
-</li>
-</ol>
 
                                 
                                 </section>
@@ -1382,7 +1397,7 @@ contract NFT1155 is ERC1155, Ownable {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"next":{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},"previous":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/03_ERC1155.md","mtime":"2022-06-21T04:01:07.853Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-07-09T00:33:23.340Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"next":{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},"previous":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/03_ERC1155.md","mtime":"2022-07-29T03:56:44.134Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-10T05:16:06.076Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
