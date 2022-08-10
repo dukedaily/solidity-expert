@@ -1,4 +1,4 @@
-* [思维导图](README.md)
+* [扫描入群🤗](README.md)
 * [目录](SUMMARY.md)
 * [第0章:请优先掌握](00_请优先掌握/01_remix教程.md)
 * [第一章:solidity基础](01_solidity基础/README.md)
