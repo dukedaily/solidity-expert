@@ -1,6 +1,6 @@
 ## 概述
 
-欢迎👏🏻加入web3世界！
+欢迎👏🏻加入web3世界，WIP：Work in progress（持续进行中...）
 
 该项目专注于EVM链（以太坊/BSC/Avalanche等）Dapp开发，通过学习，你可以掌握如下知识点：
 
@@ -10,6 +10,7 @@
 4. 链下工具：subgraph、扫块服务等
 5. 主流协议：uniswap、compound、aave、staking、nft等
 6. 必要的前端知识：react
+
 
 
 
