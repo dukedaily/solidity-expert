@@ -1,4 +1,4 @@
-# 第1节:hardhat
+# 第1节:多链部署相同地址
 
 不同网络部署相同的地址：[xdeployer](https://www.npmjs.com/package/xdeployer)，每次执行只能部署一个合约。
 
@@ -86,4 +86,3 @@ xdeployer地址：0x13b0d85ccb8bf860b6b79af3029fca081ae9bef2
 
 1. 找到这个地址
 2. 调用deploy方法：
-   1. 

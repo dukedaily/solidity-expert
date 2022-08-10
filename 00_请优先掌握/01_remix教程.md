@@ -1,17 +1,12 @@
 
 
+## 在线IDE
+
+https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js
 
 
-```js
-pragma abicoder v2;
-```
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 05c3c75cb86e4e2e3bf82095b446c97918f6be59
-# 使用remix传递参数事项
+## 使用remix传递参数事项
 
 1. 传递结构体时，需要使用方括号包裹，并且里面有地址的时候，需要使用双引号包裹，不可以时单引号，或者不包裹
 
