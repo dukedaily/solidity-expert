@@ -20,7 +20,7 @@
 
   1. 油管：https://www.youtube.com/channel/UCSc6tGnLIFvVMXs-ilDyb4A
 
-  2. B站：TODO
+  2. B站：https://space.bilibili.com/102710441/channel/seriesdetail?sid=2537685&ctype=0
 
 ##  为什么学习solidity
 
