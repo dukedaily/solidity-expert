@@ -26,7 +26,7 @@
 
 查查平均salary：https://web3.career/web3-salaries
 
-![image-20220811141916087](assets/image-20220811141916087.png)
+<img src="assets/image-20220811141916087.png" alt="image-20220811141916087" align="left" style="zoom: 25%;" />
 
 ## 关于作者
 
@@ -41,7 +41,7 @@
 - ens：dukedu.eth
 - BTC：38GqvS398GskBX39kijX8ST1tnjJhPzJ1V
 
-## 马上入群：
+## 马上入群
 
 入群请告知从哪里来: '同事' 或 '其他'，谢谢!
 

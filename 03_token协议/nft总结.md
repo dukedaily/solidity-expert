@@ -1,7 +1,5 @@
 # NFT721
 
-
-
 goerli成功：
 
 1. https://goerli.etherscan.io/address/0x6338cbc71de0628c91f69ddf57a07edf5afab59a#code
@@ -18,9 +16,3 @@ goerli成功：
 3. 代码中，有baseURL，创建时只需要输入json文件的hash值即可
 
 4. 但是opensea中依然无法正确展示
-
-
-
-# Moralis
-
-可能更新不及时，导致数据无法及时扫出来，展示不到。
