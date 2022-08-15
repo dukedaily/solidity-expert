@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第4节:DAPP技术栈 · HonKit</title>
+        <title>第4节:App与Dapp异同 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -56,7 +56,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="05_区块链就业.html" />
+    <link rel="next" href="05_DAPP技术栈.html" />
     
     
     <link rel="prev" href="03_什么是以太坊.html" />
@@ -167,12 +167,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.4" data-path="04_DAPP技术栈.html">
+        <li class="chapter active" data-level="1.3.4" data-path="04_App与Dapp.html">
             
-                <a href="04_DAPP技术栈.html">
+                <a href="04_App与Dapp.html">
             
                     
-                    第4节:DAPP技术栈
+                    第4节:App与Dapp异同
             
                 </a>
             
@@ -180,12 +180,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="05_区块链就业.html">
+        <li class="chapter " data-level="1.3.5" data-path="05_DAPP技术栈.html">
             
-                <a href="05_区块链就业.html">
+                <a href="05_DAPP技术栈.html">
             
                     
-                    第5节:区块链就业
+                    第5节:DAPP技术栈
             
                 </a>
             
@@ -193,12 +193,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="06_Remix教程.html">
+        <li class="chapter " data-level="1.3.6" data-path="06_区块链就业.html">
             
-                <a href="06_Remix教程.html">
+                <a href="06_区块链就业.html">
             
                     
-                    第6节:Remix教程
+                    第6节:区块链就业
             
                 </a>
             
@@ -206,12 +206,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.7" data-path="07_Solidity手册.html">
+        <li class="chapter " data-level="1.3.7" data-path="07_Remix教程.html">
             
-                <a href="07_Solidity手册.html">
+                <a href="07_Remix教程.html">
             
                     
-                    第7节:Solidity手册
+                    第7节:Remix教程
             
                 </a>
             
@@ -1168,7 +1168,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第4节:DAPP技术栈</a>
+        <a href=".." >第4节:App与Dapp异同</a>
     </h1>
 </div>
 
@@ -1183,7 +1183,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="第4节：app与dapp的架构异同">第4节：App与Dapp的架构异同</h1>
+<blockquote>
+<p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+</blockquote>
+<p>互联发展了20多年，各种架构已经非常成熟了，移动端兴起之后App加入，其架构也没有太大变化；</p>
+<p>但是相较于Dapp的架构，一切却有天壤之别，而这其中与其说是技术的变革，不如说是思维方式的变革。</p>
+<h2 id="app架构">App架构</h2>
+<p>B/S或C/S的架构大体如此，从前端到后台，从机房到云原生，技术在迭代，效率在提高，一切越来越丝滑。底层的系统大致分为：从Unix、Linux、Dos、MacOs、Windows、安卓、IOS等等。</p>
+<p><img src="assets/app-arch.jpg" alt="app-arch"></p>
+<h2 id="dapp架构">Dapp架构</h2>
+<p>而去中心化应用的架构却与App完全不同，因为<strong>没有专门的后台</strong>，它的<strong>区块链网络就是底层系统</strong>：如以太坊网络、BSC网络等。</p>
+<p>一个最简单的Dapp应用可以直接描述如下，我们称为：<strong>V1版本架构</strong></p>
+<p><img src="assets/image-20220815233247732.png" alt="image-20220815233247732"></p>
+<p>V1：我们可以看到，此时浏览器多了一个<code>钱包模块</code>，钱包是打开区块链的身份钥匙🔑，整个区块链上世界都是建立在密码学之上的（非对称加密，不懂也罢），而图中蓝色部分就是区块链网络，我们的程序就运行在其中，它既是后端服务，也是数据库。我们的前端直接与区块链网络进行交互，包括：</p>
+<ul>
+<li>读数据（读取区块链账本数据），免费的</li>
+<li>写数据（向区块链网络提交数据，永久保存，此时需要矿工打包执行），付费的（这点记住即可，后续语言学习中，陆续会讲解）</li>
+</ul>
+<p>V2：随着区块链网络生态的发展，人们渐渐发现了优化空间，即我们可以将读操作预先存储到一个服务器中，然后前端直接从中获取数据，这既可以保证系统安全，又可以提高效率，因此<strong>subgraph</strong>这个基建并得到飞速发展，图中橘黄色部分。我们称之为：<strong>V2版本架构</strong></p>
+<p><img src="assets/image-20220815233206413.png" alt="image-20220815233206413"></p>
+<p>V3：当然，如果业务过于复杂，与链上合约交互的部分，我们可以独立封装出来，让前端专注于展示，合约专注于逻辑，所以引入了SDK，这部分专门处理和链上合约打交道的所有逻辑，并做响应的业务处理，时刻准备喂给前端，此时我们称为：<strong>V3版本架构</strong></p>
+<p><img src="assets/image-20220815233916029.png" alt="image-20220815233916029"></p>
+<p>V4：再后来，区块链存储项目也陆续诞生，其中最为人知的便是：ipfs，它是一个致力于大文件存储的项目，最近很火的nft项目中，所有的图片都是要上传到ipfs上，从而节约以太坊网络费用，所以此时的设计更改如下，我们称之为：<strong>V4版本架构</strong></p>
+<p><img src="assets/image-20220815234419596.png" alt="image-20220815234419596"></p>
+<h2 id="小结">小结</h2>
+<p>区块链基建项目的发展给系统设计带来一些灵活性， 从V1到V4中，没有最好的设计，只有最合理的设计。只有符合业务场景的设计才有意义，我们作为开发者，千万不要为了酷炫而堆砌技术，造成过度设计，这往往只能满足开发者的虚荣心，而随之带来的确是低效和高成本，我们在开发过程中要抵制住诱惑，尽量选择最优解！</p>
+<p>加V入群：<a href="https://github.com/dukedaily/solidity-expert/blob/main/assets/image-20220810134215759.png" target="_blank">Adugii</a>，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
+<blockquote>
+<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
+</blockquote>
+
                                 
                                 </section>
                             
@@ -1215,7 +1245,7 @@
                 </a>
                 
                 
-                <a href="05_区块链就业.html" class="navigation navigation-next " aria-label="Next page: 第5节:区块链就业">
+                <a href="05_DAPP技术栈.html" class="navigation navigation-next " aria-label="Next page: 第5节:DAPP技术栈">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1226,7 +1256,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节:DAPP技术栈","level":"1.3.4","depth":2,"next":{"title":"第5节:区块链就业","level":"1.3.5","depth":2,"path":"00_blockchain基础/05_区块链就业.md","ref":"00_blockchain基础/05_区块链就业.md","articles":[]},"previous":{"title":"第3节:什么是以太坊","level":"1.3.3","depth":2,"path":"00_blockchain基础/03_什么是以太坊.md","ref":"00_blockchain基础/03_什么是以太坊.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/04_DAPP技术栈.md","mtime":"2022-08-13T14:25:38.443Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-14T05:34:30.073Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节:App与Dapp异同","level":"1.3.4","depth":2,"next":{"title":"第5节:DAPP技术栈","level":"1.3.5","depth":2,"path":"00_blockchain基础/05_DAPP技术栈.md","ref":"00_blockchain基础/05_DAPP技术栈.md","articles":[]},"previous":{"title":"第3节:什么是以太坊","level":"1.3.3","depth":2,"path":"00_blockchain基础/03_什么是以太坊.md","ref":"00_blockchain基础/03_什么是以太坊.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/04_App与Dapp.md","mtime":"2022-08-15T15:57:27.713Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-15T15:57:45.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
