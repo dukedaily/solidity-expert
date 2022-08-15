@@ -43,6 +43,10 @@
 
 ## 马上入群
 
-入群请告知从哪里来: '同事' 或 '其他'，谢谢!
+个人微信：
 
 <img src="assets/image-20220810134215759.png" alt="image-20220810134215759" width="200" height="230" />
+
+扫描入群：
+
+<img src="assets/group.png" alt="g" width="200" height="230" />
