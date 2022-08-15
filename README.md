@@ -33,12 +33,12 @@
 国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。
 
 - 微信：Adugii
+- 公众号：阿杜在新加坡
 - Email：dukemecn@gmail.com
 
 ## 乐捐Donate
 
 - ETH：0x24DFc2e2e9b73Be1f8cCbdB66642858466e590fC
-- ens：dukedu.eth
 - BTC：38GqvS398GskBX39kijX8ST1tnjJhPzJ1V
 
 ## 马上入群
