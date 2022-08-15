@@ -8,10 +8,10 @@ pragma solidity ^0.8.13;
 // 关键字 contract 跟java的class一样  智能合约是Inbox      
 contract Inbox{
     
-  // 状态变量，存在链上
+    // 状态变量，存在链上
 	string public message;
     
-  // 构造函数
+    // 构造函数
 	constructor(string memory initMessage) {
         // 本地变量
         string memory tmp = initMessage;
