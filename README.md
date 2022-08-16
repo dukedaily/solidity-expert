@@ -43,10 +43,4 @@
 
 ## 马上入群
 
-个人微信：
-
 <img src="assets/image-20220810134215759.png" alt="image-20220810134215759" width="200" height="230" />
-
-扫描入群：
-
-<img src="assets/group.png" alt="g" width="200" height="230" />
