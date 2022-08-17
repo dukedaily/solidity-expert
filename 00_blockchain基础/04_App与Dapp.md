@@ -6,6 +6,8 @@
 
 但是相较于Dapp的架构，一切却有天壤之别，而这其中与其说是技术的变革，不如说是思维方式的变革。
 
+另补充，如果你细心观察，会发现主流的dapp一般不称自己为app，而是称为：protocol（协议），如：aave、compound它们称自己为借贷协议，原因是：**app是封闭的，而协议则是可以集成拓展的**。
+
 
 
 ## App架构
@@ -57,7 +59,7 @@ V4：再后来，区块链存储项目也陆续诞生，其中最为人知的便
 
 
 
-加V入群：[Adugii](https://github.com/dukedaily/solidity-expert/blob/main/assets/image-20220810134215759.png)，公众号：[阿杜在新加坡](https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzU5NDQ0NDAxNQ==&mid=2247484454&idx=1&sn=8f9d91ff73c4671e4c2f4da5ad4888d5&send_time=)，一起抱团拥抱web3，下期见！
+加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！
 
 
 
