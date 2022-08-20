@@ -18,7 +18,7 @@ web3的技术栈并不复杂，传统的互联网后端技术对于web3开发是
 6. **前端**：react（大项目使用，知名协议原生支持的库更全面）、vue
 7. **后端**（**可选项**）：机器人、周期性调用合约、监听扫链（钱包）、其他需求
 
-
+![web3-remix-arch](assets/web3-remix-arch.png)
 
 **最小技术栈**：solidity、nodejs、web3、subgraph、前端。（默认你是开发者，linux等就不说了）
 
