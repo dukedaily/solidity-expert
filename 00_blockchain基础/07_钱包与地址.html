@@ -1188,7 +1188,7 @@
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
 <p>普通人通往区块链世界最常用的入口就是<code>钱包</code>（Wallet），钱包顾名思义就是用来管钱的，在区块链世界里面的所有操作都离不开钱包，具体包括：收付款、与Dapp交互等。所以拥有一个自己的钱包是你在web3世界的万物之本。</p>
-<p>本文篇理论，只要涉及概念包括：<code>钱包、地址、私钥、助记词</code>等，这些都是绕不开的，一定要理解消化。</p>
+<p>本文偏理论，只要涉及概念包括：<code>钱包、地址、私钥、助记词</code>等，这些都是绕不开的，一定要理解消化。</p>
 <h2 id="常用钱包">常用钱包</h2>
 <p>web3中的钱包就是一个Dapp，它存在形式很多，包括手机应用（如：Imtoken、TokenPoket）或者浏览器插件（如：Metamask、connectWallet）等。</p>
 <ol>
@@ -1229,8 +1229,8 @@
 <li>Alice使用私钥对信息进行签名后广播</li>
 <li>Bob和<code>黑人问号脸</code>持有公钥，都可以对Alice的信息进行校验</li>
 </ul>
-<p>如果Alice持有的私钥是假的，那么她就没办法通过Bob的校验，交易就会被拒绝掉，Alice也就没办法支配那个地址的Token。</p>
 <p><img src="assets/image-20220820121713204.png" alt="image-20220820121713204"></p>
+<p>如果Alice持有的私钥是假的，那么她就没办法通过Bob的校验，交易就会被拒绝掉，Alice也就没办法支配那个地址的Token。</p>
 <h2 id="比特币地址生成规则">比特币地址生成规则</h2>
 <p>地址生成大致逻辑为：<strong>随机数-&gt; 私钥-&gt; 公钥-&gt; 公钥哈希-&gt; 地址</strong></p>
 <p><img src="assets/btc-private-address.png" alt="btc-private-address"></p>
@@ -1257,6 +1257,7 @@
 <p>说穿了，助记词是随机数与单词的映射，使用助记词就可以恢复随机数，进而计算出私钥，管理资产。</p>
 <h2 id="小结">小结</h2>
 <p>好了，今天说的有点多，需要慢慢消化，这些是最基本的常识，务必掌握！</p>
+<p>再次叮嘱：，私钥、助记词是永远不要给任何人看，永远不要在网上传播！！！</p>
 <p>有了钱包，我们基本上可以真正的实践区块链之旅了，真正的编程大门即将打开~</p>
 <p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
 <blockquote>
@@ -1305,7 +1306,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"next":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},"previous":{"title":"第6节:web3优质学习资源","level":"1.3.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/07_钱包与地址.md","mtime":"2022-08-20T04:24:42.068Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-20T04:32:44.242Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"next":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},"previous":{"title":"第6节:web3优质学习资源","level":"1.3.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/07_钱包与地址.md","mtime":"2022-08-20T04:48:49.156Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-20T04:49:40.588Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
