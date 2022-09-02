@@ -30,7 +30,7 @@
 
 查查平均salary：https://web3.career/web3-salaries
 
-<img src="assets/image-20220811141916087.png" alt="image-20220811141916087" align="left" style="zoom: 25%;" />
+<img src="assets/image-20220811141916087.png" alt="image-20220811141916087" align="left" />
 
 
 
