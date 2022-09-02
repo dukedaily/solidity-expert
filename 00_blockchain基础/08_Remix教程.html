@@ -1187,7 +1187,8 @@
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
-<p><strong>Remix在线编译器</strong>是最流行的合约开发工具，对于新入门的开发者，非常友好，我们前期直接使用remix进行学习，其支持功能如下：</p>
+<p><strong>Remix在线编译器</strong>是最流行的合约开发工具，对于新入门的开发者，非常友好，我们前期直接使用remix进行学习，</p>
+<h2 id="常用功能">常用功能</h2>
 <ol>
 <li>代码提示，高亮</li>
 <li>实时编译报错</li>
@@ -1202,6 +1203,32 @@
 <li>vsCode（这部分会在后续项目中介绍使用）</li>
 <li>IDEA</li>
 </ol>
+<h2 id="helloworld">Helloworld</h2>
+<p>编写第一极简智能合约，在区块链上存储并且打印：Helloworld，代码如下：</p>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
+<span class="hljs-comment">// compiler version must be greater than or equal to 0.8.13 and less than 0.9.0</span>
+pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
+
+contract HelloWorld {
+    string public greet = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+}
+</code></pre>
+<ul>
+<li><strong>SPDX-License-Identifier: MIT</strong>：指定开源协议（可以忽略）</li>
+<li><strong>pragma solidity ^0.8.13;</strong> ：指定编译器版本号：<ul>
+<li>0.8是大版本，.13是小版本号；</li>
+<li>^表示向上兼容高版本编译器，即0.8.14也可以编译当前代码（但是0.9.0不可以）；</li>
+<li>更多的时候一般使用等于号（=）来指定明确的版本，以防后续编译器有bug。（示例：=0.8.13）。</li>
+</ul>
+</li>
+<li><strong>contract</strong>：是关键字，表示当前是一个合约，同级别的还有：interface、library、abstract，会陆续介绍；</li>
+<li><strong>HelloWorld</strong>：是合约的名字，类似于我们C++中的类概念；</li>
+<li><strong>string public greet = &quot;Hello World!&quot;</strong>：定义一个string类型的字符串greet，赋值为&quot;Hello World!&quot;，类型是public的。</li>
+</ul>
+<h2 id="部署">部署</h2>
+<p>打开remix，创建新的工作区：</p>
+<p><img src="assets/image-20220830080900196.png" alt="image-20220830080900196"></p>
+<h2 id="小结">小结</h2>
 <p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
 <blockquote>
 <p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
@@ -1249,7 +1276,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"next":{"title":"第9节:区块链就业","level":"1.3.9","depth":2,"path":"00_blockchain基础/09_区块链就业.md","ref":"00_blockchain基础/09_区块链就业.md","articles":[]},"previous":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"path":"00_blockchain基础/07_钱包与地址.md","ref":"00_blockchain基础/07_钱包与地址.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/08_Remix教程.md","mtime":"2022-08-18T07:21:32.643Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-20T04:49:40.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"next":{"title":"第9节:区块链就业","level":"1.3.9","depth":2,"path":"00_blockchain基础/09_区块链就业.md","ref":"00_blockchain基础/09_区块链就业.md","articles":[]},"previous":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"path":"00_blockchain基础/07_钱包与地址.md","ref":"00_blockchain基础/07_钱包与地址.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/08_Remix教程.md","mtime":"2022-09-02T00:59:23.886Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-02T01:02:12.416Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

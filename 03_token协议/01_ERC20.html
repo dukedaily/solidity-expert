@@ -1195,22 +1195,40 @@ pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.
 
 <span class="hljs-comment">// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/token/ERC20/IERC20.sol</span>
 interface IERC20 {
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>;
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address account</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>;
+      <span class="hljs-comment">//READ</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>;  <span class="hljs-comment">// -&gt; 总发行量 100000000 * 10**decimals</span>
 
+      <span class="hljs-comment">// 标准decimal： 18</span>
+      <span class="hljs-comment">// USDT: 6</span>
+      <span class="hljs-comment">// WBTC: 8</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address account</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 指定账户的余额</span>
+
+      <span class="hljs-comment">// owner: 币的持有人</span>
+      <span class="hljs-comment">// spender: 是指定帮助花费的代理人（被授权的人）</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 授权的额度</span>
+
+    <span class="hljs-comment">// decimals view，这是一个public 的变量，自动提供了一个读取的方法 // 返回精度</span>
+
+      <span class="hljs-comment">// WRITE（花钱的）</span>
+
+      <span class="hljs-comment">// 币的持有人直接调用，进行转账</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address recipient, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>;
-
+      <span class="hljs-comment">// 持有人对spender进行授权，在approve内部，会调用msg.sender来知道owner是谁</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
 
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params">
-        address sender,
-        address recipient,
-        uint amount
+      <span class="hljs-comment">// 最常用的！！</span>
+      <span class="hljs-comment">// 1. 我这个owner对合约进行approve，此时approve内部会修改allowance变量</span>
+      <span class="hljs-comment">// 2. 合约内部调用transferFrom来支配owner的token</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params"> <span class="hljs-comment">// spender就是这个合约</span>
+        address sender,    <span class="hljs-comment">// owner</span>
+        address recipient,    <span class="hljs-comment">// 转给谁</span>
+        uint amount <span class="hljs-comment">// 金额</span>
     </span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
 
+      <span class="hljs-comment">// 事件</span>
     event Transfer(address indexed <span class="hljs-keyword">from</span>, address indexed to, uint value);
     event Approval(address indexed owner, address indexed spender, uint value);
 }
@@ -1274,6 +1292,7 @@ pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.
 <span class="hljs-comment">// import &quot;https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.0.0/contracts/token/ERC20/ERC20.sol&quot;;</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;</span>;
 
+
 contract MyToken is ERC20 {
     <span class="hljs-title">constructor</span>(<span class="hljs-params">string memory name, string memory symbol</span>) <span class="hljs-title">ERC20</span>(<span class="hljs-params">name, symbol</span>) {
         <span class="hljs-comment">// Mint 100 tokens to msg.sender</span>
@@ -1332,7 +1351,7 @@ contract MyToken is ERC20 {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:ERC20","level":"1.6.1","depth":2,"next":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"previous":{"title":"第三章:token协议","level":"1.6","depth":1,"path":"03_token协议/README.md","ref":"03_token协议/README.md","articles":[{"title":"第1节:ERC20","level":"1.6.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:ERC1820","level":"1.6.5","depth":2,"path":"03_token协议/05_ERC1820.md","ref":"03_token协议/05_ERC1820.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/01_ERC20.md","mtime":"2022-08-13T14:25:38.503Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-20T04:49:40.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节:ERC20","level":"1.6.1","depth":2,"next":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"previous":{"title":"第三章:token协议","level":"1.6","depth":1,"path":"03_token协议/README.md","ref":"03_token协议/README.md","articles":[{"title":"第1节:ERC20","level":"1.6.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:ERC1820","level":"1.6.5","depth":2,"path":"03_token协议/05_ERC1820.md","ref":"03_token协议/05_ERC1820.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/01_ERC20.md","mtime":"2022-09-02T00:22:29.392Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-02T01:02:12.416Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

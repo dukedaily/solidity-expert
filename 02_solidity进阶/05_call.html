@@ -1185,7 +1185,7 @@
                                 
                                 <h1 id="第5节：call">第5节：call</h1>
 <p><strong>call</strong>是一种底层调用合约的方式，可以在合约内调用其他合约，call语法为：</p>
-<pre><code class="lang-js"><span class="hljs-comment">//(bool success, bytes memory data) = addr.call{value: valueAmt, gas: gasAmt}(参数1, 参数2)</span>
+<pre><code class="lang-js"><span class="hljs-comment">//(bool success, bytes memory data) = addr.call{value: valueAmt, gas: gasAmt}(abi.encodeWithSignature(&quot;foo(string,uint256)&quot;, 参数1, 参数2)</span>
 其中：
 <span class="hljs-number">1.</span> success：执行结果，一定要校验success是否成功，失败务必要回滚
 <span class="hljs-number">2.</span> data：执行调用的返回值，是打包的字节序，需要解析才能得到调用函数的返回值（后续encode_decode详解）
@@ -1196,6 +1196,7 @@
 <p>对于存在的方法，不建议使用call方式调用。</p>
 <pre><code class="lang-js">(bool success, bytes memory data) = _addr.call(abi.encodeWithSignature(<span class="hljs-string">&quot;doesNotExist()&quot;</span>));
 </code></pre>
+<p><strong>调用不存在的方法（又不存在fallback）时，交易会调用成功，但是第一个参数为：false。</strong></p>
 <h3 id="完整demo">完整demo:</h3>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
@@ -1279,7 +1280,7 @@ contract Caller {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:call","level":"1.5.5","depth":2,"next":{"title":"第6节:keccak256","level":"1.5.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"previous":{"title":"第4节:encode_encodePacked","level":"1.5.4","depth":2,"path":"02_solidity进阶/04_encode_encodePacked.md","ref":"02_solidity进阶/04_encode_encodePacked.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/05_call.md","mtime":"2022-08-13T14:25:38.488Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-08-20T04:49:40.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节:call","level":"1.5.5","depth":2,"next":{"title":"第6节:keccak256","level":"1.5.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"previous":{"title":"第4节:encode_encodePacked","level":"1.5.4","depth":2,"path":"02_solidity进阶/04_encode_encodePacked.md","ref":"02_solidity进阶/04_encode_encodePacked.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/05_call.md","mtime":"2022-09-02T00:58:42.070Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-02T01:02:12.416Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
