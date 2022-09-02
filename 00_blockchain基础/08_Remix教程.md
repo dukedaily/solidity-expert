@@ -53,9 +53,7 @@ contract HelloWorld {
 
 打开remix，创建新的工作区：
 
-![image-20220830080900196](./assets/image-20220830080900196.png)
-
-
+![image-20220830080900196](assets/image-20220830080900196.png)
 
 ## 小结
 
