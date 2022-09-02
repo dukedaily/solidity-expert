@@ -53,7 +53,9 @@ contract HelloWorld {
 
 打开remix，创建新的工作区：
 
-![image-20220830080900196](assets/image-20220830080900196.png)
+![image-20220830080900196](./assets/image-20220830080900196.png)
+
+
 
 ## 小结
 
@@ -62,8 +64,3 @@ contract HelloWorld {
 
 
 > 关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。
-
-
-
-
-
