@@ -11,6 +11,8 @@
 5. 主流协议：uniswap、compound、aave、staking、nft等
 6. 必要的前端知识：react
 
+
+
 ## 学习资源
 
 - 课件教程：https://dukedaily.github.io/solidity-expert/
@@ -22,11 +24,15 @@
 
   2. B站：https://space.bilibili.com/102710441/channel/seriesdetail?sid=2537685&ctype=0
 
+
+
 ##  为什么学习solidity
 
 查查平均salary：https://web3.career/web3-salaries
 
 <img src="assets/image-20220811141916087.png" alt="image-20220811141916087" align="left" style="zoom: 25%;" />
+
+
 
 ## 关于作者
 
