@@ -2,6 +2,9 @@
 
 1. 定长数组（编译时确定）和动态数组
 2. 下面的arr和arr2是相同的，arr2多了三个初始化的值，arr2也支持push和pop操作
+3. 2022年，数组可以直接在构造函数中赋值
+4. new uint256[](len) 语法用于对memory进行修饰，storage不需要使用new
+5. 仅状态变量数组和storage支持动态扩容：push
 
 ```js
 // SPDX-License-Identifier: MIT
