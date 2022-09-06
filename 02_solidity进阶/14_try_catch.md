@@ -63,4 +63,5 @@ contract Bar {
 }
 ```
 
-没有错误信息的时候，直接使用catch比较稳妥。
+没有错误信息的时候，直接使用catch比较稳妥，如果使用reason，会捕捉require发出的信息。
+
