@@ -1080,64 +1080,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../05_框架/README.md">
-            
-                <span>
-            
-                    
-                    第五章:框架
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../05_框架/01_hardhat多链同地址.md">
-            
-                <span>
-            
-                    
-                    第1节:hardhat
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../05_框架/02_truffle.md">
-            
-                <span>
-            
-                    
-                    第2节:truffle
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.3" data-path="../05_框架/03_单元测试.md">
-            
-                <span>
-            
-                    
-                    第3节:单元测试
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
 
     
 
@@ -1192,7 +1134,7 @@
 <li>引用类型（string，bytes，数组，结构体，mapping）</li>
 </ul>
 </li>
-<li>calldata：存储函数的参数的位置，是只读的-</li>
+<li>calldata：存储函数的参数的位置，是只读的（只有calldata支持数组切片，状态变量不可以直接使用切片，需要new新数组，然后使用for循环解决）</li>
 <li>其他：Solidity 变量中 memory 、calldata 2 个表示作用非常类似，都是函数内部临时变量，它们最大的区别就是 calldata 是不可修改的，在某些只读的情况比较省 Gas.</li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
@@ -1290,7 +1232,7 @@ contract DataLocations {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第17节:storage_calldata","level":"1.4.17","depth":2,"next":{"title":"第18节:函数Function","level":"1.4.18","depth":2,"path":"01_solidity基础/18_函数Function.md","ref":"01_solidity基础/18_函数Function.md","articles":[]},"previous":{"title":"第16节:结构体Struct","level":"1.4.16","depth":2,"path":"01_solidity基础/16_结构体Struct.md","ref":"01_solidity基础/16_结构体Struct.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/17_memory_storage_calldata.md","mtime":"2022-08-13T14:25:38.000Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-02T01:20:44.371Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第17节:storage_calldata","level":"1.4.17","depth":2,"next":{"title":"第18节:函数Function","level":"1.4.18","depth":2,"path":"01_solidity基础/18_函数Function.md","ref":"01_solidity基础/18_函数Function.md","articles":[]},"previous":{"title":"第16节:结构体Struct","level":"1.4.16","depth":2,"path":"01_solidity基础/16_结构体Struct.md","ref":"01_solidity基础/16_结构体Struct.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/17_memory_storage_calldata.md","mtime":"2022-09-05T00:05:11.142Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-06T03:35:06.241Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1080,64 +1080,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../05_框架/README.md">
-            
-                <span>
-            
-                    
-                    第五章:框架
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.8.1" data-path="../05_框架/01_hardhat多链同地址.md">
-            
-                <span>
-            
-                    
-                    第1节:hardhat
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.2" data-path="../05_框架/02_truffle.md">
-            
-                <span>
-            
-                    
-                    第2节:truffle
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.3" data-path="../05_框架/03_单元测试.md">
-            
-                <span>
-            
-                    
-                    第3节:单元测试
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
 
     
 
@@ -1218,6 +1160,12 @@
 <p><img src="assets/wallet-privatekey.png" alt="wallet-privatekey"></p>
 <p>如果觉得复杂，这里你只需要记住，<strong>一个私钥和一个地址一一绑定</strong>，查看当前地址的私钥：点击三个点-&gt; 账户详情-&gt; 导出私钥（输入密码）-&gt;显示私钥</p>
 <p><img src="assets/image-20220820111838772.png" alt="image-20220820111838772"></p>
+<p>地址一共分两种类型：</p>
+<ul>
+<li>小狐狸这种的地址，一般叫做EOA：External Of Account，外部账户，由私钥控制</li>
+<li>部署合约后生成的地址，一般叫做合约地址，生成规则取决于：部署地址和当前的Nonce</li>
+</ul>
+<p><img src="assets/image-20220906111632229.png" alt="image-20220906111632229"></p>
 <h2 id="什么是私钥呢？">什么是私钥呢？</h2>
 <p>私钥这是非对称加密中的概念，与公钥相对，根据256位的随机数（比宇宙原子还大的数，不用担心重复），我们可以得到私钥，其中：</p>
 <ul>
@@ -1255,6 +1203,31 @@
 <li>原理：将随机数通过特定编码转化为词库中的单词。</li>
 </ul>
 <p>说穿了，助记词是随机数与单词的映射，使用助记词就可以恢复随机数，进而计算出私钥，管理资产。</p>
+<h2 id="分层确定性钱包">分层确定性钱包</h2>
+<p>现在基本都是使用分层确定性钱包，也称 HD 钱包，演变历史为：BIP32 -&gt; BIP39 -&gt; BIP44。</p>
+<ul>
+<li><strong><a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" target="_blank">BIP32</a></strong>：定义了分层确定性钱包的结构，用路径表示：m / index1 / index2 / ... / index(n)</li>
+</ul>
+<p><img src="assets/BIP32.png" alt></p>
+<ul>
+<li><a href="https://github.com/bitcoin/bips/tree/master/bip-0039" target="_blank">BIP39</a>：引入了助记词，<a href="https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt" target="_blank">点击查看词库</a></li>
+<li><a href="https://github.com/satoshilabs/slips/blob/master/slip-0044.md" target="_blank">BIP44</a>：规定了子节点派生路径的范式，m / purpose&apos; / coin_type&apos; / account&apos; / chain / address_index，示例：m/44&apos;/60&apos;/0&apos;/0/0，每个段的含义分别是：<ul>
+<li>CKD: m: 使用 CKDpriv, M 则表示使用 CKDPub</li>
+<li>Purpose: 44&apos; , hardened, 遵循哪个规范, 44 意味着 BIP44</li>
+<li>Coin: 60&apos;, hardened, 60 指代以太坊, 完整的链代码</li>
+<li>Account: 0&apos; , hardened, 账户编号</li>
+<li>Chain: 0 , 对于非比特币路径都是 0</li>
+<li>Index: 0, 具体的账户节点</li>
+<li>扩展阅读：<a href="https://www.arcblock.io/blog/zh/post/2018/12/01/hd-wallets-design-and-implementation" target="_blank">https://www.arcblock.io/blog/zh/post/2018/12/01/hd-wallets-design-and-implementation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="其他">其他</h2>
+<ul>
+<li>快速添加其他网络：<a href="https://chainlist.org/" target="_blank">https://chainlist.org/</a></li>
+<li>通过水龙头获取Goerli主币：获取主币水龙头：<a href="https://chainlist.org/zh" target="_blank">https://chainlist.org/zh</a></li>
+<li>这个也可以，需要Twitter登录：<a href="https://faucet.paradigm.xyz/" target="_blank">https://faucet.paradigm.xyz/</a></li>
+</ul>
 <h2 id="小结">小结</h2>
 <p>好了，今天说的有点多，需要慢慢消化，这些是最基本的常识，务必掌握！</p>
 <p>再次叮嘱：，私钥、助记词是永远不要给任何人看，永远不要在网上传播！！！</p>
@@ -1306,7 +1279,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"next":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},"previous":{"title":"第6节:web3优质学习资源","level":"1.3.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/07_钱包与地址.md","mtime":"2022-09-02T00:22:29.390Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-02T01:20:44.371Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"next":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},"previous":{"title":"第6节:web3优质学习资源","level":"1.3.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/07_钱包与地址.md","mtime":"2022-09-06T03:21:04.659Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-06T03:35:06.241Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
