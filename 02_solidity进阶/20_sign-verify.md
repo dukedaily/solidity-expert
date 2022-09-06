@@ -1,2 +1,2 @@
-# 第7节：ERC20
+# 第20节：sign verify
 
