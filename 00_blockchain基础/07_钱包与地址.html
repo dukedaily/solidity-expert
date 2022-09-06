@@ -1160,12 +1160,15 @@
 <p><img src="assets/wallet-privatekey.png" alt="wallet-privatekey"></p>
 <p>如果觉得复杂，这里你只需要记住，<strong>一个私钥和一个地址一一绑定</strong>，查看当前地址的私钥：点击三个点-&gt; 账户详情-&gt; 导出私钥（输入密码）-&gt;显示私钥</p>
 <p><img src="assets/image-20220820111838772.png" alt="image-20220820111838772"></p>
+<h2 id="地址类型">地址类型</h2>
 <p>地址一共分两种类型：</p>
 <ul>
 <li>小狐狸这种的地址，一般叫做EOA：External Of Account，外部账户，由私钥控制</li>
-<li>部署合约后生成的地址，一般叫做合约地址，生成规则取决于：部署地址和当前的Nonce</li>
+<li>部署合约后生成的地址，一般叫做CA：Contract Account，合约地址，生成规则取决于：部署地址和当前的Nonce</li>
 </ul>
 <p><img src="assets/image-20220906111632229.png" alt="image-20220906111632229"></p>
+<p>两种账户的具体区别：</p>
+<p><img src="assets/image-20220906213446948.png" alt="image-20220906213446948"></p>
 <h2 id="什么是私钥呢？">什么是私钥呢？</h2>
 <p>私钥这是非对称加密中的概念，与公钥相对，根据256位的随机数（比宇宙原子还大的数，不用担心重复），我们可以得到私钥，其中：</p>
 <ul>
@@ -1279,7 +1282,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"next":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},"previous":{"title":"第6节:web3优质学习资源","level":"1.3.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/07_钱包与地址.md","mtime":"2022-09-06T03:21:04.659Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-06T13:15:13.088Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:钱包与地址","level":"1.3.7","depth":2,"next":{"title":"第8节:Remix教程","level":"1.3.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},"previous":{"title":"第6节:web3优质学习资源","level":"1.3.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/07_钱包与地址.md","mtime":"2022-09-06T13:55:53.550Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-06T23:37:56.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
