@@ -38,7 +38,7 @@ export function Finalize() {
         <Input placeholder="country code: 0 ~ 4" />
       </div>
       {isSuccess && (
-        <div>
+        <div style={{ color: '#fff' }}>
           Successfully Played !
           <div>
             <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>

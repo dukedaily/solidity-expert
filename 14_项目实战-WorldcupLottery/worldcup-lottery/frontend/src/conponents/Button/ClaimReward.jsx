@@ -35,7 +35,7 @@ export function ClaimReward() {
         {isLoading ? 'claimReward...' : 'claimReward'}
       </Button>
       {isSuccess && (
-        <div>
+        <div style={{ color: '#fff' }}>
           Successfully Played !
           <div>
             <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>

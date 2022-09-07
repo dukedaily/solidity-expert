@@ -49,7 +49,7 @@ export function Play() {
         <Input placeholder="country code: 0 ~ 4" />
       </div>
       {isSuccess && (
-        <div>
+        <div style={{ color: '#fff' }}>
           Successfully Played !
           <div>
             <a
