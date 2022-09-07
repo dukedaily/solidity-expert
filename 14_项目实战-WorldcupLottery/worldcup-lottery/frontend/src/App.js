@@ -79,6 +79,7 @@ const ContentWarpper = styled.div`
       margin-bottom: 10px;
     }
     .ant-input {
+      width: 200px;
       height: 40px;
       border-radius: 10px;
     }

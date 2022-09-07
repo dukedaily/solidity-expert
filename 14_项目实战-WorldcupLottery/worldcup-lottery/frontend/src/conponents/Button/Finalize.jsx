@@ -34,7 +34,9 @@ export function Finalize() {
       >
         {isLoading ? 'Finalize...' : 'Finalize'}
       </Button>
-      <Input placeholder="country code: 0 ~ 4" />
+      <div>
+        <Input placeholder="country code: 0 ~ 4" />
+      </div>
       {isSuccess && (
         <div>
           Successfully Played !

@@ -45,7 +45,9 @@ export function Play() {
       >
         {isLoading ? 'Playing...' : 'Play'}
       </Button>
-      <Input placeholder="country code: 0 ~ 4" />
+      <div>
+        <Input placeholder="country code: 0 ~ 4" />
+      </div>
       {isSuccess && (
         <div>
           Successfully Played !
