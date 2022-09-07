@@ -17,12 +17,13 @@ import { React, useState } from 'react'
 // export default App;
 
 export function Play() {
-  // const [input, setInput] = useState(null)
+  const [inputValue, setInputValue] = useState('0')
+
   const { config } = usePrepareContractWrite({
     addressOrName: '0x4db34635116406B5F4268FCB7463BEC97b3dcD38',
     contractInterface: worldcup_abi,
     functionName: 'play',
-    args: [0],
+    args: [inputValue],
     overrides: {
       value: '1000000000', //这里要传递字符串
     },
@@ -33,7 +34,9 @@ export function Play() {
     hash: data?.hash,
   })
 
-  const onInput = () => {}
+  const changeInput = (e) => {
+    setInputValue(e.target.value)
+  }
 
   return (
     <div>
@@ -46,7 +49,7 @@ export function Play() {
         {isLoading ? 'Playing...' : 'Play'}
       </Button>
       <div>
-        <Input placeholder="country code: 0 ~ 4" />
+        <Input onChange={changeInput} placeholder="country code: 0 ~ 4" />
       </div>
       {isSuccess && (
         <div style={{ color: '#fff' }}>

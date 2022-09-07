@@ -12,11 +12,12 @@ import worldcup_abi from '../../abi/worldcup_abi.json'
 import { Input, Button } from 'antd'
 
 export function Finalize() {
+  const [value, setValue] = React.useState('')
   const { config } = usePrepareContractWrite({
     addressOrName: '0x4db34635116406B5F4268FCB7463BEC97b3dcD38',
     contractInterface: worldcup_abi,
     functionName: 'finialize',
-    args: [0],
+    args: [value],
   })
 
   const { write, data } = useContractWrite(config)
@@ -24,6 +25,9 @@ export function Finalize() {
     hash: data?.hash,
   })
 
+  const changeValue = (e) => {
+    setValue(e.target.value)
+  }
   return (
     <div>
       <Button
@@ -35,7 +39,7 @@ export function Finalize() {
         {isLoading ? 'Finalize...' : 'Finalize'}
       </Button>
       <div>
-        <Input placeholder="country code: 0 ~ 4" />
+        <Input onChange={changeValue} placeholder="country code: 0 ~ 4" />
       </div>
       {isSuccess && (
         <div style={{ color: '#fff' }}>
