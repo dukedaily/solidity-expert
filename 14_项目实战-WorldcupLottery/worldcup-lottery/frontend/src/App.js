@@ -17,8 +17,7 @@ import { ClaimReward } from './conponents/Button/ClaimReward'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { Component } from 'react'
-
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const alchemyId = process.env.ALCHEMY_ID
 
@@ -40,11 +39,6 @@ const client = createClient({
   provider,
 })
 
-const WagmiWarpper = styled.div`
-  min-height: 100vh;
-  background-color: #f5f5f5;
-`
-
 const ConnectWarpper = styled.div`
   width: 100%;
   height: 60px;
@@ -54,20 +48,12 @@ const ConnectWarpper = styled.div`
   align-items: center;
   justify-content: space-between;
 `
-
-const imageUrl = require('./static/images/1120.jpeg')
-
 const ContentWarpper = styled.div`
   width: 60vw;
-  height: 60vh;
   padding: 100px;
   border: 1px solid #f5f5f5;
   border-radius: 10px;
   margin: 100px auto;
-  background-image: url(${imageUrl});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
   box-shadow: var(
     --elevation-200-canvas,
     0px 0px 0.5px rgba(0, 0, 0, 0.18),
@@ -92,25 +78,22 @@ class App extends Component {
       name: 'duke',
     }
   }
-
   render() {
     return (
-      <WagmiWarpper>
-        <WagmiConfig client={client}>
-          <ConnectWarpper>
-            <div></div>
-            <ConnectKitProvider>
-              <ConnectKitButton />
-            </ConnectKitProvider>
-          </ConnectWarpper>
-          {/* <ConnectInfo /> */}
-          <ContentWarpper>
-            <Play />
-            <Finalize />
-            <ClaimReward />
-          </ContentWarpper>
-        </WagmiConfig>
-      </WagmiWarpper>
+      <WagmiConfig client={client}>
+        <ConnectWarpper>
+          <div></div>
+          <ConnectKitProvider>
+            <ConnectKitButton />
+          </ConnectKitProvider>
+        </ConnectWarpper>
+        {/* <ConnectInfo /> */}
+        <ContentWarpper>
+          <Play />
+          <Finalize />
+          <ClaimReward />
+        </ContentWarpper>
+      </WagmiConfig>
     )
   }
 }
