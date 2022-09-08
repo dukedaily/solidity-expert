@@ -1,23 +1,31 @@
 import { ethers } from 'ethers'
 // import * as React from 'react'
-import { usePrepareContractWrite, useContractWrite,useWaitForTransaction, chainId, chain, useAccount } from 'wagmi'
-import worldcup_abi from "../../abi/worldcup_abi.json"
-import { Input } from 'antd';
-import {React, useState} from 'react';
+import {
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
+  chainId,
+  chain,
+  useAccount,
+} from 'wagmi'
+import worldcup_abi from '../../abi/worldcup_abi.json'
+import { Input, Button } from 'antd'
+import { React, useState } from 'react'
 
 // const App = () => <Input placeholder="Basic usage" />;
 
 // export default App;
 
 export function Play() {
-    // const [input, setInput] = useState(null)
+  const [inputValue, setInputValue] = useState('0')
+
   const { config } = usePrepareContractWrite({
-    addressOrName: '0x4db34635116406B5F4268FCB7463BEC97b3dcD38',
+    addressOrName: '0x9E896316F0610Cb053C62377601F64c909668334',
     contractInterface: worldcup_abi,
-    functionName: 'play',
-    args:[0],
-    overrides:{
-        value: '1000000000', //这里要传递字符串
+    functionName: 'paly',
+    args: [inputValue],
+    overrides: {
+      value: '1000000000', //这里要传递字符串
     },
   })
 
@@ -26,21 +34,34 @@ export function Play() {
     hash: data?.hash,
   })
 
-  const onInput = () => {
-    
+  const changeInput = (e) => {
+    setInputValue(e.target.value)
   }
 
   return (
     <div>
-      <button disabled={!write || isLoading} onClick={() => write()}>
+      <Button
+        type="primary"
+        shape="round"
+        disabled={!write || isLoading}
+        onClick={() => write()}
+      >
         {isLoading ? 'Playing...' : 'Play'}
-      </button>
-      <Input placeholder="country code: 0 ~ 4" />
+      </Button>
+      <div>
+        <Input onChange={changeInput} placeholder="country code: 0 ~ 4" />
+      </div>
       {isSuccess && (
-        <div>
+        <div style={{ color: '#fff' }}>
           Successfully Played !
           <div>
-            <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>Etherscan</a>
+            <a
+              target="_blank"
+              href={`https://goerli.etherscan.io/tx/${data?.hash}`}
+              rel="noreferrer"
+            >
+              Etherscan
+            </a>
           </div>
         </div>
       )}
