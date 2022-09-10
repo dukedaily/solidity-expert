@@ -7,6 +7,7 @@
 3. 所有的function必须定义为external；
 4. 接口中不能存在constructor函数；
 5. 接口中不能定义状态变量。
+6. [abstract和interface的区别](https://medium.com/upstate-interactive/solidity-how-to-know-when-to-use-abstract-contracts-vs-interfaces-874cab860c56)
 
 ```js
 // SPDX-License-Identifier: MIT

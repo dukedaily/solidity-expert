@@ -57,6 +57,18 @@ contract HelloWorld {
 
 
 
+## 启动后台
+
+```sh
+npm install -g @remix-project/remixd
+
+remixd -s <contract_folder>
+```
+
+
+
+
+
 ## 小结
 
 加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！
