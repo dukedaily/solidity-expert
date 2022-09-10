@@ -55,7 +55,6 @@ const ConnectWarpper = styled.div`
 `
 
 const imageUrl = require('./static/images/1120.jpeg')
-// const imageUrl = require('./static/images/worldcup.jpg')
 
 const ContentWarpper = styled.div`
   width: 60vw;

@@ -20,9 +20,9 @@ export function Play() {
   const [inputValue, setInputValue] = useState('0')
 
   const { config } = usePrepareContractWrite({
-    addressOrName: '0x9E896316F0610Cb053C62377601F64c909668334',
+    addressOrName: '0x4db34635116406B5F4268FCB7463BEC97b3dcD38',
     contractInterface: worldcup_abi,
-    functionName: 'paly',
+    functionName: 'play',
     args: [inputValue],
     overrides: {
       value: '1000000000', //这里要传递字符串

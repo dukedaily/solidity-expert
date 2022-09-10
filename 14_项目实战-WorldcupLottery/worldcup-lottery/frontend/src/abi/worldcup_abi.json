@@ -1,5 +1,9 @@
 [{
-    "inputs": [],
+    "inputs": [{
+        "internalType": "uint256",
+        "name": "_deadline",
+        "type": "uint256"
+    }],
     "stateMutability": "nonpayable",
     "type": "constructor"
 }, {
@@ -7,7 +11,7 @@
     "inputs": [{
         "indexed": false,
         "internalType": "address",
-        "name": "_claimer",
+        "name": "_palyer",
         "type": "address"
     }, {
         "indexed": false,
@@ -22,22 +26,32 @@
     "inputs": [{
         "indexed": false,
         "internalType": "uint8",
-        "name": "_round",
+        "name": "_currRound",
         "type": "uint8"
     }, {
         "indexed": false,
-        "internalType": "enum WorldCupLottery.Country",
-        "name": "_selected",
-        "type": "uint8"
+        "internalType": "address[]",
+        "name": "_winners",
+        "type": "address[]"
+    }, {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "currAvalBalance",
+        "type": "uint256"
+    }, {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_giftAmt",
+        "type": "uint256"
     }],
-    "name": "Finalize",
+    "name": "Finialize",
     "type": "event"
 }, {
     "anonymous": false,
     "inputs": [{
         "indexed": false,
         "internalType": "uint8",
-        "name": "_round",
+        "name": "_currRound",
         "type": "uint8"
     }, {
         "indexed": false,
@@ -46,27 +60,22 @@
         "type": "address"
     }, {
         "indexed": false,
-        "internalType": "uint8",
-        "name": "_selected",
+        "internalType": "enum WorldCupLottery.Country",
+        "name": "_country",
         "type": "uint8"
     }],
     "name": "Play",
     "type": "event"
 }, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": false,
+    "inputs": [],
+    "name": "admin",
+    "outputs": [{
         "internalType": "address",
-        "name": "_prev",
-        "type": "address"
-    }, {
-        "indexed": false,
-        "internalType": "address",
-        "name": "_newMgr",
+        "name": "",
         "type": "address"
     }],
-    "name": "TransferMgr",
-    "type": "event"
+    "stateMutability": "view",
+    "type": "function"
 }, {
     "inputs": [],
     "name": "claimReward",
@@ -120,82 +129,94 @@
     "stateMutability": "view",
     "type": "function"
 }, {
+    "inputs": [],
+    "name": "deadline",
+    "outputs": [{
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
     "inputs": [{
         "internalType": "enum WorldCupLottery.Country",
-        "name": "_selected",
+        "name": "_country",
         "type": "uint8"
     }],
-    "name": "finalize",
+    "name": "finialize",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "getVaultBal",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "lockAmt",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "manager",
-    "outputs": [{
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [{
-        "internalType": "enum WorldCupLottery.Country",
-        "name": "_selected",
-        "type": "uint8"
-    }],
-    "name": "paly",
-    "outputs": [],
-    "stateMutability": "payable",
     "type": "function"
 }, {
     "inputs": [{
         "internalType": "uint8",
-        "name": "",
+        "name": "_round",
         "type": "uint8"
     }, {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        "internalType": "enum WorldCupLottery.Country",
+        "name": "_country",
+        "type": "uint8"
     }],
-    "name": "players",
+    "name": "getCountryPlayters",
     "outputs": [{
-        "internalType": "bool",
-        "name": "flag",
-        "type": "bool"
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
     }],
     "stateMutability": "view",
     "type": "function"
 }, {
     "inputs": [{
+        "internalType": "uint8",
+        "name": "_round",
+        "type": "uint8"
+    }, {
         "internalType": "address",
-        "name": "_newMgr",
+        "name": "_player",
         "type": "address"
+    }, {
+        "internalType": "enum WorldCupLottery.Country",
+        "name": "_country",
+        "type": "uint8"
     }],
-    "name": "transferMgr",
+    "name": "getPlayerInfo",
+    "outputs": [{
+        "internalType": "uint256",
+        "name": "_counts",
+        "type": "uint256"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "getVaultBalance",
+    "outputs": [{
+        "internalType": "uint256",
+        "name": "bal",
+        "type": "uint256"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "lockedAmts",
+    "outputs": [{
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{
+        "internalType": "enum WorldCupLottery.Country",
+        "name": "_selected",
+        "type": "uint8"
+    }],
+    "name": "play",
     "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "function"
 }, {
     "inputs": [{
