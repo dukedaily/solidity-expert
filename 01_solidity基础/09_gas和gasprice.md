@@ -1,5 +1,7 @@
 # 第9节：Gas相关
 
+![image-20220914075834102](assets/image-20220914075834102.png)
+
 **gas描述执行一笔交易时需要花费多少ether！（1 ether = 10^18wei)**
 
 交易手续费 = **gas_used * gas_price**，其中：

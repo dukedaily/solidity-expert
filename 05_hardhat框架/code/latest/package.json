@@ -1,0 +1,18 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "hardhat": "^2.11.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2"
+  }
+}
