@@ -3,7 +3,7 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "hardhat/console.sol";
 
-contract WorldCupLottery {
+contract WorldCup {
     // 1. 状态变量：管理员、所有玩家、获奖者地址、第几期、参赛球队
     // 2. 核心方法：下注、开奖、
     // 3. 辅助方法：获取奖金池金额、管理员地址、当前期数、参与人数、所有玩家、参赛球队
@@ -30,6 +30,7 @@ contract WorldCupLottery {
 
     event Play(uint8 _currRound, address _player, Country _country);
     event Finialize(uint8 _currRound, address[] _winners, uint256 currAvalBalance, uint256 _giftAmt);
+    event ClaimReward(address _claimer, uint256 _amt);
 
     modifier onlyAdmin {
         require(msg.sender == admin, "not authorized!");
@@ -50,7 +51,7 @@ contract WorldCupLottery {
 
     function play(Country _selected) payable external {
         // 参数校验
-        require(msg.value == 1 gwei, "invalid funds provided!");
+        require(msg.value == 1 ether, "invalid funds provided!");
 
         // 更新countryToPlayers
         countryToPlayers[currRound][_selected].push(msg.sender);
@@ -105,7 +106,6 @@ contract WorldCupLottery {
             // require(succeed, "gift transfer failed!");
             // console.log("transfer gift amount:", giftAmt);
             winnerVaults[admin] += giftAmt;
-            
         }
 
         emit Finialize(currRound, winners, currAvalBalance, giftAmt);
@@ -119,6 +119,8 @@ contract WorldCupLottery {
         lockedAmts -= rewards;
         (bool succeed,) = msg.sender.call{value: rewards}("");
         require(succeed, "claim reward failed!");
+
+        console.log("rewards:", rewards);
 
         emit ClaimReward(msg.sender, rewards);
     }
