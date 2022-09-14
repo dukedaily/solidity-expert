@@ -53,6 +53,8 @@ contract WorldCup {
         // 参数校验
         require(msg.value == 1 gwei, "invalid funds provided!");
 
+        require(block.timestamp < deadline, "it's all over!");
+
         // 更新countryToPlayers
         countryToPlayers[currRound][_selected].push(msg.sender);
         

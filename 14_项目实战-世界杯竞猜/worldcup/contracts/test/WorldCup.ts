@@ -221,9 +221,5 @@ describe("WorldCup", function () {
             // lockedAmts记录减少
             expect(balBefore_lockedAmts.sub(balAfter_lockedAmts)).to.equal(rewardForB)
         })
-
-        it("Should emit ClaimReward Event", async function () {
-
-        })
     })
 });

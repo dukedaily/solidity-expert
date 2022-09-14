@@ -1,0 +1,22 @@
+{
+    "name": "WorldCup",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "clean": "rm -rf *artifacts cache typechain-types",
+      "compile": "npx hardhat compile",
+      "test": "npx hardhat test",
+      "deploy": "npx hardhat run scripts/deploy.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+      "hardhat": "^2.11.1"
+    },
+    "dependencies": {
+      "dotenv": "^16.0.2"
+    }
+  }
+  
