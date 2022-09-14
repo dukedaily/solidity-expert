@@ -51,7 +51,7 @@ contract WorldCup {
 
     function play(Country _selected) payable external {
         // 参数校验
-        require(msg.value == 1 ether, "invalid funds provided!");
+        require(msg.value == 1 gwei, "invalid funds provided!");
 
         // 更新countryToPlayers
         countryToPlayers[currRound][_selected].push(msg.sender);

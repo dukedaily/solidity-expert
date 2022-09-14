@@ -42,10 +42,10 @@ describe("WorldCup", function () {
 
     let preparePlay = async () => {
         const [A, B, C, D] = await ethers.getSigners();
-        await worldcupIns.connect(A).play(Country.GERMANY, { value: ONE_ETHER }) //0
-        await worldcupIns.connect(B).play(Country.GERMANY, { value: ONE_ETHER }) //0
-        await worldcupIns.connect(C).play(Country.GERMANY, { value: ONE_ETHER }) //0
-        await worldcupIns.connect(D).play(Country.FRANCH, { value: ONE_ETHER }) //1
+        await worldcupIns.connect(A).play(Country.GERMANY, { value: ONE_GWEI }) //0
+        await worldcupIns.connect(B).play(Country.GERMANY, { value: ONE_GWEI }) //0
+        await worldcupIns.connect(C).play(Country.GERMANY, { value: ONE_GWEI }) //0
+        await worldcupIns.connect(D).play(Country.FRANCH, { value: ONE_GWEI }) //1
     }
 
     // We define a fixture to reuse the same setup in every test.
@@ -92,7 +92,7 @@ describe("WorldCup", function () {
 
             // 调用合约
             await worldcupIns.play(Country.CHINA, {
-                value: ONE_ETHER
+                value: ONE_GWEI
             })
 
             // 校验
@@ -100,14 +100,14 @@ describe("WorldCup", function () {
             console.log("bal:", bal);
             console.log("bal.toString():", bal.toString());
 
-            expect(bal).to.equal(ONE_ETHER)
+            expect(bal).to.equal(ONE_GWEI)
         })
 
         it("Should faild with invalid eth", async function () {
             // const { worldcup, owner } = await loadFixture(deployWorldcupFixture);
 
             await expect(worldcupIns.play(Country.CHINA, {
-                value: ONE_GWEI
+                value: ONE_GWEI * 2
             })).to.revertedWith("invalid funds provided!")
         })
 
@@ -115,14 +115,14 @@ describe("WorldCup", function () {
             // const { worldcup, owner } = await loadFixture(deployWorldcupFixture);
 
             await expect(worldcupIns.play(10, {
-                value: ONE_ETHER
+                value: ONE_GWEI
             })).to.revertedWithoutReason()
         })
 
         it("Should emit Event Play", async function () {
             // const { worldcup, owner } = await loadFixture(deployWorldcupFixture);
             await expect(worldcupIns.play(Country.BRAZIL, {
-                value: ONE_ETHER
+                value: ONE_GWEI
             })).to.emit(worldcupIns, "Play").withArgs(0, ownerAddr, Country.BRAZIL)
         })
     })
@@ -168,11 +168,11 @@ describe("WorldCup", function () {
             let winners = [A.address, B.address, C.address]
 
             await expect(worldcupIns.finialize(Country.GERMANY)).to.
-                emit(worldcupIns, "Finialize").withArgs(0, winners, 4 * ONE_ETHER, 1)
+                emit(worldcupIns, "Finialize").withArgs(0, winners, 4 * ONE_GWEI, 1)
         })
     })
 
-    describe.only("ClaimReward", function () {
+    describe("ClaimReward", function () {
         it("Should fail if the claimer has no reward", async function () {
             await expect(worldcupIns.claimReward()).to.revertedWith("nothing to claim!")
         })
