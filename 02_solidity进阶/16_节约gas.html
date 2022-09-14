@@ -1123,7 +1123,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="../14_项目实战-世界杯竞猜/">
+        <li class="chapter " data-level="1.8" data-path="../05_hardhat框架/">
+            
+                <a href="../05_hardhat框架/">
+            
+                    
+                    第五章:hardhat框架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../05_hardhat框架/01_QuickStart.html">
+            
+                <a href="../05_hardhat框架/01_QuickStart.html">
+            
+                    
+                    第1节:QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../14_项目实战-世界杯竞猜/">
             
                 <a href="../14_项目实战-世界杯竞猜/">
             
@@ -1137,7 +1169,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../14_项目实战-世界杯竞猜/01_合约实现.html">
+        <li class="chapter " data-level="1.9.1" data-path="../14_项目实战-世界杯竞猜/01_合约实现.html">
             
                 <a href="../14_项目实战-世界杯竞猜/01_合约实现.html">
             
@@ -1251,6 +1283,91 @@ contract GasGolf {
     }
 }
 </code></pre>
+<h2 id="十种节约方法">十种节约方法</h2>
+<p>一共两种类型的Gas需要消耗，他们是：</p>
+<ol>
+<li>调用合约</li>
+<li>部署合约</li>
+</ol>
+<p>有时候，减少了一种类型的gas会导致另一种类型gas的增加，我们需要进行权衡（Tradeoff）利弊，主要优化方向：</p>
+<ol>
+<li><strong>Minimize on-chain data</strong> (events, IPFS, stateless contracts, merkle proofs) -&gt; 优化链上存储</li>
+<li><strong>Minimize on-chain operations</strong> (strings, return storage value, looping, local storage, batching) -&gt; 优化链上操作</li>
+<li><strong>Memory Locations</strong> (calldata, stack, memory, storage) -&gt; 数据位置的选择</li>
+<li><strong>Variables ordering</strong> -&gt; 变量的定义顺序很重要</li>
+<li><strong>Preferred data types</strong> -&gt; 数据类型的选择</li>
+<li><strong>Libraries</strong> (embedded, deploy) -&gt; 尽量使用库来减少部署gas</li>
+<li><strong>Minimal Proxy</strong> -&gt; 使用clone方式创建新合约</li>
+<li><strong>Constructor</strong> -&gt; 优化构造函数（尽量使用constant）</li>
+<li><strong>Contract size</strong> (messages, modifiers, functions) -&gt; 优化合约size</li>
+<li><strong>Solidity compiler optimizer</strong> -&gt; 开启优化中 </li>
+</ol>
+<h2 id="1-minimize-on-chain-data">1. Minimize on-chain data</h2>
+<ul>
+<li>Event：如果链上合约不需要调用的数据，可以使用event，由链下监听，提供只读操作；</li>
+<li>IPFS：大数据可以上传到ipfs，然后将对应的id存储在链上；</li>
+<li>无状态合约：如果只是为了存储key-value，那么在合约中不需要状态变量存储，而是仅仅通过参数记录，让链下程序去解析交易，读取参数，从而读取到key-value数据；</li>
+<li>默克尔根（Merkle Proofs）：快速验证数据，合约不用存储太多内容。</li>
+</ul>
+<h2 id="2-minimize-on-chain-operations">2. Minimize on-chain operations</h2>
+<ul>
+<li>string：string内在也是bytes，尽量使用bytes替代，可以减少EVM计算，减少gas消耗；</li>
+<li>返回storage值：直接返回storage如果有必要的话，具体内部数据，让链下程序解析；</li>
+<li>Local Storage：使用local storage变量，可节约开销，不要使用memory进行copy一遍操作；</li>
+<li>Batching（批量操作）：如果有批量操作需要，可以提供相应接口，避免用户发起相同交易。</li>
+</ul>
+<h2 id="3-memory-locations">3. Memory locations</h2>
+<p>四种存储位置gas消耗（由低到高）：calldata -&gt; stack -&gt; memory -&gt; storage.</p>
+<ul>
+<li>Calldata：一般用在参数中，修饰引用数据类型（array、string），限定external function，尽量使用，便宜；</li>
+<li>Stack：函数体中值类型的数据，自动修饰为stack类型；</li>
+<li>Memory：对于存储引用类型的数据时，完全拷贝（你没有看错，反而更便宜）比storage便宜；</li>
+<li>Storage：最贵，非必要，不使用。</li>
+</ul>
+<h2 id="4-variables-ordering">4. Variables ordering</h2>
+<ul>
+<li>Storage slots（槽）大小是32字节，但并不是所有的类型都能填满（bool，int8等）；</li>
+<li>调整顺序，可以优化storage使用空间：<ul>
+<li>uint128、uint128、uint256，一共使用两个槽位（good）✅</li>
+<li>uint128、uint256、uint128，一共使用三个槽位（bad）❌</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-preferred-data-types">5. Preferred data types</h2>
+<ul>
+<li>如果定义变量的类型原本可以填满整个槽位，那么就填满ta，而不要使用更短的数据类型。</li>
+<li>例如：如果定义数据类型：datatype：uint8，但是opcode原则上是处理：uint256的，那么会对空余部分填充：0，这反而会增加evm对gas的开销，所以更好的方法是：直接定义datatype为：uint256。</li>
+</ul>
+<h2 id="6-libraries">6. Libraries</h2>
+<p>库有两种表现形式：</p>
+<ul>
+<li>Embedded Libraries：当lib中的方法都是internal的时候，会自动内联到合约中，此时对节约gas不起作用；</li>
+<li>Deployed Libraries：当lib中有public或external方法时，此时会单独部署lib合约，我们可以使用一个lib地址关联到不同合约来达到节约gas的目的。</li>
+</ul>
+<h2 id="7-minimal-proxies-erc-1167">7. Minimal Proxies (ERC 1167)</h2>
+<ul>
+<li>这是一个标准，用于clone合约</li>
+<li>openzeppelin合约中clone就源于此</li>
+</ul>
+<h2 id="8-constructor">8. Constructor</h2>
+<ul>
+<li>构造函数中可以传递immutable数据，如果可能，尽量使用constant，这样开销更小。</li>
+</ul>
+<h2 id="9-contract-size">9. Contract Size</h2>
+<ul>
+<li>合约最大支持24K</li>
+<li>减少Logs/ Message：require后面的des，event的使用，都影响合约size</li>
+<li>使用opcode：这个看情况而定，opcode可能减少部署开销，却引来调用开销的增加。</li>
+<li>修饰器Modifier：modifer中wrapped一个函数，在函数中实现具体逻辑 // TODO</li>
+</ul>
+<h2 id="10-solidity-compiler-optimizer">10. Solidity compiler optimizer</h2>
+<ul>
+<li><p>开启编译器optimize，这个是有双面性的，一定会使得合约size变小；</p>
+</li>
+<li><p>但是可能会使部分函数的逻辑变复杂（code bigger），增加函数的执行开销。</p>
+</li>
+</ul>
+<p>参考链接：<a href="https://medium.com/coinmonks/smart-contracts-gas-optimization-techniques-2bd07add0e86" target="_blank">https://medium.com/coinmonks/smart-contracts-gas-optimization-techniques-2bd07add0e86</a></p>
 
                                 
                                 </section>
@@ -1294,7 +1411,7 @@ contract GasGolf {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第16节:节约gas","level":"1.5.16","depth":2,"next":{"title":"第17节:type","level":"1.5.17","depth":2,"path":"02_solidity进阶/17_type.md","ref":"02_solidity进阶/17_type.md","articles":[]},"previous":{"title":"第15节:import","level":"1.5.15","depth":2,"path":"02_solidity进阶/15_import.md","ref":"02_solidity进阶/15_import.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/16_节约gas.md","mtime":"2022-08-13T14:25:38.000Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-11T04:41:29.718Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第16节:节约gas","level":"1.5.16","depth":2,"next":{"title":"第17节:type","level":"1.5.17","depth":2,"path":"02_solidity进阶/17_type.md","ref":"02_solidity进阶/17_type.md","articles":[]},"previous":{"title":"第15节:import","level":"1.5.15","depth":2,"path":"02_solidity进阶/15_import.md","ref":"02_solidity进阶/15_import.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/16_节约gas.md","mtime":"2022-09-14T02:05:52.194Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-14T08:29:09.943Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

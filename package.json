@@ -3,6 +3,7 @@
     "description": "blockchain toturial for new commers",
     "homepage": "https://dukedaily.github.io/blockchain_expert",
     "devDependencies": {
+        "hardhat": "^2.11.1",
         "honkit": "^3.7.1"
     },
     "scripts": {
