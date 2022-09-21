@@ -1415,40 +1415,47 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="第1节erc20">第1节:ERC20</h1>
-<p>任何遵从<a href="https://eips.ethereum.org/EIPS/eip-20" target="_blank">EIP-20协议</a>（ERC20标准）的Contract都属于ERC20 Token，其功能主要为：</p>
-<ol>
-<li>token transfer </li>
-<li>当得到授权之后，以其他人的名义进行token transfer</li>
-</ol>
-<p>ERC20合约的接口文件如下：(6个接口，2个事件)</p>
+<ul>
+<li><p>EIP: Ethereum Improvement Propose </p>
+</li>
+<li><p>任何遵从<a href="https://eips.ethereum.org/EIPS/eip-20" target="_blank">EIP-20协议</a>（ERC20标准）的Contract都属于ERC20 Token</p>
+</li>
+</ul>
+<h2 id="标准接口">标准接口</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// 6 REQUIRED FUNCTIONS</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address _owner</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 balance</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address _to, uint256 _value</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool success</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params">address _from, address _to, uint256 _value</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool success</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address _spender, uint256 _value</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool success</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address _owner, address _spender</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 remaining</span>)
+
+// 2 <span class="hljs-title">REQUIRED</span> <span class="hljs-title">EVENTS</span>
+<span class="hljs-title">event</span> <span class="hljs-title">Transfer</span>(<span class="hljs-params">address indexed _from, address indexed _to, uint256 _value</span>)
+<span class="hljs-title">event</span> <span class="hljs-title">Approval</span>(<span class="hljs-params">address indexed _owner, address indexed _spender, uint256 _value</span>)
+
+// 3. <span class="hljs-title">OPTIONAL</span> <span class="hljs-title">FUNCTIONS</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symbol</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint8</span>)
+</span></span></span></span></span></span></span></span></span></code></pre>
+<h2 id="分析">分析</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
 
 <span class="hljs-comment">// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/token/ERC20/IERC20.sol</span>
 interface IERC20 {
-
-      <span class="hljs-comment">//READ</span>
+      <span class="hljs-comment">// 6 REQUIRED FUNCTIONS</span>
+      <span class="hljs-comment">// 总发行量</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>;  <span class="hljs-comment">// -&gt; 总发行量 100000000 * 10**decimals</span>
 
       <span class="hljs-comment">// 标准decimal： 18</span>
       <span class="hljs-comment">// USDT: 6</span>
       <span class="hljs-comment">// WBTC: 8</span>
-
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address account</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 指定账户的余额</span>
 
-      <span class="hljs-comment">// owner: 币的持有人</span>
-      <span class="hljs-comment">// spender: 是指定帮助花费的代理人（被授权的人）</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 授权的额度</span>
-
-    <span class="hljs-comment">// decimals view，这是一个public 的变量，自动提供了一个读取的方法 // 返回精度</span>
-
-      <span class="hljs-comment">// WRITE（花钱的）</span>
-
-      <span class="hljs-comment">// 币的持有人直接调用，进行转账</span>
+    <span class="hljs-comment">// 币的持有人直接调用，进行转账</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address recipient, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
-
-      <span class="hljs-comment">// 持有人对spender进行授权，在approve内部，会调用msg.sender来知道owner是谁</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
 
       <span class="hljs-comment">// 最常用的！！</span>
       <span class="hljs-comment">// 1. 我这个owner对合约进行approve，此时approve内部会修改allowance变量</span>
@@ -1459,11 +1466,26 @@ interface IERC20 {
         uint amount <span class="hljs-comment">// 金额</span>
     </span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
 
+
+    <span class="hljs-comment">// owner: 币的持有人</span>
+      <span class="hljs-comment">// spender: 是指定帮助花费的代理人（被授权的人）</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 授权的额度</span>
+
+    <span class="hljs-comment">// decimals view，这是一个public 的变量，自动提供了一个读取的方法 // 返回精度</span>
+      <span class="hljs-comment">// 持有人对spender进行授权，在approve内部，会调用msg.sender来知道owner是谁</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+      <span class="hljs-comment">// 2 REQUIRED EVENTS</span>
       <span class="hljs-comment">// 事件</span>
     event Transfer(address indexed <span class="hljs-keyword">from</span>, address indexed to, uint value);
     event Approval(address indexed owner, address indexed spender, uint value);
+
+    <span class="hljs-comment">// 3. OPTIONAL FUNCTIONS</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symbol</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint8</span>)
 }
-</code></pre>
+</span></span></span></code></pre>
 <p>以下是ERC20的案例：</p>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
@@ -1582,7 +1604,7 @@ contract MyToken is ERC20 {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:ERC20","level":"1.6.1","depth":2,"next":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"previous":{"title":"第三章:token协议","level":"1.6","depth":1,"path":"03_token协议/README.md","ref":"03_token协议/README.md","articles":[{"title":"第1节:ERC20","level":"1.6.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:ERC1820","level":"1.6.5","depth":2,"path":"03_token协议/05_ERC1820.md","ref":"03_token协议/05_ERC1820.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/01_ERC20.md","mtime":"2022-08-28T07:30:01.768Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-20T10:49:47.052Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节:ERC20","level":"1.6.1","depth":2,"next":{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},"previous":{"title":"第三章:token协议","level":"1.6","depth":1,"path":"03_token协议/README.md","ref":"03_token协议/README.md","articles":[{"title":"第1节:ERC20","level":"1.6.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.6.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.6.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.6.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:ERC1820","level":"1.6.5","depth":2,"path":"03_token协议/05_ERC1820.md","ref":"03_token协议/05_ERC1820.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters"],"pluginsConfig":{"toggle-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/01_ERC20.md","mtime":"2022-09-21T03:09:08.756Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-21T04:59:08.408Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
