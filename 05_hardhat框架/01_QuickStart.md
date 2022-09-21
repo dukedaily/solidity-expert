@@ -83,10 +83,10 @@ npm install --save-dev @nomiclabs/hardhat-waffle@^2.0.0 ethereum-waffle@^3.0.0 c
    - rpc: infura：小狐狸使用的，以太坊基金会赞助：
 
    ```sh
-   ETHERSCAN_API_KEY=M81J3R51KSWA4K6IJXB4Q2F3IGQQTZESKT
-   ALCHEMY_KEY=Z8Ti6ZwaToUhmpJlj1QL0gjExeggq12V
-   INFURA_KEY=788b2b5a40bd4a168b94e24aae5346c7
-   PRIVATE_KEY=445eac6982b94a3495ad9e07b2e45365a1ae40f232ad804beeec285d75c1349b
+   ETHERSCAN_API_KEY=
+   ALCHEMY_KEY=
+   INFURA_KEY=
+   PRIVATE_KEY=
    ```
 
 2. 安装dotenv
