@@ -10,8 +10,6 @@
 
 ```sh
 npm install -g ganache-cli truffle @graphprotocol/graph-cli
-
-
 ```
 
 ## 创建项目
