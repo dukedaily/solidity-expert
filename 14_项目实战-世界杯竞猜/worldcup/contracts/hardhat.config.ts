@@ -9,10 +9,10 @@ let INFURA_KEY = process.env.INFURA_KEY || ''
 let PRIVATE_KEY = process.env.PRIVATE_KEY || ''
 let ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ''
 
-console.log(ALCHEMY_KEY);
-console.log(INFURA_KEY);
-console.log(PRIVATE_KEY);
-console.log(ETHERSCAN_API_KEY);
+// console.log(ALCHEMY_KEY);
+// console.log(INFURA_KEY);
+// console.log(PRIVATE_KEY);
+// console.log(ETHERSCAN_API_KEY);
 
 const config: HardhatUserConfig = {
     // solidity: "0.8.9",
