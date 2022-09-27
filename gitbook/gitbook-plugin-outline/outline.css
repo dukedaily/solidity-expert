@@ -1,0 +1,44 @@
+
+.outline{
+    position: fixed;
+    right: 100px;
+    top: 95px;
+    max-width: 200px;
+    min-width: 150px;
+}
+.outline .title{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    color: #777;
+    cursor: default;
+    text-align: center;
+}
+.outline .title .arrow{
+    cursor: pointer;
+    color:black;
+    font-weight: bolder;
+}
+.outline a{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.outline a:first-child{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.outline a:hover{
+    color:#0099CC;
+}
