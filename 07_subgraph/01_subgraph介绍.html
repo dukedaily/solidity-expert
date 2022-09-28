@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第1节:世界杯竞猜（solidity） · HonKit</title>
+        <title>第1节:subgraph介绍 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -63,6 +63,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
+    
+    <link rel="next" href="../08_项目实战-世界杯竞猜/" />
     
     
     <link rel="prev" href="./" />
@@ -1339,12 +1341,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="./">
+        <li class="chapter " data-level="1.9" data-path="../06_ethers/">
+            
+                <a href="../06_ethers/">
+            
+                    
+                    第六章:ethers库（空内容）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
             
                 <a href="./">
             
                     
-                    第五章:项目实战-世界杯竞猜
+                    第七章:subgraph
             
                 </a>
             
@@ -1353,9 +1368,41 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.9.1" data-path="01_合约实现.html">
+        <li class="chapter active" data-level="1.10.1" data-path="01_subgraph介绍.html">
             
-                <a href="01_合约实现.html">
+                <a href="01_subgraph介绍.html">
+            
+                    
+                    第1节:subgraph介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../08_项目实战-世界杯竞猜/">
+            
+                <a href="../08_项目实战-世界杯竞猜/">
+            
+                    
+                    第八章:项目实战-世界杯竞猜
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../14_项目实战-世界杯竞猜/01_合约实现.md">
+            
+                <span>
             
                     
                     第1节:世界杯竞猜（solidity）
@@ -1401,7 +1448,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第1节:世界杯竞猜（solidity）</a>
+        <a href=".." >第1节:subgraph介绍</a>
     </h1>
 </div>
 
@@ -1416,7 +1463,98 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>to be continued...</p>
+                                <h1 id="第1节：subgraph">第1节：subgraph</h1>
+<blockquote>
+<p> 本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+</blockquote>
+<h2 id="概述">概述</h2>
+<p>subgraph是DAPP领域最重要的基建之一，主流协议都在使用，其功能为：</p>
+<ul>
+<li>链下监听事件，逻辑处理，存储到数据库中，供前端调用；</li>
+<li>常用于：统计历史信息等，仅做展示相关，可以节约链上存储成本，且响应更快；</li>
+<li>请求subgraph的时候使用<a href="https://thegraph.com/docs/en/querying/graphql-api/" target="_blank">graphql</a>语言，而非sql语句。</li>
+</ul>
+<h2 id="举例">举例</h2>
+<ul>
+<li><p>uniswap v3的<a href="https://info.uniswap.org/#/tokens" target="_blank">token功能</a>主要是从subgraph中读取的</p>
+</li>
+<li><p>问：uniswapV3 查询当前有哪些pool？</p>
+</li>
+<li><p>Url：<a href="https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3" target="_blank">https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3</a></p>
+</li>
+<li><p>请求语句：</p>
+<pre><code class="lang-js">{
+  <span class="hljs-function"><span class="hljs-title">pools</span>(<span class="hljs-params">
+      first: <span class="hljs-number">50</span> 
+      orderBy: totalValueLockedUSD 
+      orderDirection: desc  
+      subgraphError: allow</span>)</span> {    
+      id    
+      __typename  
+    }
+}
+</code></pre>
+</li>
+<li><p>请求结果：(部分)</p>
+<pre><code class="lang-js">{
+  <span class="hljs-string">&quot;data&quot;</span>: {
+    <span class="hljs-string">&quot;pools&quot;</span>: [
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0x277667eb3e34f134adf870be9550e9f323d0dc24&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0xa850478adaace4c08fc61de44d8cf3b64f359bec&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0x8c0411f2ad5470a66cb2e9c64536cfb8dcd54d51&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0x055284a4ca6532ecc219ac06b577d540c686669d&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      }
+     ]
+  }
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="原理">原理</h2>
+<ol>
+<li>用户从合约侧发起交易；</li>
+<li>合约发送事件；</li>
+<li>由subgraph监听到该事件，并在内部执行逻辑（我们根据业务需求，自定义），处理后入库；</li>
+<li>用户（前端）从subgraph的数据空中读取数据，完成展示。</li>
+</ol>
+<p><img src="assets/subgraph流程图.jpg" alt="subgraph流程图"></p>
+<h2 id="可选资源">可选资源</h2>
+<p>subgraph一共有三种模式可以使用，具体如下（我们使用第三种）：</p>
+<ol>
+<li>the graph官方提供的host serivce模式（<a href="https://thegraph.com/blog/sunsetting-hosted-service/" target="_blank">已经废弃了</a>）</li>
+<li>the graph官方提供的去中心化网络：<a href="https://thegraph.com/docs/en/deploying/subgraph-studio/" target="_blank">subgraph studio</a>（需要token支持，激励别人帮忙加速索引，请自行尝试）</li>
+<li>使用the graph官方提供的开源代码自己搭建：<strong>（推荐，<a href="https://thegraph.academy/developers/local-development/" target="_blank">官方指导</a>）</strong><ol>
+<li>先试用docker创建一个：graph node</li>
+<li>在graph node上部署subgraph</li>
+</ol>
+</li>
+</ol>
+<h2 id="关系梳理">关系梳理</h2>
+<p>graph node和subgraph的关系如下，在graph node上可以部署多个subgraph，每个subgraph可以服务多个不同的项目。官方的host service（已经废弃），就是帮我们创建了一个graph node。</p>
+<p><img src="assets/graphnode.jpg" alt="graphnode"></p>
+<h2 id="小结">小结</h2>
+<ol>
+<li>subgraph是DAPP必要基建</li>
+<li>目前最佳实践是自行搭建graph node，使用docker</li>
+<li><a href="https://thegraph.com/docs/en/developing/creating-a-subgraph/" target="_blank">subgraph</a>部署在graph node之上，编程语言为：WASM (<a href="https://webassembly.org/" target="_blank">WebAssembly</a>)</li>
+<li>使用graphql查询</li>
+</ol>
+<p>下一节我们聊一聊如何进行使用docker搭建graphnode并部署自己的subgraph。</p>
+<p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
+<blockquote>
+<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
+</blockquote>
 
                                 
                                 </section>
@@ -1444,10 +1582,14 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第五章:项目实战-世界杯竞猜">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 第七章:subgraph">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="../08_项目实战-世界杯竞猜/" class="navigation navigation-next " aria-label="Next page: 第八章:项目实战-世界杯竞猜">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -1456,7 +1598,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:世界杯竞猜（solidity）","level":"1.9.1","depth":2,"previous":{"title":"第五章:项目实战-世界杯竞猜","level":"1.9","depth":1,"path":"14_项目实战-世界杯竞猜/README.md","ref":"14_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜（solidity）","level":"1.9.1","depth":2,"path":"14_项目实战-世界杯竞猜/01_合约实现.md","ref":"14_项目实战-世界杯竞猜/01_合约实现.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"14_项目实战-世界杯竞猜/01_合约实现.md","mtime":"2022-09-19T06:57:03.677Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-27T06:46:38.613Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节:subgraph介绍","level":"1.10.1","depth":2,"next":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜（solidity）","level":"1.11.1","depth":2,"path":"14_项目实战-世界杯竞猜/01_合约实现.md","ref":"14_项目实战-世界杯竞猜/01_合约实现.md","articles":[]}]},"previous":{"title":"第七章:subgraph","level":"1.10","depth":1,"path":"07_subgraph/README.md","ref":"07_subgraph/README.md","articles":[{"title":"第1节:subgraph介绍","level":"1.10.1","depth":2,"path":"07_subgraph/01_subgraph介绍.md","ref":"07_subgraph/01_subgraph介绍.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07_subgraph/01_subgraph介绍.md","mtime":"2022-09-28T04:58:18.152Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-28T05:01:36.076Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

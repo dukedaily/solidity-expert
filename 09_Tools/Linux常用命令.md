@@ -11,5 +11,3 @@ sudo lsof -i:5432
 sudo lsof -i -P -n | grep LISTEN
 ```
 
-
-
