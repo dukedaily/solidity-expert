@@ -1,6 +1,9 @@
+# 智能合约最佳实践
+
+
+## 一、通用规范
+
 https://github.com/t4sk/sol-best-practices
-
-
 
 - [Lock compiler version](https://github.com/t4sk/sol-best-practices/blob/main/src/LockCompiler.sol)
 - [Multiply before divide](https://github.com/t4sk/sol-best-practices/blob/main/src/MultiplyBeforeDivide.sol)
@@ -12,3 +15,15 @@ https://github.com/t4sk/sol-best-practices
 - [Checks, effects and then interactions](https://github.com/t4sk/sol-best-practices/blob/main/src/ChecksEffectsInteractions.sol)
 - [Use re-entrancy guards](https://github.com/t4sk/sol-best-practices/blob/main/src/ReentrancyGuard.sol)
 - [Pull over push](https://github.com/t4sk/sol-best-practices/blob/main/src/Pull.sol)
+
+
+
+## 二、侧重规范
+
+https://github.com/transmissions11/solcurity
+
+
+
+## 三、全面覆盖
+
+https://github.com/ConsenSys/smart-contract-best-practices
