@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第3节:fork主网 · HonKit</title>
+        <title>第6节:graphnode-subgraph · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -64,10 +64,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="04_多版本编译.html" />
+    <link rel="next" href="07_综合教程.html" />
     
     
-    <link rel="prev" href="02_单元测试.html" />
+    <link rel="prev" href="05_不同网络相同地址.html" />
     
 
     </head>
@@ -1271,9 +1271,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.3" data-path="03-fork主网.html">
+        <li class="chapter " data-level="1.8.3" data-path="03_fork主网.html">
             
-                <a href="03-fork主网.html">
+                <a href="03_fork主网.html">
             
                     
                     第3节:fork主网
@@ -1310,9 +1310,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="06-部署fork-graphnode-subgraph.html">
+        <li class="chapter active" data-level="1.8.6" data-path="06_部署fork_graphnode_subgraph.html">
             
-                <a href="06-部署fork-graphnode-subgraph.html">
+                <a href="06_部署fork_graphnode_subgraph.html">
             
                     
                     第6节:graphnode-subgraph
@@ -1400,12 +1400,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.11.1" data-path="../14_项目实战-世界杯竞猜/01_合约实现.md">
+        <li class="chapter " data-level="1.11.1" data-path="../08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.html">
             
-                <span>
+                <a href="../08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.html">
             
                     
-                    第1节:世界杯竞猜（solidity）
+                    第1节:世界杯竞猜-合约
             
                 </a>
             
@@ -1448,7 +1448,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第3节:fork主网</a>
+        <a href=".." >第6节:graphnode-subgraph</a>
     </h1>
 </div>
 
@@ -1463,35 +1463,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>参考链接：<a href="https://blog.csdn.net/weixin_43840202/article/details/121114097" target="_blank">https://blog.csdn.net/weixin_43840202/article/details/121114097</a></p>
-<p>impersonate_account:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-keyword">await</span> hardhat.network.provider.request({
-    <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;hardhat_impersonateAccount&quot;</span>,
-    <span class="hljs-attr">params</span>: [被模拟的账户],
-  });
-  <span class="hljs-keyword">const</span> signer = <span class="hljs-keyword">await</span> ethers.provider.getSigner(被模拟的账户)
-  <span class="hljs-comment">// 用模拟的账户给指定账户转账</span>
-  <span class="hljs-keyword">await</span> signer.sendTransaction({
-    <span class="hljs-attr">to</span>: <span class="hljs-string">&quot;0x23FCB0E1DDbC821Bd26D5429BA13B7D5c96C0DE0&quot;</span>,
-    <span class="hljs-attr">value</span>: ethers.utils.parseEther(<span class="hljs-string">&quot;1.0&quot;</span>),
-  });
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;success&apos;</span>)
-
-<span class="hljs-comment">// 取消模拟</span>
-  <span class="hljs-keyword">await</span> hardhat.network.provider.request({
-    <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;hardhat_stopImpersonatingAccount&quot;</span>,
-    <span class="hljs-attr">params</span>: [被模拟的账户],
-  });
-}
-
-f1().then(<span class="hljs-function">() =&gt;</span> process.exit(<span class="hljs-number">0</span>))
-  .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
-    <span class="hljs-built_in">console</span>.error(error);
-    process.exit(<span class="hljs-number">1</span>);
-  });
+                                <h2 id="alchemy">alchemy</h2>
+<pre><code class="lang-sh">https://eth-mainnet.alchemyapi.io/v2/-qZ8NcwdvM8gsbxWyFl_Iw9znBN5UV3t
 </code></pre>
-<p>完整demo</p>
+<h1 id="一、hardhat安装">一、hardhat安装</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">#安装命令</span>
+npm install --save-dev hardhat
+
+<span class="hljs-comment">#创建工程</span>
+npx hardhat-》选择高级ts项目
+
+<span class="hljs-comment">#运行测试</span>
+npx hardhat accounts
+
+<span class="hljs-comment">#编译合约</span>
+npx hardhat compile
+
+<span class="hljs-comment">#单元测试</span>
+npx hardhat <span class="hljs-built_in">test</span>
+
+<span class="hljs-comment">#运行脚本，部署合约</span>
+npx hardhat run scripts/deploy.ts
+
+<span class="hljs-comment">#启动节点node</span>
+npx hardhat node
+
+<span class="hljs-comment">#部署合约到本地node节点</span>
+npx hardhat run scripts/deploy.ts --network localhost
+</code></pre>
+<h1 id="二、hardhat-fork启动">二、hardhat-fork启动</h1>
+<p>切换到Global VPN Mode</p>
+<pre><code class="lang-sh"><span class="hljs-comment">#启动成功</span>
+npx hardhat node --fork https://eth-mainnet.alchemyapi.io/v2/FKPQya5-fdpIyRPdKyr3KB2Q02hW626y --fork-block-number 13244836 --hostname 0.0.0.0%
+
+<span class="hljs-comment">#测试一下：</span>
+curl --data <span class="hljs-string">&apos;{&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:1,&quot;jsonrpc&quot;:&quot;2.0&quot;}&apos;</span> -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -X POST localhost:8545
+
+<span class="hljs-comment">#返回值：</span>
+{<span class="hljs-string">&quot;jsonrpc&quot;</span>:<span class="hljs-string">&quot;2.0&quot;</span>,<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;result&quot;</span>:<span class="hljs-string">&quot;0xca19a4&quot;</span>}  <span class="hljs-comment"># 13,244,836 就是当前的块高</span>
+</code></pre>
+<p>创建script/send.ts</p>
 <pre><code class="lang-js"><span class="hljs-keyword">import</span> { network, ethers, waffle } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;hardhat&quot;</span>;
 <span class="hljs-keyword">import</span> { Signer } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;ethers&quot;</span>;
 
@@ -1526,6 +1537,173 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">error</span>
     process.exitCode = <span class="hljs-number">1</span>;
 });
 </code></pre>
+<p>运行：</p>
+<pre><code class="lang-sh">hh run scripts/fork-test/send.ts --network localhost
+
+curl --data <span class="hljs-string">&apos;{&quot;method&quot;:&quot;eth_blockNumber&quot;,&quot;params&quot;:[],&quot;id&quot;:1,&quot;jsonrpc&quot;:&quot;2.0&quot;}&apos;</span> -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -X POST localhost:8545
+
+<span class="hljs-comment">#块高加一</span>
+{<span class="hljs-string">&quot;jsonrpc&quot;</span>:<span class="hljs-string">&quot;2.0&quot;</span>,<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;result&quot;</span>:<span class="hljs-string">&quot;0xca19a5&quot;</span>}  <span class="hljs-comment"># 13,244,837</span>
+</code></pre>
+<p>不知道为何使用配置文件不成功：</p>
+<pre><code class="lang-sh">npx hardhat node //运行失败
+</code></pre>
+<p>配置如下：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> config: HardhatUserConfig = {
+    <span class="hljs-attr">defaultNetwork</span>: <span class="hljs-string">&apos;hardhat&apos;</span>,
+    <span class="hljs-attr">solidity</span>: <span class="hljs-string">&quot;0.8.4&quot;</span>,
+    <span class="hljs-attr">networks</span>: {
+        <span class="hljs-attr">hardhat</span>: { <span class="hljs-comment">//&lt;&lt;&lt;=== 这里的配置</span>
+            <span class="hljs-attr">forking</span>: {
+                <span class="hljs-attr">url</span>: process.env.MAINNET_URL || <span class="hljs-string">&quot;&quot;</span>,
+                <span class="hljs-attr">blockNumber</span>: <span class="hljs-number">13596688</span>,
+            },
+        },
+        <span class="hljs-attr">ropsten</span>: {
+            <span class="hljs-attr">url</span>: process.env.ROPSTEN_URL || <span class="hljs-string">&quot;&quot;</span>,
+            <span class="hljs-attr">accounts</span>:
+                process.env.PRIVATE_KEY !== <span class="hljs-literal">undefined</span> ? [process.env.PRIVATE_KEY] : [],
+        },
+    },
+
+  <span class="hljs-comment">//其他。。。。</span>
+}
+</code></pre>
+<h1 id="三、graphnode安装">三、graphnode安装</h1>
+<p>docker-compose.yml</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&quot;3&quot;</span>
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">graph-node:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">graphprotocol/graph-node</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8000:8000&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8001:8001&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8020:8020&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8030:8030&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;8040:8040&quot;</span>
+    <span class="hljs-attr">links:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;ipfs:ipfs&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;postgres:postgres&quot;</span>
+    <span class="hljs-attr">depends_on:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">ipfs</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">postgres</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">postgres_host:</span> <span class="hljs-string">postgres</span>
+      <span class="hljs-attr">postgres_user:</span> <span class="hljs-string">graph-node</span>
+      <span class="hljs-attr">postgres_pass:</span> <span class="hljs-string">let-me-in</span>
+      <span class="hljs-attr">postgres_db:</span> <span class="hljs-string">graph-node</span>
+      <span class="hljs-attr">ipfs:</span> <span class="hljs-string">&quot;ipfs:5001&quot;</span>
+      <span class="hljs-attr">ethereum:</span> <span class="hljs-string">&quot;mainnet:http://192.168.10.8:8545&quot;</span> <span class="hljs-comment">#使用本机的，不要使用127.0.0.1这是docker</span>
+      <span class="hljs-attr">RUST_LOG:</span> <span class="hljs-string">info</span>
+  <span class="hljs-attr">ipfs:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">ipfs/go-ipfs:v0.4.23</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;5001:5001&quot;</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./data/ipfs:/data/ipfs</span>
+  <span class="hljs-attr">postgres:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">postgres</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;5432:5432&quot;</span>
+    <span class="hljs-attr">command:</span> [<span class="hljs-string">&quot;postgres&quot;</span>, <span class="hljs-string">&quot;-cshared_preload_libraries=pg_stat_statements&quot;</span>]
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">POSTGRES_USER:</span> <span class="hljs-string">graph-node</span>
+      <span class="hljs-attr">POSTGRES_PASSWORD:</span> <span class="hljs-string">let-me-in</span>
+      <span class="hljs-attr">POSTGRES_DB:</span> <span class="hljs-string">graph-node</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./data/postgres:/var/lib/postgresql/data</span>
+</code></pre>
+<p>启动：</p>
+<pre><code class="lang-sh">docker-compose up
+</code></pre>
+<h2 id="1-遇到的错误">1. 遇到的错误</h2>
+<ol>
+<li>安装失败时，单独安装</li>
+</ol>
+<pre><code class="lang-sh">docker pull graphprotocol/graph-node
+</code></pre>
+<ol>
+<li>出现错误</li>
+</ol>
+<pre><code class="lang-sh">Starting graphnode_postgres_1 ... error
+listen tcp 0.0.0.0:5432: <span class="hljs-built_in">bind</span>: address already <span class="hljs-keyword">in</span> use
+</code></pre>
+<p>查一下：</p>
+<pre><code class="lang-sh"><span class="hljs-comment">#sudo lsof -i:5432</span>
+Password:
+COMMAND  PID     USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+postgres 130 postgres    7u  IPv6 0xfa4b02f56640f4f3      0t0  TCP *:postgresql (LISTEN)
+postgres 130 postgres    8u  IPv4 0xfa4b02f56641c98b      0t0  TCP *:postgresql (LISTEN)
+
+<span class="hljs-comment">#解决：</span>
+<span class="hljs-built_in">kill</span> 130
+</code></pre>
+<p>启动成功!</p>
+<h2 id="2-数据存储位置">2. 数据存储位置</h2>
+<p>我们在docker-compose.yaml中增加的数据卷是当前目录，所以会在当前目录创建一个data，graph的数据都写在data中：</p>
+<pre><code class="lang-sh">- ./data/postgres:/var/lib/postgresql/data
+</code></pre>
+<p><img src="assets/image-20220103205651925.png" alt="image-20220103205651925"></p>
+<h2 id="3-同步数据失败">==3. 同步数据失败==</h2>
+<ol>
+<li>使用kovan，正常同步log</li>
+</ol>
+<p><img src="assets/image-20220104120724150.png" alt="image-20220104120724150"></p>
+<ol>
+<li>使用hardhat fork错误log，会一直卡在Downloading阶段，左边是hardhat的log，会出现红色warning，最后会出现graphnode的log出现刷屏log error</li>
+</ol>
+<p><img src="assets/image-20220104120754732.png" alt="image-20220104120754732"></p>
+<p>刷屏error</p>
+<p><img src="assets/image-20220104131556236.png" alt="image-20220104131556236"></p>
+<p>==这个错误一直没有解决==，graphnode启动之后，整个请求全部被沾满了，部署合约都失败。</p>
+<h1 id="四、部署subgraph">四、部署subgraph</h1>
+<p>找到chfry-subgraph</p>
+<pre><code class="lang-sh"><span class="hljs-comment">#创建</span>
+npm run create:<span class="hljs-built_in">local</span>
+
+<span class="hljs-comment">#部署</span>
+npm run deploy:<span class="hljs-built_in">local</span>
+</code></pre>
+<p>查询：</p>
+<pre><code class="lang-js">{
+  <span class="hljs-function"><span class="hljs-title">simpleBlocks</span>(<span class="hljs-params">first: <span class="hljs-number">5</span></span>)</span> {
+    id
+        height
+    time
+  }
+}
+</code></pre>
+<pre><code class="lang-js">{
+  <span class="hljs-function"><span class="hljs-title">useFlashloans</span>(<span class="hljs-params">first: <span class="hljs-number">5</span></span>)</span> {
+    id
+    user
+    token
+    tokenName
+  }
+  <span class="hljs-function"><span class="hljs-title">stakePoolClaimeds</span>(<span class="hljs-params">first: <span class="hljs-number">5</span></span>)</span> {
+    id
+    user
+    amount
+    token
+  }
+}
+</code></pre>
+<h1 id="五、其他">五、其他</h1>
+<h2 id="1-试试ganache">1. 试试ganache</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">#$ ganache-cli --fork &lt;ADD_YOUR_QUICKNODE_URL_HERE&gt;@&lt;block_number&gt;</span>
+
+<span class="hljs-comment">#这个会失败，错误：Error: Incompatible EIP155-based V 0 and chain id 1.  ganache-cli</span>
+ganache-cli --fork https://eth-mainnet.alchemyapi.io/v2/FKPQya5-fdpIyRPdKyr3KB2Q02hW626y@13244836 --hostname 0.0.0.0
+
+<span class="hljs-comment">#没想到还和块高有关系@10499400 可以成功，成功！</span>
+ganache-cli --fork https://eth-mainnet.alchemyapi.io/v2/FKPQya5-fdpIyRPdKyr3KB2Q02hW626y@10499400 --hostname 0.0.0.0
+</code></pre>
+<h2 id="2-注意事项">2. 注意事项</h2>
+<ol>
+<li>使用热点的时候，mac的en0是：172.20.10.3，使用路由器的时候是：192.168.10.8, 别忘记切换</li>
+<li>使用热点的时候graphnode不会去链接hardhat，所以不要使用了</li>
+<li>使用wifi的时候，要切换到global vpn mode</li>
+</ol>
 
                                 
                                 </section>
@@ -1553,12 +1731,12 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">error</span>
 
             
                 
-                <a href="02_单元测试.html" class="navigation navigation-prev " aria-label="Previous page: 第2节:单元测试">
+                <a href="05_不同网络相同地址.html" class="navigation navigation-prev " aria-label="Previous page: 第5节:不同网络相同地址">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="04_多版本编译.html" class="navigation navigation-next " aria-label="Next page: 第4节:多版本编译">
+                <a href="07_综合教程.html" class="navigation navigation-next " aria-label="Next page: 第7节:07_综合教程">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1569,7 +1747,7 @@ main().catch(<span class="hljs-function">(<span class="hljs-params">error</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节:fork主网","level":"1.8.3","depth":2,"next":{"title":"第4节:多版本编译","level":"1.8.4","depth":2,"path":"05_hardhat框架/04_多版本编译.md","ref":"05_hardhat框架/04_多版本编译.md","articles":[]},"previous":{"title":"第2节:单元测试","level":"1.8.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"05_hardhat框架/03-fork主网.md","mtime":"2022-09-19T06:57:03.647Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-28T05:01:36.076Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第6节:graphnode-subgraph","level":"1.8.6","depth":2,"next":{"title":"第7节:07_综合教程","level":"1.8.7","depth":2,"path":"05_hardhat框架/07_综合教程.md","ref":"05_hardhat框架/07_综合教程.md","articles":[]},"previous":{"title":"第5节:不同网络相同地址","level":"1.8.5","depth":2,"path":"05_hardhat框架/05_不同网络相同地址.md","ref":"05_hardhat框架/05_不同网络相同地址.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","mtime":"2022-09-19T06:57:03.647Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-29T01:50:17.190Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
