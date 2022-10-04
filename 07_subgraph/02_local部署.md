@@ -5,6 +5,7 @@
 ## 参考
 
 1. 官方文档：https://thegraph.academy/developers/local-development/
+1. example：https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/
 
 ## 安装命令
 

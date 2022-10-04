@@ -24,8 +24,6 @@ cd graph-node/docker
 docker-compose up
 ```
 
-
-
 5. accessing Bisaar-subgraph
 
 ```
@@ -43,10 +41,6 @@ npm run create-local
 ```
 npm run deploy-local
 ```
-
-
-
-
 
 
 
