@@ -2,12 +2,14 @@
 
 
 
-## 参考
+# 参考
 
 1. 官方文档：https://thegraph.academy/developers/local-development/
 1. example：https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/
 
-## 安装命令
+# 一、安装准备
+
+## 命令
 
 ```sh
 npm install -g ganache-cli truffle @graphprotocol/graph-cli
@@ -33,7 +35,23 @@ yarn install
 ganache-cli -h 0.0.0.0
 ```
 
-## 部署合约
+# 二、部署合约
+
+## 更新图片
+
+替换Migrations/3_create_gravatars.js中的链接：（原demo中的链接已经失效）
+
+```sh
+# Carl: 
+https://gateway.pinata.cloud/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ
+
+# Lucas: 
+https://gateway.pinata.cloud/ipfs/QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4
+```
+
+
+
+## 编译部署
 
 ```sh
 $ cd example-subgraph
@@ -45,7 +63,7 @@ $ truffle migrate
 
 部署后得到目标地址：==0x32969911a7C0396d7BbAe2290e5Ca98f54C38AB8==，需要subgraph来监听这个地址。
 
-## 配置subgraph
+# 三、配置subgraph
 
 在subgraph.yaml中，替换地址<GANACHE_CONTRACT_ADDRESS>为上面部署的地址！
 
@@ -95,6 +113,12 @@ yarn deploy-local
 
 ![image-20220519221014419](assets/image-20220519221014419.png)
 
+同步事件（需要几分钟）
+
+![image-20221005130354662](assets/image-20221005130354662.png)
+
+
+
 使用浏览器查看日志信息（在truffle migrate中，会自动执行：3_create_gravatars.js，这个脚本会调用合约，发送两个事件）
 
 url：http://127.0.0.1:8000/subgraphs/name/dukedaily/example-subgraph/graphql
@@ -114,7 +138,7 @@ url：http://127.0.0.1:8000/subgraphs/name/dukedaily/example-subgraph/graphql
 
 ![image-20220519221147734](assets/image-20220519221147734.png)
 
-## 准备前端
+# 四、准备前端
 
 ```sh
 git clone git@github.com:graphprotocol/ethdenver-dapp.git
@@ -132,10 +156,28 @@ echo "REACT_APP_GRAPHQL_ENDPOINT=http://localhost:8000/subgraphs/name/dukedaily/
 ## 启动前端
 
 ```sh
-rm -rf yarn.lock # 否则后面会失败
 yarn install  # global VPN mode
 yarn start
 ```
+
+## 安装有问题（可选）
+
+```sh
+# 删除文件
+rm -rf yarn.lock
+
+# 安装nvm，安装后需要配置文件，请仔细查看打印的log，有指导
+brew install nvm
+
+# 切换node版本，版本查询：https://www.npmjs.com/package/node
+nvm install v10.24.1
+nvm use v10.24.1
+
+# 重新安装
+npm install
+```
+
+## 查看效果
 
 效果如下，切换Order By可以调整展示顺序，由于网络问题，图片没能正常展示，可以在代码中自行替换。
 

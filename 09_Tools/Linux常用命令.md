@@ -11,3 +11,17 @@ sudo lsof -i:5432
 sudo lsof -i -P -n | grep LISTEN
 ```
 
+
+
+nvm
+
+https://heynode.com/tutorial/install-nodejs-locally-nvm/
+
+```sh
+nvm alias default 10.0.0
+
+nvm isntall v16.17.1
+nvm use v16.17.1
+
+```
+
