@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第1节:世界杯竞猜-合约 · HonKit</title>
+        <title>第2节:部署 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -64,10 +64,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../09_EVM/" />
+    <link rel="next" href="../08_项目实战-世界杯竞猜/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="01_概述.html" />
     
 
     </head>
@@ -1367,9 +1367,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../07_subgraph/">
+        <li class="chapter " data-level="1.10" data-path="./">
             
-                <a href="../07_subgraph/">
+                <a href="./">
             
                     
                     第七章:subgraph
@@ -1381,12 +1381,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="../07_subgraph/01_subgraph介绍.html">
+        <li class="chapter " data-level="1.10.1" data-path="01_概述.html">
             
-                <a href="../07_subgraph/01_subgraph介绍.html">
+                <a href="01_概述.html">
             
                     
-                    第1节:subgraph介绍
+                    第1节:概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.2" data-path="02_部署.html">
+            
+                <a href="02_部署.html">
+            
+                    
+                    第2节:部署
             
                 </a>
             
@@ -1399,9 +1412,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="./">
+        <li class="chapter " data-level="1.11" data-path="../08_项目实战-世界杯竞猜/">
             
-                <a href="./">
+                <a href="../08_项目实战-世界杯竞猜/">
             
                     
                     第八章:项目实战-世界杯竞猜
@@ -1413,9 +1426,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.11.1" data-path="01_世界杯竞猜_合约.html">
+        <li class="chapter " data-level="1.11.1" data-path="../08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md">
             
-                <a href="01_世界杯竞猜_合约.html">
+                <span>
             
                     
                     第1节:世界杯竞猜-合约
@@ -1487,7 +1500,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第1节:世界杯竞猜-合约</a>
+        <a href=".." >第2节:部署</a>
     </h1>
 </div>
 
@@ -1502,254 +1515,118 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第一节-世界杯竞猜（solidity）">第一节 世界杯竞猜（solidity）</h1>
-<h2 id="内容概述">内容概述</h2>
-<p>通过学习，初步了解以太坊开发的基础工具链，通过一个案例（世界杯精彩）实战，使大家掌握基本的solidity开发，完成语法学习。</p>
+                                <h1 id="第1节：本地化部署ganache和graphnode">第1节：本地化部署ganache和graphnode</h1>
+<h1 id="参考">参考</h1>
 <ol>
-<li><a href="https://solidity-expert.vercel.app/" target="_blank">点击查看效果</a></li>
-<li><a href="https://github.com/dukedaily/solidity-expert/blob/main/08_项目实战-世界杯竞猜/worldcup/contracts/contracts/WorldCup.sol" target="_blank">点击获取代码</a></li>
+<li>官方文档：<a href="https://thegraph.academy/developers/local-development/" target="_blank">https://thegraph.academy/developers/local-development/</a></li>
+<li>example：<a href="https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/" target="_blank">https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/</a></li>
+<li>获取代码请移步这里：<a href="https://github.com/dukedaily/subgraph-demo" target="_blank">https://github.com/dukedaily/subgraph-demo</a></li>
 </ol>
-<h2 id="学习目标">学习目标</h2>
-<ul>
-<li>Metamask：助记词、私钥、地址、gas费相关</li>
-<li>Remix：部署、交互、abi、bytecode</li>
-<li>Etherscan：交易分析、verify合约</li>
-<li>基础solidity语法：基础类型、如何转账、可见性、手续费、Event</li>
-</ul>
-<h2 id="业务需求">业务需求</h2>
-<ol>
-<li>参赛球队一经设定不可改变，整个活动结束后无法投票；</li>
-<li>全⺠均可参与，无权限控制；</li>
-<li>每次投票为1ether，且只能选择一支球队；</li>
-<li>每个人可以投注多次；</li>
-<li>仅管理员公布最终结果，完成奖金分配，开奖后逻辑：</li>
-<li>winner共享整个奖金池（一部分是自己的本金，一部分是利润）；</li>
-<li>winner需自行领取奖金（因为有手续费）；</li>
-<li>下一期自行开始</li>
-</ol>
-<h3 id="最初状态">最初状态</h3>
-<p><img src="assets/流程图a.jpg" alt="流程图a"></p>
-<h3 id="开始投票">开始投票</h3>
-<p><img src="assets/流程图b.jpg" alt="流程图b"></p>
-<h3 id="开奖后">开奖后</h3>
-<p><img src="assets/流程图c.jpg" alt="流程图c"></p>
-<h2 id="需求分析">需求分析</h2>
-<ol>
-<li>状态变量(真正上链）：管理员、记录所有玩家、统计每个球队参与者、记录获奖者信息、第几期、参赛球队</li>
-<li>核心方法：投票、开奖、领奖</li>
-<li>辅助方法：获取奖金池金额、管理员地址、当前期数、参与人数、所有玩家、参赛球队</li>
-</ol>
-<h2 id="知识点">知识点</h2>
-<ol>
-<li><p>1 ether = 10^18wei, </p>
-</li>
-<li><p>1 gwei = 10^9 wei</p>
-</li>
-<li><p>1 ether = 10^9 gwei</p>
-</li>
-<li><p>tx：</p>
-<pre><code class="lang-js"><span class="hljs-number">1.</span> <span class="hljs-keyword">from</span>：交易发起人， 合约中是：msg.sender
-<span class="hljs-number">2.</span> to：交互合约地址，传给合约的数据：msg.data
-<span class="hljs-number">3.</span> value：传递的金额，msg.value
+<h1 id="一、安装准备">一、安装准备</h1>
+<h2 id="命令">命令</h2>
+<pre><code class="lang-sh">npm install -g ganache-cli truffle @graphprotocol/graph-cli
 </code></pre>
-</li>
-<li><p><strong>&quot;storage&quot;, &quot;memory&quot;</strong> </p>
-<ol>
-<li>Storage: 引用传值，修改会同步修改原变量</li>
-<li><strong>memory：值传递，完全独立的拷贝</strong></li>
-</ol>
-</li>
-</ol>
-<h2 id="代码">代码</h2>
-<ul>
-<li><p>goerli地址：0x9E896316F0610Cb053C62377601F64c909668334</p>
-</li>
-<li><p><a href="https://goerli.etherscan.io/address/0x9e896316f0610cb053c62377601f64c909668334#writeContract" target="_blank">https://goerli.etherscan.io/address/0x9e896316f0610cb053c62377601f64c909668334#writeContract</a></p>
-</li>
-</ul>
-<pre><code class="lang-JavaScript"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.16</span>;
+<h2 id="创建项目">创建项目</h2>
+<pre><code class="lang-sh">graph init --from-example dukedaily/example-subgraph
+</code></pre>
+<p><img src="assets/image-20220519214848779.png" alt="image-20220519214848779"></p>
+<p>如果安装依赖失败，可以手动安装依赖</p>
+<pre><code class="lang-sh">yarn install
+</code></pre>
+<h2 id="启动ganache-cli">启动ganache-cli</h2>
+<pre><code class="lang-sh">ganache-cli -h 0.0.0.0
+</code></pre>
+<h1 id="二、部署合约">二、部署合约</h1>
+<h2 id="更新图片">更新图片</h2>
+<p>替换Migrations/3_create_gravatars.js中的链接：（原demo中的链接已经失效）</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># Carl: </span>
+https://gateway.pinata.cloud/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ
 
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;hardhat/console.sol&quot;</span>;
+<span class="hljs-comment"># Lucas: </span>
+https://gateway.pinata.cloud/ipfs/QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4
+</code></pre>
+<h2 id="编译部署">编译部署</h2>
+<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> example-subgraph
+$ truffle compile
+$ truffle migrate
+</code></pre>
+<p><img src="assets/image-20220519215435855.png" alt="image-20220519215435855"></p>
+<p>部署后得到目标地址：==0x32969911a7C0396d7BbAe2290e5Ca98f54C38AB8==，需要subgraph来监听这个地址。</p>
+<h1 id="三、配置subgraph">三、配置subgraph</h1>
+<p>在subgraph.yaml中，替换地址<ganache_contract_address>为上面部署的地址！</ganache_contract_address></p>
+<pre><code class="lang-sh"><span class="hljs-comment">#sed -i -e \</span>
+<span class="hljs-comment">#  &apos;s/0x2E645469f354BB4F5c8a05B3b30A929361cf77eC/&lt;GANACHE_CONTRACT_ADDRESS&gt;/g&apos; \</span>
+<span class="hljs-comment">#  subgraph.yaml</span>
 
-<span class="hljs-comment">// 没有main函数</span>
-contract Hellworld {
-    <span class="hljs-comment">// 合约之内，函数之外的字段，状态变量，真正上链的数据</span>
-    string private  gretting;
-
-    <span class="hljs-comment">// 写数据，花钱</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGreeting</span>(<span class="hljs-params">string memory _greeting</span>) <span class="hljs-title">public</span> </span>{
-        gretting = _greeting;
-    }
-
-    <span class="hljs-comment">// 读取，免费</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> gretting;
-    }
-}
-
-contract WorldCupLottery {
-    <span class="hljs-comment">// 1. 状态变量(真正上链）：管理员、第几期、记录所有玩家、统计每个球队参与者、记录获奖者信息、参赛球队</span>
-    <span class="hljs-comment">// 2. 核心方法：投票、开奖、领奖</span>
-    <span class="hljs-comment">// 3. 辅助方法：获取奖金池金额、管理员地址、当前期数、参与人数、所有玩家、参赛球队</span>
-
-    <span class="hljs-comment">// 管理员</span>
-    address public manager;
-
-    <span class="hljs-comment">//第几期</span>
-    uint8 public currRound;
-
-    <span class="hljs-comment">// 参赛球队</span>
-    string[] public countries = [<span class="hljs-string">&quot;GERMANY&quot;</span>, <span class="hljs-string">&quot;FRANCH&quot;</span>, <span class="hljs-string">&quot;CHINA&quot;</span>, <span class="hljs-string">&quot;BRIZAL&quot;</span>, <span class="hljs-string">&quot;KOREA&quot;</span>];
-
-    <span class="hljs-comment">// mapping</span>
-    <span class="hljs-comment">// mapping(第几期 =&gt; mapping(玩家地址 =&gt; 玩家的详情struct)）</span>
-    mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> Player)) public players;
-
-    <span class="hljs-comment">// mapping(第几期 =&gt; maping(中国 =&gt; address[张三，李四]))</span>
-    mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> address[])) public countryToPlayers;
-
-    <span class="hljs-comment">// 张三 =&gt; 可以claim的数量</span>
-    mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint256) public winnerVaults;
-
-    <span class="hljs-comment">// 没有被领取的奖励需要锁起来</span>
-    uint256 public lockAmt;
-
-    struct Player {
-        bool flag;
-
-        <span class="hljs-comment">// 一个玩家，可以同时投票多个国家，多票</span>
-        mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> uint) counts;
-    }
-
-    enum Country {
-        GERMANY, FRANCH, CHINA, BRIZAL, KOREA
-    }
-
-    <span class="hljs-comment">// 修饰器，做一些权限校验，参数校验</span>
-    modifier onlyManager {
-        <span class="hljs-built_in">require</span>(msg.sender == manager, <span class="hljs-string">&quot;not authorized!&quot;</span>);
-
-        <span class="hljs-comment">// 被修饰的逻辑</span>
-        _;
-    }
-
-    event TransferMgr(address _prev, address _newMgr);
-    event Play(uint8 _round, address _player, uint8 _selected);
-    event Finalize(uint8 _round, Country _selected);
-    event ClaimReward(address _claimer, uint256 _amt);
-
-    <span class="hljs-comment">// 构造函数</span>
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-comment">// 交易的发起人是msg.sender,此时部署人就是manager</span>
-        manager = msg.sender;
-    }
-
-    <span class="hljs-comment">// 转移manager</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferMgr</span>(<span class="hljs-params">address _newMgr</span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyManager</span> </span>{
-        <span class="hljs-comment">// require(msg.sender == manager, &quot;not authorized!&quot;);</span>
-        address prev = manager;
-        manager = _newMgr;
-        emit TransferMgr(prev, manager);
-    }
-
-    <span class="hljs-comment">// paly时，玩家需要转入 1ETH</span>
-    <span class="hljs-comment">// 如果想在发起交易的时候，转入资金，那么合约的方法必须修饰为payable</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">paly</span>(<span class="hljs-params">Country _selected</span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{
-
-        <span class="hljs-comment">// 金额校验</span>
-        <span class="hljs-built_in">require</span>(msg.value == <span class="hljs-number">1</span> gwei, <span class="hljs-string">&quot;invalid funds provided!&quot;</span>); 
-
-        <span class="hljs-comment">// 更新countries，</span>
-        <span class="hljs-comment">// 往状态变量的数组中追加数据，使用push</span>
-        countryToPlayers[currRound][_selected].push(msg.sender);
-
-        <span class="hljs-comment">// 更新players</span>
-        <span class="hljs-comment">// 获取Player结构</span>
-        <span class="hljs-comment">// 更新数据</span>
-        Player storage player = players[currRound][msg.sender];
-        player.counts[_selected] ++;
-
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;selected:&quot;</span>, uint8(_selected));
-
-        emit Play(currRound, msg.sender, uint8(_selected));
-    }
-
-    <span class="hljs-comment">// 开奖</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">finalize</span>(<span class="hljs-params">Country _selected</span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyManager</span> </span>{
-        <span class="hljs-comment">// require(msg.sender == manager, &quot;not authoried!&quot;);</span>
-
-        <span class="hljs-comment">// 找到所有的赢家  winners</span>
-        address[] memory winners = countryToPlayers[currRound][_selected];
-
-        <span class="hljs-comment">// 获取当前合约的可用金额</span>
-        uint256 currAvailBalance = getVaultBal() - lockAmt;
-
-        <span class="hljs-comment">// 计算每个人奖励多少</span>
-        <span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; winners.length; i++) {
-            address currWinner = winners[i];
-
-            <span class="hljs-comment">// 获取当前winner在下了多少注</span>
-            Player storage winner = players[currRound][currWinner];
-
-            uint256 currCounts = winner.counts[_selected];
-
-            <span class="hljs-comment">// 统计这个winner该分的多少奖励</span>
-            uint amt = (currAvailBalance / countryToPlayers[currRound][_selected].length) * currCounts;
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;currWinner:&quot;</span>, currWinner, <span class="hljs-string">&quot;reward:&quot;</span>, amt);
-
-            <span class="hljs-comment">// 更新currWinner能够领取的金额</span>
-            winnerVaults[currWinner] += amt;
-            lockAmt += amt;
-        }
-
-        emit Finalize(currRound, _selected);
-    }
-
-    <span class="hljs-comment">// 领奖</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">claimReward</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-comment">// 每个人都可以调用，但是只能领取属于自己的钱</span>
-        uint256 rewards = winnerVaults[msg.sender];
-        <span class="hljs-built_in">require</span>(rewards &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;nothing to claim!&quot;</span>);
-
-        <span class="hljs-comment">// 给msg.sender转账</span>
-        <span class="hljs-comment">// 使用 transfer方法进行转账：transfer，send（不用了），call（后面讲）</span>
-        <span class="hljs-comment">// 合约给谁转账，就用谁调用transfer，如果转账失败，会进行revert，整个交易回滚</span>
-        <span class="hljs-comment">// 交易是原子性的，完成，回归原始状态（消耗的手续费gas fee不会退回）</span>
-        payable(msg.sender).transfer(rewards);
-
-        <span class="hljs-comment">// 清零</span>
-        winnerVaults[msg.sender] = <span class="hljs-number">0</span>;
-
-        <span class="hljs-comment">// lockAmt减少</span>
-        lockAmt -= rewards;
-
-        emit ClaimReward(msg.sender, rewards);
-    }
-
-    <span class="hljs-comment">// 查看当前合约的资金数量</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVaultBal</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>{
-        <span class="hljs-keyword">return</span> address(<span class="hljs-built_in">this</span>).balance;
-    }
+sed -i -e \
+  <span class="hljs-string">&apos;s/0x2E645469f354BB4F5c8a05B3b30A929361cf77eC/0x32969911a7C0396d7BbAe2290e5Ca98f54C38AB8/g&apos;</span> \
+  subgraph.yaml
+</code></pre>
+<p>替换后：</p>
+<p><img src="assets/image-20220519215644410.png" alt="image-20220519215644410"></p>
+<p>修改docker-compose.yml文件，将下图：v0.22.0删掉，保证使用最新版本。</p>
+<p><img src="assets/image-20220519220622669.png" alt="image-20220519220622669"></p>
+<h2 id="编译subgraph">编译subgraph</h2>
+<pre><code class="lang-sh">yarn codegen
+yarn build
+</code></pre>
+<p><img src="assets/image-20220519215921877.png" alt="image-20220519215921877"></p>
+<h2 id="启动graphnode（docker）">启动graphnode（docker）</h2>
+<p>确保docker已经启动</p>
+<pre><code class="lang-sh">docker-compose up
+</code></pre>
+<h2 id="创建subgraph（本地）">创建subgraph（本地）</h2>
+<pre><code class="lang-sh"><span class="hljs-comment"># 先创建</span>
+yarn create-local
+<span class="hljs-comment"># 后部署</span>
+yarn deploy-local
+</code></pre>
+<p><img src="assets/image-20220519221014419.png" alt="image-20220519221014419"></p>
+<p>同步事件（需要几分钟）</p>
+<p><img src="assets/image-20221005130354662.png" alt="image-20221005130354662"></p>
+<p>使用浏览器查看日志信息（在truffle migrate中，会自动执行：3_create_gravatars.js，这个脚本会调用合约，发送两个事件）</p>
+<p>url：<a href="http://127.0.0.1:8000/subgraphs/name/dukedaily/example-subgraph/graphql" target="_blank">http://127.0.0.1:8000/subgraphs/name/dukedaily/example-subgraph/graphql</a></p>
+<pre><code class="lang-sql">{
+  gravatars {
+    id
+    owner
+    displayName
+    imageUrl
+  }
 }
 </code></pre>
-<h2 id="下次预告">下次预告</h2>
-<ol>
-<li>使用工程化来管理合约</li>
-<li>自动编译、部署、verify、单元测试、fork主网</li>
-</ol>
-<h2 id="资源链接">资源链接</h2>
-<ol>
-<li>详细知识点：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a></li>
-<li>快速添目标网络：<a href="https://chainlist.org/" target="_blank">https://chainlist.org/</a></li>
-<li>水龙头领取Goerli主币：<a href="https://goerlifaucet.com/" target="_blank">https://goerlifaucet.com/</a></li>
-<li>一键领取多个水龙头，需要Twitter登录：<a href="https://faucet.paradigm.xyz/" target="_blank">https://faucet.paradigm.xyz/</a></li>
-<li>详细知识点托管在github：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a></li>
-</ol>
-<p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
-<blockquote>
-<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
-</blockquote>
+<p>执行请求成功！</p>
+<p><img src="assets/image-20220519221147734.png" alt="image-20220519221147734"></p>
+<h1 id="四、准备前端">四、准备前端</h1>
+<pre><code class="lang-sh">git <span class="hljs-built_in">clone</span> git@github.com:graphprotocol/ethdenver-dapp.git
+<span class="hljs-built_in">cd</span> ethdenver-dapp
+</code></pre>
+<h2 id="前端配置graph">前端配置graph</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">#echo &quot;REACT_APP_GRAPHQL_ENDPOINT=http://localhost:8000/subgraphs/name/&lt;GITHUB_USERNAME&gt;/example-subgraph&quot; &gt; .env</span>
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;REACT_APP_GRAPHQL_ENDPOINT=http://localhost:8000/subgraphs/name/dukedaily/example-subgraph&quot;</span> &gt; .env
+</code></pre>
+<h2 id="启动前端">启动前端</h2>
+<pre><code class="lang-sh">yarn install  <span class="hljs-comment"># global VPN mode</span>
+yarn start
+</code></pre>
+<h2 id="安装有问题（可选）">安装有问题（可选）</h2>
+<pre><code class="lang-sh"><span class="hljs-comment"># 删除文件</span>
+rm -rf yarn.lock
+
+<span class="hljs-comment"># 安装nvm，安装后需要配置文件，请仔细查看打印的log，有指导</span>
+brew install nvm
+
+<span class="hljs-comment"># 切换node版本，版本查询：https://www.npmjs.com/package/node</span>
+nvm install v10.24.1
+nvm use v10.24.1
+
+<span class="hljs-comment"># 重新安装</span>
+npm install
+</code></pre>
+<h2 id="查看效果">查看效果</h2>
+<p>效果如下，切换Order By可以调整展示顺序，由于网络问题，图片没能正常展示，可以在代码中自行替换。</p>
+<p><img src="assets/image-20220519223000254.png" alt="image-20220519223000254"></p>
 
                                 
                                 </section>
@@ -1777,12 +1654,12 @@ contract WorldCupLottery {
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 第八章:项目实战-世界杯竞猜">
+                <a href="01_概述.html" class="navigation navigation-prev " aria-label="Previous page: 第1节:概述">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../09_EVM/" class="navigation navigation-next " aria-label="Next page: 第九章:EVM">
+                <a href="../08_项目实战-世界杯竞猜/" class="navigation navigation-next " aria-label="Next page: 第八章:项目实战-世界杯竞猜">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1793,7 +1670,7 @@ contract WorldCupLottery {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"next":{"title":"第九章:EVM","level":"1.12","depth":1,"path":"09_EVM/README.md","ref":"09_EVM/README.md","articles":[]},"previous":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","mtime":"2022-09-29T01:48:52.324Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-09-29T05:23:42.588Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:部署","level":"1.10.2","depth":2,"next":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","articles":[]}]},"previous":{"title":"第1节:概述","level":"1.10.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07_subgraph/02_部署.md","mtime":"2022-10-05T08:29:26.586Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-05T08:31:43.191Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
