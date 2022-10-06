@@ -95,7 +95,7 @@
 * [第六章:ethers库（空内容）](06_ethers/README.md)
 * [第七章:subgraph](07_subgraph/README.md)
     * [第1节:概述](07_subgraph/01_概述.md)
-    * [第2节:部署](07_subgraph/02_部署.md)
+    * [第2节:实战教程](07_subgraph/02_实战教程.md)
 * [第八章:项目实战-世界杯竞猜](08_项目实战-世界杯竞猜/README.md)
     * [第1节:世界杯竞猜-合约](08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md)
 * [第九章:EVM](09_EVM/README.md)

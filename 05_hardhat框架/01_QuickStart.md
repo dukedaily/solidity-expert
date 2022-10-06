@@ -46,7 +46,7 @@ npx hardhat run scripts/deploy.ts --network localhost
 
 ## hardhat-toolbox
 
-当前版本：hardhat：^2.11.1，在配置文件中，引用了伊恩hardhat-toolbox包，这是一个集合，安装了常用的npm包。
+当前版本：hardhat：^2.11.1，在配置文件中，引用了hardhat-toolbox包，这是一个集合，安装了常用的npm包。
 
 ```js
 import { HardhatUserConfig } from "hardhat/config";
