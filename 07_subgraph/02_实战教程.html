@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第2节:部署 · HonKit</title>
+        <title>第2节:实战教程 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -1394,12 +1394,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.2" data-path="02_部署.html">
+        <li class="chapter active" data-level="1.10.2" data-path="02_实战教程.html">
             
-                <a href="02_部署.html">
+                <a href="02_实战教程.html">
             
                     
-                    第2节:部署
+                    第2节:实战教程
             
                 </a>
             
@@ -1500,7 +1500,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第2节:部署</a>
+        <a href=".." >第2节:实战教程</a>
     </h1>
 </div>
 
@@ -1515,76 +1515,81 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第1节：本地化部署ganache和graphnode">第1节：本地化部署ganache和graphnode</h1>
-<h1 id="参考">参考</h1>
-<ol>
-<li>官方文档：<a href="https://thegraph.academy/developers/local-development/" target="_blank">https://thegraph.academy/developers/local-development/</a></li>
-<li>example：<a href="https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/" target="_blank">https://thegraph.com/docs/en/deploying/deploying-a-subgraph-to-hosted/</a></li>
-<li>获取代码请移步这里：<a href="https://github.com/dukedaily/subgraph-demo" target="_blank">https://github.com/dukedaily/subgraph-demo</a></li>
-</ol>
-<h1 id="一、安装准备">一、安装准备</h1>
-<h2 id="命令">命令</h2>
-<pre><code class="lang-sh">npm install -g ganache-cli truffle @graphprotocol/graph-cli
+                                <h1 id="第2节：subgraph实现dapp实战教程">第2节：subgraph实现dapp实战教程</h1>
+<blockquote>
+<p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+</blockquote>
+<p>通过学习本文，将全面掌握如何搭建graphnode，创建部署subgraph，以及如何与合约前端结合展示，通过一个完整的dapp案例，展示dapp开发的全部流程</p>
+<ul>
+<li><p>本文代码：<a href="https://github.com/dukedaily/subgraph-demo" target="_blank">https://github.com/dukedaily/subgraph-demo</a></p>
+</li>
+<li><p>本文视频：录制中⏺️</p>
+</li>
+<li><p>效果展示：<a href="https://dukedaily.github.io/subgraph-demo-dapp（需要先下载代码，本地运行docker-compose" target="_blank">https://dukedaily.github.io/subgraph-demo-dapp（需要先下载代码，本地运行docker-compose</a> up）</p>
+<p><img src="assets/image-5022356.png" alt="image"></p>
+</li>
+</ul>
+<h2 id="1-下载代码">1. 下载代码</h2>
+<pre><code class="lang-sh">git <span class="hljs-built_in">clone</span> git@github.com:dukedaily/subgraph-demo-dapp.git
 </code></pre>
-<h2 id="创建项目">创建项目</h2>
-<pre><code class="lang-sh">graph init --from-example dukedaily/example-subgraph
-</code></pre>
-<p><img src="assets/image-20220519214848779.png" alt="image-20220519214848779"></p>
-<p>如果安装依赖失败，可以手动安装依赖</p>
-<pre><code class="lang-sh">yarn install
-</code></pre>
-<h2 id="启动ganache-cli">启动ganache-cli</h2>
-<pre><code class="lang-sh">ganache-cli -h 0.0.0.0
-</code></pre>
-<h1 id="二、部署合约">二、部署合约</h1>
-<h2 id="更新图片">更新图片</h2>
-<p>替换Migrations/3_create_gravatars.js中的链接：（原demo中的链接已经失效）</p>
-<pre><code class="lang-sh"><span class="hljs-comment"># Carl: </span>
-https://gateway.pinata.cloud/ipfs/QmRRPWG96cmgTn2qSzjwr2qvfNEuhunv6FNeMFGa9bx6mQ
+<h2 id="2-部署合约">2. 部署合约</h2>
+<pre><code class="lang-Bash"><span class="hljs-comment"># 进入合约目录</span>
+<span class="hljs-built_in">cd</span> subgraph-demo-dapp/contracts
 
-<span class="hljs-comment"># Lucas: </span>
-https://gateway.pinata.cloud/ipfs/QmcJYkCKK7QPmYWjp4FD2e3Lv5WCGFuHNUByvGKBaytif4
-</code></pre>
-<h2 id="编译部署">编译部署</h2>
-<pre><code class="lang-sh">$ <span class="hljs-built_in">cd</span> example-subgraph
-$ truffle compile
-$ truffle migrate
-</code></pre>
-<p><img src="assets/image-20220519215435855.png" alt="image-20220519215435855"></p>
-<p>部署后得到目标地址：==0x32969911a7C0396d7BbAe2290e5Ca98f54C38AB8==，需要subgraph来监听这个地址。</p>
-<h1 id="三、配置subgraph">三、配置subgraph</h1>
-<p>在subgraph.yaml中，替换地址<ganache_contract_address>为上面部署的地址！</ganache_contract_address></p>
-<pre><code class="lang-sh"><span class="hljs-comment">#sed -i -e \</span>
-<span class="hljs-comment">#  &apos;s/0x2E645469f354BB4F5c8a05B3b30A929361cf77eC/&lt;GANACHE_CONTRACT_ADDRESS&gt;/g&apos; \</span>
-<span class="hljs-comment">#  subgraph.yaml</span>
+<span class="hljs-comment"># 配置.env信息</span>
+ETHERSCAN_API_KEY=<span class="hljs-string">&apos;&apos;</span>
+ALCHEMY_KEY=<span class="hljs-string">&apos;&apos;</span>
+INFURA_KEY=<span class="hljs-string">&apos;&apos;</span>
 
-sed -i -e \
-  <span class="hljs-string">&apos;s/0x2E645469f354BB4F5c8a05B3b30A929361cf77eC/0x32969911a7C0396d7BbAe2290e5Ca98f54C38AB8/g&apos;</span> \
-  subgraph.yaml
+MNEMONIC=<span class="hljs-string">&apos;&apos;</span>
+PRIVATE_KEY=<span class="hljs-string">&apos;&apos;</span>
+
+<span class="hljs-comment"># 安装</span>
+npm i
+
+<span class="hljs-comment"># 编译</span>
+npm run compile
+
+<span class="hljs-comment"># 部署：address: 0x48d2825f3238db40797dF659C97188d289401311</span>
+npx hardhat run scripts/deploy.ts --network goerli
+
+<span class="hljs-comment"># 初始化</span>
+npx hardhat run scripts/setup.ts --network goerli
+
+<span class="hljs-comment"># verify</span>
+npx hardhat verify 0x48d2825f3238db40797dF659C97188d289401311 --network goerli
 </code></pre>
-<p>替换后：</p>
-<p><img src="assets/image-20220519215644410.png" alt="image-20220519215644410"></p>
-<p>修改docker-compose.yml文件，将下图：v0.22.0删掉，保证使用最新版本。</p>
-<p><img src="assets/image-20220519220622669.png" alt="image-20220519220622669"></p>
-<h2 id="编译subgraph">编译subgraph</h2>
-<pre><code class="lang-sh">yarn codegen
-yarn build
+<h2 id="3-配置subgraph">3. 配置subgraph</h2>
+<p>请查看具体文件：</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># 三个文件的关系：</span>
+subgraph.yaml：需要监听合约信息配置，包括：
+    - 合约地址
+    - 网络
+    - 事件
+    - 起始块高
+schema.graphql：映射到本地db中的格式
+    - 定义本地数据表，与脸上事件进行映射等
+
+src/mapping.ts；真正的映射逻辑，业务逻辑
+    - NewGravatar 链上合约发送到事件
+    - Gravatar graph本地定义的结构（schema）
+    - NewGravatar -&gt; mappings -&gt; Gravatar -&gt; 入库
 </code></pre>
-<p><img src="assets/image-20220519215921877.png" alt="image-20220519215921877"></p>
-<h2 id="启动graphnode（docker）">启动graphnode（docker）</h2>
-<p>确保docker已经启动</p>
-<pre><code class="lang-sh">docker-compose up
+<h2 id="4-启动graphnode（docker）">4. 启动graphnode（docker）</h2>
+<pre><code class="lang-sh"><span class="hljs-comment"># 先修改监听的网络rpc: ethereum: &apos;goerli:https://ethereum-goerli-rpc.allthatnode.com&apos;</span>
+
+<span class="hljs-comment"># 确保docker已经启动</span>
+docker-compose up
 </code></pre>
-<h2 id="创建subgraph（本地）">创建subgraph（本地）</h2>
-<pre><code class="lang-sh"><span class="hljs-comment"># 先创建</span>
+<h2 id="5-创建subgraph（本地）">5. 创建subgraph（本地）</h2>
+<pre><code class="lang-sh"><span class="hljs-comment"># 先创建subgraph</span>
 yarn create-local
+
 <span class="hljs-comment"># 后部署</span>
 yarn deploy-local
 </code></pre>
 <p><img src="assets/image-20220519221014419.png" alt="image-20220519221014419"></p>
-<p>同步事件（需要几分钟）</p>
-<p><img src="assets/image-20221005130354662.png" alt="image-20221005130354662"></p>
-<p>使用浏览器查看日志信息（在truffle migrate中，会自动执行：3_create_gravatars.js，这个脚本会调用合约，发送两个事件）</p>
+<h2 id="6-测试一下效果">6. 测试一下效果</h2>
 <p>url：<a href="http://127.0.0.1:8000/subgraphs/name/dukedaily/example-subgraph/graphql" target="_blank">http://127.0.0.1:8000/subgraphs/name/dukedaily/example-subgraph/graphql</a></p>
 <pre><code class="lang-sql">{
   gravatars {
@@ -1597,20 +1602,17 @@ yarn deploy-local
 </code></pre>
 <p>执行请求成功！</p>
 <p><img src="assets/image-20220519221147734.png" alt="image-20220519221147734"></p>
-<h1 id="四、准备前端">四、准备前端</h1>
-<pre><code class="lang-sh">git <span class="hljs-built_in">clone</span> git@github.com:graphprotocol/ethdenver-dapp.git
-<span class="hljs-built_in">cd</span> ethdenver-dapp
-</code></pre>
-<h2 id="前端配置graph">前端配置graph</h2>
+<h2 id="7-准备前端">7. 准备前端</h2>
+<p>进入到dapp文件夹，修改内容如下：</p>
 <pre><code class="lang-sh"><span class="hljs-comment">#echo &quot;REACT_APP_GRAPHQL_ENDPOINT=http://localhost:8000/subgraphs/name/&lt;GITHUB_USERNAME&gt;/example-subgraph&quot; &gt; .env</span>
 
-<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;REACT_APP_GRAPHQL_ENDPOINT=http://localhost:8000/subgraphs/name/dukedaily/example-subgraph&quot;</span> &gt; .env
+REACT_APP_GRAPHQL_ENDPOINT=http://127.0.0.1:8000/subgraphs/name/dukedaily/subgraph-demo
 </code></pre>
-<h2 id="启动前端">启动前端</h2>
+<p>启动前端</p>
 <pre><code class="lang-sh">yarn install  <span class="hljs-comment"># global VPN mode</span>
 yarn start
 </code></pre>
-<h2 id="安装有问题（可选）">安装有问题（可选）</h2>
+<h2 id="8-安装有问题（可选）">8. 安装有问题（可选）</h2>
 <pre><code class="lang-sh"><span class="hljs-comment"># 删除文件</span>
 rm -rf yarn.lock
 
@@ -1624,9 +1626,13 @@ nvm use v10.24.1
 <span class="hljs-comment"># 重新安装</span>
 npm install
 </code></pre>
-<h2 id="查看效果">查看效果</h2>
+<h2 id="9-查看效果">9. 查看效果</h2>
 <p>效果如下，切换Order By可以调整展示顺序，由于网络问题，图片没能正常展示，可以在代码中自行替换。</p>
-<p><img src="assets/image-20220519223000254.png" alt="image-20220519223000254"></p>
+<p><img src="assets/image.png" alt="image"></p>
+<p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
+<blockquote>
+<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
+</blockquote>
 
                                 
                                 </section>
@@ -1670,7 +1676,7 @@ npm install
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节:部署","level":"1.10.2","depth":2,"next":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","articles":[]}]},"previous":{"title":"第1节:概述","level":"1.10.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07_subgraph/02_部署.md","mtime":"2022-10-05T08:29:26.586Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-05T08:31:43.191Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:实战教程","level":"1.10.2","depth":2,"next":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md","articles":[]}]},"previous":{"title":"第1节:概述","level":"1.10.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07_subgraph/02_实战教程.md","mtime":"2022-10-06T05:25:18.393Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-06T05:27:19.920Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
