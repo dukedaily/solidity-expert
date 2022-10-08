@@ -1,8 +1,43 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
+    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/Lock.sol": {
+      "lastModificationDate": 1665190609954,
+      "contentHash": "ae66265769cc28ebdaa34881df95bc5e",
+      "sourceName": "contracts/Lock.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.9"
+      ],
+      "artifacts": [
+        "Lock"
+      ]
+    },
     "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/WorldCup.sol": {
-      "lastModificationDate": 1664865334766,
+      "lastModificationDate": 1665190614273,
       "contentHash": "88cc4d0c3a5253bc9d9519224dae99dd",
       "sourceName": "contracts/WorldCup.sol",
       "solcConfig": {
@@ -73,10 +108,10 @@
         "console"
       ]
     },
-    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/mockToken/FHTToken.sol": {
-      "lastModificationDate": 1665190243335,
-      "contentHash": "518b24881dbbef1b5e966f0bd514f776",
-      "sourceName": "contracts/mockToken/FHTToken.sol",
+    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/tokens/WorldCupToken.sol": {
+      "lastModificationDate": 1665216217283,
+      "contentHash": "feeac0dd3ab4e8f73bc6904ad6bb0ded",
+      "sourceName": "contracts/tokens/WorldCupToken.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -107,7 +142,7 @@
         "^0.8.9"
       ],
       "artifacts": [
-        "FHTToken"
+        "WorldCupToken"
       ]
     },
     "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
@@ -184,6 +219,41 @@
         "IERC20"
       ]
     },
+    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1664868221601,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
     "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
       "lastModificationDate": 1664868604072,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
@@ -221,10 +291,10 @@
         "IERC20Metadata"
       ]
     },
-    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/@openzeppelin/contracts/utils/Context.sol": {
-      "lastModificationDate": 1664868221601,
-      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
-      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/tokens/mockToken/FHTToken.sol": {
+      "lastModificationDate": 1665190243335,
+      "contentHash": "518b24881dbbef1b5e966f0bd514f776",
+      "sourceName": "contracts/tokens/mockToken/FHTToken.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -248,18 +318,20 @@
           }
         }
       },
-      "imports": [],
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+      ],
       "versionPragmas": [
-        "^0.8.0"
+        "^0.8.9"
       ],
       "artifacts": [
-        "Context"
+        "FHTToken"
       ]
     },
-    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/officialTokens/BAYC-ERC721.sol": {
+    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/tokens/officialTokens/BAYC-ERC721.sol": {
       "lastModificationDate": 1665190476988,
       "contentHash": "cecd34730551791500814e2684fde4da",
-      "sourceName": "contracts/officialTokens/BAYC-ERC721.sol",
+      "sourceName": "contracts/tokens/officialTokens/BAYC-ERC721.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -318,10 +390,10 @@
         "Strings"
       ]
     },
-    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/officialTokens/BitDao-ERC20.sol": {
+    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/tokens/officialTokens/BitDao-ERC20.sol": {
       "lastModificationDate": 1665190567330,
       "contentHash": "6b537470158bcfd15a2a7950b4812ce2",
-      "sourceName": "contracts/officialTokens/BitDao-ERC20.sol",
+      "sourceName": "contracts/tokens/officialTokens/BitDao-ERC20.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -358,41 +430,6 @@
         "IERC20",
         "Math",
         "SafeMath"
-      ]
-    },
-    "/Users/duke.du/Documents/00-blockchain-expert/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/Lock.sol": {
-      "lastModificationDate": 1665190609954,
-      "contentHash": "ae66265769cc28ebdaa34881df95bc5e",
-      "sourceName": "contracts/Lock.sol",
-      "solcConfig": {
-        "version": "0.8.9",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.9"
-      ],
-      "artifacts": [
-        "Lock"
       ]
     }
   }

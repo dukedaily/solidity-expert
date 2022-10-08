@@ -2,16 +2,15 @@ import { ethers } from "hardhat";
 
 async function main() {
 
-  // const totalSupply = 100000000 * 10**18
-  const totalSupply = ethers.utils.parseUnits('100000000', 18)
+  const totalSupply = ethers.utils.parseUnits('10000000', 18)
   console.log('totalSupply:', totalSupply);
   
-  const FHTToken = await ethers.getContractFactory("FHTToken");
-  const fht = await FHTToken.deploy("FHT Token", "FHT", totalSupply);
+  const FHTToken = await ethers.getContractFactory('WorldCupToken');
+  const fht = await FHTToken.deploy("World Cup Token", "WCT", totalSupply);
 
   await fht.deployed();
 
-  console.log(`new FHT Token deployed to ${fht.address}`);
+  console.log(`new World Cup Token deployed to ${fht.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
