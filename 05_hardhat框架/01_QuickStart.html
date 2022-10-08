@@ -1426,9 +1426,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.11.1" data-path="../08_项目实战-世界杯竞猜/01_世界杯竞猜_合约.md">
+        <li class="chapter " data-level="1.11.1" data-path="../08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.html">
             
-                <span>
+                <a href="../08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.html">
             
                     
                     第1节:世界杯竞猜-合约
@@ -1564,12 +1564,6 @@ npx hardhat run scripts/deploy.ts --network localhost
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> config;
 </code></pre>
-<p>跟踪进去，可以看到内容如下，相当给力了！</p>
-<pre><code class="lang-sh">npm install --save-dev @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers
-</code></pre>
-<p>旧版本：（npm install --save-dev hardhat@2.9.7）</p>
-<pre><code class="lang-sh">npm install --save-dev @nomiclabs/hardhat-waffle@^2.0.0 ethereum-waffle@^3.0.0 chai@^4.2.0 @nomiclabs/hardhat-ethers@^2.0.0 ethers@^5.0.0 @nomiclabs/hardhat-etherscan@^3.0.0 dotenv@^16.0.0 eslint@^7.29.0 eslint-config-prettier@^8.3.0 eslint-config-standard@^16.0.3 eslint-plugin-import@^2.23.4 eslint-plugin-node@^11.1.0 eslint-plugin-prettier@^3.4.0 eslint-plugin-promise@^5.1.0 hardhat-gas-reporter@^1.0.4 prettier@^2.3.2 prettier-plugin-solidity@^1.0.0-beta.13 solhint@^3.3.6 solidity-coverage@^0.7.16 @typechain/ethers-v5@^7.0.1 @typechain/hardhat@^2.3.0 @typescript-eslint/eslint-plugin@^4.29.1 @typescript-eslint/parser@^4.29.1 @types/chai@^4.2.21 @types/node@^12.0.0 @types/mocha@^9.0.0 ts-node@^10.1.0 typechain@^5.1.2 typescript@^4.5.2
-</code></pre>
 <h2 id="修改配置文件">修改配置文件</h2>
 <ol>
 <li><p>修改.env</p>
@@ -1590,16 +1584,6 @@ PRIVATE_KEY=
 
 <span class="hljs-comment">#在配置文件中引用</span>
 require(<span class="hljs-string">&apos;dotenv&apos;</span>).config()
-</code></pre>
-</li>
-<li><p>部署不同网络</p>
-<pre><code class="lang-js">npx hardhat run scripts/deploy.ts --network ropsten
-</code></pre>
-</li>
-<li><p>Verify</p>
-<pre><code class="lang-sh"><span class="hljs-comment">#https://ropsten.etherscan.io/address/0x61c8E000634154dF38B2ec23483fa2E08984d938#code</span>
-
-npx hardhat verify 0x61c8E000634154dF38B2ec23483fa2E08984d938 1694667145  --network ropsten
 </code></pre>
 </li>
 <li><p>配置文件完整内容：</p>
@@ -1659,6 +1643,18 @@ npx hardhat verify 0x61c8E000634154dF38B2ec23483fa2E08984d938 1694667145  --netw
 </code></pre>
 </li>
 </ol>
+<ol>
+<li><p>部署不同网络</p>
+<pre><code class="lang-js">npx hardhat run scripts/deploy.ts --network ropsten
+</code></pre>
+</li>
+<li><p>Verify</p>
+<pre><code class="lang-sh"><span class="hljs-comment">#https://ropsten.etherscan.io/address/0x61c8E000634154dF38B2ec23483fa2E08984d938#code</span>
+
+npx hardhat verify 0x61c8E000634154dF38B2ec23483fa2E08984d938 1694667145  --network ropsten
+</code></pre>
+</li>
+</ol>
 <h2 id="参考链接">参考链接</h2>
 <ol>
 <li>hardhat手册：<a href="https://hardhat.org/hardhat-runner/docs/getting-started#overview" target="_blank">https://hardhat.org/hardhat-runner/docs/getting-started#overview</a></li>
@@ -1708,7 +1704,7 @@ npx hardhat verify 0x61c8E000634154dF38B2ec23483fa2E08984d938 1694667145  --netw
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:QuickStart","level":"1.8.1","depth":2,"next":{"title":"第2节:单元测试","level":"1.8.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},"previous":{"title":"第五章:hardhat框架","level":"1.8","depth":1,"path":"05_hardhat框架/README.md","ref":"05_hardhat框架/README.md","articles":[{"title":"第1节:QuickStart","level":"1.8.1","depth":2,"path":"05_hardhat框架/01_QuickStart.md","ref":"05_hardhat框架/01_QuickStart.md","articles":[]},{"title":"第2节:单元测试","level":"1.8.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},{"title":"第3节:fork主网","level":"1.8.3","depth":2,"path":"05_hardhat框架/03_fork主网.md","ref":"05_hardhat框架/03_fork主网.md","articles":[]},{"title":"第4节:多版本编译","level":"1.8.4","depth":2,"path":"05_hardhat框架/04_多版本编译.md","ref":"05_hardhat框架/04_多版本编译.md","articles":[]},{"title":"第5节:不同网络相同地址","level":"1.8.5","depth":2,"path":"05_hardhat框架/05_不同网络相同地址.md","ref":"05_hardhat框架/05_不同网络相同地址.md","articles":[]},{"title":"第6节:graphnode-subgraph","level":"1.8.6","depth":2,"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","ref":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","articles":[]},{"title":"第7节:07_综合教程","level":"1.8.7","depth":2,"path":"05_hardhat框架/07_综合教程.md","ref":"05_hardhat框架/07_综合教程.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"05_hardhat框架/01_QuickStart.md","mtime":"2022-10-06T00:52:47.250Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-06T05:27:19.920Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节:QuickStart","level":"1.8.1","depth":2,"next":{"title":"第2节:单元测试","level":"1.8.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},"previous":{"title":"第五章:hardhat框架","level":"1.8","depth":1,"path":"05_hardhat框架/README.md","ref":"05_hardhat框架/README.md","articles":[{"title":"第1节:QuickStart","level":"1.8.1","depth":2,"path":"05_hardhat框架/01_QuickStart.md","ref":"05_hardhat框架/01_QuickStart.md","articles":[]},{"title":"第2节:单元测试","level":"1.8.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},{"title":"第3节:fork主网","level":"1.8.3","depth":2,"path":"05_hardhat框架/03_fork主网.md","ref":"05_hardhat框架/03_fork主网.md","articles":[]},{"title":"第4节:多版本编译","level":"1.8.4","depth":2,"path":"05_hardhat框架/04_多版本编译.md","ref":"05_hardhat框架/04_多版本编译.md","articles":[]},{"title":"第5节:不同网络相同地址","level":"1.8.5","depth":2,"path":"05_hardhat框架/05_不同网络相同地址.md","ref":"05_hardhat框架/05_不同网络相同地址.md","articles":[]},{"title":"第6节:graphnode-subgraph","level":"1.8.6","depth":2,"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","ref":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","articles":[]},{"title":"第7节:07_综合教程","level":"1.8.7","depth":2,"path":"05_hardhat框架/07_综合教程.md","ref":"05_hardhat框架/07_综合教程.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"05_hardhat框架/01_QuickStart.md","mtime":"2022-10-06T07:54:20.467Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-08T00:26:43.031Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
