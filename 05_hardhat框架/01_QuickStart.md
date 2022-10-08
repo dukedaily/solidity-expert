@@ -57,19 +57,6 @@ const config: HardhatUserConfig = {
 };
 
 export default config;
-
-```
-
-跟踪进去，可以看到内容如下，相当给力了！
-
-```sh
-npm install --save-dev @nomicfoundation/hardhat-toolbox @nomicfoundation/hardhat-network-helpers @nomicfoundation/hardhat-chai-matchers @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan chai ethers hardhat-gas-reporter solidity-coverage @typechain/hardhat typechain @typechain/ethers-v5 @ethersproject/abi @ethersproject/providers
-```
-
-旧版本：（npm install --save-dev hardhat@2.9.7）
-
-```sh
-npm install --save-dev @nomiclabs/hardhat-waffle@^2.0.0 ethereum-waffle@^3.0.0 chai@^4.2.0 @nomiclabs/hardhat-ethers@^2.0.0 ethers@^5.0.0 @nomiclabs/hardhat-etherscan@^3.0.0 dotenv@^16.0.0 eslint@^7.29.0 eslint-config-prettier@^8.3.0 eslint-config-standard@^16.0.3 eslint-plugin-import@^2.23.4 eslint-plugin-node@^11.1.0 eslint-plugin-prettier@^3.4.0 eslint-plugin-promise@^5.1.0 hardhat-gas-reporter@^1.0.4 prettier@^2.3.2 prettier-plugin-solidity@^1.0.0-beta.13 solhint@^3.3.6 solidity-coverage@^0.7.16 @typechain/ethers-v5@^7.0.1 @typechain/hardhat@^2.3.0 @typescript-eslint/eslint-plugin@^4.29.1 @typescript-eslint/parser@^4.29.1 @types/chai@^4.2.21 @types/node@^12.0.0 @types/mocha@^9.0.0 ts-node@^10.1.0 typechain@^5.1.2 typescript@^4.5.2
 ```
 
 
@@ -98,21 +85,7 @@ npm install --save-dev @nomiclabs/hardhat-waffle@^2.0.0 ethereum-waffle@^3.0.0 c
    require('dotenv').config()
    ```
 
-3. 部署不同网络
-
-   ```js
-   npx hardhat run scripts/deploy.ts --network ropsten    
-   ```
-
-4. Verify
-
-   ```sh
-   #https://ropsten.etherscan.io/address/0x61c8E000634154dF38B2ec23483fa2E08984d938#code
-   
-   npx hardhat verify 0x61c8E000634154dF38B2ec23483fa2E08984d938 1694667145  --network ropsten
-   ```
-
-5. 配置文件完整内容：
+3. 配置文件完整内容：
 
    ```ts
    import { HardhatUserConfig } from "hardhat/config";
@@ -171,6 +144,21 @@ npm install --save-dev @nomiclabs/hardhat-waffle@^2.0.0 ethereum-waffle@^3.0.0 c
    ```
 
 
+4. 部署不同网络
+
+   ```js
+   npx hardhat run scripts/deploy.ts --network ropsten    
+   ```
+
+5. Verify
+
+   ```sh
+   #https://ropsten.etherscan.io/address/0x61c8E000634154dF38B2ec23483fa2E08984d938#code
+   
+   npx hardhat verify 0x61c8E000634154dF38B2ec23483fa2E08984d938 1694667145  --network ropsten
+   ```
+
+   
 
 ## 参考链接
 
