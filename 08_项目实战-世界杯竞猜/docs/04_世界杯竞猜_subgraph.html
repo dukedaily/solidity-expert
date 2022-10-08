@@ -1554,7 +1554,112 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="第4节：世界杯竞猜（subgraph）">第4节：世界杯竞猜（subgraph）</h1>
+<blockquote>
+<p> 本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+</blockquote>
+<h2 id="概述">概述</h2>
+<p>subgraph是DAPP领域最重要的基建之一，主流协议都在使用，其功能为：</p>
+<ul>
+<li>链下监听事件，逻辑处理，存储到数据库中，供前端调用；</li>
+<li>常用于：统计历史信息等，仅做展示相关，可以节约链上存储成本，且响应更快；</li>
+<li>请求subgraph的时候使用<a href="https://thegraph.com/docs/en/querying/graphql-api/" target="_blank">graphql</a>语言，而非sql语句。</li>
+</ul>
+<p>下图的是uniswapV3的面板信息，其中绝大多数内容都取自subgraph服务。</p>
+<p><img src="assets/image-20221006102831823.png" alt="image-20221006102831823"></p>
+<h2 id="举例">举例</h2>
+<ul>
+<li><p>uniswap v3的<a href="https://info.uniswap.org/#/tokens" target="_blank">token功能</a>主要是从subgraph中读取的</p>
+</li>
+<li><p>问：uniswapV3 查询当前有哪些pool？</p>
+</li>
+<li><p>Url：<a href="https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3" target="_blank">https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3</a></p>
+</li>
+<li><p>请求语句：</p>
+<pre><code class="lang-js">{
+  <span class="hljs-function"><span class="hljs-title">pools</span>(<span class="hljs-params">
+      first: <span class="hljs-number">50</span> 
+      orderBy: totalValueLockedUSD 
+      orderDirection: desc  
+      subgraphError: allow</span>)</span> {    
+      id    
+      __typename  
+    }
+}
+</code></pre>
+</li>
+<li><p>请求结果：(部分)</p>
+<pre><code class="lang-js">{
+  <span class="hljs-string">&quot;data&quot;</span>: {
+    <span class="hljs-string">&quot;pools&quot;</span>: [
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0x277667eb3e34f134adf870be9550e9f323d0dc24&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0xa850478adaace4c08fc61de44d8cf3b64f359bec&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0x8c0411f2ad5470a66cb2e9c64536cfb8dcd54d51&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      },
+      {
+        <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;0x055284a4ca6532ecc219ac06b577d540c686669d&quot;</span>,
+        <span class="hljs-string">&quot;__typename&quot;</span>: <span class="hljs-string">&quot;Pool&quot;</span>
+      }
+     ]
+  }
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="原理">原理</h2>
+<ol>
+<li>用户从合约侧发起交易；</li>
+<li>合约发送事件；</li>
+<li>由subgraph监听到该事件，并在内部执行逻辑（我们根据业务需求，自定义），处理后入库；</li>
+<li>用户（前端）从subgraph的数据空中读取数据，完成展示。</li>
+</ol>
+<p><img src="assets/subgraph流程图.jpg" alt="subgraph流程图"></p>
+<h2 id="可选资源">可选资源</h2>
+<p>subgraph一共有三种模式可以使用，具体如下（我们使用第三种）：</p>
+<ol>
+<li>the graph官方提供的host serivce模式（<a href="https://thegraph.com/blog/sunsetting-hosted-service/" target="_blank">已经废弃了</a>）</li>
+<li>the graph官方提供的去中心化网络：<a href="https://thegraph.com/docs/en/deploying/subgraph-studio/" target="_blank">subgraph studio</a>（需要token支持，激励别人帮忙加速索引，请自行尝试）</li>
+<li>使用the graph官方提供的开源代码自己搭建：<strong>（推荐，<a href="https://thegraph.academy/developers/local-development/" target="_blank">官方指导</a>）</strong><ol>
+<li>先试用docker创建一个：graph node</li>
+<li>在graph node上部署subgraph</li>
+</ol>
+</li>
+</ol>
+<h2 id="关系梳理">关系梳理</h2>
+<p>graph node和subgraph的关系如下，在graph node上可以部署多个subgraph，每个subgraph可以服务多个不同的项目。官方的host service（已经废弃），就是帮我们创建了一个graph node。</p>
+<p><img src="assets/graphnode.jpg" alt="graphnode"></p>
+<p>下面我们聊一聊如何进行使用docker搭建graphnode并部署自己的subgraph。</p>
+<h2 id="创建subgraph">创建subgraph</h2>
+<p>安装命令graph，用于创建subgraph项目，编译，部署等。</p>
+<pre><code class="lang-sh"><span class="hljs-comment">#安装命令</span>
+npm install -g  @graphprotocol/graph-cli
+</code></pre>
+<p>初始化项目</p>
+<pre><code class="lang-sh">graph init
+</code></pre>
+<p>具体选项跟随引导程序填写，选择：网络-&gt; 名称-&gt; 合约地址 -&gt; 合约名字，引导程序会自动在网络上拉取ABI（前提是我们verify了，否则需要自己填写）</p>
+<p><img src="assets/image-20221008181919484.png" alt="image-20221008181919484"></p>
+<p>由于我们将自己搭建graphnode，而不是使用官方的host service，所以可以忽略Next Steps中提示的内容。</p>
+<p>查看一下目录结构如下：</p>
+<p><img src="assets/image-20221008182708149.png" alt="image-20221008182708149"></p>
+<h2 id="业务改造">业务改造</h2>
+<p>在配置文件中增加扫块起点，如果不增加，则从最初开始扫块，效率太低了。</p>
+<p><img src="assets/image-20221008182827679.png" alt="image-20221008182827679"></p>
+<p>接下来我们修改代码：</p>
+<p>TODO</p>
+<p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
+<blockquote>
+<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
+</blockquote>
+
                                 
                                 </section>
                             
@@ -1597,7 +1702,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节:世界杯竞猜_subgraph","level":"1.11.4","depth":2,"next":{"title":"第九章:EVM","level":"1.12","depth":1,"path":"09_EVM/README.md","ref":"09_EVM/README.md","articles":[]},"previous":{"title":"第3节:世界杯竞猜-ERC20","level":"1.11.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","mtime":"2022-10-08T07:48:48.266Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-08T08:42:29.323Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节:世界杯竞猜_subgraph","level":"1.11.4","depth":2,"next":{"title":"第九章:EVM","level":"1.12","depth":1,"path":"09_EVM/README.md","ref":"09_EVM/README.md","articles":[]},"previous":{"title":"第3节:世界杯竞猜-ERC20","level":"1.11.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","mtime":"2022-10-08T10:44:13.560Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-08T10:44:59.826Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

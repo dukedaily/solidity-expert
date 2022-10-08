@@ -5,12 +5,12 @@ async function main() {
   const totalSupply = ethers.utils.parseUnits('10000000', 18)
   console.log('totalSupply:', totalSupply);
   
-  const FHTToken = await ethers.getContractFactory('WorldCupToken');
-  const fht = await FHTToken.deploy("World Cup Token", "WCT", totalSupply);
+  const WCToken = await ethers.getContractFactory('WorldCupToken');
 
-  await fht.deployed();
+  const wct = await WCToken.deploy("World Cup Token", "WCT", totalSupply);
+  await wct.deployed();
 
-  console.log(`new World Cup Token deployed to ${fht.address}`);
+  console.log(`new World Cup Token deployed to ${wct.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
