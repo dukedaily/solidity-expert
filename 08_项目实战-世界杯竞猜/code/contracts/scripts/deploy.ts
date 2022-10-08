@@ -2,7 +2,9 @@ import { ethers } from "hardhat";
 
 async function main() {
   const TWO_WEEKS_IN_SECS = 14 * 24 * 60 * 60;
-  const deadline = 1663150345 + TWO_WEEKS_IN_SECS;
+  const timestamp = Math.floor(Date.now() / 1000)
+  console.log(timestamp)
+  const deadline = timestamp + TWO_WEEKS_IN_SECS;
 
   const WorldCup = await ethers.getContractFactory("WorldCup");
   const worldcup = await WorldCup.deploy(deadline);

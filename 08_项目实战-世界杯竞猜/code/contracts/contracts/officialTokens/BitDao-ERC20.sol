@@ -364,7 +364,7 @@ library Counters {
  */
 abstract contract Context {
     function _msgSender() internal view virtual returns (address payable) {
-        return msg.sender;
+        return payable(msg.sender);
     }
 
     function _msgData() internal view virtual returns (bytes memory) {
@@ -765,7 +765,8 @@ contract ERC20 is Context, IERC20 {
 
 // Root file: contracts/BitDAO.sol
 
-pragma solidity >=0.6.5 <0.8.0;
+// pragma solidity >=0.6.5 <0.8.10;
+pragma solidity ^0.8.9;
 
 // import '/Users/stone/Desktop/BitDAO/node_modules/@openzeppelin/contracts/math/SafeMath.sol';
 // import '/Users/stone/Desktop/BitDAO/node_modules/@openzeppelin/contracts/utils/Arrays.sol';
@@ -1063,7 +1064,7 @@ contract BitDAO is ERC20 {
 		return uint256(n);
 	}
 
-	function getChainId() internal pure returns (uint256) {
+	function getChainId() internal view returns (uint256) {
 		uint256 chainId;
 		assembly {
 			chainId := chainid()
