@@ -40,12 +40,8 @@
 
 - 微信：Adugii
 - 公众号：阿杜在新加坡
-- Email：dukemecn@gmail.com
+- Twitter：dukedu2022
 
-## 乐捐Donate
-
-- ETH：0x24DFc2e2e9b73Be1f8cCbdB66642858466e590fC
-- BTC：38GqvS398GskBX39kijX8ST1tnjJhPzJ1V
 
 ## 马上入群
 
