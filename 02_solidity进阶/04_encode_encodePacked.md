@@ -2,7 +2,7 @@
 
 abi.**encode**：可以将data编码成bytes，生成的bytes总是32字节的倍数，不足32为会自动填充（用于给合约调用）；
 
-abi.**decode**：可以将bytes解码成data
+abi.**decode**：可以将bytes解码成data（可以只解析部分字段）
 
 abi.**encodePacked**：与abi.encode类似，但是生成的bytes是压缩过的（有些类型不会自动填充，无法传递给合约调用）。
 
@@ -41,12 +41,33 @@ contract AbiDecode {
         )
     {
         (x, addr, arr, myStruct) = abi.decode(data, (uint, address, uint[], MyStruct));
-        
+
         /* decode output: 
             0: uint256: x 10
             1: address: addr 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
             2: uint256[]: arr 1,2,3
             3: tuple(string,uint256[2]): myStruct ,10,20
+        */
+    }
+
+    // 可以只decode其中部分字段，而不用全部decode，当前案例中，只有第一个字段被解析了，其余为默认值
+    function decodeLess(bytes calldata data)
+        external
+        pure
+        returns (
+            uint x,
+            address addr,
+            uint[] memory arr,
+            MyStruct memory myStruct
+        )
+    {
+        (x) = abi.decode(data, (uint));
+
+        /* decode output: 
+            0: uint256: x 10
+            1: address: addr 0x0000000000000000000000000000000000000000
+            2: uint256[]: arr
+            3: tuple(string,uint256[2]): myStruct ,0,0
         */
     }
 
@@ -57,7 +78,7 @@ contract AbiDecode {
         uint16 z,
         string memory s
     ) external view returns (bytes memory) {
-        
+
         // encodePacked 不支持struct和mapping
         return abi.encodePacked(x, y, z, s);
 
