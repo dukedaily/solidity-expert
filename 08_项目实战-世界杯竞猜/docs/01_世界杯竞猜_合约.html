@@ -1617,174 +1617,152 @@
 </ol>
 <h2 id="代码">代码</h2>
 <ul>
-<li><p>goerli地址：0x9E896316F0610Cb053C62377601F64c909668334</p>
+<li><p>goerli地址：0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9</p>
 </li>
-<li><p><a href="https://goerli.etherscan.io/address/0x9e896316f0610cb053c62377601f64c909668334#writeContract" target="_blank">https://goerli.etherscan.io/address/0x9e896316f0610cb053c62377601f64c909668334#writeContract</a></p>
+<li><p><a href="https://goerli.etherscan.io/address/0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9" target="_blank">https://goerli.etherscan.io/address/0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9</a></p>
 </li>
 </ul>
-<pre><code class="lang-JavaScript"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.16</span>;
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// SPDX-License-Identifier: GPL-3.0</span>
+pragma solidity &gt;=<span class="hljs-number">0.7</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.9</span><span class="hljs-number">.0</span>;
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;hardhat/console.sol&quot;</span>;
 
-<span class="hljs-comment">// 没有main函数</span>
-contract Hellworld {
-    <span class="hljs-comment">// 合约之内，函数之外的字段，状态变量，真正上链的数据</span>
-    string private  gretting;
-
-    <span class="hljs-comment">// 写数据，花钱</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGreeting</span>(<span class="hljs-params">string memory _greeting</span>) <span class="hljs-title">public</span> </span>{
-        gretting = _greeting;
-    }
-
-    <span class="hljs-comment">// 读取，免费</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> gretting;
-    }
-}
-
-contract WorldCupLottery {
-    <span class="hljs-comment">// 1. 状态变量(真正上链）：管理员、第几期、记录所有玩家、统计每个球队参与者、记录获奖者信息、参赛球队</span>
-    <span class="hljs-comment">// 2. 核心方法：投票、开奖、领奖</span>
+contract WorldCup {
+    <span class="hljs-comment">// 1. 状态变量：管理员、所有玩家、获奖者地址、第几期、参赛球队</span>
+    <span class="hljs-comment">// 2. 核心方法：下注、开奖、</span>
     <span class="hljs-comment">// 3. 辅助方法：获取奖金池金额、管理员地址、当前期数、参与人数、所有玩家、参赛球队</span>
 
-    <span class="hljs-comment">// 管理员</span>
-    address public manager;
-
-    <span class="hljs-comment">//第几期</span>
+    address public admin;
     uint8 public currRound;
 
-    <span class="hljs-comment">// 参赛球队</span>
+    <span class="hljs-comment">// string[] public countries; // [&quot;GERMANY&quot;, &quot;FRANCH&quot;, &quot;CHINA&quot;, &quot;BRIZAL&quot;, &quot;KOREA&quot;]</span>
     string[] public countries = [<span class="hljs-string">&quot;GERMANY&quot;</span>, <span class="hljs-string">&quot;FRANCH&quot;</span>, <span class="hljs-string">&quot;CHINA&quot;</span>, <span class="hljs-string">&quot;BRIZAL&quot;</span>, <span class="hljs-string">&quot;KOREA&quot;</span>];
-
-    <span class="hljs-comment">// mapping</span>
-    <span class="hljs-comment">// mapping(第几期 =&gt; mapping(玩家地址 =&gt; 玩家的详情struct)）</span>
-    mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> Player)) public players;
-
-    <span class="hljs-comment">// mapping(第几期 =&gt; maping(中国 =&gt; address[张三，李四]))</span>
+    mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> Player)) players;
     mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> address[])) public countryToPlayers;
-
-    <span class="hljs-comment">// 张三 =&gt; 可以claim的数量</span>
     mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint256) public winnerVaults;
 
-    <span class="hljs-comment">// 没有被领取的奖励需要锁起来</span>
-    uint256 public lockAmt;
-
-    struct Player {
-        bool flag;
-
-        <span class="hljs-comment">// 一个玩家，可以同时投票多个国家，多票</span>
-        mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> uint) counts;
-    }
+    uint256 public immutable deadline;
+    uint256 public lockedAmts;
 
     enum Country {
-        GERMANY, FRANCH, CHINA, BRIZAL, KOREA
+        GERMANY,
+        FRANCH,
+        CHINA,
+        BRAZIL,
+        KOREA
     }
 
-    <span class="hljs-comment">// 修饰器，做一些权限校验，参数校验</span>
-    modifier onlyManager {
-        <span class="hljs-built_in">require</span>(msg.sender == manager, <span class="hljs-string">&quot;not authorized!&quot;</span>);
+    event Play(uint8 _currRound, address _player, Country _country);
+    event Finialize(uint8 _currRound, address[] _winners, uint256 currAvalBalance, uint256 _giftAmt);
+    event ClaimReward(address _claimer, uint256 _amt);
 
-        <span class="hljs-comment">// 被修饰的逻辑</span>
+    modifier onlyAdmin {
+        <span class="hljs-built_in">require</span>(msg.sender == admin, <span class="hljs-string">&quot;not authorized!&quot;</span>);
         _;
     }
 
-    event TransferMgr(address _prev, address _newMgr);
-    event Play(uint8 _round, address _player, uint8 _selected);
-    event Finalize(uint8 _round, Country _selected);
-    event ClaimReward(address _claimer, uint256 _amt);
-
-    <span class="hljs-comment">// 构造函数</span>
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-comment">// 交易的发起人是msg.sender,此时部署人就是manager</span>
-        manager = msg.sender;
+    struct Player {
+        bool isSet;
+        mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> uint256) counts;
     }
 
-    <span class="hljs-comment">// 转移manager</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferMgr</span>(<span class="hljs-params">address _newMgr</span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyManager</span> </span>{
-        <span class="hljs-comment">// require(msg.sender == manager, &quot;not authorized!&quot;);</span>
-        address prev = manager;
-        manager = _newMgr;
-        emit TransferMgr(prev, manager);
+    <span class="hljs-comment">// constructor(string[] memory _countries, uint256 _deadline) {</span>
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">uint256 _deadline</span>)</span> {
+        admin = msg.sender;
+        <span class="hljs-built_in">require</span>(_deadline &gt; block.timestamp, <span class="hljs-string">&quot;WorldCupLottery: invalid deadline!&quot;</span>);
+        deadline = _deadline;
     }
 
-    <span class="hljs-comment">// paly时，玩家需要转入 1ETH</span>
-    <span class="hljs-comment">// 如果想在发起交易的时候，转入资金，那么合约的方法必须修饰为payable</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">paly</span>(<span class="hljs-params">Country _selected</span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span>(<span class="hljs-params">Country _selected</span>) <span class="hljs-title">payable</span> <span class="hljs-title">external</span> </span>{
+        <span class="hljs-comment">// 参数校验</span>
+        <span class="hljs-built_in">require</span>(msg.value == <span class="hljs-number">1</span> gwei, <span class="hljs-string">&quot;invalid funds provided!&quot;</span>);
 
-        <span class="hljs-comment">// 金额校验</span>
-        <span class="hljs-built_in">require</span>(msg.value == <span class="hljs-number">1</span> gwei, <span class="hljs-string">&quot;invalid funds provided!&quot;</span>); 
+        <span class="hljs-built_in">require</span>(block.timestamp &lt; deadline, <span class="hljs-string">&quot;it&apos;s all over!&quot;</span>);
 
-        <span class="hljs-comment">// 更新countries，</span>
-        <span class="hljs-comment">// 往状态变量的数组中追加数据，使用push</span>
+        <span class="hljs-comment">// 更新countryToPlayers</span>
         countryToPlayers[currRound][_selected].push(msg.sender);
 
         <span class="hljs-comment">// 更新players</span>
-        <span class="hljs-comment">// 获取Player结构</span>
-        <span class="hljs-comment">// 更新数据</span>
         Player storage player = players[currRound][msg.sender];
-        player.counts[_selected] ++;
+        <span class="hljs-comment">// player.isSet = false;</span>
+        player.counts[_selected] += <span class="hljs-number">1</span>;
 
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;selected:&quot;</span>, uint8(_selected));
-
-        emit Play(currRound, msg.sender, uint8(_selected));
+        emit Play(currRound, msg.sender, _selected);
     }
 
-    <span class="hljs-comment">// 开奖</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">finalize</span>(<span class="hljs-params">Country _selected</span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyManager</span> </span>{
-        <span class="hljs-comment">// require(msg.sender == manager, &quot;not authoried!&quot;);</span>
+    <span class="hljs-comment">// 写另外一个合约，模拟oracle，讲解合约间调用</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">finialize</span>(<span class="hljs-params">Country _country</span>) <span class="hljs-title">onlyAdmin</span> <span class="hljs-title">external</span> </span>{
+        <span class="hljs-comment">// 找到winners</span>
+        address[] memory winners = countryToPlayers[currRound][_country];
+        uint256 distributeAmt;
 
-        <span class="hljs-comment">// 找到所有的赢家  winners</span>
-        address[] memory winners = countryToPlayers[currRound][_selected];
+        <span class="hljs-comment">// 分配奖励金额</span>
+        uint currAvalBalance = getVaultBalance() - lockedAmts;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;currAvalBalance:&quot;</span>, currAvalBalance, <span class="hljs-string">&quot;winners count:&quot;</span>, winners.length);
 
-        <span class="hljs-comment">// 获取当前合约的可用金额</span>
-        uint256 currAvailBalance = getVaultBal() - lockAmt;
-
-        <span class="hljs-comment">// 计算每个人奖励多少</span>
-        <span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; winners.length; i++) {
+        <span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i&lt; winners.length; i++) {
             address currWinner = winners[i];
 
-            <span class="hljs-comment">// 获取当前winner在下了多少注</span>
+            <span class="hljs-comment">// 获取每个地址应该得到的份额</span>
             Player storage winner = players[currRound][currWinner];
+            <span class="hljs-keyword">if</span> (winner.isSet) {
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;this winner has been set already, will be skipped!&quot;</span>);
+                <span class="hljs-keyword">continue</span>;
+            }
 
-            uint256 currCounts = winner.counts[_selected];
+            winner.isSet = <span class="hljs-literal">true</span>;
 
-            <span class="hljs-comment">// 统计这个winner该分的多少奖励</span>
-            uint amt = (currAvailBalance / countryToPlayers[currRound][_selected].length) * currCounts;
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;currWinner:&quot;</span>, currWinner, <span class="hljs-string">&quot;reward:&quot;</span>, amt);
+            uint currCounts = winner.counts[_country];
 
-            <span class="hljs-comment">// 更新currWinner能够领取的金额</span>
+            <span class="hljs-comment">// （本期总奖励 / 总参与人数）* 当前地址持有份额</span>
+            uint amt = (currAvalBalance / countryToPlayers[currRound][_country].length) * currCounts;
+
             winnerVaults[currWinner] += amt;
-            lockAmt += amt;
+            distributeAmt += amt;
+            lockedAmts += amt;
+
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;winner:&quot;</span>, currWinner, <span class="hljs-string">&quot;currCounts:&quot;</span>, currCounts);
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;reward amt curr:&quot;</span>, amt, <span class="hljs-string">&quot;total:&quot;</span>, winnerVaults[currWinner]);
         }
 
-        emit Finalize(currRound, _selected);
+        uint giftAmt = currAvalBalance - distributeAmt;
+        <span class="hljs-keyword">if</span> (giftAmt &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-comment">// payable(admin).transfer(giftAmt);</span>
+            <span class="hljs-comment">// (bool succeed,) = admin.call{value: giftAmt}(&quot;&quot;);</span>
+            <span class="hljs-comment">// require(succeed, &quot;gift transfer failed!&quot;);</span>
+            <span class="hljs-comment">// console.log(&quot;transfer gift amount:&quot;, giftAmt);</span>
+            winnerVaults[admin] += giftAmt;
+        }
+
+        emit Finialize(currRound, winners, currAvalBalance, giftAmt);
     }
 
-    <span class="hljs-comment">// 领奖</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">claimReward</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-comment">// 每个人都可以调用，但是只能领取属于自己的钱</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">claimReward</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
         uint256 rewards = winnerVaults[msg.sender];
         <span class="hljs-built_in">require</span>(rewards &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;nothing to claim!&quot;</span>);
 
-        <span class="hljs-comment">// 给msg.sender转账</span>
-        <span class="hljs-comment">// 使用 transfer方法进行转账：transfer，send（不用了），call（后面讲）</span>
-        <span class="hljs-comment">// 合约给谁转账，就用谁调用transfer，如果转账失败，会进行revert，整个交易回滚</span>
-        <span class="hljs-comment">// 交易是原子性的，完成，回归原始状态（消耗的手续费gas fee不会退回）</span>
-        payable(msg.sender).transfer(rewards);
-
-        <span class="hljs-comment">// 清零</span>
         winnerVaults[msg.sender] = <span class="hljs-number">0</span>;
+        lockedAmts -= rewards;
+        (bool succeed,) = msg.sender.call{<span class="hljs-attr">value</span>: rewards}(<span class="hljs-string">&quot;&quot;</span>);
+        <span class="hljs-built_in">require</span>(succeed, <span class="hljs-string">&quot;claim reward failed!&quot;</span>);
 
-        <span class="hljs-comment">// lockAmt减少</span>
-        lockAmt -= rewards;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;rewards:&quot;</span>, rewards);
 
         emit ClaimReward(msg.sender, rewards);
     }
 
-    <span class="hljs-comment">// 查看当前合约的资金数量</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVaultBal</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>{
-        <span class="hljs-keyword">return</span> address(<span class="hljs-built_in">this</span>).balance;
+    <span class="hljs-comment">////////////////////////////////////////////// getter functions ////////////////////////////////////////////////</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVaultBalance</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint256 bal</span>)</span>{
+        bal = address(<span class="hljs-built_in">this</span>).balance;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCountryPlayters</span>(<span class="hljs-params">uint8 _round, Country _country</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>) </span>{
+        <span class="hljs-keyword">return</span> countryToPlayers[_round][_country].length;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPlayerInfo</span>(<span class="hljs-params">uint8 _round, address _player, Country _country</span>) <span class="hljs-title">external</span>  <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 _counts</span>) </span>{
+        <span class="hljs-keyword">return</span> players[_round][_player].counts[_country];
     }
 }
 </code></pre>
@@ -1848,7 +1826,7 @@ contract WorldCupLottery {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"next":{"title":"第2节:世界杯竞猜-hardhat","level":"1.11.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},"previous":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","articles":[]},{"title":"第2节:世界杯竞猜-hardhat","level":"1.11.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},{"title":"第3节:世界杯竞猜-ERC20","level":"1.11.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},{"title":"第4节:世界杯竞猜_subgraph","level":"1.11.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","mtime":"2022-10-08T01:56:06.091Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-08T10:44:59.826Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"next":{"title":"第2节:世界杯竞猜-hardhat","level":"1.11.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},"previous":{"title":"第八章:项目实战-世界杯竞猜","level":"1.11","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.11.1","depth":2,"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","articles":[]},{"title":"第2节:世界杯竞猜-hardhat","level":"1.11.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},{"title":"第3节:世界杯竞猜-ERC20","level":"1.11.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},{"title":"第4节:世界杯竞猜_subgraph","level":"1.11.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","mtime":"2022-10-08T23:35:21.928Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-09T00:03:09.549Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
