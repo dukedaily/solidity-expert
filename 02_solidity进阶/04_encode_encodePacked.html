@@ -1349,6 +1349,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.8" data-path="../05_hardhat框架/08_合约升级.html">
+            
+                <a href="../05_hardhat框架/08_合约升级.html">
+            
+                    
+                    第8节:合约升级
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1556,7 +1569,7 @@
                                 
                                 <h1 id="第4节：abiencode、abidecode、abiencodepacked">第4节：abi.encode、abi.decode、abi.encodePacked</h1>
 <p>abi.<strong>encode</strong>：可以将data编码成bytes，生成的bytes总是32字节的倍数，不足32为会自动填充（用于给合约调用）；</p>
-<p>abi.<strong>decode</strong>：可以将bytes解码成data</p>
+<p>abi.<strong>decode</strong>：可以将bytes解码成data（可以只解析部分字段）</p>
 <p>abi.<strong>encodePacked</strong>：与abi.encode类似，但是生成的bytes是压缩过的（有些类型不会自动填充，无法传递给合约调用）。</p>
 <p>手册：<a href="https://docs.soliditylang.org/en/v0.8.13/abi-spec.html?highlight=abi.encodePacked#non-standard-packed-mode" target="_blank">https://docs.soliditylang.org/en/v0.8.13/abi-spec.html?highlight=abi.encodePacked#non-standard-packed-mode</a></p>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
@@ -1597,6 +1610,27 @@ contract AbiDecode {
             1: address: addr 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
             2: uint256[]: arr 1,2,3
             3: tuple(string,uint256[2]): myStruct ,10,20
+        */</span>
+    }
+
+    <span class="hljs-comment">// 可以只decode其中部分字段，而不用全部decode，当前案例中，只有第一个字段被解析了，其余为默认值</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decodeLess</span>(<span class="hljs-params">bytes calldata data</span>)
+        <span class="hljs-title">external</span>
+        <span class="hljs-title">pure</span>
+        <span class="hljs-title">returns</span> (<span class="hljs-params">
+            uint x,
+            address addr,
+            uint[] memory arr,
+            MyStruct memory myStruct
+        </span>)
+    </span>{
+        (x) = abi.decode(data, (uint));
+
+        <span class="hljs-comment">/* decode output: 
+            0: uint256: x 10
+            1: address: addr 0x0000000000000000000000000000000000000000
+            2: uint256[]: arr
+            3: tuple(string,uint256[2]): myStruct ,0,0
         */</span>
     }
 
@@ -1698,7 +1732,7 @@ web3.eth.abi.encodeFunctionCall({
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节:encode_encodePacked","level":"1.5.4","depth":2,"next":{"title":"第5节:call","level":"1.5.5","depth":2,"path":"02_solidity进阶/05_call.md","ref":"02_solidity进阶/05_call.md","articles":[]},"previous":{"title":"第3节:payable","level":"1.5.3","depth":2,"path":"02_solidity进阶/03_payable.md","ref":"02_solidity进阶/03_payable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/04_encode_encodePacked.md","mtime":"2022-09-16T03:19:14.870Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-09T00:03:09.549Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节:encode_encodePacked","level":"1.5.4","depth":2,"next":{"title":"第5节:call","level":"1.5.5","depth":2,"path":"02_solidity进阶/05_call.md","ref":"02_solidity进阶/05_call.md","articles":[]},"previous":{"title":"第3节:payable","level":"1.5.3","depth":2,"path":"02_solidity进阶/03_payable.md","ref":"02_solidity进阶/03_payable.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/04_encode_encodePacked.md","mtime":"2022-10-09T08:27:29.937Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-09T08:27:53.899Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
