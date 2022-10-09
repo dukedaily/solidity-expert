@@ -4,6 +4,7 @@
 
 1. https://github.com/wolflo/evm-opcodes
 2. https://github.com/comitylabs/evm.codes
+3. https://jeancvllr.medium.com/solidity-tutorial-all-about-assembly-5acdfefde05c
 
 
 
