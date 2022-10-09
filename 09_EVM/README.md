@@ -1,5 +1,10 @@
 
 
+## 其他（重要）
+
+1. https://github.com/wolflo/evm-opcodes
+2. https://github.com/comitylabs/evm.codes
+
 
 
 ## 作者

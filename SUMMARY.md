@@ -103,4 +103,6 @@
     * [第3节:世界杯竞猜-ERC20](08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md)
     * [第4节:世界杯竞猜_subgraph](08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md)
 * [第九章:EVM](09_EVM/README.md)
+    * [第1节:OPCode手册](09_EVM/01_OPCode手册.md)
+    * [第2节:PUZZLES游戏](09_EVM/02-evm-puzzles.md)
 * [第十章:智能合约-最佳实践](10_智能合约-最佳实践/README.md)
