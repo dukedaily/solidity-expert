@@ -30,6 +30,9 @@ npx hardhat node
 
 #部署合约到本地node节点
 npx hardhat run scripts/deploy.ts --network localhost
+
+# 查看支持的网络
+npx hardhat verify --list-networks
 ```
 
 
