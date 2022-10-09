@@ -92,6 +92,7 @@
     * [第5节:不同网络相同地址](05_hardhat框架/05_不同网络相同地址.md)
     * [第6节:graphnode-subgraph](05_hardhat框架/06_部署fork_graphnode_subgraph.md)
     * [第7节:07_综合教程](05_hardhat框架/07_综合教程.md)
+    * [第8节:合约升级](05_hardhat框架/08_合约升级.md)
 * [第六章:ethers库（空内容）](06_ethers/README.md)
 * [第七章:subgraph](07_subgraph/README.md)
     * [第1节:概述](07_subgraph/01_概述.md)
