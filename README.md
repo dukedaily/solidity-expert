@@ -11,8 +11,7 @@
 
 ## 学习资源
 
-- 课件教程：https://dukedaily.github.io/solidity-expert/
-- git仓库：https://github.com/dukedaily/solidity-expert/tree/main/sourcecode
+- gitbook：  [点击阅读](https://dukedaily.github.io/solidity-expert/)
 - 视频教程：[油管](https://www.youtube.com/channel/UCSc6tGnLIFvVMXs-ilDyb4A)、[B站](https://space.bilibili.com/102710441/channel/seriesdetail?sid=2537685&ctype=0)
 
 
