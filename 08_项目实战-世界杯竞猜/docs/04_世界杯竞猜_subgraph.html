@@ -1554,6 +1554,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.14" data-path="../../11_合约攻击案例分析/">
+            
+                <a href="../../11_合约攻击案例分析/">
+            
+                    
+                    第十一章:合约攻击案例分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../../11_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
+            
+                <a href="../../11_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
+            
+                    
+                    第1节:FTX gas攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -1698,8 +1730,8 @@ npm install -g  @graphprotocol/graph-cli
 <h2 id="业务改造">业务改造</h2>
 <p>在配置文件中增加扫块起点，如果不增加，则从最初开始扫块，效率太低了。</p>
 <p><img src="assets/image-20221008182827679.png" alt="image-20221008182827679"></p>
-<p>接下来我们修改代码：</p>
-<p>TODO</p>
+<h2 id="小结">小结</h2>
+<p>到这里，我们已经介绍了subgraph的基本概念，并且完成了对subgraph的基本框架的搭建，下一节，我们将编写具体的业务逻辑，完成对世界杯玩家的激励。</p>
 <p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
 <blockquote>
 <p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
@@ -1747,7 +1779,7 @@ npm install -g  @graphprotocol/graph-cli
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节:世界杯竞猜_subgraph","level":"1.11.4","depth":2,"next":{"title":"第九章:EVM","level":"1.12","depth":1,"path":"09_EVM/README.md","ref":"09_EVM/README.md","articles":[{"title":"第1节:OPCode手册","level":"1.12.1","depth":2,"path":"09_EVM/01_OPCode手册.md","ref":"09_EVM/01_OPCode手册.md","articles":[]},{"title":"第2节:PUZZLES游戏","level":"1.12.2","depth":2,"path":"09_EVM/02-evm-puzzles.md","ref":"09_EVM/02-evm-puzzles.md","articles":[]}]},"previous":{"title":"第3节:世界杯竞猜-ERC20","level":"1.11.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","mtime":"2022-10-09T08:04:17.698Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-09T11:53:55.364Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节:世界杯竞猜_subgraph","level":"1.11.4","depth":2,"next":{"title":"第九章:EVM","level":"1.12","depth":1,"path":"09_EVM/README.md","ref":"09_EVM/README.md","articles":[{"title":"第1节:OPCode手册","level":"1.12.1","depth":2,"path":"09_EVM/01_OPCode手册.md","ref":"09_EVM/01_OPCode手册.md","articles":[]},{"title":"第2节:PUZZLES游戏","level":"1.12.2","depth":2,"path":"09_EVM/02-evm-puzzles.md","ref":"09_EVM/02-evm-puzzles.md","articles":[]}]},"previous":{"title":"第3节:世界杯竞猜-ERC20","level":"1.11.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","mtime":"2022-10-13T01:34:54.974Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-13T16:50:25.956Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
