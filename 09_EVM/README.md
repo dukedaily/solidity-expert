@@ -6,6 +6,7 @@
 2. https://github.com/comitylabs/evm.codes
 3. https://jeancvllr.medium.com/solidity-tutorial-all-about-assembly-5acdfefde05c
 4. https://github.com/ethereumbook/ethereumbook
+5. 最重要的文档：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
 
 
 
