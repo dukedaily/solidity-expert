@@ -22,6 +22,7 @@
 - 微信：Adugii
 - 公众号：阿杜在新加坡
 - Twitter：dukedu2022
+- 加入电报：https://t.me/+bEy-E0l4KHhlODRl
 
 
 ## 马上入群

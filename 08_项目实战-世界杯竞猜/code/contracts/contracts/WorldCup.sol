@@ -103,12 +103,10 @@ contract WorldCup {
 
         uint giftAmt = currAvalBalance - distributeAmt;
         if (giftAmt > 0) {
-            // payable(admin).transfer(giftAmt);
-            // (bool succeed,) = admin.call{value: giftAmt}("");
-            // require(succeed, "gift transfer failed!");
-            // console.log("transfer gift amount:", giftAmt);
             winnerVaults[admin] += giftAmt;
         }
+
+        currRound++;
 
         emit Finialize(currRound, winners, currAvalBalance, giftAmt);
     }
