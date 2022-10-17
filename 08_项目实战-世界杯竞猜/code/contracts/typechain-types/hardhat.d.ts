@@ -25,9 +25,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
+      name: "IMerkleDistributor",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMerkleDistributor__factory>;
+    getContractFactory(
       name: "Lock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
+    getContractFactory(
+      name: "MerkleDistributor",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MerkleDistributor__factory>;
     getContractFactory(
       name: "FHTToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -85,9 +93,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.WorldCupToken__factory>;
     getContractFactory(
+      name: "Ownable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Ownable__factory>;
+    getContractFactory(
       name: "WorldCup",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.WorldCup__factory>;
+    getContractFactory(
+      name: "WorldCupReward",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.WorldCupReward__factory>;
 
     getContractAt(
       name: "ERC20",
@@ -105,10 +121,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20>;
     getContractAt(
+      name: "IMerkleDistributor",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMerkleDistributor>;
+    getContractAt(
       name: "Lock",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Lock>;
+    getContractAt(
+      name: "MerkleDistributor",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MerkleDistributor>;
     getContractAt(
       name: "FHTToken",
       address: string,
@@ -180,10 +206,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.WorldCupToken>;
     getContractAt(
+      name: "Ownable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Ownable>;
+    getContractAt(
       name: "WorldCup",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.WorldCup>;
+    getContractAt(
+      name: "WorldCupReward",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.WorldCupReward>;
 
     // default types
     getContractFactory(

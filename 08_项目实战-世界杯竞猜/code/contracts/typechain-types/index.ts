@@ -12,8 +12,12 @@ export type { IERC20Metadata } from "./@openzeppelin/contracts/token/ERC20/exten
 export { IERC20Metadata__factory } from "./factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata__factory";
 export type { IERC20 } from "./@openzeppelin/contracts/token/ERC20/IERC20";
 export { IERC20__factory } from "./factories/@openzeppelin/contracts/token/ERC20/IERC20__factory";
+export type { IMerkleDistributor } from "./contracts/interfaces/IMerkleDistributor";
+export { IMerkleDistributor__factory } from "./factories/contracts/interfaces/IMerkleDistributor__factory";
 export type { Lock } from "./contracts/Lock";
 export { Lock__factory } from "./factories/contracts/Lock__factory";
+export type { MerkleDistributor } from "./contracts/MerkleDistributor";
+export { MerkleDistributor__factory } from "./factories/contracts/MerkleDistributor__factory";
 export type { FHTToken } from "./contracts/tokens/mockToken/FHTToken";
 export { FHTToken__factory } from "./factories/contracts/tokens/mockToken/FHTToken__factory";
 export type { BoredApeYachtClub } from "./contracts/tokens/officialTokens/BAYC-ERC721.sol/BoredApeYachtClub";
@@ -40,3 +44,5 @@ export type { WorldCupToken } from "./contracts/tokens/WorldCupToken";
 export { WorldCupToken__factory } from "./factories/contracts/tokens/WorldCupToken__factory";
 export type { WorldCup } from "./contracts/WorldCup";
 export { WorldCup__factory } from "./factories/contracts/WorldCup__factory";
+export type { WorldCupReward } from "./contracts/WorldCupReward";
+export { WorldCupReward__factory } from "./factories/contracts/WorldCupReward__factory";
