@@ -1,5 +1,17 @@
 # 第一节：快速体验QuickStart
 
+实用命令：
+
+```sh
+## hh
+npm install --global hardhat-shorthand
+
+# 查看支持的网络
+npx hardhat verify --list-networks
+```
+
+
+
 ## 环境构造
 
 ```sh
@@ -30,9 +42,6 @@ npx hardhat node
 
 #部署合约到本地node节点
 npx hardhat run scripts/deploy.ts --network localhost
-
-# 查看支持的网络
-npx hardhat verify --list-networks
 ```
 
 
