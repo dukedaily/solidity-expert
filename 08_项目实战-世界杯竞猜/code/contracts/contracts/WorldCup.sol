@@ -29,7 +29,7 @@ contract WorldCup {
     }
 
     event Play(uint8 _currRound, address _player, Country _country);
-    event Finialize(uint8 _currRound, address[] _winners, uint256 currAvalBalance, uint256 _giftAmt);
+    event Finialize(uint8 _currRound, uint256 _country);
     event ClaimReward(address _claimer, uint256 _amt);
 
     modifier onlyAdmin {
@@ -108,7 +108,7 @@ contract WorldCup {
 
         currRound++;
 
-        emit Finialize(currRound, winners, currAvalBalance, giftAmt);
+        emit Finialize(currRound, uint256(_country));
     }
 
     function claimReward() external {

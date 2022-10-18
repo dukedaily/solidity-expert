@@ -36,4 +36,79 @@
 
 
 
+## 配置文件
 
+```yaml
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: WorldCup
+    network: goerli
+    source:
+      address: "0xFdD506bAe16aD28516C407876Ca53618befB3502"
+      abi: WorldCup
+      startBlock: 7784143
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - ClaimReward
+        - Finialize
+        - Play
+      abis:
+        - name: WorldCup
+          file: ./abis/WorldCup.json
+      eventHandlers:
+        - event: ClaimReward(address,uint256)
+          handler: handleClaimReward
+        - event: Finialize(uint8,address[],uint256,uint256)
+          handler: handleFinialize
+        - event: Play(uint8,address,uint8)
+          handler: handlePlay
+      file: ./src/world-cup.ts
+```
+
+## shchema
+
+```yaml
+
+```
+
+## 部署合约
+
+WorldCupToken：
+
+```sh
+npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  0x4c305227E762634CB7d3d9291e42b423eD45f1AD "World Cup Token" "WCT" 10000000000000000000000000 --network goerli
+
+# 0x4c305227E762634CB7d3d9291e42b423eD45f1AD
+```
+
+WorldCupDistributor：
+
+```sh
+hh run scripts/deployDistributor.ts --network goerli
+
+# 0xF19233dFE30219F4D6200c02826B80e4347EF8BF
+
+hh verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634CB7d3d9291e42b423eD45f1AD  --network goerli
+```
+
+
+
+
+
+
+
+## 梅克尔根
+
+使用三方库，指定所有数据，可以生成root
+
+给定单个节点，可以生成叶子：leaf
+
+指定root和leaf数据，可以得到proof数组（有方法）
+
+claim的时候😷：proof数组、root、节点数据
