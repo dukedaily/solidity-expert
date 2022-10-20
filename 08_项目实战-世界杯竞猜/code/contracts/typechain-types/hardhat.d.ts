@@ -33,10 +33,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Lock__factory>;
     getContractFactory(
-      name: "MerkleDistributor",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.MerkleDistributor__factory>;
-    getContractFactory(
       name: "FHTToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.FHTToken__factory>;
@@ -101,6 +97,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.WorldCup__factory>;
     getContractFactory(
+      name: "WorldCupDistributor",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.WorldCupDistributor__factory>;
+    getContractFactory(
       name: "WorldCupReward",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.WorldCupReward__factory>;
@@ -130,11 +130,6 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Lock>;
-    getContractAt(
-      name: "MerkleDistributor",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.MerkleDistributor>;
     getContractAt(
       name: "FHTToken",
       address: string,
@@ -215,6 +210,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.WorldCup>;
+    getContractAt(
+      name: "WorldCupDistributor",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.WorldCupDistributor>;
     getContractAt(
       name: "WorldCupReward",
       address: string,

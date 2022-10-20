@@ -16,8 +16,6 @@ export type { IMerkleDistributor } from "./contracts/interfaces/IMerkleDistribut
 export { IMerkleDistributor__factory } from "./factories/contracts/interfaces/IMerkleDistributor__factory";
 export type { Lock } from "./contracts/Lock";
 export { Lock__factory } from "./factories/contracts/Lock__factory";
-export type { MerkleDistributor } from "./contracts/MerkleDistributor";
-export { MerkleDistributor__factory } from "./factories/contracts/MerkleDistributor__factory";
 export type { FHTToken } from "./contracts/tokens/mockToken/FHTToken";
 export { FHTToken__factory } from "./factories/contracts/tokens/mockToken/FHTToken__factory";
 export type { BoredApeYachtClub } from "./contracts/tokens/officialTokens/BAYC-ERC721.sol/BoredApeYachtClub";
@@ -44,5 +42,7 @@ export type { WorldCupToken } from "./contracts/tokens/WorldCupToken";
 export { WorldCupToken__factory } from "./factories/contracts/tokens/WorldCupToken__factory";
 export type { WorldCup } from "./contracts/WorldCup";
 export { WorldCup__factory } from "./factories/contracts/WorldCup__factory";
+export type { WorldCupDistributor } from "./contracts/WorldCupDistributor";
+export { WorldCupDistributor__factory } from "./factories/contracts/WorldCupDistributor__factory";
 export type { WorldCupReward } from "./contracts/WorldCupReward";
 export { WorldCupReward__factory } from "./factories/contracts/WorldCupReward__factory";

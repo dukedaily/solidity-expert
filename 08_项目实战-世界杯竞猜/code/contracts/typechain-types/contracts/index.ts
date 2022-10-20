@@ -8,6 +8,6 @@ export type { tokens };
 import type * as utils from "./utils";
 export type { utils };
 export type { Lock } from "./Lock";
-export type { MerkleDistributor } from "./MerkleDistributor";
 export type { WorldCup } from "./WorldCup";
+export type { WorldCupDistributor } from "./WorldCupDistributor";
 export type { WorldCupReward } from "./WorldCupReward";

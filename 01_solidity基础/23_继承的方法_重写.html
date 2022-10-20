@@ -1372,7 +1372,7 @@
                 <a href="../06_openzeppeline解析/">
             
                     
-                    第六章:openzeppeline解析
+                    第六章:openzeppeline解析(ing)
             
                 </a>
             
@@ -1491,12 +1491,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph2.md">
+        <li class="chapter " data-level="1.11.5" data-path="../08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_subgraph2.html">
             
-                <span>
+                <a href="../08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_subgraph2.html">
             
                     
-                    第4节:世界杯竞猜_subgraph2
+                    第5节:世界杯竞猜_subgraph2
             
                 </a>
             
@@ -1554,25 +1554,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="../10_智能合约-最佳实践/README.md">
+        <li class="chapter " data-level="1.13" data-path="../10_合约攻击案例分析/">
             
-                <span>
-            
-                    
-                    第十章:智能合约-最佳实践
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.14" data-path="../11_合约攻击案例分析/">
-            
-                <a href="../11_合约攻击案例分析/">
+                <a href="../10_合约攻击案例分析/">
             
                     
-                    第十一章:合约攻击案例分析
+                    第十章:合约攻击案例分析
             
                 </a>
             
@@ -1581,9 +1568,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.14.1" data-path="../11_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
+        <li class="chapter " data-level="1.13.1" data-path="../10_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
             
-                <a href="../11_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
+                <a href="../10_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
             
                     
                     第1节:FTX gas攻击
@@ -1649,81 +1636,82 @@
 <li>合约之间存在继承关系，使用关键字：is</li>
 <li>如果父合约的方法想被子合约继承，则需要使用关键字：virtual</li>
 <li>如果子合约想覆盖父合约的方法，则需要使用关键字：override</li>
-<li>在子合约中如果想当用父合约的方法，需要使用关键字：super</li>
+<li>在子合约中如果想调用父合约的方法，需要使用关键字：super</li>
 <li>继承的顺序很重要，遵循最远继承，即后面继承的合约会覆盖前面父合约的方法</li>
 </ol>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
+pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.10</span>;
 
-<span class="hljs-comment">/* Graph of inheritance
-    A
-   / \
-  B   C
- / \ /
-F  D,E
-
+<span class="hljs-comment">/* Inheritance tree
+   A
+ /  \
+B   C
+ \ /
+  D
 */</span>
 
 contract A {
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">virtual</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;A&quot;</span>;
+    <span class="hljs-comment">// This is called an event. You can emit events from your function</span>
+    <span class="hljs-comment">// and they are logged into the transaction log.</span>
+    <span class="hljs-comment">// In our case, this will be useful for tracing function calls.</span>
+    event Log(string message);
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">virtual</span> </span>{
+        emit Log(<span class="hljs-string">&quot;A.foo called&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">virtual</span> </span>{
+        emit Log(<span class="hljs-string">&quot;A.bar called&quot;</span>);
     }
 }
 
-<span class="hljs-comment">// Contracts inherit other contracts by using the keyword &apos;is&apos;.</span>
 contract B is A {
-    <span class="hljs-comment">// Override A.foo()</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">virtual</span> <span class="hljs-title">override</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;B&quot;</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">virtual</span> <span class="hljs-title">override</span> </span>{
+        emit Log(<span class="hljs-string">&quot;B.foo called&quot;</span>);
+        A.foo();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">virtual</span> <span class="hljs-title">override</span> </span>{
+        emit Log(<span class="hljs-string">&quot;B.bar called&quot;</span>);
+        <span class="hljs-built_in">super</span>.bar();
     }
 }
 
 contract C is A {
-    <span class="hljs-comment">// Override A.foo()</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">virtual</span> <span class="hljs-title">override</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;C&quot;</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">virtual</span> <span class="hljs-title">override</span> </span>{
+        emit Log(<span class="hljs-string">&quot;C.foo called&quot;</span>);
+        A.foo();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">virtual</span> <span class="hljs-title">override</span> </span>{
+        emit Log(<span class="hljs-string">&quot;C.bar called&quot;</span>);
+        <span class="hljs-built_in">super</span>.bar();
     }
 }
-
-<span class="hljs-comment">// Contracts can inherit from multiple parent contracts.</span>
-<span class="hljs-comment">// When a function is called that is defined multiple times in</span>
-<span class="hljs-comment">// different contracts, parent contracts are searched from</span>
-<span class="hljs-comment">// right to left, and in depth-first manner.</span>
 
 contract D is B, C {
-    <span class="hljs-comment">// D.foo() returns &quot;C&quot;</span>
-    <span class="hljs-comment">// since C is the right most parent contract with function foo()</span>
-      <span class="hljs-comment">// 构造的顺序是从左到右，即：B，C，D</span>
-      <span class="hljs-comment">// 最终继承的顺序是：最远继承</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">override</span>(<span class="hljs-params">B, C</span>) <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.foo();
-    }
-}
+    <span class="hljs-comment">// Try:</span>
+    <span class="hljs-comment">// - Call D.foo and check the transaction logs.</span>
+    <span class="hljs-comment">//   Although D inherits A, B and C, it only called C and then A.</span>
+    <span class="hljs-comment">// - Call D.bar and check the transaction logs</span>
+    <span class="hljs-comment">//   D called C, then B, and finally A.</span>
+    <span class="hljs-comment">//   Although super was called twice (by B and C) it only called A once.</span>
 
-contract E is C, B {
-    <span class="hljs-comment">// E.foo() returns &quot;B&quot;</span>
-    <span class="hljs-comment">// since B is the right most parent contract with function foo()</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">override</span>(<span class="hljs-params">C, B</span>) <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.foo();
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">override</span>(<span class="hljs-params">B, C</span>) </span>{
+        <span class="hljs-built_in">super</span>.foo();
     }
-}
 
-<span class="hljs-comment">// Inheritance must be ordered from “most base-like” to “most derived”.</span>
-<span class="hljs-comment">// Swapping the order of A and B will throw a compilation error.</span>
-<span class="hljs-comment">// 当继承的父合约中有继承关系时，需要先继承基类，再继承衍生类</span>
-contract F is A, B {
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">override</span>(<span class="hljs-params">A, B</span>) <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.foo();
-    }
-}
-
-<span class="hljs-comment">//报错，因为继承顺序导致</span>
-contract G is B, A {
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">override</span>(<span class="hljs-params">A, B</span>) <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.foo();
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">override</span>(<span class="hljs-params">B, C</span>) </span>{
+        <span class="hljs-built_in">super</span>.bar();
     }
 }
 </code></pre>
+<p>其中：</p>
+<ol>
+<li>调用foo的时候，由于B，C中的foo都没有使用super，所以只是覆盖问题，根据最远继承，C
+覆盖了B，所以执行顺序为：D -&gt; C -&gt; A</li>
+<li>调用bar的时候，由于B，C中的bar使用了super，此时D的两个parent都需要执行一遍，因此为D-&gt; C -&gt; B -&gt; A</li>
+</ol>
 
                                 
                                 </section>
@@ -1767,7 +1755,7 @@ contract G is B, A {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第23节:继承的方法_重写","level":"1.4.23","depth":2,"next":{"title":"第24节:继承状态变量_覆盖","level":"1.4.24","depth":2,"path":"01_solidity基础/24_继承状态变量_覆盖.md","ref":"01_solidity基础/24_继承状态变量_覆盖.md","articles":[]},"previous":{"title":"第22节:事件Event","level":"1.4.22","depth":2,"path":"01_solidity基础/22_事件Event.md","ref":"01_solidity基础/22_事件Event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/23_继承的方法_重写.md","mtime":"2022-08-24T07:50:06.056Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-17T11:20:05.860Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第23节:继承的方法_重写","level":"1.4.23","depth":2,"next":{"title":"第24节:继承状态变量_覆盖","level":"1.4.24","depth":2,"path":"01_solidity基础/24_继承状态变量_覆盖.md","ref":"01_solidity基础/24_继承状态变量_覆盖.md","articles":[]},"previous":{"title":"第22节:事件Event","level":"1.4.22","depth":2,"path":"01_solidity基础/22_事件Event.md","ref":"01_solidity基础/22_事件Event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/23_继承的方法_重写.md","mtime":"2022-10-18T11:09:04.174Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-20T04:21:27.645Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

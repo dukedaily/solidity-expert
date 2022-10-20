@@ -148,7 +148,7 @@ export interface WorldCupInterface extends utils.Interface {
 
   events: {
     "ClaimReward(address,uint256)": EventFragment;
-    "Finialize(uint8,address[],uint256,uint256)": EventFragment;
+    "Finialize(uint8,uint256)": EventFragment;
     "Play(uint8,address,uint8)": EventFragment;
   };
 
@@ -170,12 +170,10 @@ export type ClaimRewardEventFilter = TypedEventFilter<ClaimRewardEvent>;
 
 export interface FinializeEventObject {
   _currRound: number;
-  _winners: string[];
-  currAvalBalance: BigNumber;
-  _giftAmt: BigNumber;
+  _country: BigNumber;
 }
 export type FinializeEvent = TypedEvent<
-  [number, string[], BigNumber, BigNumber],
+  [number, BigNumber],
   FinializeEventObject
 >;
 
@@ -389,18 +387,11 @@ export interface WorldCup extends BaseContract {
     ): ClaimRewardEventFilter;
     ClaimReward(_claimer?: null, _amt?: null): ClaimRewardEventFilter;
 
-    "Finialize(uint8,address[],uint256,uint256)"(
+    "Finialize(uint8,uint256)"(
       _currRound?: null,
-      _winners?: null,
-      currAvalBalance?: null,
-      _giftAmt?: null
+      _country?: null
     ): FinializeEventFilter;
-    Finialize(
-      _currRound?: null,
-      _winners?: null,
-      currAvalBalance?: null,
-      _giftAmt?: null
-    ): FinializeEventFilter;
+    Finialize(_currRound?: null, _country?: null): FinializeEventFilter;
 
     "Play(uint8,address,uint8)"(
       _currRound?: null,

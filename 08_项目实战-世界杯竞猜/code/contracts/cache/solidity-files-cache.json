@@ -36,10 +36,10 @@
         "Lock"
       ]
     },
-    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/MerkleDistributor.sol": {
-      "lastModificationDate": 1666005565359,
-      "contentHash": "ad3ef53adf30dd92e0fdd2d23882cb21",
-      "sourceName": "contracts/MerkleDistributor.sol",
+    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/WorldCup.sol": {
+      "lastModificationDate": 1666076895508,
+      "contentHash": "f9c25b703174902644050d1c9dc57b31",
+      "sourceName": "contracts/WorldCup.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -64,21 +64,19 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-        "./interfaces/IMerkleDistributor.sol",
-        "./libraries/MerkleProof.sol"
+        "hardhat/console.sol"
       ],
       "versionPragmas": [
-        "^0.8.0"
+        ">=0.7.0 <0.9.0"
       ],
       "artifacts": [
-        "MerkleDistributor"
+        "WorldCup"
       ]
     },
-    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/interfaces/IMerkleDistributor.sol": {
-      "lastModificationDate": 1666003980362,
-      "contentHash": "6aeff6a95fa194c1344833d4839c25fc",
-      "sourceName": "contracts/interfaces/IMerkleDistributor.sol",
+    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/hardhat/console.sol": {
+      "lastModificationDate": 1666002750840,
+      "contentHash": "4ff3cd2f6272c9a6516e9ee4f2b967d3",
+      "sourceName": "hardhat/console.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -104,10 +102,49 @@
       },
       "imports": [],
       "versionPragmas": [
+        ">= 0.4.22 <0.9.0"
+      ],
+      "artifacts": [
+        "console"
+      ]
+    },
+    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/WorldCupDistributor.sol": {
+      "lastModificationDate": 1666077422582,
+      "contentHash": "4f9ed083433c9b860984af0fc50332af",
+      "sourceName": "contracts/WorldCupDistributor.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "./libraries/MerkleProof.sol",
+        "./libraries/TransferHelper.sol"
+      ],
+      "versionPragmas": [
         "^0.8.0"
       ],
       "artifacts": [
-        "IMerkleDistributor"
+        "WorldCupDistributor"
       ]
     },
     "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/libraries/MerkleProof.sol": {
@@ -143,6 +180,41 @@
       ],
       "artifacts": [
         "MerkleProof"
+      ]
+    },
+    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/libraries/TransferHelper.sol": {
+      "lastModificationDate": 1666003984982,
+      "contentHash": "498e7ffe827ced2a6c12cdb1a278919f",
+      "sourceName": "contracts/libraries/TransferHelper.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "TransferHelper"
       ]
     },
     "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
@@ -476,41 +548,6 @@
         "Ownable"
       ]
     },
-    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/libraries/TransferHelper.sol": {
-      "lastModificationDate": 1666003984982,
-      "contentHash": "498e7ffe827ced2a6c12cdb1a278919f",
-      "sourceName": "contracts/libraries/TransferHelper.sol",
-      "solcConfig": {
-        "version": "0.8.9",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "TransferHelper"
-      ]
-    },
     "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/@openzeppelin/contracts/utils/cryptography/ECDSA.sol": {
       "lastModificationDate": 1666003625782,
       "contentHash": "e240957102529c3ccf73bcf4527bcddc",
@@ -583,47 +620,10 @@
         "Strings"
       ]
     },
-    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/WorldCup.sol": {
-      "lastModificationDate": 1665993982009,
-      "contentHash": "074850bf6f9c772429ed88f96fe0242e",
-      "sourceName": "contracts/WorldCup.sol",
-      "solcConfig": {
-        "version": "0.8.9",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "hardhat/console.sol"
-      ],
-      "versionPragmas": [
-        ">=0.7.0 <0.9.0"
-      ],
-      "artifacts": [
-        "WorldCup"
-      ]
-    },
-    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1666002750840,
-      "contentHash": "4ff3cd2f6272c9a6516e9ee4f2b967d3",
-      "sourceName": "hardhat/console.sol",
+    "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/interfaces/IMerkleDistributor.sol": {
+      "lastModificationDate": 1666068710738,
+      "contentHash": "6aeff6a95fa194c1344833d4839c25fc",
+      "sourceName": "contracts/interfaces/IMerkleDistributor.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
@@ -649,10 +649,10 @@
       },
       "imports": [],
       "versionPragmas": [
-        ">= 0.4.22 <0.9.0"
+        "^0.8.0"
       ],
       "artifacts": [
-        "console"
+        "IMerkleDistributor"
       ]
     },
     "/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code/contracts/contracts/tokens/officialTokens/BAYC-ERC721.sol": {
