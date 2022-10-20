@@ -22,7 +22,7 @@ dataSources:
       eventHandlers:
         - event: Play(uint8,address,uint8)
           handler: handlePlay
-        - event: Finialize(uint8,address[],uint256,uint256)
+        - event: Finialize(uint8,uint256)
           handler: handleFinialize
         - event: ClaimReward(address,uint256)
           handler: handleClaimReward

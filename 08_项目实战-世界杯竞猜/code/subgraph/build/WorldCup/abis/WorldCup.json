@@ -40,20 +40,8 @@
       },
       {
         "indexed": false,
-        "internalType": "address[]",
-        "name": "_winners",
-        "type": "address[]"
-      },
-      {
-        "indexed": false,
         "internalType": "uint256",
-        "name": "currAvalBalance",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "_giftAmt",
+        "name": "_country",
         "type": "uint256"
       }
     ],

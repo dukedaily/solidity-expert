@@ -49,7 +49,7 @@ export function handleFinialize(event: Finialize): void {
   let id = event.params._currRound.toString();
   let entity = new FinializeHistory(id);
 
-  entity.result = event.params._giftAmt; // TODO need change to _country later
+  entity.result = event.params._country;
   entity.save();
 }
 
