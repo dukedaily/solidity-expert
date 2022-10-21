@@ -50,4 +50,6 @@ dataSources:
           handler: handleDistributeReward
         - event: Claimed(indexed address,indexed address,indexed uint256)
           handler: handleClaimed
+      # blockHandlers:
+        # - handler: handleBlock
       file: ./src/world-cup.ts

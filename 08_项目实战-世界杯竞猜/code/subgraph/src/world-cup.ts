@@ -41,7 +41,11 @@ export function handlePlay(event: Play): void {
     noHandle.list = [];
   }
 
-  noHandle.list.push(id)
+  // noHandle.list.push(id)
+  let list = noHandle.list;
+  list.push(id);
+  noHandle.list = list;
+
   noHandle.save()
 }
 
@@ -156,11 +160,14 @@ export function handleDistributeReward(event: DistributeReward): void {
   rewardHistory.list = rewardHistoryList;
 }
 
+// distributor
 export function handleClaimed(event: Claimed): void {
 }
 
-/*
+
+// palyer claim the eth he win
 export function handleClaimReward(event: ClaimReward): void {
+  /*
   // Entities can be loaded from the store using a string ID; this ID
   // needs to be unique across all entities of the same type
   let entity = ExampleEntity.load(event.transaction.from.toHex())
@@ -209,13 +216,13 @@ export function handleClaimReward(event: ClaimReward): void {
   // - contract.getVaultBalance(...)
   // - contract.lockedAmts(...)
   // - contract.winnerVaults(...)
+  */
 }
-*/
 
 export function handleBlock(block: ethereum.Block): void {
-  let id = block.number.toString();
-  let entity = new SimpleBlock(id);
-  entity.height = block.number;
-  entity.time = block.timestamp;
-  entity.save();
+  // let id = block.number.toString();
+  // let entity = new SimpleBlock(id);
+  // entity.height = block.number;
+  // entity.time = block.timestamp;
+  // entity.save();
 }

@@ -14,7 +14,7 @@ import { Input, Button } from 'antd'
 export function Finalize() {
   const [value, setValue] = React.useState('')
   const { config } = usePrepareContractWrite({
-    addressOrName: '0x4db34635116406B5F4268FCB7463BEC97b3dcD38',
+    addressOrName: '0x471a8f71d3bBB8254e36832FBbb6928b73298347',
     contractInterface: worldcup_abi,
     functionName: 'finialize',
     args: [value],
