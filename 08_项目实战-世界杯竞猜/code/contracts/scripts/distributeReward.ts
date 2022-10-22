@@ -1,6 +1,8 @@
 import { ApolloClient, gql, HttpLink, InMemoryCache } from 'apollo-boost';
 import { fetch } from 'cross-fetch';
 import { BigNumber } from 'bignumber.js'
+import { MerkleTree } from 'merkletreejs'
+import hre from 'hardhat'
 
 // const graphUrl = process.env.SUBGRAPH_API;
 const graphUrl = "http://localhost:8000/subgraphs/name/duke/worldcup"
@@ -20,65 +22,7 @@ async function executeQuery(query: string, variables: any) {
 }
 
 function calculatePlayerReward() {
-  /*
-  let totalWeight = BigInt.fromI32(0)
-  let rewardActuallyAmt = BigInt.fromI32(0) // might be a little less than the given reward amt caused by the precise lossing of division
-  let rewardHistoryList: string[] = []; // for history check usage
 
-  let noHandle = NeedToHandle.load(NO_HANDLE_ID);
-  if (noHandle) {
-    let group = new TypedMap<Bytes, BigInt>();
-    let currentList = noHandle.list; // current record
-    let newList: string[] = []; // record won't be used this time
-
-    for (let i = 0; i < currentList.length; i++) {
-      let playerWeight = BigInt.fromI32(1)
-      let record = PlayRecord.load(currentList[i]) as PlayRecord;
-      if (record.block > startBlock && record.block <= endBlock) {
-        if (winCountry.result == record.selectCountry) {
-          // good guess, will get double rewards
-          playerWeight = playerWeight.times(BigInt.fromI32(2))
-        }
-
-        let prevWeight = group.get(record.player)
-        if (!prevWeight) {
-          prevWeight = BigInt.fromI32(0)
-        }
-
-        // update weight of player
-        group.set(record.player, prevWeight.plus(playerWeight));
-
-        // update total weight
-        totalWeight = totalWeight.plus(totalWeight);
-      } else {
-        // 遍历所有的record，累加到player之上, block区间之外的，会添加到newList中
-        newList.push(currentList[i]);
-      }
-    }
-
-    // 便利所有的group，为每个人分配奖励数量，然后存储在UserDistribution中(供最终调用)
-    for (let j = 0; j < group.entries.length; j++) {
-      let player = group.entries[j].key;
-      let weight = group.entries[j].value;
-
-      let id = player.toString() + "#" + index.toString()
-      let reward = rewardAmt.times(weight).div(totalWeight);
-
-      let playerDistribution = new PlayerDistribution(id);
-      playerDistribution.player = player;
-      playerDistribution.rewardAmt = reward;
-      playerDistribution.weight = weight;
-      playerDistribution.isClaimed = false;
-      playerDistribution.save();
-
-      rewardHistoryList.push(id);
-      rewardActuallyAmt = rewardActuallyAmt.plus(reward);
-    }
-
-    noHandle.list = newList;
-    noHandle.save();
-  }
-  */
 }
 
 async function getPlayerRecords(index: number) {
@@ -115,53 +59,89 @@ async function getWinnerHistory(index: number) {
   return data['data']['finializeHistory']
 }
 
-function getPlayerRewardList(records: any, winner: number) {
+function getPlayerRewardList(totalReward: string, records: any, winner: number) {
   // 遍历所有的records，计算每个人的奖励数量，返回一个数组，然后抛出来，后续使用进行merkel计算
   let group = {}
-  let totalWeight: string
+  let totalWeight: string = '0'
 
   records.map((it: {
     player(arg0: string, player: any): unknown; selectCountry: number;
   }) => {
-    // 未猜中weight为1
     // 猜中奖励翻倍
     // console.log('mapping it:', it);
     // console.log('it.selectCountry:', it.selectCountry, 'winner:', winner);
-    let weight
-
-    if (it.selectCountry === winner) {
-      console.log('weight is 2 for', it.player);
-      weight = 2
-    } else {
-      console.log('\t weight is 1 for', it.player);
-      weight = 1
-    }
-    return [it, weight]
+    let weight = (it.selectCountry === winner) ? 2 : 1
+    return { it, weight }
   }).forEach((element: {
     weight(weight: any): unknown; player: string | number;
   }) => {
-    let value = group[element[0].player] || {
+    let value = group[element.it.player] || {
       list: [],
       weight: '0'
     }
 
     // console.log('current value:', value);
 
-    value.list.push(element[0])
-    value.weight = new BigNumber(value.weight).plus(element[1]).toFixed()
-    totalWeight = new BigNumber(totalWeight).plus(element[1]).toFixed()
+    value.list.push(element.it)
+    value.weight = new BigNumber(value.weight).plus(element.weight).toFixed()
+    totalWeight = new BigNumber(totalWeight).plus(element.weight).toFixed()
 
-    group[element[0].player] = value
+    group[element.it.player] = value
   });
 
   console.log('group', group)
+  console.log('totalWeight', totalWeight)
+
+  let playerDistributionList = []
+  let actuallyAmt = "0"
+
+  for (const player in group) {
+    const item = group[player];
+
+    // TODO dp是什么？
+    item.reward = new BigNumber(item.weight).multipliedBy(totalReward).div(totalWeight).dp(0, BigNumber.ROUND_DOWN).toFixed();
+    actuallyAmt = new BigNumber(actuallyAmt).plus(item.reward).toFixed()
+
+    // console.log('total reward: ', totalReward, 'item.weight:', item.weight);
+    console.log('reward:', item.reward.toString());
+    playerDistributionList.push({
+      player: player,
+      rewardAmt: item.reward
+    })
+  }
+
+  return { playerDistributionList, actuallyAmt };
 }
 
-function generateMerkelRoot(list: any) {
+function generateMerkelRoot(index: number, playerRewardList: any, totalReward: string, actuallyAmt: string) {
+  console.log('hello root, actuallyAmt:', actuallyAmt);
+  // make leafs
+  let items = playerRewardList.map(it => {
+    console.log('it.rewardAmt:', it.rewardAmt);
 
+    return hre.ethers.utils.keccak256(
+      hre.ethers.utils.solidityPack(
+        ['uint256', 'address', 'uint256'],
+        [index, it.player, it.rewardAmt]
+      ))
+  })
+
+  // create tree
+  const tree = new MerkleTree(items, hre.ethers.utils.keccak256, { sort: true })
+  const root = tree.getHexRoot()
+
+  console.log('playerRewardList:', playerRewardList);
+  return root
+}
+
+export const oneEther = new BigNumber(Math.pow(10, 18))
+
+export const createBigNumber18 = (v: any) => {
+  return new BigNumber(v).multipliedBy(oneEther).toFixed()
 }
 
 const CURRENT_ROUND = 0;
+const TOTAL_REWARD = createBigNumber18(10000);
 
 async function main() {
   // query subgraph to get user data
@@ -172,10 +152,12 @@ async function main() {
   console.log(`winner for round ${CURRENT_ROUND} is : ${winner['result']}`);
 
   // calculate reward for each player
-  const playerRewardList = getPlayerRewardList(playRecords, winner['result'])
+  const { playerDistributionList, actuallyAmt } = getPlayerRewardList(TOTAL_REWARD, playRecords, winner['result'])
+  console.log('reward list:', playerDistributionList);
 
   // generate Merkel Root 
-  const root = generateMerkelRoot(playerRewardList)
+  const root = generateMerkelRoot(CURRENT_ROUND, playerDistributionList, TOTAL_REWARD, actuallyAmt)
+  console.log('root:', root);
 
   // call method of distributor 
 

@@ -370,6 +370,7 @@ package.json中添加，执行：npm i
         "apollo-boost": "^0.4.9",
         "cross-fetch": "^3.1.5",
         "bignumber.js": "^9.1.0",
+        "merkletreejs": "^0.2.32",
     }
 ```
 
