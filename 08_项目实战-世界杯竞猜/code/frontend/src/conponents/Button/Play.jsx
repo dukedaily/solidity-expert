@@ -20,7 +20,7 @@ export function Play() {
   const [inputValue, setInputValue] = useState('0')
 
   const { config } = usePrepareContractWrite({
-    addressOrName: '0x471a8f71d3bBB8254e36832FBbb6928b73298347',
+    addressOrName: '0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3',
     contractInterface: worldcup_abi,
     functionName: 'play',
     args: [inputValue],

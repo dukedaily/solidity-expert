@@ -205,6 +205,15 @@ export class PlayerDistribution extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+  get index(): BigInt {
+    let value = this.get("index");
+    return value!.toBigInt();
+  }
+
+  set index(value: BigInt) {
+    this.set("index", Value.fromBigInt(value));
+  }
+
   get player(): Bytes {
     let value = this.get("player");
     return value!.toBytes();

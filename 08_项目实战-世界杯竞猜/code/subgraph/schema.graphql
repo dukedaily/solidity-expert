@@ -19,6 +19,7 @@ type FinializeHistory @entity {
 
 type PlayerDistribution @entity {
   id: ID!
+  index: BigInt!
   player: Bytes!
   rewardAmt: BigInt!
   weight: BigInt!

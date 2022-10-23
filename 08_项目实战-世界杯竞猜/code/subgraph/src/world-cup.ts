@@ -57,7 +57,6 @@ export function handleFinialize(event: Finialize): void {
   entity.save();
 }
 
-
 export function handleDistributeReward(event: DistributeReward): void {
   // parse parameters first
   let id = event.params.index.toString();
@@ -82,14 +81,10 @@ export function handleDistributeReward(event: DistributeReward): void {
   let startBlock = BigInt.fromI32(0);
   let endBlock = settleBlockNumber;
 
-  if (index > BigInt.fromI32(1)) {
+  if (index > BigInt.fromI32(0)) {
     let prevId = index.minus(BigInt.fromI32(1)).toString()
 
-    let prev = MerkleDistributor.load(prevId);
-    if (!prev) {
-      prev = new MerkleDistributor(prevId)
-    }
-
+    let prev = MerkleDistributor.load(prevId) as MerkleDistributor;
     startBlock = prev.settleBlockNumber;
   }
 
@@ -102,10 +97,16 @@ export function handleDistributeReward(event: DistributeReward): void {
     let group = new TypedMap<Bytes, BigInt>();
     let currentList = noHandle.list; // current record
     let newList: string[] = []; // record won't be used this time
+    log.warning("current list: ", currentList)
 
     for (let i = 0; i < currentList.length; i++) {
       let playerWeight = BigInt.fromI32(1)
       let record = PlayRecord.load(currentList[i]) as PlayRecord;
+
+      log.warning("record.block:", [record.block.toString()])
+      log.warning("startBlock:", [startBlock.toString()])
+      log.warning("endBlock:", [endBlock.toString()])
+      
       if (record.block > startBlock && record.block <= endBlock) {
         if (winCountry.result == record.selectCountry) {
           // good guess, will get double rewards
@@ -121,7 +122,8 @@ export function handleDistributeReward(event: DistributeReward): void {
         group.set(record.player, prevWeight.plus(playerWeight));
 
         // update total weight
-        totalWeight = totalWeight.plus(totalWeight);
+        totalWeight = totalWeight.plus(playerWeight);
+        log.warning("hello world totalWeight: ", [totalWeight.toString()])
       } else {
         // 遍历所有的record，累加到player之上, block区间之外的，会添加到newList中
         newList.push(currentList[i]);
@@ -134,9 +136,12 @@ export function handleDistributeReward(event: DistributeReward): void {
       let weight = group.entries[j].value;
 
       let id = player.toString() + "#" + index.toString()
+
+      log.warning("totalWeight: ", [totalWeight.toString()])
       let reward = rewardAmt.times(weight).div(totalWeight);
 
       let playerDistribution = new PlayerDistribution(id);
+      playerDistribution.index = index;
       playerDistribution.player = player;
       playerDistribution.rewardAmt = reward;
       playerDistribution.weight = weight;

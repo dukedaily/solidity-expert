@@ -59,6 +59,26 @@ async function getWinnerHistory(index: number) {
   return data['data']['finializeHistory']
 }
 
+async function getPlayerDistributions(index: number) {
+  const query = ` {
+    playerDistributions(
+      where : {
+        index: ${index}
+      }
+    ) {
+      player
+      rewardAmt
+      weight
+    }
+  }
+  `;
+
+  // console.log('getWinnerHistory query:', query);
+
+  let data = await executeQuery(query, {})
+  return data['data']['playerDistributions']
+}
+
 function getPlayerRewardList(totalReward: string, records: any, winner: number) {
   // 遍历所有的records，计算每个人的奖励数量，返回一个数组，然后抛出来，后续使用进行merkel计算
   let group = {}
@@ -113,25 +133,30 @@ function getPlayerRewardList(totalReward: string, records: any, winner: number) 
   return { playerDistributionList, actuallyAmt };
 }
 
-function generateMerkelRoot(index: number, playerRewardList: any, totalReward: string, actuallyAmt: string) {
-  console.log('hello root, actuallyAmt:', actuallyAmt);
+function generateLeaf(index: number, player: string, rewardAmt: number) {
+  return hre.ethers.utils.keccak256(
+    hre.ethers.utils.solidityPack(
+      ['uint256', 'address', 'uint256'],
+      [index, player, rewardAmt]
+    ))
+}
+
+function generateMerkelTree(index: number, playerRewardList: any) {
   // make leafs
   let items = playerRewardList.map(it => {
     console.log('it.rewardAmt:', it.rewardAmt);
 
-    return hre.ethers.utils.keccak256(
-      hre.ethers.utils.solidityPack(
-        ['uint256', 'address', 'uint256'],
-        [index, it.player, it.rewardAmt]
-      ))
+    // return hre.ethers.utils.keccak256(
+    //   hre.ethers.utils.solidityPack(
+    //     ['uint256', 'address', 'uint256'],
+    //     [index, it.player, it.rewardAmt]
+    //   ))
+    return generateLeaf(index, it.player, it.rewardAmt);
   })
 
   // create tree
   const tree = new MerkleTree(items, hre.ethers.utils.keccak256, { sort: true })
-  const root = tree.getHexRoot()
-
-  console.log('playerRewardList:', playerRewardList);
-  return root
+  return tree
 }
 
 export const oneEther = new BigNumber(Math.pow(10, 18))
@@ -142,28 +167,46 @@ export const createBigNumber18 = (v: any) => {
 
 const CURRENT_ROUND = 0;
 const TOTAL_REWARD = createBigNumber18(10000);
+const currentPlayer = '0xe8191108261f3234f1c2aca52a0d5c11795aef9e'; // TODO
 
 async function main() {
   // query subgraph to get user data
   const playRecords = await getPlayerRecords(CURRENT_ROUND)
   // console.log('playRecords:', playRecords);
 
-  const winner = await getWinnerHistory(CURRENT_ROUND + 1) // TODO need bug fix
+  const winner = await getWinnerHistory(CURRENT_ROUND)
   console.log(`winner for round ${CURRENT_ROUND} is : ${winner['result']}`);
 
   // calculate reward for each player
   const { playerDistributionList, actuallyAmt } = getPlayerRewardList(TOTAL_REWARD, playRecords, winner['result'])
-  console.log('reward list:', playerDistributionList);
+  // console.log('reward list:', playerDistributionList, 'actuallyAmt:', actuallyAmt);
 
   // generate Merkel Root 
-  const root = generateMerkelRoot(CURRENT_ROUND, playerDistributionList, TOTAL_REWARD, actuallyAmt)
-  console.log('root:', root);
+  const tree = generateMerkelTree(CURRENT_ROUND, playerDistributionList)
+  console.log('root:', tree.getHexRoot());
 
   // call method of distributor 
+  // TODO
 
-  // get userDistribution
+  // get userDistribution from subgraph
+  const playerDistributions = await getPlayerDistributions(CURRENT_ROUND)
+  console.log('playerDistributions:', playerDistributions);
 
-  // user Claim
+  const newTree = generateMerkelTree(CURRENT_ROUND, playerDistributions)
+  console.log('newRoot:', newTree.getHexRoot());
+
+  const player = playerDistributions.filter(function (item) {
+    // console.log('item.player:', item.player, 'currentPlayer:', currentPlayer)
+    return item.player === currentPlayer
+  })[0]
+
+  console.log('player:', player);
+  // console.log('claim player:', player[0].player, player[0].rewardAmt);
+
+  // Claim by specific player
+  const leaf = generateLeaf(CURRENT_ROUND, player.player, player.rewardAmt)
+  const proof = newTree.getHexProof(leaf)
+  console.log('proof:', proof);
 }
 
 main().catch(error => {
