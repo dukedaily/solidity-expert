@@ -145,12 +145,6 @@ function generateMerkelTree(index: number, playerRewardList: any) {
   // make leafs
   let items = playerRewardList.map(it => {
     console.log('it.rewardAmt:', it.rewardAmt);
-
-    // return hre.ethers.utils.keccak256(
-    //   hre.ethers.utils.solidityPack(
-    //     ['uint256', 'address', 'uint256'],
-    //     [index, it.player, it.rewardAmt]
-    //   ))
     return generateLeaf(index, it.player, it.rewardAmt);
   })
 
