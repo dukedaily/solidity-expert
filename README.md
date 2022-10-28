@@ -9,6 +9,8 @@
 5. 主流协议：uniswap、compound、aave、staking、nft等
 6. 必要的前端知识：react
 
+更多资源，请访问网站：https://dukedu.notion.site/
+
 ## 学习资源
 
 - gitbook：  [点击阅读](https://dukedaily.github.io/solidity-expert/)

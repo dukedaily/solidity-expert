@@ -2,11 +2,12 @@
 
 ## 其他（重要）
 
-1. https://github.com/wolflo/evm-opcodes
-2. https://github.com/comitylabs/evm.codes
+1. evm在线查询：https://github.com/wolflo/evm-opcodes
+2. evm在线查询：https://github.com/comitylabs/evm.codes
 3. https://jeancvllr.medium.com/solidity-tutorial-all-about-assembly-5acdfefde05c
-4. https://github.com/ethereumbook/ethereumbook
-5. 最重要的文档：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+4. 精通以太坊：https://github.com/ethereumbook/ethereumbook
+5. evm图解：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+6. 反汇编系列教程：https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d
 
 
 
@@ -30,6 +31,8 @@
 > 涵盖了 EVM 如何工作的基本原理，并展示了 EVM 如何与协议层互动。
 
 - 第13章 - 以太坊虚拟机: https://github.com/ethereumbook/ethereumbook/blob/develop/13evm.asciidoc
+
+
 
 ## Openzepplin - 解构 Solidity 合约
 
