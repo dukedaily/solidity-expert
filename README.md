@@ -22,9 +22,10 @@
 国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。
 
 - 微信：Adugii
-- 公众号：阿杜在新加坡
-- Twitter：dukedu2022
+- 公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)
+- Twitter：[dukedu2022](https://twitter.com/dukedu2022)
 - 加入电报：https://t.me/+bEy-E0l4KHhlODRl
+- **个人网站**：https://dukedu.notion.site/
 
 
 ## 马上入群

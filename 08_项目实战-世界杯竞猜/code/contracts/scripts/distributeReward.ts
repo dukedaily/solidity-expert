@@ -184,7 +184,7 @@ async function main() {
 
   // get userDistribution from subgraph
   const playerDistributions = await getPlayerDistributions(CURRENT_ROUND)
-  console.log('playerDistributions:', playerDistributions);
+  // console.log('playerDistributions:', playerDistributions);
 
   const newTree = generateMerkelTree(CURRENT_ROUND, playerDistributions)
   console.log('newRoot:', newTree.getHexRoot());

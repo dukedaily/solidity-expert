@@ -1,4 +1,4 @@
-# 第4节：世界杯竞猜（subgraph1）
+# 第4节：世界杯竞猜（demo）
 
 >  本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
@@ -142,9 +142,11 @@ graph init
 
 到这里，我们已经介绍了subgraph的基本概念，并且完成了对subgraph的基本框架的搭建，下一节，我们将编写具体的业务逻辑，完成对世界杯玩家的激励。
 
--
 
-加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！
+
+---
+
+加V入群：Adugii，公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)，一起抱团拥抱web3，下期见！
 
 
 
