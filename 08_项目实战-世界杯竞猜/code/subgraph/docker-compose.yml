@@ -26,7 +26,8 @@ services:
     ports:
       - '5001:5001'
     volumes:
-      - ./data/ipfs:/data/ipfs
+      # - ./data/ipfs:/data/ipfs
+      - ../../../../data/ipfs:/data/ipfs
   postgres:
     image: postgres
     ports:
