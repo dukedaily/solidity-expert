@@ -1,0 +1,1 @@
+学习move语言的话，推荐这个：https://github.com/move-language，这个是和链无关的，仅仅是move本身

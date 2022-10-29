@@ -12,7 +12,7 @@ import {
   Claimed
 } from "../generated/WorldCupDistributor/WorldCupDistributor";
 
-import { PlayRecord, NeedToHandle, PlayerDistribution, MerkleDistributor, SimpleBlock, FinializeHistory, RewardHistory } from "../generated/schema"
+import { PlayRecord, NeedToHandle, PlayerDistribution, MerkleDistributor, FinializeHistory, RewardHistory } from "../generated/schema"
 
 let NO_HANDLE_ID = "noHandleId"
 
@@ -41,7 +41,11 @@ export function handlePlay(event: Play): void {
     noHandle.list = [];
   }
 
-  noHandle.list.push(id)
+  // noHandle.list.push(id)
+  let list = noHandle.list;
+  list.push(id);
+  noHandle.list = list;
+
   noHandle.save()
 }
 
@@ -49,10 +53,9 @@ export function handleFinialize(event: Finialize): void {
   let id = event.params._currRound.toString();
   let entity = new FinializeHistory(id);
 
-  entity.result = event.params._giftAmt; // TODO need change to _country later
+  entity.result = event.params._country;
   entity.save();
 }
-
 
 export function handleDistributeReward(event: DistributeReward): void {
   // parse parameters first
@@ -68,24 +71,20 @@ export function handleDistributeReward(event: DistributeReward): void {
   }
 
   // save for double check
-  let merkelEntity = new MerkleDistributor(id);
+  let merkleEntity = new MerkleDistributor(id);
 
-  merkelEntity.index = index;
-  merkelEntity.totalAmt = rewardAmt;
-  merkelEntity.settleBlockNumber = settleBlockNumber;
-  merkelEntity.save();
+  merkleEntity.index = index;
+  merkleEntity.totalAmt = rewardAmt;
+  merkleEntity.settleBlockNumber = settleBlockNumber;
+  merkleEntity.save();
 
   let startBlock = BigInt.fromI32(0);
   let endBlock = settleBlockNumber;
 
-  if (index > BigInt.fromI32(1)) {
+  if (index > BigInt.fromI32(0)) {
     let prevId = index.minus(BigInt.fromI32(1)).toString()
 
-    let prev = MerkleDistributor.load(prevId);
-    if (!prev) {
-      prev = new MerkleDistributor(prevId)
-    }
-
+    let prev = MerkleDistributor.load(prevId) as MerkleDistributor;
     startBlock = prev.settleBlockNumber;
   }
 
@@ -98,10 +97,16 @@ export function handleDistributeReward(event: DistributeReward): void {
     let group = new TypedMap<Bytes, BigInt>();
     let currentList = noHandle.list; // current record
     let newList: string[] = []; // record won't be used this time
+    log.warning("current list: ", currentList)
 
     for (let i = 0; i < currentList.length; i++) {
       let playerWeight = BigInt.fromI32(1)
       let record = PlayRecord.load(currentList[i]) as PlayRecord;
+
+      log.warning("record.block:", [record.block.toString()])
+      log.warning("startBlock:", [startBlock.toString()])
+      log.warning("endBlock:", [endBlock.toString()])
+      
       if (record.block > startBlock && record.block <= endBlock) {
         if (winCountry.result == record.selectCountry) {
           // good guess, will get double rewards
@@ -117,7 +122,8 @@ export function handleDistributeReward(event: DistributeReward): void {
         group.set(record.player, prevWeight.plus(playerWeight));
 
         // update total weight
-        totalWeight = totalWeight.plus(totalWeight);
+        totalWeight = totalWeight.plus(playerWeight);
+        log.warning("hello world totalWeight: ", [totalWeight.toString()])
       } else {
         // 遍历所有的record，累加到player之上, block区间之外的，会添加到newList中
         newList.push(currentList[i]);
@@ -130,9 +136,12 @@ export function handleDistributeReward(event: DistributeReward): void {
       let weight = group.entries[j].value;
 
       let id = player.toString() + "#" + index.toString()
+
+      log.warning("totalWeight: ", [totalWeight.toString()])
       let reward = rewardAmt.times(weight).div(totalWeight);
 
       let playerDistribution = new PlayerDistribution(id);
+      playerDistribution.index = index;
       playerDistribution.player = player;
       playerDistribution.rewardAmt = reward;
       playerDistribution.weight = weight;
@@ -156,66 +165,10 @@ export function handleDistributeReward(event: DistributeReward): void {
   rewardHistory.list = rewardHistoryList;
 }
 
+// distributor
 export function handleClaimed(event: Claimed): void {
 }
 
-/*
+// palyer claim the eth he win
 export function handleClaimReward(event: ClaimReward): void {
-  // Entities can be loaded from the store using a string ID; this ID
-  // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex())
-
-  // Entities only exist after they have been saved to the store;
-  // `null` checks allow to create entities on demand
-  if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex())
-
-    // Entity fields can be set using simple assignments
-    entity.count = BigInt.fromI32(0)
-  }
-
-  // BigInt and BigDecimal math are supported
-  entity.count = entity.count + BigInt.fromI32(1)
-
-  // Entity fields can be set based on event parameters
-  entity._claimer = event.params._claimer
-  entity._amt = event.params._amt
-
-  // Entities can be written to the store with `.save()`
-  entity.save()
-
-  // Note: If a handler doesn't require existing field values, it is faster
-  // _not_ to load the entity from the store. Instead, create it fresh with
-  // `new Entity(...)`, set the fields that should be updated and save the
-  // entity back to the store. Fields that were not set or unset remain
-  // unchanged, allowing for partial updates to be applied.
-
-  // It is also possible to access smart contracts from mappings. For
-  // example, the contract that has emitted the event can be connected to
-  // with:
-  //
-  // let contract = Contract.bind(event.address)
-  //
-  // The following functions can then be called on this contract to access
-  // state variables and other data:
-  //
-  // - contract.admin(...)
-  // - contract.countries(...)
-  // - contract.countryToPlayers(...)
-  // - contract.currRound(...)
-  // - contract.deadline(...)
-  // - contract.getCountryPlayters(...)
-  // - contract.getPlayerInfo(...)
-  // - contract.getVaultBalance(...)
-  // - contract.lockedAmts(...)
-  // - contract.winnerVaults(...)
-}
-*/
-
-export function handleBlock(block: ethereum.Block): void {
-  let id = block.number.toString();
-  let entity = new SimpleBlock(id);
-  entity.height = block.number;
-  entity.time = block.timestamp;
-  entity.save();
 }

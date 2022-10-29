@@ -14,7 +14,7 @@ import { Button } from 'antd'
 
 export function ClaimReward() {
   const { config } = usePrepareContractWrite({
-    addressOrName: '0x4db34635116406B5F4268FCB7463BEC97b3dcD38',
+    addressOrName: '0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3',
     contractInterface: worldcup_abi,
     functionName: 'claimReward',
   })

@@ -19,6 +19,7 @@ type FinializeHistory @entity {
 
 type PlayerDistribution @entity {
   id: ID!
+  index: BigInt!
   player: Bytes!
   rewardAmt: BigInt!
   weight: BigInt!
@@ -39,10 +40,4 @@ type MerkleDistributor @entity {
   index: BigInt!
   totalAmt: BigInt!
   settleBlockNumber: BigInt!
-}
-
-type SimpleBlock @entity {
-  id: ID!
-  height: BigInt!
-  time: BigInt!
 }

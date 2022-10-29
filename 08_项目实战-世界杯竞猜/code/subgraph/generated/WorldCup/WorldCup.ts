@@ -49,16 +49,8 @@ export class Finialize__Params {
     return this._event.parameters[0].value.toI32();
   }
 
-  get _winners(): Array<Address> {
-    return this._event.parameters[1].value.toAddressArray();
-  }
-
-  get currAvalBalance(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
-  }
-
-  get _giftAmt(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
+  get _country(): BigInt {
+    return this._event.parameters[1].value.toBigInt();
   }
 }
 

@@ -6,9 +6,9 @@ dataSources:
     name: WorldCup
     network: goerli
     source:
-      address: "0x471a8f71d3bBB8254e36832FBbb6928b73298347"
+      address: "0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3"
       abi: WorldCup
-      startBlock: 7789647
+      startBlock: 7813068
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -22,7 +22,7 @@ dataSources:
       eventHandlers:
         - event: Play(uint8,address,uint8)
           handler: handlePlay
-        - event: Finialize(uint8,address[],uint256,uint256)
+        - event: Finialize(uint8,uint256)
           handler: handleFinialize
         - event: ClaimReward(address,uint256)
           handler: handleClaimReward
@@ -31,9 +31,9 @@ dataSources:
     name: WorldCupDistributor
     network: goerli
     source:
-      address: "0xF19233dFE30219F4D6200c02826B80e4347EF8BF"
+      address: "0x857c162eB34f3FA3f14A8A7F211017D2505df724"
       abi: WorldCupDistributor
-      startBlock: 7789791
+      startBlock: 7813265
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -50,4 +50,6 @@ dataSources:
           handler: handleDistributeReward
         - event: Claimed(indexed address,indexed address,indexed uint256)
           handler: handleClaimed
+      # blockHandlers:
+        # - handler: handleBlock
       file: ./src/world-cup.ts

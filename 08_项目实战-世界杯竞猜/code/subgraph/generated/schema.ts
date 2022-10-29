@@ -205,6 +205,15 @@ export class PlayerDistribution extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+  get index(): BigInt {
+    let value = this.get("index");
+    return value!.toBigInt();
+  }
+
+  set index(value: BigInt) {
+    this.set("index", Value.fromBigInt(value));
+  }
+
   get player(): Bytes {
     let value = this.get("player");
     return value!.toBytes();
@@ -377,55 +386,5 @@ export class MerkleDistributor extends Entity {
 
   set settleBlockNumber(value: BigInt) {
     this.set("settleBlockNumber", Value.fromBigInt(value));
-  }
-}
-
-export class SimpleBlock extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save SimpleBlock entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.STRING,
-        `Entities of type SimpleBlock must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
-      );
-      store.set("SimpleBlock", id.toString(), this);
-    }
-  }
-
-  static load(id: string): SimpleBlock | null {
-    return changetype<SimpleBlock | null>(store.get("SimpleBlock", id));
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value!.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get height(): BigInt {
-    let value = this.get("height");
-    return value!.toBigInt();
-  }
-
-  set height(value: BigInt) {
-    this.set("height", Value.fromBigInt(value));
-  }
-
-  get time(): BigInt {
-    let value = this.get("time");
-    return value!.toBigInt();
-  }
-
-  set time(value: BigInt) {
-    this.set("time", Value.fromBigInt(value));
   }
 }

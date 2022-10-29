@@ -106,9 +106,7 @@ contract WorldCup {
             winnerVaults[admin] += giftAmt;
         }
 
-        currRound++;
-
-        emit Finialize(currRound, uint256(_country));
+        emit Finialize(currRound++, uint256(_country));
     }
 
     function claimReward() external {
