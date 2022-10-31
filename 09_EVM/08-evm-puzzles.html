@@ -1713,13 +1713,15 @@
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
+<p>以太坊在内部实现了一个基于栈的虚拟机，我们称之为EVM（Ethereum Virtual Machine），用户所有的操作最终都会转化为操作码（OPCODE）然后在EVM中执行，下图为整个执行流程，目前我们对EVM的讲解不多，后续会陆续补上。</p>
+<p><img src="assets/image-20221031203407316.png" alt="image-20221031203407316"></p>
+<p>本文将介绍10道EVM题目，每道题都会要求用户填写部分内容：使得程序正常退出，而不允许执行REVERT。</p>
+<p><strong>注意：本文针对道是有EVM基础的同学，对于尚未接触过OPCODE的同学</strong>，不要着急，在这里可以先看看EVM里面都有啥，有助于后续深入学习。</p>
 <h2 id="启动">启动</h2>
 <p><strong>运行游戏</strong>：<a href="https://github.com/fvictorio/evm-puzzles" target="_blank">https://github.com/fvictorio/evm-puzzles</a></p>
 <pre><code class="lang-sh">npm i
 npx hardhat play
 </code></pre>
-<h2 id="规则">规则</h2>
-<p><strong>根据给出的上下文，用户输入的数据，使得程序正常退出，而不会执行REVERT</strong>（一共10道题）</p>
 <h2 id="puzzle1：callvalue">Puzzle#1：CALLVALUE</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 1 #</span>
@@ -2028,6 +2030,8 @@ npx hardhat play
 <li>1表示成功，0表示失败，JUMIPI和CALL都如此</li>
 <li>OPCODE的字节序是16进制，而不是10进制，注意转化</li>
 </ol>
+<h2 id="小结">小结</h2>
+<p>接下来会花几节课来讲解EVM相关内容，以及反汇编内容，敬请关注！</p>
 <h2 id="其他知识">其他知识</h2>
 <ul>
 <li>答案：<a href="https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles" target="_blank">https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles</a></li>
@@ -2081,7 +2085,7 @@ npx hardhat play
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第8节:EVM-PUZZLES挑战","level":"1.13.6","depth":2,"next":{"title":"第十章:合约攻击案例分析","level":"1.14","depth":1,"path":"10_合约攻击案例分析/README.md","ref":"10_合约攻击案例分析/README.md","articles":[{"title":"第1节:FTX gas攻击","level":"1.14.1","depth":2,"path":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","ref":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","articles":[]}]},"previous":{"title":"第4节:终止","level":"1.13.5","depth":2,"path":"09_EVM/反汇编/04终止.md","ref":"09_EVM/反汇编/04终止.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM/08-evm-puzzles.md","mtime":"2022-10-31T12:16:13.684Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-31T12:16:55.236Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第8节:EVM-PUZZLES挑战","level":"1.13.6","depth":2,"next":{"title":"第十章:合约攻击案例分析","level":"1.14","depth":1,"path":"10_合约攻击案例分析/README.md","ref":"10_合约攻击案例分析/README.md","articles":[{"title":"第1节:FTX gas攻击","level":"1.14.1","depth":2,"path":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","ref":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","articles":[]}]},"previous":{"title":"第4节:终止","level":"1.13.5","depth":2,"path":"09_EVM/反汇编/04终止.md","ref":"09_EVM/反汇编/04终止.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM/08-evm-puzzles.md","mtime":"2022-10-31T13:06:59.756Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-31T13:10:04.157Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
