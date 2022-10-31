@@ -24,8 +24,8 @@ npx hardhat play
 # Puzzle 1 #
 ############
 
-00      34      CALLVALUE
-01      56      JUMP
+00      34      CALLVALUE	#[msg.value]
+01      56      JUMP	#跳转下一个evm字节，查看JUMPDEST，发现目的地是08，所以msg.value为8
 02      FD      REVERT
 03      FD      REVERT
 04      FD      REVERT
@@ -49,9 +49,9 @@ npx hardhat play
 # Puzzle 2 #
 ############
 
-00      34      CALLVALUE
-01      38      CODESIZE
-02      03      SUB
+00      34      CALLVALUE	#[msg.value]
+01      38      CODESIZE	#[10, msg.value]，codesize为当前evm中的操作码的数量，每一个是1字节
+02      03      SUB	#[sub_result]， 需要跳转到06，所以 10 - msg.value = 6
 03      56      JUMP
 04      FD      REVERT
 05      FD      REVERT
@@ -75,8 +75,8 @@ npx hardhat play
 # Puzzle 3 #
 ############
 
-00      36      CALLDATASIZE
-01      56      JUMP
+00      36      CALLDATASIZE	#[datasize]
+01      56      JUMP	#跳转到04，所以我们只要保证calldata到size为4即可，内容不限。
 02      FD      REVERT
 03      FD      REVERT
 04      5B      JUMPDEST
@@ -95,8 +95,8 @@ npx hardhat play
 # Puzzle 4 #
 ############
 
-00      34      CALLVALUE
-01      38      CODESIZE
+00      34      CALLVALUE	#[msg.value]
+01      38      CODESIZE	#[12, msg.value]
 02      18      XOR
 03      56      JUMP
 04      FD      REVERT
@@ -125,13 +125,13 @@ npx hardhat play
 # Puzzle 5 #
 ############
 
-00      34          CALLVALUE
-01      80          DUP1
-02      02          MUL
-03      610100      PUSH2 0100
-06      14          EQ
-07      600C        PUSH1 0C
-09      57          JUMPI
+00      34          CALLVALUE	#[msg.value]
+01      80          DUP1	#[msg.value, msg.value]
+02      02          MUL	#[mul_result]
+03      610100      PUSH2 0100	#[0100, mul_result]，反推mul_result为: 0100
+06      14          EQ	#[0或1]，反推：1
+07      600C        PUSH1 0C	#[0C, 0或1]，为了能跳转，此时必须为：1
+09      57          JUMPI	#[]，stack2为1时，跳转到stack1的位置
 0A      FD          REVERT
 0B      FD          REVERT
 0C      5B          JUMPDEST
@@ -158,9 +158,9 @@ npx hardhat play
 # Puzzle 6 #
 ############
 
-00      6000      PUSH1 00
-02      35        CALLDATALOAD
-03      56        JUMP
+00      6000      PUSH1 00	#[00]
+02      35        CALLDATALOAD	#[calldata, 00]
+03      56        JUMP	#跳转到0A，所以stack1为：0A
 04      FD        REVERT
 05      FD        REVERT
 06      FD        REVERT
@@ -183,17 +183,17 @@ npx hardhat play
 # Puzzle 7 #
 ############
 
-00      36        CALLDATASIZE  # [datasize]
-01      6000      PUSH1 00			# [00, datasize]
-03      80        DUP1					# [00, 00, datasize]
+00      36        CALLDATASIZE	# [datasize]
+01      6000      PUSH1 00	# [00, datasize]
+03      80        DUP1		# [00, 00, datasize]
 04      37        CALLDATACOPY	# [] data被copy到memory中，栈被清空
 05      36        CALLDATASIZE	# [datasize]
-06      6000      PUSH1 00			# [00, datasize]
-08      6000      PUSH1 00			# [00, 00, datasize]
-0A      F0        CREATE				# [deployed_address] 栈被清空，从内存中读取数据，创建合约，返回地址 
-0B      3B        EXTCODESIZE		# [address_code_size] 输入地址，返回合约的size
-0C      6001      PUSH1 01			# [01, address_code_size]
-0E      14        EQ						# [1] address_code_size必须为1，后续的才成立
+06      6000      PUSH1 00		# [00, datasize]
+08      6000      PUSH1 00		# [00, 00, datasize]
+0A      F0        CREATE	# [deployed_address] 栈被清空，从内存中读取数据，创建合约，返回地址 
+0B      3B        EXTCODESIZE	# [address_code_size] 输入地址，返回合约的size
+0C      6001      PUSH1 01	# [01, address_code_size]
+0E      14        EQ	# [1] address_code_size必须为1，后续的才成立
 0F      6013      PUSH1 13
 11      57        JUMPI
 12      FD        REVERT
@@ -218,25 +218,25 @@ npx hardhat play
 # Puzzle 8 #
 ############
 
-00      36        CALLDATASIZE		# [datasize]
-01      6000      PUSH1 00				# [00, datasize]
-03      80        DUP1						# [00, 00, datasize]
-04      37        CALLDATACOPY		# []  copy到内存中
-05      36        CALLDATASIZE		# [datasize]，直接生成数据，不需要栈参数
-06      6000      PUSH1 00				# [00, datasize]
-08      6000      PUSH1 00				# [00, 00, datasize]
-0A      F0        CREATE					# [deployed_address]
-0B      6000      PUSH1 00				# [00, deployed_address]
-0D      80        DUP1						# [00, 00, deployed_address]
-0E      80        DUP1						# [00, 00, 00, deployed_address]
-0F      80        DUP1						# [00, 00, 00, 00, deployed_address]
-10      80        DUP1						# [00, 00, 00, 00, 00, deployed_address]
-11      94        SWAP5						# [deployed_address, 00, 00, 00, 00, 00]，兑换1st 和 6th，你没有看错1和6，不是5
-12      5A        GAS 						# [gasAvail, deployed_address, 00, 00, 00, 00, 00] // 7个参数
-13      F1        CALL						# [0或1]调用函数，需要是0，0表示失败，1表示成功！（反推的）
-14      6000      PUSH1 00				# [00, 0或1]，需要是0
-16      14        EQ							# [0或1]，需要是1
-17      601B      PUSH1 1B				# [1B, 0或1]，需要是1
+00      36        CALLDATASIZE	# [datasize]
+01      6000      PUSH1 00	# [00, datasize]
+03      80        DUP1	# [00, 00, datasize]
+04      37        CALLDATACOPY	# []  copy到内存中
+05      36        CALLDATASIZE	# [datasize]，直接生成数据，不需要栈参数
+06      6000      PUSH1 00	# [00, datasize]
+08      6000      PUSH1 00	# [00, 00, datasize]
+0A      F0        CREATE	# [deployed_address]
+0B      6000      PUSH1 00	# [00, deployed_address]
+0D      80        DUP1	# [00, 00, deployed_address]
+0E      80        DUP1	# [00, 00, 00, deployed_address]
+0F      80        DUP1	# [00, 00, 00, 00, deployed_address]
+10      80        DUP1	# [00, 00, 00, 00, 00, deployed_address]
+11      94        SWAP5	# [deployed_address, 00, 00, 00, 00, 00]，兑换1st 和 6th，你没有看错1和6，不是5
+12      5A        GAS	# [gasAvail, deployed_address, 00, 00, 00, 00, 00] // 7个参数
+13      F1        CALL	# [0或1]调用函数，需要是0，0表示失败，1表示成功！（反推的）
+14      6000      PUSH1 00	# [00, 0或1]，需要是0
+16      14        EQ	# [0或1]，需要是1
+17      601B      PUSH1 1B	# [1B, 0或1]，需要是1
 19      57        JUMPI						
 1A      FD        REVERT
 1B      5B        JUMPDEST
@@ -261,23 +261,23 @@ npx hardhat play
 # Puzzle 9 #
 ############
 
-00      36        CALLDATASIZE		# [datasize]
-01      6003      PUSH1 03				# [03, datasize]
-03      10        LT							# [1], stack(1) < stack(2),
-04      6009      PUSH1 09				# [09, 1]
+00      36        CALLDATASIZE	# [datasize]
+01      6003      PUSH1 03	# [03, datasize]
+03      10        LT	# [1], stack(1) < stack(2),
+04      6009      PUSH1 09	# [09, 1]
 06      57        JUMPI
 07      FD        REVERT
 08      FD        REVERT
-09      5B        JUMPDEST				# [] 跳转到这里
-0A      34        CALLVALUE				# [msgvalue]
-0B      36        CALLDATASIZE		# [datasize, msgvalue]
-0C      02        MUL							# [mul_result]
-0D      6008      PUSH1 08				# [08, mul_result]
-0F      14        EQ							# [1], 必须是0
-10      6014      PUSH1 14				# [14, 1]
+09      5B        JUMPDEST	# [] 跳转到这里
+0A      34        CALLVALUE		# [msgvalue]
+0B      36        CALLDATASIZE	# [datasize, msgvalue]
+0C      02        MUL		# [mul_result]
+0D      6008      PUSH1 08	# [08, mul_result]
+0F      14        EQ	# [1], 必须是0
+10      6014      PUSH1 14	# [14, 1]
 12      57        JUMPI
 13      FD        REVERT
-14      5B        JUMPDEST				# 跳转到这里，结束！
+14      5B        JUMPDEST	# 跳转到这里，结束！
 15      00        STOP
 
 ? Enter the value to send: 
@@ -300,22 +300,22 @@ npx hardhat play
 # Puzzle 10 #
 #############
 
-00      38          CODESIZE		# [23]
-01      34          CALLVALUE		# [msgvalue, 23]
-02      90          SWAP1				# [23, msgvalue]
-03      11          GT					# [1], msgvalue < 23
-04      6008        PUSH1 08		# [08, 1]
+00      38          CODESIZE	# [23]
+01      34          CALLVALUE	# [msgvalue, 23]
+02      90          SWAP1	# [23, msgvalue]
+03      11          GT	# [1], msgvalue < 23
+04      6008        PUSH1 08	# [08, 1]
 06      57          JUMPI
 07      FD          REVERT
-08      5B          JUMPDEST			# 跳到这里
+08      5B          JUMPDEST	# 跳到这里
 09      36          CALLDATASIZE	# [datasize]
-0A      610003      PUSH2 0003		# [0003, datasize]
-0D      90          SWAP1					# [datasize, 0003]
-0E      06          MOD						# [N]，取余数，N为余数，必须是：0
-0F      15          ISZERO				# [0或1]，必须是1
-10      34          CALLVALUE			# [msgvalue, 0或1]，必须是：1
-11      600A        PUSH1 0A			# [0A，msgvalue, 0或1]，反推：msgvalue = 0x0f
-13      01          ADD						# [add_result, 0或1]，下面是跳转了，所以栈值为：[0x19, 1]
+0A      610003      PUSH2 0003	# [0003, datasize]
+0D      90          SWAP1	# [datasize, 0003]
+0E      06          MOD		# [N]，取余数，N为余数，必须是：0
+0F      15          ISZERO	# [0或1]，必须是1
+10      34          CALLVALUE	# [msgvalue, 0或1]，必须是：1
+11      600A        PUSH1 0A	# [0A，msgvalue, 0或1]，反推：msgvalue = 0x0f
+13      01          ADD	# [add_result, 0或1]，下面是跳转了，所以栈值为：[0x19, 1]
 14      57          JUMPI
 15      FD          REVERT
 16      FD          REVERT
