@@ -346,4 +346,4 @@ npx hardhat play
 ## 其他
 
 - 答案：https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles
-- ==了解存储相关==：https://www.evm.codes/about
+- 了解存储相关：https://www.evm.codes/about
