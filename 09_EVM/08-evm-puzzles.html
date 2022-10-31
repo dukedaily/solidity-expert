@@ -1722,8 +1722,8 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 1 #</span>
 <span class="hljs-comment">############</span>
 
-00      34      CALLVALUE
-01      56      JUMP
+00      34      CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      56      JUMP    <span class="hljs-comment">#跳转下一个evm字节，查看JUMPDEST，发现目的地是08，所以msg.value为8</span>
 02      FD      REVERT
 03      FD      REVERT
 04      FD      REVERT
@@ -1745,9 +1745,9 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 2 #</span>
 <span class="hljs-comment">############</span>
 
-00      34      CALLVALUE
-01      38      CODESIZE
-02      03      SUB
+00      34      CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      38      CODESIZE    <span class="hljs-comment">#[10, msg.value]，codesize为当前evm中的操作码的数量，每一个是1字节</span>
+02      03      SUB    <span class="hljs-comment">#[sub_result]， 需要跳转到06，所以 10 - msg.value = 6</span>
 03      56      JUMP
 04      FD      REVERT
 05      FD      REVERT
@@ -1769,8 +1769,8 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 3 #</span>
 <span class="hljs-comment">############</span>
 
-00      36      CALLDATASIZE
-01      56      JUMP
+00      36      CALLDATASIZE    <span class="hljs-comment">#[datasize]</span>
+01      56      JUMP    <span class="hljs-comment">#跳转到04，所以我们只要保证calldata到size为4即可，内容不限。</span>
 02      FD      REVERT
 03      FD      REVERT
 04      5B      JUMPDEST
@@ -1787,8 +1787,8 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 4 #</span>
 <span class="hljs-comment">############</span>
 
-00      34      CALLVALUE
-01      38      CODESIZE
+00      34      CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      38      CODESIZE    <span class="hljs-comment">#[12, msg.value]</span>
 02      18      XOR
 03      56      JUMP
 04      FD      REVERT
@@ -1817,13 +1817,13 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 5 #</span>
 <span class="hljs-comment">############</span>
 
-00      34          CALLVALUE
-01      80          DUP1
-02      02          MUL
-03      610100      PUSH2 0100
-06      14          EQ
-07      600C        PUSH1 0C
-09      57          JUMPI
+00      34          CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      80          DUP1    <span class="hljs-comment">#[msg.value, msg.value]</span>
+02      02          MUL    <span class="hljs-comment">#[mul_result]</span>
+03      610100      PUSH2 0100    <span class="hljs-comment">#[0100, mul_result]，反推mul_result为: 0100</span>
+06      14          EQ    <span class="hljs-comment">#[0或1]，反推：1</span>
+07      600C        PUSH1 0C    <span class="hljs-comment">#[0C, 0或1]，为了能跳转，此时必须为：1</span>
+09      57          JUMPI    <span class="hljs-comment">#[]，stack2为1时，跳转到stack1的位置</span>
 0A      FD          REVERT
 0B      FD          REVERT
 0C      5B          JUMPDEST
@@ -1848,9 +1848,9 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 6 #</span>
 <span class="hljs-comment">############</span>
 
-00      6000      PUSH1 00
-02      35        CALLDATALOAD
-03      56        JUMP
+00      6000      PUSH1 00    <span class="hljs-comment">#[00]</span>
+02      35        CALLDATALOAD    <span class="hljs-comment">#[calldata, 00]</span>
+03      56        JUMP    <span class="hljs-comment">#跳转到0A，所以stack1为：0A</span>
 04      FD        REVERT
 05      FD        REVERT
 06      FD        REVERT
@@ -1871,17 +1871,17 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 7 #</span>
 <span class="hljs-comment">############</span>
 
-00      36        CALLDATASIZE  <span class="hljs-comment"># [datasize]</span>
-01      6000      PUSH1 00            <span class="hljs-comment"># [00, datasize]</span>
-03      80        DUP1                    <span class="hljs-comment"># [00, 00, datasize]</span>
+00      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+01      6000      PUSH1 00    <span class="hljs-comment"># [00, datasize]</span>
+03      80        DUP1        <span class="hljs-comment"># [00, 00, datasize]</span>
 04      37        CALLDATACOPY    <span class="hljs-comment"># [] data被copy到memory中，栈被清空</span>
 05      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
-06      6000      PUSH1 00            <span class="hljs-comment"># [00, datasize]</span>
-08      6000      PUSH1 00            <span class="hljs-comment"># [00, 00, datasize]</span>
-0A      F0        CREATE                <span class="hljs-comment"># [deployed_address] 栈被清空，从内存中读取数据，创建合约，返回地址 </span>
-0B      3B        EXTCODESIZE        <span class="hljs-comment"># [address_code_size] 输入地址，返回合约的size</span>
-0C      6001      PUSH1 01            <span class="hljs-comment"># [01, address_code_size]</span>
-0E      14        EQ                        <span class="hljs-comment"># [1] address_code_size必须为1，后续的才成立</span>
+06      6000      PUSH1 00        <span class="hljs-comment"># [00, datasize]</span>
+08      6000      PUSH1 00        <span class="hljs-comment"># [00, 00, datasize]</span>
+0A      F0        CREATE    <span class="hljs-comment"># [deployed_address] 栈被清空，从内存中读取数据，创建合约，返回地址 </span>
+0B      3B        EXTCODESIZE    <span class="hljs-comment"># [address_code_size] 输入地址，返回合约的size</span>
+0C      6001      PUSH1 01    <span class="hljs-comment"># [01, address_code_size]</span>
+0E      14        EQ    <span class="hljs-comment"># [1] address_code_size必须为1，后续的才成立</span>
 0F      6013      PUSH1 13
 11      57        JUMPI
 12      FD        REVERT
@@ -1905,25 +1905,25 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 8 #</span>
 <span class="hljs-comment">############</span>
 
-00      36        CALLDATASIZE        <span class="hljs-comment"># [datasize]</span>
-01      6000      PUSH1 00                <span class="hljs-comment"># [00, datasize]</span>
-03      80        DUP1                        <span class="hljs-comment"># [00, 00, datasize]</span>
-04      37        CALLDATACOPY        <span class="hljs-comment"># []  copy到内存中</span>
-05      36        CALLDATASIZE        <span class="hljs-comment"># [datasize]，直接生成数据，不需要栈参数</span>
-06      6000      PUSH1 00                <span class="hljs-comment"># [00, datasize]</span>
-08      6000      PUSH1 00                <span class="hljs-comment"># [00, 00, datasize]</span>
-0A      F0        CREATE                    <span class="hljs-comment"># [deployed_address]</span>
-0B      6000      PUSH1 00                <span class="hljs-comment"># [00, deployed_address]</span>
-0D      80        DUP1                        <span class="hljs-comment"># [00, 00, deployed_address]</span>
-0E      80        DUP1                        <span class="hljs-comment"># [00, 00, 00, deployed_address]</span>
-0F      80        DUP1                        <span class="hljs-comment"># [00, 00, 00, 00, deployed_address]</span>
-10      80        DUP1                        <span class="hljs-comment"># [00, 00, 00, 00, 00, deployed_address]</span>
-11      94        SWAP5                        <span class="hljs-comment"># [deployed_address, 00, 00, 00, 00, 00]，兑换1st 和 6th，你没有看错1和6，不是5</span>
-12      5A        GAS                         <span class="hljs-comment"># [gasAvail, deployed_address, 00, 00, 00, 00, 00] // 7个参数</span>
-13      F1        CALL                        <span class="hljs-comment"># [0或1]调用函数，需要是0，0表示失败，1表示成功！（反推的）</span>
-14      6000      PUSH1 00                <span class="hljs-comment"># [00, 0或1]，需要是0</span>
-16      14        EQ                            <span class="hljs-comment"># [0或1]，需要是1</span>
-17      601B      PUSH1 1B                <span class="hljs-comment"># [1B, 0或1]，需要是1</span>
+00      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+01      6000      PUSH1 00    <span class="hljs-comment"># [00, datasize]</span>
+03      80        DUP1    <span class="hljs-comment"># [00, 00, datasize]</span>
+04      37        CALLDATACOPY    <span class="hljs-comment"># []  copy到内存中</span>
+05      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]，直接生成数据，不需要栈参数</span>
+06      6000      PUSH1 00    <span class="hljs-comment"># [00, datasize]</span>
+08      6000      PUSH1 00    <span class="hljs-comment"># [00, 00, datasize]</span>
+0A      F0        CREATE    <span class="hljs-comment"># [deployed_address]</span>
+0B      6000      PUSH1 00    <span class="hljs-comment"># [00, deployed_address]</span>
+0D      80        DUP1    <span class="hljs-comment"># [00, 00, deployed_address]</span>
+0E      80        DUP1    <span class="hljs-comment"># [00, 00, 00, deployed_address]</span>
+0F      80        DUP1    <span class="hljs-comment"># [00, 00, 00, 00, deployed_address]</span>
+10      80        DUP1    <span class="hljs-comment"># [00, 00, 00, 00, 00, deployed_address]</span>
+11      94        SWAP5    <span class="hljs-comment"># [deployed_address, 00, 00, 00, 00, 00]，兑换1st 和 6th，你没有看错1和6，不是5</span>
+12      5A        GAS    <span class="hljs-comment"># [gasAvail, deployed_address, 00, 00, 00, 00, 00] // 7个参数</span>
+13      F1        CALL    <span class="hljs-comment"># [0或1]调用函数，需要是0，0表示失败，1表示成功！（反推的）</span>
+14      6000      PUSH1 00    <span class="hljs-comment"># [00, 0或1]，需要是0</span>
+16      14        EQ    <span class="hljs-comment"># [0或1]，需要是1</span>
+17      601B      PUSH1 1B    <span class="hljs-comment"># [1B, 0或1]，需要是1</span>
 19      57        JUMPI                        
 1A      FD        REVERT
 1B      5B        JUMPDEST
@@ -1948,23 +1948,23 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 9 #</span>
 <span class="hljs-comment">############</span>
 
-00      36        CALLDATASIZE        <span class="hljs-comment"># [datasize]</span>
-01      6003      PUSH1 03                <span class="hljs-comment"># [03, datasize]</span>
-03      10        LT                            <span class="hljs-comment"># [1], stack(1) &lt; stack(2),</span>
-04      6009      PUSH1 09                <span class="hljs-comment"># [09, 1]</span>
+00      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+01      6003      PUSH1 03    <span class="hljs-comment"># [03, datasize]</span>
+03      10        LT    <span class="hljs-comment"># [1], stack(1) &lt; stack(2),</span>
+04      6009      PUSH1 09    <span class="hljs-comment"># [09, 1]</span>
 06      57        JUMPI
 07      FD        REVERT
 08      FD        REVERT
-09      5B        JUMPDEST                <span class="hljs-comment"># [] 跳转到这里</span>
-0A      34        CALLVALUE                <span class="hljs-comment"># [msgvalue]</span>
-0B      36        CALLDATASIZE        <span class="hljs-comment"># [datasize, msgvalue]</span>
-0C      02        MUL                            <span class="hljs-comment"># [mul_result]</span>
-0D      6008      PUSH1 08                <span class="hljs-comment"># [08, mul_result]</span>
-0F      14        EQ                            <span class="hljs-comment"># [1], 必须是0</span>
-10      6014      PUSH1 14                <span class="hljs-comment"># [14, 1]</span>
+09      5B        JUMPDEST    <span class="hljs-comment"># [] 跳转到这里</span>
+0A      34        CALLVALUE        <span class="hljs-comment"># [msgvalue]</span>
+0B      36        CALLDATASIZE    <span class="hljs-comment"># [datasize, msgvalue]</span>
+0C      02        MUL        <span class="hljs-comment"># [mul_result]</span>
+0D      6008      PUSH1 08    <span class="hljs-comment"># [08, mul_result]</span>
+0F      14        EQ    <span class="hljs-comment"># [1], 必须是0</span>
+10      6014      PUSH1 14    <span class="hljs-comment"># [14, 1]</span>
 12      57        JUMPI
 13      FD        REVERT
-14      5B        JUMPDEST                <span class="hljs-comment"># 跳转到这里，结束！</span>
+14      5B        JUMPDEST    <span class="hljs-comment"># 跳转到这里，结束！</span>
 15      00        STOP
 
 ? Enter the value to send: 
@@ -1986,22 +1986,22 @@ npx hardhat play
 <span class="hljs-comment"># Puzzle 10 #</span>
 <span class="hljs-comment">#############</span>
 
-00      38          CODESIZE        <span class="hljs-comment"># [23]</span>
-01      34          CALLVALUE        <span class="hljs-comment"># [msgvalue, 23]</span>
-02      90          SWAP1                <span class="hljs-comment"># [23, msgvalue]</span>
-03      11          GT                    <span class="hljs-comment"># [1], msgvalue &lt; 23</span>
-04      6008        PUSH1 08        <span class="hljs-comment"># [08, 1]</span>
+00      38          CODESIZE    <span class="hljs-comment"># [23]</span>
+01      34          CALLVALUE    <span class="hljs-comment"># [msgvalue, 23]</span>
+02      90          SWAP1    <span class="hljs-comment"># [23, msgvalue]</span>
+03      11          GT    <span class="hljs-comment"># [1], msgvalue &lt; 23</span>
+04      6008        PUSH1 08    <span class="hljs-comment"># [08, 1]</span>
 06      57          JUMPI
 07      FD          REVERT
-08      5B          JUMPDEST            <span class="hljs-comment"># 跳到这里</span>
+08      5B          JUMPDEST    <span class="hljs-comment"># 跳到这里</span>
 09      36          CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
-0A      610003      PUSH2 0003        <span class="hljs-comment"># [0003, datasize]</span>
-0D      90          SWAP1                    <span class="hljs-comment"># [datasize, 0003]</span>
-0E      06          MOD                        <span class="hljs-comment"># [N]，取余数，N为余数，必须是：0</span>
-0F      15          ISZERO                <span class="hljs-comment"># [0或1]，必须是1</span>
-10      34          CALLVALUE            <span class="hljs-comment"># [msgvalue, 0或1]，必须是：1</span>
-11      600A        PUSH1 0A            <span class="hljs-comment"># [0A，msgvalue, 0或1]，反推：msgvalue = 0x0f</span>
-13      01          ADD                        <span class="hljs-comment"># [add_result, 0或1]，下面是跳转了，所以栈值为：[0x19, 1]</span>
+0A      610003      PUSH2 0003    <span class="hljs-comment"># [0003, datasize]</span>
+0D      90          SWAP1    <span class="hljs-comment"># [datasize, 0003]</span>
+0E      06          MOD        <span class="hljs-comment"># [N]，取余数，N为余数，必须是：0</span>
+0F      15          ISZERO    <span class="hljs-comment"># [0或1]，必须是1</span>
+10      34          CALLVALUE    <span class="hljs-comment"># [msgvalue, 0或1]，必须是：1</span>
+11      600A        PUSH1 0A    <span class="hljs-comment"># [0A，msgvalue, 0或1]，反推：msgvalue = 0x0f</span>
+13      01          ADD    <span class="hljs-comment"># [add_result, 0或1]，下面是跳转了，所以栈值为：[0x19, 1]</span>
 14      57          JUMPI
 15      FD          REVERT
 16      FD          REVERT
@@ -2073,7 +2073,7 @@ npx hardhat play
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第8节:EVM-PUZZLES挑战","level":"1.13.6","depth":2,"next":{"title":"第十章:合约攻击案例分析","level":"1.14","depth":1,"path":"10_合约攻击案例分析/README.md","ref":"10_合约攻击案例分析/README.md","articles":[{"title":"第1节:FTX gas攻击","level":"1.14.1","depth":2,"path":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","ref":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","articles":[]}]},"previous":{"title":"第4节:终止","level":"1.13.5","depth":2,"path":"09_EVM/反汇编/04终止.md","ref":"09_EVM/反汇编/04终止.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM/08-evm-puzzles.md","mtime":"2022-10-31T11:28:19.715Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-31T11:31:53.257Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第8节:EVM-PUZZLES挑战","level":"1.13.6","depth":2,"next":{"title":"第十章:合约攻击案例分析","level":"1.14","depth":1,"path":"10_合约攻击案例分析/README.md","ref":"10_合约攻击案例分析/README.md","articles":[{"title":"第1节:FTX gas攻击","level":"1.14.1","depth":2,"path":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","ref":"10_合约攻击案例分析/01_FTX因免手续费提币攻击.md","articles":[]}]},"previous":{"title":"第4节:终止","level":"1.13.5","depth":2,"path":"09_EVM/反汇编/04终止.md","ref":"09_EVM/反汇编/04终止.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM/08-evm-puzzles.md","mtime":"2022-10-31T11:57:36.935Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-10-31T12:00:15.895Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
