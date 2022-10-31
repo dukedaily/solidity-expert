@@ -1,5 +1,7 @@
 # 第8节：EVM-PUZZLE
 
+> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+
 
 
 ## 启动
@@ -343,7 +345,19 @@ npx hardhat play
 
 
 
-## 其他
+## 其他知识
 
 - 答案：https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles
 - 了解存储相关：https://www.evm.codes/about
+
+
+
+
+
+---
+
+加V入群：Adugii，公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)，一起抱团拥抱web3，下期见！
+
+
+
+> 关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。
