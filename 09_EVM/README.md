@@ -8,6 +8,7 @@
 4. 精通以太坊：https://github.com/ethereumbook/ethereumbook
 5. evm图解：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
 6. 反汇编系列教程：https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d
+7. https://ethereum.org/en/developers/docs/
 
 
 
