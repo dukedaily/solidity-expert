@@ -4,6 +4,18 @@
 
 
 
+以太坊在内部实现了一个基于栈的虚拟机，我们称之为EVM（Ethereum Virtual Machine），用户所有的操作最终都会转化为操作码（OPCODE）然后在EVM中执行，下图为整个执行流程，目前我们对EVM的讲解不多，后续会陆续补上。
+
+
+
+![image-20221031203407316](assets/image-20221031203407316.png)
+
+本文将介绍10道EVM题目，每道题都会要求用户填写部分内容：使得程序正常退出，而不允许执行REVERT。
+
+**注意：本文针对道是有EVM基础的同学，对于尚未接触过OPCODE的同学**，不要着急，在这里可以先看看EVM里面都有啥，有助于后续深入学习。
+
+
+
 ## 启动
 
 **运行游戏**：https://github.com/fvictorio/evm-puzzles
@@ -12,10 +24,6 @@
 npm i
 npx hardhat play
 ```
-
-## 规则
-
-**根据给出的上下文，用户输入的数据，使得程序正常退出，而不会执行REVERT**（一共10道题）
 
 
 
@@ -44,6 +52,8 @@ npx hardhat play
 - jump会读取栈顶值，并跳转到相应的字节地址，由JUMPDEST承接
 - 由于目的地JUMPDEST是08，所以输入值为：8
 
+
+
 ## Puzzle#2：CODESIZE
 
 ```sh
@@ -70,6 +80,8 @@ npx hardhat play
 - SUB会执行减法操作，并将结果如栈，STACK：[10 - x]
 - JUMP会跳到06字节，因此我们需要 10 - x = 6，推导出：x = 4
 
+
+
 ## Puzzle#3：CALLDATASIZE
 
 ```sh
@@ -89,6 +101,8 @@ npx hardhat play
 
 - CALLDATASIZE返回INTPUT的字节数，并存入栈顶，STACK：[0x...]
 - 为了JUMP到04，因此我们的输入需要大小为4字节，因此随便输入一个四字节data即可！
+
+
 
 ## Puzzle#4：XOR
 
@@ -119,6 +133,8 @@ npx hardhat play
   - 12：0000，1100
   - 0A：0000，1010
   - x：   0000，0110 =》6，所以答案为：6
+
+
 
 ## Puzzle#5：JUMPI
 
@@ -153,6 +169,8 @@ npx hardhat play
 - JUMPI：读取stack2的值，如果为1，则跳转到stack1的位置，即0C，满足条件！
 - 因此我们需要使得：0100 = x*x，0x0100十进制为256，所以x = 16
 
+
+
 ## Puzzle#6：CALLDATALOAD
 
 ```sh
@@ -177,6 +195,8 @@ npx hardhat play
 - CALLDATALOAD：获取input的数据，即calldata，参数为0x00，即从第00位置开始加载
 - JUMP想跳转到0A处，所以calldata的值为0x0a，如果我们直接输入0x0a，此时会被转化为：a00000000000000000000000000000000000000000000000000000000000000，这是错的；
 - 由于calldata的数值总为32字节的倍数，所以此处应该为：0x000000000000000000000000000000000000000000000000000000000000000a
+
+
 
 ## Puzzle#7：EXTCODESIZE
 
@@ -212,6 +232,8 @@ npx hardhat play
 - 所以结果为：0x60**01**600052600160**1ff3**，[点击验证](https://www.evm.codes/playground?callValue=0&unit=Wei&codeType=Bytecode&code=%2760016000526001601ff3%27_&ref=hackernoon.com&fork=grayGlacier)
 
 ![image-20221031173928192](assets/image-20221031173928192.png)
+
+
 
 ## Puzzle#8：SWAP
 
@@ -256,6 +278,8 @@ npx hardhat play
 - 调用CALL的时候，由于栈中的操作数已经不足（当前是0，ADD需要2个），因此会调用失败，REVERT。
 - 因此答案为：0x60016000526001601ff3
 
+
+
 ## Puzzle#9：LT
 
 ```sh
@@ -293,6 +317,7 @@ npx hardhat play
 - 因此答案为：
   - 2
   - 0xffffffff
+
 
 
 ## Puzzle#10：ISZERO
@@ -342,6 +367,12 @@ npx hardhat play
 2. Swap5：表示1st和6th兑换，而不是1st和5yh兑换
 3. 1表示成功，0表示失败，JUMIPI和CALL都如此
 4. OPCODE的字节序是16进制，而不是10进制，注意转化
+
+
+
+## 小结
+
+接下来会花几节课来讲解EVM相关内容，以及反汇编内容，敬请关注！
 
 
 
