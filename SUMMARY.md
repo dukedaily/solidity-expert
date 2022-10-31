@@ -70,7 +70,7 @@
     * [第21节:EventLog](02_solidity进阶/21_EventLog.md)
     * [第22节:了解EVM](02_solidity进阶/22_EVM.md)
     * [第23节:math](02_solidity进阶/23_math.md)
-    * [第24节:OPCode](02_solidity进阶/24_OPCode.md)
+    * [第24节:最佳实践](02_solidity进阶/24_最佳实践.md)
 * [第三章:token协议](03_token协议/README.md)
     * [第1节:ERC20](03_token协议/01_ERC20.md)
     * [第2节:ERC721](03_token协议/02_ERC721.md)
