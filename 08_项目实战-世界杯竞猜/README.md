@@ -12,7 +12,7 @@
 
 本次课程内容来自于我的一次公司内部培训，我将培训内容进行二次整理后同步出来，供web3爱好者学习。
 
-当前已经有第一个版本了（goerli网络），先睹为快：https://solidity-expert.vercel.app/，
+当前已经有第一个版本了（goerli网络），先睹为快：https://solidity-expert-worldcup.vercel.app/
 
 - 任何人都可以：Play
 - 管理员可以：Finalize

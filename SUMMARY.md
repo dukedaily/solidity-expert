@@ -111,6 +111,6 @@
     * [第2节:合约部署分析](09_EVM/反汇编/02合约部署.md)
     * [第3节:storage存储](09_EVM/反汇编/03storage存储.md)
     * [第4节:终止](09_EVM/反汇编/04终止.md)
-    * [第N节:PUZZLES游戏](09_EVM/02-evm-puzzles.md)
+    * [第8节:EVM-PUZZLES挑战](09_EVM/08-evm-puzzles.md)
 * [第十章:合约攻击案例分析](10_合约攻击案例分析/README.md)
     * [第1节:FTX gas攻击](10_合约攻击案例分析/01_FTX因免手续费提币攻击.md)

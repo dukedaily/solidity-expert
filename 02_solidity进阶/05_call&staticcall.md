@@ -1,4 +1,4 @@
-# 第5节：call
+# 第5节：call&staticcall
 
 **call**是一种底层调用合约的方式，可以在合约内调用其他合约，call语法为：
 
@@ -25,7 +25,7 @@
 
 
 
-### 完整demo:
+## 完整demo:
 
 ```js
 // SPDX-License-Identifier: MIT
@@ -68,3 +68,10 @@ contract Caller {
 }
 ```
 
+
+
+## STATICCALL：
+
+- https://eips.ethereum.org/EIPS/eip-214
+- Since byzantium staticcall can be used as well. This is basically the same as call, but will revert if the called function modifies the state in any way.
+- 与CALL相同，但是不允许修改任何状态变量，是为了安全🔐考虑而新增的OPCODE
