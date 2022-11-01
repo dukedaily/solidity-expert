@@ -1,0 +1,2191 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>第2节:EVM-PUZZLES挑战 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../10_EVM反汇编/" />
+    
+    
+    <link rel="prev" href="01_OPCode手册.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../Moledao.html">
+            
+                <a href="../Moledao.html">
+            
+                    
+                    加入MoleDao
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    扫描入群🤗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../SUMMARY.html">
+            
+                <a href="../SUMMARY.html">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../00_blockchain基础/">
+            
+                <a href="../00_blockchain基础/">
+            
+                    
+                    第0章:blockchain基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../00_blockchain基础/01_什么是区块链.html">
+            
+                <a href="../00_blockchain基础/01_什么是区块链.html">
+            
+                    
+                    第1节:什么是区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../00_blockchain基础/02_什么是比特币.html">
+            
+                <a href="../00_blockchain基础/02_什么是比特币.html">
+            
+                    
+                    第2节:什么是比特币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../00_blockchain基础/03_什么是以太坊.html">
+            
+                <a href="../00_blockchain基础/03_什么是以太坊.html">
+            
+                    
+                    第3节:什么是以太坊
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../00_blockchain基础/04_App与Dapp.html">
+            
+                <a href="../00_blockchain基础/04_App与Dapp.html">
+            
+                    
+                    第4节:App与Dapp异同
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../00_blockchain基础/05_DAPP技术栈.html">
+            
+                <a href="../00_blockchain基础/05_DAPP技术栈.html">
+            
+                    
+                    第5节:DAPP技术栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../00_blockchain基础/06_web3优质学习资源.html">
+            
+                <a href="../00_blockchain基础/06_web3优质学习资源.html">
+            
+                    
+                    第6节:web3优质学习资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../00_blockchain基础/07_钱包与地址.html">
+            
+                <a href="../00_blockchain基础/07_钱包与地址.html">
+            
+                    
+                    第7节:钱包与地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../00_blockchain基础/08_Remix教程.html">
+            
+                <a href="../00_blockchain基础/08_Remix教程.html">
+            
+                    
+                    第8节:Remix教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../00_blockchain基础/09_区块链就业.html">
+            
+                <a href="../00_blockchain基础/09_区块链就业.html">
+            
+                    
+                    第9节:区块链就业
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../00_blockchain基础/10_solidity岗位要求.html">
+            
+                <a href="../00_blockchain基础/10_solidity岗位要求.html">
+            
+                    
+                    第10节:solidity岗位要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../00_blockchain基础/11_rpc节点.html">
+            
+                <a href="../00_blockchain基础/11_rpc节点.html">
+            
+                    
+                    第11节:rpc节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../00_blockchain基础/12_以太坊白皮书.html">
+            
+                <a href="../00_blockchain基础/12_以太坊白皮书.html">
+            
+                    
+                    第12节:以太坊白皮书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../00_blockchain基础/13_faucet-网络添加.html">
+            
+                <a href="../00_blockchain基础/13_faucet-网络添加.html">
+            
+                    
+                    第13节:faucet-网络添加
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../01_solidity基础/">
+            
+                <a href="../01_solidity基础/">
+            
+                    
+                    第一章:solidity基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../01_solidity基础/01_helloworld.html">
+            
+                <a href="../01_solidity基础/01_helloworld.html">
+            
+                    
+                    第1节:helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../01_solidity基础/02_第一个dapp.html">
+            
+                <a href="../01_solidity基础/02_第一个dapp.html">
+            
+                    
+                    第2节:第一个dapp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../01_solidity基础/03_基础数据类型.html">
+            
+                <a href="../01_solidity基础/03_基础数据类型.html">
+            
+                    
+                    第3节:基础数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../01_solidity基础/04_变量variables.html">
+            
+                <a href="../01_solidity基础/04_变量variables.html">
+            
+                    
+                    第4节:变量variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../01_solidity基础/05_常量constant.html">
+            
+                <a href="../01_solidity基础/05_常量constant.html">
+            
+                    
+                    第5节:常量constant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../01_solidity基础/06_不可变量immutable.html">
+            
+                <a href="../01_solidity基础/06_不可变量immutable.html">
+            
+                    
+                    第6节:不可变量immutable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../01_solidity基础/07_读写状态变量.html">
+            
+                <a href="../01_solidity基础/07_读写状态变量.html">
+            
+                    
+                    第7节:读写状态变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../01_solidity基础/08_ether和wei.html">
+            
+                <a href="../01_solidity基础/08_ether和wei.html">
+            
+                    
+                    第8节:ether和wei
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../01_solidity基础/09_gas和gasprice.html">
+            
+                <a href="../01_solidity基础/09_gas和gasprice.html">
+            
+                    
+                    第9节:gas和gasprice
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../01_solidity基础/10_ifElse.html">
+            
+                <a href="../01_solidity基础/10_ifElse.html">
+            
+                    
+                    第10节:ifElse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../01_solidity基础/11_forWhileLoop.html">
+            
+                <a href="../01_solidity基础/11_forWhileLoop.html">
+            
+                    
+                    第11节:forWhileLoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../01_solidity基础/12_bytes和string.html">
+            
+                <a href="../01_solidity基础/12_bytes和string.html">
+            
+                    
+                    第12节:bytes和string
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../01_solidity基础/13_映射Mapping.html">
+            
+                <a href="../01_solidity基础/13_映射Mapping.html">
+            
+                    
+                    第13节:映射Mapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../01_solidity基础/14_数组Array.html">
+            
+                <a href="../01_solidity基础/14_数组Array.html">
+            
+                    
+                    第14节:数组Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../01_solidity基础/15_枚举Enum.html">
+            
+                <a href="../01_solidity基础/15_枚举Enum.html">
+            
+                    
+                    第15节:枚举Enum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../01_solidity基础/16_结构体Struct.html">
+            
+                <a href="../01_solidity基础/16_结构体Struct.html">
+            
+                    
+                    第16节:结构体Struct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../01_solidity基础/17_memory_storage_calldata.html">
+            
+                <a href="../01_solidity基础/17_memory_storage_calldata.html">
+            
+                    
+                    第17节:storage_calldata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../01_solidity基础/18_函数Function.html">
+            
+                <a href="../01_solidity基础/18_函数Function.html">
+            
+                    
+                    第18节:函数Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../01_solidity基础/19_view和pure.html">
+            
+                <a href="../01_solidity基础/19_view和pure.html">
+            
+                    
+                    第19节:view和pure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../01_solidity基础/20_Error.html">
+            
+                <a href="../01_solidity基础/20_Error.html">
+            
+                    
+                    第20节:Error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="../01_solidity基础/21_修饰器modifier.html">
+            
+                <a href="../01_solidity基础/21_修饰器modifier.html">
+            
+                    
+                    第21节:修饰器modifier
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="../01_solidity基础/22_事件Event.html">
+            
+                <a href="../01_solidity基础/22_事件Event.html">
+            
+                    
+                    第22节:事件Event
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.23" data-path="../01_solidity基础/23_继承的方法_重写.html">
+            
+                <a href="../01_solidity基础/23_继承的方法_重写.html">
+            
+                    
+                    第23节:继承的方法_重写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.24" data-path="../01_solidity基础/24_继承状态变量_覆盖.html">
+            
+                <a href="../01_solidity基础/24_继承状态变量_覆盖.html">
+            
+                    
+                    第24节:继承状态变量_覆盖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.25" data-path="../01_solidity基础/25_构造函数.html">
+            
+                <a href="../01_solidity基础/25_构造函数.html">
+            
+                    
+                    第25节:构造函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.26" data-path="../01_solidity基础/26_可见性visibility.html">
+            
+                <a href="../01_solidity基础/26_可见性visibility.html">
+            
+                    
+                    第26节:可见性visibility
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.27" data-path="../01_solidity基础/27_abstract.html">
+            
+                <a href="../01_solidity基础/27_abstract.html">
+            
+                    
+                    第27节:abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.28" data-path="../01_solidity基础/28_interface.html">
+            
+                <a href="../01_solidity基础/28_interface.html">
+            
+                    
+                    第28节:interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.29" data-path="../01_solidity基础/29_library.html">
+            
+                <a href="../01_solidity基础/29_library.html">
+            
+                    
+                    第29节:library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.30" data-path="../01_solidity基础/30_规范.html">
+            
+                <a href="../01_solidity基础/30_规范.html">
+            
+                    
+                    第30节:规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.31" data-path="../01_solidity基础/31_传递结构体.html">
+            
+                <a href="../01_solidity基础/31_传递结构体.html">
+            
+                    
+                    第31节:传递结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../02_solidity进阶/">
+            
+                <a href="../02_solidity进阶/">
+            
+                    
+                    第二章:solidity进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../02_solidity进阶/01_全局变量.html">
+            
+                <a href="../02_solidity进阶/01_全局变量.html">
+            
+                    
+                    第1节:全局变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../02_solidity进阶/02_msg三人组.html">
+            
+                <a href="../02_solidity进阶/02_msg三人组.html">
+            
+                    
+                    第2节:msg三人组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../02_solidity进阶/03_payable.html">
+            
+                <a href="../02_solidity进阶/03_payable.html">
+            
+                    
+                    第3节:payable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../02_solidity进阶/04_encode_encodePacked.html">
+            
+                <a href="../02_solidity进阶/04_encode_encodePacked.html">
+            
+                    
+                    第4节:encode_encodePacked
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../02_solidity进阶/05_call.md">
+            
+                <span>
+            
+                    
+                    第5节:call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../02_solidity进阶/06_keccak256.html">
+            
+                <a href="../02_solidity进阶/06_keccak256.html">
+            
+                    
+                    第6节:keccak256
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../02_solidity进阶/07_selector.html">
+            
+                <a href="../02_solidity进阶/07_selector.html">
+            
+                    
+                    第7节:selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../02_solidity进阶/08_send_ether.html">
+            
+                <a href="../02_solidity进阶/08_send_ether.html">
+            
+                    
+                    第8节:send_ether
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../02_solidity进阶/09_delegatecall.html">
+            
+                <a href="../02_solidity进阶/09_delegatecall.html">
+            
+                    
+                    第9节:delegatecall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../02_solidity进阶/10_fallback.html">
+            
+                <a href="../02_solidity进阶/10_fallback.html">
+            
+                    
+                    第10节:fallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../02_solidity进阶/11_合约间调用.html">
+            
+                <a href="../02_solidity进阶/11_合约间调用.html">
+            
+                    
+                    第11节:合约间调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../02_solidity进阶/12_new_create2.html">
+            
+                <a href="../02_solidity进阶/12_new_create2.html">
+            
+                    
+                    第12节:new_create2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../02_solidity进阶/13_delete.html">
+            
+                <a href="../02_solidity进阶/13_delete.html">
+            
+                    
+                    第13节:delete
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../02_solidity进阶/14_try_catch.html">
+            
+                <a href="../02_solidity进阶/14_try_catch.html">
+            
+                    
+                    第14节:try_catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../02_solidity进阶/15_import.html">
+            
+                <a href="../02_solidity进阶/15_import.html">
+            
+                    
+                    第15节:import
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../02_solidity进阶/16_节约gas.html">
+            
+                <a href="../02_solidity进阶/16_节约gas.html">
+            
+                    
+                    第16节:节约gas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../02_solidity进阶/17_type.html">
+            
+                <a href="../02_solidity进阶/17_type.html">
+            
+                    
+                    第17节:type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../02_solidity进阶/18_汇编.md">
+            
+                <span>
+            
+                    
+                    第18节:汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../02_solidity进阶/20_sign-verify.html">
+            
+                <a href="../02_solidity进阶/20_sign-verify.html">
+            
+                    
+                    第20节:sign-verify
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../02_solidity进阶/21_EventLog.html">
+            
+                <a href="../02_solidity进阶/21_EventLog.html">
+            
+                    
+                    第21节:EventLog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../02_solidity进阶/22_EVM.html">
+            
+                <a href="../02_solidity进阶/22_EVM.html">
+            
+                    
+                    第22节:了解EVM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../02_solidity进阶/23_math.html">
+            
+                <a href="../02_solidity进阶/23_math.html">
+            
+                    
+                    第23节:math
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../02_solidity进阶/24_最佳实践.html">
+            
+                <a href="../02_solidity进阶/24_最佳实践.html">
+            
+                    
+                    第24节:最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../03_token协议/">
+            
+                <a href="../03_token协议/">
+            
+                    
+                    第三章:token协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../03_token协议/01_ERC20.html">
+            
+                <a href="../03_token协议/01_ERC20.html">
+            
+                    
+                    第1节:ERC20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../03_token协议/02_ERC721.html">
+            
+                <a href="../03_token协议/02_ERC721.html">
+            
+                    
+                    第2节:ERC721
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../03_token协议/03_ERC1155.html">
+            
+                <a href="../03_token协议/03_ERC1155.html">
+            
+                    
+                    第3节:ERC1155
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../03_token协议/04_ERC165.html">
+            
+                <a href="../03_token协议/04_ERC165.html">
+            
+                    
+                    第4节:ERC165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../03_token协议/05_ERC1820.html">
+            
+                <a href="../03_token协议/05_ERC1820.html">
+            
+                    
+                    第5节:ERC1820
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../04_合约攻击/">
+            
+                <a href="../04_合约攻击/">
+            
+                    
+                    第四章:合约攻击
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../04_合约攻击/01_重入攻击.html">
+            
+                <a href="../04_合约攻击/01_重入攻击.html">
+            
+                    
+                    第1节:重入攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../04_合约攻击/02_返回值校验.html">
+            
+                <a href="../04_合约攻击/02_返回值校验.html">
+            
+                    
+                    第2节:返回值校验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../04_合约攻击/03_合约自杀.html">
+            
+                <a href="../04_合约攻击/03_合约自杀.html">
+            
+                    
+                    第3节:合约自杀
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../04_合约攻击/04_读取私有变量.html">
+            
+                <a href="../04_合约攻击/04_读取私有变量.html">
+            
+                    
+                    第4节:读取私有变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../04_合约攻击/05_安全尝试.html">
+            
+                <a href="../04_合约攻击/05_安全尝试.html">
+            
+                    
+                    第5节:安全尝试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../04_合约攻击/06_合约审计.html">
+            
+                <a href="../04_合约攻击/06_合约审计.html">
+            
+                    
+                    第6节:合约审计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../04_合约攻击/07_slither教程.html">
+            
+                <a href="../04_合约攻击/07_slither教程.html">
+            
+                    
+                    第7节:slither教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../04_合约攻击/08_最佳安全实践.html">
+            
+                <a href="../04_合约攻击/08_最佳安全实践.html">
+            
+                    
+                    第8节:最佳安全实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../05_hardhat框架/">
+            
+                <a href="../05_hardhat框架/">
+            
+                    
+                    第五章:hardhat框架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../05_hardhat框架/01_QuickStart.html">
+            
+                <a href="../05_hardhat框架/01_QuickStart.html">
+            
+                    
+                    第1节:QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../05_hardhat框架/02_单元测试.html">
+            
+                <a href="../05_hardhat框架/02_单元测试.html">
+            
+                    
+                    第2节:单元测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../05_hardhat框架/03_fork主网.html">
+            
+                <a href="../05_hardhat框架/03_fork主网.html">
+            
+                    
+                    第3节:fork主网
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../05_hardhat框架/04_多版本编译.html">
+            
+                <a href="../05_hardhat框架/04_多版本编译.html">
+            
+                    
+                    第4节:多版本编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../05_hardhat框架/05_不同网络相同地址.html">
+            
+                <a href="../05_hardhat框架/05_不同网络相同地址.html">
+            
+                    
+                    第5节:不同网络相同地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../05_hardhat框架/06_部署fork_graphnode_subgraph.html">
+            
+                <a href="../05_hardhat框架/06_部署fork_graphnode_subgraph.html">
+            
+                    
+                    第6节:graphnode-subgraph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../05_hardhat框架/07_综合教程.html">
+            
+                <a href="../05_hardhat框架/07_综合教程.html">
+            
+                    
+                    第7节:07_综合教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../05_hardhat框架/08_合约升级.html">
+            
+                <a href="../05_hardhat框架/08_合约升级.html">
+            
+                    
+                    第8节:合约升级
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../06_openzeppeline解析/">
+            
+                <a href="../06_openzeppeline解析/">
+            
+                    
+                    第六章:openzeppeline解析(ing)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../07_subgraph/">
+            
+                <a href="../07_subgraph/">
+            
+                    
+                    第七章:subgraph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../07_subgraph/01_概述.html">
+            
+                <a href="../07_subgraph/01_概述.html">
+            
+                    
+                    第1节:概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../07_subgraph/02_实战教程.html">
+            
+                <a href="../07_subgraph/02_实战教程.html">
+            
+                    
+                    第2节:实战教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../08_项目实战-世界杯竞猜/">
+            
+                <a href="../08_项目实战-世界杯竞猜/">
+            
+                    
+                    第八章:项目实战-世界杯竞猜
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.html">
+            
+                    
+                    第1节:世界杯竞猜-合约
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.html">
+            
+                    
+                    第2节:世界杯竞猜-hardhat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.html">
+            
+                    
+                    第3节:世界杯竞猜-ERC20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.html">
+            
+                    
+                    第4节:世界杯竞猜_demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_发奖.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_发奖.html">
+            
+                    
+                    第5节:世界杯竞猜_发奖
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第九章:EVM详解
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="01_OPCode手册.html">
+            
+                <a href="01_OPCode手册.html">
+            
+                    
+                    第1节:OPCode手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.2" data-path="02-evm-puzzles.html">
+            
+                <a href="02-evm-puzzles.html">
+            
+                    
+                    第2节:EVM-PUZZLES挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../10_EVM反汇编/">
+            
+                <a href="../10_EVM反汇编/">
+            
+                    
+                    第十章:EVM反汇编
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../10_EVM反汇编/01_反汇编初步了解.html">
+            
+                <a href="../10_EVM反汇编/01_反汇编初步了解.html">
+            
+                    
+                    第1节:反汇编初步了解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../10_EVM反汇编/02_合约部署都做了啥.html">
+            
+                <a href="../10_EVM反汇编/02_合约部署都做了啥.html">
+            
+                    
+                    第2节:合约部署都做了啥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../10_EVM反汇编/03_storage工作原理.html">
+            
+                <a href="../10_EVM反汇编/03_storage工作原理.html">
+            
+                    
+                    第3节:storage工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../10_EVM反汇编/04_终止.html">
+            
+                <a href="../10_EVM反汇编/04_终止.html">
+            
+                    
+                    第4节:终止
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../10_合约攻击案例分析/README.md">
+            
+                <span>
+            
+                    
+                    第十一章:合约攻击案例分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../10_合约攻击案例分析/01_FTX因免手续费提币攻击.md">
+            
+                <span>
+            
+                    
+                    第1节:FTX gas攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第2节:EVM-PUZZLES挑战</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="第8节：evm-puzzle">第8节：EVM-PUZZLE</h1>
+<blockquote>
+<p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+</blockquote>
+<p>以太坊在内部实现了一个基于栈的虚拟机，我们称之为EVM（Ethereum Virtual Machine），用户所有的操作最终都会转化为操作码（OPCODE）然后在EVM中执行，下图为整个执行流程，目前我们对EVM的讲解不多，后续会陆续补上。</p>
+<p><img src="assets/image-20221031203407316.png" alt="image-20221031203407316"></p>
+<p>本文将介绍10道EVM题目，每道题都会要求用户填写部分内容：使得程序正常退出，而不允许执行REVERT。</p>
+<p><strong>注意：本文针对道是有EVM基础的同学，对于尚未接触过OPCODE的同学</strong>，不要着急，在这里可以先看看EVM里面都有啥，有助于后续深入学习。</p>
+<h2 id="启动">启动</h2>
+<p><strong>运行游戏</strong>：<a href="https://github.com/fvictorio/evm-puzzles" target="_blank">https://github.com/fvictorio/evm-puzzles</a></p>
+<pre><code class="lang-sh">npm i
+npx hardhat play
+</code></pre>
+<h2 id="puzzle1：callvalue">Puzzle#1：CALLVALUE</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 1 #</span>
+<span class="hljs-comment">############</span>
+
+00      34      CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      56      JUMP    <span class="hljs-comment">#跳转下一个evm字节，查看JUMPDEST，发现目的地是08，所以msg.value为8</span>
+02      FD      REVERT
+03      FD      REVERT
+04      FD      REVERT
+05      FD      REVERT
+06      FD      REVERT
+07      FD      REVERT
+08      5B      JUMPDEST
+09      00      STOP
+
+? Enter the value to send:
+</code></pre>
+<ul>
+<li>callvalue是输入的ether值，会存储到栈顶</li>
+<li>jump会读取栈顶值，并跳转到相应的字节地址，由JUMPDEST承接</li>
+<li>由于目的地JUMPDEST是08，所以输入值为：8</li>
+</ul>
+<h2 id="puzzle2：codesize">Puzzle#2：CODESIZE</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 2 #</span>
+<span class="hljs-comment">############</span>
+
+00      34      CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      38      CODESIZE    <span class="hljs-comment">#[10, msg.value]，codesize为当前evm中的操作码的数量，每一个是1字节</span>
+02      03      SUB    <span class="hljs-comment">#[sub_result]， 需要跳转到06，所以 10 - msg.value = 6</span>
+03      56      JUMP
+04      FD      REVERT
+05      FD      REVERT
+06      5B      JUMPDEST
+07      00      STOP
+08      FD      REVERT
+09      FD      REVERT
+
+? Enter the value to send:
+</code></pre>
+<ul>
+<li>CALLVALUE存储值到栈顶，STACK：[x]</li>
+<li>CODESIZE获取当前EVM环境中的操作码SIZE，每个OPCODE为1byte，我们此时内存中共10个操作码，因此执行CODESIZE后，会向栈顶存入10，STACK：[10, x]</li>
+<li>SUB会执行减法操作，并将结果如栈，STACK：[10 - x]</li>
+<li>JUMP会跳到06字节，因此我们需要 10 - x = 6，推导出：x = 4</li>
+</ul>
+<h2 id="puzzle3：calldatasize">Puzzle#3：CALLDATASIZE</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 3 #</span>
+<span class="hljs-comment">############</span>
+
+00      36      CALLDATASIZE    <span class="hljs-comment">#[datasize]</span>
+01      56      JUMP    <span class="hljs-comment">#跳转到04，所以我们只要保证calldata到size为4即可，内容不限。</span>
+02      FD      REVERT
+03      FD      REVERT
+04      5B      JUMPDEST
+05      00      STOP
+
+? Enter the calldata: 0x11223344
+</code></pre>
+<ul>
+<li>CALLDATASIZE返回INTPUT的字节数，并存入栈顶，STACK：[0x...]</li>
+<li>为了JUMP到04，因此我们的输入需要大小为4字节，因此随便输入一个四字节data即可！</li>
+</ul>
+<h2 id="puzzle4：xor">Puzzle#4：XOR</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 4 #</span>
+<span class="hljs-comment">############</span>
+
+00      34      CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      38      CODESIZE    <span class="hljs-comment">#[12, msg.value]</span>
+02      18      XOR
+03      56      JUMP
+04      FD      REVERT
+05      FD      REVERT
+06      FD      REVERT
+07      FD      REVERT
+08      FD      REVERT
+09      FD      REVERT
+0A      5B      JUMPDEST
+0B      00      STOP
+
+? Enter the value to send:
+</code></pre>
+<ul>
+<li>CALLVALUE获取数值后入栈，STACK：[x]</li>
+<li>CODESIZE获取数值为12入栈，STACK：[12, x]</li>
+<li>异或操作：<ul>
+<li>12：0000，1100</li>
+<li>0A：0000，1010</li>
+<li>x：   0000，0110 =》6，所以答案为：6</li>
+</ul>
+</li>
+</ul>
+<h2 id="puzzle5：jumpi">Puzzle#5：JUMPI</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 5 #</span>
+<span class="hljs-comment">############</span>
+
+00      34          CALLVALUE    <span class="hljs-comment">#[msg.value]</span>
+01      80          DUP1    <span class="hljs-comment">#[msg.value, msg.value]</span>
+02      02          MUL    <span class="hljs-comment">#[mul_result]</span>
+03      610100      PUSH2 0100    <span class="hljs-comment">#[0100, mul_result]，反推mul_result为: 0100</span>
+06      14          EQ    <span class="hljs-comment">#[0或1]，反推：1</span>
+07      600C        PUSH1 0C    <span class="hljs-comment">#[0C, 0或1]，为了能跳转，此时必须为：1</span>
+09      57          JUMPI    <span class="hljs-comment">#[]，stack2为1时，跳转到stack1的位置</span>
+0A      FD          REVERT
+0B      FD          REVERT
+0C      5B          JUMPDEST
+0D      00          STOP
+0E      FD          REVERT
+0F      FD          REVERT
+
+? Enter the value to send: (0)：
+</code></pre>
+<ul>
+<li>CALLVALUE，STACK-&gt; [x]</li>
+<li>DUP1：STACK-&gt; [x，x]</li>
+<li>MUL：STACK-&gt; [mul_result]</li>
+<li>PUSH2 0100：STACK-&gt; [0100，mul_result]</li>
+<li>EQ：判断stack1和stack2是否相等，若相等，则清除这两个值，并向栈顶存入1，否则存入0</li>
+<li>PUSH1 0C：STACK-&gt; [0C, 1]</li>
+<li>JUMPI：读取stack2的值，如果为1，则跳转到stack1的位置，即0C，满足条件！</li>
+<li>因此我们需要使得：0100 = x*x，0x0100十进制为256，所以x = 16</li>
+</ul>
+<h2 id="puzzle6：calldataload">Puzzle#6：CALLDATALOAD</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 6 #</span>
+<span class="hljs-comment">############</span>
+
+00      6000      PUSH1 00    <span class="hljs-comment">#[00]</span>
+02      35        CALLDATALOAD    <span class="hljs-comment">#[calldata, 00]</span>
+03      56        JUMP    <span class="hljs-comment">#跳转到0A，所以stack1为：0A</span>
+04      FD        REVERT
+05      FD        REVERT
+06      FD        REVERT
+07      FD        REVERT
+08      FD        REVERT
+09      FD        REVERT
+0A      5B        JUMPDEST
+0B      00        STOP
+</code></pre>
+<ul>
+<li>PUSH1 00，STACK：【0x00】</li>
+<li>CALLDATALOAD：获取input的数据，即calldata，参数为0x00，即从第00位置开始加载</li>
+<li>JUMP想跳转到0A处，所以calldata的值为0x0a，如果我们直接输入0x0a，此时会被转化为：a00000000000000000000000000000000000000000000000000000000000000，这是错的；</li>
+<li>由于calldata的数值总为32字节的倍数，所以此处应该为：0x000000000000000000000000000000000000000000000000000000000000000a</li>
+</ul>
+<h2 id="puzzle7：extcodesize">Puzzle#7：EXTCODESIZE</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 7 #</span>
+<span class="hljs-comment">############</span>
+
+00      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+01      6000      PUSH1 00    <span class="hljs-comment"># [00, datasize]</span>
+03      80        DUP1        <span class="hljs-comment"># [00, 00, datasize]</span>
+04      37        CALLDATACOPY    <span class="hljs-comment"># [] data被copy到memory中，栈被清空</span>
+05      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+06      6000      PUSH1 00        <span class="hljs-comment"># [00, datasize]</span>
+08      6000      PUSH1 00        <span class="hljs-comment"># [00, 00, datasize]</span>
+0A      F0        CREATE    <span class="hljs-comment"># [deployed_address] 栈被清空，从内存中读取数据，创建合约，返回地址 </span>
+0B      3B        EXTCODESIZE    <span class="hljs-comment"># [address_code_size] 输入地址，返回合约的size</span>
+0C      6001      PUSH1 01    <span class="hljs-comment"># [01, address_code_size]</span>
+0E      14        EQ    <span class="hljs-comment"># [1] address_code_size必须为1，后续的才成立</span>
+0F      6013      PUSH1 13
+11      57        JUMPI
+12      FD        REVERT
+13      5B        JUMPDEST
+14      00        STOP
+? Enter the calldata:
+</code></pre>
+<ul>
+<li>CREATE：三个参数（value，offset，size）<ul>
+<li>value是wei单位</li>
+<li>offset是bytecode在内存中的起始位置</li>
+<li>size是bytecode的size</li>
+</ul>
+</li>
+<li>注意⚠️：offset开始的bytecode是包含部署逻辑的数据，并非是新合约的bytecode，其返回值才是新合约的bytecode。</li>
+<li>所以结果为：0x60<strong>01</strong>600052600160<strong>1ff3</strong>，<a href="https://www.evm.codes/playground?callValue=0&amp;unit=Wei&amp;codeType=Bytecode&amp;code=%2760016000526001601ff3%27_&amp;ref=hackernoon.com&amp;fork=grayGlacier" target="_blank">点击验证</a></li>
+</ul>
+<p><img src="assets/image-20221031173928192.png" alt="image-20221031173928192"></p>
+<h2 id="puzzle8：swap">Puzzle#8：SWAP</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 8 #</span>
+<span class="hljs-comment">############</span>
+
+00      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+01      6000      PUSH1 00    <span class="hljs-comment"># [00, datasize]</span>
+03      80        DUP1    <span class="hljs-comment"># [00, 00, datasize]</span>
+04      37        CALLDATACOPY    <span class="hljs-comment"># []  copy到内存中</span>
+05      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]，直接生成数据，不需要栈参数</span>
+06      6000      PUSH1 00    <span class="hljs-comment"># [00, datasize]</span>
+08      6000      PUSH1 00    <span class="hljs-comment"># [00, 00, datasize]</span>
+0A      F0        CREATE    <span class="hljs-comment"># [deployed_address]</span>
+0B      6000      PUSH1 00    <span class="hljs-comment"># [00, deployed_address]</span>
+0D      80        DUP1    <span class="hljs-comment"># [00, 00, deployed_address]</span>
+0E      80        DUP1    <span class="hljs-comment"># [00, 00, 00, deployed_address]</span>
+0F      80        DUP1    <span class="hljs-comment"># [00, 00, 00, 00, deployed_address]</span>
+10      80        DUP1    <span class="hljs-comment"># [00, 00, 00, 00, 00, deployed_address]</span>
+11      94        SWAP5    <span class="hljs-comment"># [deployed_address, 00, 00, 00, 00, 00]，兑换1st 和 6th，你没有看错1和6，不是5</span>
+12      5A        GAS    <span class="hljs-comment"># [gasAvail, deployed_address, 00, 00, 00, 00, 00] // 7个参数</span>
+13      F1        CALL    <span class="hljs-comment"># [0或1]调用函数，需要是0，0表示失败，1表示成功！（反推的）</span>
+14      6000      PUSH1 00    <span class="hljs-comment"># [00, 0或1]，需要是0</span>
+16      14        EQ    <span class="hljs-comment"># [0或1]，需要是1</span>
+17      601B      PUSH1 1B    <span class="hljs-comment"># [1B, 0或1]，需要是1</span>
+19      57        JUMPI                        
+1A      FD        REVERT
+1B      5B        JUMPDEST
+1C      00        STOP
+
+? Enter the calldata:
+</code></pre>
+<ul>
+<li>我们需要做的是让call失败，一共要三种方式：<ul>
+<li>gas不足</li>
+<li>栈空间不足</li>
+<li>使用了STATICCALL但是value不为0，（注意，如果codesize是0，call方法是一直返回成功的）</li>
+</ul>
+</li>
+<li>我们需要传入数据，执行CRATE后返回的bytecode参与到后续的计算中，从而造成revert</li>
+<li>具体做法为，根据Puzzle#8，我们传入：0x60016000526001601ff3，返回值为01，这个是OPCODE中的：ADD操作</li>
+<li>调用CALL的时候，由于栈中的操作数已经不足（当前是0，ADD需要2个），因此会调用失败，REVERT。</li>
+<li>因此答案为：0x60016000526001601ff3</li>
+</ul>
+<h2 id="puzzle9：lt">Puzzle#9：LT</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">############</span>
+<span class="hljs-comment"># Puzzle 9 #</span>
+<span class="hljs-comment">############</span>
+
+00      36        CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+01      6003      PUSH1 03    <span class="hljs-comment"># [03, datasize]</span>
+03      10        LT    <span class="hljs-comment"># [1], stack(1) &lt; stack(2),</span>
+04      6009      PUSH1 09    <span class="hljs-comment"># [09, 1]</span>
+06      57        JUMPI
+07      FD        REVERT
+08      FD        REVERT
+09      5B        JUMPDEST    <span class="hljs-comment"># [] 跳转到这里</span>
+0A      34        CALLVALUE        <span class="hljs-comment"># [msgvalue]</span>
+0B      36        CALLDATASIZE    <span class="hljs-comment"># [datasize, msgvalue]</span>
+0C      02        MUL        <span class="hljs-comment"># [mul_result]</span>
+0D      6008      PUSH1 08    <span class="hljs-comment"># [08, mul_result]</span>
+0F      14        EQ    <span class="hljs-comment"># [1], 必须是0</span>
+10      6014      PUSH1 14    <span class="hljs-comment"># [14, 1]</span>
+12      57        JUMPI
+13      FD        REVERT
+14      5B        JUMPDEST    <span class="hljs-comment"># 跳转到这里，结束！</span>
+15      00        STOP
+
+? Enter the value to send: 
+? Enter the calldata:
+</code></pre>
+<ul>
+<li>mul_result应该是8</li>
+<li>datasize * msgvalue = 8</li>
+<li>由于在03字节中， stack(1) &lt; stack(2)，所以datasize大于3，且小于8</li>
+<li>考虑到乘法，所以datasize应该为：4，msgvalue 为：2</li>
+<li>因此答案为：<ul>
+<li>2</li>
+<li>0xffffffff</li>
+</ul>
+</li>
+</ul>
+<h2 id="puzzle10：iszero">Puzzle#10：ISZERO</h2>
+<pre><code class="lang-sh"><span class="hljs-comment">#############</span>
+<span class="hljs-comment"># Puzzle 10 #</span>
+<span class="hljs-comment">#############</span>
+
+00      38          CODESIZE    <span class="hljs-comment"># [23]</span>
+01      34          CALLVALUE    <span class="hljs-comment"># [msgvalue, 23]</span>
+02      90          SWAP1    <span class="hljs-comment"># [23, msgvalue]</span>
+03      11          GT    <span class="hljs-comment"># [1], msgvalue &lt; 23</span>
+04      6008        PUSH1 08    <span class="hljs-comment"># [08, 1]</span>
+06      57          JUMPI
+07      FD          REVERT
+08      5B          JUMPDEST    <span class="hljs-comment"># 跳到这里</span>
+09      36          CALLDATASIZE    <span class="hljs-comment"># [datasize]</span>
+0A      610003      PUSH2 0003    <span class="hljs-comment"># [0003, datasize]</span>
+0D      90          SWAP1    <span class="hljs-comment"># [datasize, 0003]</span>
+0E      06          MOD        <span class="hljs-comment"># [N]，取余数，N为余数，必须是：0</span>
+0F      15          ISZERO    <span class="hljs-comment"># [0或1]，必须是1</span>
+10      34          CALLVALUE    <span class="hljs-comment"># [msgvalue, 0或1]，必须是：1</span>
+11      600A        PUSH1 0A    <span class="hljs-comment"># [0A，msgvalue, 0或1]，反推：msgvalue = 0x0f</span>
+13      01          ADD    <span class="hljs-comment"># [add_result, 0或1]，下面是跳转了，所以栈值为：[0x19, 1]</span>
+14      57          JUMPI
+15      FD          REVERT
+16      FD          REVERT
+17      FD          REVERT
+18      FD          REVERT
+19      5B          JUMPDEST
+1A      00          STOP
+? Enter the value to send: 
+? Enter the calldata:
+</code></pre>
+<ul>
+<li><del>0A + msgvalue = 19，所以msgvalue为：9</del>（这里犯错了，19是16进制的，我错误的当成了10进制相减了）。</li>
+<li>0x19 - 0x0a = 0x0f，即十进制值：15</li>
+<li>calldata字段，需要满足size对3取余数为0即可，我们选择：0xffffff</li>
+<li>All puzzles are solved!</li>
+</ul>
+<h2 id="错误记录">错误记录</h2>
+<ol>
+<li>push2：表示存入一个2字节的数据入栈，而不是入栈两次</li>
+<li>Swap5：表示1st和6th兑换，而不是1st和5yh兑换</li>
+<li>1表示成功，0表示失败，JUMIPI和CALL都如此</li>
+<li>OPCODE的字节序是16进制，而不是10进制，注意转化</li>
+</ol>
+<h2 id="小结">小结</h2>
+<p>接下来会花几节课来讲解EVM相关内容，以及反汇编内容，敬请关注！</p>
+<h2 id="其他知识">其他知识</h2>
+<ul>
+<li>答案：<a href="https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles" target="_blank">https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles</a></li>
+<li>了解存储相关：<a href="https://www.evm.codes/about" target="_blank">https://www.evm.codes/about</a></li>
+</ul>
+<hr>
+<p>加V入群：Adugii，公众号：<a href="https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ" target="_blank">阿杜在新加坡</a>，一起抱团拥抱web3，下期见！</p>
+<blockquote>
+<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="01_OPCode手册.html" class="navigation navigation-prev " aria-label="Previous page: 第1节:OPCode手册">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../10_EVM反汇编/" class="navigation navigation-next " aria-label="Next page: 第十章:EVM反汇编">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第2节:EVM-PUZZLES挑战","level":"1.13.2","depth":2,"next":{"title":"第十章:EVM反汇编","level":"1.14","depth":1,"path":"10_EVM反汇编/README.md","ref":"10_EVM反汇编/README.md","articles":[{"title":"第1节:反汇编初步了解","level":"1.14.1","depth":2,"path":"10_EVM反汇编/01_反汇编初步了解.md","ref":"10_EVM反汇编/01_反汇编初步了解.md","articles":[]},{"title":"第2节:合约部署都做了啥","level":"1.14.2","depth":2,"path":"10_EVM反汇编/02_合约部署都做了啥.md","ref":"10_EVM反汇编/02_合约部署都做了啥.md","articles":[]},{"title":"第3节:storage工作原理","level":"1.14.3","depth":2,"path":"10_EVM反汇编/03_storage工作原理.md","ref":"10_EVM反汇编/03_storage工作原理.md","articles":[]},{"title":"第4节:终止","level":"1.14.4","depth":2,"path":"10_EVM反汇编/04_终止.md","ref":"10_EVM反汇编/04_终止.md","articles":[]}]},"previous":{"title":"第1节:OPCode手册","level":"1.13.1","depth":2,"path":"09_EVM详解/01_OPCode手册.md","ref":"09_EVM详解/01_OPCode手册.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM详解/02-evm-puzzles.md","mtime":"2022-10-31T13:06:59.756Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-01T03:57:23.169Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
