@@ -95,7 +95,7 @@
     * [第6节:graphnode-subgraph](05_hardhat框架/06_部署fork_graphnode_subgraph.md)
     * [第7节:07_综合教程](05_hardhat框架/07_综合教程.md)
     * [第8节:合约升级](05_hardhat框架/08_合约升级.md)
-* [第六章:openzeppeline解析(ing)](06_openzeppeline解析/README.md)
+* [第六章:openzeppeline解析](06_openzeppeline解析/README.md)
 * [第七章:subgraph](07_subgraph/README.md)
     * [第1节:概述](07_subgraph/01_概述.md)
     * [第2节:实战教程](07_subgraph/02_实战教程.md)
