@@ -1,6 +1,7 @@
 * [加入MoleDAO👏👏](Moledao.md)
 * [扫码入群](README.md)
 * [课程目录](SUMMARY.md)
+* [思维导图](思维导图.md)
 * [第0章:blockchain基础](00_blockchain基础/README.md)
     * [第1节:什么是区块链](00_blockchain基础/01_什么是区块链.md)
     * [第2节:什么是比特币](00_blockchain基础/02_什么是比特币.md)
