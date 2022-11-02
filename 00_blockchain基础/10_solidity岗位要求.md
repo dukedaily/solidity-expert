@@ -1,12 +1,14 @@
 
 
-初级：语法
-中高级：语法+协议
-专家：语法+协议+上下游技术栈
+# 第10节：solidity岗位要求
 
 
 
-1. 初级
+以下是网上招聘需求的汇总，仅供参考。初级：语法、中高级：语法+协议、专家：语法+协议+上下游技术栈
+
+
+
+## 初级
 
 ```js
 区块链生态研发工程师
@@ -26,7 +28,9 @@
 良好的团队合作精神，敢于接受挑战，追求卓越；
 ```
 
-3. 中高级：
+
+
+## 中高级：
 
 ```js
 如何成为一名合格的智能合约高级工程师：
@@ -41,7 +45,9 @@
 9、熟悉其他主流的智能合约语言和机制（比如 rust 和 move）。
 ```
 
-3. Expert
+
+
+## Expert
 
 ```sh
 What is your responsibility?
@@ -66,7 +72,9 @@ What will be great to have?
 3. You have considered and feel comfortable, or have experience working in a startup environment
 ```
 
-4. Expert
+
+
+## Expert
 
 ```js
 You are:
