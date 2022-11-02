@@ -67,7 +67,7 @@
     <link rel="next" href="01_概述.html" />
     
     
-    <link rel="prev" href="../06_openzeppeline解析/" />
+    <link rel="prev" href="../06_ethers/" />
     
 
     </head>
@@ -1265,6 +1265,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.9" data-path="../04_合约攻击/20_FTX因免手续费提币攻击.html">
+            
+                <a href="../04_合约攻击/20_FTX因免手续费提币攻击.html">
+            
+                    
+                    第20节:FTX因免手续费提币攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1393,12 +1406,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../06_openzeppeline解析/">
+        <li class="chapter " data-level="1.10" data-path="../06_ethers/">
             
-                <a href="../06_openzeppeline解析/">
+                <a href="../06_ethers/">
             
                     
-                    第六章:openzeppeline解析
+                    第六章:ethers
             
                 </a>
             
@@ -1632,38 +1645,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="../10_合约攻击案例分析/">
-            
-                <a href="../10_合约攻击案例分析/">
-            
-                    
-                    第十章:合约攻击案例分析
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.14.1" data-path="../10_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
-            
-                <a href="../10_合约攻击案例分析/01_FTX因免手续费提币攻击.html">
-            
-                    
-                    第1节:FTX gas攻击
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
 
     
 
@@ -1710,7 +1691,13 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="第七章：subgraph">第七章：subgraph</h1>
-<p>获取代码请移步这里：<a href="https://github.com/dukedaily/subgraph-demo" target="_blank">https://github.com/dukedaily/subgraph-demo</a></p>
+<p>subgraph是DAPP领域最重要的基建之一，主流协议都在使用，其功能为：</p>
+<ul>
+<li>链下监听事件，逻辑处理，存储到数据库中，供前端调用；</li>
+<li>常用于：统计历史信息等，仅做展示相关，可以节约链上存储成本，且响应更快；</li>
+<li>请求subgraph的时候使用<a href="https://thegraph.com/docs/en/querying/graphql-api/" target="_blank">graphql</a>语言，而非sql语句。</li>
+</ul>
+<p>本节代码位于：<a href="https://github.com/dukedaily/subgraph-demo" target="_blank">https://github.com/dukedaily/subgraph-demo</a></p>
 
                                 
                                 </section>
@@ -1738,7 +1725,7 @@
 
             
                 
-                <a href="../06_openzeppeline解析/" class="navigation navigation-prev " aria-label="Previous page: 第六章:openzeppeline解析">
+                <a href="../06_ethers/" class="navigation navigation-prev " aria-label="Previous page: 第六章:ethers">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1754,7 +1741,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第七章:subgraph","level":"1.11","depth":1,"next":{"title":"第1节:概述","level":"1.11.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},"previous":{"title":"第六章:openzeppeline解析","level":"1.10","depth":1,"path":"06_openzeppeline解析/README.md","ref":"06_openzeppeline解析/README.md","articles":[]},"articles":[{"title":"第1节:概述","level":"1.11.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},{"title":"第2节:实战教程","level":"1.11.2","depth":2,"path":"07_subgraph/02_实战教程.md","ref":"07_subgraph/02_实战教程.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07_subgraph/README.md","mtime":"2022-11-02T02:01:37.871Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-02T04:43:48.408Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第七章:subgraph","level":"1.11","depth":1,"next":{"title":"第1节:概述","level":"1.11.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},"previous":{"title":"第六章:ethers","level":"1.10","depth":1,"path":"06_ethers/README.md","ref":"06_ethers/README.md","articles":[]},"articles":[{"title":"第1节:概述","level":"1.11.1","depth":2,"path":"07_subgraph/01_概述.md","ref":"07_subgraph/01_概述.md","articles":[]},{"title":"第2节:实战教程","level":"1.11.2","depth":2,"path":"07_subgraph/02_实战教程.md","ref":"07_subgraph/02_实战教程.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"07_subgraph/README.md","mtime":"2022-11-02T05:50:52.111Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-02T05:54:18.621Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
