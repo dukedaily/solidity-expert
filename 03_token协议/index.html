@@ -1398,7 +1398,7 @@
                 <a href="../06_openzeppeline解析/">
             
                     
-                    第六章:openzeppeline解析(ing)
+                    第六章:openzeppeline解析
             
                 </a>
             
@@ -1709,7 +1709,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第三章-token协议">第三章: Token协议</h1>
+                                <h1 id="第三章：token协议">第三章：Token协议</h1>
+<blockquote>
+<p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+</blockquote>
+<p>从本章开始，我们将从语法层面跳出来，开始关注协议相关内容，由于Token协议是我们日常接触最多的落地应用，所以我们从Token合约入手。</p>
+<p>我们将介绍主流的协议，包括：</p>
+<ul>
+<li>ERC20，这是标准的代笔协议，本质上就是一个solidity合约，代表协议如：USDT，WBTC等。</li>
+<li>ERC721，这个就是我们所谓的NFT（Non-Fungible Token），加密猫，无聊猿等。</li>
+<li>ERC1155，这是介于ERC20和ERC721之间的协议，属于半同质化合约协议（Semi Non-Fungible Token），它属于在Token层面是同质化，在Id层面是非同质化的Token</li>
+<li>其他协议，待定</li>
+</ul>
 
                                 
                                 </section>
@@ -1753,7 +1764,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第三章:token协议","level":"1.7","depth":1,"next":{"title":"第1节:ERC20","level":"1.7.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"previous":{"title":"第24节:最佳实践","level":"1.6.23","depth":2,"path":"02_solidity进阶/24_最佳实践.md","ref":"02_solidity进阶/24_最佳实践.md","articles":[]},"articles":[{"title":"第1节:ERC20","level":"1.7.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.7.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.7.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.7.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:ERC1820","level":"1.7.5","depth":2,"path":"03_token协议/05_ERC1820.md","ref":"03_token协议/05_ERC1820.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/README.md","mtime":"2022-09-16T03:19:14.902Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-02T01:43:57.153Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第三章:token协议","level":"1.7","depth":1,"next":{"title":"第1节:ERC20","level":"1.7.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"previous":{"title":"第24节:最佳实践","level":"1.6.23","depth":2,"path":"02_solidity进阶/24_最佳实践.md","ref":"02_solidity进阶/24_最佳实践.md","articles":[]},"articles":[{"title":"第1节:ERC20","level":"1.7.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.7.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.7.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.7.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:ERC1820","level":"1.7.5","depth":2,"path":"03_token协议/05_ERC1820.md","ref":"03_token协议/05_ERC1820.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/README.md","mtime":"2022-11-02T04:42:44.594Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-02T04:43:48.408Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
