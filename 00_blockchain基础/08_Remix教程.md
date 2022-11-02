@@ -2,8 +2,6 @@
 
 # 第9节：Remix教程
 
-> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
-
 **Remix在线编译器**是最流行的合约开发工具，对于新入门的开发者，非常友好，我们前期直接使用remix进行学习，
 
 

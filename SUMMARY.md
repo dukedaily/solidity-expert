@@ -86,6 +86,7 @@
     * [第6节:合约审计](04_合约攻击/06_合约审计.md)
     * [第7节:slither教程](04_合约攻击/07_slither教程.md)
     * [第8节:最佳安全实践](04_合约攻击/08_最佳安全实践.md)
+    * [第20节:FTX因免手续费提币攻击](04_合约攻击/20_FTX因免手续费提币攻击.md)
 * [第五章:hardhat框架](05_hardhat框架/README.md)
     * [第1节:QuickStart](05_hardhat框架/01_QuickStart.md)
     * [第2节:单元测试](05_hardhat框架/02_单元测试.md)
@@ -95,7 +96,8 @@
     * [第6节:graphnode-subgraph](05_hardhat框架/06_部署fork_graphnode_subgraph.md)
     * [第7节:07_综合教程](05_hardhat框架/07_综合教程.md)
     * [第8节:合约升级](05_hardhat框架/08_合约升级.md)
-* [第六章:openzeppeline解析](06_openzeppeline解析/README.md)
+<!-- * [第六章:openzeppeline解析](06_openzeppeline解析/README.md) -->
+* [第六章:ethers](06_ethers/README.md)
 * [第七章:subgraph](07_subgraph/README.md)
     * [第1节:概述](07_subgraph/01_概述.md)
     * [第2节:实战教程](07_subgraph/02_实战教程.md)
@@ -112,5 +114,3 @@
     * [第3节:storage存储](09_EVM/反汇编/03storage存储.md)
     * [第4节:终止](09_EVM/反汇编/04终止.md)
     * [第8节:EVM-PUZZLES挑战](09_EVM/08-evm-puzzles.md)
-* [第十章:合约攻击案例分析](10_合约攻击案例分析/README.md)
-    * [第1节:FTX gas攻击](10_合约攻击案例分析/01_FTX因免手续费提币攻击.md)

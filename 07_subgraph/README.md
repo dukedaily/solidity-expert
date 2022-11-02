@@ -1,3 +1,7 @@
 # 第七章：subgraph
+subgraph是DAPP领域最重要的基建之一，主流协议都在使用，其功能为：
+- 链下监听事件，逻辑处理，存储到数据库中，供前端调用；
+- 常用于：统计历史信息等，仅做展示相关，可以节约链上存储成本，且响应更快；
+- 请求subgraph的时候使用[graphql](https://thegraph.com/docs/en/querying/graphql-api/)语言，而非sql语句。
 
-获取代码请移步这里：https://github.com/dukedaily/subgraph-demo
+本节代码位于：https://github.com/dukedaily/subgraph-demo
