@@ -20,3 +20,11 @@ Moledao是一个区块链爱好者社区，2021年8月成立于新加坡；
 - Twitter：https://twitter.com/moledao_io
 - Discord: https://discord.gg/5m4w49uXJg （建议进入DC，这是主要的社区交流平台）
 
+
+
+## 加入Moledao
+
+也欢迎大家加入Moledao来一起建设Web3生态，点击以下链接了解Moledao使者招募信息：
+
+- 招募信息（英文）：[点击查看](https://moledao.medium.com/were-hiring-volunteers-let-s-build-web-3-0-world-with-moledao-704853b9e813)
+- 招募信息（中文）：[点击查看](https://mp.weixin.qq.com/s/9Zp0FCf-wsk3EPIjiX2BEA)
