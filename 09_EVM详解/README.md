@@ -1,3 +1,13 @@
+# 第9章：EVM详解
+
+参考：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+
+
+
+上文自2018年后未更新，我们将基于上文，进行补充。
+
+
+
 
 
 ## 其他（重要）
@@ -6,9 +16,7 @@
 2. evm在线查询：https://github.com/comitylabs/evm.codes
 3. https://jeancvllr.medium.com/solidity-tutorial-all-about-assembly-5acdfefde05c
 4. 精通以太坊：https://github.com/ethereumbook/ethereumbook
-5. evm图解：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
-6. 反汇编系列教程：https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d
-7. https://ethereum.org/en/developers/docs/
+5. https://ethereum.org/en/developers/docs/
 
 
 
