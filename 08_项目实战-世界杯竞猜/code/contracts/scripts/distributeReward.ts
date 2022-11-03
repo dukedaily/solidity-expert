@@ -5,7 +5,8 @@ import { MerkleTree } from 'merkletreejs'
 import hre from 'hardhat'
 
 // const graphUrl = process.env.SUBGRAPH_API;
-const graphUrl = "http://localhost:8000/subgraphs/name/duke/worldcup"
+// const graphUrl = "http://localhost:8000/subgraphs/name/duke/worldcup"
+const graphUrl = "https://api.thegraph.com/subgraphs/name/dukedaily/worldcup"
 
 async function executeQuery(query: string, variables: any) {
   const client = new ApolloClient({
@@ -162,6 +163,8 @@ export const createBigNumber18 = (v: any) => {
 const CURRENT_ROUND = 0;
 const TOTAL_REWARD = createBigNumber18(10000);
 const currentPlayer = '0xe8191108261f3234f1c2aca52a0d5c11795aef9e'; // TODO
+// const currentPlayer = '0xC4109e427A149239e6C1E35Bb2eCD0015B6500B8';
+// const currentPlayer = '0x572ed8c1Aa486e6a016A7178E41e9Fc1E59CAe63';
 
 async function main() {
   // query subgraph to get user data
@@ -171,6 +174,9 @@ async function main() {
   const winner = await getWinnerHistory(CURRENT_ROUND)
   console.log(`winner for round ${CURRENT_ROUND} is : ${winner['result']}`);
 
+  // 所有Player都会设置weight：1
+  // 如果猜中了，weight: 2
+
   // calculate reward for each player
   const { playerDistributionList, actuallyAmt } = getPlayerRewardList(TOTAL_REWARD, playRecords, winner['result'])
   // console.log('reward list:', playerDistributionList, 'actuallyAmt:', actuallyAmt);
@@ -179,9 +185,12 @@ async function main() {
   const tree = generateMerkelTree(CURRENT_ROUND, playerDistributionList)
   console.log('root:', tree.getHexRoot());
 
+  console.log('请手动发放奖励!\n\n');
+
   // call method of distributor 
   // TODO
 
+  console.log('准备生成领取奖励所需数据:', currentPlayer);
   // get userDistribution from subgraph
   const playerDistributions = await getPlayerDistributions(CURRENT_ROUND)
   // console.log('playerDistributions:', playerDistributions);
@@ -191,7 +200,7 @@ async function main() {
 
   const player = playerDistributions.filter(function (item) {
     // console.log('item.player:', item.player, 'currentPlayer:', currentPlayer)
-    return item.player === currentPlayer
+    return item.player === currentPlayer.toLowerCase()
   })[0]
 
   console.log('player:', player);

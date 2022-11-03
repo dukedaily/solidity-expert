@@ -1,4 +1,4 @@
-# 第4节：世界杯竞猜（demo）
+# 第4节：世界杯竞猜（subgraph）
 
 >  本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
