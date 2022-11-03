@@ -1520,12 +1520,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.html">
+        <li class="chapter " data-level="1.13.4" data-path="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.html">
             
-                <a href="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.html">
+                <a href="../08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.html">
             
                     
-                    第4节:世界杯竞猜_demo
+                    第4节:世界杯竞猜_subgraph
             
                 </a>
             
@@ -1533,12 +1533,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.5" data-path="../08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_发奖.html">
+        <li class="chapter " data-level="1.13.5" data-path="../08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.html">
             
-                <a href="../08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_发奖.html">
+                <a href="../08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.html">
             
                     
-                    第5节:世界杯竞猜_发奖
+                    第5节:世界杯竞猜_airdrop
             
                 </a>
             
@@ -1722,8 +1722,63 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第4节：终止"><a name="第4节：终止" class="plugin-anchor" href="#第4节：终止"><i class="fa fa-link" aria-hidden="true"></i></a>第4节：终止</h1>
-<p><a href="https://medium.com/@TrustChain/reversing-and-debugging-evm-the-end-of-time-part-4-3eafe5b0511a" target="_blank"><em>Reversing and Debugging EVM Smart contracts: 5 Instructions to end/abort the Execution</em> <strong><em>(part\</em></strong> </a>4️⃣）</p>
+                                <h1 id="第4节：5个终止指令介绍"><a name="第4节：5个终止指令介绍" class="plugin-anchor" href="#第4节：5个终止指令介绍"><i class="fa fa-link" aria-hidden="true"></i></a>第4节：5个终止指令介绍</h1>
+<p><a href="https://medium.com/@TrustChain/reversing-and-debugging-evm-the-end-of-time-part-4-3eafe5b0511a" target="_blank">Reversing and Debugging EVM Smart contracts: 5 Instructions to end/abort the Execution</a></p>
+<h2 id="1-stop"><a name="1-stop" class="plugin-anchor" href="#1-stop"><i class="fa fa-link" aria-hidden="true"></i></a>1. Stop</h2>
+<p>消耗0gas，不返回任何数据。</p>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: UNLICENSED</span>
+pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
+
+contract Test {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+
+    }
+}
+</code></pre>
+<p>得到汇编如下：</p>
+<pre><code class="lang-js"><span class="hljs-number">045</span> JUMPDEST |<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">signature</span> <span class="hljs-title">discarded</span>|
+046 <span class="hljs-title">PUSH1</span> 33 |0<span class="hljs-title">x33</span>|
+048 <span class="hljs-title">PUSH1</span> 35 |0<span class="hljs-title">x35</span>|0<span class="hljs-title">x33</span>|
+050 <span class="hljs-title">JUMP</span>     |0<span class="hljs-title">x33</span>|
+053 <span class="hljs-title">JUMPDEST</span> |0<span class="hljs-title">x33</span>|
+054 <span class="hljs-title">JUMP</span>     ||
+051 <span class="hljs-title">JUMPDEST</span> ||
+052 <span class="hljs-title">STOP</span>     ||
+053 <span class="hljs-title">JUMPDEST</span>
+054 <span class="hljs-title">JUMP</span>
+</span></code></pre>
+<p>注意50 byte时，跳转到0x35（53 byte）位置，54byte时，进一步跳转到0x33处（51 byte）位置，最后STOP退出，此时内存中数据为空，栈中只有signature，所以返回数据为空。</p>
+<h2 id="2-return"><a name="2-return" class="plugin-anchor" href="#2-return"><i class="fa fa-link" aria-hidden="true"></i></a>2. Return</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: UNLICENSED</span>
+pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
+
+contract Test {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint</span>) </span>{
+        <span class="hljs-keyword">return</span>(<span class="hljs-number">8</span>);
+    }
+}
+</code></pre>
+<p>得到汇编如下：（打开优化开关，run 1）</p>
+<pre><code class="lang-js"><span class="hljs-number">045</span> JUMPDEST ||
+<span class="hljs-number">046</span> PUSH1 <span class="hljs-number">08</span> |<span class="hljs-number">0x08</span>|  the <span class="hljs-keyword">return</span> value <span class="hljs-keyword">of</span> test()
+<span class="hljs-number">048</span> PUSH1 <span class="hljs-number">40</span> |<span class="hljs-number">0x40</span>|<span class="hljs-number">0x08</span>|
+<span class="hljs-number">050</span> MLOAD    |<span class="hljs-number">0x80</span>|<span class="hljs-number">0x08</span>|  mload(<span class="hljs-number">0x40</span>) mloads the free memory pointer（内存中的值不会被清除或覆盖）
+<span class="hljs-number">051</span> SWAP1    |<span class="hljs-number">0x08</span>|<span class="hljs-number">0x80</span>|
+<span class="hljs-number">052</span> DUP2     |<span class="hljs-number">0x80</span>|<span class="hljs-number">0x08</span>|<span class="hljs-number">0x80</span>|（DUP2的意思是，复制栈上第<span class="hljs-number">2</span>个元素，即下标为<span class="hljs-number">1</span>的元素）
+<span class="hljs-number">053</span> MSTORE   |<span class="hljs-number">0x80</span>|       mstore(<span class="hljs-number">0x80</span>,<span class="hljs-number">0x08</span>) store the <span class="hljs-keyword">return</span> value <span class="hljs-keyword">in</span> memory[<span class="hljs-number">0x80</span>]
+<span class="hljs-number">054</span> PUSH1 <span class="hljs-number">20</span> |<span class="hljs-number">0x20</span>|<span class="hljs-number">0x80</span>|
+<span class="hljs-number">056</span> ADD      |<span class="hljs-number">0xa0</span>|
+<span class="hljs-number">057</span> PUSH1 <span class="hljs-number">40</span> |<span class="hljs-number">0x40</span>|<span class="hljs-number">0xa0</span>|
+<span class="hljs-number">059</span> MLOAD    |<span class="hljs-number">0x80</span>|<span class="hljs-number">0xa0</span>|
+<span class="hljs-number">060</span> DUP1     |<span class="hljs-number">0x80</span>|<span class="hljs-number">0x80</span>|<span class="hljs-number">0xa0</span>|
+<span class="hljs-number">061</span> SWAP2    |<span class="hljs-number">0xa0</span>|<span class="hljs-number">0x80</span>|<span class="hljs-number">0x80</span>|
+<span class="hljs-number">062</span> SUB      |<span class="hljs-number">0x20</span>|<span class="hljs-number">0x80</span>|
+<span class="hljs-number">063</span> SWAP1    |<span class="hljs-number">0x80</span>|<span class="hljs-number">0x20</span>|
+<span class="hljs-number">064</span> RETURN   ||
+</code></pre>
+<h2 id="3-revert"><a name="3-revert" class="plugin-anchor" href="#3-revert"><i class="fa fa-link" aria-hidden="true"></i></a>3. Revert</h2>
+<h2 id="4-invalid"><a name="4-invalid" class="plugin-anchor" href="#4-invalid"><i class="fa fa-link" aria-hidden="true"></i></a>4. Invalid</h2>
+<h2 id="5-selfdestruct"><a name="5-selfdestruct" class="plugin-anchor" href="#5-selfdestruct"><i class="fa fa-link" aria-hidden="true"></i></a>5. SelfDestruct</h2>
 
                                 
                                 </section>
@@ -1747,7 +1802,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节:终止","level":"1.15.4","depth":2,"previous":{"title":"第3节:storage工作原理","level":"1.15.3","depth":2,"path":"10_EVM反汇编/03_storage工作原理.md","ref":"10_EVM反汇编/03_storage工作原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10_EVM反汇编/04_终止.md","mtime":"2022-11-03T01:19:45.007Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节:终止","level":"1.15.4","depth":2,"previous":{"title":"第3节:storage工作原理","level":"1.15.3","depth":2,"path":"10_EVM反汇编/03_storage工作原理.md","ref":"10_EVM反汇编/03_storage工作原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10_EVM反汇编/04_终止.md","mtime":"2022-11-03T12:07:16.529Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T12:28:28.420Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
