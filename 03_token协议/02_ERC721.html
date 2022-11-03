@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,17 +1722,14 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第2节语法-erc721">第2节:语法-ERC721</h1>
+                                <h1 id="第2节语法-erc721"><a name="第2节语法-erc721" class="plugin-anchor" href="#第2节语法-erc721"><i class="fa fa-link" aria-hidden="true"></i></a>第2节:语法-ERC721</h1>
 <p>对于Opeasea而言，测试网目前仅支持Rinkeby，即部署在Rinkeby网络上的nft合约会自动展示在opensea中。</p>
 <p>举例教程：<a href="https://mp.weixin.qq.com/s/T9GEgaqubHAftpMsdLAMIg" target="_blank">https://mp.weixin.qq.com/s/T9GEgaqubHAftpMsdLAMIg</a></p>
 <p>ipfs服务：<a href="https://app.pinata.cloud/pinmanager" target="_blank">https://app.pinata.cloud/pinmanager</a></p>
 <p>EIP-721: <a href="https://eips.ethereum.org/EIPS/eip-721" target="_blank">https://eips.ethereum.org/EIPS/eip-721</a></p>
-<h2 id="标准接口">标准接口</h2>
+<h2 id="标准接口"><a name="标准接口" class="plugin-anchor" href="#标准接口"><i class="fa fa-link" aria-hidden="true"></i></a>标准接口</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 <span class="hljs-comment">// OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721.sol)</span>
 
@@ -1790,7 +1779,7 @@ interface IERC721 is IERC165 {
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tokenURI</span>(<span class="hljs-params">uint256 _tokenId</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)</span>;
 }
 </code></pre>
-<h2 id="部署">部署</h2>
+<h2 id="部署"><a name="部署" class="plugin-anchor" href="#部署"><i class="fa fa-link" aria-hidden="true"></i></a>部署</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
 
@@ -1826,7 +1815,7 @@ contract SimpleCollectible is ERC721URIStorage {
     <span class="hljs-comment">//3. 浏览器请求：https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta</span>
 }
 </code></pre>
-<h2 id="接受者为合约时">接受者为合约时</h2>
+<h2 id="接受者为合约时"><a name="接受者为合约时" class="plugin-anchor" href="#接受者为合约时"><i class="fa fa-link" aria-hidden="true"></i></a>接受者为合约时</h2>
 <p>to如果是合约地址，则to合约必须实现onERC721Received接口，因为有回调校验，如果to是EOA则不需要实现该接口。</p>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
@@ -1851,7 +1840,7 @@ contract ERC721Holder is IERC721Receiver {
     }
 }
 </code></pre>
-<h2 id="完整代码">完整代码</h2>
+<h2 id="完整代码"><a name="完整代码" class="plugin-anchor" href="#完整代码"><i class="fa fa-link" aria-hidden="true"></i></a>完整代码</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
 
@@ -1893,7 +1882,7 @@ contract ERC721Holder is IERC721Receiver {
     }
 }
 </code></pre>
-<h2 id="测试">测试</h2>
+<h2 id="测试"><a name="测试" class="plugin-anchor" href="#测试"><i class="fa fa-link" aria-hidden="true"></i></a>测试</h2>
 <pre><code class="lang-js">      <span class="hljs-comment">// QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB是json文件的hash</span>
     <span class="hljs-comment">//1. createCollectible(QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB)</span>
     <span class="hljs-comment">//2. tokenURI(0)</span>
@@ -1910,12 +1899,12 @@ contract ERC721Holder is IERC721Receiver {
   <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;duke nft&quot;</span>
 }
 </code></pre>
-<h2 id="总结">总结</h2>
+<h2 id="总结"><a name="总结" class="plugin-anchor" href="#总结"><i class="fa fa-link" aria-hidden="true"></i></a>总结</h2>
 <ol>
 <li>在页面展示时,url为：<a href="https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta" target="_blank">https://gateway.pinata.cloud/ipfs/QmTfK2CeRBkRqSZHmnekdZYSBrsKLQ6U5Px8MWtGf1Eqta</a></li>
 <li>实际上的tokenuri为：<a href="https://gateway.pinata.cloud/ipfs/QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB" target="_blank">https://gateway.pinata.cloud/ipfs/QmSiaLLeuBKPvqAQz2VQWJHUJMz6xjMgagePha4kPd38TB</a></li>
 </ol>
-<h2 id="授权比较">授权比较</h2>
+<h2 id="授权比较"><a name="授权比较" class="plugin-anchor" href="#授权比较"><i class="fa fa-link" aria-hidden="true"></i></a>授权比较</h2>
 <ul>
 <li>ERC721</li>
 </ul>
@@ -1938,22 +1927,6 @@ contract ERC721Holder is IERC721Receiver {
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1977,7 +1950,7 @@ contract ERC721Holder is IERC721Receiver {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节:ERC721","level":"1.8.2","depth":2,"next":{"title":"第3节:ERC1155","level":"1.8.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},"previous":{"title":"第1节:ERC20","level":"1.8.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/02_ERC721.md","mtime":"2022-10-09T08:04:17.560Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:ERC721","level":"1.8.2","depth":2,"next":{"title":"第3节:ERC1155","level":"1.8.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},"previous":{"title":"第1节:ERC20","level":"1.8.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/02_ERC721.md","mtime":"2022-10-09T08:04:17.560Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2031,27 +2004,11 @@ contract ERC721Holder is IERC721Receiver {
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

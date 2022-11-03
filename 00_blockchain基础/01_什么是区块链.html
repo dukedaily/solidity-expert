@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,24 +1722,21 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第1节：什么是区块链">第1节：什么是区块链</h1>
+                                <h1 id="第1节：什么是区块链"><a name="第1节：什么是区块链" class="plugin-anchor" href="#第1节：什么是区块链"><i class="fa fa-link" aria-hidden="true"></i></a>第1节：什么是区块链</h1>
 <p>什么是区块链？这是个好问题，但话题太大了，这本是一个笼统的概念，网上描述的天花乱坠，我这里将其简化为几个小概念，消化了就入门了：</p>
 <ol>
 <li><strong>交易</strong>：在区块链世界里面，我们把所有的交互行为（买东西、投票、转账）统称为一个交易（Transaction，简写为Tx）</li>
 <li><strong>区块</strong>：在一个特定的时间段内（如10分钟）会产生N笔交易，我们把这些交易打包到一起之后，称之为区块（Block）</li>
 <li><strong>区块链</strong>：在更长的一段时间内（如60分钟）会产生很多区块，我们这些区块（Block）以特定的规则链接🔗到一起之后，就称之为区块链（Blockchain）</li>
 </ol>
-<h2 id="交易与区块关系图示">交易与区块关系图示</h2>
+<h2 id="交易与区块关系图示"><a name="交易与区块关系图示" class="plugin-anchor" href="#交易与区块关系图示"><i class="fa fa-link" aria-hidden="true"></i></a>交易与区块关系图示</h2>
 <p>这张图描述的关系是所有区块链项目共同的概念，记住这张图就可以从最高层面了解区块链。</p>
 <p><img src="assets/image-20220813141122896.png" alt="image-20220813141122896"></p>
 <p>详细一点可以这样描述：(看不懂没关系，不影响后续！)</p>
 <p><img src="assets/blockchain.png" alt="blockchain"></p>
-<h2 id="区块链规则">区块链规则</h2>
+<h2 id="区块链规则"><a name="区块链规则" class="plugin-anchor" href="#区块链规则"><i class="fa fa-link" aria-hidden="true"></i></a>区块链规则</h2>
 <p>对于一个特定的区块链项目，其区块的产生、链接、同步方式、同步时间等是有特定的规则的，大体上可以用下面这张图来描述。</p>
 <ul>
 <li>第一步：由用户自己创建交易（转账等）</li>
@@ -1758,13 +1747,13 @@
 <li>第六步：矿工A获得挖矿奖励，全网同步账本，重复第一步</li>
 </ul>
 <p><img src="assets/image-20220813150722455.png" alt="image-20220813150722455"></p>
-<h2 id="区块链项目">区块链项目</h2>
+<h2 id="区块链项目"><a name="区块链项目" class="plugin-anchor" href="#区块链项目"><i class="fa fa-link" aria-hidden="true"></i></a>区块链项目</h2>
 <p>每当我们提到区块链项目，一般包含两个层面的意思：</p>
 <ol>
 <li>链条开发：聚焦在区块链本身，这相当于操作系统层面的项目（如Mac和Windows）</li>
 <li>应用开发：聚焦在应用层面，如微信，手机银行等，在区块链领域，我们称之为Dapp（Decentralized Application），即去中心化应用。（我们聚焦于此）</li>
 </ol>
-<h2 id="小结">小结</h2>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
 <p>区块链行业起始于比特币、兴于以太坊以及其后继者，随着行业发展，更多的项目也在陆续爆发（如solana，Aptos，sui等）。</p>
 <p>各种基础建设（infrastructure）也在不断完善，如价格预言机<a href="https://docs.chain.link/docs/conceptual-overview/" target="_blank">Chainlink</a>，开发框架<a href="https://hardhat.org/hardhat-network/docs/overview" target="_blank">hardhat</a>，第三方服务<a href="https://moralis.io/" target="_blank">Moralis</a>，<a href="https://tenderly.co/" target="_blank">Tenderly</a>等，这些我在后面的章节中都会陆续讲到，敬请关注。</p>
 <p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
@@ -1775,22 +1764,6 @@
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1814,7 +1787,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:什么是区块链","level":"1.5.1","depth":2,"next":{"title":"第2节:什么是比特币","level":"1.5.2","depth":2,"path":"00_blockchain基础/02_什么是比特币.md","ref":"00_blockchain基础/02_什么是比特币.md","articles":[]},"previous":{"title":"第0章:blockchain基础","level":"1.5","depth":1,"path":"00_blockchain基础/README.md","ref":"00_blockchain基础/README.md","articles":[{"title":"第1节:什么是区块链","level":"1.5.1","depth":2,"path":"00_blockchain基础/01_什么是区块链.md","ref":"00_blockchain基础/01_什么是区块链.md","articles":[]},{"title":"第2节:什么是比特币","level":"1.5.2","depth":2,"path":"00_blockchain基础/02_什么是比特币.md","ref":"00_blockchain基础/02_什么是比特币.md","articles":[]},{"title":"第3节:什么是以太坊","level":"1.5.3","depth":2,"path":"00_blockchain基础/03_什么是以太坊.md","ref":"00_blockchain基础/03_什么是以太坊.md","articles":[]},{"title":"第4节:App与Dapp异同","level":"1.5.4","depth":2,"path":"00_blockchain基础/04_App与Dapp.md","ref":"00_blockchain基础/04_App与Dapp.md","articles":[]},{"title":"第5节:DAPP技术栈","level":"1.5.5","depth":2,"path":"00_blockchain基础/05_DAPP技术栈.md","ref":"00_blockchain基础/05_DAPP技术栈.md","articles":[]},{"title":"第6节:web3优质学习资源","level":"1.5.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},{"title":"第7节:钱包与地址","level":"1.5.7","depth":2,"path":"00_blockchain基础/07_钱包与地址.md","ref":"00_blockchain基础/07_钱包与地址.md","articles":[]},{"title":"第8节:Remix教程","level":"1.5.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},{"title":"第9节:区块链就业","level":"1.5.9","depth":2,"path":"00_blockchain基础/09_区块链就业.md","ref":"00_blockchain基础/09_区块链就业.md","articles":[]},{"title":"第10节:solidity岗位要求","level":"1.5.10","depth":2,"path":"00_blockchain基础/10_solidity岗位要求.md","ref":"00_blockchain基础/10_solidity岗位要求.md","articles":[]},{"title":"第11节:rpc节点","level":"1.5.11","depth":2,"path":"00_blockchain基础/11_rpc节点.md","ref":"00_blockchain基础/11_rpc节点.md","articles":[]},{"title":"第12节:以太坊白皮书","level":"1.5.12","depth":2,"path":"00_blockchain基础/12_以太坊白皮书.md","ref":"00_blockchain基础/12_以太坊白皮书.md","articles":[]},{"title":"第13节:faucet-网络添加","level":"1.5.13","depth":2,"path":"00_blockchain基础/13_faucet-网络添加.md","ref":"00_blockchain基础/13_faucet-网络添加.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/01_什么是区块链.md","mtime":"2022-11-03T01:19:31.747Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第1节:什么是区块链","level":"1.5.1","depth":2,"next":{"title":"第2节:什么是比特币","level":"1.5.2","depth":2,"path":"00_blockchain基础/02_什么是比特币.md","ref":"00_blockchain基础/02_什么是比特币.md","articles":[]},"previous":{"title":"第0章:blockchain基础","level":"1.5","depth":1,"path":"00_blockchain基础/README.md","ref":"00_blockchain基础/README.md","articles":[{"title":"第1节:什么是区块链","level":"1.5.1","depth":2,"path":"00_blockchain基础/01_什么是区块链.md","ref":"00_blockchain基础/01_什么是区块链.md","articles":[]},{"title":"第2节:什么是比特币","level":"1.5.2","depth":2,"path":"00_blockchain基础/02_什么是比特币.md","ref":"00_blockchain基础/02_什么是比特币.md","articles":[]},{"title":"第3节:什么是以太坊","level":"1.5.3","depth":2,"path":"00_blockchain基础/03_什么是以太坊.md","ref":"00_blockchain基础/03_什么是以太坊.md","articles":[]},{"title":"第4节:App与Dapp异同","level":"1.5.4","depth":2,"path":"00_blockchain基础/04_App与Dapp.md","ref":"00_blockchain基础/04_App与Dapp.md","articles":[]},{"title":"第5节:DAPP技术栈","level":"1.5.5","depth":2,"path":"00_blockchain基础/05_DAPP技术栈.md","ref":"00_blockchain基础/05_DAPP技术栈.md","articles":[]},{"title":"第6节:web3优质学习资源","level":"1.5.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},{"title":"第7节:钱包与地址","level":"1.5.7","depth":2,"path":"00_blockchain基础/07_钱包与地址.md","ref":"00_blockchain基础/07_钱包与地址.md","articles":[]},{"title":"第8节:Remix教程","level":"1.5.8","depth":2,"path":"00_blockchain基础/08_Remix教程.md","ref":"00_blockchain基础/08_Remix教程.md","articles":[]},{"title":"第9节:区块链就业","level":"1.5.9","depth":2,"path":"00_blockchain基础/09_区块链就业.md","ref":"00_blockchain基础/09_区块链就业.md","articles":[]},{"title":"第10节:solidity岗位要求","level":"1.5.10","depth":2,"path":"00_blockchain基础/10_solidity岗位要求.md","ref":"00_blockchain基础/10_solidity岗位要求.md","articles":[]},{"title":"第11节:rpc节点","level":"1.5.11","depth":2,"path":"00_blockchain基础/11_rpc节点.md","ref":"00_blockchain基础/11_rpc节点.md","articles":[]},{"title":"第12节:以太坊白皮书","level":"1.5.12","depth":2,"path":"00_blockchain基础/12_以太坊白皮书.md","ref":"00_blockchain基础/12_以太坊白皮书.md","articles":[]},{"title":"第13节:faucet-网络添加","level":"1.5.13","depth":2,"path":"00_blockchain基础/13_faucet-网络添加.md","ref":"00_blockchain基础/13_faucet-网络添加.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/01_什么是区块链.md","mtime":"2022-11-03T01:19:31.747Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1868,27 +1841,11 @@
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

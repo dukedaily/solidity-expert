@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,22 +1722,19 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第8节：最佳安全实践">第8节：最佳安全实践</h1>
+                                <h1 id="第8节：最佳安全实践"><a name="第8节：最佳安全实践" class="plugin-anchor" href="#第8节：最佳安全实践"><i class="fa fa-link" aria-hidden="true"></i></a>第8节：最佳安全实践</h1>
 <p>优秀项目：</p>
 <ul>
 <li><a href="https://github.com/transmissions11/solcurity" target="_blank">https://github.com/transmissions11/solcurity</a></li>
 <li><a href="https://github.com/SunWeb3Sec/DeFiHackLabs" target="_blank">https://github.com/SunWeb3Sec/DeFiHackLabs</a></li>
 <li><a href="https://github.com/kadenzipfel/smart-contract-attack-vectors" target="_blank">https://github.com/kadenzipfel/smart-contract-attack-vectors</a></li>
 </ul>
-<h1 id="the-solcurity-standard">The Solcurity Standard</h1>
+<h1 id="the-solcurity-standard"><a name="the-solcurity-standard" class="plugin-anchor" href="#the-solcurity-standard"><i class="fa fa-link" aria-hidden="true"></i></a>The Solcurity Standard</h1>
 <p>Opinionated <strong>security</strong> and <strong>code quality</strong> standard for <strong>Solidity smart contracts</strong>.</p>
 <p><em>Based off work by <a href="https://github.com/sushiswap/bentobox/blob/master/documentation/checks.txt" target="_blank">BoringCrypto</a>, <a href="https://www.youtube.com/watch?v=LLiJK_VeAvQ" target="_blank">Mudit Gupta</a>, <a href="https://github.com/runtimeverification/verified-smart-contracts/wiki/List-of-Security-Vulnerabilities" target="_blank">Runtime Verification</a>, and <a href="https://consensys.github.io/smart-contract-best-practices/known_attacks" target="_blank">ConsenSys Diligence</a></em>.</p>
-<h3 id="general-review-approach">General Review Approach:</h3>
+<h3 id="general-review-approach"><a name="general-review-approach" class="plugin-anchor" href="#general-review-approach"><i class="fa fa-link" aria-hidden="true"></i></a>General Review Approach:</h3>
 <ul>
 <li>Read the project&apos;s docs, specs, and whitepaper to understand what the smart contracts are meant to do.</li>
 <li>Construct a mental model of what you expect the contracts to look like before checking out the code.</li>
@@ -1760,7 +1749,7 @@
 <li>Run tools like Slither/Solhint and review their output.</li>
 <li>Look at related projects and their audits to check for any similar issues or oversights.</li>
 </ul>
-<h2 id="variables">Variables</h2>
+<h2 id="variables"><a name="variables" class="plugin-anchor" href="#variables"><i class="fa fa-link" aria-hidden="true"></i></a>Variables</h2>
 <ul>
 <li><code>V1</code> - Can it be <code>internal</code>?</li>
 <li><code>V2</code> - Can it be <code>constant</code>?</li>
@@ -1773,13 +1762,13 @@
 <li><code>V9</code> - If it&apos;s a public array, is a separate function provided to return the full array?</li>
 <li><code>V10</code> - Only use <code>private</code> to intentionally prevent child contracts from accessing the variable, prefer <code>internal</code> for flexibility.</li>
 </ul>
-<h2 id="structs">Structs</h2>
+<h2 id="structs"><a name="structs" class="plugin-anchor" href="#structs"><i class="fa fa-link" aria-hidden="true"></i></a>Structs</h2>
 <ul>
 <li><code>S1</code> - Is a struct necessary? Can the variable be packed raw in storage?</li>
 <li><code>S2</code> - Are its fields packed together (if possible)?</li>
 <li><code>S3</code> - Is the purpose of the struct and all fields documented using natspec?</li>
 </ul>
-<h2 id="functions">Functions</h2>
+<h2 id="functions"><a name="functions" class="plugin-anchor" href="#functions"><i class="fa fa-link" aria-hidden="true"></i></a>Functions</h2>
 <ul>
 <li><code>F1</code> - Can it be <code>external</code>?</li>
 <li><code>F2</code> - Should it be <code>internal</code>?</li>
@@ -1801,13 +1790,13 @@
 <li><code>F18</code> - Only use <code>private</code> to intentionally prevent child contracts from calling the function, prefer <code>internal</code> for flexibility.</li>
 <li><code>F19</code> - Use <code>virtual</code> if there are legitimate (and safe) instances where a child contract may wish to override the function&apos;s behavior.</li>
 </ul>
-<h2 id="modifiers">Modifiers</h2>
+<h2 id="modifiers"><a name="modifiers" class="plugin-anchor" href="#modifiers"><i class="fa fa-link" aria-hidden="true"></i></a>Modifiers</h2>
 <ul>
 <li><code>M1</code> - Are no storage updates made (except in a reentrancy lock)?</li>
 <li><code>M2</code> - Are external calls avoided?</li>
 <li><code>M3</code> - Is the purpose of the modifier and other important information documented using natspec?</li>
 </ul>
-<h2 id="code">Code</h2>
+<h2 id="code"><a name="code" class="plugin-anchor" href="#code"><i class="fa fa-link" aria-hidden="true"></i></a>Code</h2>
 <ul>
 <li><code>C1</code> - Using SafeMath or 0.8 checked math? (SWC-101)</li>
 <li><code>C2</code> - Are any storage slots read multiple times?</li>
@@ -1860,7 +1849,7 @@
 <li><code>C50</code> - Use ternary expressions to simplify branching logic wherever possible.</li>
 <li><code>C51</code> - When operating on more than one address, ask yourself what happens if they&apos;re the same.</li>
 </ul>
-<h2 id="external-calls">External Calls</h2>
+<h2 id="external-calls"><a name="external-calls" class="plugin-anchor" href="#external-calls"><i class="fa fa-link" aria-hidden="true"></i></a>External Calls</h2>
 <ul>
 <li><code>X1</code> - Is an external contract call actually needed?</li>
 <li><code>X2</code> - If there is an error, could it cause DoS? Like <code>balanceOf()</code> reverting. (SWC-113)</li>
@@ -1871,14 +1860,14 @@
 <li><code>X7</code> - Could it cause an out-of-gas in the calling contract if it returns a massive amount of data?</li>
 <li><code>X8</code> - If you are calling a particular function, do not assume that <code>success</code> implies that the function exists (phantom functions).</li>
 </ul>
-<h2 id="static-calls">Static Calls</h2>
+<h2 id="static-calls"><a name="static-calls" class="plugin-anchor" href="#static-calls"><i class="fa fa-link" aria-hidden="true"></i></a>Static Calls</h2>
 <ul>
 <li><code>S1</code> - Is an external contract call actually needed?</li>
 <li><code>S2</code> - Is it actually marked as view in the interface?</li>
 <li><code>S3</code> - If there is an error, could it cause DoS? Like <code>balanceOf()</code> reverting. (SWC-113)</li>
 <li><code>S4</code> - If the call entered an infinite loop, could it cause DoS?</li>
 </ul>
-<h2 id="events">Events</h2>
+<h2 id="events"><a name="events" class="plugin-anchor" href="#events"><i class="fa fa-link" aria-hidden="true"></i></a>Events</h2>
 <ul>
 <li><code>E1</code> - Should any fields be indexed?</li>
 <li><code>E2</code> - Is the creator of the relevant action included as an indexed field?</li>
@@ -1887,7 +1876,7 @@
 <li><code>E5</code> - Are all users/ids that are operated on in functions that emit the event stored as indexed fields?</li>
 <li><code>E6</code> - Avoid function calls and evaluation of expressions within event arguments. Their order of evaluation is unpredictable.</li>
 </ul>
-<h2 id="contract">Contract</h2>
+<h2 id="contract"><a name="contract" class="plugin-anchor" href="#contract"><i class="fa fa-link" aria-hidden="true"></i></a>Contract</h2>
 <ul>
 <li><code>T1</code> - Use an SPDX license identifier.</li>
 <li><code>T2</code> - Are events emitted for every storage mutating function?</li>
@@ -1902,7 +1891,7 @@
 <li><code>T11</code> - Group imports by their folder/package. Separate groups with an empty line. Groups of external dependencies should come first, then mock/testing contracts (if relevant), and finally local imports.</li>
 <li><code>T12</code> - Summarize the purpose and functionality of the contract with a <code>@notice</code> natspec comment. Document how the contract interacts with other contracts inside/outside the project in a <code>@dev</code> natspec comment.</li>
 </ul>
-<h2 id="project">Project</h2>
+<h2 id="project"><a name="project" class="plugin-anchor" href="#project"><i class="fa fa-link" aria-hidden="true"></i></a>Project</h2>
 <ul>
 <li><code>P1</code> - Use the right license (you must use GPL if you depend on GPL code, etc).</li>
 <li><code>P2</code> - Unit test everything.</li>
@@ -1910,7 +1899,7 @@
 <li><code>P4</code> - Use symbolic execution where possible.</li>
 <li><code>P5</code> - Run Slither/Solhint and review all findings.</li>
 </ul>
-<h2 id="defi">DeFi</h2>
+<h2 id="defi"><a name="defi" class="plugin-anchor" href="#defi"><i class="fa fa-link" aria-hidden="true"></i></a>DeFi</h2>
 <ul>
 <li><code>D1</code> - Check your assumptions about what other contracts do and return.</li>
 <li><code>D2</code> - Don&apos;t mix internal accounting with actual balances.</li>
@@ -1928,22 +1917,6 @@
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1967,7 +1940,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第8节:最佳安全实践","level":"1.9.8","depth":2,"next":{"title":"第20节:FTX因免手续费提币攻击","level":"1.9.9","depth":2,"path":"04_合约攻击/20_FTX因免手续费提币攻击.md","ref":"04_合约攻击/20_FTX因免手续费提币攻击.md","articles":[]},"previous":{"title":"第7节:slither教程","level":"1.9.7","depth":2,"path":"04_合约攻击/07_slither教程.md","ref":"04_合约攻击/07_slither教程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"04_合约攻击/08_最佳安全实践.md","mtime":"2022-10-18T11:11:25.368Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第8节:最佳安全实践","level":"1.9.8","depth":2,"next":{"title":"第20节:FTX因免手续费提币攻击","level":"1.9.9","depth":2,"path":"04_合约攻击/20_FTX因免手续费提币攻击.md","ref":"04_合约攻击/20_FTX因免手续费提币攻击.md","articles":[]},"previous":{"title":"第7节:slither教程","level":"1.9.7","depth":2,"path":"04_合约攻击/07_slither教程.md","ref":"04_合约攻击/07_slither教程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"04_合约攻击/08_最佳安全实践.md","mtime":"2022-10-18T11:11:25.368Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2021,27 +1994,11 @@
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

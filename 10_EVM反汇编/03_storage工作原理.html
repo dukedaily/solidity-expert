@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,15 +1722,12 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第3节：storage工作原理？">第3节：storage工作原理？</h1>
+                                <h1 id="第3节：storage工作原理？"><a name="第3节：storage工作原理？" class="plugin-anchor" href="#第3节：storage工作原理？"><i class="fa fa-link" aria-hidden="true"></i></a>第3节：storage工作原理？</h1>
 <p><a href="https://medium.com/@TrustChain/reversing-and-debugging-ethereum-evm-smart-contracts-part-3-ebe032a08f97" target="_blank">Reversing and debugging EVM Smart contracts: How the storage layout works?-part3</a></p>
 <p>小的type会节约slot，但是会增加OPCODE步骤（增加mask步骤），所以不能滥用小byte，否则会适得其反。</p>
-<h2 id="1-simple-example">1. Simple example</h2>
+<h2 id="1-simple-example"><a name="1-simple-example" class="plugin-anchor" href="#1-simple-example"><i class="fa fa-link" aria-hidden="true"></i></a>1. Simple example</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test {     
@@ -1758,7 +1747,7 @@ contract Test {
 <li>但是在存储时，每个元素都占用一个独立的slot（每个slot容量为：32字节）</li>
 <li>所以最终存储事实为：Slot0: 1、Slot1: 2、Slot2: 3，天经地义！</li>
 </ul>
-<h2 id="2-using-uint8-instead-of-uint256">2. using uint8 instead of uint256</h2>
+<h2 id="2-using-uint8-instead-of-uint256"><a name="2-using-uint8-instead-of-uint256" class="plugin-anchor" href="#2-using-uint8-instead-of-uint256"><i class="fa fa-link" aria-hidden="true"></i></a>2. using uint8 instead of uint256</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test {     
@@ -1780,7 +1769,7 @@ contract Test {
 <li>三个元素都是uint8类型，即一个字节，共计：3个字节，远小于一个slot的容量（32字节）</li>
 <li>所以最终存储为：使用一个slot0：<strong>030201</strong></li>
 </ul>
-<h2 id="3-using-different-types-of-data">3. Using different types of data</h2>
+<h2 id="3-using-different-types-of-data"><a name="3-using-different-types-of-data" class="plugin-anchor" href="#3-using-different-types-of-data"><i class="fa fa-link" aria-hidden="true"></i></a>3. Using different types of data</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test {     
@@ -1799,7 +1788,7 @@ contract Test {
 <li>因此最终存储为，slot0: 358aa13c52544eccef6b0add0f801012adad5ee3aaaaaaaa11</li>
 <li>拆分为：<strong>0x358aa13c52544eccef6b0add0f801012adad5ee3</strong>, <strong>data = 0xaaaaaaaa</strong>, <strong>balance = 0x11</strong></li>
 </ul>
-<h2 id="4-does-the-placement-of-variables-count-">4. Does the placement of variables count ?</h2>
+<h2 id="4-does-the-placement-of-variables-count-"><a name="4-does-the-placement-of-variables-count-" class="plugin-anchor" href="#4-does-the-placement-of-variables-count-"><i class="fa fa-link" aria-hidden="true"></i></a>4. Does the placement of variables count ?</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test {     
@@ -1816,7 +1805,7 @@ contract Test {
 <ul>
 <li>也是存储在一个slot0中，但是顺序有变化：<strong>aaaaaaaa358aa13c52544eccef6b0add0f801012adad5ee311</strong></li>
 </ul>
-<h2 id="5-how-are-stored-structs-">5. How are stored structs ?</h2>
+<h2 id="5-how-are-stored-structs-"><a name="5-how-are-stored-structs-" class="plugin-anchor" href="#5-how-are-stored-structs-"><i class="fa fa-link" aria-hidden="true"></i></a>5. How are stored structs ?</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test {     
@@ -1853,7 +1842,7 @@ Here is the full disassembly <span class="hljs-keyword">of</span> the <span clas
 <ul>
 <li>与普通的layout没有任何区别</li>
 </ul>
-<h2 id="6-what-about-arrays-">6. What about arrays ?</h2>
+<h2 id="6-what-about-arrays-"><a name="6-what-about-arrays-" class="plugin-anchor" href="#6-what-about-arrays-"><i class="fa fa-link" aria-hidden="true"></i></a>6. What about arrays ?</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test1 { 
@@ -1881,7 +1870,7 @@ contract Test2 {
 <li>如果数组在slot1（上图Test2中，values是在slot1）：那么slot1存储数组长度，<strong>keccak256(1)</strong> + 0存储第0个元素，<strong>keccak256(1)</strong> + N -1 存储第N个元素</li>
 </ul>
 <p><img src="assets/image-20221101145037962.png" alt="image-20221101145037962"></p>
-<h2 id="7-how-are-stored-mapping-">7. How are stored mapping ?</h2>
+<h2 id="7-how-are-stored-mapping-"><a name="7-how-are-stored-mapping-" class="plugin-anchor" href="#7-how-are-stored-mapping-"><i class="fa fa-link" aria-hidden="true"></i></a>7. How are stored mapping ?</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT </span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;  
 contract Test {     
@@ -1900,29 +1889,13 @@ contract Test {
 </li>
 </ul>
 <p><img src="assets/image-20221101154727486.png" alt="image-20221101154727486"></p>
-<h2 id="8-conclusion">8. conclusion</h2>
+<h2 id="8-conclusion"><a name="8-conclusion" class="plugin-anchor" href="#8-conclusion"><i class="fa fa-link" aria-hidden="true"></i></a>8. conclusion</h2>
 <p>If you read this entire article, congratulations! It’s not that easy but it worth it. </p>
 <p>You now know more about <strong>EVM than 99.9% of developers</strong>.</p>
 
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1946,7 +1919,7 @@ contract Test {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节:storage工作原理","level":"1.15.3","depth":2,"next":{"title":"第4节:终止","level":"1.15.4","depth":2,"path":"10_EVM反汇编/04_终止.md","ref":"10_EVM反汇编/04_终止.md","articles":[]},"previous":{"title":"第2节:合约部署都做了啥","level":"1.15.2","depth":2,"path":"10_EVM反汇编/02_合约部署都做了啥.md","ref":"10_EVM反汇编/02_合约部署都做了啥.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10_EVM反汇编/03_storage工作原理.md","mtime":"2022-11-03T01:19:44.951Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第3节:storage工作原理","level":"1.15.3","depth":2,"next":{"title":"第4节:终止","level":"1.15.4","depth":2,"path":"10_EVM反汇编/04_终止.md","ref":"10_EVM反汇编/04_终止.md","articles":[]},"previous":{"title":"第2节:合约部署都做了啥","level":"1.15.2","depth":2,"path":"10_EVM反汇编/02_合约部署都做了啥.md","ref":"10_EVM反汇编/02_合约部署都做了啥.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10_EVM反汇编/03_storage工作原理.md","mtime":"2022-11-03T01:19:44.951Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2000,27 +1973,11 @@ contract Test {
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

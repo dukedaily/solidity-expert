@@ -15,6 +15,15 @@
         "@haxcms/gitbook-2-outline-schema": "^0.0.13",
         "gh-pages": "^3.2.3",
         "gitbook-plugin-outline": "^0.0.3",
-        "gitbook-plugin-toggle-chapters": "^0.0.3"
+        "gitbook-plugin-toggle-chapters": "^0.0.3",
+        "gitbook-plugin-anchors": "^0.7.1",
+        "gitbook-plugin-canonical-link": "^2.0.3",
+        "gitbook-plugin-custom-favicon": "0.0.4",
+        "gitbook-plugin-ga": "^1.0.0",
+        "gitbook-plugin-github-issue-feedback": "^1.4.0",
+        "gitbook-plugin-include-codeblock": "^3.2.3",
+        "gitbook-plugin-js-console": "^3.0.4",
+        "gitbook-plugin-page-toc-button": "^0.1.1",
+        "gitbook-summary-to-path": "^1.1.0"
     }
 }

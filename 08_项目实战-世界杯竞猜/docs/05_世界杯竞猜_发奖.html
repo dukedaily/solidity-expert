@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,16 +1722,13 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第5节：世界杯竞猜（发奖）">第5节：世界杯竞猜（发奖）</h1>
+                                <h1 id="第5节：世界杯竞猜（发奖）"><a name="第5节：世界杯竞猜（发奖）" class="plugin-anchor" href="#第5节：世界杯竞猜（发奖）"><i class="fa fa-link" aria-hidden="true"></i></a>第5节：世界杯竞猜（发奖）</h1>
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
-<h2 id="本节要做什么">本节要做什么</h2>
+<h2 id="本节要做什么"><a name="本节要做什么" class="plugin-anchor" href="#本节要做什么"><i class="fa fa-link" aria-hidden="true"></i></a>本节要做什么</h2>
 <ul>
 <li>发行一个worldCupToken</li>
 <li>按照玩家的参与度进行分配，由subgraph进行链下统计</li>
@@ -1750,7 +1739,7 @@
 <li>最终胜出国家：0，此时合约中一共有：4gwei，三个人平分：每个人获得 4/3 gwei，如果有剩余，则转给管理员。</li>
 <li>合约地址：0x471a8f71d3bBB8254e36832FBbb6928b73298347</li>
 </ul>
-<h2 id="背景">背景</h2>
+<h2 id="背景"><a name="背景" class="plugin-anchor" href="#背景"><i class="fa fa-link" aria-hidden="true"></i></a>背景</h2>
 <table>
 <thead>
 <tr>
@@ -1786,7 +1775,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="技术选型">技术选型</h2>
+<h2 id="技术选型"><a name="技术选型" class="plugin-anchor" href="#技术选型"><i class="fa fa-link" aria-hidden="true"></i></a>技术选型</h2>
 <ol>
 <li>使用链下签名方式，让用户链上claim：<ol>
 <li>需要为每个用户都生成一个链下的签名，由管理员签发；</li>
@@ -1802,7 +1791,7 @@
 </ol>
 <p>merkleRoot是一个hash值，每个节点是一个叶子（如M），根节点hash确定后，叶子节点和通向根节点路径中的hash值就都确定了，从而可以完成快速验证功能，能够满足我们的奖励方法需求。</p>
 <p><img src="assets/image-20221029142040931.png" alt="image-20221029142040931"></p>
-<h2 id="奖励流程">奖励流程</h2>
+<h2 id="奖励流程"><a name="奖励流程" class="plugin-anchor" href="#奖励流程"><i class="fa fa-link" aria-hidden="true"></i></a>奖励流程</h2>
 <p>奖励发放与领取逻辑介绍：</p>
 <ol>
 <li>管理员调用distribute（步骤7），这个方法的核心参数是MerkleRoot，是由所有玩家的“地址+奖励数量”作为叶子结点生成的。为了得到这些叶子结点，我们需要对subgraph发起请求玩家的原始数据（步骤8），然后根据奖励分配规则，在前端本地计算后每个人分配的数量，进而生成merkleRoot（步骤9），设置到合约中。</li>
@@ -1812,7 +1801,7 @@
 </ol>
 <p><img src="assets/image-20221029140712300.png" alt="image-20221029140712300"></p>
 <p>原图：<a href="https://whimsical.com/Nfi7rAVqvYJd8mCLYHZYrx" target="_blank">https://whimsical.com/Nfi7rAVqvYJd8mCLYHZYrx</a></p>
-<h2 id="部署合约">部署合约</h2>
+<h2 id="部署合约"><a name="部署合约" class="plugin-anchor" href="#部署合约"><i class="fa fa-link" aria-hidden="true"></i></a>部署合约</h2>
 <p>发放的Token：WorldCupToken：</p>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.9</span>;
@@ -1907,7 +1896,7 @@ contract WorldCupDistributor {
 npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634CB7d3d9291e42b423eD45f1AD  --network goerli
 </code></pre>
 <p>部署后，我们需要手动向WorldCupDistributor中转入1w个奖励WorldCupToken，用于后续发放奖励。</p>
-<h2 id="编写配置文件">编写配置文件</h2>
+<h2 id="编写配置文件"><a name="编写配置文件" class="plugin-anchor" href="#编写配置文件"><i class="fa fa-link" aria-hidden="true"></i></a>编写配置文件</h2>
 <p>将下面内容添加到subgraph.yaml中，其中包含对WorldCup合约的监听，以及对发放奖励合约（WorldCupDistributor）的监听。</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">specVersion:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.4</span>
 <span class="hljs-attr">schema:</span>
@@ -1954,7 +1943,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
           <span class="hljs-attr">handler:</span> <span class="hljs-string">handleClaimed</span>
       <span class="hljs-attr">file:</span> <span class="hljs-string">./src/world-cup.ts</span>
 </code></pre>
-<h2 id="编写-schema">编写 Schema</h2>
+<h2 id="编写-schema"><a name="编写-schema" class="plugin-anchor" href="#编写-schema"><i class="fa fa-link" aria-hidden="true"></i></a>编写 Schema</h2>
 <p>schema.graphql，这些结构相当于数据库，用于在subgraph中存储计算后的数据。</p>
 <pre><code class="lang-yaml"><span class="hljs-comment"># 玩家Player详情</span>
 <span class="hljs-string">type</span> <span class="hljs-string">PlayRecord</span> <span class="hljs-string">@entity</span> {
@@ -1984,7 +1973,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
 
 <span class="hljs-comment"># 更多部分参见源代码....</span>
 </code></pre>
-<h2 id="编写映射文件">编写映射文件</h2>
+<h2 id="编写映射文件"><a name="编写映射文件" class="plugin-anchor" href="#编写映射文件"><i class="fa fa-link" aria-hidden="true"></i></a>编写映射文件</h2>
 <p>监听Play事件，将所有玩家详情记录下来。</p>
 <pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePlay</span>(<span class="hljs-params">event: Play</span>): <span class="hljs-title">void</span> </span>{
   <span class="hljs-comment">// 统计所有的play事件，存储起来</span>
@@ -2107,7 +2096,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
    }
  }
 </code></pre>
-<h2 id="启动subgraph">启动subgraph</h2>
+<h2 id="启动subgraph"><a name="启动subgraph" class="plugin-anchor" href="#启动subgraph"><i class="fa fa-link" aria-hidden="true"></i></a>启动subgraph</h2>
 <p>这部分我们在上一节已经介绍，按顺序执行即可。</p>
 <pre><code class="lang-sh"><span class="hljs-comment"># 启动graphnode</span>
 docker-compose up
@@ -2120,7 +2109,7 @@ npm run deploy-local
 
 <span class="hljs-comment"># Deployed to http://localhost:8000/subgraphs/name/duke/worldcup/graphql</span>
 </code></pre>
-<h2 id="获取请求play数据">获取请求Play数据</h2>
+<h2 id="获取请求play数据"><a name="获取请求play数据" class="plugin-anchor" href="#获取请求play数据"><i class="fa fa-link" aria-hidden="true"></i></a>获取请求Play数据</h2>
 <p>启动subgraph后，需要安静等待一会儿，等待数据同步完成后，我们便可以查询，由于之前已经使用3个用户发起过四次Play操作，所以得到结果如下：</p>
 <pre><code class="lang-sh">{
     playRecords(<span class="hljs-built_in">where</span>: {
@@ -2136,9 +2125,9 @@ npm run deploy-local
 </code></pre>
 <p>结果：</p>
 <p><img src="assets/image-20221029192414359.png" alt="image-20221029192414359"></p>
-<h2 id="获取冠军球队">获取冠军球队</h2>
+<h2 id="获取冠军球队"><a name="获取冠军球队" class="plugin-anchor" href="#获取冠军球队"><i class="fa fa-link" aria-hidden="true"></i></a>获取冠军球队</h2>
 <p><img src="assets/image-20221029192619556.png" alt="image-20221029192619556"></p>
-<h2 id="发奖和领奖">发奖和领奖</h2>
+<h2 id="发奖和领奖"><a name="发奖和领奖" class="plugin-anchor" href="#发奖和领奖"><i class="fa fa-link" aria-hidden="true"></i></a>发奖和领奖</h2>
 <p>至此，我们完成了对事件的监听，接下来要由管理员进行发奖，Player进行领奖，在合约项目中，直接运行脚本：contracts/scripts/distributeReward.ts，对第0期的所有玩家，发放10000 * 10^18 个奖励，读取数据，生成merkleRoot</p>
 <pre><code class="lang-sh">npx hardhat run scripts/distributeReward.ts
 </code></pre>
@@ -2150,7 +2139,7 @@ npm run deploy-local
 <p><img src="assets/image-20221029222414668.png" alt="image-20221029222414668"></p>
 <p>查看流水，发现领取奖励成功！</p>
 <p><img src="assets/image-20221029222447092.png" alt="image-20221029222447092"></p>
-<h2 id="小结">小结</h2>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
 <p>至此，我们终于把奖励发放介绍完了，业务逻辑比较复杂，这是主流的方法奖励方式，接下来的课程中，我们将一起学习链下签名相关内容，并且引入个人中心，使用NFT作为用户头像。</p>
 <hr>
 <p>加V入群：Adugii，公众号：<a href="https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ" target="_blank">阿杜在新加坡</a>，一起抱团拥抱web3，下期见！</p>
@@ -2161,22 +2150,6 @@ npm run deploy-local
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -2200,7 +2173,7 @@ npm run deploy-local
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:世界杯竞猜_发奖","level":"1.13.5","depth":2,"next":{"title":"第九章:EVM详解","level":"1.14","depth":1,"path":"09_EVM详解/README.md","ref":"09_EVM详解/README.md","articles":[{"title":"第1节:OPCode手册","level":"1.14.1","depth":2,"path":"09_EVM详解/01_OPCode手册.md","ref":"09_EVM详解/01_OPCode手册.md","articles":[]},{"title":"第2节:EVM-PUZZLES挑战","level":"1.14.2","depth":2,"path":"09_EVM详解/02-evm-puzzles.md","ref":"09_EVM详解/02-evm-puzzles.md","articles":[]},{"title":"第3节:汇编概述","level":"1.14.3","depth":2,"path":"09_EVM详解/03-汇编概述.md","ref":"09_EVM详解/03-汇编概述.md","articles":[]}]},"previous":{"title":"第4节:世界杯竞猜_demo","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_发奖.md","mtime":"2022-10-31T00:57:21.724Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节:世界杯竞猜_发奖","level":"1.13.5","depth":2,"next":{"title":"第九章:EVM详解","level":"1.14","depth":1,"path":"09_EVM详解/README.md","ref":"09_EVM详解/README.md","articles":[{"title":"第1节:OPCode手册","level":"1.14.1","depth":2,"path":"09_EVM详解/01_OPCode手册.md","ref":"09_EVM详解/01_OPCode手册.md","articles":[]},{"title":"第2节:EVM-PUZZLES挑战","level":"1.14.2","depth":2,"path":"09_EVM详解/02-evm-puzzles.md","ref":"09_EVM详解/02-evm-puzzles.md","articles":[]},{"title":"第3节:汇编概述","level":"1.14.3","depth":2,"path":"09_EVM详解/03-汇编概述.md","ref":"09_EVM详解/03-汇编概述.md","articles":[]}]},"previous":{"title":"第4节:世界杯竞猜_demo","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_demo.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/05_世界杯竞猜_发奖.md","mtime":"2022-10-31T00:57:21.724Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2254,27 +2227,11 @@ npm run deploy-local
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,15 +1722,12 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第5节：dapp技术栈">第5节：DAPP技术栈</h1>
+                                <h1 id="第5节：dapp技术栈"><a name="第5节：dapp技术栈" class="plugin-anchor" href="#第5节：dapp技术栈"><i class="fa fa-link" aria-hidden="true"></i></a>第5节：DAPP技术栈</h1>
 <p>在web3世界，万物皆可fork（可以理解为抄袭），因为主流协议都会代码开源，经过了市场的检验，用户才敢把自己花真金白银购买的token交给你。</p>
 <p>也正因为fork是如此容易，所以各种土狗协议（抄袭主流协议，换个皮，以圈钱为目的项目）才会层出不穷，那些不明就里的新人往往深受其害。所以了解必要的web3技术对我们避坑有大有裨益。</p>
-<h1 id="技术栈">技术栈</h1>
+<h1 id="技术栈"><a name="技术栈" class="plugin-anchor" href="#技术栈"><i class="fa fa-link" aria-hidden="true"></i></a>技术栈</h1>
 <p>web3的技术栈并不复杂，传统的互联网后端技术对于web3开发是非必须的，而是作为可选项，你需要掌握：</p>
 <ol>
 <li><strong>区块链基本知识</strong>：地址、token、非对称加密、哈希、共识；</li>
@@ -1753,7 +1742,7 @@
 <p><strong>最小技术栈</strong>：solidity、nodejs、web3、subgraph、前端。（默认你是开发者，linux等就不说了）</p>
 <p>这几部分是写dapp的最小技术栈。掌握了这些技能，读写dapp的基本功就具备了，但是这还远远不够，掌握了技术才刚刚开始，具体细分业务才是我们更加需要关注的重点，业务才会让你成为细分领域专家，技术永远只搬砖的份儿，对于这部分我们后续专门讲解，不要着急。</p>
 <p><img src="assets/image-20221009175009429.png" alt="image-20221009175009429"></p>
-<h1 id="开发工具">开发工具</h1>
+<h1 id="开发工具"><a name="开发工具" class="plugin-anchor" href="#开发工具"><i class="fa fa-link" aria-hidden="true"></i></a>开发工具</h1>
 <p>经过多年发展，开发工具也在不断变化，具体如下：</p>
 <ul>
 <li>基本：remix、solidity、vscode、metamask、etherscan</li>
@@ -1770,7 +1759,7 @@
 <li>常用基础库：<a href="https://github.com/OpenZeppelin（有npm包）" target="_blank">https://github.com/OpenZeppelin（有npm包）</a></li>
 <li>tender：<a href="https://dashboard.tenderly.co/explorer" target="_blank">https://dashboard.tenderly.co/explorer</a> （模拟真实交易、告警）</li>
 </ul>
-<h1 id="团队构成">团队构成</h1>
+<h1 id="团队构成"><a name="团队构成" class="plugin-anchor" href="#团队构成"><i class="fa fa-link" aria-hidden="true"></i></a>团队构成</h1>
 <p>dapp开发只需要很小的团队，一般4~5个人就足够了，具体分工：</p>
 <ul>
 <li>Contract（1~2）</li>
@@ -1781,9 +1770,9 @@
 </ul>
 <p>前端需要多一点人，因为往往合约写半天，前端需要写一周，这就是爱吧。</p>
 <p>一定要重视QA的存在，而且不仅仅要在页面上端对端测试，也要直接对合约的接口进行逐个测试，这才能最大限度保证安全。</p>
-<h1 id="开发流程">开发流程</h1>
+<h1 id="开发流程"><a name="开发流程" class="plugin-anchor" href="#开发流程"><i class="fa fa-link" aria-hidden="true"></i></a>开发流程</h1>
 <p>需求分析-&gt;开发-&gt;联调-&gt; <strong>测试网测试</strong>-&gt;主网测试-&gt;<strong>合约审计</strong>-&gt;上线-&gt;合约升级</p>
-<h1 id="设计原则">设计原则</h1>
+<h1 id="设计原则"><a name="设计原则" class="plugin-anchor" href="#设计原则"><i class="fa fa-link" aria-hidden="true"></i></a>设计原则</h1>
 <ul>
 <li>相比于高效率更注重确定性（不可篡改）<ul>
 <li>数据与逻辑分离，方便升级</li>
@@ -1814,22 +1803,6 @@
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1853,7 +1826,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:DAPP技术栈","level":"1.5.5","depth":2,"next":{"title":"第6节:web3优质学习资源","level":"1.5.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"previous":{"title":"第4节:App与Dapp异同","level":"1.5.4","depth":2,"path":"00_blockchain基础/04_App与Dapp.md","ref":"00_blockchain基础/04_App与Dapp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/05_DAPP技术栈.md","mtime":"2022-11-03T01:19:31.749Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节:DAPP技术栈","level":"1.5.5","depth":2,"next":{"title":"第6节:web3优质学习资源","level":"1.5.6","depth":2,"path":"00_blockchain基础/06_web3优质学习资源.md","ref":"00_blockchain基础/06_web3优质学习资源.md","articles":[]},"previous":{"title":"第4节:App与Dapp异同","level":"1.5.4","depth":2,"path":"00_blockchain基础/04_App与Dapp.md","ref":"00_blockchain基础/04_App与Dapp.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/05_DAPP技术栈.md","mtime":"2022-11-03T01:19:31.749Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1907,27 +1880,11 @@
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

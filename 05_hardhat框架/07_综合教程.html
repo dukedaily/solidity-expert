@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,13 +1722,10 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="一、概述">一、概述</h1>
-<h2 id="1-本教程介绍">1. 本教程介绍</h2>
+                                <h1 id="一、概述"><a name="一、概述" class="plugin-anchor" href="#一、概述"><i class="fa fa-link" aria-hidden="true"></i></a>一、概述</h1>
+<h2 id="1-本教程介绍"><a name="1-本教程介绍" class="plugin-anchor" href="#1-本教程介绍"><i class="fa fa-link" aria-hidden="true"></i></a>1. 本教程介绍</h2>
 <ol>
 <li>使用hardhat部署到不同网络，自动verify代码</li>
 <li>单元测试编写</li>
@@ -1744,20 +1733,20 @@
 <li>可升级合约编写，使用，页面关联</li>
 </ol>
 <p>你对工具链的所有疑问都会在这里得到demo答案！</p>
-<h2 id="2-hardhat框架的好处">2. hardhat框架的好处</h2>
+<h2 id="2-hardhat框架的好处"><a name="2-hardhat框架的好处" class="plugin-anchor" href="#2-hardhat框架的好处"><i class="fa fa-link" aria-hidden="true"></i></a>2. hardhat框架的好处</h2>
 <ol>
 <li>在config文件中配置网络，部署在node，hardhat，其他指定的网络</li>
 <li>在.env中写秘钥等信息</li>
 <li>可以自动部署，Verify代码</li>
 <li>可以编写单元测试</li>
 </ol>
-<h1 id="二、代码目录">二、代码目录</h1>
+<h1 id="二、代码目录"><a name="二、代码目录" class="plugin-anchor" href="#二、代码目录"><i class="fa fa-link" aria-hidden="true"></i></a>二、代码目录</h1>
 <p>参考链接：</p>
 <ol>
 <li>教程：<a href="https://medium.com/@rahulsethuram/the-new-solidity-dev-stack-buidler-ethers-waffle-typescript-tutorial-f07917de48ae" target="_blank">https://medium.com/@rahulsethuram/the-new-solidity-dev-stack-buidler-ethers-waffle-typescript-tutorial-f07917de48ae</a></li>
 <li>hardhat：<a href="https://learnblockchain.cn/docs/hardhat/guides/waffle-testing.html" target="_blank">https://learnblockchain.cn/docs/hardhat/guides/waffle-testing.html</a></li>
 </ol>
-<h1 id="三、部署在localhost">三、部署在localhost</h1>
+<h1 id="三、部署在localhost"><a name="三、部署在localhost" class="plugin-anchor" href="#三、部署在localhost"><i class="fa fa-link" aria-hidden="true"></i></a>三、部署在localhost</h1>
 <p>安装：</p>
 <pre><code class="lang-sh">npm install
 </code></pre>
@@ -1770,7 +1759,7 @@
 <p>启动本地内存区块链环境：</p>
 <pre><code class="lang-sh">npx hardhat node
 </code></pre>
-<h2 id="1-普通部署">1. 普通部署</h2>
+<h2 id="1-普通部署"><a name="1-普通部署" class="plugin-anchor" href="#1-普通部署"><i class="fa fa-link" aria-hidden="true"></i></a>1. 普通部署</h2>
 <p>方式1，使用hardhat-deploy包部署，具体编写查看<code>deploy</code>文件夹</p>
 <pre><code class="lang-js">npx hardhat --network localhost deploy
 </code></pre>
@@ -1780,8 +1769,8 @@
 <p>测试一下，需要修改地址<code>testV1.ts</code>中的地址为刚刚部署的地址。</p>
 <pre><code class="lang-js">npx hardhat run scripts/testV1.ts --network localhost
 </code></pre>
-<h2 id="2-可升级部署">2. 可升级部署</h2>
-<h3 id="-以可升级方式部署合约">- 以可升级方式部署合约</h3>
+<h2 id="2-可升级部署"><a name="2-可升级部署" class="plugin-anchor" href="#2-可升级部署"><i class="fa fa-link" aria-hidden="true"></i></a>2. 可升级部署</h2>
+<h3 id="-以可升级方式部署合约"><a name="-以可升级方式部署合约" class="plugin-anchor" href="#-以可升级方式部署合约"><i class="fa fa-link" aria-hidden="true"></i></a>- 以可升级方式部署合约</h3>
 <ol>
 <li><p>执行命令：</p>
 <pre><code class="lang-sh">npx hardhat run --network localhost scripts/01-deploy_counter.ts
@@ -1791,7 +1780,7 @@
 </blockquote>
 </li>
 </ol>
-<h3 id="-调用后查看运行结果">- 调用后查看运行结果</h3>
+<h3 id="-调用后查看运行结果"><a name="-调用后查看运行结果" class="plugin-anchor" href="#-调用后查看运行结果"><i class="fa fa-link" aria-hidden="true"></i></a>- 调用后查看运行结果</h3>
 <ol>
 <li><p>修改testV1.ts中的地址为: <code>0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9</code></p>
 </li>
@@ -1800,7 +1789,7 @@
 </code></pre>
 </li>
 </ol>
-<h3 id="-修改代码后开始升级">- 修改代码后开始升级</h3>
+<h3 id="-修改代码后开始升级"><a name="-修改代码后开始升级" class="plugin-anchor" href="#-修改代码后开始升级"><i class="fa fa-link" aria-hidden="true"></i></a>- 修改代码后开始升级</h3>
 <ol>
 <li><p>首先创建新文件：CounterV2Upgrade.sol，相比之下比之前的合约增加了<code>changeOwner</code>方法。</p>
 </li>
@@ -1811,7 +1800,7 @@
 </code></pre>
 </li>
 </ol>
-<h3 id="-调用合约，确认结果">- 调用合约，确认结果</h3>
+<h3 id="-调用合约，确认结果"><a name="-调用合约，确认结果" class="plugin-anchor" href="#-调用合约，确认结果"><i class="fa fa-link" aria-hidden="true"></i></a>- 调用合约，确认结果</h3>
 <ol>
 <li><p>修改<code>testV2.ts</code>中的地址为：<code>0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9</code></p>
 </li>
@@ -1820,7 +1809,7 @@
 </code></pre>
 </li>
 </ol>
-<h1 id="四、部署在kovan">四、部署在kovan</h1>
+<h1 id="四、部署在kovan"><a name="四、部署在kovan" class="plugin-anchor" href="#四、部署在kovan"><i class="fa fa-link" aria-hidden="true"></i></a>四、部署在kovan</h1>
 <p>首先需要修改.env.bak文件，修改为.env，并且填入自己的API_KEY信息：(自行搜索🔍)</p>
 <pre><code class="lang-js">MNEMONIC=&quot;你的助记词&quot;
 
@@ -1831,7 +1820,7 @@ INFURA_API_KEY=&quot;你的Infura私钥&quot;
 # Optional Etherscan key, for automatize the verification of the contracts at Etherscan
 ETHERSCAN_API_KEY=&quot;你的ETHERSCAN_API_KEY&quot;
 </code></pre>
-<h2 id="1-普通部署（略）">1. 普通部署（略）</h2>
+<h2 id="1-普通部署（略）"><a name="1-普通部署（略）" class="plugin-anchor" href="#1-普通部署（略）"><i class="fa fa-link" aria-hidden="true"></i></a>1. 普通部署（略）</h2>
 <p>略，同上，只需要将localhost改为kovan即可。</p>
 <pre><code class="lang-sh"><span class="hljs-comment">#部署在本地：</span>
 npx hardhat --network localhost deploy
@@ -1839,11 +1828,11 @@ npx hardhat --network localhost deploy
 <span class="hljs-comment">#部署在kovan：</span>
 npx hardhat --network kovan deploy
 </code></pre>
-<h2 id="2-可升级部署">2. 可升级部署</h2>
+<h2 id="2-可升级部署"><a name="2-可升级部署" class="plugin-anchor" href="#2-可升级部署"><i class="fa fa-link" aria-hidden="true"></i></a>2. 可升级部署</h2>
 <blockquote>
 <p>先备份.openzeppelin下面的kovan.json文件（若有）</p>
 </blockquote>
-<h3 id="-以可升级方式部署合约">- 以可升级方式部署合约</h3>
+<h3 id="-以可升级方式部署合约"><a name="-以可升级方式部署合约" class="plugin-anchor" href="#-以可升级方式部署合约"><i class="fa fa-link" aria-hidden="true"></i></a>- 以可升级方式部署合约</h3>
 <ol>
 <li><p>执行命令：</p>
 <pre><code class="lang-sh">npx hardhat run --network kovan scripts/01-deploy_counter.ts
@@ -1869,7 +1858,7 @@ npx hardhat --network kovan deploy
 </ol>
 </li>
 </ol>
-<h3 id="-调用后查看运行结果">- 调用后查看运行结果</h3>
+<h3 id="-调用后查看运行结果"><a name="-调用后查看运行结果" class="plugin-anchor" href="#-调用后查看运行结果"><i class="fa fa-link" aria-hidden="true"></i></a>- 调用后查看运行结果</h3>
 <ol>
 <li><p>修改<code>testV1.ts</code>中的地址为: <code>0xF5deCF1CB99C4D6Aa22Ee49A3D32Eb21bee73d22</code>。</p>
 </li>
@@ -1909,7 +1898,7 @@ npx hardhat verify --network kovan 0x06e166edB942fe7Dd2b04d13443BbB6e835aEd39
 <p><img src="assets/image-20211105104708548.png" alt="image-20211105104708548"></p>
 </li>
 </ol>
-<h3 id="-修改代码后开始升级">- 修改代码后开始升级</h3>
+<h3 id="-修改代码后开始升级"><a name="-修改代码后开始升级" class="plugin-anchor" href="#-修改代码后开始升级"><i class="fa fa-link" aria-hidden="true"></i></a>- 修改代码后开始升级</h3>
 <ol>
 <li><p>修改：（proxy地址）</p>
 <pre><code class="lang-sh">02-upgradeCounterV2.ts中的地址为：0xF5deCF1CB99C4D6Aa22Ee49A3D32Eb21bee73d22
@@ -1944,7 +1933,7 @@ npx hardhat verify --network kovan 0x06e166edB942fe7Dd2b04d13443BbB6e835aEd39
 <p><img src="assets/image-20211105110110236.png" alt="image-20211105110110236"></p>
 </li>
 </ol>
-<h3 id="-调用合约，确认结果">- 调用合约，确认结果</h3>
+<h3 id="-调用合约，确认结果"><a name="-调用合约，确认结果" class="plugin-anchor" href="#-调用合约，确认结果"><i class="fa fa-link" aria-hidden="true"></i></a>- 调用合约，确认结果</h3>
 <ol>
 <li><p>修改<code>testV2.ts</code>中的地址为：0xF5deCF1CB99C4D6Aa22Ee49A3D32Eb21bee73d22</p>
 </li>
@@ -1958,7 +1947,7 @@ npx hardhat verify --network kovan 0x06e166edB942fe7Dd2b04d13443BbB6e835aEd39
 <p><img src="assets/image-20211105110709232.png" alt="image-20211105110709232"></p>
 </li>
 </ol>
-<h2 id="其他琐碎问题：">其他琐碎问题：</h2>
+<h2 id="其他琐碎问题："><a name="其他琐碎问题：" class="plugin-anchor" href="#其他琐碎问题："><i class="fa fa-link" aria-hidden="true"></i></a>其他琐碎问题：</h2>
 <ol>
 <li>需要安装：</li>
 </ol>
@@ -1989,11 +1978,11 @@ import ethers_raw from <span class="hljs-string">&quot;ethers&quot;</span>
 <ol>
 <li>chai和hardhat-waffle的关系是什么？</li>
 </ol>
-<h2 id="deploy">deploy</h2>
+<h2 id="deploy"><a name="deploy" class="plugin-anchor" href="#deploy"><i class="fa fa-link" aria-hidden="true"></i></a>deploy</h2>
 <p><a href="https://learnblockchain.cn/article/2354" target="_blank">https://learnblockchain.cn/article/2354</a></p>
 <pre><code class="lang-js">npm install -D hardhat-deploy
 </code></pre>
-<h2 id="升级">升级</h2>
+<h2 id="升级"><a name="升级" class="plugin-anchor" href="#升级"><i class="fa fa-link" aria-hidden="true"></i></a>升级</h2>
 <p>翻译：<a href="https://learnblockchain.cn/article/1990" target="_blank">https://learnblockchain.cn/article/1990</a></p>
 <p>原文：<a href="https://docs.openzeppelin.com/learn/upgrading-smart-contracts" target="_blank">https://docs.openzeppelin.com/learn/upgrading-smart-contracts</a></p>
 <pre><code class="lang-js">npm install --save-dev @openzeppelin/hardhat-upgrades
@@ -2004,22 +1993,6 @@ npm i @openzeppelin/contracts
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -2043,7 +2016,7 @@ npm i @openzeppelin/contracts
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:07_综合教程","level":"1.10.7","depth":2,"next":{"title":"第8节:合约升级","level":"1.10.8","depth":2,"path":"05_hardhat框架/08_合约升级.md","ref":"05_hardhat框架/08_合约升级.md","articles":[]},"previous":{"title":"第6节:graphnode-subgraph","level":"1.10.6","depth":2,"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","ref":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"05_hardhat框架/07_综合教程.md","mtime":"2022-09-19T06:57:03.647Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:07_综合教程","level":"1.10.7","depth":2,"next":{"title":"第8节:合约升级","level":"1.10.8","depth":2,"path":"05_hardhat框架/08_合约升级.md","ref":"05_hardhat框架/08_合约升级.md","articles":[]},"previous":{"title":"第6节:graphnode-subgraph","level":"1.10.6","depth":2,"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","ref":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"05_hardhat框架/07_综合教程.md","mtime":"2022-09-19T06:57:03.647Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2097,27 +2070,11 @@ npm i @openzeppelin/contracts
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

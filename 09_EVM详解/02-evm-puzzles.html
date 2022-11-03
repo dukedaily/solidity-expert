@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,12 +1722,9 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第8节：evm-puzzle">第8节：EVM-PUZZLE</h1>
+                                <h1 id="第8节：evm-puzzle"><a name="第8节：evm-puzzle" class="plugin-anchor" href="#第8节：evm-puzzle"><i class="fa fa-link" aria-hidden="true"></i></a>第8节：EVM-PUZZLE</h1>
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
@@ -1743,12 +1732,12 @@
 <p><img src="assets/image-20221031203407316.png" alt="image-20221031203407316"></p>
 <p>本文将介绍10道EVM题目，每道题都会要求用户填写部分内容：使得程序正常退出，而不允许执行REVERT。</p>
 <p><strong>注意：本文针对道是有EVM基础的同学，对于尚未接触过OPCODE的同学</strong>，不要着急，在这里可以先看看EVM里面都有啥，有助于后续深入学习。</p>
-<h2 id="启动">启动</h2>
+<h2 id="启动"><a name="启动" class="plugin-anchor" href="#启动"><i class="fa fa-link" aria-hidden="true"></i></a>启动</h2>
 <p><strong>运行游戏</strong>：<a href="https://github.com/fvictorio/evm-puzzles" target="_blank">https://github.com/fvictorio/evm-puzzles</a></p>
 <pre><code class="lang-sh">npm i
 npx hardhat play
 </code></pre>
-<h2 id="puzzle1：callvalue">Puzzle#1：CALLVALUE</h2>
+<h2 id="puzzle1：callvalue"><a name="puzzle1：callvalue" class="plugin-anchor" href="#puzzle1：callvalue"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#1：CALLVALUE</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 1 #</span>
 <span class="hljs-comment">############</span>
@@ -1771,7 +1760,7 @@ npx hardhat play
 <li>jump会读取栈顶值，并跳转到相应的字节地址，由JUMPDEST承接</li>
 <li>由于目的地JUMPDEST是08，所以输入值为：8</li>
 </ul>
-<h2 id="puzzle2：codesize">Puzzle#2：CODESIZE</h2>
+<h2 id="puzzle2：codesize"><a name="puzzle2：codesize" class="plugin-anchor" href="#puzzle2：codesize"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#2：CODESIZE</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 2 #</span>
 <span class="hljs-comment">############</span>
@@ -1795,7 +1784,7 @@ npx hardhat play
 <li>SUB会执行减法操作，并将结果如栈，STACK：[10 - x]</li>
 <li>JUMP会跳到06字节，因此我们需要 10 - x = 6，推导出：x = 4</li>
 </ul>
-<h2 id="puzzle3：calldatasize">Puzzle#3：CALLDATASIZE</h2>
+<h2 id="puzzle3：calldatasize"><a name="puzzle3：calldatasize" class="plugin-anchor" href="#puzzle3：calldatasize"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#3：CALLDATASIZE</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 3 #</span>
 <span class="hljs-comment">############</span>
@@ -1813,7 +1802,7 @@ npx hardhat play
 <li>CALLDATASIZE返回INTPUT的字节数，并存入栈顶，STACK：[0x...]</li>
 <li>为了JUMP到04，因此我们的输入需要大小为4字节，因此随便输入一个四字节data即可！</li>
 </ul>
-<h2 id="puzzle4：xor">Puzzle#4：XOR</h2>
+<h2 id="puzzle4：xor"><a name="puzzle4：xor" class="plugin-anchor" href="#puzzle4：xor"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#4：XOR</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 4 #</span>
 <span class="hljs-comment">############</span>
@@ -1843,7 +1832,7 @@ npx hardhat play
 </ul>
 </li>
 </ul>
-<h2 id="puzzle5：jumpi">Puzzle#5：JUMPI</h2>
+<h2 id="puzzle5：jumpi"><a name="puzzle5：jumpi" class="plugin-anchor" href="#puzzle5：jumpi"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#5：JUMPI</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 5 #</span>
 <span class="hljs-comment">############</span>
@@ -1874,7 +1863,7 @@ npx hardhat play
 <li>JUMPI：读取stack2的值，如果为1，则跳转到stack1的位置，即0C，满足条件！</li>
 <li>因此我们需要使得：0100 = x*x，0x0100十进制为256，所以x = 16</li>
 </ul>
-<h2 id="puzzle6：calldataload">Puzzle#6：CALLDATALOAD</h2>
+<h2 id="puzzle6：calldataload"><a name="puzzle6：calldataload" class="plugin-anchor" href="#puzzle6：calldataload"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#6：CALLDATALOAD</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 6 #</span>
 <span class="hljs-comment">############</span>
@@ -1897,7 +1886,7 @@ npx hardhat play
 <li>JUMP想跳转到0A处，所以calldata的值为0x0a，如果我们直接输入0x0a，此时会被转化为：a00000000000000000000000000000000000000000000000000000000000000，这是错的；</li>
 <li>由于calldata的数值总为32字节的倍数，所以此处应该为：0x000000000000000000000000000000000000000000000000000000000000000a</li>
 </ul>
-<h2 id="puzzle7：extcodesize">Puzzle#7：EXTCODESIZE</h2>
+<h2 id="puzzle7：extcodesize"><a name="puzzle7：extcodesize" class="plugin-anchor" href="#puzzle7：extcodesize"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#7：EXTCODESIZE</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 7 #</span>
 <span class="hljs-comment">############</span>
@@ -1931,7 +1920,7 @@ npx hardhat play
 <li>所以结果为：0x60<strong>01</strong>600052600160<strong>1ff3</strong>，<a href="https://www.evm.codes/playground?callValue=0&amp;unit=Wei&amp;codeType=Bytecode&amp;code=%2760016000526001601ff3%27_&amp;ref=hackernoon.com&amp;fork=grayGlacier" target="_blank">点击验证</a></li>
 </ul>
 <p><img src="assets/image-20221031173928192.png" alt="image-20221031173928192"></p>
-<h2 id="puzzle8：swap">Puzzle#8：SWAP</h2>
+<h2 id="puzzle8：swap"><a name="puzzle8：swap" class="plugin-anchor" href="#puzzle8：swap"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#8：SWAP</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 8 #</span>
 <span class="hljs-comment">############</span>
@@ -1974,7 +1963,7 @@ npx hardhat play
 <li>调用CALL的时候，由于栈中的操作数已经不足（当前是0，ADD需要2个），因此会调用失败，REVERT。</li>
 <li>因此答案为：0x60016000526001601ff3</li>
 </ul>
-<h2 id="puzzle9：lt">Puzzle#9：LT</h2>
+<h2 id="puzzle9：lt"><a name="puzzle9：lt" class="plugin-anchor" href="#puzzle9：lt"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#9：LT</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">############</span>
 <span class="hljs-comment"># Puzzle 9 #</span>
 <span class="hljs-comment">############</span>
@@ -2012,7 +2001,7 @@ npx hardhat play
 </ul>
 </li>
 </ul>
-<h2 id="puzzle10：iszero">Puzzle#10：ISZERO</h2>
+<h2 id="puzzle10：iszero"><a name="puzzle10：iszero" class="plugin-anchor" href="#puzzle10：iszero"><i class="fa fa-link" aria-hidden="true"></i></a>Puzzle#10：ISZERO</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">#############</span>
 <span class="hljs-comment"># Puzzle 10 #</span>
 <span class="hljs-comment">#############</span>
@@ -2049,16 +2038,16 @@ npx hardhat play
 <li>calldata字段，需要满足size对3取余数为0即可，我们选择：0xffffff</li>
 <li>All puzzles are solved!</li>
 </ul>
-<h2 id="错误记录">错误记录</h2>
+<h2 id="错误记录"><a name="错误记录" class="plugin-anchor" href="#错误记录"><i class="fa fa-link" aria-hidden="true"></i></a>错误记录</h2>
 <ol>
 <li>push2：表示存入一个2字节的数据入栈，而不是入栈两次</li>
 <li>Swap5：表示1st和6th兑换，而不是1st和5yh兑换</li>
 <li>1表示成功，0表示失败，JUMIPI和CALL都如此</li>
 <li>OPCODE的字节序是16进制，而不是10进制，注意转化</li>
 </ol>
-<h2 id="小结">小结</h2>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
 <p>接下来会花几节课来讲解EVM相关内容，以及反汇编内容，敬请关注！</p>
-<h2 id="其他知识">其他知识</h2>
+<h2 id="其他知识"><a name="其他知识" class="plugin-anchor" href="#其他知识"><i class="fa fa-link" aria-hidden="true"></i></a>其他知识</h2>
 <ul>
 <li>答案：<a href="https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles" target="_blank">https://hackernoon.com/evm-puzzles-learn-ethereum-by-solving-interactive-puzzles</a></li>
 <li>了解存储相关：<a href="https://www.evm.codes/about" target="_blank">https://www.evm.codes/about</a></li>
@@ -2072,22 +2061,6 @@ npx hardhat play
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -2111,7 +2084,7 @@ npx hardhat play
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节:EVM-PUZZLES挑战","level":"1.14.2","depth":2,"next":{"title":"第3节:汇编概述","level":"1.14.3","depth":2,"path":"09_EVM详解/03-汇编概述.md","ref":"09_EVM详解/03-汇编概述.md","articles":[]},"previous":{"title":"第1节:OPCode手册","level":"1.14.1","depth":2,"path":"09_EVM详解/01_OPCode手册.md","ref":"09_EVM详解/01_OPCode手册.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM详解/02-evm-puzzles.md","mtime":"2022-11-03T01:19:45.010Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:EVM-PUZZLES挑战","level":"1.14.2","depth":2,"next":{"title":"第3节:汇编概述","level":"1.14.3","depth":2,"path":"09_EVM详解/03-汇编概述.md","ref":"09_EVM详解/03-汇编概述.md","articles":[]},"previous":{"title":"第1节:OPCode手册","level":"1.14.1","depth":2,"path":"09_EVM详解/01_OPCode手册.md","ref":"09_EVM详解/01_OPCode手册.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"09_EVM详解/02-evm-puzzles.md","mtime":"2022-11-03T01:19:45.010Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2165,27 +2138,11 @@ npx hardhat play
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,30 +1722,27 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第2节：世界杯竞猜（hardhat框架）">第2节：世界杯竞猜（hardhat框架）</h1>
+                                <h1 id="第2节：世界杯竞猜（hardhat框架）"><a name="第2节：世界杯竞猜（hardhat框架）" class="plugin-anchor" href="#第2节：世界杯竞猜（hardhat框架）"><i class="fa fa-link" aria-hidden="true"></i></a>第2节：世界杯竞猜（hardhat框架）</h1>
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
 <p><img src="assets/hardhat-logo.png" alt="hardhat-logo"></p>
-<h2 id="内容概述">内容概述</h2>
+<h2 id="内容概述"><a name="内容概述" class="plugin-anchor" href="#内容概述"><i class="fa fa-link" aria-hidden="true"></i></a>内容概述</h2>
 <p>通过学习，掌握最主流的开发框架hardhat，从而了解如何管理以太坊工程代码，并掌握如何进行常用操作，单元测试等。</p>
 <ol>
 <li><a href="https://solidity-expert-worldcup.vercel.app/" target="_blank">点击查看效果</a></li>
 <li><a href="https://github.com/dukedaily/solidity-expert/blob/main/08_项目实战-世界杯竞猜/" target="_blank">点击获取代码</a></li>
 </ol>
-<h2 id="前置条件">前置条件</h2>
+<h2 id="前置条件"><a name="前置条件" class="plugin-anchor" href="#前置条件"><i class="fa fa-link" aria-hidden="true"></i></a>前置条件</h2>
 <ul>
 <li><p>了解JavaScript（TypeScript）</p>
 </li>
 <li><p>了解合约开发基础</p>
 </li>
 </ul>
-<h2 id="学习目标">学习目标</h2>
+<h2 id="学习目标"><a name="学习目标" class="plugin-anchor" href="#学习目标"><i class="fa fa-link" aria-hidden="true"></i></a>学习目标</h2>
 <ol>
 <li>了解技术栈、hardhat框架使用：编译、部署、verify、单元测试、查看size、部署消耗gas统计<ol>
 <li>早期2018年工具链：solidity(0.4.16) + truffle + infura （rpc）+ web3.js（重，强大） + js</li>
@@ -1762,7 +1751,7 @@
 </li>
 <li>集成WorldCup合约，完成部署、verify、单元测试</li>
 </ol>
-<h2 id="创建hardhat项目">创建hardhat项目</h2>
+<h2 id="创建hardhat项目"><a name="创建hardhat项目" class="plugin-anchor" href="#创建hardhat项目"><i class="fa fa-link" aria-hidden="true"></i></a>创建hardhat项目</h2>
 <pre><code class="lang-Bash"><span class="hljs-comment">#创建npm空项目</span>
 npm init 
 
@@ -1773,9 +1762,9 @@ npm install --save-dev hardhat@2.9.7
 <span class="hljs-comment">#创建工程</span>
 npx hardhat-》选择高级ts项目
 </code></pre>
-<h2 id="目录结构">目录结构</h2>
+<h2 id="目录结构"><a name="目录结构" class="plugin-anchor" href="#目录结构"><i class="fa fa-link" aria-hidden="true"></i></a>目录结构</h2>
 <p><img src="assets/image-20221008083733891.png" alt="image-20221008083733891"></p>
-<h2 id="运行测试">运行测试</h2>
+<h2 id="运行测试"><a name="运行测试" class="plugin-anchor" href="#运行测试"><i class="fa fa-link" aria-hidden="true"></i></a>运行测试</h2>
 <pre><code class="lang-sh">
 <span class="hljs-comment">#编译合约</span>
 npx hardhat compile
@@ -1786,9 +1775,9 @@ npx hardhat <span class="hljs-built_in">test</span>
 <p>执行效果如下：</p>
 <p><img src="assets/image-20221008085748424.png" alt="image-20221008085748424"></p>
 <p>至此，官方代码我们已经验证完成（逻辑很简单，请自行阅读，如有疑问请咨询：Adugii），接下来我们需要改造成自己的代码！</p>
-<h2 id="添加合约">添加合约</h2>
+<h2 id="添加合约"><a name="添加合约" class="plugin-anchor" href="#添加合约"><i class="fa fa-link" aria-hidden="true"></i></a>添加合约</h2>
 <p>将Worldcup.sol（上节编写的合约）添加到contracts目录，编译：npm run compile</p>
-<h2 id="编写单元测试">编写单元测试</h2>
+<h2 id="编写单元测试"><a name="编写单元测试" class="plugin-anchor" href="#编写单元测试"><i class="fa fa-link" aria-hidden="true"></i></a>编写单元测试</h2>
 <ol>
 <li>创建test/WorldCup.ts，用于编写测试文件，首先引入测试工具包：</li>
 </ol>
@@ -1849,7 +1838,7 @@ npx hardhat <span class="hljs-built_in">test</span>
 <p>编写完，运行单元测试：npm run test，效果如下：（请运行GitHub上面的代码，此处是精简版，无法运行，仅用于说明原理）</p>
 <p><img src="assets/image-20221008094957926.png" alt="image-20221008094957926"></p>
 <p>单元测试至此告一段落，接下来我们开始考虑将代码部署到区块链网络中。</p>
-<h2 id="部署到本地网络">部署到本地网络</h2>
+<h2 id="部署到本地网络"><a name="部署到本地网络" class="plugin-anchor" href="#部署到本地网络"><i class="fa fa-link" aria-hidden="true"></i></a>部署到本地网络</h2>
 <p>hardhat内部实现了一个本地evm，可以运行一个本地节点，开发过程，我们可以选择启动节点，并在上面部署，具体如下：</p>
 <pre><code class="lang-sh"><span class="hljs-comment">#运行脚本，部署合约</span>
 npx hardhat run scripts/deploy.ts
@@ -1861,7 +1850,7 @@ npx hardhat node
 npx hardhat run scripts/deploy.ts --network localhost
 </code></pre>
 <p>效果如下，方便快速验证合约及脚本<img src="assets/image-20221008091848377.png" alt="image-20221008091848377"></p>
-<h2 id="修改配置文件">修改配置文件</h2>
+<h2 id="修改配置文件"><a name="修改配置文件" class="plugin-anchor" href="#修改配置文件"><i class="fa fa-link" aria-hidden="true"></i></a>修改配置文件</h2>
 <p>如果想部署到真实的测试网络，我们需要修改一下配置文件：hardhat.config.ts，具体如下：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">import</span> { HardhatUserConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;hardhat/config&quot;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@nomicfoundation/hardhat-toolbox&quot;</span>;
@@ -1916,7 +1905,7 @@ npx hardhat run scripts/deploy.ts --network localhost
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> config;
 </code></pre>
-<h2 id="修改部署脚本">修改部署脚本</h2>
+<h2 id="修改部署脚本"><a name="修改部署脚本" class="plugin-anchor" href="#修改部署脚本"><i class="fa fa-link" aria-hidden="true"></i></a>修改部署脚本</h2>
 <p>修改scripts/deploy.ts</p>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">import</span> { ethers } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;hardhat&quot;</span>;
 
@@ -1954,10 +1943,10 @@ npx hardhat verify 0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9 1665193342  --netw
 </code></pre>
 <p>效果如下：</p>
 <p><img src="assets/image-20221008094819715.png" alt="image-20221008094819715"></p>
-<h2 id="小结">小结</h2>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
 <p>至此，我们本节内容全部完成了，主要学习了hardhat的安装，基础命令，单元测试编写，并且结合我们的业务合约，通过修改配置文件和脚本，成功的部署到了goerli测试网络，且自动verify代码，这些都是我们日常开发过程中的真实开发步骤，请务必好好消化！</p>
 <p>本文代码托管在github：<a href="https://github.com/dukedaily/solidity-expert，" target="_blank">https://github.com/dukedaily/solidity-expert，</a> 欢迎start，谢谢支持！</p>
-<h2 id="下次预告">下次预告</h2>
+<h2 id="下次预告"><a name="下次预告" class="plugin-anchor" href="#下次预告"><i class="fa fa-link" aria-hidden="true"></i></a>下次预告</h2>
 <ul>
 <li>主流token协议<ul>
 <li>ERC20 -&gt; USDT，DAI，approve, allowance, transfer, transferFrom, safeTransfer...</li>
@@ -1975,22 +1964,6 @@ npx hardhat verify 0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9 1665193342  --netw
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -2014,7 +1987,7 @@ npx hardhat verify 0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9 1665193342  --netw
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节:世界杯竞猜-hardhat","level":"1.13.2","depth":2,"next":{"title":"第3节:世界杯竞猜-ERC20","level":"1.13.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},"previous":{"title":"第1节:世界杯竞猜-合约","level":"1.13.1","depth":2,"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","mtime":"2022-10-31T00:57:21.723Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:世界杯竞猜-hardhat","level":"1.13.2","depth":2,"next":{"title":"第3节:世界杯竞猜-ERC20","level":"1.13.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},"previous":{"title":"第1节:世界杯竞猜-合约","level":"1.13.1","depth":2,"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","mtime":"2022-10-31T00:57:21.723Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2068,27 +2041,11 @@ npx hardhat verify 0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9 1665193342  --netw
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,13 +1722,10 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第21节：event-log">第21节：Event Log</h1>
-<h2 id="概述">概述</h2>
+                                <h1 id="第21节：event-log"><a name="第21节：event-log" class="plugin-anchor" href="#第21节：event-log"><i class="fa fa-link" aria-hidden="true"></i></a>第21节：Event Log</h1>
+<h2 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
 <p><a href="https://blog.chain.link/events-and-logging-in-solidity-zh/" target="_blank">https://blog.chain.link/events-and-logging-in-solidity-zh/</a></p>
 <p><a href="https://ethereum.stackexchange.com/questions/3418/how-does-ethereum-make-use-of-bloom-filters/3426" target="_blank">https://ethereum.stackexchange.com/questions/3418/how-does-ethereum-make-use-of-bloom-filters/3426</a></p>
 <ul>
@@ -1752,16 +1741,16 @@
 <li>日志是账本的一部分：<a href="https://docs.soliditylang.org/en/develop/contracts.html?highlight=events#events" target="_blank">https://docs.soliditylang.org/en/develop/contracts.html?highlight=events#events</a></li>
 </ol>
 <p><img src="assets/image-20220802102242980.png" alt="image-20220802102242980"></p>
-<h1 id="event">Event</h1>
+<h1 id="event"><a name="event" class="plugin-anchor" href="#event"><i class="fa fa-link" aria-hidden="true"></i></a>Event</h1>
 <ul>
 <li>indexed：方便索引，加了inexed是topics</li>
 <li>non-indexed：没有解码，需要使用abi解码后才知道内容，不加indexd是data</li>
 </ul>
-<h2 id="描述">描述</h2>
+<h2 id="描述"><a name="描述" class="plugin-anchor" href="#描述"><i class="fa fa-link" aria-hidden="true"></i></a>描述</h2>
 <p>发送一笔交易之后，我们可以得到tx交易的返回值，在返回值中会包含TransactionRecept字段，进一步会发现Event，指定id可以获取这个事件的详情，进一步会获得每个字段的具体数值。</p>
 <pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(transactionReceipt.events[<span class="hljs-number">0</span>].args.oldNumber.toString())
 </code></pre>
-<h2 id="bloom">Bloom</h2>
+<h2 id="bloom"><a name="bloom" class="plugin-anchor" href="#bloom"><i class="fa fa-link" aria-hidden="true"></i></a>Bloom</h2>
 <p>以太坊的Header中有布隆过滤器，这里面存放的是什么？（是所有事件生成的信息），当有索引过来的时候，我们会去重新生成事件。</p>
 <p><img src="assets/image-20220802134247813.png" alt="image-20220802134247813"></p>
 <ul>
@@ -1773,22 +1762,6 @@
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1812,7 +1785,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第21节:EventLog","level":"1.7.20","depth":2,"next":{"title":"第22节:了解EVM","level":"1.7.21","depth":2,"path":"02_solidity进阶/22_EVM.md","ref":"02_solidity进阶/22_EVM.md","articles":[]},"previous":{"title":"第20节:sign-verify","level":"1.7.19","depth":2,"path":"02_solidity进阶/20_sign-verify.md","ref":"02_solidity进阶/20_sign-verify.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/21_EventLog.md","mtime":"2022-09-19T06:57:03.645Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第21节:EventLog","level":"1.7.20","depth":2,"next":{"title":"第22节:了解EVM","level":"1.7.21","depth":2,"path":"02_solidity进阶/22_EVM.md","ref":"02_solidity进阶/22_EVM.md","articles":[]},"previous":{"title":"第20节:sign-verify","level":"1.7.19","depth":2,"path":"02_solidity进阶/20_sign-verify.md","ref":"02_solidity进阶/20_sign-verify.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/21_EventLog.md","mtime":"2022-09-19T06:57:03.645Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1866,27 +1839,11 @@
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

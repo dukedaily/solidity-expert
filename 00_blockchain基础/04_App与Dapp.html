@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,19 +1722,16 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第4节：app与dapp的架构异同">第4节：App与Dapp的架构异同</h1>
+                                <h1 id="第4节：app与dapp的架构异同"><a name="第4节：app与dapp的架构异同" class="plugin-anchor" href="#第4节：app与dapp的架构异同"><i class="fa fa-link" aria-hidden="true"></i></a>第4节：App与Dapp的架构异同</h1>
 <p>互联发展了20多年，各种架构已经非常成熟了，移动端兴起之后App加入，其架构也没有太大变化；</p>
 <p>但是相较于Dapp的架构，一切却有天壤之别，而这其中与其说是技术的变革，不如说是思维方式的变革。</p>
 <p>另补充，如果你细心观察，会发现主流的dapp一般不称自己为app，而是称为：protocol（协议），如：aave、compound它们称自己为借贷协议，原因是：<strong>app是封闭的，而协议则是可以集成拓展的</strong>。</p>
-<h2 id="app架构">App架构</h2>
+<h2 id="app架构"><a name="app架构" class="plugin-anchor" href="#app架构"><i class="fa fa-link" aria-hidden="true"></i></a>App架构</h2>
 <p>B/S或C/S的架构大体如此，从前端到后台，从机房到云原生，技术在迭代，效率在提高，一切越来越丝滑。底层的系统大致分为：从Unix、Linux、Dos、MacOs、Windows、安卓、IOS等等。</p>
 <p><img src="assets/app-arch.jpg" alt="app-arch"></p>
-<h2 id="dapp架构">Dapp架构</h2>
+<h2 id="dapp架构"><a name="dapp架构" class="plugin-anchor" href="#dapp架构"><i class="fa fa-link" aria-hidden="true"></i></a>Dapp架构</h2>
 <p>而去中心化应用的架构却与App完全不同，因为<strong>没有专门的后台</strong>，它的<strong>区块链网络就是底层系统</strong>：如以太坊网络、BSC网络等。</p>
 <p>一个最简单的Dapp应用可以直接描述如下，我们称为：<strong>V1版本架构</strong></p>
 <p><img src="assets/v1.png" alt="image-20220815233247732"></p>
@@ -1757,7 +1746,7 @@
 <p><img src="assets/v3.png" alt="image-20220815233916029"></p>
 <p>V4：再后来，区块链存储项目也陆续诞生，其中最为人知的便是：ipfs，它是一个致力于大文件存储的项目，最近很火的nft项目中，所有的图片都是要上传到ipfs上，从而节约以太坊网络费用，所以此时的设计更改如下，我们称之为：<strong>V4版本架构</strong></p>
 <p><img src="assets/v4.png" alt="image-20220815234419596"></p>
-<h2 id="小结">小结</h2>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
 <p>区块链基建项目的发展给系统设计带来一些灵活性， 从V1到V4中，没有最好的设计，只有最合理的设计，架构设计可以带来合理的分工，提供效率。</p>
 <p>但只有符合业务场景的设计才有意义，我们作为开发者，千万不要为了酷炫而堆砌技术，造成过度设计，这往往只能满足开发者的虚荣心，而随之带来的却是低效和高成本，我们在开发过程中要抵制住诱惑，尽量选择最优解！</p>
 <p>加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！</p>
@@ -1768,22 +1757,6 @@
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1807,7 +1780,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第4节:App与Dapp异同","level":"1.5.4","depth":2,"next":{"title":"第5节:DAPP技术栈","level":"1.5.5","depth":2,"path":"00_blockchain基础/05_DAPP技术栈.md","ref":"00_blockchain基础/05_DAPP技术栈.md","articles":[]},"previous":{"title":"第3节:什么是以太坊","level":"1.5.3","depth":2,"path":"00_blockchain基础/03_什么是以太坊.md","ref":"00_blockchain基础/03_什么是以太坊.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/04_App与Dapp.md","mtime":"2022-11-03T01:19:31.748Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第4节:App与Dapp异同","level":"1.5.4","depth":2,"next":{"title":"第5节:DAPP技术栈","level":"1.5.5","depth":2,"path":"00_blockchain基础/05_DAPP技术栈.md","ref":"00_blockchain基础/05_DAPP技术栈.md","articles":[]},"previous":{"title":"第3节:什么是以太坊","level":"1.5.3","depth":2,"path":"00_blockchain基础/03_什么是以太坊.md","ref":"00_blockchain基础/03_什么是以太坊.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"00_blockchain基础/04_App与Dapp.md","mtime":"2022-11-03T01:19:31.748Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1861,27 +1834,11 @@
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         

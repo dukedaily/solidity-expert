@@ -16,19 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-outline/outline.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
                 
             
                 
                 <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
@@ -77,10 +73,6 @@
     <div class="book-summary">
         
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
-</div>
-
             
                 <nav role="navigation">
                 
@@ -1730,16 +1722,13 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
-<div id="book-search-results">
-    <div class="search-noresults">
-    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ftx因免手续费提币，被黑客0元购xen-token技术分析">FTX因免手续费提币，被黑客0元购XEN Token技术分析</h1>
+                                <h1 id="ftx因免手续费提币，被黑客0元购xen-token技术分析"><a name="ftx因免手续费提币，被黑客0元购xen-token技术分析" class="plugin-anchor" href="#ftx因免手续费提币，被黑客0元购xen-token技术分析"><i class="fa fa-link" aria-hidden="true"></i></a>FTX因免手续费提币，被黑客0元购XEN Token技术分析</h1>
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
-<h2 id="背景介绍">背景介绍</h2>
+<h2 id="背景介绍"><a name="背景介绍" class="plugin-anchor" href="#背景介绍"><i class="fa fa-link" aria-hidden="true"></i></a>背景介绍</h2>
 <p>Xen Token最近太火了，算是熊市中的一股清流，让死寂的币圈又活跃了起来。</p>
 <p>这个项目的参与算是0门槛，只需要支付gas费就可以mint，然后claim，越早进入mint的token越多，收益越高。</p>
 <p>这么火🔥的项目自然会走入黑客的视野，果然，一场风暴就此降临。只不过受害者不是Xen Token项目方，而是无辜的FTX交易所，具体攻击结果为：</p>
@@ -1747,7 +1736,7 @@
 <li>黑客通过FTX的免手续费提币功能，通过技术手段，让FTX支付手续费，疯狂调用Xen mint 1.7万次，获得大量的Xen Token，并通过Uniswap等dex将Xen兑换为61个ETH，完成套现。</li>
 <li>FTX交易所前后损失：80多个ETH。</li>
 </ol>
-<h2 id="发起攻击">发起攻击</h2>
+<h2 id="发起攻击"><a name="发起攻击" class="plugin-anchor" href="#发起攻击"><i class="fa fa-link" aria-hidden="true"></i></a>发起攻击</h2>
 <p>首先，在10月10日，攻击者EOA（0x1d371CF00038421d6e57CFc31EEff7A09d4B8760）在以太坊链上部署了攻击合约（0xCba9b1Fd69626932c704DAc4CB58c29244A47FD3）</p>
 <p><img src="assets/image-20221014004119421.png" alt="image-20221014004119421"></p>
 <p>随后发起攻击，具体流程为：攻击者不断的从FTX交易所向攻击合约提小额ETH，数量为：0.00350242ETH，如下图：</p>
@@ -1757,10 +1746,10 @@
 <p><img src="assets/image-20221014004134405.png" alt="image-20221014004134405"></p>
 <p>交易流水：使用chrome插件eigentx，我们可以查看图示化的流水，请根据数字编号追踪，最终都留到了leaf中，即黑客的EOA。</p>
 <p><img src="assets/image-20221014004144529.png" alt="image-20221014004144529"></p>
-<h2 id="攻击交易跟踪">攻击交易跟踪</h2>
+<h2 id="攻击交易跟踪"><a name="攻击交易跟踪" class="plugin-anchor" href="#攻击交易跟踪"><i class="fa fa-link" aria-hidden="true"></i></a>攻击交易跟踪</h2>
 <p>通过链上交易call trace工具：<a href="https://tx.eth.samczsun.com/ethereum/0xc06bda5b8d7f4bb4510521e14edce590c0e74f1944157c58b70c6749d0fa1009，我们可以进一步跟踪交易链路，具体如下图：" target="_blank">https://tx.eth.samczsun.com/ethereum/0xc06bda5b8d7f4bb4510521e14edce590c0e74f1944157c58b70c6749d0fa1009，我们可以进一步跟踪交易链路，具体如下图：</a></p>
 <p><img src="assets/image-20221014004332664.png" alt="image-20221014004332664"></p>
-<h2 id="完整攻击流程">完整攻击流程</h2>
+<h2 id="完整攻击流程"><a name="完整攻击流程" class="plugin-anchor" href="#完整攻击流程"><i class="fa fa-link" aria-hidden="true"></i></a>完整攻击流程</h2>
 <p>综上所述，我们得知攻击可能的完整流程为：</p>
 <ol>
 <li>攻击者在FTX上进行小额提币ETH，收款地址为自己的攻击合约（实现了fallback方法）；</li>
@@ -1769,7 +1758,7 @@
 <li>在子合约中：再调用claimMintRewardAndShare方法，将子合约持有的xen转给黑客的EOA；</li>
 <li>子合约自杀；</li>
 </ol>
-<h2 id="为什么会出问题">为什么会出问题</h2>
+<h2 id="为什么会出问题"><a name="为什么会出问题" class="plugin-anchor" href="#为什么会出问题"><i class="fa fa-link" aria-hidden="true"></i></a>为什么会出问题</h2>
 <ol>
 <li>提币有漏洞：提币转账的时候，没有限定接收方的地址进行限定（如不允许是合约，这个一般不会限定），更重要的是没有对这个交易的gaslimit进行设置，使得攻击代码可以顺利执行。</li>
 </ol>
@@ -1778,9 +1767,9 @@
 <p>从攻击合约部署：Oct-10-2022 05:20，到实际发生mint攻击：Oct-11-2022 05:51:47 AM ，整整24h小时内，黑客其实一直在提币（但是没有mint xen），FTX一直没有发现，直至又mint两天之后，才发现异常，这确实让人匪夷所思。</p>
 </li>
 </ol>
-<h2 id="总结">总结</h2>
+<h2 id="总结"><a name="总结" class="plugin-anchor" href="#总结"><i class="fa fa-link" aria-hidden="true"></i></a>总结</h2>
 <p>最近黑客是真的抢眼，先是TP钱包的approve问题，再是bsc跨链桥被盗，再到今天的FTX被撸gas问题，看来区块链安全问题已经刻不容缓了，这也是本人接下来的重点方向。</p>
-<h2 id="本文涉及到的工具">本文涉及到的工具</h2>
+<h2 id="本文涉及到的工具"><a name="本文涉及到的工具" class="plugin-anchor" href="#本文涉及到的工具"><i class="fa fa-link" aria-hidden="true"></i></a>本文涉及到的工具</h2>
 <ol>
 <li>交易链路分析：<a href="https://tx.eth.samczsun.com/ethereum" target="_blank">https://tx.eth.samczsun.com/ethereum</a></li>
 <li>token流水展示：<a href="https://chrome.google.com/webstore/detail/eigentx/gmjkhhheaknfaekapfiedhohdilpmgci?hl=en-GB" target="_blank">https://chrome.google.com/webstore/detail/eigentx/gmjkhhheaknfaekapfiedhohdilpmgci?hl=en-GB</a></li>
@@ -1794,22 +1783,6 @@
                                 
                                 </section>
                             
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
                         </div>
                     </div>
                 
@@ -1833,7 +1806,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第20节:FTX因免手续费提币攻击","level":"1.9.9","depth":2,"next":{"title":"第五章:hardhat框架","level":"1.10","depth":1,"path":"05_hardhat框架/README.md","ref":"05_hardhat框架/README.md","articles":[{"title":"第1节:QuickStart","level":"1.10.1","depth":2,"path":"05_hardhat框架/01_QuickStart.md","ref":"05_hardhat框架/01_QuickStart.md","articles":[]},{"title":"第2节:单元测试","level":"1.10.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},{"title":"第3节:fork主网","level":"1.10.3","depth":2,"path":"05_hardhat框架/03_fork主网.md","ref":"05_hardhat框架/03_fork主网.md","articles":[]},{"title":"第4节:多版本编译","level":"1.10.4","depth":2,"path":"05_hardhat框架/04_多版本编译.md","ref":"05_hardhat框架/04_多版本编译.md","articles":[]},{"title":"第5节:不同网络相同地址","level":"1.10.5","depth":2,"path":"05_hardhat框架/05_不同网络相同地址.md","ref":"05_hardhat框架/05_不同网络相同地址.md","articles":[]},{"title":"第6节:graphnode-subgraph","level":"1.10.6","depth":2,"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","ref":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","articles":[]},{"title":"第7节:07_综合教程","level":"1.10.7","depth":2,"path":"05_hardhat框架/07_综合教程.md","ref":"05_hardhat框架/07_综合教程.md","articles":[]},{"title":"第8节:合约升级","level":"1.10.8","depth":2,"path":"05_hardhat框架/08_合约升级.md","ref":"05_hardhat框架/08_合约升级.md","articles":[]}]},"previous":{"title":"第8节:最佳安全实践","level":"1.9.8","depth":2,"path":"04_合约攻击/08_最佳安全实践.md","ref":"04_合约攻击/08_最佳安全实践.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["toggle-chapters","outline"],"pluginsConfig":{"toggle-chapters":{},"outline":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"04_合约攻击/20_FTX因免手续费提币攻击.md","mtime":"2022-11-03T01:19:45.035Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T01:28:10.309Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第20节:FTX因免手续费提币攻击","level":"1.9.9","depth":2,"next":{"title":"第五章:hardhat框架","level":"1.10","depth":1,"path":"05_hardhat框架/README.md","ref":"05_hardhat框架/README.md","articles":[{"title":"第1节:QuickStart","level":"1.10.1","depth":2,"path":"05_hardhat框架/01_QuickStart.md","ref":"05_hardhat框架/01_QuickStart.md","articles":[]},{"title":"第2节:单元测试","level":"1.10.2","depth":2,"path":"05_hardhat框架/02_单元测试.md","ref":"05_hardhat框架/02_单元测试.md","articles":[]},{"title":"第3节:fork主网","level":"1.10.3","depth":2,"path":"05_hardhat框架/03_fork主网.md","ref":"05_hardhat框架/03_fork主网.md","articles":[]},{"title":"第4节:多版本编译","level":"1.10.4","depth":2,"path":"05_hardhat框架/04_多版本编译.md","ref":"05_hardhat框架/04_多版本编译.md","articles":[]},{"title":"第5节:不同网络相同地址","level":"1.10.5","depth":2,"path":"05_hardhat框架/05_不同网络相同地址.md","ref":"05_hardhat框架/05_不同网络相同地址.md","articles":[]},{"title":"第6节:graphnode-subgraph","level":"1.10.6","depth":2,"path":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","ref":"05_hardhat框架/06_部署fork_graphnode_subgraph.md","articles":[]},{"title":"第7节:07_综合教程","level":"1.10.7","depth":2,"path":"05_hardhat框架/07_综合教程.md","ref":"05_hardhat框架/07_综合教程.md","articles":[]},{"title":"第8节:合约升级","level":"1.10.8","depth":2,"path":"05_hardhat框架/08_合约升级.md","ref":"05_hardhat框架/08_合约升级.md","articles":[]}]},"previous":{"title":"第8节:最佳安全实践","level":"1.9.8","depth":2,"path":"04_合约攻击/08_最佳安全实践.md","ref":"04_合约攻击/08_最佳安全实践.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"04_合约攻击/20_FTX因免手续费提币攻击.md","mtime":"2022-11-03T01:19:45.035Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-03T03:16:49.490Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1887,27 +1860,11 @@
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-outline/outline.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
         
     
         
