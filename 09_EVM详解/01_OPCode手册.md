@@ -2,6 +2,10 @@
 
 https://www.evm.codes/?fork=grayGlacier
 
+https://www.ethervm.io/
+
+![image-20221104163118696](assets/image-20221104163118696.png)
+
 
 
 | OPCODE | NAME           | MINIMUM GAS | STACK OUPUT    | DESCRIPTIONExpand                                            |
