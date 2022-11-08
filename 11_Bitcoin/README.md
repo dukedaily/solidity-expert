@@ -8,7 +8,7 @@
 
 
 
-获取源码：
+获取源码：https://github.com/dukedaily/go-bitcoin-demo
 
 ```js
 git clone git@github.com:dukedaily/go-bitcoin-demo.git
