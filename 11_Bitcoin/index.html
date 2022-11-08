@@ -1925,10 +1925,16 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
-<p>该项目介绍了比特币的基本原理，通过5个版本（da1-day5分支）的迭代，逐步介绍了：区块链、哈希、UTXO、梅克尔根、非对称加密、签名、私钥地址、ECDSA等晦涩概念，从而打下进入web3世界坚实的基础。</p>
+                                <h1 id="第11章：精通比特币"><a name="第11章：精通比特币" class="plugin-anchor" href="#第11章：精通比特币"><i class="fa fa-link" aria-hidden="true"></i></a>第11章：精通比特币</h1>
+<p>今天介绍一下2018年讲的一套五天的比特币课程，课程在制作过程中参考了 GitHub开源项目：<a href="https://github.com/Jeiwan/blockchain_go 。" target="_blank">blockchain_go</a> </p>
+<p>当时花了3个多月，反复修正、录制，终于完成了这个5天的课程。</p>
+<p>上周末查看旧资料，不巧又把它翻出来了，想来好东西不能放着吃灰啊，所以就花了点时间把课件重新梳理了一下，于是就有了这个章节。</p>
+<p><strong>五天的视频，14个章节，一句一句介绍比特币的核心各种概念，然后用一行行代码逐个实现</strong>，可以说我当时是把比特币最根上的东西都吃透了，讲明白了。<img src="assets/image-20221108210430483.png" alt="image-20221108210430483"></p>
+<p>没错，<strong>我说的是当时吃透了</strong>，现在很多知识点我已经忘却了，😢扎心。</p>
+<h2 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
+<p><strong>还是言归正传吧</strong>，该项目介绍了比特币的基本原理，通过5个版本（da1-day5分支）的迭代，逐步介绍了：区块链、哈希、UTXO、梅克尔根、非对称加密、签名、私钥地址、ECDSA等晦涩概念，从而打下进入web3世界坚实的基础。</p>
 <p><strong>建议配套阅读《精通比特币》一书，差缺补漏，事半功倍。</strong></p>
-<p>获取源码：</p>
+<p>获取源码：<a href="https://github.com/dukedaily/go-bitcoin-demo" target="_blank">https://github.com/dukedaily/go-bitcoin-demo</a></p>
 <pre><code class="lang-js">git clone git@github.com:dukedaily/go-bitcoin-demo.git
 </code></pre>
 <h2 id="项目资源"><a name="项目资源" class="plugin-anchor" href="#项目资源"><i class="fa fa-link" aria-hidden="true"></i></a>项目资源</h2>
@@ -1936,35 +1942,36 @@
 <li>教程：<a href="https://www.youtube.com/watch?v=Wpf5KkgzElc&amp;list=PLO_KaIZjoik9oY-Rs9BsDkHY2RJy7WcE-" target="_blank">油管视频</a></li>
 <li>教程：<a href="https://www.bilibili.com/video/BV1EY4y1c7Yq/?spm_id_from=333.999.0.0&amp;vd_source=42fe91bf6d16ec8841b22ea520184d76" target="_blank">B站视频</a></li>
 </ul>
-<h2 id="安装"><a name="安装" class="plugin-anchor" href="#安装"><i class="fa fa-link" aria-hidden="true"></i></a>安装</h2>
+<h2 id="快速体验"><a name="快速体验" class="plugin-anchor" href="#快速体验"><i class="fa fa-link" aria-hidden="true"></i></a>快速体验</h2>
+<h3 id="安装"><a name="安装" class="plugin-anchor" href="#安装"><i class="fa fa-link" aria-hidden="true"></i></a>安装</h3>
 <pre><code class="lang-sh">go mod init go-bitcoin
 go mod tidy
 </code></pre>
-<h2 id="编译"><a name="编译" class="plugin-anchor" href="#编译"><i class="fa fa-link" aria-hidden="true"></i></a>编译</h2>
+<h3 id="编译"><a name="编译" class="plugin-anchor" href="#编译"><i class="fa fa-link" aria-hidden="true"></i></a>编译</h3>
 <pre><code class="lang-sh"><span class="hljs-comment"># ./build.sh</span>
 go build -o blockchain *.go
 </code></pre>
-<h2 id="运行"><a name="运行" class="plugin-anchor" href="#运行"><i class="fa fa-link" aria-hidden="true"></i></a>运行</h2>
+<h3 id="运行"><a name="运行" class="plugin-anchor" href="#运行"><i class="fa fa-link" aria-hidden="true"></i></a>运行</h3>
 <pre><code class="lang-sh">./blockchain
 </code></pre>
 <p><img src="assets/blockchain-0315512.gif" alt="blockchain"></p>
-<h2 id="创建钱包"><a name="创建钱包" class="plugin-anchor" href="#创建钱包"><i class="fa fa-link" aria-hidden="true"></i></a>创建钱包</h2>
+<h3 id="创建钱包"><a name="创建钱包" class="plugin-anchor" href="#创建钱包"><i class="fa fa-link" aria-hidden="true"></i></a>创建钱包</h3>
 <pre><code class="lang-sh">./blockchain createWallet
 </code></pre>
 <p><img src="assets/createwallet.gif" alt="createwallet"></p>
-<h2 id="打印钱包"><a name="打印钱包" class="plugin-anchor" href="#打印钱包"><i class="fa fa-link" aria-hidden="true"></i></a>打印钱包</h2>
+<h3 id="打印钱包"><a name="打印钱包" class="plugin-anchor" href="#打印钱包"><i class="fa fa-link" aria-hidden="true"></i></a>打印钱包</h3>
 <pre><code class="lang-sh">./blockchain listAddress
 </code></pre>
 <p><img src="assets/listaddress.gif" alt="listaddress"></p>
-<h2 id="创世块"><a name="创世块" class="plugin-anchor" href="#创世块"><i class="fa fa-link" aria-hidden="true"></i></a>创世块</h2>
+<h3 id="创世块"><a name="创世块" class="plugin-anchor" href="#创世块"><i class="fa fa-link" aria-hidden="true"></i></a>创世块</h3>
 <pre><code class="lang-sh">./blockchain create 15xGXrzZqrCHjZNcZSQyjDaToPX4agz9R7
 </code></pre>
 <p><img src="assets/getbalance.gif" alt="getbalance"></p>
-<h2 id="查询余额"><a name="查询余额" class="plugin-anchor" href="#查询余额"><i class="fa fa-link" aria-hidden="true"></i></a>查询余额</h2>
+<h3 id="查询余额"><a name="查询余额" class="plugin-anchor" href="#查询余额"><i class="fa fa-link" aria-hidden="true"></i></a>查询余额</h3>
 <pre><code class="lang-sh">./blockchain getBalance 1Q2DT2JithztxChbLhzEUTShrv78EW3duo
 </code></pre>
 <p><img src="assets/getbalance-0317023.gif" alt="getbalance"></p>
-<h2 id="转账"><a name="转账" class="plugin-anchor" href="#转账"><i class="fa fa-link" aria-hidden="true"></i></a>转账</h2>
+<h3 id="转账"><a name="转账" class="plugin-anchor" href="#转账"><i class="fa fa-link" aria-hidden="true"></i></a>转账</h3>
 <pre><code class="lang-sh">./blockchain send \
     1EiLdWg278u261DNs5Vb2Wyh7opscWvV6G \
     1Q2DT2JithztxChbLhzEUTShrv78EW3duo \
@@ -1972,10 +1979,13 @@ go build -o blockchain *.go
     <span class="hljs-string">&quot;send 5 btc&quot;</span>
 </code></pre>
 <p><img src="assets/send-0317335.gif" alt="send"></p>
-<h2 id="打印交易"><a name="打印交易" class="plugin-anchor" href="#打印交易"><i class="fa fa-link" aria-hidden="true"></i></a>打印交易</h2>
+<h3 id="打印交易"><a name="打印交易" class="plugin-anchor" href="#打印交易"><i class="fa fa-link" aria-hidden="true"></i></a>打印交易</h3>
 <pre><code class="lang-sh">./blockchain printTx
 </code></pre>
 <p><img src="assets/printtx.gif" alt="printtx"></p>
+<p>怎么样，是不是很酷，这里面的黑科技才是最酷的！</p>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
+<p>web3的路还很长，比特币作为区块链的祖师爷，值得从业者好好研究一下，了解了比特币，你会更加有底气，让你在浮躁的气氛中增添一份厚重，具体细节我这里不再赘述，喜欢的朋友，可以自行学习，加油！</p>
 
                                 
                                 </section>
@@ -2003,7 +2013,7 @@ go build -o blockchain *.go
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第十一章:精通比特币","level":"1.16","depth":1,"next":{"title":"第1节:day1-交易演变","level":"1.16.1","depth":2,"path":"11_Bitcoin/day1-01-交易演变.md","ref":"11_Bitcoin/day1-01-交易演变.md","articles":[]},"previous":{"title":"第4节:五种程序终止命令介绍","level":"1.15.4","depth":2,"path":"10_EVM反汇编/04_五种程序终止命令介绍.md","ref":"10_EVM反汇编/04_五种程序终止命令介绍.md","articles":[]},"articles":[{"title":"第1节:day1-交易演变","level":"1.16.1","depth":2,"path":"11_Bitcoin/day1-01-交易演变.md","ref":"11_Bitcoin/day1-01-交易演变.md","articles":[]},{"title":"第2节:day1-比特币诞生背景","level":"1.16.2","depth":2,"path":"11_Bitcoin/day1-02-比特币诞生背景.md","ref":"11_Bitcoin/day1-02-比特币诞生背景.md","articles":[]},{"title":"第3节:day1-比特币概述","level":"1.16.3","depth":2,"path":"11_Bitcoin/day1-03-比特币概述.md","ref":"11_Bitcoin/day1-03-比特币概述.md","articles":[]},{"title":"第4节:day1-比特币依赖技术","level":"1.16.4","depth":2,"path":"11_Bitcoin/day1-04-比特币依赖技术.md","ref":"11_Bitcoin/day1-04-比特币依赖技术.md","articles":[]},{"title":"第5节:day1-比特币结构","level":"1.16.5","depth":2,"path":"11_Bitcoin/day1-05-比特币结构.md","ref":"11_Bitcoin/day1-05-比特币结构.md","articles":[]},{"title":"第6节:day1-v1链条","level":"1.16.6","depth":2,"path":"11_Bitcoin/day1-06-v1链条.md","ref":"11_Bitcoin/day1-06-v1链条.md","articles":[]},{"title":"第7节:day1-Bitcoin客户端","level":"1.16.7","depth":2,"path":"11_Bitcoin/day1-07-Bitcoin客户端.md","ref":"11_Bitcoin/day1-07-Bitcoin客户端.md","articles":[]},{"title":"第8节:day2-v2挖矿","level":"1.16.8","depth":2,"path":"11_Bitcoin/day2-01-v2挖矿.md","ref":"11_Bitcoin/day2-01-v2挖矿.md","articles":[]},{"title":"第9节:day2-v3存储","level":"1.16.9","depth":2,"path":"11_Bitcoin/day2-02-v3存储.md","ref":"11_Bitcoin/day2-02-v3存储.md","articles":[]},{"title":"第10节:day3-交易原理","level":"1.16.10","depth":2,"path":"11_Bitcoin/day3-01-交易原理.md","ref":"11_Bitcoin/day3-01-交易原理.md","articles":[]},{"title":"第11节:day3-v4余额","level":"1.16.11","depth":2,"path":"11_Bitcoin/day3-02-v4余额.md","ref":"11_Bitcoin/day3-02-v4余额.md","articles":[]},{"title":"第12节:day4-v4转账","level":"1.16.12","depth":2,"path":"11_Bitcoin/day4-01-v4转账.md","ref":"11_Bitcoin/day4-01-v4转账.md","articles":[]},{"title":"第13节:day4-v5钱包","level":"1.16.13","depth":2,"path":"11_Bitcoin/day4-02-v5钱包.md","ref":"11_Bitcoin/day4-02-v5钱包.md","articles":[]},{"title":"第14节:day5-v5签名","level":"1.16.14","depth":2,"path":"11_Bitcoin/day5-01-v5签名.md","ref":"11_Bitcoin/day5-01-v5签名.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"11_Bitcoin/README.md","mtime":"2022-11-08T06:55:53.445Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-08T07:18:26.580Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第十一章:精通比特币","level":"1.16","depth":1,"next":{"title":"第1节:day1-交易演变","level":"1.16.1","depth":2,"path":"11_Bitcoin/day1-01-交易演变.md","ref":"11_Bitcoin/day1-01-交易演变.md","articles":[]},"previous":{"title":"第4节:五种程序终止命令介绍","level":"1.15.4","depth":2,"path":"10_EVM反汇编/04_五种程序终止命令介绍.md","ref":"10_EVM反汇编/04_五种程序终止命令介绍.md","articles":[]},"articles":[{"title":"第1节:day1-交易演变","level":"1.16.1","depth":2,"path":"11_Bitcoin/day1-01-交易演变.md","ref":"11_Bitcoin/day1-01-交易演变.md","articles":[]},{"title":"第2节:day1-比特币诞生背景","level":"1.16.2","depth":2,"path":"11_Bitcoin/day1-02-比特币诞生背景.md","ref":"11_Bitcoin/day1-02-比特币诞生背景.md","articles":[]},{"title":"第3节:day1-比特币概述","level":"1.16.3","depth":2,"path":"11_Bitcoin/day1-03-比特币概述.md","ref":"11_Bitcoin/day1-03-比特币概述.md","articles":[]},{"title":"第4节:day1-比特币依赖技术","level":"1.16.4","depth":2,"path":"11_Bitcoin/day1-04-比特币依赖技术.md","ref":"11_Bitcoin/day1-04-比特币依赖技术.md","articles":[]},{"title":"第5节:day1-比特币结构","level":"1.16.5","depth":2,"path":"11_Bitcoin/day1-05-比特币结构.md","ref":"11_Bitcoin/day1-05-比特币结构.md","articles":[]},{"title":"第6节:day1-v1链条","level":"1.16.6","depth":2,"path":"11_Bitcoin/day1-06-v1链条.md","ref":"11_Bitcoin/day1-06-v1链条.md","articles":[]},{"title":"第7节:day1-Bitcoin客户端","level":"1.16.7","depth":2,"path":"11_Bitcoin/day1-07-Bitcoin客户端.md","ref":"11_Bitcoin/day1-07-Bitcoin客户端.md","articles":[]},{"title":"第8节:day2-v2挖矿","level":"1.16.8","depth":2,"path":"11_Bitcoin/day2-01-v2挖矿.md","ref":"11_Bitcoin/day2-01-v2挖矿.md","articles":[]},{"title":"第9节:day2-v3存储","level":"1.16.9","depth":2,"path":"11_Bitcoin/day2-02-v3存储.md","ref":"11_Bitcoin/day2-02-v3存储.md","articles":[]},{"title":"第10节:day3-交易原理","level":"1.16.10","depth":2,"path":"11_Bitcoin/day3-01-交易原理.md","ref":"11_Bitcoin/day3-01-交易原理.md","articles":[]},{"title":"第11节:day3-v4余额","level":"1.16.11","depth":2,"path":"11_Bitcoin/day3-02-v4余额.md","ref":"11_Bitcoin/day3-02-v4余额.md","articles":[]},{"title":"第12节:day4-v4转账","level":"1.16.12","depth":2,"path":"11_Bitcoin/day4-01-v4转账.md","ref":"11_Bitcoin/day4-01-v4转账.md","articles":[]},{"title":"第13节:day4-v5钱包","level":"1.16.13","depth":2,"path":"11_Bitcoin/day4-02-v5钱包.md","ref":"11_Bitcoin/day4-02-v5钱包.md","articles":[]},{"title":"第14节:day5-v5签名","level":"1.16.14","depth":2,"path":"11_Bitcoin/day5-01-v5签名.md","ref":"11_Bitcoin/day5-01-v5签名.md","articles":[]}],"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"11_Bitcoin/README.md","mtime":"2022-11-08T13:10:12.326Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-08T13:10:36.291Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
