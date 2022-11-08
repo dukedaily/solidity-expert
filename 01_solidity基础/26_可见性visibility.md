@@ -5,7 +5,7 @@
 - public：所有的合约和外部账户（EOA）都可以调用；
 - private：只允许合约内部调用；
 - internal：仅允许合约内部以及子合约中调用；
-- external：仅允许外部合约调用，合约及子合约都不能调用；(早期版本可以使用this调用external方法)
+- external：仅允许外部地址(EOA或CA)调用，合约内部及子合约都不能调用；(早期版本可以使用this调用external方法)
 
 另，状态变量可以被修饰为：publi, private, internal，但是无法修饰为external
 
