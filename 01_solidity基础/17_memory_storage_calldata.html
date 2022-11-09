@@ -16,6 +16,10 @@
     
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
                 
             
@@ -1949,6 +1953,7 @@
 </li>
 <li>calldata：存储函数的参数的位置，是只读的（只有calldata支持数组切片，状态变量不可以直接使用切片，需要new新数组，然后使用for循环解决）</li>
 <li>其他：Solidity 变量中 memory 、calldata 2 个表示作用非常类似，都是函数内部临时变量，它们最大的区别就是 calldata 是不可修改的，在某些只读的情况比较省 Gas.</li>
+<li>局部变量（此处指引用类型）默认是Storage类型的，只能将使用storage类型赋值，不能使用memory类型来赋值。</li>
 </ul>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
@@ -2029,7 +2034,7 @@ contract DataLocations {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第17节:storage_calldata","level":"1.6.17","depth":2,"next":{"title":"第18节:函数Function","level":"1.6.18","depth":2,"path":"01_solidity基础/18_函数Function.md","ref":"01_solidity基础/18_函数Function.md","articles":[]},"previous":{"title":"第16节:结构体Struct","level":"1.6.16","depth":2,"path":"01_solidity基础/16_结构体Struct.md","ref":"01_solidity基础/16_结构体Struct.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/17_memory_storage_calldata.md","mtime":"2022-09-16T03:19:14.856Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-09T01:21:10.445Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第17节:storage_calldata","level":"1.6.17","depth":2,"next":{"title":"第18节:函数Function","level":"1.6.18","depth":2,"path":"01_solidity基础/18_函数Function.md","ref":"01_solidity基础/18_函数Function.md","articles":[]},"previous":{"title":"第16节:结构体Struct","level":"1.6.16","depth":2,"path":"01_solidity基础/16_结构体Struct.md","ref":"01_solidity基础/16_结构体Struct.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/17_memory_storage_calldata.md","mtime":"2022-11-09T03:13:40.244Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-09T03:22:12.501Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2081,6 +2086,10 @@ contract DataLocations {
     </script>
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
