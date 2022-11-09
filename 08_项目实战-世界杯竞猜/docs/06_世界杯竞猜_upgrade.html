@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第1节:世界杯竞猜-合约 · HonKit</title>
+        <title>第6节:世界杯竞猜_upgrade · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -64,10 +64,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="02_世界杯竞猜_hardhat.html" />
+    <link rel="next" href="../../09_EVM详解/" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="05-世界杯竞猜_airdrop.html" />
     
 
     </head>
@@ -1487,12 +1487,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.13.1" data-path="01_世界杯竞猜_合约.html">
+        <li class="chapter " data-level="1.13.1" data-path="01_世界杯竞猜_solidity.html">
             
-                <a href="01_世界杯竞猜_合约.html">
+                <a href="01_世界杯竞猜_solidity.html">
             
                     
-                    第1节:世界杯竞猜-合约
+                    第1节:世界杯竞猜-solidity
             
                 </a>
             
@@ -1545,6 +1545,19 @@
             
                     
                     第5节:世界杯竞猜_airdrop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.6" data-path="06_世界杯竞猜_upgrade.html">
+            
+                <a href="06_世界杯竞猜_upgrade.html">
+            
+                    
+                    第6节:世界杯竞猜_upgrade
             
                 </a>
             
@@ -1930,7 +1943,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >第1节:世界杯竞猜-合约</a>
+        <a href="../.." >第6节:世界杯竞猜_upgrade</a>
     </h1>
 </div>
 
@@ -1942,232 +1955,7 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第1节-世界杯竞猜（solidity）"><a name="第1节-世界杯竞猜（solidity）" class="plugin-anchor" href="#第1节-世界杯竞猜（solidity）"><i class="fa fa-link" aria-hidden="true"></i></a>第1节 世界杯竞猜（solidity）</h1>
-<blockquote>
-<p> 本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
-</blockquote>
-<h2 id="内容概述"><a name="内容概述" class="plugin-anchor" href="#内容概述"><i class="fa fa-link" aria-hidden="true"></i></a>内容概述</h2>
-<p>通过学习，初步了解以太坊开发的基础工具链，通过一个案例（世界杯精彩）实战，使大家掌握基本的solidity开发，完成语法学习。</p>
-<ol>
-<li><a href="https://solidity-expert-worldcup.vercel.app/" target="_blank">点击查看效果</a></li>
-<li><a href="https://github.com/dukedaily/solidity-expert/blob/main/08_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C/code/contracts/contracts/WorldCup.sol" target="_blank">点击获取代码</a></li>
-</ol>
-<h2 id="学习目标"><a name="学习目标" class="plugin-anchor" href="#学习目标"><i class="fa fa-link" aria-hidden="true"></i></a>学习目标</h2>
-<ul>
-<li>Metamask：助记词、私钥、地址、gas费相关</li>
-<li>Remix：部署、交互、abi、bytecode</li>
-<li>Etherscan：交易分析、verify合约</li>
-<li>基础solidity语法：基础类型、如何转账、可见性、手续费、Event</li>
-</ul>
-<h2 id="业务需求"><a name="业务需求" class="plugin-anchor" href="#业务需求"><i class="fa fa-link" aria-hidden="true"></i></a>业务需求</h2>
-<ol>
-<li>参赛球队一经设定不可改变，整个活动结束后无法投票；</li>
-<li>全⺠均可参与，无权限控制；</li>
-<li>每次投票为1ether，且只能选择一支球队；</li>
-<li>每个人可以投注多次；</li>
-<li>仅管理员公布最终结果，完成奖金分配，开奖后逻辑：</li>
-<li>winner共享整个奖金池（一部分是自己的本金，一部分是利润）；</li>
-<li>winner需自行领取奖金（因为有手续费）；</li>
-<li>下一期自行开始</li>
-</ol>
-<h3 id="最初状态"><a name="最初状态" class="plugin-anchor" href="#最初状态"><i class="fa fa-link" aria-hidden="true"></i></a>最初状态</h3>
-<p><img src="assets/流程图a.jpg" alt="流程图a"></p>
-<h3 id="开始投票"><a name="开始投票" class="plugin-anchor" href="#开始投票"><i class="fa fa-link" aria-hidden="true"></i></a>开始投票</h3>
-<p><img src="assets/流程图b.jpg" alt="流程图b"></p>
-<h3 id="开奖后"><a name="开奖后" class="plugin-anchor" href="#开奖后"><i class="fa fa-link" aria-hidden="true"></i></a>开奖后</h3>
-<p><img src="assets/流程图c.jpg" alt="流程图c"></p>
-<h2 id="需求分析"><a name="需求分析" class="plugin-anchor" href="#需求分析"><i class="fa fa-link" aria-hidden="true"></i></a>需求分析</h2>
-<ol>
-<li>状态变量(真正上链）：管理员、记录所有玩家、统计每个球队参与者、记录获奖者信息、第几期、参赛球队</li>
-<li>核心方法：投票、开奖、领奖</li>
-<li>辅助方法：获取奖金池金额、管理员地址、当前期数、参与人数、所有玩家、参赛球队</li>
-</ol>
-<h2 id="知识点"><a name="知识点" class="plugin-anchor" href="#知识点"><i class="fa fa-link" aria-hidden="true"></i></a>知识点</h2>
-<ol>
-<li><p>1 ether = 10^18wei, </p>
-</li>
-<li><p>1 gwei = 10^9 wei</p>
-</li>
-<li><p>1 ether = 10^9 gwei</p>
-</li>
-<li><p>tx：</p>
-<pre><code class="lang-js"><span class="hljs-number">1.</span> <span class="hljs-keyword">from</span>：交易发起人， 合约中是：msg.sender
-<span class="hljs-number">2.</span> to：交互合约地址，传给合约的数据：msg.data
-<span class="hljs-number">3.</span> value：传递的金额，msg.value
-</code></pre>
-</li>
-<li><p><strong>&quot;storage&quot;, &quot;memory&quot;</strong> </p>
-<ol>
-<li>Storage: 引用传值，修改会同步修改原变量</li>
-<li><strong>memory：值传递，完全独立的拷贝</strong></li>
-</ol>
-</li>
-</ol>
-<h2 id="代码"><a name="代码" class="plugin-anchor" href="#代码"><i class="fa fa-link" aria-hidden="true"></i></a>代码</h2>
-<ul>
-<li><p>goerli地址：0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9</p>
-</li>
-<li><p><a href="https://goerli.etherscan.io/address/0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9" target="_blank">https://goerli.etherscan.io/address/0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9</a></p>
-</li>
-</ul>
-<pre><code class="lang-JavaScript"><span class="hljs-comment">// SPDX-License-Identifier: GPL-3.0</span>
-pragma solidity &gt;=<span class="hljs-number">0.7</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.9</span><span class="hljs-number">.0</span>;
-
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;hardhat/console.sol&quot;</span>;
-
-contract WorldCup {
-    <span class="hljs-comment">// 1. 状态变量：管理员、所有玩家、获奖者地址、第几期、参赛球队</span>
-    <span class="hljs-comment">// 2. 核心方法：下注、开奖、</span>
-    <span class="hljs-comment">// 3. 辅助方法：获取奖金池金额、管理员地址、当前期数、参与人数、所有玩家、参赛球队</span>
-
-    address public admin;
-    uint8 public currRound;
-
-    <span class="hljs-comment">// string[] public countries; // [&quot;GERMANY&quot;, &quot;FRANCH&quot;, &quot;CHINA&quot;, &quot;BRIZAL&quot;, &quot;KOREA&quot;]</span>
-    string[] public countries = [<span class="hljs-string">&quot;GERMANY&quot;</span>, <span class="hljs-string">&quot;FRANCH&quot;</span>, <span class="hljs-string">&quot;CHINA&quot;</span>, <span class="hljs-string">&quot;BRIZAL&quot;</span>, <span class="hljs-string">&quot;KOREA&quot;</span>];
-    mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> Player)) players;
-    mapping (<span class="hljs-function"><span class="hljs-params">uint8</span> =&gt;</span> mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> address[])) public countryToPlayers;
-    mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint256) public winnerVaults;
-
-    uint256 public immutable deadline;
-    uint256 public lockedAmts;
-
-    enum Country {
-        GERMANY,
-        FRANCH,
-        CHINA,
-        BRAZIL,
-        KOREA
-    }
-
-    event Play(uint8 _currRound, address _player, Country _country);
-    event Finialize(uint8 _currRound, uint256 _country);
-    event ClaimReward(address _claimer, uint256 _amt);
-
-    modifier onlyAdmin {
-        <span class="hljs-built_in">require</span>(msg.sender == admin, <span class="hljs-string">&quot;not authorized!&quot;</span>);
-        _;
-    }
-
-    struct Player {
-        bool isSet;
-        mapping (<span class="hljs-function"><span class="hljs-params">Country</span> =&gt;</span> uint256) counts;
-    }
-
-    <span class="hljs-comment">// constructor(string[] memory _countries, uint256 _deadline) {</span>
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">uint256 _deadline</span>)</span> {
-        admin = msg.sender;
-        <span class="hljs-built_in">require</span>(_deadline &gt; block.timestamp, <span class="hljs-string">&quot;WorldCupLottery: invalid deadline!&quot;</span>);
-        deadline = _deadline;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span>(<span class="hljs-params">Country _selected</span>) <span class="hljs-title">payable</span> <span class="hljs-title">external</span> </span>{
-        <span class="hljs-comment">// 参数校验</span>
-        <span class="hljs-built_in">require</span>(msg.value == <span class="hljs-number">1</span> gwei, <span class="hljs-string">&quot;invalid funds provided!&quot;</span>);
-
-        <span class="hljs-built_in">require</span>(block.timestamp &lt; deadline, <span class="hljs-string">&quot;it&apos;s all over!&quot;</span>);
-
-        <span class="hljs-comment">// 更新countryToPlayers</span>
-        countryToPlayers[currRound][_selected].push(msg.sender);
-
-        <span class="hljs-comment">// 更新players</span>
-        Player storage player = players[currRound][msg.sender];
-        <span class="hljs-comment">// player.isSet = false;</span>
-        player.counts[_selected] += <span class="hljs-number">1</span>;
-
-        emit Play(currRound, msg.sender, _selected);
-    }
-
-    <span class="hljs-comment">// 写另外一个合约，模拟oracle，讲解合约间调用</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">finialize</span>(<span class="hljs-params">Country _country</span>) <span class="hljs-title">onlyAdmin</span> <span class="hljs-title">external</span> </span>{
-        <span class="hljs-comment">// 找到winners</span>
-        address[] memory winners = countryToPlayers[currRound][_country];
-        uint256 distributeAmt;
-
-        <span class="hljs-comment">// 分配奖励金额</span>
-        uint currAvalBalance = getVaultBalance() - lockedAmts;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;currAvalBalance:&quot;</span>, currAvalBalance, <span class="hljs-string">&quot;winners count:&quot;</span>, winners.length);
-
-        <span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i&lt; winners.length; i++) {
-            address currWinner = winners[i];
-
-            <span class="hljs-comment">// 获取每个地址应该得到的份额</span>
-            Player storage winner = players[currRound][currWinner];
-            <span class="hljs-keyword">if</span> (winner.isSet) {
-                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;this winner has been set already, will be skipped!&quot;</span>);
-                <span class="hljs-keyword">continue</span>;
-            }
-
-            winner.isSet = <span class="hljs-literal">true</span>;
-
-            uint currCounts = winner.counts[_country];
-
-            <span class="hljs-comment">// （本期总奖励 / 总参与人数）* 当前地址持有份额</span>
-            uint amt = (currAvalBalance / countryToPlayers[currRound][_country].length) * currCounts;
-
-            winnerVaults[currWinner] += amt;
-            distributeAmt += amt;
-            lockedAmts += amt;
-
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;winner:&quot;</span>, currWinner, <span class="hljs-string">&quot;currCounts:&quot;</span>, currCounts);
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;reward amt curr:&quot;</span>, amt, <span class="hljs-string">&quot;total:&quot;</span>, winnerVaults[currWinner]);
-        }
-
-        uint giftAmt = currAvalBalance - distributeAmt;
-        <span class="hljs-keyword">if</span> (giftAmt &gt; <span class="hljs-number">0</span>) {
-            winnerVaults[admin] += giftAmt;
-        }
-
-        emit Finialize(currRound++, uint256(_country));
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">claimReward</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
-        uint256 rewards = winnerVaults[msg.sender];
-        <span class="hljs-built_in">require</span>(rewards &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;nothing to claim!&quot;</span>);
-
-        winnerVaults[msg.sender] = <span class="hljs-number">0</span>;
-        lockedAmts -= rewards;
-        (bool succeed,) = msg.sender.call{<span class="hljs-attr">value</span>: rewards}(<span class="hljs-string">&quot;&quot;</span>);
-        <span class="hljs-built_in">require</span>(succeed, <span class="hljs-string">&quot;claim reward failed!&quot;</span>);
-
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;rewards:&quot;</span>, rewards);
-
-        emit ClaimReward(msg.sender, rewards);
-    }
-
-    <span class="hljs-comment">////////////////////////////////////////////// getter functions ////////////////////////////////////////////////</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVaultBalance</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint256 bal</span>)</span>{
-        bal = address(<span class="hljs-built_in">this</span>).balance;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCountryPlayters</span>(<span class="hljs-params">uint8 _round, Country _country</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>) </span>{
-        <span class="hljs-keyword">return</span> countryToPlayers[_round][_country].length;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPlayerInfo</span>(<span class="hljs-params">uint8 _round, address _player, Country _country</span>) <span class="hljs-title">external</span>  <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 _counts</span>) </span>{
-        <span class="hljs-keyword">return</span> players[_round][_player].counts[_country];
-    }
-}
-</code></pre>
-<h2 id="下次预告"><a name="下次预告" class="plugin-anchor" href="#下次预告"><i class="fa fa-link" aria-hidden="true"></i></a>下次预告</h2>
-<ol>
-<li>使用工程化来管理合约</li>
-<li>自动编译、部署、verify、单元测试、fork主网</li>
-</ol>
-<h2 id="资源链接"><a name="资源链接" class="plugin-anchor" href="#资源链接"><i class="fa fa-link" aria-hidden="true"></i></a>资源链接</h2>
-<ol>
-<li>详细知识点：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a></li>
-<li>快速添目标网络：<a href="https://chainlist.org/" target="_blank">https://chainlist.org/</a></li>
-<li>水龙头领取Goerli主币：<a href="https://goerlifaucet.com/" target="_blank">https://goerlifaucet.com/</a></li>
-<li>一键领取多个水龙头，需要Twitter登录：<a href="https://faucet.paradigm.xyz/" target="_blank">https://faucet.paradigm.xyz/</a></li>
-<li>详细知识点托管在github：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a></li>
-</ol>
-<hr>
-<p>加V入群：Adugii，公众号：<a href="https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ" target="_blank">阿杜在新加坡</a>，一起抱团拥抱web3，下期见！</p>
-<blockquote>
-<p>关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。</p>
-</blockquote>
+                                <h1 id="第6节：世界杯竞猜（upgrade）"><a name="第6节：世界杯竞猜（upgrade）" class="plugin-anchor" href="#第6节：世界杯竞猜（upgrade）"><i class="fa fa-link" aria-hidden="true"></i></a>第6节：世界杯竞猜（upgrade）</h1>
 
                                 
                                 </section>
@@ -2179,12 +1967,12 @@ contract WorldCup {
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 第八章:项目实战-世界杯竞猜">
+                <a href="05-世界杯竞猜_airdrop.html" class="navigation navigation-prev " aria-label="Previous page: 第5节:世界杯竞猜_airdrop">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="02_世界杯竞猜_hardhat.html" class="navigation navigation-next " aria-label="Next page: 第2节:世界杯竞猜-hardhat">
+                <a href="../../09_EVM详解/" class="navigation navigation-next " aria-label="Next page: 第九章:EVM详解">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2195,7 +1983,7 @@ contract WorldCup {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第1节:世界杯竞猜-合约","level":"1.13.1","depth":2,"next":{"title":"第2节:世界杯竞猜-hardhat","level":"1.13.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},"previous":{"title":"第八章:项目实战-世界杯竞猜","level":"1.13","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第1节:世界杯竞猜-合约","level":"1.13.1","depth":2,"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","ref":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","articles":[]},{"title":"第2节:世界杯竞猜-hardhat","level":"1.13.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},{"title":"第3节:世界杯竞猜-ERC20","level":"1.13.3","depth":2,"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","articles":[]},{"title":"第4节:世界杯竞猜_subgraph","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]},{"title":"第5节:世界杯竞猜_airdrop","level":"1.13.5","depth":2,"path":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","ref":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/01_世界杯竞猜_合约.md","mtime":"2022-10-31T00:57:21.723Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-09T03:22:12.501Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第6节:世界杯竞猜_upgrade","level":"1.13.6","depth":2,"next":{"title":"第九章:EVM详解","level":"1.14","depth":1,"path":"09_EVM详解/README.md","ref":"09_EVM详解/README.md","articles":[{"title":"第1节:OPCode手册","level":"1.14.1","depth":2,"path":"09_EVM详解/01_OPCode手册.md","ref":"09_EVM详解/01_OPCode手册.md","articles":[]},{"title":"第2节:EVM-PUZZLES挑战","level":"1.14.2","depth":2,"path":"09_EVM详解/02-evm-puzzles.md","ref":"09_EVM详解/02-evm-puzzles.md","articles":[]},{"title":"第3节:汇编概述","level":"1.14.3","depth":2,"path":"09_EVM详解/03-汇编概述.md","ref":"09_EVM详解/03-汇编概述.md","articles":[]}]},"previous":{"title":"第5节:世界杯竞猜_airdrop","level":"1.13.5","depth":2,"path":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","ref":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","mtime":"2022-11-09T13:16:53.362Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-09T13:19:43.882Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
