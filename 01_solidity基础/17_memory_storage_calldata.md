@@ -8,6 +8,7 @@ solidity中的存储位置分为三种，使用memory、storage、calldata来进
   - 引用类型（string，bytes，数组，结构体，mapping）
 - calldata：存储函数的参数的位置，是只读的（只有calldata支持数组切片，状态变量不可以直接使用切片，需要new新数组，然后使用for循环解决）
 - 其他：Solidity 变量中 memory 、calldata 2 个表示作用非常类似，都是函数内部临时变量，它们最大的区别就是 calldata 是不可修改的，在某些只读的情况比较省 Gas.
+- 局部变量（此处指引用类型）默认是Storage类型的，只能将使用storage类型赋值，不能使用memory类型来赋值。
 
 ```js
 // SPDX-License-Identifier: MIT
