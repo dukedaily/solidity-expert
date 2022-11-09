@@ -11,3 +11,7 @@
 5. （2022年中）在学习EVM过程中，又发现了很多以太坊盲点，所以就有了现在重读《精通以太坊》的需求，相当于回到第一步，继续了解以太坊。
 6. （预计2023年初）下一步可能是去扣看源码了，以前以为可以回避链，现在发现想要继续往核心深入，哪个环节都省不了。
 
+
+
+精通以太坊：
+<iframe src="https://drive.google.com/file/d/1-0yanRr70jODXx2F4BvRy-p9iG246G_9/preview" width="640" height="480" allow="autoplay"></iframe>
