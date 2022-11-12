@@ -53,7 +53,7 @@
     * [第2节:msg三人组](02_solidity进阶/02_msg三人组.md)
     * [第3节:payable](02_solidity进阶/03_payable.md)
     * [第4节:encode_encodePacked](02_solidity进阶/04_encode_encodePacked.md)
-    * [第5节:call](02_solidity进阶/05_call.md)
+    * [第5节:call&staticcall](02_solidity进阶/05_call&staticcall.md)
     * [第6节:keccak256](02_solidity进阶/06_keccak256.md)
     * [第7节:selector](02_solidity进阶/07_selector.md)
     * [第8节:send_ether](02_solidity进阶/08_send_ether.md)

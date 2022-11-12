@@ -67,6 +67,15 @@ remixd -s <contract_folder>
 
 
 
+## Vscode插件
+
+- Ethereum Remix
+- 其他
+
+
+
+
+
 ## 小结
 
 加V入群：Adugii，公众号：阿杜在新加坡，一起抱团拥抱web3，下期见！

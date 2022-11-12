@@ -73,5 +73,21 @@ contract Caller {
 ## STATICCALL：
 
 - https://eips.ethereum.org/EIPS/eip-214
+
 - Since byzantium staticcall can be used as well. This is basically the same as call, but will revert if the called function modifies the state in any way.
+
 - 与CALL相同，但是不允许修改任何状态变量，是为了安全🔐考虑而新增的OPCODE
+
+- 在Transparent模式的代理合约逻辑中，就使用了staticcall，从而让proxyAmin能够免费的调用父合约的admin函数，从而从slot中返回代理合约的管理员。这部分会在合约升级章节介绍。
+
+  ```js
+      function getProxyAdmin(TransparentUpgradeableProxy proxy) public view virtual returns (address) {
+          // We need to manually run the static call since the getter cannot be flagged as view
+          // bytes4(keccak256("admin()")) == 0xf851a440
+          (bool success, bytes memory returndata) = address(proxy).staticcall(hex"f851a440");
+          require(success);
+          return abi.decode(returndata, (address));
+      }
+  ```
+
+  
