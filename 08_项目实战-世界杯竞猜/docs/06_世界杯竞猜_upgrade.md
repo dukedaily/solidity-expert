@@ -2,7 +2,7 @@
 
 > 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
-
+# 概述
 
 想必大家都知道区块链的特点，即：数据公开、可追溯、不可篡改，这个在比特币身上为人津津乐道。但是到了以太坊上，由于支持编写智能合约，即程序，那么数据不可篡改就变成了一个棘手的问题：
 
@@ -19,6 +19,12 @@
 3. beacon方式；
 
 我们本节聚焦在transparent方式（第一种），这是最主流的升级方案。
+
+
+
+- [点击查看代码](https://github.com/dukedaily/solidity-expert/tree/main/08_项目实战-世界杯竞猜)
+
+- [点击查看效果](https://goerli.etherscan.io/address/0x3ee1fa4d194c32428464b6725317fa0d3af380e8#code)
 
 # 升级分析
 
@@ -225,12 +231,11 @@ $ npm i @openzeppelin/contracts-upgradeable
 修改代码：
 
 ```js
-		//1. 导入标准包
-		import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+    //1. 导入标准包
+    import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-		//2. 继承
-		contract WorldCupV1 is Initializable {
-      
+    //2. 继承
+    contract WorldCupV1 is Initializable {  
       //3. 将构造函数替换为初始化函数 constructor(uint256 _deadline) 
       function initialize(uint256 _deadline) public initializer {
           admin = msg.sender;
@@ -343,7 +348,7 @@ npx hardhat run scripts/upgrade/deployAndUpgrade.ts --network goerli
 
 ![image-20221112222751439](assets/image-20221112222751439.png)
 
-如果你点击WriteContract按钮，会发现这不是我们的业务逻辑提供的方法，
+如果你点击WriteContract按钮，会发现这不是我们的业务逻辑提供的方法
 
 ![image-20221112222854466](assets/image-20221112222854466.png)
 
@@ -388,8 +393,10 @@ npx hardhat verify 0x4cb210f91b6d95978d1cf055ddf88701c57c01f0  --network goerli
 # 参考连接
 
 - https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies
+
 - https://docs.openzeppelin.com/contracts/4.x/api/proxy
-- 
+
+  
 
 ---
 
