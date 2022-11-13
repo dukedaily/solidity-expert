@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@openzeppelin/hardhat-upgrades";
 
 //在配置文件中引用
 require('dotenv').config()
