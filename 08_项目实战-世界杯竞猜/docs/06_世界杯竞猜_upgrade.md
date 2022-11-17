@@ -14,9 +14,9 @@
 
 好消息是经过多年的发展，业界已经为我们提供了解决方案，即使用代理模式完成可升级合约，目前主流有三种升级方法，
 
-1. transparent方式；
-2. uups方式；
-3. beacon方式；
+1. **transparent方式**；(通用，业务逻辑和代理逻辑解耦合，比较贵）
+2. uups方式；（代理逻辑集成到了业务逻辑，通过继承来实现，便宜）
+3. beacon方式；（更加高级，一个信号，升级多个合约）
 
 我们本节聚焦在transparent方式（第一种），这是最主流的升级方案。
 
@@ -25,6 +25,8 @@
 - [点击查看代码](https://github.com/dukedaily/solidity-expert/tree/main/08_项目实战-世界杯竞猜)
 
 - [点击查看效果](https://goerli.etherscan.io/address/0x3ee1fa4d194c32428464b6725317fa0d3af380e8#code)
+
+- ETH的USDC是可升级的，[点击查看](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48#code)
 
 # 升级分析
 
@@ -86,33 +88,38 @@ User ---- tx ---> Proxy ----------> Implementation_v0
 
 
 
-delegatecall调用并返回核心逻辑如下：
+delegatecall调用案例：
 
 ```js
-function _delegate(address implementation) internal virtual {
-        assembly {
-            // Copy msg.data. We take full control of memory in this inline assembly
-            // block because it will not return to Solidity code. We overwrite the
-            // Solidity scratch pad at memory position 0.
-            calldatacopy(0, 0, calldatasize())
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
 
-            // Call the implementation.
-            // out and outsize are 0 because we don't know the size yet.
-            let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)
+contract Implementation {
+    // NOTE: storage layout must be the same as contract A
+    uint public num;
+    address public sender;
+    uint public value;
 
-            // Copy the returned data.
-            returndatacopy(0, 0, returndatasize())
-
-            switch result
-            // delegatecall returns 0 on error.
-            case 0 {
-                revert(0, returndatasize())
-            }
-            default {
-                return(0, returndatasize())
-            }
-        }
+    function setVars(uint _num) public payable {
+        num = _num;
+        sender = msg.sender;
+        value = msg.value;
     }
+}
+
+// 注意：执行后，Proxy中的sender值为EOA的地址，而不是A合约的地址  (调用链EOA-> Proxy::setVars -> Implementation::setVars)
+contract Proxy {
+    uint public num;
+    address public sender;
+    uint public value;
+
+    function setVars(address _impl, uint _num) public payable {
+        // Proxy's storage is set, Implementation is not modified.
+        (bool success, bytes memory data) = _impl.delegatecall(
+            abi.encodeWithSignature("setVars(uint256)", _num)
+        );
+    }
+}
 ```
 
 
@@ -255,12 +262,15 @@ $ npm i @openzeppelin/contracts-upgradeable
 创建升级合约WorldCupV2.sol，与V1相比，增加了代码，包括：一个函数，一个状态变量，一个事件，具体如下：
 
 ```js
-		 // 1. 增加函数，支持修改deadline
+		// event ChangeDeadline(uint256 _prev, uint256 _curr);
+		// uint256 changeCount
+
+		// 1. 增加函数，支持修改deadline
     function changeDeadline(uint256 _newDeadline) external {
       require(_newDeadline > block.timestamp, "invalid timestamp!");
 
       // 2.增加新事件
-      emit ChangeDeadline(deadline: _newDeadline); 
+      emit ChangeDeadline(deadline, _newDeadline); 
       
       // 4.状态变量
       changeCount++;  

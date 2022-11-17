@@ -11,7 +11,7 @@ delegatecall与call相似，也是底层调用合约方式，特点是：
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-contract B {
+contract Implementation {
     // NOTE: storage layout must be the same as contract A
     uint public num;
     address public sender;
@@ -24,15 +24,15 @@ contract B {
     }
 }
 
-// 注意：执行后，sender值为EOA的地址，而不是A合约的地址  (调用链EOA-> A::setVars -> B::setVars)
-contract A {
+// 注意：执行后，Proxy中的sender值为EOA的地址，而不是A合约的地址  (调用链EOA-> Proxy::setVars -> Implementation::setVars)
+contract Proxy {
     uint public num;
     address public sender;
     uint public value;
 
-    function setVars(address _contract, uint _num) public payable {
-        // A's storage is set, B is not modified.
-        (bool success, bytes memory data) = _contract.delegatecall(
+    function setVars(address _impl, uint _num) public payable {
+        // Proxy's storage is set, Implementation is not modified.
+        (bool success, bytes memory data) = _impl.delegatecall(
             abi.encodeWithSignature("setVars(uint256)", _num)
         );
     }
