@@ -126,7 +126,7 @@ contract Proxy {
 
 ## 3. 为什么会有存储冲突？
 
-在solidity中，状态变量存储在slot中，slot可以理解为key-value存储空间，evm为每个合约代码提供了最多256个slot，每个slot可以最多存储32字节数据。
+在solidity中，状态变量存储在slot中，slot可以理解为key-value存储空间，evm为每个合约代码提供了最多2^256个slot，每个slot可以最多存储32字节数据。(key->value, 32bytes -> 32bytes)
 
 状态变量一般是从slot 0开始进行存储的，在使用delegatecall的时候，由于需要在`Proxy`的slot中存储`目标合约`中指定的数据结构，此时如果proxy的storage布局与目标合约的storage布局不相同，那么就会出现存储冲突（Storage collisioin）的问题，即：**目标合约在Proxy合约中修改了错误的位置。**
 
@@ -398,9 +398,7 @@ npx hardhat verify 0x4cb210f91b6d95978d1cf055ddf88701c57c01f0  --network goerli
 
 合约升级带来好处显而易见，但是同时也意味着合约可以被随意的篡改或者做坏事，但是这就不是单纯的技术能够解决的问题了，由于升级操作只能有管理员来进行，所以将权力交给社区，由Dao组织来管理可能是一个比较好的选择。
 
-
-
-# 参考连接
+# 参考链接
 
 - https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies
 

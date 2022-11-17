@@ -4,10 +4,10 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ duke/worldcup",
-    "create-local": "graph create --node http://localhost:8020/ duke/worldcup",
-    "remove-local": "graph remove --node http://localhost:8020/ duke/worldcup",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 duke/worldcup",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ dukedaily/worldcup",
+    "create-local": "graph create --node http://localhost:8020/ dukedaily/worldcup",
+    "remove-local": "graph remove --node http://localhost:8020/ dukedaily/worldcup",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 dukedaily/worldcup",
     "up": "docker-compose up",
     "test": "graph test"
   },

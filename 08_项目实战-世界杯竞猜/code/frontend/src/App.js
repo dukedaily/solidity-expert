@@ -19,7 +19,9 @@ import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { Component } from 'react'
 import styled from 'styled-components/macro'
 
-const alchemyId = process.env.ALCHEMY_ID
+// const alchemyId = process.env.ALCHEMY_ID
+const alchemyId = "Z8Ti6ZwaToUhmpJlj1QL0gjExeggq12V"
+console.log('alchemyId:', alchemyId);
 
 const { provider, chains } = configureChains(
   [chain.goerli, chain.optimism, chain.arbitrum],

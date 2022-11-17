@@ -1,11 +1,11 @@
 import { Address, BigInt, Bytes, TypedMap, ethereum, log } from "@graphprotocol/graph-ts";
 
 import {
-  WorldCup,
+  WorldCupV2,
   ClaimReward,
   Finialize,
   Play,
-} from "../generated/WorldCup/WorldCup"
+} from "../generated/WorldCup/WorldCupV2"
 
 import {
   DistributeReward,

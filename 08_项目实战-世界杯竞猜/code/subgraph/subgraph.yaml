@@ -6,9 +6,9 @@ dataSources:
     name: WorldCup
     network: goerli
     source:
-      address: "0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3"
-      abi: WorldCup
-      startBlock: 7813068
+      address: "0x3ee1fa4d194c32428464b6725317fa0d3af380e8"
+      abi: WorldCupV2
+      startBlock: 7940289
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -17,8 +17,8 @@ dataSources:
         - PlayRecord
         - FinializeHistory
       abis:
-        - name: WorldCup
-          file: ./abis/WorldCup.json
+        - name: WorldCupV2
+          file: ./abis/WorldCupV2.json
       eventHandlers:
         - event: Play(uint8,address,uint8)
           handler: handlePlay

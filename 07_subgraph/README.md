@@ -5,3 +5,4 @@ subgraph是DAPP领域最重要的基建之一，主流协议都在使用，其�
 - 请求subgraph的时候使用[graphql](https://thegraph.com/docs/en/querying/graphql-api/)语言，而非sql语句。
 
 本节代码位于：https://github.com/dukedaily/subgraph-demo
+

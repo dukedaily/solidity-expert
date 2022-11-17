@@ -2,7 +2,7 @@
 
 
 
-今天介绍一下2018年讲的一套五天的比特币课程，课程在制作过程中参考了 GitHub开源项目：[blockchain_go](https://github.com/Jeiwan/blockchain_go 。) 
+今天介绍一下2018年讲的一套五天的比特币课程，课程在制作过程中参考了 GitHub开源项目：[blockchain_go](https://github.com/Jeiwan/blockchain_go)
 
 
 

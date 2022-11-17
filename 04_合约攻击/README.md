@@ -11,3 +11,4 @@
 - https://github.com/kadenzipfel/smart-contract-attack-vectors
 - https://foresightnews.pro/article/detail/3740
 
+![image-20221114175318870](../../../Library/Application Support/typora-user-images/image-20221114175318870.png)
