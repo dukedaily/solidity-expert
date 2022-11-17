@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "toggle-chapters",
+    "outline",
+    "-search",
+    "-lunr",
+    "page-toc-button",
+    "include-codeblock",
+    "anchors",
+    "js-console"
+  ]
+}

@@ -1,0 +1,43 @@
+type PlayRecord @entity {
+  id: ID!
+  index: BigInt! # uint256
+  player: Bytes! # address
+  selectCountry: BigInt! # uint256
+  time: BigInt!
+  block: BigInt!
+}
+
+type NeedToHandle @entity {
+  id: ID!
+  list: [PlayRecord!]!
+}
+
+type FinializeHistory @entity {
+  id: ID!
+  result: BigInt!
+}
+
+type PlayerDistribution @entity {
+  id: ID!
+  index: BigInt!
+  player: Bytes!
+  rewardAmt: BigInt!
+  weight: BigInt!
+  isClaimed: Boolean!
+}
+
+type RewardHistory @entity {
+  id: ID!
+  index: BigInt!
+  rewardAmt: BigInt!
+  settleBlockNumber: BigInt!
+  totalWeight: BigInt!
+  list: [PlayerDistribution!]!
+}
+
+type MerkleDistributor @entity {
+  id: ID!
+  index: BigInt!
+  totalAmt: BigInt!
+  settleBlockNumber: BigInt!
+}
