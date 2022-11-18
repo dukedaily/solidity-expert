@@ -1,72 +1,105 @@
-参考链接：https://blog.csdn.net/weixin_43840202/article/details/121114097
+# 第3节：fork主网
+
+hardhat提供了一个模拟主网的功能，使得我们可以直接使用主网的数据进行测试，需要我们：
+
+1. 在配置文件hardhat.confit.ts中启动fork开关、指定网络、指定块高；
+2. 在单元测试文件中做配置。
 
 
 
-impersonate_account:
+## impersonate_account
 
-```js
-async function f1(){
-  await hardhat.network.provider.request({
-    method: "hardhat_impersonateAccount",
-    params: [被模拟的账户],
-  });
-  const signer = await ethers.provider.getSigner(被模拟的账户)
-  // 用模拟的账户给指定账户转账
-  await signer.sendTransaction({
-    to: "0x23FCB0E1DDbC821Bd26D5429BA13B7D5c96C0DE0",
-    value: ethers.utils.parseEther("1.0"),
-  });
-  console.log('success')
+默认情况下，我们的hardaht账户在主网上是没有资产的，因此我们在使用fork功能时，需要impersonate（扮演）成其他地址（这个人在主网上，在我们指定的块高上，是有真实资产的），具体代码如下：
 
-// 取消模拟
-  await hardhat.network.provider.request({
-    method: "hardhat_stopImpersonatingAccount",
-    params: [被模拟的账户],
-  });
-}
-
-f1().then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
-```
-
-完整demo
+创建test.fork/sendTransactionFork.ts：(单独创建一个fork的文件夹，与原来的test分开)
 
 ```js
-import { network, ethers, waffle } from "hardhat";
-import { Signer } from "ethers";
+/* eslint-disable no-console */
+import { network, ethers } from "hardhat";
+// import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { JsonRpcServer } from "hardhat/types";
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
+import { JsonRpcSigner } from "@ethersproject/providers";
 
-async function main() {
+describe("sendTransaction", () => {
+  let signer: JsonRpcSigner;
+  let acc0: SignerWithAddress;
+
+  beforeEach(async () => {
+    // https://etherscan.io/accounts
+    const ETHWHALE = "0xF977814e90dA44bFA03b6295A0616a897441aceC";
     await network.provider.request({
-        method: "hardhat_impersonateAccount",
-        params: ["0xE78388b4CE79068e89Bf8aA7f218eF6b9AB0e9d0"],
+      method: "hardhat_impersonateAccount",
+      params: [ETHWHALE],
     });
 
-    let [acc0] = await ethers.getSigners()
-    console.log('acc0:', acc0.address);
-    let bal = await ethers.provider.getBalance(acc0.address)
-    //10000000000000000000000
-    console.log('acc0 bal:', bal.toString());
+    //1. 获取hardaht内置账户
+    const accounts = await ethers.getSigners();
+    acc0 = accounts[0];
+    console.log("acc0:", acc0.address);
 
-    const signer = await ethers.provider.getSigner(
-        "0xE78388b4CE79068e89Bf8aA7f218eF6b9AB0e9d0"
-    );
+    //2. 查看金额，应该为：10000000000000000000000（这是初始化的值）
+    let bal = await ethers.provider.getBalance(acc0.address);
+    console.log("acc0 bal:", bal.toString());
 
-    await signer.sendTransaction({
+    //3. 重要‼️ acc0扮演成: 三方地址（有真实资产的地址），后续signer代表的就是这个三方地址了，而不是原来的acc0
+    signer = ethers.provider.getSigner(ETHWHALE);
+    bal = await ethers.provider.getBalance(signer.getAddress());
+    
+    //4. 查看这个资产
+    console.log("ETHWHALE bal:", bal.toString());
+  });
+
+  describe("sendTransaction Test", () => {
+    it("should send transaction", async () => {
+      // 4. 测试一下，用三方地址给我们的acc0转账
+      await signer.sendTransaction({
         to: acc0.address,
-        value: ethers.utils.parseEther("20") // 20 ether
+        value: ethers.utils.parseEther("20"),
+      });
+
+      const bal = await ethers.provider.getBalance(acc0.address);
+      // 5. 查看acc0的金额，应该是：10020000000000000000000
+      console.log("new acc0 bal:", bal.toString());
     });
-
-    bal = await ethers.provider.getBalance(acc0.address)
-    //10020000000000000000000
-    console.log('new acc0 bal:', bal.toString());
-}
-
-main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
+  });
 });
+
 ```
+
+## 修改配置文件
+
+hardhat.config.ts
+
+```js
+const mainnetFork = MAINNET_FORK  //我们使用环境变量来控制fork与否
+  ? {
+    url: 'urlxxxxx'
+    blockNumber: 21577481,
+  }
+  : undefined;
+
+const config: HardhatUserConfig = {
+  networks: {
+    bsc_main: 'urlxxxxx'
+    hardhat: {
+      blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
+      gas: DEFAULT_BLOCK_GAS_LIMIT,
+      gasPrice: 8000000000,
+      chainId: 56,
+      throwOnTransactionFailures: true,
+      throwOnCallFailures: true,
+      accounts: 
+      forking: mainnetFork  // 开关在这里生效
+    },
+  },
+```
+
+## 执行代码
+
+```sh
+ MAINNET_FORK=true npx hardhat test test.fork/sendTransactionFork.ts
+```
+
+![image-20221118095707119](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221118095707119.png)
 
