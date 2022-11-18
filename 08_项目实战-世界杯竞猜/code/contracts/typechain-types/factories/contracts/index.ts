@@ -3,6 +3,7 @@
 /* eslint-disable */
 export * as interfaces from "./interfaces";
 export * as tokens from "./tokens";
+export * as upgrade from "./upgrade";
 export * as utils from "./utils";
 export { Lock__factory } from "./Lock__factory";
 export { WorldCup__factory } from "./WorldCup__factory";

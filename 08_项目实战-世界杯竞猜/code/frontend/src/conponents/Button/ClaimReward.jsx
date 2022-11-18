@@ -8,13 +8,13 @@ import {
   chain,
   useAccount,
 } from 'wagmi'
-import worldcup_abi from '../../abi/worldcup_abi.json'
+import worldcup_abi from '../../abi/worldcup_abi_v2.json'
 
 import { Button } from 'antd'
 
 export function ClaimReward() {
   const { config } = usePrepareContractWrite({
-    addressOrName: '0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3',
+    addressOrName: '0x3ee1fa4d194c32428464b6725317fa0d3af380e8',
     contractInterface: worldcup_abi,
     functionName: 'claimReward',
   })
