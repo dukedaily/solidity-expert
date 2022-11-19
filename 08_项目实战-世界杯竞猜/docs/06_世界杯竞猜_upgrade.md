@@ -390,6 +390,25 @@ npx hardhat verify 0x4cb210f91b6d95978d1cf055ddf88701c57c01f0  --network goerli
 
 我们最终暴露给用户的地址就是这个代理合约，用户的所有操作都相当于在读写着两个新方法，这两个方法会被Proxy传递到逻辑合约中，并把执行结果返回到代理合约中，这就是delegatecall的力量！
 
+# TransparentProxy合约关系
+
+通过hardhat-upgrade包执行部署后，一共会自动部署三个合约：
+
+1. 代理合约：TransparentUpgradebleProxy
+2. 代理合约的管理员合约：proxyAdmin
+3. 业务合约：implementation
+
+![image-20221119103229913](https://duke-typora.s3.amazonaws.com/ipic/2022-11-19-023230.png)
+
+我们最终只能看到implementation合约的地址：[点击查看](https://goerli.etherscan.io/tx/0x40cd34dc8f32dcb10066f1caebb810808d25e12e8286a8dad95244b8741117b9)
+
+proxyAdmin是自动帮忙部署的，如果想查看其地址，需要通过日志查看，因为部署代理合约的构造函数中会执行changeAdmin操作，并发出事件，[点击查看](https://goerli.etherscan.io/tx/0x40cd34dc8f32dcb10066f1caebb810808d25e12e8286a8dad95244b8741117b9#eventlog)
+
+当我们使用脚本执行合约升级的时候，此时内部交互为：
+
+1. 自动部署WorldCupV2合约；
+2. 调用ProxyAdmin的upgrade方法，进行升级，[点击查看](https://goerli.etherscan.io/tx/0xf5547bba64f8f0880237d1e56bbbea0deeb5be4520a2867639b2cc0a4de3abaf)。
+
 # 总结
 
 本节我们系统的介绍了solidity中最主流的的代理方式：Transparent，代理合约使用delegatecall将用户的请求透传给业务合约，从而保证用户在无感知的情况下完成合约的升级。

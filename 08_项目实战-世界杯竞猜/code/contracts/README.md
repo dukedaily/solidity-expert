@@ -11,3 +11,8 @@ GAS_REPORT=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
+
+# Address
+proxy : 0x3ee1fa4d194c32428464b6725317fa0d3af380e8
+
+详情参见docs教程
