@@ -2,12 +2,6 @@
 
 
 
-参考文章：https://mp.weixin.qq.com/s/Yi8L4Ff8M473c3FK4QMADg
-
-原文出处：https://medium.com/1kxnetwork/wallets-91c7c3457578
-
-
-
 当前钱包种类：
 
 ![image-20221118142345429](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221118142345429.png)
@@ -104,3 +98,9 @@ MPC解决方案目前主要针对机构客户（基金、交易所、托管人�
 ## 五、总结
 
 MPC和智能合约钱包是互补关系，MPC在密钥生成和管理级别提供了共享安全性，而智能合约为功能和应用程序开发带来了可扩展性和生态系统方法。
+
+
+
+参考文章：https://mp.weixin.qq.com/s/Yi8L4Ff8M473c3FK4QMADg
+
+原文出处：https://medium.com/1kxnetwork/wallets-91c7c3457578

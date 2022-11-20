@@ -1,1 +1,0 @@
-这个是1inch提供的，里面有很多知识点值得学习：https://github.com/1inch/merkle-distribution
