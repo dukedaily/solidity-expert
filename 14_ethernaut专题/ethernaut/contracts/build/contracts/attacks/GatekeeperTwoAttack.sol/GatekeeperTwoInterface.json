@@ -1,0 +1,30 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "GatekeeperTwoInterface",
+  "sourceName": "contracts/attacks/GatekeeperTwoAttack.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes8",
+          "name": "_gateKey",
+          "type": "bytes8"
+        }
+      ],
+      "name": "enter",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

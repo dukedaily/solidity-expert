@@ -1668,6 +1668,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.15.5" data-path="../10_EVM反汇编/05_function执行流程.html">
+            
+                <a href="../10_EVM反汇编/05_function执行流程.html">
+            
+                    
+                    第5节:function执行流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.6" data-path="../10_EVM反汇编/06_智能合约Layout分析.html">
+            
+                <a href="../10_EVM反汇编/06_智能合约Layout分析.html">
+            
+                    
+                    第6节:智能合约Layout分析
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2011,7 +2037,7 @@
 
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
 
-interface ERC165 {
+interface IERC165 {
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">supportsInterface</span>(<span class="hljs-params">bytes4 interfaceID</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
 }
 
@@ -2130,7 +2156,6 @@ pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.1
 contract SimpleCollectible is ERC721URIStorage {
     uint256 public tokenCounter;
     <span class="hljs-title">constructor</span> (<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">ERC721</span> (<span class="hljs-params"><span class="hljs-string">&quot;Dogie&quot;</span>, <span class="hljs-string">&quot;DOG&quot;</span></span>){
-        tokenCounter = <span class="hljs-number">0</span>;
     }
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createCollectible</span>(<span class="hljs-params">string memory tokenURI</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>) </span>{
@@ -2226,7 +2251,7 @@ contract ERC721Holder is IERC721Receiver {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第2节:ERC721","level":"1.8.2","depth":2,"next":{"title":"第3节:ERC1155","level":"1.8.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},"previous":{"title":"第1节:ERC20","level":"1.8.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/02_ERC721.md","mtime":"2022-11-17T14:39:18.000Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-20T03:38:55.627Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第2节:ERC721","level":"1.8.2","depth":2,"next":{"title":"第3节:ERC1155","level":"1.8.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},"previous":{"title":"第1节:ERC20","level":"1.8.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"03_token协议/02_ERC721.md","mtime":"2022-11-21T10:27:37.472Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-23T01:18:03.253Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
