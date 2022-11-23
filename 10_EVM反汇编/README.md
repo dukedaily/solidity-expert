@@ -1,6 +1,11 @@
-工具：https://www.ethervm.io/decompile
+工具：
 
-https://github.com/Arachnid/evmdis
+1. 在线decompile：https://www.ethervm.io/decompile
+2. 命令行decompile：https://github.com/Arachnid/evmdis
+3. python decompile：https://github.com/crytic/pyevmasm
+4. 图形化decompile：https://github.com/crytic/ethersplay
+5. 其他：https://www.pnfsoftware.com/blog/ethereum-smart-contract-decompiler/
+6. signature查询：https://www.4byte.directory/
 
 
 
