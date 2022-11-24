@@ -98,6 +98,7 @@
     * [第5节:多网络部署相同地址](05_hardhat框架/05_多网络部署相同地址.md)
     <!-- * [第六章:openzeppeline解析](06_openzeppeline解析/README.md) -->
 * [第六章:ethers](06_ethers/README.md)
+    * [第1节:Node.js介绍](06_ethers/01_Node.js介绍.md)
 * [第七章:subgraph](07_subgraph/README.md)
     * [第0节:命令速查](07_subgraph/00_命令速查.md)
     * [第1节:概述](07_subgraph/01_概述.md)
