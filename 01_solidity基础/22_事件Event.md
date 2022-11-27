@@ -19,8 +19,9 @@ contract Event {
     // Event declaration
     // Up to 3 parameters can be indexed.
     // Indexed parameters helps you filter the logs by the indexed parameter
-    event Log(address indexed sender, string message);
-    event AnotherLog();
+    event Log(address indexed sender, string message); // 修饰为indexed
+    event AnotherLog(); // 无参数的事件
+  	event TestAnonymous(address indexed sender, uint256 num) anonymous; // 匿名事件
 
     function test() public {
         emit Log(msg.sender, "Hello World!");
@@ -30,10 +31,10 @@ contract Event {
 }
 ```
 
-当使用indexed关键字时：
+一个事件内可以最多将三个字段修饰为indexed，当使用indexed关键字时，更加方便索引，并且：
 
-1. 如果是值类型的，则直接进行encode
-2. 如果是非值类型，如：array，string等，则使用keccak256哈希值
+1. 如果修饰的是值类型的，则直接展示；
+2. 如果是非值类型，如：array，string等，则使用keccak256哈希值。
 
 参考：
 

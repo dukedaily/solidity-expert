@@ -32,11 +32,15 @@ abstract contract Feline {
 
 // 由于Animal中的构造函数没有进行初始化，所以必须修饰为abstract
 abstract contract Cat1 is Feline, Animal {
-    function utterance() public pure override returns (bytes32) { return "miaow"; }
+    function utterance() public pure override returns (bytes32) { 
+      return "miaow"; 
+    }
 }
 
 contract Cat2 is Feline, Animal("Animal") {
-    function utterance() public pure override returns (bytes32) { return "miaow"; }
+    function utterance() public pure override returns (bytes32) { 
+      return "miaow"; 
+    }
 }
 ```
 

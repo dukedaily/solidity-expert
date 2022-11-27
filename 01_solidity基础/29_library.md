@@ -41,7 +41,9 @@ library Math {
 }
 
 contract TestSafeMath {
-  	// 对uint类型增加SafeMath的方法
+  	// 对uint类型增加SafeMath的方法，
+  	// 1. 后续定义的uint变量就会自动绑定SafeMath提供的方法: uint x;
+  	// 2. 这个变量会作为第一个参数传递给函数: x.add(y);
     using SafeMath for uint;
 
     uint public MAX_UINT = 2**256 - 1;
