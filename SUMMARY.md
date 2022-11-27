@@ -110,6 +110,7 @@
     * [第4节:世界杯竞猜_subgraph](08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md)
     * [第5节:世界杯竞猜_airdrop](08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md)
     * [第6节:世界杯竞猜_upgrade](08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md)
+    * [第7节:世界杯竞猜_multisigWallet](08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_multisigWallet.md)
 * [第九章:EVM详解](09_EVM详解/README.md)
     * [第1节:OPCode手册](09_EVM详解/01_OPCode手册.md)
     * [第2节:EVM-PUZZLES挑战](09_EVM详解/02-evm-puzzles.md)

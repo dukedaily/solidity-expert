@@ -14,8 +14,8 @@ https://docs.soliditylang.org/en/latest/security-considerations.html#sending-and
 
 想接收ether的合约至少包含以下方法中的一个：
 
-1. receive() external payable：msg.data为空时调用
-2. fallback() external payable：msg.data非空时调用
+1. receive() external payable：msg.data为空时调用（为接收ether而生，仅solidity 0.6版本之后)
+2. fallback() external payable：msg.data非空时调用（为执行default逻辑而生，**顺便支持接收ether**）
 
 ```js
 // SPDX-License-Identifier: MIT

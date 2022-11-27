@@ -4,12 +4,6 @@
 
 
 
-上文自2018年后未更新，我们将基于上文，进行补充。
-
-
-
-
-
 ## 其他（重要）
 
 1. evm在线查询：https://github.com/wolflo/evm-opcodes
@@ -97,12 +91,6 @@
 - https://evm.codes
 
 
-
-## Fvictorio - EVM Puzzles
-
-> GitHub 上的交互式 EVM 谜题集，这些谜题可以帮助你巩固从其他资源中学到的知识。
-
-- https://github.com/fvictorio/evm-puzzles
 
 
 
