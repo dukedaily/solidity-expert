@@ -2,7 +2,7 @@
 
 > 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
-# 本节内容
+## 概述
 
 1. WorldCup合约（已经完成）✅
 
@@ -29,7 +29,7 @@
 
 ![image-20221103195114016](assets/image-20221103195114016.png)
 
-## **背景**
+## 背景
 
 | 玩家     | EOA地址                                    | 国家 | 备注     |
 | -------- | ------------------------------------------ | ---- | -------- |
@@ -40,9 +40,9 @@
 
 > 当前世界杯合约：0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3
 
-# 部署奖励Token
+## 部署奖励Token
 
-## WorldCupToken
+### WorldCupToken
 
 ```JavaScript
 // SPDX-License-Identifier: MIT
@@ -63,7 +63,7 @@ contract WorldCupToken is ERC20 {
 }
 ```
 
-## 部署合约
+### 部署合约
 
 ```sh
 # 部署合约
@@ -75,13 +75,13 @@ npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  
 # 0x4c305227E762634CB7d3d9291e42b423eD45f1AD
 ```
 
-# 统计玩家Play数据
+## 统计玩家Play数据
 
 回顾subgraph工作流程（上节介绍）
 
 ![image-20221103195437731](assets/image-20221103195437731.png)
 
-## 编写配置文件
+### 编写配置文件
 
 将下面内容添加到subgraph.yaml中，其中包含对WorldCup合约的监听，以及对发放奖励合约（WorldCupDistributor）的监听。
 
@@ -134,7 +134,7 @@ dataSources:
       file: ./src/world-cup.ts
 ```
 
-## 编写 Schema
+### 编写 Schema
 
 schema.graphql，这些结构相当于数据库，用于在subgraph中存储计算后的数据。
 
@@ -168,7 +168,7 @@ type PlayerDistribution @entity {
 # 更多部分参见源代码....
 ```
 
-## 监听Play事件
+### 监听Play事件
 
 ```JavaScript
 export function handlePlay(event: Play): void {
@@ -207,7 +207,7 @@ export function handlePlay(event: Play): void {
 // 更多部分参见源代码....
 ```
 
-## 监听Finalize事件
+### 监听Finalize事件
 
 ```JavaScript
 export function handleFinialize(event: Finialize): void {
@@ -219,9 +219,9 @@ export function handleFinialize(event: Finialize): void {
 }
 ```
 
-## 部署到subgraph
+### 部署到subgraph
 
-## 方式一：自己部署graphnode节点
+### 方式一：自己部署graphnode节点
 
 这部分我们在上一节已经介绍，按顺序执行即可。
 
@@ -238,11 +238,11 @@ npm run deploy-local
 # Deployed to http://localhost:8000/subgraphs/name/duke/worldcup/graphql
 ```
 
-## 方式二：使用subgraph官方结点
+### 方式二：使用subgraph官方结点
 
 https://thegraph.com/hosted-service/dashboard
 
-## **获取请求Play数据**
+### 获取请求Play数据
 
 启动subgraph后，需要安静等待一会儿，等待数据同步完成后，我们便可以查询，由于之前已经使用3个用户发起过四次Play操作，所以得到结果如下：
 
@@ -264,7 +264,7 @@ https://thegraph.com/hosted-service/dashboard
 
 ![image-20221103195501356](assets/image-20221103195501356.png)
 
-## 获取冠军球队
+### 获取冠军球队
 
 ```JavaScript
 {
@@ -277,9 +277,9 @@ https://thegraph.com/hosted-service/dashboard
 
 ![image-20221103195516620](assets/image-20221103195516620.png)
 
-# 管理员分配奖励
+## 分配奖励分析
 
-## 技术选型
+### 技术选型
 
 1. 使用链下签名方式，让用户链上claim：[opensea](https://testnets.opensea.io/)
    1. 需要为每个用户都生成一个链下的签名，由管理员签发；
@@ -300,7 +300,7 @@ merkleRoot是一个hash值，每个节点是一个叶子（如M），根节点ha
 
 
 
-## 实现思路
+### 实现思路
 
 1. 管理员要根据最终每个人分配到数量，生成一个merkleRoot，写入合约
    1. 需要从subgraph请求Play历史数据
@@ -312,7 +312,7 @@ merkleRoot是一个hash值，每个节点是一个叶子（如M），根节点ha
    2. 然后从subgraph请求自己能够获取的数量。
    3. [调用奖励合约](https://goerli.etherscan.io/tx/0x5959f3fcc6eff7358663b740bff3ce097ed40bf5742634139f6dee0df3cb5f80)，领取奖励
 
-## **奖励流程**
+### **奖励流程**
 
 奖励发放与领取逻辑介绍：
 
@@ -328,7 +328,7 @@ merkleRoot是一个hash值，每个节点是一个叶子（如M），根节点ha
 
 ![image-20221103195541354](assets/image-20221103195541354.png)
 
-## WorldCupDistributor
+### 分配奖励合约
 
 ```JavaScript
 // SPDX-License-Identifier: GPL-2.0-or-later
@@ -406,9 +406,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
 
 部署后，我们需要手动向WorldCupDistributor中转入1w个奖励WorldCupToken，用于后续发放奖励。
 
-## 管理员分发奖励
-
-## **发奖和领奖**
+### 分发奖励
 
 至此，我们完成了对事件的监听，接下来要由管理员进行发奖，Player进行领奖，在合约项目中，直接运行脚本：contracts/scripts/distributeReward.ts，对第0期的所有玩家，发放10000 * 10^18 个奖励，读取数据，生成merkleRoot
 
@@ -424,7 +422,7 @@ npx hardhat run scripts/distributeReward.ts
 
 ![image-20221029221807565](assets/image-20221029221807565.png)
 
-## 监听DistributeReward事件
+### 监听奖励事件
 
 - 遍历本期所有的Play记录
 
@@ -511,7 +509,7 @@ export function handleDistributeReward(event: DistributeReward): void {
 }
 ```
 
-## 查询分配结果
+### 查询分配结果
 
 - 第0期
 
@@ -524,15 +522,13 @@ export function handleDistributeReward(event: DistributeReward): void {
 | user2 | 0      | 0      | 2      | 7           | 10000       | 2/7* 10000  | 2857.142857142857 |
 | user3 | 0      | 0      | 2      | 7           | 10000       | 2/7* 10000  | 2857.142857142857 |
 
-# 用户领取奖励
+### 用户领取奖励
 
 运行脚本，获取领取信息
 
 ```sh
 npx hardhat run scripts/distributeReward.ts
 ```
-
-
 
 用户领取奖励：调用奖励合约的claim方法，tx：https://goerli.etherscan.io/tx/0x5959f3fcc6eff7358663b740bff3ce097ed40bf5742634139f6dee0df3cb5f80，注意此处的amount是脚本中读取subgraph获取的，proof也是本地计算得出来的。
 
@@ -542,7 +538,7 @@ npx hardhat run scripts/distributeReward.ts
 
 ![image-20221029222447092](assets/image-20221029222447092.png)
 
-# 小结
+## 小结
 
 至此，我们终于把奖励发放介绍完了，业务逻辑比较复杂，这是主流的方法奖励方式，接下来的课程中，我们将一起学习链下签名相关内容，并且引入个人中心，使用NFT作为用户头像。
 

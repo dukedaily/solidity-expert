@@ -2,8 +2,6 @@
 
 >  本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
-
-
 ## 概述
 
 subgraph是DAPP领域最重要的基建之一，主流协议都在使用，其功能为：

@@ -2,14 +2,14 @@
 
 > 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
-![hardhat-logo](assets/hardhat-logo.png)
-
-## 内容概述
+## 概述
 
 通过学习，掌握最主流的开发框架hardhat，从而了解如何管理以太坊工程代码，并掌握如何进行常用操作，单元测试等。
 
 1. [点击查看效果](https://solidity-expert-worldcup.vercel.app/)
 1. [点击获取代码](https://github.com/dukedaily/solidity-expert/blob/main/08_项目实战-世界杯竞猜/)
+
+![hardhat-logo](assets/hardhat-logo.png)
 
 ## 前置条件
 

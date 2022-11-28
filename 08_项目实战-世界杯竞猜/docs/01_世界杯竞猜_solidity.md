@@ -2,9 +2,7 @@
 
 >  本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
-
-
-## 内容概述
+## 概述
 
 通过学习，初步了解以太坊开发的基础工具链，通过一个案例（世界杯精彩）实战，使大家掌握基本的solidity开发，完成语法学习。
 
