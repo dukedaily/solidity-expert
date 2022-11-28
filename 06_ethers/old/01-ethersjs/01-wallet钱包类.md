@@ -6,6 +6,4 @@
 
 
 
-
-
 nonce就是：    let nonce = await web3.eth.getTransactionCount(account.address)

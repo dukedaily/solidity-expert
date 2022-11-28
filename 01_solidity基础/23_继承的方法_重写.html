@@ -723,25 +723,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.30" data-path="30_规范.html">
+        <li class="chapter " data-level="1.6.30" data-path="30_传递结构体.html">
             
-                <a href="30_规范.html">
-            
-                    
-                    第30节:规范
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.31" data-path="31_传递结构体.html">
-            
-                <a href="31_传递结构体.html">
+                <a href="30_传递结构体.html">
             
                     
-                    第31节:传递结构体
+                    第30节:传递结构体
             
                 </a>
             
@@ -989,12 +976,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.18" data-path="../02_solidity进阶/18_汇编.md">
+        <li class="chapter " data-level="1.7.18" data-path="../02_solidity进阶/18_Assembly.html">
             
-                <span>
+                <a href="../02_solidity进阶/18_Assembly.html">
             
                     
-                    第18节:汇编
+                    第18节:Assembly
             
                 </a>
             
@@ -1002,12 +989,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.19" data-path="../02_solidity进阶/20_sign-verify.html">
+        <li class="chapter " data-level="1.7.19" data-path="../02_solidity进阶/19_merkleTree.html">
             
-                <a href="../02_solidity进阶/20_sign-verify.html">
+                <a href="../02_solidity进阶/19_merkleTree.html">
             
                     
-                    第20节:sign-verify
+                    第19节:MerkleTree
             
                 </a>
             
@@ -1015,7 +1002,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.20" data-path="../02_solidity进阶/21_EventLog.html">
+        <li class="chapter " data-level="1.7.20" data-path="../02_solidity进阶/20_signature.html">
+            
+                <a href="../02_solidity进阶/20_signature.html">
+            
+                    
+                    第20节:Signature
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.21" data-path="../02_solidity进阶/21_EventLog.html">
             
                 <a href="../02_solidity进阶/21_EventLog.html">
             
@@ -1028,38 +1028,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.21" data-path="../02_solidity进阶/22_EVM.html">
+        <li class="chapter " data-level="1.7.22" data-path="../02_solidity进阶/22_math.html">
             
-                <a href="../02_solidity进阶/22_EVM.html">
-            
-                    
-                    第22节:了解EVM
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.22" data-path="../02_solidity进阶/23_math.html">
-            
-                <a href="../02_solidity进阶/23_math.html">
+                <a href="../02_solidity进阶/22_math.html">
             
                     
-                    第23节:math
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.23" data-path="../02_solidity进阶/24_最佳实践.html">
-            
-                <a href="../02_solidity进阶/24_最佳实践.html">
-            
-                    
-                    第24节:最佳实践
+                    第22节:math
             
                 </a>
             
@@ -1551,6 +1525,32 @@
             
                     
                     第6节:世界杯竞猜_upgrade
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.7" data-path="../08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_链下签名.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_链下签名.html">
+            
+                    
+                    第7节:世界杯竞猜_链下签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.8" data-path="../08_项目实战-世界杯竞猜/docs/08_世界杯竞猜_多签钱包.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/docs/08_世界杯竞猜_多签钱包.html">
+            
+                    
+                    第8节:世界杯竞猜_多签钱包
             
                 </a>
             
@@ -2052,6 +2052,7 @@
 <li>如果子合约想覆盖父合约的方法，则需要使用关键字：override</li>
 <li>在子合约中如果想调用父合约的方法，需要使用关键字：super</li>
 <li>继承的顺序很重要，遵循最远继承，即后面继承的合约会覆盖前面父合约的方法</li>
+<li>super会调用继承链条上的每一个合约的相关函数，而不仅仅是最近的父合约</li>
 </ol>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.10</span>;
@@ -2107,24 +2108,26 @@ contract D is B, C {
     <span class="hljs-comment">// Try:</span>
     <span class="hljs-comment">// - Call D.foo and check the transaction logs.</span>
     <span class="hljs-comment">//   Although D inherits A, B and C, it only called C and then A.</span>
-    <span class="hljs-comment">// - Call D.bar and check the transaction logs</span>
-    <span class="hljs-comment">//   D called C, then B, and finally A.</span>
-    <span class="hljs-comment">//   Although super was called twice (by B and C) it only called A once.</span>
+
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">override</span>(<span class="hljs-params">B, C</span>) </span>{
         <span class="hljs-built_in">super</span>.foo();
     }
 
+      <span class="hljs-comment">// Try:</span>
+    <span class="hljs-comment">// - Call D.bar and check the transaction logs</span>
+    <span class="hljs-comment">//   D called C, then B, and finally A.</span>
+    <span class="hljs-comment">//   Although super was called twice (by B and C) it only called A once.</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">override</span>(<span class="hljs-params">B, C</span>) </span>{
         <span class="hljs-built_in">super</span>.bar();
     }
 }
 </code></pre>
-<p>其中：</p>
+<p>详细解析：</p>
 <ol>
-<li>调用foo的时候，由于B，C中的foo都没有使用super，所以只是覆盖问题，根据最远继承，C
-覆盖了B，所以执行顺序为：D -&gt; C -&gt; A</li>
-<li>调用bar的时候，由于B，C中的bar使用了super，此时D的两个parent都需要执行一遍，因此为D-&gt; C -&gt; B -&gt; A</li>
+<li>D调用foo的时候，由于B，C中的foo都没有使用super，所以只是覆盖问题，根据最远继承，C
+覆盖了B，所以执行顺序为：D -&gt; C -&gt; A；</li>
+<li>D调用bar的时候，由于B，C中的bar使用了super，此时D的两个parent都需要执行一遍，因此为D-&gt; C -&gt; B -&gt; A，整个过程中A合约只会被调用一次。具体原因是Solidity借鉴了Python的方式，强制一个由基类构成的DAG（有向无环图）使其保证一个特定的顺序。</li>
 </ol>
 
                                 
@@ -2153,7 +2156,7 @@ contract D is B, C {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第23节:继承的方法_重写","level":"1.6.23","depth":2,"next":{"title":"第24节:继承状态变量_覆盖","level":"1.6.24","depth":2,"path":"01_solidity基础/24_继承状态变量_覆盖.md","ref":"01_solidity基础/24_继承状态变量_覆盖.md","articles":[]},"previous":{"title":"第22节:事件Event","level":"1.6.22","depth":2,"path":"01_solidity基础/22_事件Event.md","ref":"01_solidity基础/22_事件Event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/23_继承的方法_重写.md","mtime":"2022-11-17T14:39:18.000Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-24T00:42:34.280Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第23节:继承的方法_重写","level":"1.6.23","depth":2,"next":{"title":"第24节:继承状态变量_覆盖","level":"1.6.24","depth":2,"path":"01_solidity基础/24_继承状态变量_覆盖.md","ref":"01_solidity基础/24_继承状态变量_覆盖.md","articles":[]},"previous":{"title":"第22节:事件Event","level":"1.6.22","depth":2,"path":"01_solidity基础/22_事件Event.md","ref":"01_solidity基础/22_事件Event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/23_继承的方法_重写.md","mtime":"2022-11-26T04:18:34.636Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T05:18:19.765Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
