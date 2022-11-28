@@ -294,6 +294,12 @@ merkleRoot是一个hash值，每个节点是一个叶子（如M），根节点ha
 
 ![image-20221103195527242](assets/image-20221103195527242.png)
 
+
+
+[在线体验MerkleRoot案例](https://lab.miguelmota.com/merkletreejs/example/)
+
+
+
 ## 实现思路
 
 1. 管理员要根据最终每个人分配到数量，生成一个merkleRoot，写入合约
@@ -539,8 +545,6 @@ npx hardhat run scripts/distributeReward.ts
 # 小结
 
 至此，我们终于把奖励发放介绍完了，业务逻辑比较复杂，这是主流的方法奖励方式，接下来的课程中，我们将一起学习链下签名相关内容，并且引入个人中心，使用NFT作为用户头像。
-
-
 
 
 
