@@ -2049,7 +2049,7 @@
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
-<h1 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h1>
+<h2 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
 <p>想必大家都知道区块链的特点，即：数据公开、可追溯、不可篡改，这个在比特币身上为人津津乐道。但是到了以太坊上，由于支持编写智能合约，即程序，那么数据不可篡改就变成了一个棘手的问题：</p>
 <ol>
 <li>如果程序有bug怎么补救？</li>
@@ -2072,8 +2072,8 @@
 <li><p>ETH的USDC是可升级的，<a href="https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48#code" target="_blank">点击查看</a></p>
 </li>
 </ul>
-<h1 id="升级分析"><a name="升级分析" class="plugin-anchor" href="#升级分析"><i class="fa fa-link" aria-hidden="true"></i></a>升级分析</h1>
-<h2 id="1-升级的原理"><a name="1-升级的原理" class="plugin-anchor" href="#1-升级的原理"><i class="fa fa-link" aria-hidden="true"></i></a>1. 升级的原理</h2>
+<h2 id="升级分析"><a name="升级分析" class="plugin-anchor" href="#升级分析"><i class="fa fa-link" aria-hidden="true"></i></a>升级分析</h2>
+<h3 id="1-升级的原理"><a name="1-升级的原理" class="plugin-anchor" href="#1-升级的原理"><i class="fa fa-link" aria-hidden="true"></i></a>1. 升级的原理</h3>
 <p>对于普通的合约，一般是用户直接与业务逻辑交互，如下图所示：</p>
 <p><img src="assets/image-20221112190432057.png" alt="image-20221112190432057"></p>
 <pre><code class="lang-js"><span class="hljs-comment">// 简化表达</span>
@@ -2087,7 +2087,7 @@ User ---- tx ---&gt; <span class="hljs-built_in">Proxy</span> ----------&gt; Imp
                      |
                       ------------&gt; Implementation_v1
 </code></pre>
-<h2 id="2-代理转发delegatecall"><a name="2-代理转发delegatecall" class="plugin-anchor" href="#2-代理转发delegatecall"><i class="fa fa-link" aria-hidden="true"></i></a>2. 代理转发delegatecall</h2>
+<h3 id="2-代理转发delegatecall"><a name="2-代理转发delegatecall" class="plugin-anchor" href="#2-代理转发delegatecall"><i class="fa fa-link" aria-hidden="true"></i></a>2. 代理转发delegatecall</h3>
 <p>既然业务合约（Logic1和Logic2）可以随意的进行替换，那么说明数据与逻辑一定是分离的，那数据存储在哪里呢？你可能已经猜到了，数据一定是存储在Proxy中的，即业务逻辑执行后，将数据写入到proxy中，大致如下：</p>
 <p><img src="assets/image-20221112191131679.png" alt="image-20221112191131679"></p>
 <p>用户调用代理合约，代理合约调用逻辑合约，并将数据最终写入到Proxy的存储空间中，因此逻辑合约可以随时被替换。</p>
@@ -2141,11 +2141,11 @@ contract <span class="hljs-built_in">Proxy</span> {
     }
 }
 </code></pre>
-<h2 id="3-为什么会有存储冲突？"><a name="3-为什么会有存储冲突？" class="plugin-anchor" href="#3-为什么会有存储冲突？"><i class="fa fa-link" aria-hidden="true"></i></a>3. 为什么会有存储冲突？</h2>
+<h3 id="3-为什么会有存储冲突？"><a name="3-为什么会有存储冲突？" class="plugin-anchor" href="#3-为什么会有存储冲突？"><i class="fa fa-link" aria-hidden="true"></i></a>3. 为什么会有存储冲突？</h3>
 <p>在solidity中，状态变量存储在slot中，slot可以理解为key-value存储空间，evm为每个合约代码提供了最多2^256个slot，每个slot可以最多存储32字节数据。(key-&gt;value, 32bytes -&gt; 32bytes)</p>
 <p>状态变量一般是从slot 0开始进行存储的，在使用delegatecall的时候，由于需要在<code>Proxy</code>的slot中存储<code>目标合约</code>中指定的数据结构，此时如果proxy的storage布局与目标合约的storage布局不相同，那么就会出现存储冲突（Storage collisioin）的问题，即：<strong>目标合约在Proxy合约中修改了错误的位置。</strong></p>
 <p><img src="assets/image-20221112194610101.png" alt="image-20221112194610101"></p>
-<pre><code class="lang-j">|Proxy                     |Implementation           |
+<pre><code class="lang-js">|<span class="hljs-built_in">Proxy</span>                     |Implementation           |
 |--------------------------|-------------------------|
 |address _implementation   |address _owner           | &lt;=== Storage collision!
 |...                       |mapping _balances        |
@@ -2153,7 +2153,7 @@ contract <span class="hljs-built_in">Proxy</span> {
 |                          |...                      |
 </code></pre>
 <p>如图所示，由于在Proyx中需要存储逻辑合约的地址，而在逻辑合约中不用存储，所以此时两个合约的storage布局不同，两者的slot 0分别存储的是 <strong>逻辑合约地址_imp</strong> 和<strong>管理员地址</strong>，因此当逻辑合约想修改owner时，会错误的修改了_imp地址。</p>
-<h2 id="4-解决存储冲突"><a name="4-解决存储冲突" class="plugin-anchor" href="#4-解决存储冲突"><i class="fa fa-link" aria-hidden="true"></i></a>4. 解决存储冲突</h2>
+<h3 id="4-解决存储冲突"><a name="4-解决存储冲突" class="plugin-anchor" href="#4-解决存储冲突"><i class="fa fa-link" aria-hidden="true"></i></a>4. 解决存储冲突</h3>
 <p>在代理合约Proxy中，一共需要指定两个状态变量：</p>
 <ul>
 <li>逻辑合约地址implementation，用来指明被代理的合约；</li>
@@ -2187,7 +2187,7 @@ bytes32(uint256(keccak256(<span class="hljs-string">&apos;eip1967.proxy.admin&ap
 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103
 </code></pre>
 <p>当proxy将两个状态变量存储在特定位置后，由于将默认slot的空间留给了业务合约，因此相当于storage布局与逻辑合约一致了，冲突解决！</p>
-<h2 id="4-务必遵循升级规则"><a name="4-务必遵循升级规则" class="plugin-anchor" href="#4-务必遵循升级规则"><i class="fa fa-link" aria-hidden="true"></i></a>4. 务必遵循升级规则</h2>
+<h3 id="4-务必遵循升级规则"><a name="4-务必遵循升级规则" class="plugin-anchor" href="#4-务必遵循升级规则"><i class="fa fa-link" aria-hidden="true"></i></a>4. 务必遵循升级规则</h3>
 <p>按照上述方式进行storage布局，我们解决了proxy和implementation之间的存储冲突问题，但是在执行的时候，Implementation0 和implementation1之间还是可能会存在storage collision问题，为何？</p>
 <p>因为如果在新合约Implementation1中，改变了Implementation0中原始状态变量的顺序，那么就会出现存储冲突问题，如下图</p>
 <pre><code class="lang-sh">|Implementation_v0   |Implementation_v1        |
@@ -2208,10 +2208,10 @@ Correct storage preservation:
 |                    |...                      |
 </code></pre>
 <p>所以在升级的合约Implementation1中，如果有新变量的添加，那么新的状态变量只能添加在原始合约状态末尾依次往后添加，切记切记，否则升级失败！</p>
-<h2 id="5-initializer代替constructor"><a name="5-initializer代替constructor" class="plugin-anchor" href="#5-initializer代替constructor"><i class="fa fa-link" aria-hidden="true"></i></a>5. initializer代替constructor</h2>
+<h3 id="5-initializer代替constructor"><a name="5-initializer代替constructor" class="plugin-anchor" href="#5-initializer代替constructor"><i class="fa fa-link" aria-hidden="true"></i></a>5. initializer代替constructor</h3>
 <p>如果一个合约定义为可升级的，那么这个合约需要将构造函数移除（如有），并且使用initialize函数来代替初始化工作。原因为：我们需要将部署时的数据存储在Proxy合约中，如果提供了构造函数，这些数据就会错误的写在了逻辑合约中。</p>
-<h1 id="代码集成"><a name="代码集成" class="plugin-anchor" href="#代码集成"><i class="fa fa-link" aria-hidden="true"></i></a>代码集成</h1>
-<h2 id="1-修改原有代码"><a name="1-修改原有代码" class="plugin-anchor" href="#1-修改原有代码"><i class="fa fa-link" aria-hidden="true"></i></a>1. 修改原有代码</h2>
+<h2 id="代码集成"><a name="代码集成" class="plugin-anchor" href="#代码集成"><i class="fa fa-link" aria-hidden="true"></i></a>代码集成</h2>
+<h3 id="1-修改原有代码"><a name="1-修改原有代码" class="plugin-anchor" href="#1-修改原有代码"><i class="fa fa-link" aria-hidden="true"></i></a>1. 修改原有代码</h3>
 <p>说了这么多，我们测试一下升级，我们使用openzeppelin标准库来完成合约升级，并且使用<a href="https://docs.openzeppelin.com/upgrades-plugins/1.x/" target="_blank">hardhat-upgrade</a>来进行集成。</p>
 <p>为了实现合约升级，我们需要改写一下原来的Worldcup代码，将构造函数去掉，增加初始化函数</p>
 <pre><code class="lang-sh"><span class="hljs-comment"># 安装升级版本的合约，我们需要使用标准的初始化函数</span>
@@ -2234,7 +2234,7 @@ $ npm i @openzeppelin/contracts-upgradeable
       }   
     }
 </code></pre>
-<h2 id="2-编写准备升级的新合约"><a name="2-编写准备升级的新合约" class="plugin-anchor" href="#2-编写准备升级的新合约"><i class="fa fa-link" aria-hidden="true"></i></a>2. 编写准备升级的新合约</h2>
+<h3 id="2-编写准备升级的新合约"><a name="2-编写准备升级的新合约" class="plugin-anchor" href="#2-编写准备升级的新合约"><i class="fa fa-link" aria-hidden="true"></i></a>2. 编写准备升级的新合约</h3>
 <p>创建升级合约WorldCupV2.sol，与V1相比，增加了代码，包括：一个函数，一个状态变量，一个事件，具体如下：</p>
 <pre><code class="lang-js">        <span class="hljs-comment">// event ChangeDeadline(uint256 _prev, uint256 _curr);</span>
         <span class="hljs-comment">// uint256 changeCount</span>
@@ -2257,7 +2257,7 @@ $ npm i @openzeppelin/contracts-upgradeable
 $ Successfully generated 86 typings!
 $ Compiled 24 Solidity files successfully
 </code></pre>
-<h2 id="3-安装升级插件"><a name="3-安装升级插件" class="plugin-anchor" href="#3-安装升级插件"><i class="fa fa-link" aria-hidden="true"></i></a>3. 安装升级插件</h2>
+<h3 id="3-安装升级插件"><a name="3-安装升级插件" class="plugin-anchor" href="#3-安装升级插件"><i class="fa fa-link" aria-hidden="true"></i></a>3. 安装升级插件</h3>
 <pre><code class="lang-sh"><span class="hljs-comment"># 升级插件，在部署脚本中使用</span>
 $ npm install --save-dev @openzeppelin/hardhat-upgrades
 </code></pre>
@@ -2265,7 +2265,7 @@ $ npm install --save-dev @openzeppelin/hardhat-upgrades
 <pre><code class="lang-js"><span class="hljs-comment">// hardhat.config.js</span>
 <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;@openzeppelin/hardhat-upgrades&apos;</span>);
 </code></pre>
-<h2 id="4-编写升级脚本"><a name="4-编写升级脚本" class="plugin-anchor" href="#4-编写升级脚本"><i class="fa fa-link" aria-hidden="true"></i></a>4. 编写升级脚本</h2>
+<h3 id="4-编写升级脚本"><a name="4-编写升级脚本" class="plugin-anchor" href="#4-编写升级脚本"><i class="fa fa-link" aria-hidden="true"></i></a>4. 编写升级脚本</h3>
 <p>contracts/scripts/upgrade/deployAndUpgrade.ts，</p>
 <ol>
 <li>部署WorldCupV1合约，读取deadline；</li>
@@ -2302,7 +2302,7 @@ $ npm install --save-dev @openzeppelin/hardhat-upgrades
 
 main();
 </code></pre>
-<h2 id="5-部署并升级合约"><a name="5-部署并升级合约" class="plugin-anchor" href="#5-部署并升级合约"><i class="fa fa-link" aria-hidden="true"></i></a>5. 部署并升级合约</h2>
+<h3 id="5-部署并升级合约"><a name="5-部署并升级合约" class="plugin-anchor" href="#5-部署并升级合约"><i class="fa fa-link" aria-hidden="true"></i></a>5. 部署并升级合约</h3>
 <pre><code class="lang-sh">npx hardhat run scripts/upgrade/deployAndUpgrade.ts --network goerli
 </code></pre>
 <p><img src="assets/image-20221112222152720.png" alt="image-20221112222152720"></p>
@@ -2316,7 +2316,7 @@ main();
 <pre><code class="lang-sh">npx hardhat verify 0x4cb210f91b6d95978d1cf055ddf88701c57c01f0  --network goerli
 </code></pre>
 <p><img src="assets/image-20221112223728089.png" alt="image-20221112223728089"></p>
-<h2 id="6-关联合约"><a name="6-关联合约" class="plugin-anchor" href="#6-关联合约"><i class="fa fa-link" aria-hidden="true"></i></a>6. 关联合约</h2>
+<h3 id="6-关联合约"><a name="6-关联合约" class="plugin-anchor" href="#6-关联合约"><i class="fa fa-link" aria-hidden="true"></i></a>6. 关联合约</h3>
 <p>能走到这里说明你已经是个高手了，接下来是最后一步，我们即将代理合约与逻辑合约关联起来，操作为：找到代理合约-&gt; More Options -&gt; Is this a proxy? -&gt; Verify -&gt; Save</p>
 <p><img src="assets/image-20221112224119330.png" alt="image-20221112224119330"></p>
 <p>此时代理合约会自动根据我们的设置，自动去关联逻辑合约</p>
@@ -2324,7 +2324,7 @@ main();
 <p>再次回到代理合约页面，你会惊奇的发现，页面上多了两个按钮：Read as Proxy 和 Write as Proxy，查看数据，发现正好是我们设置的值，因此升级成功！</p>
 <p><img src="assets/image-20221112224346887.png" alt="image-20221112224346887"></p>
 <p>我们最终暴露给用户的地址就是这个代理合约，用户的所有操作都相当于在读写着两个新方法，这两个方法会被Proxy传递到逻辑合约中，并把执行结果返回到代理合约中，这就是delegatecall的力量！</p>
-<h1 id="transparentproxy合约关系"><a name="transparentproxy合约关系" class="plugin-anchor" href="#transparentproxy合约关系"><i class="fa fa-link" aria-hidden="true"></i></a>TransparentProxy合约关系</h1>
+<h2 id="transparentproxy合约关系"><a name="transparentproxy合约关系" class="plugin-anchor" href="#transparentproxy合约关系"><i class="fa fa-link" aria-hidden="true"></i></a>TransparentProxy合约关系</h2>
 <p>通过hardhat-upgrade包执行部署后，一共会自动部署三个合约：</p>
 <ol>
 <li>代理合约：TransparentUpgradebleProxy</li>
@@ -2339,10 +2339,10 @@ main();
 <li>自动部署WorldCupV2合约；</li>
 <li>调用ProxyAdmin的upgrade方法，进行升级，<a href="https://goerli.etherscan.io/tx/0xf5547bba64f8f0880237d1e56bbbea0deeb5be4520a2867639b2cc0a4de3abaf" target="_blank">点击查看</a>。</li>
 </ol>
-<h1 id="总结"><a name="总结" class="plugin-anchor" href="#总结"><i class="fa fa-link" aria-hidden="true"></i></a>总结</h1>
+<h2 id="总结"><a name="总结" class="plugin-anchor" href="#总结"><i class="fa fa-link" aria-hidden="true"></i></a>总结</h2>
 <p>本节我们系统的介绍了solidity中最主流的的代理方式：Transparent，代理合约使用delegatecall将用户的请求透传给业务合约，从而保证用户在无感知的情况下完成合约的升级。</p>
 <p>合约升级带来好处显而易见，但是同时也意味着合约可以被随意的篡改或者做坏事，但是这就不是单纯的技术能够解决的问题了，由于升级操作只能有管理员来进行，所以将权力交给社区，由Dao组织来管理可能是一个比较好的选择。</p>
-<h1 id="参考链接"><a name="参考链接" class="plugin-anchor" href="#参考链接"><i class="fa fa-link" aria-hidden="true"></i></a>参考链接</h1>
+<h2 id="参考链接"><a name="参考链接" class="plugin-anchor" href="#参考链接"><i class="fa fa-link" aria-hidden="true"></i></a>参考链接</h2>
 <ul>
 <li><p><a href="https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies" target="_blank">https://docs.openzeppelin.com/upgrades-plugins/1.x/proxies</a></p>
 </li>
@@ -2381,7 +2381,7 @@ main();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第6节:世界杯竞猜_upgrade","level":"1.13.6","depth":2,"next":{"title":"第7节:世界杯竞猜_链下签名","level":"1.13.7","depth":2,"path":"08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_链下签名.md","ref":"08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_链下签名.md","articles":[]},"previous":{"title":"第5节:世界杯竞猜_airdrop","level":"1.13.5","depth":2,"path":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","ref":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","mtime":"2022-11-21T02:18:34.018Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T05:18:19.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第6节:世界杯竞猜_upgrade","level":"1.13.6","depth":2,"next":{"title":"第7节:世界杯竞猜_链下签名","level":"1.13.7","depth":2,"path":"08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_链下签名.md","ref":"08_项目实战-世界杯竞猜/docs/07_世界杯竞猜_链下签名.md","articles":[]},"previous":{"title":"第5节:世界杯竞猜_airdrop","level":"1.13.5","depth":2,"path":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","ref":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","mtime":"2022-11-28T14:44:54.955Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T14:46:07.248Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

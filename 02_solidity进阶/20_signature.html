@@ -2045,8 +2045,19 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第20节：sign-verify"><a name="第20节：sign-verify" class="plugin-anchor" href="#第20节：sign-verify"><i class="fa fa-link" aria-hidden="true"></i></a>第20节：sign verify</h1>
-<p><a href="https://github.com/dukedaily/hello-erc20-permit" target="_blank">https://github.com/dukedaily/hello-erc20-permit</a></p>
+                                <h1 id="第20节：链下签名signature"><a name="第20节：链下签名signature" class="plugin-anchor" href="#第20节：链下签名signature"><i class="fa fa-link" aria-hidden="true"></i></a>第20节：链下签名signature</h1>
+<p>在openzeppelin标准合约中，已经实现了对ECDSA标准合约，我们拆解一下，整个签名验证过程可以分为三个阶段（详见下图）</p>
+<ol>
+<li>阶段一：打包原始消息，生成hash</li>
+<li>阶段二：添加前缀，生成待签名的hash</li>
+<li>阶段三：解析签名，获得解析的地址1</li>
+<li>阶段四：校验地址1与实际签名的地址</li>
+</ol>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221127223259928.png" alt="image-20221127223259928"></p>
+<ul>
+<li>理论详见：08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.md</li>
+<li>代码详见：<a href="https://github.com/dukedaily/hello-erc20-permit" target="_blank">https://github.com/dukedaily/hello-erc20-permit</a></li>
+</ul>
 
                                 
                                 </section>
@@ -2074,7 +2085,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第20节:Signature","level":"1.7.20","depth":2,"next":{"title":"第21节:EventLog","level":"1.7.21","depth":2,"path":"02_solidity进阶/21_EventLog.md","ref":"02_solidity进阶/21_EventLog.md","articles":[]},"previous":{"title":"第19节:MerkleTree","level":"1.7.19","depth":2,"path":"02_solidity进阶/19_merkleTree.md","ref":"02_solidity进阶/19_merkleTree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/20_signature.md","mtime":"2022-11-28T05:03:58.079Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T05:18:19.765Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第20节:Signature","level":"1.7.20","depth":2,"next":{"title":"第21节:EventLog","level":"1.7.21","depth":2,"path":"02_solidity进阶/21_EventLog.md","ref":"02_solidity进阶/21_EventLog.md","articles":[]},"previous":{"title":"第19节:MerkleTree","level":"1.7.19","depth":2,"path":"02_solidity进阶/19_merkleTree.md","ref":"02_solidity进阶/19_merkleTree.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/20_signature.md","mtime":"2022-11-28T14:31:03.377Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T14:46:07.248Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2049,7 +2049,7 @@
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
-<h1 id="本节内容"><a name="本节内容" class="plugin-anchor" href="#本节内容"><i class="fa fa-link" aria-hidden="true"></i></a>本节内容</h1>
+<h2 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
 <ol>
 <li><p>WorldCup合约（已经完成）✅</p>
 </li>
@@ -2074,7 +2074,7 @@
 </li>
 </ul>
 <p><img src="assets/image-20221103195114016.png" alt="image-20221103195114016"></p>
-<h2 id="背景"><a name="背景" class="plugin-anchor" href="#背景"><i class="fa fa-link" aria-hidden="true"></i></a><strong>背景</strong></h2>
+<h2 id="背景"><a name="背景" class="plugin-anchor" href="#背景"><i class="fa fa-link" aria-hidden="true"></i></a>背景</h2>
 <table>
 <thead>
 <tr>
@@ -2113,8 +2113,8 @@
 <blockquote>
 <p>当前世界杯合约：0x0fd554503c88E9cE02D6f81799F928c8Aa202Dd3</p>
 </blockquote>
-<h1 id="部署奖励token"><a name="部署奖励token" class="plugin-anchor" href="#部署奖励token"><i class="fa fa-link" aria-hidden="true"></i></a>部署奖励Token</h1>
-<h2 id="worldcuptoken"><a name="worldcuptoken" class="plugin-anchor" href="#worldcuptoken"><i class="fa fa-link" aria-hidden="true"></i></a>WorldCupToken</h2>
+<h2 id="部署奖励token"><a name="部署奖励token" class="plugin-anchor" href="#部署奖励token"><i class="fa fa-link" aria-hidden="true"></i></a>部署奖励Token</h2>
+<h3 id="worldcuptoken"><a name="worldcuptoken" class="plugin-anchor" href="#worldcuptoken"><i class="fa fa-link" aria-hidden="true"></i></a>WorldCupToken</h3>
 <pre><code class="lang-JavaScript"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.9</span>;
 
@@ -2132,7 +2132,7 @@ contract WorldCupToken is ERC20 {
     }
 }
 </code></pre>
-<h2 id="部署合约"><a name="部署合约" class="plugin-anchor" href="#部署合约"><i class="fa fa-link" aria-hidden="true"></i></a>部署合约</h2>
+<h3 id="部署合约"><a name="部署合约" class="plugin-anchor" href="#部署合约"><i class="fa fa-link" aria-hidden="true"></i></a>部署合约</h3>
 <pre><code class="lang-sh"><span class="hljs-comment"># 部署合约</span>
 npx hardhat run scripts/deployWorldCupToken --network goerli
 
@@ -2141,10 +2141,10 @@ npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  
 
 <span class="hljs-comment"># 0x4c305227E762634CB7d3d9291e42b423eD45f1AD</span>
 </code></pre>
-<h1 id="统计玩家play数据"><a name="统计玩家play数据" class="plugin-anchor" href="#统计玩家play数据"><i class="fa fa-link" aria-hidden="true"></i></a>统计玩家Play数据</h1>
+<h2 id="统计玩家play数据"><a name="统计玩家play数据" class="plugin-anchor" href="#统计玩家play数据"><i class="fa fa-link" aria-hidden="true"></i></a>统计玩家Play数据</h2>
 <p>回顾subgraph工作流程（上节介绍）</p>
 <p><img src="assets/image-20221103195437731.png" alt="image-20221103195437731"></p>
-<h2 id="编写配置文件"><a name="编写配置文件" class="plugin-anchor" href="#编写配置文件"><i class="fa fa-link" aria-hidden="true"></i></a>编写配置文件</h2>
+<h3 id="编写配置文件"><a name="编写配置文件" class="plugin-anchor" href="#编写配置文件"><i class="fa fa-link" aria-hidden="true"></i></a>编写配置文件</h3>
 <p>将下面内容添加到subgraph.yaml中，其中包含对WorldCup合约的监听，以及对发放奖励合约（WorldCupDistributor）的监听。</p>
 <p><img src="assets/image-20221103200112151.png" alt="image-20221103200112151"></p>
 <pre><code class="lang-YAML"><span class="hljs-attr">specVersion:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.4</span>
@@ -2192,7 +2192,7 @@ npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  
           <span class="hljs-attr">handler:</span> <span class="hljs-string">handleClaimed</span>
       <span class="hljs-attr">file:</span> <span class="hljs-string">./src/world-cup.ts</span>
 </code></pre>
-<h2 id="编写-schema"><a name="编写-schema" class="plugin-anchor" href="#编写-schema"><i class="fa fa-link" aria-hidden="true"></i></a>编写 Schema</h2>
+<h3 id="编写-schema"><a name="编写-schema" class="plugin-anchor" href="#编写-schema"><i class="fa fa-link" aria-hidden="true"></i></a>编写 Schema</h3>
 <p>schema.graphql，这些结构相当于数据库，用于在subgraph中存储计算后的数据。</p>
 <pre><code class="lang-YAML"><span class="hljs-comment"># 玩家Player详情</span>
 <span class="hljs-string">type</span> <span class="hljs-string">PlayRecord</span> <span class="hljs-string">@entity</span> {
@@ -2222,7 +2222,7 @@ npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  
 
 <span class="hljs-comment"># 更多部分参见源代码....</span>
 </code></pre>
-<h2 id="监听play事件"><a name="监听play事件" class="plugin-anchor" href="#监听play事件"><i class="fa fa-link" aria-hidden="true"></i></a>监听Play事件</h2>
+<h3 id="监听play事件"><a name="监听play事件" class="plugin-anchor" href="#监听play事件"><i class="fa fa-link" aria-hidden="true"></i></a>监听Play事件</h3>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePlay</span>(<span class="hljs-params">event: Play</span>): <span class="hljs-title">void</span> </span>{
   <span class="hljs-comment">// 统计所有的play事件，存储起来</span>
   <span class="hljs-comment">// 1. get id </span>
@@ -2258,7 +2258,7 @@ npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  
 
 <span class="hljs-comment">// 更多部分参见源代码....</span>
 </code></pre>
-<h2 id="监听finalize事件"><a name="监听finalize事件" class="plugin-anchor" href="#监听finalize事件"><i class="fa fa-link" aria-hidden="true"></i></a>监听Finalize事件</h2>
+<h3 id="监听finalize事件"><a name="监听finalize事件" class="plugin-anchor" href="#监听finalize事件"><i class="fa fa-link" aria-hidden="true"></i></a>监听Finalize事件</h3>
 <pre><code class="lang-JavaScript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleFinialize</span>(<span class="hljs-params">event: Finialize</span>): <span class="hljs-title">void</span> </span>{
   <span class="hljs-keyword">let</span> id = event.params._currRound.toString();
   <span class="hljs-keyword">let</span> entity = <span class="hljs-keyword">new</span> FinializeHistory(id);
@@ -2267,8 +2267,8 @@ npx hardhat verify --contract contracts/tokens/WorldCupToken.sol:WorldCupToken  
   entity.save();
 }
 </code></pre>
-<h2 id="部署到subgraph"><a name="部署到subgraph" class="plugin-anchor" href="#部署到subgraph"><i class="fa fa-link" aria-hidden="true"></i></a>部署到subgraph</h2>
-<h2 id="方式一：自己部署graphnode节点"><a name="方式一：自己部署graphnode节点" class="plugin-anchor" href="#方式一：自己部署graphnode节点"><i class="fa fa-link" aria-hidden="true"></i></a>方式一：自己部署graphnode节点</h2>
+<h3 id="部署到subgraph"><a name="部署到subgraph" class="plugin-anchor" href="#部署到subgraph"><i class="fa fa-link" aria-hidden="true"></i></a>部署到subgraph</h3>
+<h3 id="方式一：自己部署graphnode节点"><a name="方式一：自己部署graphnode节点" class="plugin-anchor" href="#方式一：自己部署graphnode节点"><i class="fa fa-link" aria-hidden="true"></i></a>方式一：自己部署graphnode节点</h3>
 <p>这部分我们在上一节已经介绍，按顺序执行即可。</p>
 <pre><code class="lang-Bash"><span class="hljs-comment"># 启动graphnode</span>
 docker-compose up
@@ -2281,9 +2281,9 @@ npm run deploy-local
 
 <span class="hljs-comment"># Deployed to http://localhost:8000/subgraphs/name/duke/worldcup/graphql</span>
 </code></pre>
-<h2 id="方式二：使用subgraph官方结点"><a name="方式二：使用subgraph官方结点" class="plugin-anchor" href="#方式二：使用subgraph官方结点"><i class="fa fa-link" aria-hidden="true"></i></a>方式二：使用subgraph官方结点</h2>
+<h3 id="方式二：使用subgraph官方结点"><a name="方式二：使用subgraph官方结点" class="plugin-anchor" href="#方式二：使用subgraph官方结点"><i class="fa fa-link" aria-hidden="true"></i></a>方式二：使用subgraph官方结点</h3>
 <p><a href="https://thegraph.com/hosted-service/dashboard" target="_blank">https://thegraph.com/hosted-service/dashboard</a></p>
-<h2 id="获取请求play数据"><a name="获取请求play数据" class="plugin-anchor" href="#获取请求play数据"><i class="fa fa-link" aria-hidden="true"></i></a><strong>获取请求Play数据</strong></h2>
+<h3 id="获取请求play数据"><a name="获取请求play数据" class="plugin-anchor" href="#获取请求play数据"><i class="fa fa-link" aria-hidden="true"></i></a>获取请求Play数据</h3>
 <p>启动subgraph后，需要安静等待一会儿，等待数据同步完成后，我们便可以查询，由于之前已经使用3个用户发起过四次Play操作，所以得到结果如下：</p>
 <pre><code class="lang-JavaScript">{
     <span class="hljs-function"><span class="hljs-title">playRecords</span>(<span class="hljs-params">where: {
@@ -2299,7 +2299,7 @@ npm run deploy-local
 </code></pre>
 <p>结果：</p>
 <p><img src="assets/image-20221103195501356.png" alt="image-20221103195501356"></p>
-<h2 id="获取冠军球队"><a name="获取冠军球队" class="plugin-anchor" href="#获取冠军球队"><i class="fa fa-link" aria-hidden="true"></i></a>获取冠军球队</h2>
+<h3 id="获取冠军球队"><a name="获取冠军球队" class="plugin-anchor" href="#获取冠军球队"><i class="fa fa-link" aria-hidden="true"></i></a>获取冠军球队</h3>
 <pre><code class="lang-JavaScript">{
   finializeHistories{
     id
@@ -2308,8 +2308,8 @@ npm run deploy-local
 }
 </code></pre>
 <p><img src="assets/image-20221103195516620.png" alt="image-20221103195516620"></p>
-<h1 id="管理员分配奖励"><a name="管理员分配奖励" class="plugin-anchor" href="#管理员分配奖励"><i class="fa fa-link" aria-hidden="true"></i></a>管理员分配奖励</h1>
-<h2 id="技术选型"><a name="技术选型" class="plugin-anchor" href="#技术选型"><i class="fa fa-link" aria-hidden="true"></i></a>技术选型</h2>
+<h2 id="分配奖励分析"><a name="分配奖励分析" class="plugin-anchor" href="#分配奖励分析"><i class="fa fa-link" aria-hidden="true"></i></a>分配奖励分析</h2>
+<h3 id="技术选型"><a name="技术选型" class="plugin-anchor" href="#技术选型"><i class="fa fa-link" aria-hidden="true"></i></a>技术选型</h3>
 <ol>
 <li><p>使用链下签名方式，让用户链上claim：<a href="https://testnets.opensea.io/" target="_blank">opensea</a></p>
 <ol>
@@ -2328,7 +2328,7 @@ npm run deploy-local
 <p>merkleRoot是一个hash值，每个节点是一个叶子（如M），根节点hash确定后，叶子节点和通向根节点路径中的hash值就都确定了，从而可以完成快速验证功能，能够满足我们的奖励方法需求。</p>
 <p><img src="assets/image-20221103195527242.png" alt="image-20221103195527242"></p>
 <p><a href="https://lab.miguelmota.com/merkletreejs/example/" target="_blank">在线体验MerkleRoot案例</a></p>
-<h2 id="实现思路"><a name="实现思路" class="plugin-anchor" href="#实现思路"><i class="fa fa-link" aria-hidden="true"></i></a>实现思路</h2>
+<h3 id="实现思路"><a name="实现思路" class="plugin-anchor" href="#实现思路"><i class="fa fa-link" aria-hidden="true"></i></a>实现思路</h3>
 <ol>
 <li><p>管理员要根据最终每个人分配到数量，生成一个merkleRoot，写入合约</p>
 <ol>
@@ -2345,7 +2345,7 @@ npm run deploy-local
 </ol>
 </li>
 </ol>
-<h2 id="奖励流程"><a name="奖励流程" class="plugin-anchor" href="#奖励流程"><i class="fa fa-link" aria-hidden="true"></i></a><strong>奖励流程</strong></h2>
+<h3 id="奖励流程"><a name="奖励流程" class="plugin-anchor" href="#奖励流程"><i class="fa fa-link" aria-hidden="true"></i></a><strong>奖励流程</strong></h3>
 <p>奖励发放与领取逻辑介绍：</p>
 <ol>
 <li><p>管理员调用distribute（步骤7），这个方法的核心参数是MerkleRoot，是由所有玩家的“地址+奖励数量”作为叶子结点生成的。为了得到这些叶子结点，我们需要对subgraph发起请求玩家的原始数据（步骤8），然后根据奖励分配规则，在前端本地计算后每个人分配的数量，进而生成merkleRoot（步骤9），设置到合约中。</p>
@@ -2359,7 +2359,7 @@ npm run deploy-local
 </ol>
 <p>原图：<a href="https://whimsical.com/Nfi7rAVqvYJd8mCLYHZYrx" target="_blank">https://whimsical.com/Nfi7rAVqvYJd8mCLYHZYrx</a></p>
 <p><img src="assets/image-20221103195541354.png" alt="image-20221103195541354"></p>
-<h2 id="worldcupdistributor"><a name="worldcupdistributor" class="plugin-anchor" href="#worldcupdistributor"><i class="fa fa-link" aria-hidden="true"></i></a>WorldCupDistributor</h2>
+<h3 id="分配奖励合约"><a name="分配奖励合约" class="plugin-anchor" href="#分配奖励合约"><i class="fa fa-link" aria-hidden="true"></i></a>分配奖励合约</h3>
 <pre><code class="lang-JavaScript"><span class="hljs-comment">// SPDX-License-Identifier: GPL-2.0-or-later</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.0</span>;
 
@@ -2430,8 +2430,7 @@ contract WorldCupDistributor {
 npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634CB7d3d9291e42b423eD45f1AD  --network goerli
 </code></pre>
 <p>部署后，我们需要手动向WorldCupDistributor中转入1w个奖励WorldCupToken，用于后续发放奖励。</p>
-<h2 id="管理员分发奖励"><a name="管理员分发奖励" class="plugin-anchor" href="#管理员分发奖励"><i class="fa fa-link" aria-hidden="true"></i></a>管理员分发奖励</h2>
-<h2 id="发奖和领奖"><a name="发奖和领奖" class="plugin-anchor" href="#发奖和领奖"><i class="fa fa-link" aria-hidden="true"></i></a><strong>发奖和领奖</strong></h2>
+<h3 id="分发奖励"><a name="分发奖励" class="plugin-anchor" href="#分发奖励"><i class="fa fa-link" aria-hidden="true"></i></a>分发奖励</h3>
 <p>至此，我们完成了对事件的监听，接下来要由管理员进行发奖，Player进行领奖，在合约项目中，直接运行脚本：contracts/scripts/distributeReward.ts，对第0期的所有玩家，发放10000 * 10^18 个奖励，读取数据，生成merkleRoot</p>
 <pre><code class="lang-Bash">npx hardhat run scripts/distributeReward.ts
 </code></pre>
@@ -2439,7 +2438,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
 <p><img src="assets/image-20221029221903590.png" alt="image-20221029221903590"></p>
 <p>管理员分配奖励：调用奖励合约distruibuteRward方法，tx：<a href="https://goerli.etherscan.io/tx/0xb710c3d5c23072574e128d748f712eb1d6df95d59d00a58c0978e66fc9e44ae1，注意此处要用到newRoot值，这个是根据所有玩家奖励数计算得到的，详见脚本。" target="_blank">https://goerli.etherscan.io/tx/0xb710c3d5c23072574e128d748f712eb1d6df95d59d00a58c0978e66fc9e44ae1，注意此处要用到newRoot值，这个是根据所有玩家奖励数计算得到的，详见脚本。</a></p>
 <p><img src="assets/image-20221029221807565.png" alt="image-20221029221807565"></p>
-<h2 id="监听distributereward事件"><a name="监听distributereward事件" class="plugin-anchor" href="#监听distributereward事件"><i class="fa fa-link" aria-hidden="true"></i></a>监听DistributeReward事件</h2>
+<h3 id="监听奖励事件"><a name="监听奖励事件" class="plugin-anchor" href="#监听奖励事件"><i class="fa fa-link" aria-hidden="true"></i></a>监听奖励事件</h3>
 <ul>
 <li><p>遍历本期所有的Play记录</p>
 </li>
@@ -2525,7 +2524,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
   }
 }
 </code></pre>
-<h2 id="查询分配结果"><a name="查询分配结果" class="plugin-anchor" href="#查询分配结果"><i class="fa fa-link" aria-hidden="true"></i></a>查询分配结果</h2>
+<h3 id="查询分配结果"><a name="查询分配结果" class="plugin-anchor" href="#查询分配结果"><i class="fa fa-link" aria-hidden="true"></i></a>查询分配结果</h3>
 <ul>
 <li><p>第0期</p>
 </li>
@@ -2588,7 +2587,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
 </tr>
 </tbody>
 </table>
-<h1 id="用户领取奖励"><a name="用户领取奖励" class="plugin-anchor" href="#用户领取奖励"><i class="fa fa-link" aria-hidden="true"></i></a>用户领取奖励</h1>
+<h3 id="用户领取奖励"><a name="用户领取奖励" class="plugin-anchor" href="#用户领取奖励"><i class="fa fa-link" aria-hidden="true"></i></a>用户领取奖励</h3>
 <p>运行脚本，获取领取信息</p>
 <pre><code class="lang-sh">npx hardhat run scripts/distributeReward.ts
 </code></pre>
@@ -2596,7 +2595,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
 <p><img src="assets/image-20221029222414668.png" alt="image-20221029222414668"></p>
 <p>查看流水，发现领取奖励成功！</p>
 <p><img src="assets/image-20221029222447092.png" alt="image-20221029222447092"></p>
-<h1 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h1>
+<h2 id="小结"><a name="小结" class="plugin-anchor" href="#小结"><i class="fa fa-link" aria-hidden="true"></i></a>小结</h2>
 <p>至此，我们终于把奖励发放介绍完了，业务逻辑比较复杂，这是主流的方法奖励方式，接下来的课程中，我们将一起学习链下签名相关内容，并且引入个人中心，使用NFT作为用户头像。</p>
 <hr>
 <p>加V入群：Adugii，公众号：<a href="https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ" target="_blank">阿杜在新加坡</a>，一起抱团拥抱web3，下期见！</p>
@@ -2630,7 +2629,7 @@ npx hardhat verify 0xF19233dFE30219F4D6200c02826B80e4347EF8BF 0x4c305227E762634C
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:世界杯竞猜_airdrop","level":"1.13.5","depth":2,"next":{"title":"第6节:世界杯竞猜_upgrade","level":"1.13.6","depth":2,"path":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","ref":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","articles":[]},"previous":{"title":"第4节:世界杯竞猜_subgraph","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","mtime":"2022-11-27T07:41:57.766Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T05:18:19.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节:世界杯竞猜_airdrop","level":"1.13.5","depth":2,"next":{"title":"第6节:世界杯竞猜_upgrade","level":"1.13.6","depth":2,"path":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","ref":"08_项目实战-世界杯竞猜/docs/06_世界杯竞猜_upgrade.md","articles":[]},"previous":{"title":"第4节:世界杯竞猜_subgraph","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/05-世界杯竞猜_airdrop.md","mtime":"2022-11-28T14:44:36.537Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T14:46:07.248Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

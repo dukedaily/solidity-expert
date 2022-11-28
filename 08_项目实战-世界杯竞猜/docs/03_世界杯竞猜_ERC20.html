@@ -2049,8 +2049,7 @@
 <blockquote>
 <p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 </blockquote>
-<p><img src="assets/image-20221009070445434.png" alt="image-20221009070445434"></p>
-<h2 id="内容概述"><a name="内容概述" class="plugin-anchor" href="#内容概述"><i class="fa fa-link" aria-hidden="true"></i></a>内容概述</h2>
+<h2 id="概述"><a name="概述" class="plugin-anchor" href="#概述"><i class="fa fa-link" aria-hidden="true"></i></a>概述</h2>
 <p>本次课程主要讲解Token协议：ERC20，这就是我们最常见的token，例如USDT，后续我们会介绍NFT，具体如下：</p>
 <ul>
 <li><a href="https://github.com/dukedaily/solidity-expert/blob/main/08_项目实战-世界杯竞猜/" target="_blank">点击获取代码</a></li>
@@ -2092,6 +2091,7 @@
 </tbody>
 </table>
 <h2 id="erc20"><a name="erc20" class="plugin-anchor" href="#erc20"><i class="fa fa-link" aria-hidden="true"></i></a>ERC20</h2>
+<p><img src="assets/image-20221009070445434.png" alt="image-20221009070445434"></p>
 <p>ERC20协议是标准的以太坊Token协议，它也是一个合约代码，只要在该合约内部实现了特定的6个方法，就会被系统判定为代币合约，<strong>具体总结为：6个必要接口，2个必要事件，3个可选接口</strong>，详情如下：</p>
 <p>6个必要接口：</p>
 <pre><code class="lang-JavaScript"><span class="hljs-comment">// FHT Token: 总发行量：1000w，decimal：18</span>
@@ -2254,7 +2254,7 @@ npx hardhat run scripts/deployMockERc20.ts --network goerli
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节:世界杯竞猜-ERC20","level":"1.13.3","depth":2,"next":{"title":"第4节:世界杯竞猜_subgraph","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]},"previous":{"title":"第2节:世界杯竞猜-hardhat","level":"1.13.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","mtime":"2022-11-09T13:15:10.259Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T05:18:19.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第3节:世界杯竞猜-ERC20","level":"1.13.3","depth":2,"next":{"title":"第4节:世界杯竞猜_subgraph","level":"1.13.4","depth":2,"path":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/docs/04_世界杯竞猜_subgraph.md","articles":[]},"previous":{"title":"第2节:世界杯竞猜-hardhat","level":"1.13.2","depth":2,"path":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/docs/02_世界杯竞猜_hardhat.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/docs/03_世界杯竞猜_ERC20.md","mtime":"2022-11-28T14:38:25.147Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-11-28T14:46:07.248Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
