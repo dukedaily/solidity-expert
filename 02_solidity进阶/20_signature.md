@@ -11,5 +11,5 @@
 
 
 
-- 理论详见：08\_项目实战-世界杯竞猜/07\_世界杯竞猜_链下签名.md
+- 理论详见：[07\_世界杯竞猜_链下签名](https://dukedaily.github.io/solidity-expert/08_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C/docs/07_%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C_%E9%93%BE%E4%B8%8B%E7%AD%BE%E5%90%8D.html)
 - 代码详见：https://github.com/dukedaily/hello-erc20-permit
