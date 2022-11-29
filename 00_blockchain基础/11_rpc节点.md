@@ -1,7 +1,5 @@
 # 第11节：rpc节点
 
-
-
 1. 三方节点：https://dashboard.alchemy.com/apps（仅限于Dapp使用）
 2. 三方节点：https://infura.io/（仅限于Dapp使用）
 3. 官方节点：https://rpc.info/（可用于graphnode同步数据）
