@@ -1,0 +1,48 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Vault",
+  "sourceName": "contracts/levels/Vault.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_password",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "locked",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_password",
+          "type": "bytes32"
+        }
+      ],
+      "name": "unlock",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161013938038061013983398101604081905261002f91610045565b6000805460ff191660019081179091555561005e565b60006020828403121561005757600080fd5b5051919050565b60cd8061006c6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c8063cf309012146037578063ec9b5b3a146057575b600080fd5b60005460439060ff1681565b604051901515815260200160405180910390f35b60666062366004607f565b6068565b005b806001541415607c576000805460ff191690555b50565b600060208284031215609057600080fd5b503591905056fea2646970667358221220fc7b38e6559928e1e1112f630b03a26ee6eb52d794080ecd75435ef82810dd9b64736f6c634300080c0033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c8063cf309012146037578063ec9b5b3a146057575b600080fd5b60005460439060ff1681565b604051901515815260200160405180910390f35b60666062366004607f565b6068565b005b806001541415607c576000805460ff191690555b50565b600060208284031215609057600080fd5b503591905056fea2646970667358221220fc7b38e6559928e1e1112f630b03a26ee6eb52d794080ecd75435ef82810dd9b64736f6c634300080c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
