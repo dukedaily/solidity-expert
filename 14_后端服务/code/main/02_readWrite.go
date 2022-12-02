@@ -11,13 +11,13 @@ import (
 )
 
 func main() {
-	client, err := ethclient.Dial(utils.BscTestnetRpc)
+	client, err := ethclient.Dial(utils.GoerliHTTP)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// 1. 准备合约地址
-	contractAddr := "0x587bf1bc96163e279d2ea1b27f3b41cc34b171c3"
+	contractAddr := "0xE4a220e0bd37673A90E2114Abc98e4a22445c32e"
 	address := common.HexToAddress(contractAddr)
 
 	// 2. 创建合约实例

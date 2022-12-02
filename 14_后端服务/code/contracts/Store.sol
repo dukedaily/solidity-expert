@@ -2,7 +2,7 @@
 pragma solidity =0.8.15;
 
 contract Store {
-  event ItemSet(bytes32 key, bytes32 value);
+  event ItemSet(address indexed sender, bytes32 key, bytes32 value);
 
   string public version;
   mapping (bytes32 => bytes32) public items;
@@ -13,6 +13,6 @@ contract Store {
 
   function setItem(bytes32 key, bytes32 value) external {
     items[key] = value;
-    emit ItemSet(key, value);
+    emit ItemSet(msg.sender, key, value);
   }
 }

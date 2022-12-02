@@ -12,7 +12,8 @@ import (
 )
 
 var (
-	BscTestnetRpc = "https://data-seed-prebsc-2-s1.binance.org:8545"
+	GoerliHTTP = "https://goerli.infura.io/v3/1b2efe2cde144c129a46172663b24a63"
+	GoerliWSS  = "wss://goerli.infura.io/ws/v3/1b2efe2cde144c129a46172663b24a63"
 
 	// address: 0xc783df8a850f42e7f7e57013759c285caa701eb6
 	HardhatPrivateKey = "c5e8f61d1ab959b397eecc0a37a6517b8e67a0e7cf1f4bce5591f3ed80199122"

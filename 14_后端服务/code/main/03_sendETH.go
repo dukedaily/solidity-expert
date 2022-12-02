@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"crypto/ecdsa"
-	"encoding/hex"
 	"fmt"
 	"log"
 	"math/big"
@@ -12,13 +11,12 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/rlp"
 
 	utils "code/main/utils"
 )
 
 func main() {
-	client, err := ethclient.Dial(utils.BscTestnetRpc)
+	client, err := ethclient.Dial(utils.GoerliHTTP)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -64,25 +62,12 @@ func main() {
 
 	fmt.Println("signedTx:", signedTx)
 
-	// 以下内容不同!!
-	// 解析交易，获取rawTxData
-	ts := types.Transactions{signedTx}
-	rawTxBytes, _ := rlp.EncodeToBytes(ts[0])
-	rawTxHex := hex.EncodeToString(rawTxBytes)
-	fmt.Printf("rawTxHex Encode:\n", rawTxHex) // f86...772
-
-	// 广播交易 rawTxData
-	rawTxBytesDecode, err := hex.DecodeString(rawTxHex)
-	fmt.Printf("rawTxHex Decode:\n", rawTxBytesDecode)
-
-	txNew := new(types.Transaction)
-	rlp.DecodeBytes(rawTxBytesDecode, &txNew)
-
-	err = client.SendTransaction(context.Background(), txNew)
+	// 广播
+	err = client.SendTransaction(context.Background(), signedTx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// https://testnet.bscscan.com/tx/0xe5e6f9397365298f131a2e51aa5b85bb7a7deb8b2864417f926a9cc271156220
-	fmt.Printf("txNew sent: %s", txNew.Hash().Hex())
+	// https://testnet.bscscan.com/tx/0x07ed05b331dd9668fc4f80fee155d08a8d819194750b34469014adc368667070
+	fmt.Printf("tx sent: %s", signedTx.Hash().Hex())
 }

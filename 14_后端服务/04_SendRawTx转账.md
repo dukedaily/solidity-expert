@@ -65,7 +65,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// 私钥签名
 	signedTx, err := types.SignTx(tx, types.NewEIP155Signer(chainID), privateKey)
 	if err != nil {
 		log.Fatal(err)
@@ -73,7 +72,7 @@ func main() {
 
 	fmt.Println("signedTx:", signedTx)
 
-	// 以下内容不同!!
+	// *********** 以下内容不同 ！！************
 	// 解析交易，获取rawTxData
 	ts := types.Transactions{signedTx}
 	rawTxBytes, _ := rlp.EncodeToBytes(ts[0])

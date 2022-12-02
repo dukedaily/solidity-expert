@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	client, err := ethclient.Dial(utils.BscTestnetRpc)
+	client, err := ethclient.Dial(utils.GoerliHTTP)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -24,10 +24,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// 0x587bf1bc96163e279d2ea1b27f3b41cc34b171c3
+	// 0xE4a220e0bd37673A90E2114Abc98e4a22445c32e
 	fmt.Println("address:", address.Hex())
 
-	// https://testnet.bscscan.com/tx/0x082186993e2786744366e2147827841dc02115439d9d3786ce39a1774209d38a
+	// https://goerli.etherscan.io/address/0xe4a220e0bd37673a90e2114abc98e4a22445c32e
 	fmt.Println("tx hash:", tx.Hash().Hex())
 	_ = instance
 }
