@@ -5,9 +5,5 @@ ethers.js是一个轻量级的以太坊sdk，目前在很多场合已经替换we
 - 手册：https://docs.ethers.io/v5/
 - ethersjs学习1：https://github.com/WTFAcademy/WTF-Ethers
 - ethersjs学习2：https://www.youtube.com/watch?v=yk7nVp5HTCk
-
-
-
-在线环境：https://playcode.io/
-
-**go语言与nodejs对比**：https://github.com/dukedaily/golang-for-nodejs-developers
+- 在线环境：https://playcode.io/
+- **go语言与nodejs对比**：https://github.com/dukedaily/golang-for-nodejs-developers
