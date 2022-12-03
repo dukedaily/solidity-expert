@@ -16,7 +16,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	auth := utils.Prepare(utils.HardhatPrivateKey, 0, client)
+	auth := utils.Prepare(utils.PRIVATEKEY, 0, client)
 
 	input := "1.0"
 	address, tx, instance, err := store.DeployStore(auth, client, input)
