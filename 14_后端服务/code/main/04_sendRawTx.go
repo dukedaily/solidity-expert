@@ -23,7 +23,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	privateKey, err := crypto.HexToECDSA(utils.HardhatPrivateKey)
+	privateKey, err := crypto.HexToECDSA(utils.PRIVATEKEY)
 	if err != nil {
 		log.Fatal(err)
 	}

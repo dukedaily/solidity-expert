@@ -3,12 +3,15 @@ package utils
 import (
 	"context"
 	"crypto/ecdsa"
+	"fmt"
 	"log"
 	"math/big"
+	"os"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/joho/godotenv"
 )
 
 var (
@@ -16,16 +19,28 @@ var (
 	GoerliWSS  = "wss://goerli.infura.io/ws/v3/1b2efe2cde144c129a46172663b24a63"
 
 	// address: 0xc783df8a850f42e7f7e57013759c285caa701eb6
-	HardhatPrivateKey = "c5e8f61d1ab959b397eecc0a37a6517b8e67a0e7cf1f4bce5591f3ed80199122"
+	PRIVATEKEY = ""
 )
 
+func init() {
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	PRIVATEKEY = os.Getenv("PRIVATEKEY")
+	fmt.Println("PRIVATEKEY:", PRIVATEKEY)
+}
+
 func Prepare(privKey string, value int64, client *ethclient.Client) *bind.TransactOpts {
-	privateKey, err := crypto.HexToECDSA(privKey)
+	PRIVATEKEY, err := crypto.HexToECDSA(privKey)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	publicKey := privateKey.Public()
+	publicKey := PRIVATEKEY.Public()
 	publicKeECDSA, ok := publicKey.(*ecdsa.PublicKey)
 	if !ok {
 		log.Fatal("invalid public key type")
@@ -43,8 +58,8 @@ func Prepare(privKey string, value int64, client *ethclient.Client) *bind.Transa
 	}
 
 	// chainId := 56
-	// auth, _ := bind.NewKeyedTransactorWithChainID(privateKey, big.NewInt(int64(56)))
-	auth := bind.NewKeyedTransactor(privateKey)
+	// auth, _ := bind.NewKeyedTransactorWithChainID(PRIVATEKEY, big.NewInt(int64(56)))
+	auth := bind.NewKeyedTransactor(PRIVATEKEY)
 	auth.Nonce = big.NewInt(int64(nonce))
 	auth.Value = big.NewInt(value)
 	// auth.GasLimit = uint64(300000)

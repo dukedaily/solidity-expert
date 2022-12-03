@@ -1,0 +1,15 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "DenialAttack",
+  "sourceName": "contracts/attacks/DenialAttack.sol",
+  "abi": [
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe60806040525b600556fea2646970667358221220b713557e472be78f2a6703e78a0073433a7436490389bcd8ae8142f7e9d00da264736f6c634300080c0033",
+  "deployedBytecode": "0x60806040525b600556fea2646970667358221220b713557e472be78f2a6703e78a0073433a7436490389bcd8ae8142f7e9d00da264736f6c634300080c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

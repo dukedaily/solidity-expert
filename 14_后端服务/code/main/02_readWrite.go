@@ -36,7 +36,7 @@ func main() {
 
 	/// 4. 构造私钥相关数据
 	// address: 0xc783df8a850f42e7f7e57013759c285caa701eb6
-	auth := utils.Prepare(utils.HardhatPrivateKey, 0, client)
+	auth := utils.Prepare(utils.PRIVATEKEY, 0, client)
 
 	// 5. 写合约
 	key := [32]byte{}
