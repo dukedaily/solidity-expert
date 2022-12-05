@@ -1,4 +1,4 @@
-# 镜像相关：
+# 一、镜像相关
 
 1. 下载：docker pull golang
 2. 搜索：docker search golang
@@ -13,22 +13,27 @@
    2. docker save -o nginx_test.tar nginx_test:1.0 //此时存储到本地
 
 
-# 容器相关：
 
-## 创建容器：
+# 二、容器相关
+
+## 1. 创建容器
 
 1. 先创建：docker create -it --name duke-ubuntu ubuntu /bin/bash  //后面的名字在启动的时候会执行， 如果未指定，会默认执行镜像内置的命令
 2. 再启动：docker start -ia duke-ubuntu  //创建之后， 能否再start的时候进入交互模式，关键在于create 后面的it，如果没加上，start之后会立刻退出
 3. 其他：exit退出之后，容器关闭
 
-## 启动容器：
+
+
+## 2. 启动容器
 
 1. 运行一次退出删除：docker run --rm --name duke-golang golang:1.11 /bin/ls
 2. 运行后进行交互：docker run -it --name duke-golang golang:1.11 /bin/bash
 3. 运行后台运行：  docker run -it -d --name duke-golang golang:1.11 /bin/bash   //启动之后，在后台运行，别忘了-it，后面的命令可选
 4. 访问后台容器：  docker exec -it duke-golang /bin/bash  //后面的命令别忘了
 
-## 容器启动关闭重启：
+
+
+## 3. 容器启动关闭重启
 
 1. 暂停：docker pause duke-golang //名字或id
 2. 恢复：docker unpause duke-golang
@@ -38,7 +43,9 @@
 6. 强删：docker rm -f duke-golang
 7. 批量删除所有，慎用：docker rm `docker ps -aq`
 
-## 重要参数：
+
+
+## 4. 重要参数
 
 1. -i:交互
 2. -t:终端
@@ -47,26 +54,34 @@
 5. -v 挂载数据卷
 6. \- -privileged：root权限运行docker
 
-## 其他操作：
+
+
+## 5. 其他操作
 
 1. 查看日志：docker logs duke-golang
 2. 重命名：docker rename duke-golang duke-new-golang
 3. 屏幕太小时，格式化输出：可以在.bashrc中增加别名解决：alias dps="docker ps -a --format 'table {{.ID}} {{.Names}}\t{{.Status}}\t{{.Command}}\t{{.Ports}}'"
 
-# 数据卷相关：
 
-## 直接拷贝：
+
+# 三、数据卷相关
+
+## 1. 直接拷贝
 
 1. docker cp 宿主机目录/文件 容器名/容器Id:容器路径（双向的）
 2. docker cp ./Dockerfile duke-golang:/Dockerfile
 
-## 挂载数据卷：（手动指定目录）
+
+
+## 2. 挂载数据卷：（手动指定目录）
 
 1. docker run -itd --name test -v 宿主机的路径:容器的路径 ubuntu bash
 2. docker run -it --name duke-golang111 -v /tmp/testfolder:/testfolder golang:1.12.6 /bin/bash
 3. 注意，宿主机尽量先创建文件夹，一般先从容器端写数据是限制的，共享不过来
 
-## 数据卷容器：（为了容器具共享）
+
+
+## 3. 数据卷容器：（为了容器具共享）
 
 1. 创建一个数据卷容器：docker create -v /data --name v1-test1 nginx
 2. 新建一个容器X，并挂载：docker run --volumes-from 4693558c49e8 -tid --name vc-test1 nginx /bin/bash
@@ -75,7 +90,9 @@
 5. 创建备份：docker run --rm --volumes-from 4693558c49e8 -v /home/itcast/backup/:/data/ nginx tar zcPf /backup/data.tar.gz /data
 6. 恢复备份：docker run --rm --volumes-from 4693558c49e8 -v /home/itcast/backup/:/data/ nginx tar xPf /backup/data.tar.gz -C /newdata
 
-## docker卷，存储卷（自动创建目录）
+
+
+## 4. docker卷，存储卷（自动创建目录）
 
 1. docker volume create my-vol //这个my-vol是宿主机目录的代表
 2. docker inspect my-vol //查看这个docker卷在宿主机上的位置
@@ -83,7 +100,9 @@
 4. docker volume list
 5. docker volume rm my-vol
 
-# 网络：
+
+
+# 四、网络
 
 1. 随机端口映射：
    1. -P代表随机端口，不用接参数
@@ -96,7 +115,7 @@
    2. docker run -itd -p 80:80 -p 81:81 --name mynginx nginx 
 
 
-## 创建网络
+## 1. 创建网络
 
 1. docker network create -d <网络驱动类型> <网络名字>
 2. docker network create -d bridge duke-bridge
@@ -114,18 +133,20 @@
       3. container：与加入的容器共享网络
 5. docker network ls
 
-## 加入指定网络：
+## 2. 加入指定网络
 
 1. docker run -it --name test1 --network bridge_test ubuntu bash
 2. docker run -itd --name test3 --network host ubuntu bash //host网络
 3. —net 可以选择四种类型：bridge/host/none/containe
 4. —net和--network相同,--network是新参数
 
-# Dockerfile：
+
+
+# 五、Dockerfile
 
 将应用程序打包成镜像的描述文件
 
-## 构成信息：
+## 1. 构成信息
 
 1. entrypoint，一定会执行，一般会提供一个docker-entrypoint.sh脚本，用于前置执行，
 2. cmd会被用户输入的命令覆盖。
@@ -140,7 +161,7 @@
 
 
 
-## docker-compose: 
+## 2. docker-compose
 
 对镜像容器进行编排
 
@@ -159,12 +180,16 @@
 3. docker-compose rm 
 4. 如果不加上后面的服务，则默认对所有服务执行操作
 
-## 其他：
+
+
+## 3. 其他
 
 1. docker-compose logs -f //持续查看日志
 2. docker-compose exec <web1> /bin/bash //进入容器
 
-# docker swarm 
+
+
+# 六、docker swarm 
 
 //创建集群，创建共享网络
 
