@@ -3,7 +3,6 @@ package utils
 import (
 	"context"
 	"crypto/ecdsa"
-	"fmt"
 	"log"
 	"math/big"
 	"os"
@@ -31,7 +30,7 @@ func init() {
 	}
 
 	PRIVATEKEY = os.Getenv("PRIVATEKEY")
-	fmt.Println("PRIVATEKEY:", PRIVATEKEY)
+	// fmt.Println("PRIVATEKEY:", PRIVATEKEY)
 }
 
 func Prepare(privKey string, value int64, client *ethclient.Client) *bind.TransactOpts {

@@ -71,10 +71,10 @@ func main() {
 	// https://testnet.bscscan.com/tx/0x07ed05b331dd9668fc4f80fee155d08a8d819194750b34469014adc368667070
 	fmt.Printf("tx sent: %s", signedTx.Hash().Hex())
 
-	recipient, err := client.TransactionReceipt(context.Background(), signedTx.Hash())
-	if err != nil {
-		log.Fatal("recipient err:", err)
-	}
+	// recipient, err := client.TransactionReceipt(context.Background(), signedTx.Hash())
+	// if err != nil {
+	// 	log.Fatal("recipient err:", err)
+	// }
 
-	fmt.Println("recipient:", recipient)
+	// fmt.Println("recipient:", recipient)
 }
