@@ -7,3 +7,16 @@ ethers.js是一个轻量级的以太坊sdk，目前在很多场合已经替换we
 - ethersjs学习2：https://www.youtube.com/watch?v=yk7nVp5HTCk
 - 在线环境：https://playcode.io/
 - **go语言与nodejs对比**：https://github.com/dukedaily/golang-for-nodejs-developers
+
+
+
+## pm2介绍
+
+https://juejin.cn/post/6889300755539312653
+
+```sh
+npm i
+npm install pm2 -g
+tsc
+pm2 start ./dist/src/index.js
+```
