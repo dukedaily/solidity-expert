@@ -13,5 +13,13 @@
 
 
 
-精通以太坊：
+**精通以太坊：**
+
 <iframe src="https://drive.google.com/file/d/1-0yanRr70jODXx2F4BvRy-p9iG246G_9/preview" width="640" height="480" allow="autoplay"></iframe>
+
+
+
+**参考：**
+
+1. 以太坊技术与实现：https://learnblockchain.cn/books/geth/part1.html
+3. 经典好文：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf

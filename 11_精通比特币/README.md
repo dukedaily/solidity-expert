@@ -28,7 +28,9 @@
 
 
 
-**建议配套阅读《精通比特币》一书，差缺补漏，事半功倍。**
+- 学习比特币，很有意思的网站，[点击查看](https://learnmeabitcoin.com/technical/mnemonic)
+
+- **建议配套阅读《精通比特币》一书，差缺补漏，事半功倍。**
 
 <iframe src="https://drive.google.com/file/d/1-3umwssIjog6Fzi22B9A5Ru3gSO2HqxT/preview" width="640" height="480" allow="autoplay"></iframe>
 

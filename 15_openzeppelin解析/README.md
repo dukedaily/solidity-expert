@@ -7,3 +7,9 @@ openzeppelin标准库是当前使用最广泛的基础合约，研究它的内�
 3. 讲解其实现原理，逻辑关系
 
 还等什么，还不操练起来😄～
+
+
+
+快速体验openzeppelin集成：https://docs.openzeppelin.com/contracts/4.x/wizard
+
+![image-20221205111601684](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221205111601684.png)

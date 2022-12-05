@@ -1,7 +1,5 @@
 # 第9章：EVM详解
 
-参考：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
-
 
 
 ## 其他（重要）
