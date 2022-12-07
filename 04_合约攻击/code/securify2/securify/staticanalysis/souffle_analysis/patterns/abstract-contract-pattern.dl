@@ -1,0 +1,31 @@
+#ifndef CONTRACT_PATTERN
+#define CONTRACT_PATTERN
+
+/** Base component for patterns that apply to contracts as a whole */
+.comp AbstractContractPattern : Pattern {
+	applicable(contract, line) :-
+		contract(contract, _), sourceLine(contract, line),
+		(
+			(annotation(contract, "solidityContractKind", "library"), !notApplicableToLibraries());
+			(annotation(contract, "solidityContractKind", "interface"), !notApplicableToInterfaces());
+			(annotation(contract, "solidityContractKind", "contract"));
+			(!annotation(contract, "solidityContractKind", _))
+		).
+
+	.decl notApplicableToLibraries()
+	.decl notApplicableToInterfaces()
+
+	compliance(contract, line, comment) :-
+		applicable(contract, line),
+		contractCompliance(contract, comment).
+
+	violation(contract, line, comment) :-
+		applicable(contract, line),
+		contractViolation(contract, comment).
+
+	.decl contractCompliance(contract: Contract, comment: MatchComment)
+
+	.decl contractViolation(contract: Contract, comment: MatchComment)
+}
+
+#endif

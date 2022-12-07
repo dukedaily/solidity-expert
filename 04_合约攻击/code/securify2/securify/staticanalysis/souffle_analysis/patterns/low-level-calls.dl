@@ -1,0 +1,18 @@
+.comp LowLevelCallsPattern : Pattern {
+    NAME("Low Level Calls")
+
+    DESCRIPTION("Usage of <address>.call should be avoided")
+    SEVERITY(INFO)
+
+    //We just check wether there's a lowlevel or a delegatecall
+    //Maybe we should add check for whether the return value of the call is also checked
+    applicable(call, callLine) :-
+        (callInfo(call, _, "lowlevel"); callInfo(call, _, "delegatecall")),
+        sourceLine(call, callLine).
+
+    compliance(call, callLine, "") :- applicable(call, callLine), !violation(call, _, _).
+
+    violation(call, callLine, "") :-
+        applicable(call, callLine).
+
+}

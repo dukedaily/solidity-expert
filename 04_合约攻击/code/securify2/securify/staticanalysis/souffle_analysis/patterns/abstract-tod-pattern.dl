@@ -1,0 +1,48 @@
+#ifndef ABSTRACT_TOD_PATTERN
+#define ABSTRACT_TOD_PATTERN
+
+#include "abstract-context-pattern.dl"
+
+.comp AbstractTODPattern : PerContextPattern {
+
+    compliantInContext(callContext, "") :-
+        applicableInContext(callContext),
+        !maybeViolationInContext(callContext).
+
+    violationInContext(callContext, "") :-
+        applicableInContext(callContext),
+        dependency(call, dependency),
+        ctxProvider.elementInContext(callContext, call, context),
+        mustDepeondOnState([dependency, context]).
+
+    .decl dependency(element: Element, dependency: Element)
+
+    .decl maybeViolationInContext(call: ctxProvider.ElementInContext)
+    maybeViolationInContext(callCtx) :-
+        dependency(call, dependency),
+        ctxProvider.elementInContext(callCtx, call, context),
+        ctxProvider.elementInContext(depCtx, dependency, context),
+        mayDependOnState(depCtx).
+
+    // TODO: add other state variables
+    .decl mustDepeondOnState(call: ctxProvider.ElementInContext)
+    mustDepeondOnState(element) :-
+        dataflow.isDerivedFrom(element, load),
+		storageAnalysis.mustDependOnPrecedingTransaction(load).
+
+    mustDepeondOnState(element) :-
+        dataflow.isDerivedFrom(element, [balance, _]), balance(balance, _).
+
+    .decl mayDependOnState(element: ctxProvider.ElementInContext)
+    mayDependOnState(element) :-
+        dataflow.mayDependOn(element, load),
+		storageAnalysis.mayDependOnPrecedingTransaction(load).
+
+    mayDependOnState(element) :-
+        dataflow.mayDependOn(element, [balance, _]), balance(balance, _).
+
+
+    TO_STRING_1(mustDepeondOnState, ctxProvider.executionStateToString) //> mustDepeondOnStateToString
+}
+
+#endif

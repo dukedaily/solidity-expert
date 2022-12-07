@@ -1,0 +1,35 @@
+#ifndef PER_CONTEXT_PATTERN
+#define PER_CONTEXT_PATTERN
+
+/** Base component for patterns that apply to code in individual contexts */
+.comp PerContextPattern : Pattern {
+
+	.decl applicableInContext(element: ctxProvider.ElementInContext)
+
+	.decl compliantInContext(element: ctxProvider.ElementInContext, comment: MatchComment)
+
+	.decl violationInContext(element: ctxProvider.ElementInContext, comment: MatchComment)
+
+	applicable(element, "") :- applicableInContext([element, _]).
+
+	/** Report pattern as compliant if it is compliant in all contexts */
+	compliance(element, "", "Compliant in all contexts") :-
+		compliantInContext([element, _], _),
+		!nonCompliantInSomeContext(element).
+
+	/** Report pattern as violated if it is violated in any context */
+	#ifdef DEBUG
+	violation(element, "", STR_JOIN("Violation in context: ", ctxString, "; ", comment)) :-
+		violationInContext([element, ctx], comment), ctxProvider.contextToString(ctx, ctxString).
+	#else
+	violation(element, "", "") :-
+		violationInContext([element, ctx], comment), ctxProvider.contextToString(ctx, ctxString).
+	#endif
+
+	.decl nonCompliantInSomeContext(element: Element)
+	nonCompliantInSomeContext(element) :-
+		applicableInContext([element, ctx]),
+		!compliantInContext([element, ctx], _).
+}
+
+#endif

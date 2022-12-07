@@ -1,0 +1,25 @@
+.comp ExternalFunctionPattern : Pattern {
+    NAME("External Calls of Functions")
+
+    DESCRIPTION("A public function that is never called within the contract should be marked as external")
+
+    SEVERITY(LOW)
+
+    // Find all public functions
+    applicable(funBlock, funLine) :-
+        function(funBlock, funName),
+        funName != "Constructor",
+        sourceLine(funBlock, funLine),
+        annotation(funBlock, _, "public").
+
+    //  Find the public functions that are called within the contract
+    compliance(funBlock, funLine, "") :-
+        applicable(funBlock, funLine),
+        jump(_, _, funBlock, _).
+
+    // Public functions that are never called within the contract
+    violation(funBlock, funLine, STR_JOIN("Function ", funName," should be set external.")):-
+        applicable(funBlock, funLine),
+        function(funBlock, funName),
+        !compliance(funBlock, funLine,"").
+}

@@ -1,0 +1,68 @@
+.comp ArbitrarySendPattern : PerContextPattern {
+    NAME("Arbitrary Send")
+
+    DESCRIPTION("Unauthorized users cannot withdraw funds that are not theirs")
+
+    SEVERITY(HIGH)
+
+    applicableInContext(callCtx) :-
+        etherCall(callCtx, _).
+
+    compliantInContext(callCtx, "") :-
+        etherCall(callCtx, addressCtx),
+        ctxProvider.elementInContext(callCtx, call, _),
+        authorizedAddress(addressCtx, address),
+        (
+            authorizedMapLoad(ssaCtx, ssa);
+            authorizedValue(ssaCtx, ssa)
+        ),
+        callInfo(call, address, _),
+        callValue(call, ssa).
+
+    violationInContext(callCtx, "") :-
+        applicableInContext(callCtx),
+        !compliantInContext(callCtx, _).
+
+    .decl mayDependOnMsgSender(ssaCtx: ctxProvider.ElementInContext, ssa: Element)
+    mayDependOnMsgSender(ssaCtx, ssa):-
+        msgSender(msgSender),
+        ctxProvider.elementInContext(msgSenderCtx, msgSender, ctx),
+        (data.mayDependOn(ssaCtx, msgSenderCtx); msgSenderCtx = ssaCtx),
+        ctxProvider.elementInContext(ssaCtx, ssa, ctx).
+
+    .decl authorizedMapLoad(ssaCtx: ctxProvider.ElementInContext, ssa: Element)
+    authorizedMapLoad(mapLoadSSACtx, mapLoadSSA):-
+        mayDependOnMsgSender(msgCtx, msg),
+        mapLoad(mapLoadSSA, _, msg),
+        ctxProvider.elementInContext(mapLoadSSACtx, mapLoadSSA, _).
+
+    // This is not exactly right since msg.sender.transfer(msg.value + 1) is wrong
+    authorizedMapLoad(otherSSACtx, otherSSA):-
+        authorizedMapLoad(mapLoadSSACtx, mapLoadSSA),
+        data.mayDependOn(otherSSACtx, mapLoadSSACtx),
+        ctxProvider.elementInContext(otherSSACtx, otherSSA, _).
+
+    .decl authorizedAddress(addressCtx: ctxProvider.ElementInContext, address: Element)
+    authorizedAddress(addressCtx, address):-
+        mayDependOnMsgSender(addressCtx, address),
+        etherCall(_, addressCtx).
+
+    .decl authorizedValue(valueCtx: ctxProvider.ElementInContext, ssa: Element)
+    //Propagation is probably missing
+    authorizedValue(ssaCtx, ssa):-
+        msgValue(valSSA),
+        ctxProvider.elementInContext(valueCtx, valSSA, _),
+        (data.mayDependOn(ssaCtx, valueCtx); ssaCtx = valueCtx),
+        ctxProvider.elementInContext(ssaCtx, ssa, _).
+
+    .decl etherCall(callCtx: ctxProvider.ElementInContext, addressCtx: ctxProvider.ElementInContext)
+    etherCall(callCtx, addressCtx):-
+        (callInfo(call, address, "send"); callInfo(call, address, "transfer")),
+        ctxProvider.elementInContext(addressCtx, address, context),
+        callGas(call, _),
+        callValue(call, value),
+        ctxProvider.elementInContext(callCtx, call, context),
+        ctxProvider.elementInContext(valueCtx, value, context),
+        !(valueKnown(valueCtx), valueOf(valueCtx, "0")).
+
+}

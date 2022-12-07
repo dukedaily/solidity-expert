@@ -1,0 +1,33 @@
+#include "abstract-context-pattern.dl"
+
+.comp CallInLoopPattern : PerContextPattern {
+	NAME("External call in loop")
+
+	DESCRIPTION(STR_JOIN(
+		"If a single call in the loop fails or revers, ",
+		"it will cause all other calls to fail as well."))
+
+	SEVERITY(HIGH)
+
+	applicableInContext(callCtx) :-
+		ctxProvider.elementInContext(callCtx, call, _), call(call, _, _, _).
+
+	compliantInContext(callCtx, "") :-
+		applicableInContext(callCtx), !maybeViolationInContext(callCtx).
+
+	violationInContext(callCtx, "IN LOOP") :-
+		blockIsInLoop(loopBlock), call(call, _, _, _),
+		ctxProvider.elementInContext(loopCtx, loopBlock, _),
+		ctxProvider.elementInContext(callCtx, call, _),
+		programFlow.mustPrecede(loopCtx, callCtx),
+		programFlow.mustFollow(callCtx, loopCtx).
+
+	.decl maybeViolationInContext(e: ctxProvider.ElementInContext)
+	maybeViolationInContext(callCtx) :-
+		blockIsInLoop(loopBlock), call(call, _, _, _),
+		ctxProvider.elementInContext(loopCtx, loopBlock, _),
+		ctxProvider.elementInContext(callCtx, call, _),
+		programFlow.mayPrecede(loopCtx, callCtx),
+		programFlow.mayPrecede(callCtx, loopCtx).
+}
+

@@ -1,0 +1,31 @@
+.comp UnrestrictedSelfdestructPattern : PerContextPattern {
+    NAME("Unrestricted call to selfdestruct")
+
+    DESCRIPTION(STR_JOIN(
+        "Calls to selfdestruct that can be triggered by ",
+        "any user must be inspected."))
+
+    SEVERITY(CRITICAL)
+
+
+	applicableInContext(callInContext) :-
+        selfdestruct(call, _),
+        ctxProvider.elementInContext(callInContext, call, context),
+        !ctxProvider.isInConstructorContext(context).
+
+    violationInContext(storeInContext, "Selfdestruct does not necessarily depend on msg.sender") :-
+        applicableInContext(storeInContext),
+        !maybeCompliantInContext(storeInContext).
+
+    compliantInContext(callInCtx, "Selfdestruct depends on msg.sender") :-
+        applicableInContext(callInCtx),
+        msgSender(sender),
+        infoflow.instrMustDependOn(callInCtx, [sender, _]).
+
+    .decl maybeCompliantInContext(callInCtx: ctxProvider.ElementInContext)
+    maybeCompliantInContext(callInCtx) :-
+		applicableInContext(callInCtx),
+        msgSender(sender),
+        infoflow.instrMayDependOn(callInCtx, [sender, _]).
+
+}

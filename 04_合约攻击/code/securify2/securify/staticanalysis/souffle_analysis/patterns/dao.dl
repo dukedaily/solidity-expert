@@ -1,0 +1,19 @@
+#include "dao-base.dl"
+
+.comp DAOPattern : DAOBasePattern {
+    NAME("Gas-dependent Reentrancy")
+
+    DESCRIPTION(STR_JOIN(
+        "Calls into external contracts that receive all remaining ",
+        "gas and are followed by state changes may be reentrant.")
+	)
+
+	SEVERITY(CRITICAL)
+
+    applicableInContext(callCtx) :-
+		externalCall(call), gasDependent(callCtx),
+		callValue(call, value),
+		ctxProvider.elementInContext(callCtx, call, context),
+		ctxProvider.elementInContext(valueCtx, value, context),
+		!(valueKnown(valueCtx), valueOf(valueCtx, "0")).
+}

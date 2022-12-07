@@ -1,0 +1,42 @@
+#include "abstract-tod-pattern.dl"
+
+.comp UnrestrictedDelegateCallPattern : PerContextPattern {
+	NAME("Delegatecall or callcode to unrestricted address")
+
+	DESCRIPTION(STR_JOIN(
+			   "The address of a delegatecall or callcode must be ",
+			   "approved by the contract owner."))
+
+	SEVERITY(HIGH)
+
+	applicableInContext(callInContext) :-
+		ctxProvider.elementInContext(callInContext, call, _),
+		externalCall(call), isDelegateCall(call).
+
+	violationInContext(callInCtx, "Target address or call may not be trusted") :-
+		applicableInContext(callInCtx),
+		!maybeCompliantInContext(callInCtx).
+
+	compliantInContext(callInCtx, "Call in trusted context") :-
+		callWithAddress(callInCtx, _), trustFlow.isTrustedInstr(callInCtx).
+
+	compliantInContext(callInCtx, "Target address can be trusted") :-
+		callWithAddress(callInCtx, addrInCtx), trustFlow.isTrustedValue(addrInCtx).
+
+	.decl maybeCompliantInContext(callInCtx: ctxProvider.ElementInContext)
+	maybeCompliantInContext(callInCtx) :-
+		callWithAddress(callInCtx, _), trustFlow.maybeTrustedInstr(callInCtx).
+
+	maybeCompliantInContext(callInCtx) :-
+		callWithAddress(callInCtx, addrInCtx), trustFlow.maybeTrustedValue(addrInCtx).
+
+	.decl callAddress(callId: Transfer, address: SSA)
+	callAddress(c, a) :- callInfo(c, a, _).
+
+	.decl callWithAddress(callInCtx: ctxProvider.ElementInContext, addressInCtx: ctxProvider.ElementInContext)
+	callWithAddress(callInCtx, addrInCtx) :-
+		applicableInContext(callInCtx),
+		ctxProvider.elementInContext(callInCtx, call, context),
+		ctxProvider.elementInContext(addrInCtx, address, context),
+		callAddress(call, address).
+}

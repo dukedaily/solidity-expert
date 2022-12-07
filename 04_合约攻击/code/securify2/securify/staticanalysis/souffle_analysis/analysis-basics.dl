@@ -1,0 +1,105 @@
+#include "util-macros.dl"
+
+/** Functions that can be jumped to, but not called using an external message call. */
+.decl isInternal(f: Function)
+isInternal(f) :-
+	function(f, _),
+	annotation(f, "visibility", visibility),
+	(
+		visibility = "internal";
+		visibility = "private"
+	).
+
+/** Constructors (note this also includes constructors that are marked 'internal'). */
+.decl isConstructor(f: Function)
+isConstructor(f) :- function(f, _),
+					annotation(f, "solidityFunctionKind", "constructor").
+
+/** Functions that can be called using an (external) message call. */
+.decl externallyCallable(f: Function)
+externallyCallable(f) :-
+	function(f, _),
+	!isInternal(f),
+	!isConstructor(f).
+
+
+.decl storageMutation(store: SSA, value: SSA)
+storageMutation(store, value) :- store(store, _, value).
+
+// TODO: Solve this in a more formal way:
+storageMutation(store, value) :- mapStore(store, _, _, value).
+storageMutation(store, value) :- structStore(store, struct, _, value), annotation(struct, "solidityStorageLocation", "storage").
+storageMutation(store, value) :- arrayStore(store, array, _, value), annotation(array, "solidityStorageLocation", "storage").
+storageMutation(store, value) :- arrayPush(store, array, value), annotation(array, "solidityStorageLocation", "storage").
+storageMutation(store, var) :- uop(store, var, "delete"), annotation(var, "solidityStorageLocation", "storage").
+
+.decl storeIndex(store: SSA, location: SSA)
+storeIndex(store, index) :- arrayStore(store, _, index, _).
+storeIndex(store, index) :- mapStore(store, _, index, _).
+
+// Some shorthands for builtin variables
+.decl msgSender(id: SSA)
+msgSender(id) :- builtinVariable(id, "SENDER"). // structLoad(id, "msg", "sender").
+
+.decl msgValue(id: SSA)
+msgValue(id) :- builtinVariable(id, "VALUE"). //structLoad(id, "msg", "value").
+
+.decl txOrigin(id: SSA)
+txOrigin(id) :- builtinVariable(id, "ORIGIN").
+
+.decl gasLeft(id: SSA)
+gasLeft(id) :- builtinVariable(id, "GAS").
+
+.decl thisAddress(id: SSA)
+thisAddress(id) :- builtinVariable(id, "ADDRESS").
+
+.decl externalCall(call: Transfer)
+externalCall(call) :- call(call, _, _, _).
+
+.decl externalCallBlock(call: Transfer, functionBlock: Block)
+externalCallBlock(call, functionBlock) :-
+	externalCall(call),
+	call(call, _, callStmt, _),
+	structLoad(callStmt, contractStmt, functionName),
+    annotation(contractStmt, "type", contractFullName),
+	contractName = substr(contractFullName, strlen("contract "), strlen(contractFullName) - strlen("contract ")),
+	function(functionBlock, functionName),
+	contract(contractId, contractName),
+    contractFunction(contractId, functionBlock).
+
+//.output externalCallBlock
+
+
+.decl callAddress(call: Transfer, address: SSA)
+callAddress(call, address) :- call(call, _, _, _), callInfo(_, address, _).
+
+.decl isDelegateCall(call: Transfer)
+isDelegateCall(call) :- call(call, _, _, _),
+						callInfo(call, _, "delegatecall").
+
+.decl comparisonOp(s: symbol)
+comparisonOp(">").
+comparisonOp("<").
+comparisonOp("<=").
+comparisonOp(">=").
+comparisonOp("==").
+comparisonOp("!=").
+
+// Source code information
+.decl sourceLine(element: Element, line: symbol)
+sourceLine(element, cat("L", line)) :- sourceInfo(element, "line", line).
+sourceLine(element, "UNK") :- anyElement(element), !sourceInfo(element, "line", _).
+
+.decl sourceLineInContext(element: ctxProvider.ElementInContext, line: symbol)
+sourceLineInContext(elementInContext, line) :-
+	ctxProvider.elementInContext(elementInContext, element, _), sourceLine(element, line).
+
+
+/** Associates the a branching block with the condition it branches on */
+.decl branchingCondition(condition: ctxProvider.ElementInContext,
+						 branching: ctxProvider.ElementInContext)
+
+branchingCondition(conditionInContext, branchingInContext) :-
+	branch(_, _, branchBlock, _, _, condition),
+	ctxProvider.elementInContext(branchingInContext, branchBlock, branchContext),
+	ctxProvider.elementInContext(conditionInContext, condition, branchContext).

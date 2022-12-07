@@ -1,0 +1,78 @@
+#include "../../libfunctors/util-sets.dl"
+
+
+.comp _TrustFlow {
+
+    .decl isTrustedValue(variable: ctxProvider.ElementInContext)
+    .decl isTrustedInstr(variable: ctxProvider.ElementInContext)
+
+    .decl maybeTrustedValue(variable: ctxProvider.ElementInContext)
+    .decl maybeTrustedInstr(variable: ctxProvider.ElementInContext)
+
+    .decl trustedPredecessors(node: data.Node, preds: Set)
+
+    isTrustedValue(anythingFromConstructor) :-
+        ctxProvider.elementInContext(anythingFromConstructor, _, constructorContext),
+        ctxProvider.isInConstructorContext(constructorContext).
+
+    isTrustedValue(anyConstant) :- ctxProvider.elementInContext(anyConstant, c, _), const(c, _).
+
+    isTrustedValue(value) :-
+        trustedPredecessors([value], trustedInEdgeSet), numTrusted = SET_SIZE(trustedInEdgeSet),
+        data.graph.inEdgeCount([value], numTrusted),
+        trustedInEdgeSet != SET_EMPTY().
+
+    trustedPredecessors(node, SET_EMPTY()) :-
+        data.graph.node(node).
+
+    // This can be optimized by enumerating in-edges first
+    trustedPredecessors(node, SET_ADD(set, [pred])) :-
+        trustedPredecessors(node, set), data.graph.edge(node, [pred]), isTrustedValue(pred).
+
+    isTrustedValue(value) :- isTrustedInstr(value).
+
+    isTrustedInstr(value) :-
+        branch(branchTransfer, _, _, _, _, branchCondition),
+        ctxProvider.elementInContext(branchingTransferCtx, branchTransfer, branchContext),
+        ctxProvider.elementInContext(branchingConditionCtx, branchCondition, branchContext),
+        ctxProvider.elementInContext(senderCtx, sender, branchContext),
+        isTrustedValue(trustedValue),
+        msgSender(sender),
+        dataflow.isDerivedFrom(branchingConditionCtx, trustedValue),
+        dataflow.isDerivedFrom(branchingConditionCtx, senderCtx),
+        programFlow.conditioned(value, branchingTransferCtx, _).
+
+    TO_STRING_1(isTrustedValue, ctxProvider.executionStateToString) //> isTrustedValueToString
+
+
+
+    maybeTrustedValue(value) :- isTrustedValue(value).
+    maybeTrustedValue(value) :- maybeTrustedInstr(value).
+
+    maybeTrustedValue(value) :-
+        data.graph.edge([value], [trusted]), maybeTrustedValue(trusted).
+
+    maybeTrustedInstr(value) :-
+        branch(branchTransfer, _, _, _, _, branchCondition),
+        ctxProvider.elementInContext(branchingTransferCtx, branchTransfer, branchContext),
+        ctxProvider.elementInContext(branchingConditionCtx, branchCondition, branchContext),
+        ctxProvider.elementInContext(senderCtx, sender, branchContext),
+        maybeTrustedValue(trustedValue),
+        msgSender(sender),
+        dataflow.isDerivedFrom(branchingConditionCtx, trustedValue),
+        dataflow.isDerivedFrom(branchingConditionCtx, senderCtx),
+        programFlow.conditioned(value, branchingTransferCtx, _).
+
+}
+
+
+/** TrustedVariable */
+.init trustFlow = _TrustFlow
+
+//LOG(isTrusted.value)
+//LOG(isTrusted.isTrustedValueToString)
+
+//LOG(isTrusted.trustedPredecessors)
+
+//SIZE(isTrusted.isTrustedValue)
+//SIZE(isTrusted.trustedPredecessors)

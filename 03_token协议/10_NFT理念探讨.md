@@ -1,12 +1,4 @@
-## 关于IP Rights 与Ownership的探讨
-
-
-
-WIP
-
-
-
-## 几个问题
+# 关于IP Rights 与Ownership的探讨
 
 1. **What are intellectual property rights and NFTs? ** 什么是知识产权和 NFT？
 
@@ -257,5 +249,3 @@ WIP
 ## PFP
 
 Profile Pic.
-
-## ONE-ONE

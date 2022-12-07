@@ -1,0 +1,40 @@
+.comp RepeatedCallPattern : Pattern {
+	NAME("Repeated Call to Untrusted Contract")
+
+	DESCRIPTION("Repeated call to an untrusted contract may result in different values")
+
+	SEVERITY(HIGH)
+
+	applicable(call, callLine) :-
+		externalCall(call),
+		sourceLine(call, callLine).
+
+	compliance(call, callLine, "") :-
+		applicable(call, callLine),
+		!violation(call, _, _).
+
+	violation(call1, callLine, "") :-
+		applicable(call1, _), sourceLine(call1, callLine),
+		applicable(call2, _), call1 != call2,
+		ctxProvider.elementInContext(callCtx1, call1, context),
+		ctxProvider.elementInContext(callCtx2, call2, context),
+		programFlow.mayFollow(callCtx1, callCtx2),
+		callInfo(call1, target1, _),
+		callInfo(call2, target2, _),
+		sameTargets(target1, target2),
+		!differentArguments(call1, call2).
+
+	.decl sameTargets(t1: SSA, t2: SSA)
+	sameTargets(t1, t2):- statement(t1), statement(t2), t1 = t2.
+	sameTargets(t1, t2):-
+		structLoad(t1, s, m),
+		structLoad(t2, s, m).
+
+	.decl differentArguments(call1: Transfer, call2: Transfer)
+	differentArguments(call1, call2) :-
+		externalCall(call1),
+		externalCall(call2), call1 != call2,
+		transferArgument(call1, value, i),
+		transferArgument(call2, value, i).
+
+}

@@ -1261,9 +1261,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.7" data-path="../04_合约攻击/07_slither教程.html">
+        <li class="chapter " data-level="1.9.7" data-path="../04_合约攻击/07_slither教程.md">
             
-                <a href="../04_合约攻击/07_slither教程.html">
+                <span>
             
                     
                     第7节:slither教程
@@ -1319,6 +1319,71 @@
             
                     
                     第32节:智能合约编写最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../04_合约攻击/33_Solgraph.html">
+            
+                <a href="../04_合约攻击/33_Solgraph.html">
+            
+                    
+                    第33节:Solgraph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../04_合约攻击/34_Mythril.html">
+            
+                <a href="../04_合约攻击/34_Mythril.html">
+            
+                    
+                    第34节:Mythril
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../04_合约攻击/35_Slither.html">
+            
+                <a href="../04_合约攻击/35_Slither.html">
+            
+                    
+                    第35节:Slither
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../04_合约攻击/36_REMIX静态扫描工具.html">
+            
+                <a href="../04_合约攻击/36_REMIX静态扫描工具.html">
+            
+                    
+                    第36节:REMIX静态扫描工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../04_合约攻击/37_SECURIF.html">
+            
+                <a href="../04_合约攻击/37_SECURIF.html">
+            
+                    
+                    第37节:SECURIF
             
                 </a>
             
@@ -2313,11 +2378,11 @@
                                 <h1 id="第20节：错误error"><a name="第20节：错误error" class="plugin-anchor" href="#第20节：错误error"><i class="fa fa-link" aria-hidden="true"></i></a>第20节：错误Error</h1>
 <p>合约中发生错误时，整个交易状态都会进行回滚，一共有三个错误处理方式，具体如下：</p>
 <ol>
-<li><p>require：一般用于参数有效性校验，最常用。消耗的gas不会退回，剩余的gas退回；</p>
+<li><p>require：一般用于参数有效性校验，最常用。消耗的gas不会退回，剩余的gas退回；（条件为真，继续向下执行）</p>
 </li>
 <li><p>revert：与require类似，适用于校验条件复杂时使用；</p>
 </li>
-<li><p>assert：用于断言绝对不改出错的地方，注意：</p>
+<li><p>assert：用于断言绝对不改出错的地方，注意：（条件为真，继续向下执行）</p>
 <ol>
 <li>一般用于程序异常处理，触发了assert意味着存在bug；</li>
 <li>不提供错误信息；</li>
@@ -2434,7 +2499,7 @@ contract Account {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第20节:error","level":"1.6.20","depth":2,"next":{"title":"第21节:修饰器modifier","level":"1.6.21","depth":2,"path":"01_solidity基础/21_修饰器modifier.md","ref":"01_solidity基础/21_修饰器modifier.md","articles":[]},"previous":{"title":"第19节:view和pure","level":"1.6.19","depth":2,"path":"01_solidity基础/19_view和pure.md","ref":"01_solidity基础/19_view和pure.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/20_error.md","mtime":"2022-11-17T14:39:18.000Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-05T16:52:07.703Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第20节:error","level":"1.6.20","depth":2,"next":{"title":"第21节:修饰器modifier","level":"1.6.21","depth":2,"path":"01_solidity基础/21_修饰器modifier.md","ref":"01_solidity基础/21_修饰器modifier.md","articles":[]},"previous":{"title":"第19节:view和pure","level":"1.6.19","depth":2,"path":"01_solidity基础/19_view和pure.md","ref":"01_solidity基础/19_view和pure.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/20_error.md","mtime":"2022-12-07T07:05:33.149Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-07T07:05:47.033Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
