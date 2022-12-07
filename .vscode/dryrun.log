@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/sg00537ml/personal/solidity-expert'
+make: Leaving directory `/Users/sg00537ml/personal/solidity-expert'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
