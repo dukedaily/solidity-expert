@@ -79,7 +79,12 @@
     * [第2节:ERC721](03_token协议/02_ERC721.md)
     * [第3节:ERC1155](03_token协议/03_ERC1155.md)
     * [第4节:ERC165](03_token协议/04_ERC165.md)
-    <!-- * [第5节:ERC1820](03_token协议/05_ERC1820.md) -->
+    * [第5节:EIP2612](03_token协议/05_EIP2612.md)
+    * [第6节:EIP712](03_token协议/06_EIP712.md)
+    * [第7节:ERC5114_SBT](03_token协议/07_ERC5114_SBT.md)
+    * [第8节:ERC1820](03_token协议/08_ERC1820.md)
+    * [第9节:狗屁Metaverse](03_token协议/09_metaverse.md)
+    * [第10节:NFT理念探讨](03_token协议/10_NFT理念探讨.md)
 * [第四章:合约攻击](04_合约攻击/README.md)
     * [第1节:重入攻击](04_合约攻击/01_重入攻击.md)
     * [第2节:返回值校验](04_合约攻击/02_返回值校验.md)
