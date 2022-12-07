@@ -1,4 +1,6 @@
-# 关于IP Rights 与Ownership的探讨
+# 第10节：关于IP Rights 与Ownership的探讨
+
+## 几个问题
 
 1. **What are intellectual property rights and NFTs? ** 什么是知识产权和 NFT？
 
@@ -73,13 +75,8 @@
    
    
    The confusing question is who then legally owns the copyright of the NFT. The experts in the field say that unless the author transfers copyright ownership to the NFT buyer, it’s legally still the author that owns the intellectual property of the NFT despite the NFT transfer to its new owner. Hence, by default, the intellectual property of the underlying invention or creation of the NFT can in principle always belong to the author if he never explicitly transfers intellectual property ownership to other people, despite the NFT ownership being traded in digital spaces.
-   
-   
-   
    ```
-
    
-
 3. **Which NFT collections have given IP rights to owners?**  哪些 NFT 集合赋予了所有者 IP 权利？
 
    ```sh
@@ -99,8 +96,6 @@
    
    ```
 
-   
-
 4. **How can NFT and Web3 protocols or tools help transfer IP rights?**  NFT 和 Web3 协议或工具如何帮助转移 IP 权利？（==contentIP==）
 
    ```sh
@@ -112,8 +107,6 @@
    # 2. 如果发型的时候没有赋予IP权力，那么则无法帮助完成IP权力转移。
    
    ```
-
-   
 
 5. **New challenges for IP rights owners?**  知识产权所有者面临的新挑战？
 
@@ -202,7 +195,7 @@
 
 
 
-## ==使用权限不等于IP权限==（小结）
+## 使用权限不等于IP权限（小结）
 
 1. 使用权限和IP权限是不同的，持有IP权限的项目方可以随时修改使用权限（Usage licenses are different from IP rights），比如[Moonbirds](https://nftnow.com/news/moonbirds-just-made-all-their-nfts-public-domain/)
 2. NFT的各种使用权限（商用、个人使用、限定商用、CC0）等和代码无关，代码层面，目前只看到代码本身的开源协议，例如MIT
@@ -218,16 +211,6 @@
 
 
 
-## 参考链接
-
-1. [Relationship between NFTs and Intellectual Property](https://www.lexology.com/library/detail.aspx?g=e9c8fc34-5858-4390-96df-1015a2c0a3f0)
-2. [NFTs rarely offer intellectual property rights to underlying art, say report](https://www.cnbctv18.com/cryptocurrency/nft-rarely-offer-intellectual-property-rights-to-underlying-art-says-report-14576601.htm)
-3. 进一步了解cc0:https://creativecommons.org/cc-and-nfts/
-4. https://www.coindesk.com/learn/nfts-and-intellectual-property-what-do-you-actually-own/
-5. https://palm.io/studio/nft-copyright-ip-rights-cc0/
-
-# 其他
-
 ## CC0
 
 - A CC0 (creative commons – no rights reserves) NFT is a form of copyright that enables the creator to allow their NFTs to be owned by others. CC0 means that anyone can use the NFT for commercial purposes in numerous ways without the need to give attribution to the original artist, team, or creator.
@@ -240,12 +223,23 @@
 
 
 
-## WOW
+CC0 NFT（creative commons – no rights reserves） 泛指没有版权限制的 NFT，其中：
 
-[terms唯一尝试转移IP的NFT Collection](https://worldofwomen.mypinata.cloud/ipfs/QmRPn2jf3u5tc47Z2PDJRbzKZhBUyi4qBABfSVCDWeUBPz)，但是貌似并没有，我看了terms，没见到完全转移的意思。
+- CC：代表Creative Commons，是知识共享的简称；
+- 0：则代表无版权；
+- 参考链接：https://cyberscrilla.com/what-is-a-cc0-nft/。
 
 
 
-## PFP
+The main benefit of this is that others can use it for commercial purposes. They do not necessarily need to give attribution of the NFT to the creator, artist, or team. Meaning there will be no issues with copyright infringement of any kind.
 
-Profile Pic.
+
+
+## 参考链接
+
+1. [Relationship between NFTs and Intellectual Property](https://www.lexology.com/library/detail.aspx?g=e9c8fc34-5858-4390-96df-1015a2c0a3f0)
+2. [NFTs rarely offer intellectual property rights to underlying art, say report](https://www.cnbctv18.com/cryptocurrency/nft-rarely-offer-intellectual-property-rights-to-underlying-art-says-report-14576601.htm)
+3. 进一步了解cc0:https://creativecommons.org/cc-and-nfts/
+4. https://www.coindesk.com/learn/nfts-and-intellectual-property-what-do-you-actually-own/
+5. https://palm.io/studio/nft-copyright-ip-rights-cc0/
+

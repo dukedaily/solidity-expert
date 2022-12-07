@@ -10,6 +10,4 @@
 - https://github.com/SunWeb3Sec/DeFiHackLabs（已创建）
 - https://github.com/kadenzipfel/smart-contract-attack-vectors
 - https://foresightnews.pro/article/detail/3740
-
-
-
+- https://trustchain.medium.com/full-smart-contract-audit-methodology-2023-b29db744bf3e
