@@ -167,3 +167,5 @@
     <!-- * [第6节:MEV](20_热门技术追踪/06_MEV.md) -->
     <!-- * [第7节:DID](20_热门技术追踪/07_DID.md)  -->
 * [第二十一章:COSMOS学习笔记](21_cosmos学习笔记/README.md)
+* [第二十二章:MOVE学习笔记](22_move学习笔记/README.md)
+* [第二十三章:RUST学习笔记](23_rust学习笔记/README.md)
