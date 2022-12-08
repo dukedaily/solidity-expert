@@ -87,6 +87,7 @@ MPC解决方案目前主要针对机构客户（基金、交易所、托管人�
 ### 项目
 
 1. https://zengo.com/mpc-wallet/
+1. https://github.com/ingonyama-zk/ingopedia
 
 
 
