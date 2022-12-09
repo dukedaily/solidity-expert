@@ -1,5 +1,10 @@
 # 第16章：UniswapV2解析
 
-1. 工程部署(12月10日)
-2. 代码解析(12月25日)
-3. 视频录制(12月30日)
+- Github托管：https://github.com/dukedaily/uniswapv2
+- 在线演示：TODO
+
+
+
+## 参考
+
+- https://jeiwan.net/
