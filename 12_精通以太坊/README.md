@@ -19,6 +19,11 @@
 
 
 
+**精简版：**
+<iframe src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/ebook/ethereum_evm_illustrated_with_index.pdf" width="640" height="480" allow="autoplay"></iframe>
+
+
+
 **参考：**
 
 1. 以太坊技术与实现：https://learnblockchain.cn/books/geth/part1.html
