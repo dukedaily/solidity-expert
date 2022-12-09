@@ -327,12 +327,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.14" data-path="../00_blockchain基础/13_faucet-网络添加.html">
+        <li class="chapter " data-level="1.5.14" data-path="../00_blockchain基础/13_如何参与.html">
             
-                <a href="../00_blockchain基础/13_faucet-网络添加.html">
+                <a href="../00_blockchain基础/13_如何参与.html">
             
                     
-                    第13节:faucet-网络添加
+                    第13节:如何参与
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../00_blockchain基础/14_EIP.html">
+            
+                <a href="../00_blockchain基础/14_EIP.html">
+            
+                    
+                    第14节:EIP
             
                 </a>
             
@@ -1157,6 +1170,84 @@
             
                     
                     第4节:ERC165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../03_token协议/05_EIP2612.html">
+            
+                <a href="../03_token协议/05_EIP2612.html">
+            
+                    
+                    第5节:EIP2612
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../03_token协议/06_EIP712.html">
+            
+                <a href="../03_token协议/06_EIP712.html">
+            
+                    
+                    第6节:EIP712
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../03_token协议/07_ERC5114_SBT.html">
+            
+                <a href="../03_token协议/07_ERC5114_SBT.html">
+            
+                    
+                    第7节:ERC5114_SBT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../03_token协议/08_ERC1820.html">
+            
+                <a href="../03_token协议/08_ERC1820.html">
+            
+                    
+                    第8节:ERC1820
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../03_token协议/09_metaverse.html">
+            
+                <a href="../03_token协议/09_metaverse.html">
+            
+                    
+                    第9节:狗屁Metaverse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../03_token协议/10_NFT理念探讨.html">
+            
+                <a href="../03_token协议/10_NFT理念探讨.html">
+            
+                    
+                    第10节:NFT理念探讨
             
                 </a>
             
@@ -2476,7 +2567,8 @@ contract EtherGame {
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deposit</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{
         <span class="hljs-built_in">require</span>(msg.value == <span class="hljs-number">1</span> ether, <span class="hljs-string">&quot;You can only send 1 Ether&quot;</span>);
 
-        balance += msg.value; <span class="hljs-comment">//&lt;&lt;== 通过状态变量来统计ether，此时及时合约自杀传入ether，也不会干扰条件判断逻辑。</span>
+          <span class="hljs-comment">// ！！通过状态变量来统计ether，此时即使合约自杀传入ether，也不会干扰条件判断逻辑！！</span>
+        balance += msg.value;
 
         <span class="hljs-built_in">require</span>(balance &lt;= targetAmount, <span class="hljs-string">&quot;Game is over&quot;</span>);
 
@@ -2520,7 +2612,7 @@ contract EtherGame {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第3节:合约自杀","level":"1.9.3","depth":2,"next":{"title":"第4节:读取私有变量","level":"1.9.4","depth":2,"path":"04_合约攻击/04_读取私有变量.md","ref":"04_合约攻击/04_读取私有变量.md","articles":[]},"previous":{"title":"第2节:返回值校验","level":"1.9.2","depth":2,"path":"04_合约攻击/02_返回值校验.md","ref":"04_合约攻击/02_返回值校验.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"04_合约攻击/03_合约自杀.md","mtime":"2022-08-24T07:50:06.076Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-07T07:26:46.762Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第3节:合约自杀","level":"1.9.3","depth":2,"next":{"title":"第4节:读取私有变量","level":"1.9.4","depth":2,"path":"04_合约攻击/04_读取私有变量.md","ref":"04_合约攻击/04_读取私有变量.md","articles":[]},"previous":{"title":"第2节:返回值校验","level":"1.9.2","depth":2,"path":"04_合约攻击/02_返回值校验.md","ref":"04_合约攻击/02_返回值校验.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"04_合约攻击/03_合约自杀.md","mtime":"2022-12-07T10:43:05.627Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-09T07:00:30.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
