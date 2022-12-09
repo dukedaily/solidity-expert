@@ -1,5 +1,0 @@
-from .evaluator_demand_recursive import DemandDrivenRecursive
-from .evaluator_demand_iterative import DemandDrivenIterative
-from .evaluator_static import StaticEvaluator
-
-DefaultEvaluator = DemandDrivenIterative

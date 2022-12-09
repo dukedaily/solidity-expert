@@ -1,5 +1,0 @@
-strict digraph {
-  someFunction
-  anEvent
-  someFunction -> anEvent
-}
