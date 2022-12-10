@@ -1,8 +1,6 @@
-# FTX因免手续费提币，被黑客0元购XEN Token技术分析
+# 第 20节：FTX因免手续费提币，被黑客0元购XEN Token技术分析
 
 > 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
-
-
 
 ## 背景介绍
 
