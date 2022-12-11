@@ -1,0 +1,64 @@
+#include "abstract-context-pattern.dl"
+
+.comp PASSPattern : PerContextPattern {
+    NAME("Taint Analysis for PASS Project")
+
+    DESCRIPTION(STR_JOIN(
+        "A sink call is considered Tainted if its argument ",
+        "depends on msg.value or msg.sender or its execution ",
+        "depends on msg.value or msg.sender"))
+
+    SEVERITY(CRITICAL)
+
+
+	applicableInContext(sinkInContext) :-
+        ctxProvider.elementInContext(sinkInContext, sink, _), sink(sink, _).
+
+    violationInContext(sinkInContext, "UNSAFE") :-
+        applicableInContext(sinkInContext), nonCompliant(sinkInContext).
+
+    compliantInContext(sinkInContext, "SAFE") :-
+        applicableInContext(sinkInContext), !nonCompliant(sinkInContext).
+
+    .decl nonCompliant(sinkInContext: ctxProvider.ElementInContext)
+    nonCompliant(sinkInContext) :-
+        applicableInContext(sinkInContext), taintedSource(source),
+        ctxProvider.elementInContext(sinkInContext, sink, context), sink(sink, argument),
+        ctxProvider.elementInContext(argInContext, argument, context),
+        (
+            infoflow.instrMayDependOn(sinkInContext, source);
+            dataflow.mayDependOn(argInContext, source)
+        ).
+
+    .decl maybeCompliantInContext(storeInContext: ctxProvider.ElementInContext)
+    maybeCompliantInContext(sinkInContext) :-
+		applicableInContext(sinkInContext), taintedSource(source),
+        !dataflow.mayDependOn(sinkInContext, source).
+
+    // Helper relations
+    .decl sink(transfer: Transfer, value: SSA)
+    sink(t, value) :- functionCall("sink", t), transferArgument(t, value, _).
+
+    .decl sinkInContextToString(sink: ctxProvider.ElementInContext, str: symbol)
+    sinkInContextToString(sinkInContext, str):- applicableInContext(sinkInContext),
+        ctxProvider.elementInContext(sinkInContext, _, context),
+        ctxProvider.contextToString(context, str).
+
+
+    .decl taintedSource(sourceInContext: ctxProvider.ElementInContext)
+    taintedSource(sourceInContext) :-
+        ctxProvider.elementInContext(sourceInContext, source, _),
+        (
+            msgSender(source);
+            msgValue(source)
+        ).
+
+//    tainted(sink) :-
+//        sink(sink, argument), isInFunction(sink, f),
+//        dataflow.mayDependOn([argument, ctx], [elemTaint, ctx2]),
+//        ctxProvider.contextForInit(f, ctx),
+//        .
+
+//    LOG(sink)
+//    LOG(sinkInContextToString)
+}

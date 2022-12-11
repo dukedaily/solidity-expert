@@ -1,0 +1,20 @@
+ERROR(STR_JOIN("IsDerivedFrom must be subset of MayDepOn: ", astr, " ", bstr),
+    (dataflow.isDerivedFromStep(a, b),
+    !dataflow.mayDependOnStep(a, b),
+    ctxProvider.executionStateToString(a, astr),
+    ctxProvider.executionStateToString(b, bstr))
+)
+
+ERROR(STR_JOIN("mustFollow must be subset of mayFollow: ", astr, " ", bstr),
+    (programFlow.mustFollow(a, b),
+    !programFlow.mayFollow(a, b),
+    ctxProvider.executionStateToString(a, astr),
+    ctxProvider.executionStateToString(b, bstr))
+)
+
+ERROR(STR_JOIN("mustPrecede must be subset of mayPrecede: ", astr, " ", bstr),
+    (programFlow.mustPrecede(a, b),
+    !programFlow.mayPrecede(a, b),
+    ctxProvider.executionStateToString(a, astr),
+    ctxProvider.executionStateToString(b, bstr))
+)

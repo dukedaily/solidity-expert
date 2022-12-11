@@ -1,0 +1,51 @@
+#include "../util-lists.dl"
+
+.symbol_type CallStackTag
+.type TransferStack = [head: Transfer, tail: TransferStack]
+.type CallStack = [function: Function, transfer: TransferStack, tag: CallStackTag]
+
+.comp FullContext : ContextProvider<CallStack> {
+    .init transferStacks = ListOps<Transfer, TransferStack>
+
+    transferStacks.lists(stack) :- contexts([_, stack, _]).
+    transferStacks.toStringElem(call, callLine) :- transferStacks.lists([call, _]), sourceLine(call, callLine).
+    transferStacks.toStringElem("N/A", "UNK") :- transferStacks.lists(["N/A", _]).
+
+    contextForInit(function, [function, nil, "precise"]) :-
+        requestContextForInit(function).
+
+    // Regular Context
+    contextForCall(calleeFunction, transferToCallee, callerContext, calleeContext) :-
+        requestContextForCall(calleeFunction, transferToCallee, callerContext),
+        callerContext = [callerFunction, callerTransfers, "precise"],
+        calleeContext = [calleeFunction, [transferToCallee, callerTransfers], "precise"],
+        transferStacks.length(callerTransfers, l), l < TRANSFER_STACK_DEPTH.
+
+    // Fallback Context
+    contextForCall(calleeFunction, transferToCallee, callerContext, calleeContext) :-
+        requestContextForCall(calleeFunction, transferToCallee, callerContext),
+        transferStacks.length(callerTransfers, callDepth),
+        callerContext = [callerFunction, callerTransfers, callerTag],
+        calleeContext = [calleeFunction, ["N/A", nil], "fallback"],
+        (
+            callDepth >= TRANSFER_STACK_DEPTH;
+            callerTag = "fallback"
+        ).
+
+    contextForCall(calleeFunction, transferToCallee, callerContext, calleeContext) :-
+        requestFallbackContextForCall(calleeFunction, transferToCallee, callerContext),
+        callerContext = [callerFunction, callerTransfers, callerTag],
+        calleeContext = [calleeFunction, ["N/A", nil], "fallback"].
+
+    contextToString([fun, tst, tag], STR_JOIN(funName, " [", str, "]")) :-
+        contexts([fun, tst, tag]),
+        function(fun, funName),
+        transferStacks.toString(tst, str).
+
+    .decl contextDepthExhausted()
+    contextDepthExhausted() :-
+        transferStacks.length(_, l), l >= TRANSFER_STACK_DEPTH.
+
+    .decl isFallback(context: CallStack)
+    isFallback([f, c, tag]) :- contexts([f, c, tag]), tag = "fallback".
+}

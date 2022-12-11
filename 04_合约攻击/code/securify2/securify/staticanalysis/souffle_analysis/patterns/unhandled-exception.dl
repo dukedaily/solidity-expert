@@ -1,0 +1,50 @@
+.comp UnhandledExceptionPattern : PerContextPattern {
+    NAME("Unhandled Exception")
+
+    DESCRIPTION(STR_JOIN(
+                            "The return value of statements that may return ",
+                            "error values must be explicitly checked."))
+
+    SEVERITY(HIGH)
+
+
+    applicableInContext(callInContext) :- checkableCall(call),
+		ctxProvider.elementInContext(callInContext, call, _).
+
+    compliantInContext(callInContext, "") :-
+        applicableInContext(callInContext),
+        successFlag(successFlag, callInContext),
+        branchingCondition(condition, branching),
+        programFlow.mustFollow(branching, callInContext),
+        dataflow.isDerivedFrom(condition, successFlag).
+
+    violationInContext(call, "") :- applicableInContext(call), !maybeCompliantInContext(call).
+
+    .decl maybeCompliantInContext(callInContext: ctxProvider.ElementInContext)
+    maybeCompliantInContext(callInContext) :-
+        applicableInContext(callInContext),
+        successFlag(successFlag, callInContext),
+        branchingCondition(condition, branching),
+        programFlow.mayFollow(branching, callInContext),
+        dataflow.mayDependOn(condition, successFlag).
+
+    /** Success flag is first argument for both send and call */
+    .decl successFlag(flag: ctxProvider.ElementInContext,
+	                  call: ctxProvider.ElementInContext)
+
+    successFlag(flagInContext, callInContext) :-
+		checkableCall(call),
+        call(call, _, _, continuation),
+        argument(flag, continuation, 0),
+        ctxProvider.elementInContext(callInContext, call, callerContext),
+		ctxProvider.elementInContext(flagInContext, flag, callerContext).
+
+	.decl checkableCall(call: Transfer)
+	checkableCall(call) :-
+        externalCall(call),
+		callInfo(call, _, callType),
+		(
+			callType = "send";
+			callType = "call"
+		).
+}

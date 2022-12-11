@@ -1,0 +1,59 @@
+//TODO: Maybe report the point where the violation exists
+.comp TimestampPattern : PerContextPattern {
+	NAME("Usage of block timestamp")
+
+	DESCRIPTION(
+        "Returned value relies on block timestamp."
+    )
+
+	SEVERITY(LOW)
+
+	applicableInContext(blockTimestampCtx) :-
+        ctxProvider.elementInContext(blockTimestampCtx, blockTimestamp, _),
+        existsBlockTimestamp(blockTimestamp, _).
+
+	compliantInContext(blockTimestampCtx, "") :-
+        applicableInContext(blockTimestampCtx),
+        !violationInContext(blockTimestampCtx,_).
+
+	// Timestamp is emitted (emitting timestamp is ok, e.g. for logging)
+	compliantInContext(blockTimestampCtx, "") :-
+		applicableInContext(blockTimestampCtx),
+		dataflow.mayDependOn(conditionWithTimestampCtx, blockTimestampCtx),
+		ctxProvider.elementInContext(conditionWithTimestampCtx, conditionWithTimestamp, _),
+		emit(_, _, conditionWithTimestamp, _).
+
+    // The timestamp is returned by the function
+    // should we check if the function is internal?
+	violationInContext(blockTimestampCtx, "") :-
+		applicableInContext(blockTimestampCtx),
+        dataflow.mayDependOn(conditionWithTimestamp, blockTimestampCtx),
+        returnedValueInCtx(conditionWithTimestamp).
+
+    // Timestamp is used for revert
+    violationInContext(blockTimestampCtx, "") :-
+        applicableInContext(blockTimestampCtx),
+        dataflow.mayDependOn(conditionWithTimestamp, blockTimestampCtx),
+        (
+            branch(_, _, _, block_id, _, condition);
+            branch(_, _, _, _, block_id, condition)
+        ),
+        ctxProvider.elementInContext(conditionWithTimestamp, condition, _),
+        revert(_, block_id).
+
+
+    .decl returnedValueInCtx(e: ctxProvider.ElementInContext)
+    returnedValueInCtx(ssaCtx) :-
+        return(transfer, _),
+        transferArgument(transfer, ssa, _),
+        ctxProvider.elementInContext(ssaCtx, ssa, _).
+
+    //Find a block.timestamp command
+    .decl existsBlockTimestamp(blockTimestamp: Element, blockTimestampLine: Element)
+    existsBlockTimestamp(timestampSSA, blockTimestampLine):-
+        builtinVariable(blockSSA, "block"),
+        builtinVariable(timestampSSA, "TIMESTAMP"),
+        follows(timestampSSA, blockSSA),
+        sourceLine(timestampSSA, blockTimestampLine).
+}
+

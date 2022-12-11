@@ -1,0 +1,76 @@
+.comp DataflowGraph {
+
+    .decl directDependency(e: Element, dep: Element)
+    directDependency(id, dep) :-
+        (
+            bop(id, dep, _, _);
+            bop(id, _, dep, _);
+            uop(id, dep, _);
+            assign(id, dep);
+            arrayLoad(id, dep, _);
+            arrayLoad(id, _, dep);
+            mapLoad(id, dep, _);
+            mapLoad(id, _, dep);
+            structLoad(id, dep, _);
+            store(id, _, dep);
+            builtinFunction(id, _, dep, _)
+        ).
+
+    .type Node = [a: ctxProvider.ElementInContext]
+
+    .init graph = DiGraphOps<Node>
+    .init graphT = DiGraphOps<Node>
+
+    graph.edge([a], [b]) :- __dependencies(a, b).
+    graphT.edge([b], [a]) :- __dependencies(a, b).
+
+    .decl __dependencies(a: ctxProvider.ElementInContext, b: ctxProvider.ElementInContext)
+
+    // Simple dependency within single context
+    __dependencies(idCtx, depCtx) :-
+        directDependency(id, dep),
+        ctxProvider.elementInContext(idCtx, id, context),
+        ctxProvider.elementInContext(depCtx, dep, context).
+
+    // Argument dependency for non-jump transfers
+    __dependencies(toArgCtx, fromArgCtx) :-
+        directArgumentTransfer(_, _, _, fromArg, toArg),
+        ctxProvider.elementInContext(toArgCtx, toArg, context),
+        ctxProvider.elementInContext(fromArgCtx, fromArg, context).
+
+    // Argument dependency for jump transfers (**into** a nested context)
+    __dependencies(toArgCtx, fromArgCtx) :-
+        ctxProvider.contextForCall(callee, transfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        transferArgument(transfer, fromArg, index),
+        argument(toArg, callee, index),
+        ctxProvider.elementInContext(fromArgCtx, fromArg, callerContext),
+        ctxProvider.elementInContext(toArgCtx, toArg, calleeContext).
+
+    // Return dependency for jump transfers (**from** a nested context)
+    __dependencies(toArgCtx, retArgCtx) :-
+        ctxProvider.contextForCall(_, transfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        jump(transfer, _, function, continuation),
+        argument(toArg, continuation, index),
+        returnArgument(retArg, index, function),
+        ctxProvider.elementInContext(retArgCtx, retArg, calleeContext),
+        ctxProvider.elementInContext(toArgCtx, toArg, callerContext).
+
+    // Storage dependencies
+    __dependencies(elemLoad, elemStore) :-
+        storageAnalysis.accessPrecedingStore(elemLoad, elemStore).
+
+    // Storage mutations by mapping / array / struct operations
+
+    .decl returnArgument(value: SSA, index: number, function: Function)
+    returnArgument(value, index, f) :-
+        function (f, _),
+        isInFunction(r, f), return(r, _),
+        transferArgument(r, value, index).
+
+    .decl mayDependOnStep(a: ctxProvider.ElementInContext, b: ctxProvider.ElementInContext)
+    mayDependOnStep(a, b) :- graph.edge([a], [b]).
+
+    .decl mayDependOn(a: ctxProvider.ElementInContext, b: ctxProvider.ElementInContext)
+    mayDependOn(a, b) :- graph.reachableFrom([a], [b]).
+
+}

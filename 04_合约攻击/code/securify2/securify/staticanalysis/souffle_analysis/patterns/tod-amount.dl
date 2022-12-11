@@ -1,0 +1,19 @@
+#include "abstract-tod-pattern.dl"
+
+.comp TODAmountPattern : AbstractTODPattern {
+    NAME("Transaction Order Affects Ether Amount")
+
+    DESCRIPTION(STR_JOIN(
+        "The amount of ether transferred must not be ",
+        "influenced by other transactions."))
+
+	SEVERITY(CRITICAL)
+
+	applicableInContext(callInContext) :-
+        ctxProvider.elementInContext(callInContext, call, context),
+		externalCall(call),
+		callValue(call, amount),
+		!valueOf([amount, context], "0").
+
+    dependency(element, dependency) :- callValue(element, dependency).
+}

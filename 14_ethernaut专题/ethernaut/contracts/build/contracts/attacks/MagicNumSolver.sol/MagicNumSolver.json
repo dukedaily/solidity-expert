@@ -1,0 +1,16 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "MagicNumSolver",
+  "sourceName": "contracts/attacks/MagicNumSolver.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b5069602a60005260206000f3600052600a6016f3fe",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122068f44c1b76db635a1f09ad34f05cdfecb4f075f8b0d0df5eb1cc19065646124964736f6c634300080c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

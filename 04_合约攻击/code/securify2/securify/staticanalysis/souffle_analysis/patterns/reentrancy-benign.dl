@@ -1,0 +1,41 @@
+#include "dao-base.dl"
+
+.comp ReentrancyBenignPattern : DAOBasePattern {
+
+    NAME("Benign Reentrancy")
+
+    DESCRIPTION( "Reentrancy is equivalent with two consecutive calls of the function" )
+
+    SEVERITY(LOW)
+
+    .init reentrancyNoEth = ReentrancyNoETHPattern
+    // There are two cases here:
+    // 1) A reentrancy is benign if after the call there is a store in variable on which the call does not depend on
+    // e.g.:
+    // if(var1) msg.sender.call()
+    // var2 = 42
+    // 2) There is a store after the call but there are no dependencies at all
+    // We define as benign reentrance as the eth-free dependency which is not a reentrancy-no-eth reentrancy
+
+    //A reentrancy is benign when the flow of a function does not depend on the variable changed after the call.
+    //applicableInContext(callCtx) :-
+    //    externalCall(call),
+    //    callValue(call, value),
+    //    ctxProvider.elementInContext(callCtx, call, context),
+    //    ctxProvider.elementInContext(valueCtx, value, context),
+    //    valueOf(valueCtx, "0"),
+    //    //!reentrancyNoEth(callCtx),
+    //    !reentrancyNoEth.applicableInContext(callCtx),
+    //    storeAfterCall(storeCtx, callCtx).
+
+    applicableInContext(callCtx) :-
+        externalCall(call), gasDependent(callCtx),
+        externalCallBlock(call, block),
+        annotation(block, "isView", "False"),
+        callValue(call, value),
+        !reentrancyNoEth.applicableInContext(callCtx),
+        ctxProvider.elementInContext(callCtx, call, context),
+        ctxProvider.elementInContext(valueCtx, value, context),
+        valueKnown(valueCtx), valueOf(valueCtx, "0").
+
+}

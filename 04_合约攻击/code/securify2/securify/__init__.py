@@ -1,0 +1,2 @@
+class SecurifyError(Exception):
+    pass

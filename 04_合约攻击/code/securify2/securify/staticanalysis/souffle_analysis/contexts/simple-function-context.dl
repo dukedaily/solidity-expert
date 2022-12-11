@@ -1,0 +1,18 @@
+.type FunctionContext = Function
+
+.comp SimpleFunctionContext : ContextProvider<FunctionContext> {
+    contextForInit(function, function) :-
+        requestContextForInit(function).
+
+    // Regular Context
+    contextForCall(calleeFunction, transferToCallee, callerContext, calleeFunction) :-
+        requestContextForCall(calleeFunction, transferToCallee, callerContext).
+
+    contextForCall(calleeFunction, transferToCallee, callerContext, calleeFunction) :-
+        requestFallbackContextForCall(calleeFunction, transferToCallee, callerContext).
+
+    contextToString(function, functionName) :-
+        contexts(function),
+        function(function, functionName).
+
+}

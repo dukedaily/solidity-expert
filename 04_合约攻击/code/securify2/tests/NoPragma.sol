@@ -1,0 +1,3 @@
+contract Pragma{
+    uint pragma;
+}

@@ -1,0 +1,31 @@
+.comp ShadowedStateVariablePattern : Pattern {
+	NAME("State Variable Shadowing")
+
+	DESCRIPTION(STR_JOIN(
+			   "State variables in inherited contract should ",
+			   "not be named identically to inherited variables"))
+
+	SEVERITY(HIGH)
+
+
+	applicable(variable, line) :-
+		stateVariable(variable, _),
+		sourceLine(variable, line), !annotation(variable, "inherited", _).
+
+	compliance(variable, s, STR_JOIN("Variable '", name, "' in '", cName, "' is ok")) :-
+		applicable(variable, s), annotation(variable, "name", name), contract(c, cName), stateVariable(variable, c),
+		!(shadowingConflict(variable, _); shadowingConflict(_, variable)).
+
+	violation(variable, s, STR_JOIN("Variable '", name, "' shadows inherited variable in '", cName, "'")) :-
+		applicable(variable, s), annotation(variable, "name", name), contract(c, cName), stateVariable(variable, c),
+		shadowingConflict(_, variable).
+
+	.decl shadowingConflict(variableInherited: StateVar, variableNew: StateVar)
+	shadowingConflict(v1, v2) :-
+		stateVariable(v1, c),
+		stateVariable(v2, c), v1 != v2,
+		annotation(v1, "name", name),
+		annotation(v2, "name", name),
+		annotation(v1, "inherited", _),
+		!annotation(v2, "inherited", _).
+}

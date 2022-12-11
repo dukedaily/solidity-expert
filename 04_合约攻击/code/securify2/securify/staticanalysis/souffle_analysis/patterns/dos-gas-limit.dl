@@ -1,0 +1,67 @@
+.comp DosGasLimitPattern : Pattern {
+	NAME("Dos gas limit pattern")
+
+	DESCRIPTION("Behavior that can lead to denial of service due to block gas limit.")
+
+	// Following MadMax here
+
+	SEVERITY(MEDIUM)
+
+	applicable(ssa, ssaLine) :-
+    	increasedStorageInPublicFunction(ssa),
+		sourceLine(ssa, ssaLine).
+
+	compliance(ssa, ssaLine, "") :-
+		applicable(ssa, ssaLine),
+        !violation(ssa, ssaLine, _).
+
+	violation(ssa, ssaLine, "") :-
+		applicable(ssa, ssaLine),
+        loopBoundedByLength(_).
+
+
+	//TODO: extend it with constant propagation
+	.decl increasedStorageInPublicFunction(ssa: Element)
+	increasedStorageInPublicFunction(ssa):-
+		uop(ssa, array, "length"),
+		arrayStatement(array),
+		(bop(result, ssa, _, "+"); bop(result, _, ssa, "+")),
+        structStore(_, _, "length",result),
+		(annotation(funBlock, "visibility", "public"); annotation(funBlock, "visibility", "external")),
+		isInFunction(ssa, funBlock).
+
+     // An ssa is an array
+	.decl arrayStatement(ssa: SSA)
+	arrayStatement(ssa):-
+		statement(ssa),
+		annotation(ssa, "type", type),
+		contains("[]", type).
+
+	.decl comparison(ssa: SSA)
+	comparison(ssa):-
+		bop(ssa, _, _, "<");
+		bop(ssa, _, _, ">");
+		bop(ssa, _, _, "<=");
+		bop(ssa, _, _, ">=");
+		bop(ssa, _, _, "==");
+		bop(ssa, _, _, "!=").
+
+	// Find a condition inside a loop that depends on the length
+	.decl loopBoundedByLength(branchingBlock: Block)
+	loopBoundedByLength(branchingBlock):-
+		uop(ssa, _, "length"),
+		ctxProvider.elementInContext(ssaCtx, ssa, _),
+		branchingBlock(branchingBlock, _, _),
+		blockStmt(branchingBlock, condition),
+		comparison(condition),
+		(bop(condition, var, _, _); bop(condition, _, var, _)),
+		ctxProvider.elementInContext(varCtx, var, _).
+		//data.mayDependOn(varCtx, ssaCtx).
+
+	.output increasedStorageInPublicFunction
+	.output arrayStatement
+	.output loopBoundedByLength
+	.output comparison
+	.output data.mayDependOn
+	.output ctxProvider.elementInContext
+}

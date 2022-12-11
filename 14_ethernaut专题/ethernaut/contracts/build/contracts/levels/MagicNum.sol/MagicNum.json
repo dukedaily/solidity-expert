@@ -1,0 +1,42 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "MagicNum",
+  "sourceName": "contracts/levels/MagicNum.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_solver",
+          "type": "address"
+        }
+      ],
+      "name": "setSolver",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "solver",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061014e806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80631f8794331461003b57806349a7a26d14610092575b600080fd5b6100906100493660046100db565b600080547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff92909216919091179055565b005b6000546100b29073ffffffffffffffffffffffffffffffffffffffff1681565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b6000602082840312156100ed57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff8116811461011157600080fd5b939250505056fea26469706673582212202ea43fad6ccf55b1443934cd2f5164ccc38f43438c50d8ebf1c15c51fe03d34264736f6c634300080c0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80631f8794331461003b57806349a7a26d14610092575b600080fd5b6100906100493660046100db565b600080547fffffffffffffffffffffffff00000000000000000000000000000000000000001673ffffffffffffffffffffffffffffffffffffffff92909216919091179055565b005b6000546100b29073ffffffffffffffffffffffffffffffffffffffff1681565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b6000602082840312156100ed57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff8116811461011157600080fd5b939250505056fea26469706673582212202ea43fad6ccf55b1443934cd2f5164ccc38f43438c50d8ebf1c15c51fe03d34264736f6c634300080c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

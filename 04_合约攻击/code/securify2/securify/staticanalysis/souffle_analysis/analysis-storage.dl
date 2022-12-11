@@ -1,0 +1,89 @@
+
+.comp StorageAnalysis {
+
+
+
+    /**
+    Associates an program element in a context with
+    all storage mutations that may affect the element
+    */
+    .decl precedingStore(elem: ctxProvider.ElementInContext,
+                         elemStore: ctxProvider.ElementInContext)
+
+    precedingStore(elem, storeInContext) :-
+        ctxProvider.elementInContext(storeInContext, store, _),
+        followsWithContext(elem, storeInContext),
+        store(store, _, _).
+
+    precedingStore(elem, storeInContext) :-
+        precedingStore(midInContext, storeInContext),
+        ctxProvider.elementInContext(storeInContext, store, _),
+        ctxProvider.elementInContext(midInContext, mid, _),
+        store(store, field, _),
+        !store(mid, field, _),
+        followsWithContext(elem, midInContext).
+
+    /**
+    Associates a storage access element in a context
+    with all storage mutations that may affect the element
+    */
+    .decl accessPrecedingStore(elemLoad: ctxProvider.ElementInContext,
+                               elemStore: ctxProvider.ElementInContext)
+
+    accessPrecedingStore(elemLoad, elemStore) :-
+        precedingStore(elemLoad, elemStore),
+        ctxProvider.elementInContext(elemStore, store, _),
+        ctxProvider.elementInContext(elemLoad, load, _),
+        load(load, field), store(store, field, _).
+
+
+    .decl mayDependOnPrecedingTransaction(elemLoad: ctxProvider.ElementInContext)
+    mayDependOnPrecedingTransaction(elemLoad) :-
+        accessPrecedingStore(elemLoad, _), !mustNotDependsOnPrecedingTransaction(elemLoad).
+
+    .decl mustDependOnPrecedingTransaction(elemLoad: ctxProvider.ElementInContext)
+    mustDependOnPrecedingTransaction(elemLoad) :-
+        accessPrecedingStore(elemLoad, _), !mayNotDependOnPrecedingTransaction(elemLoad).
+
+    .decl mayNotDependOnPrecedingTransaction(elemLoad: ctxProvider.ElementInContext)
+	mayNotDependOnPrecedingTransaction(elemLoad) :-
+        accessPrecedingStore(elemLoad, elemStore),
+        programFlow.mayPrecede(elemStore, elemLoad).
+
+    .decl mustNotDependsOnPrecedingTransaction(elemLoad: ctxProvider.ElementInContext)
+    mustNotDependsOnPrecedingTransaction(elemLoad) :-
+        accessPrecedingStore(elemLoad, elemStore),
+        programFlow.mustPrecede(elemStore, elemLoad).
+
+    // EXPAND_RECORD2(precedingStore, Element, ctxProvider.Context) //> precedingStore2
+    // EXPAND_RECORD2(accessPrecedingStore, Element, ctxProvider.Context) //> accessPrecedingStore2
+
+    TO_STRING_2(precedingStore, ctxProvider.executionStateToString) //> precedingStoreToString
+    TO_STRING_2(accessPrecedingStore, ctxProvider.executionStateToString) //> accessPrecedingStoreToString
+
+    TO_STRING_1(mustDependOnPrecedingTransaction,
+                ctxProvider.executionStateToString) //> mustDependOnPrecedingTransactionToString
+}
+
+.comp SingleTransactionStorageAnalysis : StorageAnalysis {
+
+}
+
+.comp MultiTransactionStorageAnalysis : StorageAnalysis {
+    //TODO: Check implications of reusing standard contexts for past transactions
+    precedingStore([nextFunction, nextContext], precedingStore) :-
+        precedingStore(returnInContext, precedingStore),
+        ctxProvider.elementInContext(returnInContext, return, prevContext),
+        ctxProvider.contextForInit(prevFunction, prevContext),
+        ctxProvider.contextForInit(nextFunction, nextContext),
+        isInFunction(return, prevFunction),
+        return(return, _).
+
+}
+
+//    /** */
+//    .decl storageLocation()
+//    .decl storageAccess()
+//    .decl storageMutation(store: SSA, valu, value: SSA)
+//    storageMutation(store, value) :- store(store, _, value).
+//    storageMutation() :- store()
