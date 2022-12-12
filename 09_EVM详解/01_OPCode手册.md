@@ -4,9 +4,46 @@ https://www.evm.codes/?fork=grayGlacier
 
 https://www.ethervm.io/
 
-![image-20221104163118696](assets/image-20221104163118696.png)
 
 
+## 概览
+
+<img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221104163118696.png" alt="image-20221104163118696" style="zoom:50%;" />
+
+
+
+## 分类
+
+- **算术运算**：ADD, MUL, SUB, DIV, SDIV, MOD, SMOD, ADDMOD, MULMOD, EXP, SIGNEXTEND
+- **逻辑运算：**LT, GT, SLT, SGT, EQ, ISZERO
+- **位运算**：AND, OR, XOR, NOT, BYTE, SHL, SHR, SAR
+
+
+
+- **当前交易状态信息**：ADDRESS, SELFBALANCE, ORGIN, CALLER, CALLVALUE
+- **当前块状态信息**：COINBASE, TIMESTAMP, NUMBER, DIFFICULTY, GASLIMIT, GASPRICE, BASEFEE
+- **其他信息读取**：BALANCE, BLOCKHASH
+
+
+
+- **栈相关**：POP, PUSH[1-32], DUP[1-16], SWAP[1-16], PUSH, DUP, SWAP
+- **CALLDATA相关：**CALLDATALOAD, CALLDATASIZE, CALLDATACOPY
+- **内存相关**：MLOAD, MSTORE, MSTORE8
+- **持久存储相关**：SLOAD, SSTORE
+- **流控制相关**：JUMP, JUMPI, PC, JUMPDEST, RETURN, REVERT
+- **执行时环境信息**：MSIZE, GAS
+- **日志相关：**LOG[0-4]
+
+
+
+- **合约创建相关**：CREATE, CREATE2
+- **CODE相关**：CODESIZE, CODECOPY, EXTCODESIZE, EXTCODECOPY, EXTCODEHASH
+- **外部调用相关**：CALL, CALLCODE, DELEGATECALL, STATICCALL, RETURNDATASIZE, RETURNDATACOPY
+- **其他**：STOP, SELFDESTRUCT, SHA3
+
+
+
+## 完整
 
 | OPCODE | NAME           | MINIMUM GAS | STACK OUPUT    | DESCRIPTIONExpand                                            |
 | ------ | -------------- | ----------- | -------------- | ------------------------------------------------------------ |

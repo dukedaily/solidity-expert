@@ -158,7 +158,6 @@
     * [第4节:SendRawTx转账](14_Golang合约交互/04_SendRawTx转账.md)
     * [第5节:订阅事件](14_Golang合约交互/05_订阅事件.md)
     * [第6节:解析事件](14_Golang合约交互/06_解析事件.md)
-    * [第7节:Untitled](14_Golang合约交互/Untitled.md)
 * [第十五章:Golang扫快服务](15_Golang扫快服务/README.md)
 * [第十六章:uniswapV2解析(12月份完成)](16_uniswapV2解析/README.md)
     * [第1节:CORE_V2ERC20](16_uniswapV2解析/01_CORE_V2ERC20.md)
