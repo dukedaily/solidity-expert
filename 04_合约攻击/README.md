@@ -7,28 +7,19 @@
 ## 参考文章：
 
 - https://github.com/transmissions11/solcurity（完成）
-
 - https://github.com/SunWeb3Sec/DeFiHackLabs（已创建）
-
 - https://github.com/kadenzipfel/smart-contract-attack-vectors
-
 - https://foresightnews.pro/article/detail/3740
-
 - https://trustchain.medium.com/full-smart-contract-audit-methodology-2023-b29db744bf3e
-
 - https://docs.soliditylang.org/en/latest/security-considerations.html#security-considerations
-
 - https://www.blocktempo.com/solidity-best-practices-for-smart-contract-security-by-consensys/
-
 - [区块链安全入门笔记](https://github.com/slowmist/Knowledge-Base/blob/master/blockchain_security_study_notes/README.md)
-
 - https://github.com/crytic/not-so-smart-contracts
-
 - https://learnblockchain.cn/article/4951
-
 - SWC （Smart Contract Weakness Classification and Test Cases）**智能合约弱点分类和测试用例**，链接：https://swcregistry.io/ 
+- 二十三种 DeFi 安全事故汇总：智能合约⻛险与防范：https://foresightnews.pro/article/detail/3740
 
-  
+
 
 ## 新增：
 
