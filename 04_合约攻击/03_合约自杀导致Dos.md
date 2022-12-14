@@ -67,9 +67,7 @@ contract Attack {
 }
 ```
 
-解决方案：
-
-不要依赖address(this).balance来进行校验
+解决方案：不要依赖address(this).balance来进行校验
 
 ```js
 // SPDX-License-Identifier: MIT

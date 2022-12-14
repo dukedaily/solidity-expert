@@ -10,6 +10,12 @@ https://docs.soliditylang.org/en/latest/security-considerations.html#sending-and
 2. send（2300 gas，return bool）
 3. call（传递交易剩余的gas或设置gas，不限定2300gas，return bool）(推荐使用)
 
+
+
+总结：transfer() 和 send() 函数使用 2300 gas 以防止重入攻击，公链升级后可能导致 gas 不足。推荐使用 call() 函数，但需做好重入攻击防护。
+
+
+
 ### 如何接收ether？
 
 想接收ether的合约至少包含以下方法中的一个：
