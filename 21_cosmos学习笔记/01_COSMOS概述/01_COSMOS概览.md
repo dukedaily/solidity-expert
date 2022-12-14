@@ -78,6 +78,8 @@ pow概率最终性，pos绝对最终性。
 
 ### ABCI
 
+Application Blockchain Interface
+
 ![image-20221208190325376](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221208190325376.png)
 
 ### ABCI++

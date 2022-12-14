@@ -93,3 +93,12 @@ contract SendEther {
     }
 }
 ```
+
+解析：
+
+- 调用sendViaTransfer或sendViaSend的时候，假设构造这笔交易时，你传入的gas时：1000000 gas
+
+  此时，在使用transfer和send转账的时候，只会传递2300个gas，如果接收者是个合约，这个合约必须有fallback，此时这个fallback里面不能有逻辑，否则会超过2300gas，导致转账失败。
+
+- sendViaCall的时候，，假设构造这笔交易时，你传入的gas时：1000000 gas
+  此时在调用call的时候，也可以完成转账，但是会把1000000传递给fallback，即在fallback中你可以实现自己复杂的逻辑。
