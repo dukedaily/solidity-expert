@@ -1,12 +1,9 @@
 # 第4节：abi.encode、abi.decode、abi.encodePacked
 
-abi.**encode**：可以将data编码成bytes，生成的bytes总是32字节的倍数，不足32为会自动填充（用于给合约调用）；
-
-abi.**decode**：可以将bytes解码成data（可以只解析部分字段）
-
-abi.**encodePacked**：与abi.encode类似，但是生成的bytes是压缩过的（有些类型不会自动填充，无法传递给合约调用）。
-
-手册：https://docs.soliditylang.org/en/v0.8.13/abi-spec.html?highlight=abi.encodePacked#non-standard-packed-mode
+1. abi.**encode**：可以将data编码成bytes，生成的bytes总是32字节的倍数，不足32为会自动填充（用于给合约调用）；
+2. abi.**decode**：可以将bytes解码成data（可以只解析部分字段）
+3. abi.**encodePacked**：与abi.encode类似，但是生成的bytes是压缩过的（有些类型不会自动填充，无法传递给合约调用）。
+4. 手册：https://docs.soliditylang.org/en/v0.8.13/abi-spec.html?highlight=abi.encodePacked#non-standard-packed-mode
 
 ```js
 // SPDX-License-Identifier: MIT
@@ -89,6 +86,13 @@ contract AbiDecode {
                 ^^^^                           uint16(0x03)
                     ^^^^^^^^^^^^^^^^^^^^^^^^^^ string("Hello, world!") without a length field
         */
+    }
+  
+  	// 可以用encodePacked来拼接字符串
+  	// output string: ipfs://bafybeidmrsvehl4ehipm5qqvgegi33r6/100.json
+  	function encodePackedTest() public  pure returns (string memory) {
+        string memory uri = "ipfs://bafybeidmrsvehl4ehipm5qqvgegi33r6/";
+        return string(abi.encodePacked(uri, "100", ".json"));
     }
 }
 ```

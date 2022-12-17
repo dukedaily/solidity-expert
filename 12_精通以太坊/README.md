@@ -28,4 +28,5 @@
 **参考：**
 
 1. 以太坊技术与实现：https://learnblockchain.cn/books/geth/part1.html
-3. 经典好文：https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf
+1. https://github.com/Ice-Storm/structure-and-interpretation-of-blockchain
+

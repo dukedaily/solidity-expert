@@ -9,7 +9,6 @@
 - https://github.com/transmissions11/solcurity（完成）
 - https://github.com/SunWeb3Sec/DeFiHackLabs（已创建）
 - https://github.com/kadenzipfel/smart-contract-attack-vectors
-- https://foresightnews.pro/article/detail/3740
 - https://trustchain.medium.com/full-smart-contract-audit-methodology-2023-b29db744bf3e
 - https://docs.soliditylang.org/en/latest/security-considerations.html#security-considerations
 - https://www.blocktempo.com/solidity-best-practices-for-smart-contract-security-by-consensys/
