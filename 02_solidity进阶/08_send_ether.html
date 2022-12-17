@@ -301,9 +301,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.12" data-path="../00_blockchain基础/12_以太坊白皮书.html">
+        <li class="chapter " data-level="1.5.12" data-path="../00_blockchain基础/12_以太坊白皮书.md">
             
-                <a href="../00_blockchain基础/12_以太坊白皮书.html">
+                <span>
             
                     
                     第12节:以太坊白皮书
@@ -1086,6 +1086,45 @@
             
                     
                     第25节:eventLog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.26" data-path="26_selfdestruct.html">
+            
+                <a href="26_selfdestruct.html">
+            
+                    
+                    第26节:selfdestruct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.27" data-path="27_permit2.html">
+            
+                <a href="27_permit2.html">
+            
+                    
+                    第27节:permit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.28" data-path="28_signature-eip712.html">
+            
+                <a href="28_signature-eip712.html">
+            
+                    
+                    第28节:signature-eip712
             
                 </a>
             
@@ -2281,6 +2320,25 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../12_精通以太坊/01_以太坊架构.html">
+            
+                <a href="../12_精通以太坊/01_以太坊架构.html">
+            
+                    
+                    第1节:以太坊架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
         <li class="chapter " data-level="1.18" data-path="../13_openzeppelin解析/">
@@ -2785,6 +2843,15 @@ contract SendEther {
     }
 }
 </code></pre>
+<p>解析：</p>
+<ul>
+<li><p>调用sendViaTransfer或sendViaSend的时候，假设构造这笔交易时，你传入的gas时：1000000 gas</p>
+<p>此时，在使用transfer和send转账的时候，只会传递2300个gas，如果接收者是个合约，这个合约必须有fallback，此时这个fallback里面不能有逻辑，否则会超过2300gas，导致转账失败。</p>
+</li>
+<li><p>sendViaCall的时候，，假设构造这笔交易时，你传入的gas时：1000000 gas
+此时在调用call的时候，也可以完成转账，但是会把1000000传递给fallback，即在fallback中你可以实现自己复杂的逻辑。</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -2812,7 +2879,7 @@ contract SendEther {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第8节:send_ether","level":"1.7.8","depth":2,"next":{"title":"第9节:delegatecall","level":"1.7.9","depth":2,"path":"02_solidity进阶/09_delegatecall.md","ref":"02_solidity进阶/09_delegatecall.md","articles":[]},"previous":{"title":"第7节:selector","level":"1.7.7","depth":2,"path":"02_solidity进阶/07_selector.md","ref":"02_solidity进阶/07_selector.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/08_send_ether.md","mtime":"2022-12-14T03:23:53.819Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-14T03:29:40.147Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第8节:send_ether","level":"1.7.8","depth":2,"next":{"title":"第9节:delegatecall","level":"1.7.9","depth":2,"path":"02_solidity进阶/09_delegatecall.md","ref":"02_solidity进阶/09_delegatecall.md","articles":[]},"previous":{"title":"第7节:selector","level":"1.7.7","depth":2,"path":"02_solidity进阶/07_selector.md","ref":"02_solidity进阶/07_selector.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/08_send_ether.md","mtime":"2022-12-15T04:42:31.494Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-17T02:09:51.444Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
