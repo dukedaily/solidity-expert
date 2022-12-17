@@ -83,6 +83,8 @@ contract TestEIP712 {
 testcase.ts
 
 ```js
+import { verifyTypedData } from 'ethers/lib/utils'
+
 const typedData = {
       // 这里的domain 不需要再写了，因为ethers会自动帮忙添加
       types: {
@@ -122,9 +124,15 @@ const typedData = {
       typedData.message,
     );
 
-    // 调用verify：
+    // 使用ethersjs验证：
+    let res = verifyTypedData(
+      typedData.domain, typedData.types, typedData.message, signature,
+    ).toLowerCase() === signerAddress.toLowerCase()
+
+    console.log("etherjs验证签名有效性:", res);
+
+    // 使用合约验证：
     await instance.verify(
     id, amt, workers, signature
 )
 ```
-
