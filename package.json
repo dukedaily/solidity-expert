@@ -1,7 +1,7 @@
 {
     "name": "solidity-expert",
     "description": "a solidity tutorial makes you a dapp expert",
-    "homepage": "https://github.com/dukedaily/solidity-expert",
+    "homepage": "https://dukedaily.github.io/solidity-expert/",
     "devDependencies": {
         "hardhat": "^2.11.1",
         "honkit": "^3.7.1"
