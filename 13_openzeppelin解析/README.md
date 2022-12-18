@@ -10,6 +10,14 @@ openzeppelin标准库是当前使用最广泛的基础合约，研究它的内�
 
 
 
+使用版本：
+
+```sh
+npm install @openzeppelin/contracts@4.8.0
+```
+
+
+
 快速体验openzeppelin集成：https://docs.openzeppelin.com/contracts/4.x/wizard
 
 ![image-20221205111601684](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221205111601684.png)
