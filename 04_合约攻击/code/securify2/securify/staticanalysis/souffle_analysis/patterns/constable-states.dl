@@ -1,0 +1,76 @@
+
+//#include "shadowed-state-variable.dl"
+
+.comp ConstableStatesPattern : Pattern {
+	NAME("Constable State Variables")
+
+	DESCRIPTION("State variables that do not change should be declared as constants.")
+
+	SEVERITY(INFO)
+
+	.init shadow = ShadowedStateVariablePattern
+	// Applicable for any state variable which is not declared constant and is not a map
+	// We should ignore constant declarations.
+	// We should ignore inherited variables because they might be changed by another contract
+	applicable(variable, line) :-
+		annotation(variable, "isConstant", "False"),
+		stateVariable(variable, _),
+		!shadow.shadowingConflict(variable,_),
+		!annotation(variable, "inherited", _),
+		annotation(variable, "type", type_name),
+		!contains("mapping", type_name),
+		!contains("[]", type_name),
+		sourceLine(variable, line).
+
+	.decl variableChanges(variable: Element)
+	variableChanges(variable) :-
+		names(variable, _, _),
+		store(store, variable, _),
+		!storePrecedingConstructorEnd(variable, store).
+
+	//A variable complies if there is store after the constructor declaration
+	compliance(variable, s, STR_JOIN("State variable '", name, "' in '", cName, "' is changed by the contract.")) :-
+		applicable(variable, s),
+		names(variable, cName, name),
+        variableChanges(variable).
+
+	//A variable is compliant if it is inhereted in another contract where it is compliant.
+	compliance(variable, s, STR_JOIN("State variable '", name, "' in '", cName, "' is changed by the contract.")) :-
+    	applicable(variable, s),
+		names(inhVariable, _, name),
+		names(variable, cName, name),
+		inhVariable != variable,
+		variableChanges(inhVariable).
+
+	//There is no store after constructors end
+	violation(variable, s, STR_JOIN("State variable '", name, "' in '", cName, "' should be declared as constant.")) :-
+		applicable(variable, s),
+		names(variable, cName, name),
+        !compliance(variable, _, _).
+
+	.decl names(var: StateVar, contractName: symbol, varName: symbol)
+	names(variable, cName, name) :-
+		stateVariable(variable, c),
+		annotation(variable, "qualifiedName", name),
+		contract(c, cName).
+
+	.decl storePrecedingConstructorEnd(variable: StateVar, store: SSA)
+	storePrecedingConstructorEnd(variable, store) :-
+		ctxProvider.contextForInit(_, context),
+		ctxProvider.isInConstructorContext(context),
+		ctxProvider.elementInContext(retCtx, ret, context),
+		isInFunction(store, function),
+		function(function, "Constructor"),
+		return(ret, _),
+		storageAnalysis.precedingStore(retCtx, storeCtx),
+		ctxProvider.elementInContext(storeCtx, store, _),
+		store(store, variable, _).
+
+	//.output storePrecedingConstructorEnd
+
+	//.output names
+	//.output shadow.shadowingConflict
+	//.output applicable
+	//.output compliance
+	//.output violation
+}

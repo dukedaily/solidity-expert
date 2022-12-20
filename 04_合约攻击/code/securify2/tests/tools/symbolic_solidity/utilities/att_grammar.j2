@@ -1,0 +1,12 @@
+{% for node_type in node_types %}
+### {{ node_type }}
+```python
+class {{ node_type }}(Node):
+
+    self.ast_{{ convert(node_type) }} : ast.{{ node_type }}
+
+    @synthesized
+    def cfg():
+
+```
+{% endfor %}

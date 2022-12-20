@@ -1,0 +1,96 @@
+#define ENABLE_INPUT_FROM_FILES
+
+.number_type ArgIndex    // Index used to qualify block arguments
+.symbol_type StateVar    // Identifier for state variables
+.symbol_type Transfer    // ID of a transfer between blocks
+.symbol_type Name        // Name associated to an object
+.symbol_type SSA         // ID of a statement or block argument and its value
+.symbol_type Block       // ID of a basic block
+.symbol_type Contract    // ID of a contract
+
+.type Function = Block   // Type alias for referring to function blocks
+.type Element = Contract | SSA | Block | Transfer | StateVar // Any Program Element
+
+// -- input relations --
+.decl function(id_block: Function, name: Name)
+.decl block(id_block: Block)
+.decl blockStmt(id_block: Block, id_stmt: SSA)
+.decl follows(id_next: SSA, id_prev: SSA)
+.decl argument(id_arg: SSA, id_block: Block, index: ArgIndex)
+.decl statement(id: SSA)
+.decl assign(id: SSA, var_id: SSA)
+.decl const(id: SSA, value: SSA)
+.decl uop(id: SSA, id_var: SSA, op: SSA)
+.decl bop(id: SSA, id_lhs: SSA, id_rhs: SSA, op: Name)
+.decl load(id: SSA, field: StateVar)
+.decl arrayLoad(id: SSA, id_array: SSA, id_index: SSA)
+.decl mapLoad(id: SSA, id_map: SSA, id_key: SSA)
+.decl structLoad(id: SSA, id_struct: SSA, field: Name)
+.decl store(id: SSA, field: StateVar, var_id: SSA)
+.decl arrayStore(id: SSA, id_array: SSA, id_index: SSA, id_var: SSA)
+.decl arrayPush(id: SSA, id_array: SSA, id_var: SSA)
+.decl mapStore(id: SSA, id_map: SSA, id_key: SSA, id_var: SSA)
+.decl structStore(id: SSA, id_struct: SSA, field: Name, id_var: SSA)
+.decl goto(id_transfer: Transfer, id_block_from: Block, id_block_to: Block)
+.decl branch(id_transfer_true: Transfer, id_transfer_false: Transfer, id_block_from: Block, id_block_true: Block, id_block_false: Block, var_cond_id: SSA)
+.decl return(id_transfer: Transfer, id_block_from: Block)
+.decl jump(id_transfer: Transfer, id_block_from: Block, id_block_to: Function, id_continuation: Block)
+.decl call(id_transfer: Transfer, id_block_from: Block, id_block_to: SSA, id_continuation: Block)
+.decl callInfo(id_transfer: Transfer, target_address: SSA, kind: symbol)
+.decl transferArgument(id_transfer: Transfer, id_argument_value: SSA, index: ArgIndex)
+.decl stateVariable(id_var: StateVar, id_contract: Contract)
+.decl sourceInfo(id: Element, info: symbol, tag: symbol)
+.decl annotation(id: Element, tag: symbol, value: symbol)
+.decl builtinVariable(id: SSA, name: symbol)
+.decl builtinFunction(id: SSA, name: symbol, arg: SSA, arg_index: number)
+.decl selfdestruct(id: SSA, address: SSA)
+.decl callGas(id_transfer: Transfer, gas: SSA)
+.decl callValue(id_transfer: Transfer, value: SSA)
+.decl contract(id_contract: Contract, name: Name)
+.decl contractFunction(id_contract: Contract, id_funciton: Function)
+.decl balance(id: SSA, address: SSA)
+.decl revert(id_transfer: Transfer, id_block: Block)
+.decl emit(id:SSA, event: symbol, argument:SSA, index: ArgIndex)
+
+
+#ifdef ENABLE_INPUT_FROM_FILES
+.input function
+.input block
+.input blockStmt
+.input follows
+.input argument
+.input statement
+.input assign
+.input const
+.input uop
+.input bop
+.input load
+.input arrayPush
+.input arrayLoad
+.input mapLoad
+.input structLoad
+.input store
+.input arrayStore
+.input mapStore
+.input structStore
+.input goto
+.input branch
+.input return
+.input jump
+.input call
+.input callInfo
+.input transferArgument
+.input stateVariable
+.input sourceInfo
+.input annotation
+.input builtinVariable
+.input builtinFunction
+.input selfdestruct
+.input callGas
+.input callValue
+.input contract
+.input contractFunction
+.input balance
+.input revert
+.input emit
+#endif

@@ -1,0 +1,43 @@
+.comp TxOriginPattern : PerContextPattern {
+    NAME("Possibly unsafe usage of tx-origin")
+
+    DESCRIPTION(STR_JOIN(
+        "The return value of statements that may return ",
+        "error values must be explicitly checked."))
+
+	SEVERITY(HIGH)
+
+	applicableInContext(conditionInCtx) :-
+		branchingCondition(condition, _), txOrigin(txOrigin),
+		ctxProvider.elementInContext(conditionInCtx, condition, _),
+		ctxProvider.elementInContext(txOriginInCtx, txOrigin, _),
+		dataflow.mayDependOn(conditionInCtx, txOriginInCtx).
+
+	violationInContext(conditionInCtx, "") :-
+		applicableInContext(conditionInCtx), txOrigin(txOrigin),
+		ctxProvider.elementInContext(txOriginInCtx, txOrigin, _),
+		dataflow.isDerivedFrom(conditionInCtx, txOriginInCtx),
+		!msgSenderException(conditionInCtx).
+
+	compliantInContext(conditionInCtx, "") :-
+		applicableInContext(conditionInCtx), !violationInContext(conditionInCtx, _).
+
+	// Checking tx-origin against sender is ok
+	.decl msgSenderException(conditionInCtx: ctxProvider.ElementInContext)
+	msgSenderException(conditionInCtx) :-
+		applicableInContext(conditionInCtx), txOrigin(txOrigin), msgSender(msgSender),
+		ctxProvider.elementInContext(_, txOrigin, ctx),
+		ctxProvider.elementInContext(msgSenderInCtx, msgSender, ctx),
+		dataflow.isDerivedFrom(conditionInCtx, msgSenderInCtx).
+
+	.decl branchingCondition(condition: SSA, branchBlock: Block)
+	branchingCondition(condition, branchBlock) :- branch(_, _, branchBlock, _, _, condition).
+
+    .decl callInfo(call: Transfer, matchInfo: symbol, matchComment: symbol)
+    callInfo(call, matchInfo, matchComment) :-
+        sourceLine(call, sourceLine),
+        matchInfo = STR_JOIN("CALL: ", call),
+        matchComment = STR_JOIN("LINE: ", sourceLine).
+
+}
+.output msgSender

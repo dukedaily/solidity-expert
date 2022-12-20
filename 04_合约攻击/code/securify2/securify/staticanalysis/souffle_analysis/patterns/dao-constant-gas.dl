@@ -1,0 +1,20 @@
+#include "dao-base.dl"
+
+.comp DAOConstantGasPattern : DAOBasePattern {
+    NAME("Reentrancy with constant gas")
+
+    DESCRIPTION(STR_JOIN(
+        "Ether transfers (such as send and transfer) that ",
+        "are followed by state changes may be reentrant.")
+	)
+
+	SEVERITY(CRITICAL)
+
+    applicableInContext(callCtx) :-
+		externalCall(call), !gasDependent(callCtx),
+		callValue(call, value),
+		ctxProvider.elementInContext(callCtx, call, context),
+		ctxProvider.elementInContext(valueCtx, value, context),
+		!(valueKnown(valueCtx), valueOf(valueCtx, "0")).
+
+}

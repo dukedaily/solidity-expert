@@ -1,0 +1,51 @@
+#ifndef DAO_BASE
+#define DAO_BASE
+
+.comp DAOBasePattern : PerContextPattern {
+
+    compliantInContext(call, "") :-
+        applicableInContext(call),
+        !storeAfterCall(_, call).
+
+    violationInContext(callCtx, "") :-
+        applicableInContext(callCtx),
+        storageMutation(store, _),
+        ctxProvider.elementInContext(callCtx, _, ctx),
+        ctxProvider.elementInContext(storeCtx, store, ctx),
+        programFlow.mustPrecede(callCtx, storeCtx).
+
+    .decl storeAfterCall(store: ctxProvider.ElementInContext, call: ctxProvider.ElementInContext)
+    storeAfterCall(storeCtx, callCtx) :-
+        externalCall(call),
+        storageMutation(store, _),
+        ctxProvider.elementInContext(storeCtx, store, ctx),
+        ctxProvider.elementInContext(callCtx, call, ctx),
+        programFlow.mayFollow(storeCtx, callCtx).
+
+    .decl gasDependent(call: ctxProvider.ElementInContext)
+    gasDependent([call, context]) :-
+        callGas(call, gas),
+        gasLeft(gasLeft),
+		ctxProvider.elementInContext(gasLeftCtx, gasLeft, _),
+		ctxProvider.elementInContext(gasCtx, gas, context),
+        dataflow.mayDependOn(gasCtx, gasLeftCtx).
+
+    .decl callDependsOnLoad(load: ctxProvider.ElementInContext, call: ctxProvider.ElementInContext)
+    callDependsOnLoad(loadCtx, callCtx):-
+      load(loadSSA, _),
+      ctxProvider.elementInContext(loadCtx, loadSSA, _),
+      (data.mayDependOn(conditionCtx, loadCtx) ; conditionCtx = loadCtx),
+      call(call, _, _, _),
+      ctxProvider.elementInContext(callCtx, call, _),
+      infoflow.instrMayDependOn(callCtx, conditionCtx).
+
+    //.output compliantInContext
+    //.output violationInContext
+
+    //.output callDependsOnLoad
+    //.output infoflow.instrMayDependOn
+    //.output ctxProvider.elementInContext
+
+}
+
+#endif

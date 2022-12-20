@@ -1,0 +1,28 @@
+#ifndef SET_UTILS
+
+    #define SET_UTILS
+
+	.symbol_type Set
+
+	.functor empty(): symbol
+	.functor add(symbol, number): symbol
+
+	.functor size(symbol): number
+
+	.functor isElement(number, symbol): number
+	.functor isSubset(symbol, symbol): number
+
+	#define SET_EMPTY() ""
+
+	#define SET_SIZE(set) @size(set)
+	#define SET_IS_EMPTY(set) SET_SIZE(set) = 0
+
+	#define SET_ADD(set, elem) @add(set, ord(elem))
+	#define SET_ADDI(set, elem) @add(set, elem)
+
+	#define SET_CONTAINS(set, elem) @isSubset(ord(elem), set) = 1
+	#define SET_CONTAINSI(set, elem) @isSubset(elem, set) = 1
+
+	#define SET_IS_SUBSET(a, b) @isSubset(a, b) = 1
+
+#endif

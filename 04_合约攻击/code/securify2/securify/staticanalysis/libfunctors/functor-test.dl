@@ -1,0 +1,38 @@
+#include "util-enumerate.dl"
+#include "util-sets.dl"
+
+.decl all(s: Set)
+.decl allEnumerated(s: Set, n: number)
+.decl allEnumerated2(s: Set, n: number)
+.decl set(s: Set, biggest: number)
+.decl subset(a: Set, b: number)
+
+all("a").
+all("b").
+all("c").
+all("d").
+all("e").
+all("f").
+
+all("a2").
+all("b2").
+all("c2").
+all("d2").
+all("e2").
+all("f2").
+
+allEnumerated(a, ENUMERATE("ALL", a)) :- all(a).
+allEnumerated2(a, ENUMERATE("ALL2", a)) :- all(a).
+
+set(SET_EMPTY(), 0).
+set(SET_ADD(s, a), ENUMERATE("ALL", a)) :- set(s, q), all(a), ENUMERATE("ALL", a) = q + 1.
+
+//subset(a, SET_SIZE(a)) :- set(a, _).
+
+.output allEnumerated(IO=stdout)
+.output allEnumerated2(IO=stdout)
+
+.output set(IO=stdout)
+//.output subset(IO=stdout)
+
+.printsize set

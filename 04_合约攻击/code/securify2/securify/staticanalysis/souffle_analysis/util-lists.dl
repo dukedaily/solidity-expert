@@ -1,0 +1,54 @@
+
+#ifndef LIST_UTILS
+
+    #define LIST_UTILS
+
+	#include "util-debug.dl"
+
+    .comp ListOps<TElem, TList> {
+        .decl lists(list: TList)
+        .decl length(list: TList, length: number)
+
+        length(nil, 0).
+        length([head, tail], tailLength + 1) :- lists([head, tail]), length(tail, tailLength).
+
+		.decl links(list: TList, tail: TList)
+		links([head, tail], tail) :- lists([head, tail]).
+
+		.decl __toString(list: TList, string: symbol)
+		__toString(nil, "").
+		__toString(list, headStr) :- lists(list), toStringElem(head, headStr), [head, nil] = list.
+		__toString(list, cat(headStr, cat(", ", string))) :-
+			__toString(tail, string),
+			toStringElem(head, headStr),
+			lists(list),
+			[head, tail] = list, tail != nil.
+
+		.decl toString(list: TList, string: symbol)
+		toString(list, s) :- __toString(list, s).
+
+		.decl toStringElem(element: TElem, string: symbol)
+
+		ERROR("Incomplete toString implementation for ListOps", (lists([element, _]), !toStringElem(element, _)))
+    }
+
+	// #define UNIT_TEST
+	#ifdef UNIT_TEST
+		#include "util-macros.dl"
+
+		.symbol_type TestElem
+		.type TestList = [s: TestElem, l: TestList]
+
+		.init q = ListOps<TestElem, TestList>
+
+		q.lists(["a", nil]).
+		q.lists([cat("b", a), tail]) :- q.lists(tail), [a, ?_] = tail, q.length(tail, n), n < 5.
+
+		q.toStringElem(e, e) :- q.lists([e, _]).
+
+		LOG(q.links)
+		LOG(q.toString)
+	#endif
+
+#endif
+

@@ -1,0 +1,167 @@
+#ifndef GRAPH_UTILS
+    #define GRAPH_UTILS
+
+    #include "util-macros.dl"
+
+	/** Basic Graph Definitions */
+    .comp DiGraph<TNode> {
+        .decl edge(to: TNode, from: TNode)
+
+        .decl node(n: TNode)
+        node(n) :- (
+            edge(n, _);
+            edge(_, n)).
+
+        .decl outEdgeCount(n: TNode, c: number)
+        outEdgeCount(n, c) :- node(n), c = count : { edge(_, n) }.
+
+        .decl inEdgeCount(n: TNode, c: number)
+        inEdgeCount(n, c) :- node(n), c = count : { edge(n, _) }.
+
+        TRANSITIVE(edge, reachableFrom, TNode) //> reachableFrom
+    }
+
+    .comp DiGraphDomOps<TNode> : DiGraph<TNode> {
+        .decl notDominatedBy(succ: TNode, pred: TNode)
+        notDominatedBy(succ, pred) :-
+            notDominatedBy(mid, pred),
+            edge(succ, mid), succ != pred.
+
+        notDominatedBy(succ, pred) :- // TODO: This is very costly; could be optimized maybe
+            node(succ),
+            node(pred),
+            succ != pred,
+            !reachableFrom(succ, pred).
+
+        notDominatedBy(n1, n2) :-
+            reachableFrom(b, b),
+            edge(n1, b),
+            edge(n2, b),
+            n1 != n2.
+
+        .decl dominatedBy(dominator: TNode, node: TNode)
+        dominatedBy(succ, pred) :- node(succ), node(pred), !notDominatedBy(succ, pred).
+    }
+
+    .comp DiGraphOps<TNode> : DiGraph<TNode> {
+        .init dom = DiGraphDomOps<TNode>
+
+		dom.edge(to, from) :- edge(to, mid), linearSegment(from, mid).
+        dom.edge(to, from) :- edge(to, from), !nodeInSegment(from, _, _).
+
+        .decl dominatedBy(node: TNode, dominator: TNode)
+        .decl _dominatedBy(node: TNode, dominator: TNode)
+        _dominatedBy(node, node) :- node(node).
+        _dominatedBy(node, node) :- isInLinearLoop(node).
+        _dominatedBy(node, dom) :- dom.dominatedBy(node, dom).
+
+        _dominatedBy(node, dom) :- dom.dominatedBy(segm, dom), linearlyConnected(segm, node), node != segm.
+        _dominatedBy(node, dom) :- dom.dominatedBy(node, segm), linearlyConnected(segm, dom), node != segm.
+
+        _dominatedBy(node, dom) :- linearlyConnected(dom, node).
+
+		dominatedBy(node, dom) :- _dominatedBy(node, dom).
+		dominatedBy(node, dom) :- _dominatedBy(node, mid), dominatedBy(mid, dom).
+
+        .decl simpleConnection(start: TNode, end: TNode)
+        simpleConnection(start, end) :- edge(end, start), outEdgeCount(start, 1), inEdgeCount(end, 1).
+
+        .decl linearlyConnected(start: TNode, end: TNode)
+        linearlyConnected(start, end) :- simpleConnection(start, end).
+        linearlyConnected(start, end) :- simpleConnection(start, mid), linearlyConnected(mid, end).
+
+        .decl linearSegment(start: TNode, end: TNode)
+        linearSegment(start, end) :-
+            linearlyConnected(start, end),
+            !simpleConnection(_, start),
+            !simpleConnection(end, _).
+
+        .decl nodeInSegment(node: TNode, start: TNode, end: TNode)
+        nodeInSegment(start, start, end) :- linearSegment(start, end).
+        nodeInSegment(end, start, end) :- linearSegment(start, end).
+        nodeInSegment(node, start, end) :-
+            linearSegment(start, end),
+            linearlyConnected(start, node),
+            linearlyConnected(node, end).
+
+        .decl edgeInSegment(to: TNode, from: TNode, start: TNode, end: TNode)
+        edgeInSegment(to, from, start, end) :-
+            edge(to, from),
+            nodeInSegment(to, start, end),
+            nodeInSegment(from, start, end).
+
+        .decl isInLinearLoop(node: TNode)
+        isInLinearLoop(node) :- linearlyConnected(node, node).
+
+		// #define CHECK_DOM_CORRECTNESS
+		#ifdef CHECK_DOM_CORRECTNESS
+			.init domFull = DiGraphDomOps<TNode>
+			domFull.edge(to, from) :- edge(to, from).
+
+			.decl dominatedByUnoptimized(dominator: TNode, node: TNode)
+			dominatedByUnoptimized(succ, pred) :- domFull.dominatedBy(succ, pred).
+
+			.decl dominatedByDiffToOptimized(dominator: TNode, node: TNode)
+			dominatedByDiffToOptimized(succ, pred) :- dominatedByUnoptimized(succ, pred), !dominatedBy(succ, pred).
+
+			SIZE(dom.edge)
+			SIZE(domFull.edge)
+			SIZE(dominatedBy)
+			SIZE(dominatedByUnoptimized)
+			SIZE(dominatedByDiffToOptimized)
+		#endif
+    }
+
+	#ifdef UNIT_TEST
+		// graph.edge(2, 1).
+		// graph.edge(3, 2).
+		// graph.edge(4, 2).
+		// graph.edge(5, 4).
+		// graph.edge(5, 3).
+		// graph.edge(2, 5).
+		// graph.edge(6, 2).
+
+		.number_type Node
+		.init graph = DiGraphOps<Node>
+
+		graph.edge(-5, -6).
+		graph.edge(-4, -6).
+		graph.edge(-3, -5).
+		graph.edge(-3, -4).
+		graph.edge(-2, -3).
+		graph.edge(-1, -2).
+		graph.edge(0, -1).
+		graph.edge(1, 0).
+		graph.edge(2, 1).
+		graph.edge(3, 1).
+		graph.edge(4, 3).
+		graph.edge(4, 2).
+		graph.edge(5, 4).
+		graph.edge(6, 5).
+		graph.edge(0, 6).
+		graph.edge(10, 2).
+		graph.edge(11, 10).
+		graph.edge(12, 11).
+		graph.edge(20, 12).
+		graph.edge(21, 12).
+		graph.edge(22, 20).
+		graph.edge(23, 21).
+		graph.edge(30, 22).
+		graph.edge(30, 23).
+
+		LOG(graph.linearlyConnected)
+		LOG(graph.linearSegment)
+
+		SIZE(graph.edge)
+		SIZE(graph.dom.edge)
+
+		SIZE(graph.dominatedBy)
+		SIZE(graph.dominatedByUnoptimized)
+
+		.output graph.edge
+		.output graph.dom.edge
+		.output graph.linearSegment
+		.output graph.linearlyConnected
+	#endif
+#endif
+

@@ -1,0 +1,28 @@
+//TODO: This implementation is very basic and does only report violations and will not issue warnings
+.comp UnusedStateVariablePattern : Pattern {
+	NAME("Unused State Variable")
+
+	DESCRIPTION("Unused state variables should be removed.")
+
+	SEVERITY(INFO)
+
+	applicable(variable, q) :-
+		violation(variable, q, _).
+
+	violation(variable, "", comment) :-
+		stateVariable(variable, _),
+		names(variable, cName, name),
+		!maybeUsed(variable),
+		comment = STR_JOIN("State variable '", name, "' in '", cName, "' is not used.").
+
+	.decl maybeUsed(variable: StateVar)
+	maybeUsed(variable) :-
+		load(load, variable), ctxProvider.elementInContext(_, load, _). // use context to sort out usages in uninvoked private functions
+
+	.decl names(var: StateVar, contractName: symbol, varName: symbol)
+	names(variable, cName, name) :-
+		stateVariable(variable, c),
+		annotation(variable, "qualifiedName", name),
+		contract(c, cName).
+
+}

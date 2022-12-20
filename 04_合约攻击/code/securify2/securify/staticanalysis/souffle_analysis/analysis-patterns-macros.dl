@@ -1,0 +1,18 @@
+#define REGISTER_PATTERN(TPat) \
+    .init pattern ## TPat = TPat \
+    patternId(#TPat). \
+    patternTag(#TPat, t, v) :- pattern ## TPat.tag(t, v). \
+    patternMatch(#TPat, ord(m), t) :- pattern ## TPat.matchType(m, t). \
+    patternMatchInfo(#TPat, ord(m), t, v) :- pattern ## TPat.matchInfo(m, t, v).
+
+#define NAME(s)         tag("name", s).
+#define DESCRIPTION(s)  tag("description", q) :- q = s. // Support cat() and STR_JOIN
+
+#define SEVERITY(s)     tag("severity", s).
+
+#define CRITICAL        "critical"
+#define HIGH            "high"
+#define MEDIUM          "medium"
+#define LOW             "low"
+#define INFO            "info"
+#define OPTIMZATION     "optimization"

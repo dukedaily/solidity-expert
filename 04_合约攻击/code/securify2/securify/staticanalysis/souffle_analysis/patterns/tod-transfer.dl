@@ -1,0 +1,51 @@
+#include "abstract-tod-pattern.dl"
+
+.comp TODTransferPattern : PerContextPattern {
+    NAME("Transaction Order Affects Execution of Ether Transfer")
+
+    DESCRIPTION(STR_JOIN(
+        "Ether transfers whose execution can be manipulated by other ",
+        "transactions must be inspected for unintended behavior."))
+
+    SEVERITY(CRITICAL)
+
+    applicableInContext(callInContext) :-
+        ctxProvider.elementInContext(callInContext, call, context),
+        externalCall(call),
+        callValue(call, amount),
+        !valueOf([amount, context], "0").
+
+
+    compliantInContext(callContext, "") :-
+        applicableInContext(callContext),
+        !maybeViolationInContext(callContext).
+
+    violationInContext(callContext, "") :-
+        applicableInContext(callContext),
+        externalCall(call),
+        ctxProvider.elementInContext(callContext, call, _),
+        mustDepeondOnState(callContext).
+
+    //    .decl dependency(element: Element, dependency: Element)
+    //    dependency(element, element) :-.
+
+    .decl maybeViolationInContext(call: ctxProvider.ElementInContext)
+    maybeViolationInContext(callCtx) :-
+        externalCall(call),
+        ctxProvider.elementInContext(callCtx, call, _),
+        mayDependOnState(callCtx).
+
+    // TODO: add balance and other state variables
+    .decl mustDepeondOnState(call: ctxProvider.ElementInContext)
+    mustDepeondOnState(element) :-
+        applicableInContext(element),
+        storageAnalysis.mustDependOnPrecedingTransaction(load),
+        infoflow.instrMayDependOn(element, load).
+
+    .decl mayDependOnState(element: ctxProvider.ElementInContext)
+    mayDependOnState(element) :-
+        applicableInContext(element),
+        storageAnalysis.mayDependOnPrecedingTransaction(load),
+        infoflow.instrMayDependOn(element, load).
+
+}

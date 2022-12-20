@@ -1,0 +1,45 @@
+#include "abstract-context-pattern.dl"
+
+.comp IncorrectInequalityPattern : PerContextPattern {
+// Probably there is no case where a strict equality is compliant
+// TODO: Maybe report non strict inequalities as compliant
+// TODO: Comply with ERC standards (balanceOf)
+
+    NAME("Dangerous Strict Equalities")
+
+    DESCRIPTION("Strict equalities that use account's balance, timestamps and block numbers should be avoided")
+
+    SEVERITY(MEDIUM)
+
+    applicableInContext(ssaCtx):-
+        useInStrictEquality(ssaCtx).
+
+    //compliantInContext(ssaCtx, ssaLine) :-
+    //    applicableInContext(ssaCtx),
+    //    ctxProvider.elementInContext(ssaCtx, ssa, _),
+    //    sourceLine(ssa, ssaLine),
+    //    !violationInContext(ssaCtx, "").
+
+    violationInContext(ssa, "") :-
+        applicableInContext(ssa).
+
+    .decl keyWord(ssa: Element)
+    keyWord(ssa) :-
+        balance(ssa, _);
+        builtinVariable(ssa, "TIMESTAMP");
+        builtinVariable(ssa, "NUMBER");
+        builtinFunction(ssa, "blockhash", _, _).
+
+    // Either the statement with one of the keywords or one that depends on it participate in strict equality
+    // TODO: Might be: data.mustDependOn and not mayDependOn
+    // TODO: Maybe report all the conditions and report as violations the equalities.
+    .decl useInStrictEquality(ssaInEqulityCtx: ctxProvider.ElementInContext)
+    useInStrictEquality(ineqSSACtx) :-
+        keyWord(ssa),
+        ctxProvider.elementInContext(ssaCtx, ssa, _),
+        data.mayDependOn(ssaInEqualityCtx, ssaCtx),
+        ctxProvider.elementInContext(ssaInEqualityCtx, ssaInEquality, _),
+        (bop(ineqSSA, ssaInEquality, _, "=="); bop(ineqSSA, _, ssaInEquality, "=="); bop(ineqSSA, ssa, _, "=="); bop(ineqSSA, _, ssa, "==")),
+        ctxProvider.elementInContext(ineqSSACtx, ineqSSA, _).
+
+}

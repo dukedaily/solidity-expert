@@ -1,0 +1,9 @@
+#ifndef ENUM_UTILS
+
+    #define ENUM_UTILS
+
+	.functor enumerate(symbol, symbol): number
+
+	#define ENUMERATE(a, b) @enumerate(a, b)
+
+#endif
