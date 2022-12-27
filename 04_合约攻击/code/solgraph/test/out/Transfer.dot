@@ -1,5 +1,0 @@
-strict digraph {
-  Foo [color=red]
-  "DEPRECATED(transfer)" [shape=rectangle]
-  Foo -> "DEPRECATED(transfer)"
-}
