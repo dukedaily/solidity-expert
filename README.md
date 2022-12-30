@@ -1,3 +1,10 @@
+## 免责声明
+
+1. 本教程可以理解为个人知识笔记，仅用于学习使用，不做商业用途；
+2. 部分内容参考了其他博主的创作，涉及引用时会附上原文链接，如有侵权，欢迎指出。
+
+
+
 ## 项目概述
 
 欢迎👏🏻加入web3世界，该教程专注于EVM链Dapp全栈开发，通过学习，你可以掌握以下知识点：
@@ -18,7 +25,6 @@
 
 - gitbook：  [点击阅读](https://dukedaily.github.io/solidity-expert/)
 - 视频教程：[油管](https://www.youtube.com/channel/UCSc6tGnLIFvVMXs-ilDyb4A)、[B站](https://space.bilibili.com/102710441/channel/seriesdetail?sid=2537685&ctype=0)
-
 
 ## 关于作者
 
