@@ -1,0 +1,23 @@
+//LOG(ctxProvider.executionStateToString)
+//LOG(ctxProvider.followsContext)
+
+//LOG(valueOf)
+//LOG(valueUnknown)
+//LOG(valueKnown)
+
+//SIZE(programFlow.mustPrecede)
+//SIZE(programFlow.mustFollow)
+
+//SIZE(storageAnalysis.precedingStore)
+
+//SIZE(dataflow.mayDependOnStep)
+//SIZE(dataflow.isDerivedFromStep)
+
+//LOG(followsBlockWithContextToString)
+
+//SIZE(followsWithContext)
+//SIZE(followsBlockWithContext)
+
+//.output followsWithContextToString
+//.output followsBlockWithContextToString
+//.output programFlow.mustPrecedeToString

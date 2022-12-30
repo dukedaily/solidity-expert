@@ -1,0 +1,146 @@
+
+.decl followsWithContext(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext)
+followsWithContext([next, ctx], [prev, ctx]) :-
+    followsExtended(next, prev),
+    isInFunction(next, function),
+    ctxProvider.contextFor(function, ctx).
+
+// Jump / Call transfer to entry block
+followsWithContext([nextCallee, calleeContext], [prevTransfer, callerContext]) :-
+    ctxProvider.contextForCall(nextCallee, prevTransfer, callerContext, calleeContext),
+    (
+        jump(prevTransfer, _, _, _);
+        call(prevTransfer, _, _, _)
+    ).
+
+// Return to continuation
+followsWithContext([nextContinuation, callerContext], [returnTransfer, calleeContext]) :-
+    ctxProvider.contextForCall(callee, jumpTransfer, callerContext, calleeContext),
+    isInFunction(returnTransfer, callee),
+    return(returnTransfer, _),
+    (
+        jump(jumpTransfer, _, _, nextContinuation);
+        call(jumpTransfer, _, _, nextContinuation)
+    ).
+
+// Return to continuation //TODO: check
+followsWithContext([cont, callerContext], [prevTransfer, callerContext]) :-
+    ctxProvider.elementInContext(_, prevTransfer, callerContext),
+    (
+        call(prevTransfer, _, _, cont)
+    ).
+
+
+TRANSITIVE_CLOSURE(followsWithContext, ctxProvider.ElementInContext) //> followsWithContextTransitive
+TRANSITIVE_CLOSURE(followsBlockWithContext, ctxProvider.ElementInContext) //> followsBlockWithContextTransitive
+
+TO_STRING_2(followsWithContext, ctxProvider.executionStateToString) //> followsWithContextToString
+TO_STRING_2(followsBlockWithContext, ctxProvider.executionStateToString) //> followsBlockWithContextToString
+
+
+.decl followsBlockWithContext(succ: ctxProvider.ElementInContext, pred: ctxProvider.ElementInContext)
+followsBlockWithContext([succ, ctx], [pred, ctx]) :-
+    isInFunction(succ, function),
+    isInFunction(pred, function),
+    ctxProvider.contextFor(function, ctx),
+    (
+        branch(_, _, pred, succ, _, _);
+        branch(_, _, pred, _, succ, _);
+        goto(_, pred, succ)
+    ).
+
+// Jump / Call transfer to entry block
+followsBlockWithContext([calleeBlock, calleeContext], [callerBlock, callerContext]) :-
+    ctxProvider.contextForCall(calleeBlock, transfer, callerContext, calleeContext),
+    (
+        jump(transfer, callerBlock, _, _);
+        call(transfer, callerBlock, _, _)
+    ).
+
+// Return to continuation
+followsBlockWithContext([continuationBlock, callerContext], [returnBlock, calleeContext]) :-
+    ctxProvider.contextForCall(callee, transfer, callerContext, calleeContext),
+    isInFunction(returnTransfer, callee),
+    return(returnTransfer, returnBlock),
+    (
+        jump(transfer, _, _, continuationBlock);
+        call(transfer, _, _, continuationBlock)
+    ).
+
+// Return to continuation
+followsBlockWithContext([continuationBlock, callerContext], [callerBlock, callerContext]) :-
+    ctxProvider.elementInContext(_, callerBlock, callerContext),
+    (
+        call(_, callerBlock, _, continuationBlock)
+    ).
+
+
+.comp ControlFlowAnalysis {
+    .type Node = [a: ctxProvider.ElementInContext]
+
+    .init cfg = DiGraphOps<Node>
+    .init cfgT = DiGraphOps<Node>
+
+    cfg.edge([to], [from]) :- followsWithContext(to, from).
+    cfgT.edge([from], [to]) :- followsWithContext(to, from).
+
+
+    .decl mayFollow(to: ctxProvider.ElementInContext, from: ctxProvider.ElementInContext) inline
+    mayFollow(to, from) :- followsWithContextTransitive(to, from).
+
+
+    .decl mayPrecede(from: ctxProvider.ElementInContext, to: ctxProvider.ElementInContext) inline
+    mayPrecede(from, to) :- followsWithContextTransitive(to, from).
+
+
+    /** Being in `from` implies that `to` will be executed */
+    .decl mustFollow(to: ctxProvider.ElementInContext, from: ctxProvider.ElementInContext)
+    mustFollow(to, from) :- cfgT.dominatedBy([from], [to]), to != from.
+
+    /** Being in `to` implies that `from` was already executed */
+    .decl mustPrecede(from: ctxProvider.ElementInContext, to: ctxProvider.ElementInContext)
+    mustPrecede(from, to) :- cfg.dominatedBy([to], [from]), to != from.
+
+
+    .decl mustFollowBlock(to: ctxProvider.ElementInContext, from: ctxProvider.ElementInContext)
+    mustFollowBlock(to, from) :- mustFollow(to, from),
+                                 ctxProvider.elementInContext(from, blockFrom, _), block(blockFrom),
+                                 ctxProvider.elementInContext(to, blockTo, _), block(blockTo).
+
+    .decl mustPrecedeBlock(from: ctxProvider.ElementInContext, to: ctxProvider.ElementInContext)
+    mustPrecedeBlock(from, to) :- mustPrecede(from, to),
+                                  ctxProvider.elementInContext(from, blockFrom, _), block(blockFrom),
+                                  ctxProvider.elementInContext(to, blockTo, _), block(blockTo).
+
+    .decl inEdgeCount(to: ctxProvider.ElementInContext, n: number)
+    inEdgeCount(to, n) :- ctxProvider.elementInContext(to, toBlock, _), block(toBlock), cfg.inEdgeCount([to], n).
+    inEdgeCount(to, 1) :- ctxProvider.elementInContext(to, toBlock, _), !block(toBlock).
+
+    TO_STRING_2(mustPrecedeBlock, ctxProvider.executionStateToString) //> mustPrecedeBlockToString
+    TO_STRING_2(mustFollowBlock, ctxProvider.executionStateToString) //> mustFollowBlockToString
+    TO_STRING_2(mustPrecede, ctxProvider.executionStateToString) //> mustPrecedeToString
+    TO_STRING_2(mayPrecede, ctxProvider.executionStateToString) //> mayPrecedeToString
+    TO_STRING_2(mustFollow, ctxProvider.executionStateToString) //> mustFollowToString
+    TO_STRING_2(mayFollow, ctxProvider.executionStateToString) //> mayFollowToString
+
+    // Conditioned program program flow
+    .decl conditioned(element: ctxProvider.ElementInContext, branchTransfer: ctxProvider.ElementInContext, branch: symbol)
+    conditioned(element, branchTransfer, branch) :-
+        (
+            (branch(t, _, _, n, _, _), branch = "true");
+            (branch(t, _, _, _, n, _), branch = "false")
+        ),
+        ctxProvider.elementInContext(branchTransfer, t, branchingContext),
+        ctxProvider.elementInContext(branchBlock, n, branchingContext),
+        mustPrecede(branchBlock, element).
+}
+
+//.decl hasCallTo(function: Function, target: Function)
+//hasCallTo(from, to) :- isInFunction(call, from), jump(call, _, to, _).
+//
+//TRANSITIVE_CLOSURE(hasCallTo, Function) //> hasCallToTransitive
+//
+//
+//.decl isRecursive(function: Function)
+//isRecursive(function) :- hasCallToTransitive(function, function).
+//

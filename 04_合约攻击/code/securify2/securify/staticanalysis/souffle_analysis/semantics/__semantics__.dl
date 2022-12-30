@@ -1,0 +1,45 @@
+#include "trusted-variable.dl"
+
+#define SAME_CTX(_aC, _bC, _a, _b) \
+    ctxProvider.elementInContext(_aC, _a, _c), \
+    ctxProvider.elementInContext(_bC, _b, _c)
+
+// TODO: This list is not exhaustive yet
+/**
+ * This relation captures program elements that are used in a way that MAY renders them visible to
+ * outside observers (e.g. call parameters to external functions, return values of externally
+ * callable functions, storage mutations, etc.).
+ *
+ * element: Used element
+ * instruction: Instruction where the element is used
+ */
+.decl criticalUsageAt(element: ctxProvider.ElementInContext, instruction: ctxProvider.ElementInContext)
+
+criticalUsageAt(element, call) :- externalCall(c),
+                                  ctxProvider.elementInContext(call, c, ctx),
+                                  ctxProvider.elementInContext(element, _, ctx),
+                                  infoflow.instrMayDependOn(call, element).
+
+criticalUsageAt(val, call) :- externalCall(c), callValue(c, v), SAME_CTX(val, call, v, c).
+criticalUsageAt(gas, call) :- externalCall(c), callGas(c, g), SAME_CTX(gas, call, g, c).
+
+criticalUsageAt(arg, call) :- externalCall(c), transferArgument(c, a, _),
+                              SAME_CTX(arg, call, a, c).
+
+criticalUsageAt(arg, ret) :- externallyCallable(f), isInFunction(r, f),
+                             transferArgument(r, a, _), return(r, _),
+                             SAME_CTX(arg, ret, a, r).
+
+criticalUsageAt(value, store) :- storageMutation(s, v), SAME_CTX(value, store, v, s).
+
+criticalUsageAt(element, store) :- storageMutation(s, _),
+                                   ctxProvider.elementInContext(store, s, ctx),
+                                   ctxProvider.elementInContext(element, _, ctx),
+                                   infoflow.instrMayDependOn(store, element).
+
+.decl criticalUsageAtElem(element: Element, instruction: Element)
+
+criticalUsageAtElem(a, b) :-
+    criticalUsageAt(aCtx, bCtx),
+    ctxProvider.elementInContext(aCtx, a, _),
+    ctxProvider.elementInContext(bCtx, b, _).

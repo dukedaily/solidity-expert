@@ -1,0 +1,14 @@
+#define TO_STRING_1(rel, elemToString) \
+    .decl rel ## ToString(a: symbol) \
+    rel ## ToString(astr) :- rel(a), \
+        elemToString(a, astr).
+
+#define TO_STRING_2(rel, elemToString) \
+    .decl rel ## ToString(a: symbol, b: symbol) \
+    rel ## ToString(astr, bstr) :- rel(a, b), \
+        elemToString(a, astr), \
+        elemToString(b, bstr).
+
+#define EXPAND_RECORD2(rel, TElement, TContext) \
+    .decl rel ## 2(a: TElement, actx: TContext, b: TElement, bctx: TContext) \
+    rel ## 2(a, [actx], b, [bctx]) :- rel([a, actx], [b, bctx]).

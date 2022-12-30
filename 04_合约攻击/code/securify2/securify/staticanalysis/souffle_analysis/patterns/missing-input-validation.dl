@@ -1,0 +1,60 @@
+.comp MissingInputValidationPattern : Pattern {
+    NAME("Missing Input Validation")
+
+    DESCRIPTION(STR_JOIN(
+                            "Method arguments must be sanitized before ",
+                            "they are used in computations."))
+
+    SEVERITY(MEDIUM)
+
+    applicable(function, line) :-
+        externallyCallable(function), sourceLine(function, line).
+    //        applicableArgument([arg, _]), //, mayBeUsedFor([arg, _], _, _),
+    //        argument(arg, function, _).
+
+    compliance(function, line, "SAFE") :-
+        applicable(function, line), !mayHaveNoncompliantArgument(function).
+
+    violation(function, line, STR_JOIN("Argument '", arg, "' unchecked")) :-
+        applicable(function, line), argument(arg, function, _), violatingArgument([arg, _]).
+
+    .decl mayHaveNoncompliantArgument(function: Function)
+    mayHaveNoncompliantArgument(function) :-
+        applicable(function, _),
+        argument(argument, function, _),
+        applicableArgument([argument, ctx]),
+        !compliantArgument([argument, ctx]).
+
+    .decl compliantArgument(element: ctxProvider.ElementInContext)
+    .decl violatingArgument(element: ctxProvider.ElementInContext)
+
+    compliantArgument(argument) :-
+        applicableArgument(argument), mayBeUsedFor(argument, _, usedAt),
+        branchingCondition(condition, branching),
+        programFlow.mustPrecede(branching, usedAt),
+        dataflow.isDerivedFrom(condition, argument).
+
+    violatingArgument(argument) :-
+        applicableArgument(argument), !maybeCompliant(argument).
+
+    .decl maybeCompliant(argument: ctxProvider.ElementInContext)
+    maybeCompliant(argument) :-
+        applicableArgument(argument), mayBeUsedFor(argument, _, usedAt),
+        branchingCondition(condition, branching),
+        programFlow.mayPrecede(branching, usedAt),
+        dataflow.mayDependOn(condition, argument).
+
+    .decl mayBeUsedFor(argument: ctxProvider.ElementInContext, usage: ctxProvider.ElementInContext, instruction: ctxProvider.ElementInContext)
+    mayBeUsedFor(argument, usage, instr) :-
+        criticalUsageAt(usage, instr), dataflow.mayDependOn(usage, argument).
+
+    .decl isUsedFor(argument: ctxProvider.ElementInContext, usage: ctxProvider.ElementInContext, instruction: ctxProvider.ElementInContext)
+    isUsedFor(argument, usage, instr) :-
+        criticalUsageAt(usage, instr), dataflow.isDerivedFrom(usage, argument).
+
+    .decl applicableArgument(elementInContext: ctxProvider.ElementInContext)
+    applicableArgument([argument, context]) :-
+        ctxProvider.contextForInit(function, context),
+        function(function, _), externallyCallable(function),
+        argument(argument, function, _).
+}

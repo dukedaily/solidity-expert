@@ -1,0 +1,177 @@
+.symbol_type PatternId
+
+/** Numeric Match ID (note [[PatternBase]]'s MatchId will be translated via ord(X)) */
+.number_type MatchId
+.symbol_type MatchType
+.symbol_type MatchComment
+
+// Match Types
+#define WARNING   "warning"
+#define VIOLATION "violation"
+#define COMPLIANT "compliant"
+#define CONFLICT  "conflict"
+
+// Converts anything to a numeric match ID
+#define MATCH(x) ord(x)
+
+.comp PatternBase<MatchId> {
+	/** Stores information about the pattern such as name, description and custom tags. */
+	.decl tag(tag: symbol, value: symbol)
+
+	.decl matchId(matchId: MatchId)
+	.decl matchType(matchId: MatchId, type: MatchType)
+	.decl matchInfo(matchId: MatchId, key: symbol, value: symbol)
+}
+
+.comp Pattern : PatternBase<Element> {
+	.decl applicable(element: Element, info: symbol)
+
+	.decl compliance(element: Element, info: symbol, comment: symbol)
+	.decl violation(element: Element, info: symbol, comment: symbol)
+
+	matchId(element) :-
+		(
+			applicable(element, _);
+			compliance(element, _, _);
+			violation(element, _, _)
+		).
+
+	matchType(element, WARNING) :-
+		applicable(element, _),
+		!compliance(element, _, _),
+		!violation(element, _, _).
+
+	matchType(element, COMPLIANT) :-
+		applicable(element, _),
+		compliance(element, _, _),
+		!violation(element, _, _).
+
+	matchType(element, VIOLATION) :-
+		applicable(element, _),
+		!compliance(element, _, _),
+		violation(element, _, _).
+
+	matchType(element, CONFLICT) :-
+		applicable(element, _),
+		compliance(element, _, _),
+		violation(element, _, _).
+
+	matchInfo(element, "element", element) :-
+		applicable(element, _).
+
+	matchInfo(element, "line", line) :-
+		applicable(element, _), sourceLine(element, line).
+
+	matchInfo(element, "loc", line) :-
+		applicable(element, _), sourceInfo(element, "loc", line).
+
+	matchInfo(element, "contract", contract) :-
+		applicable(element, _), sourceInfo(element, "contract", contract).
+
+	matchInfo(element, "comment", comment) :- matchType(element, COMPLIANT), compliance(element, _, comment).
+	matchInfo(element, "comment", comment) :- matchType(element, VIOLATION), violation(element, _, comment).
+
+	matchInfo(element, "comment", comment) :-
+		matchType(element, CONFLICT),
+		(
+			compliance(element, _, comment);
+			violation(element, _, comment)
+		).
+}
+
+.decl patternId(patternId: PatternId)
+.decl patternTag(patternId: PatternId, tag: symbol, value: symbol)
+
+.decl patternMatch(patternId: PatternId, matchId: MatchId, matchType: MatchType)
+.decl patternMatchInfo(patternId: PatternId, matchId: MatchId, key: symbol, value: symbol)
+
+patternTag(id, "id", id) :- patternId(id).
+
+#include "analysis-patterns-macros.dl"
+
+#include "patterns/pass.dl"
+#include "patterns/locked-ether.dl"
+#include "patterns/dao.dl"
+#include "patterns/dao-constant-gas.dl"
+#include "patterns/missing-input-validation.dl"
+#include "patterns/repeated-call.dl"
+#include "patterns/tod-amount.dl"
+#include "patterns/tod-receiver.dl"
+#include "patterns/tod-transfer.dl"
+#include "patterns/unhandled-exception.dl"
+#include "patterns/unrestricted-ether-flow.dl"
+#include "patterns/unrestricted-write.dl"
+
+#include "patterns/unrestricted-delegatecall.dl"
+#include "patterns/unrestricted-selfdestruct.dl"
+
+#include "patterns/mul-after-div.dl"
+#include "patterns/shadowed-state-variable.dl"
+#include "patterns/unused-state-variable.dl"
+#include "patterns/uninitialized-state-variable.dl"
+
+#include "patterns/call-in-loop-pattern.dl"
+#include "patterns/timestamp.dl"
+#include "patterns/low-level-calls.dl"
+#include "patterns/tx-origin.dl"
+#include "patterns/incorrect-inequality.dl"
+#include "patterns/unused-return.dl"
+#include "patterns/constable-states.dl"
+#include "patterns/external-function.dl"
+#include "patterns/arbitrary-send.dl"
+#include "patterns/unused-variables.dl"
+#include "patterns/reentrancy-no-eth.dl"
+#include "patterns/reentrancy-benign.dl"
+
+
+REGISTER_PATTERN(PASSPattern)
+REGISTER_PATTERN(LockedEtherPattern)
+REGISTER_PATTERN(DAOPattern)
+REGISTER_PATTERN(DAOConstantGasPattern)
+REGISTER_PATTERN(MissingInputValidationPattern)
+REGISTER_PATTERN(RepeatedCallPattern)
+REGISTER_PATTERN(TODAmountPattern)
+REGISTER_PATTERN(TODReceiverPattern)
+REGISTER_PATTERN(TODTransferPattern)
+
+REGISTER_PATTERN(UnhandledExceptionPattern)
+REGISTER_PATTERN(UnrestrictedEtherFlowPattern)
+REGISTER_PATTERN(UnrestrictedWritePattern)
+
+REGISTER_PATTERN(UnrestrictedSelfdestructPattern)
+REGISTER_PATTERN(UnrestrictedDelegateCallPattern)
+
+REGISTER_PATTERN(MulAfterDivPattern)
+REGISTER_PATTERN(ShadowedStateVariablePattern)
+REGISTER_PATTERN(UnusedStateVariablePattern)
+REGISTER_PATTERN(UninitializedStateVariablePattern)
+
+REGISTER_PATTERN(CallInLoopPattern)
+REGISTER_PATTERN(TxOriginPattern)
+REGISTER_PATTERN(LowLevelCallsPattern)
+REGISTER_PATTERN(IncorrectInequalityPattern)
+REGISTER_PATTERN(UnusedReturnPattern)
+REGISTER_PATTERN(TimestampPattern)
+REGISTER_PATTERN(ConstableStatesPattern)
+REGISTER_PATTERN(ExternalFunctionPattern)
+// REGISTER_PATTERN(ArbitrarySendPattern) It's probably quite the same with unrestricted etherflow
+REGISTER_PATTERN(ReentrancyNoETHPattern)
+REGISTER_PATTERN(ReentrancyBenignPattern)
+//TODO: Further analysis of when a variable is used
+//REGISTER_PATTERN(UnusedVariablesPattern)
+
+
+.output patternId
+.output patternTag
+.output patternMatch
+.output patternMatchInfo
+
+//LOG(patternCompliance)
+//LOG(patternViolation)
+//LOG(patternWarning)
+//LOG(patternConflict)
+//
+//.output patternCompliance
+//.output patternViolation
+//.output patternWarning
+//.output patternConflict

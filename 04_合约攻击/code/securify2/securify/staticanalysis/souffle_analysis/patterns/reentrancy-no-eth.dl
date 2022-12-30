@@ -1,0 +1,27 @@
+#include "dao-base.dl"
+
+.comp ReentrancyNoETHPattern : DAOBasePattern {
+    NAME("No-Ether-Involved Reentrancy")
+
+    DESCRIPTION("Reentrancy that involves no ether")
+
+    SEVERITY(MEDIUM)
+
+    applicableInContext(callCtx) :-
+        externalCall(call),
+        callValue(call, value),
+        ctxProvider.elementInContext(callCtx, call, context),
+        ctxProvider.elementInContext(valueCtx, value, context),
+        valueOf(valueCtx, "0"),
+        callDependsOnLoad(loadCtx, callCtx),
+        ctxProvider.elementInContext(loadCtx, load, _),
+        load(load, varName),
+        storeAfterCall(storeCtx, callCtx),
+        ctxProvider.elementInContext(storeCtx, store, _),
+        (
+            store(store, varName, _);
+            // We need to take into account stores into maps as well.
+            load(loadMap, varName), mapStore(store, loadMap, _, _)
+        ).
+
+}

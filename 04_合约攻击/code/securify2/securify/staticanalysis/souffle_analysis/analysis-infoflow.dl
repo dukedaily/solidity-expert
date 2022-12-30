@@ -1,0 +1,65 @@
+.decl conditionedElement(elem: Element, condition: SSA)
+conditionedElement(elem, cond) :-
+    conditionedBlock(block, branchingBlock),
+    blockElement(elem, block),
+    branch(_, _, branchingBlock, _, _, cond).
+
+.comp InfoFlowAnalysis {
+    /** Information flow within a single context */
+    .decl instrMayDependOnDirect(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext)
+
+    /** Transitive closure of [[instrMayDependOnDirect]] */
+    .decl instrMayDependOnTransitive(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext) brie
+
+    /** Information flow from a conditioned call into all elements of an callee */
+    .decl instrMayDependOnTransfer(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext) inline
+
+    instrMayDependOnDirect(instCtx, condCtx) :-
+        conditionedElement(inst, cond),
+        ctxProvider.elementInContext(instCtx, inst, context),
+        ctxProvider.elementInContext(condCtx, cond, context).
+
+    instrMayDependOnTransitive(inst, dep) :- instrMayDependOnDirect(inst, dep).
+    instrMayDependOnTransitive(inst, dep) :- instrMayDependOnDirect(inst, mid), instrMayDependOnTransitive(mid, dep).
+
+    instrMayDependOnTransitive(inst, dep) :- instrMayDependOnTransitive(inst, mid), dataflow.mayDependOnStep(mid, dep).
+    instrMayDependOnTransitive(inst, dep) :- instrMayDependOnTransitive(mid, dep), dataflow.mayDependOnStep(inst, mid).
+
+    instrMayDependOnTransfer(elemInCallee, [jumpTransfer, callerContext]) :-
+        ctxProvider.contextForCall(_, jumpTransfer, callerContext, calleeContext),
+        ctxProvider.elementInContext(elemInCallee, _, calleeContext).
+
+    instrMayDependOnTransfer(elemInCallee, [jumpTransfer, callerContext]) :-
+        ctxProvider.contextForCall(_, jumpTransfer, callerContext, calleeContext),
+        ctxProvider.isSubcontextOf(subContext, calleeContext),
+        ctxProvider.elementInContext(elemInCallee, _, subContext).
+
+    .decl instrMayDependOn(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext) inline
+    instrMayDependOn(elem, dep) :- instrMayDependOnTransitive(elem, dep).
+    instrMayDependOn(elem, dep) :- instrMayDependOnTransitive(depMid, dep), instrMayDependOnTransfer(elem, depMid).
+
+
+    .decl __instrMustDependOnStep(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext)
+
+    /** Information flow within a single ocntext */
+    __instrMustDependOnStep(instCtx, condCtx) :-
+        conditionedElement(inst, cond),
+        ctxProvider.elementInContext(instCtx, inst, context),
+        ctxProvider.elementInContext(condCtx, cond, context).
+
+    /** Information flow from a conditioned call into all elements of an callee */
+    __instrMustDependOnStep(elemInCallee, [jumpTransfer, callerContext]) :-
+        ctxProvider.contextForCall(callee, jumpTransfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        programFlow.inEdgeCount([callee, calleeContext], 1),
+        ctxProvider.elementInContext(elemInCallee, _, calleeContext).
+
+
+    .decl instrMustDependOn(elem: ctxProvider.ElementInContext, elemCond: ctxProvider.ElementInContext)
+    instrMustDependOn(elem, dep) :- __instrMustDependOnStep(elem, dep).
+    instrMustDependOn(elem, dep) :- __instrMustDependOnStep(elem, depMid), instrMustDependOn(depMid, dep).
+    instrMustDependOn(elem, dep) :- instrMustDependOn(elem, depMid), dataflow.isDerivedFrom(depMid, dep).
+
+
+    TO_STRING_2(instrMayDependOn, ctxProvider.executionStateToString) //> instrMayDependOnToString
+    TO_STRING_2(instrMustDependOn, ctxProvider.executionStateToString) //> instrMustDependOnToString
+}

@@ -1,0 +1,68 @@
+#include "util-lists.dl"
+
+/** Interface component for program context definition logic
+ *
+ *  This component defines a request-response interface for generating
+ *  call stack related contexts.
+ *
+ *  The client of this provider requests contexts via the methods
+ *    [[requestContextForInit]] (for entry calls to functions)
+ *    [[requestContextForCall]] (for calls from functions)
+ *  for program elements ([[Element]]).
+ *
+ *  The provider implementation will then populate the relations
+ *    [[contextForCall]] and
+ *    [[contextForInit]]
+ *  according to its rules and the requested program elements.
+ */
+.comp ContextProvider<TContext> {
+    .type Context = [c: TContext]
+    .type ElementInContext = [element: Element, context: TContext]
+
+    // Relational Interface
+    .decl contextForCall(callee: Function, transferToCallee: Transfer, callerContext: TContext, context: TContext)
+    .decl contextForInit(callee: Function, context: TContext)
+
+    .decl requestContextForCall(callee: Function, transferToCallee: Transfer, callerContext: TContext)
+    .decl requestContextForInit(callee: Function)
+
+    .decl requestFallbackContextForCall(callee: Function, transferToCallee: Transfer, callerContext: TContext)
+
+    .decl executionState(state: ElementInContext)
+
+
+    // Helper Relations
+    .decl contextFor(callee: Function, context: TContext)
+    contextFor(callee, context) :- contextForInit(callee, context).
+    contextFor(callee, context) :- contextForCall(callee, _, _, context).
+
+    .decl contexts(context: TContext)
+    contexts(context) :- contextFor(_, context).
+
+    .decl contextToString(context: TContext, string: symbol)
+
+    .init contextGraph = DiGraphOps<TContext>
+    contextGraph.node(context) :- contexts(context).
+    contextGraph.edge(contextInner, contextOuter) :- contextForCall(_, _, contextOuter, contextInner).
+
+    .decl isInConstructorContext(context: TContext)
+    isInConstructorContext(context) :-
+        function(c, _),
+        annotation(c, "solidityFunctionKind", "constructor"),
+        contextForInit(c, cCtx),
+        contextGraph.dominatedBy(context, cCtx).
+
+    .decl isSubcontextOf(sub: TContext, super: TContext) inline
+    isSubcontextOf(sub, super) :- contextGraph.reachableFrom(sub, super).
+
+    /** Associates an element with its context and context-qualified variant. */
+    .decl elementInContext(elementInContext: ElementInContext, element: Element, context: TContext)
+    elementInContext([element, context], element, context) :- executionState([element, context]).
+
+    .decl executionStateToString(state: ElementInContext, string: symbol)
+    executionStateToString(elemCtx, cat(cat(elem, " @ "), ctxString)) :-
+        elementInContext(elemCtx, elem, ctx),
+        contextToString(ctx, ctxString).
+}
+
+#include "analysis-contexts-macros.dl"

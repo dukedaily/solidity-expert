@@ -1,0 +1,23 @@
+.comp MulAfterDivPattern : PerContextPattern {
+	NAME("Multiplication after division")
+
+	DESCRIPTION("Information might be lost due to division before multiplication")
+
+	SEVERITY(MEDIUM)
+
+
+	.decl mul(idCtx: ctxProvider.ElementInContext)
+	mul(idCtx) :- ctxProvider.elementInContext(idCtx, id, _), bop(id, _, _, "*").
+
+	.decl div(idCtx: ctxProvider.ElementInContext)
+	div(idCtx) :- ctxProvider.elementInContext(idCtx, id, _), bop(id, _, _, "/").
+
+	applicableInContext(mul) :- mul(mul).
+
+	compliantInContext(mul, "") :- mul(mul), !mayDependOnDiv(mul).
+
+	violationInContext(mul, "") :- mul(mul), mayDependOnDiv(mul).
+
+	.decl mayDependOnDiv(c: ctxProvider.ElementInContext)
+	mayDependOnDiv(c) :- div(div), data.mayDependOn(c, div).
+}

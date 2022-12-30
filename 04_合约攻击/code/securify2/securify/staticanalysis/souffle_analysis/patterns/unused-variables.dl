@@ -1,0 +1,56 @@
+.comp UnusedVariablesPattern : Pattern {
+    NAME("Unused variables pattern")
+
+    DESCRIPTION("Variables that are not used should be eliminated.")
+
+    SEVERITY(INFO)
+
+    // We want to return only
+    applicable(stmt, stmtLine) :-
+        violation(stmt,stmtLine,"").
+
+
+    compliance(stmt, stmtLine, "") :-
+        ctxProvider.elementInContext(stmtCtx, stmt, _),
+        annotation(stmt, _, _),
+        ctxProvider.elementInContext(critCtx, crit, _),
+        criticalStatement(crit),
+        data.mayDependOn(critCtx, stmtCtx),
+        sourceLine(stmt, stmtLine).
+
+
+    violation(stmt, stmtLine, "") :-
+        statement(stmt),
+        annotation(stmt,_,_),
+        sourceLine(stmt, stmtLine),
+        !compliance(stmt, _, _).
+
+    .decl criticalStatement(stmt: SSA)
+    criticalStatement(stmt):-
+        emit(_, _, stmt, _).
+
+    criticalStatement(stmt):-
+        return(to, _), transferArgument(to, stmt, _).
+
+    criticalStatement(stmt):-
+        store(_, _, stmt).
+
+    criticalStatement(cond):-
+        infoflow.instrMayDependOn(critCtx, condCtx),
+        ctxProvider.elementInContext(critCtx, crit, _),
+        ctxProvider.elementInContext(condCtx, cond, _),
+        criticalStatement(crit).
+
+    criticalStatement(stmt):-
+        data.mayDependOn(stmtCtx, otherCtx),
+        ctxProvider.elementInContext(stmtCtx, stmt, _),
+        ctxProvider.elementInContext(otherCtx, other, _),
+        criticalStatement(other).
+
+
+.output compliance
+.output criticalStatement
+.output violation
+.output compliance
+.output applicable
+}

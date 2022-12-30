@@ -1,0 +1,7 @@
+// By using #ifndef, the following configuration macros
+// can be overridden by passing when starting souffle
+// using the --macro option.
+
+#ifndef TRANSFER_STACK_DEPTH
+#define TRANSFER_STACK_DEPTH 3
+#endif
