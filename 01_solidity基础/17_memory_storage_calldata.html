@@ -2901,6 +2901,90 @@ contract DataLocations {
     }
 }
 </code></pre>
+<h2 id="memory和storage进阶"><a name="memory和storage进阶" class="plugin-anchor" href="#memory和storage进阶"><i class="fa fa-link" aria-hidden="true"></i></a>memory和storage进阶</h2>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
+pragma solidity =<span class="hljs-number">0.8</span><span class="hljs-number">.10</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;hardhat/console.sol&quot;</span>;
+
+contract Test{
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+        personArrayGlobal.push(Person(<span class="hljs-string">&quot;Lily&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-literal">true</span>));
+        personArrayGlobal.push(Person(<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-number">30</span>, <span class="hljs-literal">false</span>));
+    }
+
+    struct Person {
+        string name;
+        uint256 age;
+        bool married;
+    }
+
+    Person[] public personArrayGlobal;
+
+    <span class="hljs-comment">// remix: [[&quot;Lily&quot;, 20, true]]</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeTestMemory</span>(<span class="hljs-params">Person[] memory _psersonArray</span>) <span class="hljs-title">public</span> </span>{
+        Person memory pTmp = _psersonArray[<span class="hljs-number">0</span>];
+
+        <span class="hljs-comment">// error, 不能基于memory对象创建storage对象</span>
+        <span class="hljs-comment">// Person storage pTmp = _psersonArray[0];</span>
+        _innerChangeMemory(pTmp);
+
+        <span class="hljs-built_in">console</span>.log(pTmp.name);             <span class="hljs-comment">// David memory</span>
+        <span class="hljs-built_in">console</span>.log(_psersonArray[<span class="hljs-number">0</span>].name); <span class="hljs-comment">// David memory，居然改变了！虽然在memory中，但是实际上也是传递的指针</span>
+
+        uint256 tmpInt = <span class="hljs-number">200</span>;
+        _innerChangeInt(tmpInt);
+        <span class="hljs-built_in">console</span>.log(tmpInt);                <span class="hljs-comment">// 200，指类型的变量，总是直接复制一份</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_innerChangeInt</span>(<span class="hljs-params">uint _newValue</span>) <span class="hljs-title">internal</span> <span class="hljs-title">pure</span> </span>{
+        _newValue = <span class="hljs-number">100</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_innerChangeMemory</span>(<span class="hljs-params">Person memory _p</span>) <span class="hljs-title">internal</span> <span class="hljs-title">pure</span> </span>{
+        _p.name = <span class="hljs-string">&quot;David memory&quot;</span>;
+        _p.age = <span class="hljs-number">30</span>;
+        _p.married = <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_innerChangeStorage</span>(<span class="hljs-params">Person storage _p</span>) <span class="hljs-title">internal</span> </span>{
+        _p.name = <span class="hljs-string">&quot;David Storage&quot;</span>;
+        _p.age = <span class="hljs-number">30</span>;
+        _p.married = <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-comment">// run before changeTestGlobalWithStorage</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeTestGlobalWithMemory</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
+        Person memory pTmp = personArrayGlobal[<span class="hljs-number">0</span>];
+
+        _innerChangeMemory(pTmp);
+
+        <span class="hljs-comment">// error，memory 不能赋值给storage</span>
+        <span class="hljs-comment">// _innerChangeStorage(pTmp);</span>
+
+        <span class="hljs-built_in">console</span>.log(pTmp.name); <span class="hljs-comment">// David memory，memory中的变量改变了</span>
+        <span class="hljs-built_in">console</span>.log(personArrayGlobal[<span class="hljs-number">0</span>].name); <span class="hljs-comment">// Lily，原storage中数据未改变</span>
+    }
+
+    <span class="hljs-comment">// run after changeTestGlobalWithMemory</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeTestGlobalWithStorage</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
+        Person storage pTmp = personArrayGlobal[<span class="hljs-number">0</span>];
+
+        <span class="hljs-comment">// storage 赋值给memory，完全拷贝</span>
+        _innerChangeMemory(pTmp); 
+        <span class="hljs-built_in">console</span>.log(pTmp.name); <span class="hljs-comment">// Lily</span>
+        <span class="hljs-built_in">console</span>.log(personArrayGlobal[<span class="hljs-number">0</span>].name); <span class="hljs-comment">// Lily</span>
+
+        <span class="hljs-comment">// storage 赋值给storage，指针传递</span>
+        _innerChangeStorage(pTmp);
+
+        <span class="hljs-built_in">console</span>.log(pTmp.name); <span class="hljs-comment">// David</span>
+        <span class="hljs-built_in">console</span>.log(personArrayGlobal[<span class="hljs-number">0</span>].name); <span class="hljs-comment">// David</span>
+
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -2928,7 +3012,7 @@ contract DataLocations {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第17节:storage_calldata","level":"1.6.17","depth":2,"next":{"title":"第18节:函数Function","level":"1.6.18","depth":2,"path":"01_solidity基础/18_函数Function.md","ref":"01_solidity基础/18_函数Function.md","articles":[]},"previous":{"title":"第16节:结构体Struct","level":"1.6.16","depth":2,"path":"01_solidity基础/16_结构体Struct.md","ref":"01_solidity基础/16_结构体Struct.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/17_memory_storage_calldata.md","mtime":"2022-11-28T05:01:11.341Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2022-12-30T01:27:21.557Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第17节:storage_calldata","level":"1.6.17","depth":2,"next":{"title":"第18节:函数Function","level":"1.6.18","depth":2,"path":"01_solidity基础/18_函数Function.md","ref":"01_solidity基础/18_函数Function.md","articles":[]},"previous":{"title":"第16节:结构体Struct","level":"1.6.16","depth":2,"path":"01_solidity基础/16_结构体Struct.md","ref":"01_solidity基础/16_结构体Struct.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"01_solidity基础/17_memory_storage_calldata.md","mtime":"2023-01-03T05:02:53.500Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-01-03T05:04:40.251Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
