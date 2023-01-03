@@ -64,3 +64,92 @@ contract DataLocations {
 }
 ```
 
+
+
+## memory和storage进阶
+
+```js
+// SPDX-License-Identifier: MIT
+pragma solidity =0.8.10;
+
+import "hardhat/console.sol";
+
+contract Test{
+
+    constructor() {
+        personArrayGlobal.push(Person("Lily", 20, true));
+        personArrayGlobal.push(Person("James", 30, false));
+    }
+
+    struct Person {
+        string name;
+        uint256 age;
+        bool married;
+    }
+
+    Person[] public personArrayGlobal;
+
+    // remix: [["Lily", 20, true]]
+    function changeTestMemory(Person[] memory _psersonArray) public {
+        Person memory pTmp = _psersonArray[0];
+
+        // error, 不能基于memory对象创建storage对象
+        // Person storage pTmp = _psersonArray[0];
+        _innerChangeMemory(pTmp);
+
+        console.log(pTmp.name);             // David memory
+        console.log(_psersonArray[0].name); // David memory，居然改变了！虽然在memory中，但是实际上也是传递的指针
+
+        uint256 tmpInt = 200;
+        _innerChangeInt(tmpInt);
+        console.log(tmpInt);                // 200，指类型的变量，总是直接复制一份
+    }
+
+    function _innerChangeInt(uint _newValue) internal pure {
+        _newValue = 100;
+    }
+
+    function _innerChangeMemory(Person memory _p) internal pure {
+        _p.name = "David memory";
+        _p.age = 30;
+        _p.married = false;
+    }
+
+    function _innerChangeStorage(Person storage _p) internal {
+        _p.name = "David Storage";
+        _p.age = 30;
+        _p.married = false;
+    }
+
+    // run before changeTestGlobalWithStorage
+    function changeTestGlobalWithMemory() public {
+        Person memory pTmp = personArrayGlobal[0];
+
+        _innerChangeMemory(pTmp);
+
+        // error，memory 不能赋值给storage
+        // _innerChangeStorage(pTmp);
+
+        console.log(pTmp.name); // David memory，memory中的变量改变了
+        console.log(personArrayGlobal[0].name); // Lily，原storage中数据未改变
+    }
+
+    // run after changeTestGlobalWithMemory
+    function changeTestGlobalWithStorage() public {
+        Person storage pTmp = personArrayGlobal[0];
+
+        // storage 赋值给memory，完全拷贝
+        _innerChangeMemory(pTmp); 
+        console.log(pTmp.name); // Lily
+        console.log(personArrayGlobal[0].name); // Lily
+
+        // storage 赋值给storage，指针传递
+        _innerChangeStorage(pTmp);
+
+        console.log(pTmp.name); // David
+        console.log(personArrayGlobal[0].name); // David
+
+    }
+}
+```
+
