@@ -183,7 +183,7 @@
     * [第5节:订阅事件](14_Golang合约交互/05_订阅事件.md)
     * [第6节:解析事件](14_Golang合约交互/06_解析事件.md)
 * [第十五章:Golang扫快服务](15_Golang扫快服务/README.md)
-* [第十六章:uniswapV2解析(12月份完成)](16_uniswapV2解析/README.md)
+<!-- * [第十六章:uniswapV2解析(12月份完成)](16_uniswapV2解析/README.md)
     * [第0节:部署文档](16_uniswapV2解析/00_部署文档.md)
     * [第1节:CORE_V2ERC20](16_uniswapV2解析/01_CORE_V2ERC20.md)
     * [第2节:CORE_V2Factory](16_uniswapV2解析/02_CORE_V2Factory.md)
@@ -191,7 +191,7 @@
     * [第4节:PERIPHERY_ROUTER02](16_uniswapV2解析/04_PERIPHERY_ROUTER02.md)
     * [第5节:Interface](16_uniswapV2解析/05_Interface.md)
     * [第6节:FlashLoan](16_uniswapV2解析/06_FlashLoan.md)
-    * [第7节:其他](16_uniswapV2解析/07_其他.md)
+    * [第7节:其他](16_uniswapV2解析/07_其他.md) -->
 * [第二十章:热门技术追踪](20_热门技术追踪/README.md)
     * [第1节:从Layer0到Layer3](20_热门技术追踪/01_从Layer1到Layer3.md)
     * [第2节:以太坊扩容方案](20_热门技术追踪/02_以太坊扩容方案.md)
