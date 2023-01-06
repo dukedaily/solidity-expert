@@ -12,7 +12,7 @@ https://docs.soliditylang.org/en/latest/security-considerations.html#sending-and
 
 
 
-总结：transfer() 和 send() 函数使用 2300 gas 以防止重入攻击，公链升级后可能导致 gas 不足。推荐使用 call() 函数，但需做好重入攻击防护。
+总结：transfer() 和 send() 函数使用 2300 gas 以防止重入攻击，但公链升级后可能导致 gas 不足。所以推荐使用 call() 函数，但需做好重入攻击防护。
 
 
 

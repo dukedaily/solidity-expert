@@ -21,7 +21,7 @@
 (bool success, bytes memory data) = _addr.call(abi.encodeWithSignature("doesNotExist()"));
 ```
 
-**调用不存在的方法（又不存在fallback）时，交易会调用成功，但是第一个参数为：false。**
+调用不存在的方法（又不存在fallback）时，交易会调用成功，但是第一个参数为：false，所以使用call调用后一定要检查success状态
 
 
 

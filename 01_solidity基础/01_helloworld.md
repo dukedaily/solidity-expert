@@ -1,6 +1,6 @@
 #  第1节：Hello world
 
-pragma solidity ^0.8.13; 表明当前编译合约的版本号，向上兼容至0.9
+1. pragma solidity ^0.8.13; 表明当前编译合约的版本号，向上兼容至0.9
 
 ```js
 // SPDX-License-Identifier: MIT

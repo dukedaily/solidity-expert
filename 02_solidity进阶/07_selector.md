@@ -64,8 +64,8 @@ contract FunctionSelector {
         bytes memory selector2 = abi.encodeWithSignature(_func);
 
 		// 两者相同
-      	// 0: bytes4: 0xa9059cbb
-		// 1: bytes: 0xa9059cbb
+    // 0: bytes4: 0xa9059cbb
+    // 1: bytes: 0xa9059cbb
         return (selector1, selector2);
     }
   
