@@ -1,12 +1,8 @@
 # 第1节：OPCode手册
 
-https://www.evm.codes/?fork=grayGlacier
-
-https://www.ethervm.io/
-
-
-
-## 概览
+1. https://www.evm.codes/?fork=grayGlacier
+2. https://www.ethervm.io/
+3. 在solidity中使用汇编语法时，使用的开发语言是yul，[参考手册](https://docs.soliditylang.org/en/v0.8.17/yul.html)
 
 <img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20221104163118696.png" alt="image-20221104163118696" style="zoom:50%;" />
 
