@@ -47,6 +47,8 @@ contract HelloWorld {
 - **HelloWorld**：是合约的名字，类似于我们C++中的类概念；
 - **string public greet = "Hello World!"**：定义一个string类型的字符串greet，赋值为"Hello World!"，类型是public的。
 
+
+
 ## 部署
 
 打开remix，创建新的工作区：
@@ -73,6 +75,24 @@ remixd -s <contract_folder>
 - 其他
 
 
+
+## CallData使用（高级用法）
+
+remix提供了一个calldata输入框，允许我们通过bytecode来与合约交互，通过calldata按钮，我们可以调用当前合约的方法，具体逻辑如下：
+
+1. 如果传入的bytecode指定的sig方法存在，则调用对应方法；
+2. 如果不存在，则调用fallback（或者receive）；
+3. 如果fallback也没有实现，则不允许调用。（使用代码编写时，会调用成功，不会revert，但是返回false）
+
+我们演示一下，在remix中，如果调用了无效calldata：
+
+1. fallback不存在时，会拒绝调用❌
+
+![image-20230109095232889](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230109095232889.png)
+
+2. 如果fallback存在，则执行fallback：
+
+   ![image-20230109100218847](https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230109100218847.png)
 
 
 
