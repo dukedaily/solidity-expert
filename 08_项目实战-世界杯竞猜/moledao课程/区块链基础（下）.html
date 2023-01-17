@@ -2752,13 +2752,14 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="写在前面"><a name="写在前面" class="plugin-anchor" href="#写在前面"><i class="fa fa-link" aria-hidden="true"></i></a>写在前面</h1>
-<h2 id="讲师介绍"><a name="讲师介绍" class="plugin-anchor" href="#讲师介绍"><i class="fa fa-link" aria-hidden="true"></i></a>讲师介绍</h2>
+                                <h2 id="讲师介绍"><a name="讲师介绍" class="plugin-anchor" href="#讲师介绍"><i class="fa fa-link" aria-hidden="true"></i></a>讲师介绍</h2>
 <p>资深web3开发者，bybit交易所defi团队Tech Lead，MoleDAO技术顾问，国内第一批区块链布道者，专注海外defi,dex,AA钱包等业务方向。</p>
 <ul>
-<li>公众号：阿杜在新加坡 </li>
-<li>B站：杜旭duke</li>
-<li>Twitter：dukedu2022</li>
+<li>公众号：<a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5NDQ0NDAxNQ==&amp;action=getalbum&amp;album_id=2529739108240556033&amp;scene=173&amp;from_msgid=2247484601&amp;from_itemidx=1&amp;count=3&amp;nolastread=1#wechat_redirect" target="_blank">阿杜在新加坡</a> </li>
+<li>github：<a href="https://github.com/dukedaily" target="_blank">以太坊教程</a></li>
+<li>B站：<a href="https://www.bilibili.com/video/BV1EY4y1c7Yq/?vd_source=42fe91bf6d16ec8841b22ea520184d76" target="_blank">杜旭duke</a></li>
+<li>Youtube：<a href="https://www.youtube.com/watch?v=Wpf5KkgzElc&amp;list=PLO_KaIZjoik9oY-Rs9BsDkHY2RJy7WcE-" target="_blank">duke du</a></li>
+<li>Twitter：<a href="https://twitter.com/home" target="_blank">dukedu2022</a></li>
 </ul>
 <h2 id="学习收获"><a name="学习收获" class="plugin-anchor" href="#学习收获"><i class="fa fa-link" aria-hidden="true"></i></a>学习收获</h2>
 <ul>
@@ -2772,7 +2773,7 @@
 <li>比特币学习：<a href="https://github.com/dukedaily/go-bitcoin-demo" target="_blank">https://github.com/dukedaily/go-bitcoin-demo</a></li>
 </ul>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105125248724.png" alt="image-20230105125248724"></p>
-<h1 id="二、钱包"><a name="二、钱包" class="plugin-anchor" href="#二、钱包"><i class="fa fa-link" aria-hidden="true"></i></a>二、钱包</h1>
+<h1 id="一、钱包"><a name="一、钱包" class="plugin-anchor" href="#一、钱包"><i class="fa fa-link" aria-hidden="true"></i></a>一、钱包</h1>
 <h2 id="1-私钥｜地址"><a name="1-私钥｜地址" class="plugin-anchor" href="#1-私钥｜地址"><i class="fa fa-link" aria-hidden="true"></i></a>1. 私钥｜地址</h2>
 <p>地址生成大致逻辑为：<strong>随机数-&gt; 私钥-&gt; 公钥-&gt; 公钥哈希-&gt; 地址</strong></p>
 <p>演示：<a href="https://andersbrownworth.com/blockchain/public-private-keys/keys" target="_blank">https://andersbrownworth.com/blockchain/public-private-keys/keys</a></p>
@@ -2802,9 +2803,7 @@ f91339a26b4cb0059642665f46369c3569fc26597694aff84d908de5b4833b24ab5aad66b23f43ae
 </ul>
 <p>说穿了，助记词是随机数与单词的映射，使用助记词就可以恢复随机数，进而计算出私钥，管理资产。</p>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101175951612.png" alt="image-20230101175951612"></p>
-<h2 id="3-钱包分类"><a name="3-钱包分类" class="plugin-anchor" href="#3-钱包分类"><i class="fa fa-link" aria-hidden="true"></i></a>3. 钱包分类</h2>
-<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101194944453.png" alt="image-20230101194944453"></p>
-<h2 id="4-私钥签名逻辑"><a name="4-私钥签名逻辑" class="plugin-anchor" href="#4-私钥签名逻辑"><i class="fa fa-link" aria-hidden="true"></i></a>4. 私钥签名逻辑</h2>
+<h2 id="3-私钥签名逻辑"><a name="3-私钥签名逻辑" class="plugin-anchor" href="#3-私钥签名逻辑"><i class="fa fa-link" aria-hidden="true"></i></a>3. 私钥签名逻辑</h2>
 <p>整个区块链系统依赖于非对称加密算法：</p>
 <ol>
 <li>非对称的含义：加密和解密不是同一个密钥，区别于<code>对称加密</code></li>
@@ -2813,26 +2812,30 @@ f91339a26b4cb0059642665f46369c3569fc26597694aff84d908de5b4833b24ab5aad66b23f43ae
 </ol>
 <p><strong>对称加密：</strong></p>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105120529214.png" alt="image-20230105120529214"></p>
-<p>场景一图示：</p>
+<p><strong>非对称加密场景1：公钥加密，私钥解密</strong></p>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105120613336.png" alt="image-20230105120613336"></p>
-<p>场景二图示：</p>
+<p><strong>非对称加密场景2：私钥签名，公钥验证</strong></p>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105120635064.png" alt="image-20230105120635064"></p>
 <p>私钥签名完整流程图示：</p>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105120036897.png" alt="image-20230105120036897"></p>
+<p>比特币真实交易，<a href="https://bitaps.com/6823bca638d4253c62ad9f0a91dece136fa84e6ea79bde6a5594ab1a42794421" target="_blank">点击查看</a></p>
+<h2 id="4-钱包分类"><a name="4-钱包分类" class="plugin-anchor" href="#4-钱包分类"><i class="fa fa-link" aria-hidden="true"></i></a>4. 钱包分类</h2>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101194944453.png" alt="image-20230101194944453"></p>
+<p><strong>硬件钱包示例：</strong></p>
+<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2023-01-17-110549.png" alt="image-20230117190548810"></p>
 <h2 id="5-中心化交易所做了啥"><a name="5-中心化交易所做了啥" class="plugin-anchor" href="#5-中心化交易所做了啥"><i class="fa fa-link" aria-hidden="true"></i></a>5. 中心化交易所做了啥</h2>
 <p><strong>Not Your Keys, Not Your Coins</strong></p>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101182600843.png" alt="image-20230101182600843"></p>
 <h2 id="6-钱包的未来"><a name="6-钱包的未来" class="plugin-anchor" href="#6-钱包的未来"><i class="fa fa-link" aria-hidden="true"></i></a>6. 钱包的未来</h2>
 <ul>
-<li>MPC钱包：<strong>Bitverse</strong>、ZenGo</li>
 <li>智能合约钱包：Gnosis</li>
+<li>MPC钱包：<strong>Bitverse</strong>、ZenGo</li>
 <li>账户抽象（Account Abstract）：<a href="https://medium.com/infinitism/erc-4337-account-abstraction-without-ethereum-protocol-changes-d75c9d94dc4a" target="_blank">V神提出方案</a>，<a href="https://eips.ethereum.org/EIPS/eip-4337" target="_blank">EIP4337</a>，<a href="https://github.com/eth-infinitism/account-abstraction" target="_blank">代码实现</a>，<a href="https://mp.weixin.qq.com/s/ZQAVSPHmRCGwtniuItT57w" target="_blank">科普文章</a></li>
 </ul>
 <p>EOA: externally owned account</p>
 <p>CA: Contract Account</p>
-<h1 id="三、智能合约"><a name="三、智能合约" class="plugin-anchor" href="#三、智能合约"><i class="fa fa-link" aria-hidden="true"></i></a>三、智能合约</h1>
-<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101183346100.png" alt="image-20230101183346100"></p>
-<p>智能合约时Layer3层，属于应用层面的开发语言，每当我们提到区块链项目，一般包含两个层面的意思：</p>
+<h1 id="二、智能合约"><a name="二、智能合约" class="plugin-anchor" href="#二、智能合约"><i class="fa fa-link" aria-hidden="true"></i></a>二、智能合约</h1>
+<p>智能合约属于应用层面的开发语言，每当我们提到区块链项目，一般包含两个层面的意思：</p>
 <ol>
 <li>链条开发：聚焦在区块链本身，这相当于操作系统层面的项目（如Mac和Windows）</li>
 <li>应用开发：聚焦在应用层面，如微信，手机银行等，在区块链领域，我们称之为Dapp（Decentralized Application），即去中心化应用。</li>
@@ -2871,7 +2874,7 @@ contract Inbox{
 <li>remix部署</li>
 <li>浏览器verify</li>
 </ol>
-<h1 id="四、什么是-web3（拓展知识）"><a name="四、什么是-web3（拓展知识）" class="plugin-anchor" href="#四、什么是-web3（拓展知识）"><i class="fa fa-link" aria-hidden="true"></i></a>四、什么是 Web3（拓展知识）</h1>
+<h1 id="三、什么是-web3（拓展知识）"><a name="三、什么是-web3（拓展知识）" class="plugin-anchor" href="#三、什么是-web3（拓展知识）"><i class="fa fa-link" aria-hidden="true"></i></a>三、什么是 Web3（拓展知识）</h1>
 <p>Web3 (also known as Web 3.0) - by <a href="https://en.wikipedia.org/wiki/Web3" target="_blank">Wikipedia</a>
 <a href="https://www.nexxworks.com/blog/web3-and-web-3-0-are-not-the-same-thing-heres-why" target="_blank">Decentralized Web and Semantic Web</a></p>
 <h2 id="1-定义"><a name="1-定义" class="plugin-anchor" href="#1-定义"><i class="fa fa-link" aria-hidden="true"></i></a>1. 定义</h2>
@@ -2925,7 +2928,7 @@ contract Inbox{
 </ul>
 <h2 id="3-web3-各赛道现状与趋势"><a name="3-web3-各赛道现状与趋势" class="plugin-anchor" href="#3-web3-各赛道现状与趋势"><i class="fa fa-link" aria-hidden="true"></i></a>3. Web3 各赛道现状与趋势</h2>
 <p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/web3%E5%90%84%E8%B5%9B%E9%81%93%E7%8E%B0%E7%8A%B6%E4%B8%8E%E8%B6%8B%E5%8A%BF.jpeg" alt></p>
-<h1 id="五、资源链接"><a name="五、资源链接" class="plugin-anchor" href="#五、资源链接"><i class="fa fa-link" aria-hidden="true"></i></a>五、资源链接</h1>
+<h1 id="四、资源链接"><a name="四、资源链接" class="plugin-anchor" href="#四、资源链接"><i class="fa fa-link" aria-hidden="true"></i></a>四、资源链接</h1>
 <ol>
 <li>DAPP全栈教程：<a href="https://dukedaily.github.io/solidity-expert/" target="_blank">https://dukedaily.github.io/solidity-expert/</a></li>
 <li>Metamask下载链接：<a href="https://chrome.google.com/webstore/search/MetaMask?hl=zh-CN" target="_blank">https://chrome.google.com/webstore/search/MetaMask?hl=zh-CN</a></li>
@@ -2962,7 +2965,7 @@ contract Inbox{
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第b节:世界杯竞猜_区块链基础（下）","level":"1.14.2","depth":2,"next":{"title":"第1节:世界杯竞猜_solidity","level":"1.14.3","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","articles":[]},"previous":{"title":"第a节:世界杯竞猜_区块链基础（上）","level":"1.14.1","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/区块链基础（上）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/区块链基础（上）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/moledao课程/区块链基础（下）.md","mtime":"2023-01-16T11:54:13.960Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-01-16T11:54:25.344Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第b节:世界杯竞猜_区块链基础（下）","level":"1.14.2","depth":2,"next":{"title":"第1节:世界杯竞猜_solidity","level":"1.14.3","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","articles":[]},"previous":{"title":"第a节:世界杯竞猜_区块链基础（上）","level":"1.14.1","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/区块链基础（上）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/区块链基础（上）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/moledao课程/区块链基础（下）.md","mtime":"2023-01-17T11:53:42.472Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-01-17T11:54:13.806Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
