@@ -1,0 +1,36 @@
+#include "util-sets.dl"
+#include "../souffle_analysis/util-graph.dl"
+
+.number_type Vertex
+
+.init g = DiGraph<Vertex>
+
+g.edge(0, 1).
+g.edge(0, 2).
+g.edge(0, 3).
+
+g.edge(4, 0).
+g.edge(5, 0).
+g.edge(6, 0).
+
+g.edge(6, 10).
+
+.decl tainted(n: number)
+.decl taintedInEdges(node: number, inSets: Set)
+.decl taintedInEdgesCount(node: number, size: number)
+
+tainted(1).
+tainted(2).
+tainted(3).
+
+taintedInEdges(n, SET_EMPTY()) :- g.node(n).
+taintedInEdges(n, SET_ADD(set, s)) :- taintedInEdges(n, set), g.edge(n, s), tainted(s).
+
+taintedInEdgesCount(n, max_size) :- g.node(n), max_size = max t : { t = SET_SIZE(set), taintedInEdges(n, set) }.
+
+tainted(n) :- g.inEdgeCount(n, SET_SIZE(s)), taintedInEdges(n, s), s != SET_EMPTY().
+
+LOG(g.inEdgeCount)
+
+LOG(tainted)
+LOG(taintedInEdgesCount)

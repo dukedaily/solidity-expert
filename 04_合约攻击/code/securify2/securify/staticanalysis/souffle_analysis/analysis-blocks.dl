@@ -1,0 +1,130 @@
+#include "util-macros.dl"
+
+.decl emptyBlock(block: Block)
+emptyBlock(block) :- block(block), !blockStmt(block, _).
+
+.decl firstStatementInBlock(block: Block, stmt: SSA)
+firstStatementInBlock(block, stmt) :- blockStmt(block, stmt), !follows(stmt, _).
+
+.decl lastStatementInBlock(block: Block, stmt: SSA)
+lastStatementInBlock(block, stmt) :- blockStmt(block, stmt), !follows(_, stmt).
+
+/** Argument transfer from GOTOs or BRANCH nodes */
+.decl directArgumentTransfer(id: Transfer, from: Block, to: Block, fromArg: SSA, toArg: SSA)
+directArgumentTransfer(id, from, to, fromArg, toArg) :-
+    transferArgument(id, fromArg, index),
+    argument(toArg, to, index),
+    (
+        goto(id, from, to);
+        branch(id, _, from, to, _, _);
+        branch(_, id, from, _, to, _)
+    ).
+
+//LOG(directArgumentTransfer)
+
+
+.decl branchingBlock(id: Block, trueBlock: Block, falseBlock: Block)
+branchingBlock(i, t, f) :- branch(_, _, i, t, f, _).
+
+//LOG(branchingBlock)
+
+
+.decl followsBlock(to: Block, from: Block)
+followsBlock(n, p) :- goto(_, p, n).
+followsBlock(n, p) :- branch(_, _, p, n, _, _).
+followsBlock(n, p) :- branch(_, _, p, _, n, _).
+followsBlock(n, p) :- call(_, p, _, n).
+followsBlock(n, p) :- jump(_, p, _, n).
+
+TRANSITIVE_CLOSURE(followsBlock, Block) //> followsBlockTransitive
+
+
+// Transfer target (unique, hence no call and jumps)
+.decl transferTo(transfer: Transfer, blockTo: Block)
+transferTo(t, n) :- goto(t, _, n).
+transferTo(t, n) :- branch(t, _, _, n, _, _).
+transferTo(t, n) :- branch(_, t, _, _, n, _).
+
+
+.decl transferFrom(transfer: Transfer, blockFrom: Block)
+transferFrom(t, b) :- goto(t, b, _).
+transferFrom(t, b) :- branch(t, _, b, _, _, _).
+transferFrom(t, b) :- branch(_, t, b, _, _, _).
+transferFrom(t, b) :- jump(t, b, _, _).
+transferFrom(t, b) :- call(t, b, _, _).
+transferFrom(t, b) :- return(t, b).
+
+
+
+// All blocks of a function that end in a return
+.decl terminalBlock(idFunction: Block, idBlock: Block)
+terminalBlock(f, block) :-
+    function(f, _), isInFunction(block, f),
+    return(_, block).
+
+//LOG(terminalBlock)
+
+
+.decl blockIsInLoop(id: Block)
+blockIsInLoop(id) :- followsBlockTransitive(id, id).
+
+//LOG(blockIsInLoop)
+
+
+.decl commonSuccessor(b: Block, u: Block)
+commonSuccessor(b, n) :-
+    branchingBlock(b, t, f),
+    (followsBlockTransitive(n, t); n=t),
+    (followsBlockTransitive(n, f); n=f).
+
+//LOG(commonSuccessor)
+
+.init simpleCfgT = DiGraphOps<Block>
+simpleCfgT.edge(t, n) :- followsBlock(n, t).
+
+.decl conditionedBlock(block: Block, branchingBlock: Block)
+conditionedBlock(n, b) :- (
+        branchingBlock(b, bb, _);
+        branchingBlock(b, _, bb)
+    ),
+    (simpleCfgT.reachableFrom(bb, n); n=bb),
+    !simpleCfgT.dominatedBy(b, n).
+
+
+.decl blockElement(e: Element, block: Block)
+blockElement(elem, elem) :- block(elem).
+blockElement(elem, block) :- blockStmt(block, elem).
+blockElement(elem, block) :- transferFrom(elem, block).
+blockElement(elem, block) :- argument(elem, block, _).
+
+
+.decl anyElement(e: Element)
+anyElement(element) :- contract(element, _).
+anyElement(element) :- block(element).
+anyElement(element) :- blockStmt(_, element).
+anyElement(element) :- transferFrom(element, _).
+anyElement(element) :- argument(element, _, _).
+
+// Follows relation between block starts, statements and transfers
+.decl followsExtended(next: Element, prev: Element)
+followsExtended(n, p) :- follows(n, p).
+followsExtended(n, p) :- firstStatementInBlock(p, n). // Block to first stmt
+followsExtended(n, p) :- transferFrom(n, pb), lastStatementInBlock(pb, p). // Last stmt to  to transfer
+followsExtended(n, p) :- transferFrom(n, p), emptyBlock(p). // Block to transfer (no stmts)
+followsExtended(n, p) :- transferTo(p, n). //, !jump(p, _, _, _), !call(p, _, _, _). // Block to transfer (no stmts)
+
+
+.decl isInFunction(element: Element, function: Block)
+isInFunction(elem, function) :- blockElement(elem, function), function(function, _).
+isInFunction(elem, function) :- blockElement(elem, block), followsBlockTransitive(block, function).
+
+.decl isInContract(element: Element, contract: Contract)
+isInContract(element, contract) :- contractFunction(contract, funciton), isInFunction(element, funciton).
+
+//LOG(isInFunction)
+
+.decl functionCall(name: symbol, transfer: Transfer)
+functionCall(name, t) :-
+    function(f, name),
+    jump(t, _, f, _).
+

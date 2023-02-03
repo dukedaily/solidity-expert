@@ -1,0 +1,5 @@
+strict digraph {
+  Count
+  CallCount
+  CallCount -> Count
+}

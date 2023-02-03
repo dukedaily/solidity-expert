@@ -1,0 +1,6 @@
+graphviz
+semantic_version
+py-solc
+py-etherscan-api
+requests
+-e .

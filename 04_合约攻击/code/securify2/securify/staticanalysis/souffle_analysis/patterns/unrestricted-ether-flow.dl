@@ -1,0 +1,55 @@
+.comp UnrestrictedEtherFlowPattern : PerContextPattern {
+    NAME("Unrestricted Ether Flow")
+
+    DESCRIPTION(STR_JOIN(
+        "The execution of ether flows should be restricted ",
+        "to an authorized set of users."))
+
+    SEVERITY(CRITICAL)
+
+
+    applicableInContext(callCtx) :- externalCall(call), ctxProvider.elementInContext(callCtx, call, _).
+
+    compliantInContext(callCtx, "") :-
+        applicableInContext(callCtx), ctxProvider.elementInContext(callCtx, call, context),
+        callValue(call, amount),
+        valueOf([amount, context], "0").
+
+    compliantInContext(callCtx, "") :-
+        applicableInContext(callCtx),
+        someSender(senderCtx),
+        (
+            infoflow.instrMustDependOn(callCtx, senderCtx)
+        ).
+
+    violationInContext(callCtx, "") :-
+        applicableInContext(callCtx), ctxProvider.elementInContext(callCtx, call, context),
+        callValue(call, value),
+        !zeroValue([value, context]),
+        !maybeCompliantInContext(callCtx).
+//   (
+//       dependsOnUntrustedInput([value, context])
+//   ),
+
+    .decl maybeCompliantInContext(callCtx: ctxProvider.ElementInContext)
+    maybeCompliantInContext(callCtx) :-
+		applicableInContext(callCtx), callValue(call, value),
+        ctxProvider.elementInContext(callCtx, call, context),
+        ctxProvider.elementInContext(valueCtx, value, context),
+        someSender(senderCtx),
+        (
+            infoflow.instrMayDependOn(callCtx, senderCtx);
+            dataflow.mayDependOn(valueCtx, senderCtx)
+        ).
+
+    .decl zeroValue(value: ctxProvider.ElementInContext)
+    zeroValue(value) :- valueOf(value, "0").
+
+    .decl dependsOnUntrustedInput(element: ctxProvider.ElementInContext)
+    dependsOnUntrustedInput(element) :-
+        argument(argument, entry, _), ctxProvider.contextForInit(entry, ctx),
+        dataflow.isDerivedFrom(element, [argument, ctx]).
+
+    .decl someSender(sender: ctxProvider.ElementInContext)
+    someSender(senderCtx) :- msgSender(sender), ctxProvider.elementInContext(senderCtx, sender, _).
+}

@@ -1,0 +1,44 @@
+.comp UnrestrictedWritePattern : PerContextPattern {
+    NAME("Unrestricted write to storage")
+
+    DESCRIPTION(STR_JOIN(
+        "Contract fields that can be modified by ",
+        "any user must be inspected."))
+
+    SEVERITY(CRITICAL)
+
+	applicableInContext(storeInContext) :- storageMutation(store, _),
+        ctxProvider.elementInContext(storeInContext, store, context),
+        !ctxProvider.isInConstructorContext(context).
+
+    violationInContext(storeInContext, "") :-
+        applicableInContext(storeInContext),
+        !maybeCompliantInContext(storeInContext).
+
+    compliantInContext(storeInCtx, "") :-
+        applicableInContext(storeInCtx), msgSender(sender),
+        ctxProvider.elementInContext(storeInCtx, store, context),
+        ctxProvider.elementInContext(senderInContext, sender, _),
+        (
+            (
+                storeIndex(store, index),
+                ctxProvider.elementInContext(indexInContext, index, context),
+                dataflow.isDerivedFrom(indexInContext, senderInContext)
+            );
+            infoflow.instrMustDependOn(storeInCtx, senderInContext)
+        ).
+
+    .decl maybeCompliantInContext(storeInContext: ctxProvider.ElementInContext)
+    maybeCompliantInContext(storeInContext) :-
+        applicableInContext(storeInContext), msgSender(sender),
+        ctxProvider.elementInContext(storeInContext, store, context),
+        ctxProvider.elementInContext(senderInContext, sender, _),
+        (
+            (
+                storeIndex(store, index),
+                ctxProvider.elementInContext(indexInCtx, index, context),
+                dataflow.mayDependOn(indexInCtx, senderInContext)
+            );
+            infoflow.instrMayDependOn(storeInContext, senderInContext)
+        ).
+}

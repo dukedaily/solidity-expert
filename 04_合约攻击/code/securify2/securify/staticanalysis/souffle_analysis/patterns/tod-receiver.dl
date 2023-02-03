@@ -1,0 +1,31 @@
+#include "abstract-tod-pattern.dl"
+
+.comp TODReceiverPattern : AbstractTODPattern {
+    NAME("Transaction Order Affects Ether Receiver")
+
+    DESCRIPTION(STR_JOIN(
+        "The receiver of ether transfers must not be ",
+        "influenced by other transactions."))
+
+	SEVERITY(CRITICAL)
+
+	applicableInContext(callInContext) :-
+        ctxProvider.elementInContext(callInContext, call, context),
+		externalCall(call),
+		callValue(call, amount),
+		!valueOf([amount, context], "0").
+
+    dependency(call, address) :- callAddress(call, address).
+}
+
+//	compliantInContext([call, context], "", "") :-
+//		callAddress(call, address), valueIsConstant([address, context]).
+//
+//	compliantInContext([call, context], "", comment) :-
+//        callAddress(call, address),
+//		dataflow.isDerivedFrom([address, context], [derivationSource, _]),
+//        (
+//            (argument(derivationSource, _, _), comment = "Depends on argument");
+//            (msgSender(derivationSource), comment = "Depends on sender");
+//            (thisAddress(derivationSource), comment = "Call to this address")
+//        ).

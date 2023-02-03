@@ -1,0 +1,74 @@
+#include "abstract-contract-pattern.dl"
+
+.comp LockedEtherPattern : AbstractContractPattern {
+    NAME("Locked Ether")
+
+    DESCRIPTION(STR_JOIN(
+        "Contracts that may receive ether must also allow ",
+        "users to extract the deposited ether from the contract."))
+
+    SEVERITY(MEDIUM)
+
+    notApplicableToLibraries().
+    notApplicableToInterfaces().
+
+    contractCompliance(contract, matchComment) :-
+        applicable(contract, _),
+        (
+            (hasSelfDestruct(contract), matchComment = "Has selfdestruct");
+            (!hasPayableFunction(contract, _), matchComment = "No payable functions");
+            (hasEtherTransfer(contract), matchComment = "Nonzero ether transfer")
+        ).
+
+    contractViolation(contract, matchComment) :-
+        applicable(contract, _),
+        hasPayableFunction(contract, f),
+        !hasSelfDestruct(contract),
+        !hasEtherTransfer(contract),
+        matchComment = STR_JOIN("Contract contains a payable function '", f, "' but no self destruct, no non-zero ether transfers").
+
+    .decl hasEtherTransfer(c: Contract)
+    hasEtherTransfer(contract) :-
+        isInContract(call, contract),
+        callValue(call, value),
+        ctxProvider.elementInContext(_, call, context),
+        ctxProvider.elementInContext(valueCtx, value, context),
+        nonzeroValue(valueCtx).
+
+    hasEtherTransfer(contract) :-
+        isInContract(call, contract), isDelegateCall(call).
+
+    // TODO: add balance
+    .decl nonzeroValue(ssa: ctxProvider.ElementInContext)
+    nonzeroValue(value) :- valueOf(value, v), v != "0".
+    nonzeroValue(value) :- valueUnknown(value).
+    nonzeroValue(value) :-
+        dataflow.isDerivedFrom(value, otherCtx),
+        ctxProvider.elementInContext(otherCtx, other, _),
+        (
+            msgValue(other);
+            argument(other, _, _);
+            load(other, _)
+        ).
+
+    .decl hasPayableFunction(c: Contract, name: symbol)
+
+    // Payable functions
+    hasPayableFunction(contract, name) :-
+        isInContract(f, contract),
+        function(f, name),
+        annotation(f, "payable", _).
+
+    // Default fallback function is payable: That's Deprecated
+    //hasPayableFunction(contract, SOLIDITY_DEFAULT_FALLBACK) :-
+    //    contract(contract, _),
+    //    !hasExplicitFallback(contract).
+
+    .decl hasExplicitFallback(c: Contract)
+    hasExplicitFallback(contract) :-
+        isInContract(f, contract),
+        function(f, SOLIDITY_DEFAULT_FALLBACK).
+
+    .decl hasSelfDestruct(c: Contract)
+    hasSelfDestruct(contract) :- selfdestruct(elem, _), isInContract(elem, contract).
+}

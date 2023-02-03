@@ -1,0 +1,80 @@
+#include "analysis-input.dl"
+#include "analysis-basics.dl"
+#include "analysis-blocks.dl"
+
+#include "util-debug.dl"
+#include "util-graph.dl"
+#include "util-lists.dl"
+#include "util-macros.dl"
+
+#include "constants.dl"
+#include "config.dl"
+
+#include "analysis-contexts.dl"
+#include "analysis-constants.dl"
+#include "analysis-storage.dl"
+
+#include "contexts/callstack-context.dl"
+#include "contexts/simple-function-context.dl"
+
+#include "analysis-call-graph.dl"
+#include "analysis-data-graph.dl"
+
+#include "analysis-dataflow.dl"
+#include "analysis-infoflow.dl"
+
+//#include "analysis-dataflow2.dl"
+//#include "analysis-depends-on.dl"
+
+#include "semantics/__semantics__.dl"
+
+#include "analysis-patterns.dl"
+
+// Setup Analysis Modules
+.init storageAnalysis = MultiTransactionStorageAnalysis
+.init ctxProvider = FullContext
+
+.decl gasLimitedCall(call: Transfer)
+gasLimitedCall(call) :-
+	callInfo(call, _, callType),
+	(
+		callType = "send";
+		callType = "transfer"
+	).
+
+// Setup Context
+ctxProvider.requestContextForInit(f) :- isConstructor(f), !isInternal(f).
+ctxProvider.requestContextForInit(f) :- externallyCallable(f).
+
+// Build contexts for internal jumps
+ctxProvider.requestContextForCall(fn, t, cc) :-
+	function(f, _),
+	jump(t, _, fn, _),
+	isInFunction(t, f),
+	ctxProvider.contextFor(f, cc).
+
+
+// Build contexts for (external) message calls
+// Assume recursive calls during external calls
+ctxProvider.requestFallbackContextForCall(fn, t, cc) :-
+	function(f, _),
+	call(t, _, _, _), !gasLimitedCall(t),
+	isInFunction(t, f), contractFunction(contract, f),
+	externallyCallable(fn), contractFunction(contract, fn),
+	ctxProvider.contextFor(f, cc).
+
+// Associate program elements with contexts
+ctxProvider.executionState([element, ctx]) :-
+	function(f, _),
+	isInFunction(element, f),
+	ctxProvider.contextFor(f, ctx).
+
+
+.init dataflow = DependenceAnalysis
+.init infoflow = InfoFlowAnalysis
+.init programFlow = ControlFlowAnalysis
+
+.init data = DataflowGraph
+
+#include "analysis-consistency-checks.dl"
+#include "analysis-outputs.dl"

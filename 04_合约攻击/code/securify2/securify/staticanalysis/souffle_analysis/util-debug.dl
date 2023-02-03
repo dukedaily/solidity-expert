@@ -1,0 +1,18 @@
+#ifndef UTIL_ASSERTIONS
+#define UTIL_ASSERTIONS
+
+.decl errors(error: symbol)
+.decl warnings(error: symbol)
+
+#define ERROR(err, cond) errors(err) :- cond.
+#define WARNING(err, cond) warnings(err) :- cond.
+
+#define ASSERT(err, cond) ERROR(err, !cond)
+
+.output errors
+.output errors(IO=stdout)
+
+.output warnings
+.output warnings(IO=stdout)
+
+#endif

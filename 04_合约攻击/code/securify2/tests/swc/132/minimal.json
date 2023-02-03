@@ -1,0 +1,421 @@
+JSON AST:
+
+
+======= minimal.sol =======
+{
+	"attributes" : 
+	{
+		"absolutePath" : "minimal.sol",
+		"exportedSymbols" : 
+		{
+			"A" : 
+			[
+				9
+			],
+			"B" : 
+			[
+				22
+			]
+		}
+	},
+	"children" : 
+	[
+		{
+			"attributes" : 
+			{
+				"baseContracts" : 
+				[
+					null
+				],
+				"contractDependencies" : 
+				[
+					null
+				],
+				"contractKind" : "contract",
+				"documentation" : null,
+				"fullyImplemented" : true,
+				"linearizedBaseContracts" : 
+				[
+					9
+				],
+				"name" : "A",
+				"scope" : 23
+			},
+			"children" : 
+			[
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : true,
+						"kind" : "constructor",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "",
+						"scope" : 9,
+						"stateMutability" : "payable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 1,
+							"name" : "ParameterList",
+							"src" : "29:2:0"
+						},
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 2,
+							"name" : "ParameterList",
+							"src" : "47:0:0"
+						},
+						{
+							"attributes" : 
+							{
+								"statements" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 3,
+							"name" : "Block",
+							"src" : "47:7:0"
+						}
+					],
+					"id" : 4,
+					"name" : "FunctionDefinition",
+					"src" : "17:37:0"
+				},
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "a",
+						"scope" : 9,
+						"stateMutability" : "nonpayable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 5,
+							"name" : "ParameterList",
+							"src" : "70:2:0"
+						},
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 6,
+							"name" : "ParameterList",
+							"src" : "80:0:0"
+						},
+						{
+							"attributes" : 
+							{
+								"statements" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 7,
+							"name" : "Block",
+							"src" : "80:7:0"
+						}
+					],
+					"id" : 8,
+					"name" : "FunctionDefinition",
+					"src" : "60:27:0"
+				}
+			],
+			"id" : 9,
+			"name" : "ContractDefinition",
+			"src" : "0:89:0"
+		},
+		{
+			"attributes" : 
+			{
+				"baseContracts" : 
+				[
+					null
+				],
+				"contractDependencies" : 
+				[
+					9
+				],
+				"contractKind" : "contract",
+				"documentation" : null,
+				"fullyImplemented" : true,
+				"linearizedBaseContracts" : 
+				[
+					22
+				],
+				"name" : "B",
+				"scope" : 23
+			},
+			"children" : 
+			[
+				{
+					"attributes" : 
+					{
+						"documentation" : null,
+						"implemented" : true,
+						"isConstructor" : false,
+						"kind" : "function",
+						"modifiers" : 
+						[
+							null
+						],
+						"name" : "b",
+						"scope" : 22,
+						"stateMutability" : "payable",
+						"superFunction" : null,
+						"visibility" : "public"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 10,
+							"name" : "ParameterList",
+							"src" : "117:2:0"
+						},
+						{
+							"attributes" : 
+							{
+								"parameters" : 
+								[
+									null
+								]
+							},
+							"children" : [],
+							"id" : 11,
+							"name" : "ParameterList",
+							"src" : "134:0:0"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"argumentTypes" : null,
+												"arguments" : 
+												[
+													null
+												],
+												"isConstant" : false,
+												"isLValue" : false,
+												"isPure" : false,
+												"isStructConstructorCall" : false,
+												"lValueRequested" : false,
+												"names" : 
+												[
+													null
+												],
+												"type" : "contract A",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"argumentTypes" : 
+														[
+															null
+														],
+														"isConstant" : false,
+														"isLValue" : false,
+														"isPure" : false,
+														"isStructConstructorCall" : false,
+														"lValueRequested" : false,
+														"names" : 
+														[
+															null
+														],
+														"type" : "function () payable returns (contract A)",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : 
+																[
+																	{
+																		"typeIdentifier" : "t_rational_2_by_1",
+																		"typeString" : "int_const 2"
+																	}
+																],
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : false,
+																"lValueRequested" : false,
+																"member_name" : "value",
+																"referencedDeclaration" : null,
+																"type" : "function (uint256) returns (function () payable returns (contract A))"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"argumentTypes" : null,
+																		"isConstant" : false,
+																		"isInlineArray" : false,
+																		"isLValue" : false,
+																		"isPure" : false,
+																		"lValueRequested" : false,
+																		"type" : "function () payable returns (contract A)"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"argumentTypes" : null,
+																				"isConstant" : false,
+																				"isLValue" : false,
+																				"isPure" : false,
+																				"lValueRequested" : false,
+																				"type" : "function () payable returns (contract A)"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"contractScope" : null,
+																						"name" : "A",
+																						"referencedDeclaration" : 9,
+																						"type" : "contract A"
+																					},
+																					"id" : 12,
+																					"name" : "UserDefinedTypeName",
+																					"src" : "149:1:0"
+																				}
+																			],
+																			"id" : 13,
+																			"name" : "NewExpression",
+																			"src" : "145:5:0"
+																		}
+																	],
+																	"id" : 14,
+																	"name" : "TupleExpression",
+																	"src" : "144:7:0"
+																}
+															],
+															"id" : 15,
+															"name" : "MemberAccess",
+															"src" : "144:13:0"
+														},
+														{
+															"attributes" : 
+															{
+																"argumentTypes" : null,
+																"hexvalue" : "32",
+																"isConstant" : false,
+																"isLValue" : false,
+																"isPure" : true,
+																"lValueRequested" : false,
+																"subdenomination" : null,
+																"token" : "number",
+																"type" : "int_const 2",
+																"value" : "2"
+															},
+															"id" : 16,
+															"name" : "Literal",
+															"src" : "158:1:0"
+														}
+													],
+													"id" : 17,
+													"name" : "FunctionCall",
+													"src" : "144:16:0"
+												}
+											],
+											"id" : 18,
+											"name" : "FunctionCall",
+											"src" : "144:18:0"
+										}
+									],
+									"id" : 19,
+									"name" : "ExpressionStatement",
+									"src" : "144:18:0"
+								}
+							],
+							"id" : 20,
+							"name" : "Block",
+							"src" : "134:35:0"
+						}
+					],
+					"id" : 21,
+					"name" : "FunctionDefinition",
+					"src" : "107:62:0"
+				}
+			],
+			"id" : 22,
+			"name" : "ContractDefinition",
+			"src" : "91:80:0"
+		}
+	],
+	"id" : 23,
+	"name" : "SourceUnit",
+	"src" : "0:171:0"
+}
+======= minimal.sol:A =======
+
+======= minimal.sol:B =======

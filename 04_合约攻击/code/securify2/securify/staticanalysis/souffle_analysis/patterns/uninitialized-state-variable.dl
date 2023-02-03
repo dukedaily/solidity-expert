@@ -1,0 +1,50 @@
+.comp UninitializedStateVariablePattern : Pattern {
+	NAME("Uninitialized State Variable")
+
+	DESCRIPTION("State variables should be explicitly initialized.")
+
+	SEVERITY(HIGH)
+
+
+	applicable(variable, line) :-
+		stateVariable(variable, _),
+		annotation(variable, "type", type_name),
+		!contains("mapping", type_name),
+		!contains("[]", type_name),
+		sourceLine(variable, line).
+
+	compliance(variable, s, STR_JOIN("State variable '", name, "' in '", cName, "' is explicitly initialized.")) :-
+		applicable(variable, s), names(variable, cName, name),
+		!maybeUninitialized(variable).
+
+	violation(variable, s, STR_JOIN("State variable '", name, "' in '", cName, "' is not explicitly initialized.")) :-
+		applicable(variable, s), names(variable, cName, name),
+		!maybeInitialized(variable).
+
+	.decl maybeInitialized(variable: StateVar)
+	maybeInitialized(variable) :-
+		storePrecedingConstructorEnd(variable, store),
+		!annotation(store, "defaultInit", _).
+
+	.decl maybeUninitialized(variable: StateVar)
+	maybeUninitialized(variable) :-
+		storePrecedingConstructorEnd(variable, store),
+		annotation(store, "defaultInit", _).
+
+	.decl storePrecedingConstructorEnd(variable: StateVar, store: SSA)
+	storePrecedingConstructorEnd(variable, store) :-
+		ctxProvider.contextForInit(_, context),
+		ctxProvider.isInConstructorContext(context),
+		ctxProvider.elementInContext(retCtx, ret, context),
+		return(ret, _),
+		storageAnalysis.precedingStore(retCtx, storeCtx),
+		ctxProvider.elementInContext(storeCtx, store, _),
+		store(store, variable, _).
+
+	.decl names(var: StateVar, contractName: symbol, varName: symbol)
+	names(variable, cName, name) :-
+		stateVariable(variable, c),
+		annotation(variable, "qualifiedName", name),
+		contract(c, cName).
+
+}

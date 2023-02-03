@@ -1,0 +1,51 @@
+.comp UnusedReturnPattern : Pattern {
+    NAME("Unused Return Pattern")
+
+    DESCRIPTION("The value returned by an external function call is never used")
+
+    SEVERITY(MEDIUM)
+
+    // We may need to account for tuples of returns
+    // We need to account for external calls only
+    applicable(argument, argumentLine) :-
+        externalJump(thisBlock, otherBlock, returnBlock),
+        return(transfer, otherBlock),
+        transferArgument(transfer, _, index),
+        argument(argument, returnBlock, index),
+        sourceLine(argument, argumentLine).
+
+    // Using a contract as argument results a call so we need to account for that?
+    applicable(argument, argumentLine) :-
+        call(_, _ , _, toBlock),
+        argument(argument, toBlock, _),
+        sourceLine(argument, argumentLine).
+
+    // A return argument is used if there is another SSA that depends on the argument.
+    compliance(argument, argumentLine, "") :-
+        applicable(argument, argumentLine),
+        ctxProvider.elementInContext(argumentCtx, argument, _),
+        (
+            infoflow.instrMayDependOn(_, argumentCtx);
+            (dataflow.mayDependOn(nextIns, argumentCtx), !dataflow.mayDependOnStep(nextIns, argumentCtx));
+            assign(_, argument);
+            transferArgument(_, argument, _) // TODO: Check UnusedReturnCall.sol, the argument might be transfered by the call
+        ).
+
+    violation(argument, argumentLine, "") :-
+        applicable(argument, argumentLine),
+        !compliance(argument, argumentLine, _).
+
+    // Check if the function called belongs to a different contract
+    .decl externalJump(currentBlock: Element, otherBlock: Element, returnBlock: Element)
+    externalJump(thisBlock, otherBlock, returnBlock):-
+        jump(_, thisBlock, otherBlock, returnBlock),
+        function(otherBlock, funName),
+        contains(".", funName).
+
+
+    //.output externalJump
+    //.output function
+    //.output applicable
+    //.output mayDependOn
+    //.output dataflow.mayDependOnStep
+}

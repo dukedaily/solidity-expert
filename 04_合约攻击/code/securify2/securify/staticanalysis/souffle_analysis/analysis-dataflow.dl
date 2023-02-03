@@ -1,0 +1,127 @@
+.decl directDependency(e: Element, dep: Element)
+directDependency(id, dep) :-
+    (
+        bop(id, dep, _, _);
+        bop(id, _, dep, _);
+        uop(id, dep, _);
+        assign(id, dep);
+        arrayLoad(id, dep, _);
+        arrayLoad(id, _, dep);
+        mapLoad(id, dep, _);
+        mapLoad(id, _, dep);
+        structLoad(id, dep, _);
+        builtinFunction(id, _, dep, _)
+    ).
+
+.comp MayDepOnAnalysis {
+    .decl mayDependOnStep(elem: ctxProvider.ElementInContext, elemDep: ctxProvider.ElementInContext)
+
+    mayDependOnStep(element, element) :-
+        ctxProvider.executionState(element).
+
+    // Simple dependency within single context
+    mayDependOnStep(idCtx, depCtx) :-
+        ctxProvider.elementInContext(idCtx, id, context),
+        ctxProvider.elementInContext(depCtx, dep, context),
+        directDependency(id, dep).
+
+
+    // Argument dependency for non-jump transfers
+    mayDependOnStep(toArgCtx, fromArgCtx) :-
+        directArgumentTransfer(_, _, _, fromArg, toArg),
+        ctxProvider.elementInContext(toArgCtx, toArg, context),
+        ctxProvider.elementInContext(fromArgCtx, fromArg, context).
+
+    // Argument dependency for jump transfers (into a nested context)
+    mayDependOnStep(toArgCtx, fromArgCtx) :-
+        ctxProvider.contextForCall(callee, transfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        transferArgument(transfer, fromArg, index),
+        argument(toArg, callee, index),
+        ctxProvider.elementInContext(fromArgCtx, fromArg, callerContext),
+        ctxProvider.elementInContext(toArgCtx, toArg, calleeContext).
+
+    // Return dependency for jump transfers (from a nested context)
+    mayDependOnStep([arg, callerContext], [ret, calleeContext]) :-
+        ctxProvider.contextForCall(_, jumpTransfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        ctxProvider.elementInContext(_, returnTransfer, calleeContext),
+        ctxProvider.elementInContext(_, arg, callerContext), argument(arg, continuation, index),
+        ctxProvider.elementInContext(_, ret, calleeContext), transferArgument(returnTransfer, ret, index),
+        jump(jumpTransfer, _, _, continuation),
+        return(returnTransfer, _).
+
+    mayDependOnStep(argCtx, elemCond) :-
+        argument(arg, _, _),
+        ctxProvider.elementInContext(argCtx, arg, _),
+        mayDependOnStep(argCtx, elem),
+        infoflow.instrMayDependOnDirect(elem, elemCond).
+
+    // Storage
+    mayDependOnStep(elemStore, elemValue) :-
+        store(store, _, value),
+        ctxProvider.elementInContext(elemStore, store, context),
+        ctxProvider.elementInContext(elemValue, value, context).
+
+    mayDependOnStep(elemLoad, elemStore) :-
+        storageAnalysis.accessPrecedingStore(elemLoad, elemStore).
+
+    TRANSITIVE(mayDependOnStep, mayDependOn, ctxProvider.ElementInContext) //> mayDependOn
+
+    TO_STRING_2(mayDependOn, ctxProvider.executionStateToString) //> mayDependOnToString
+}
+
+.comp DependenceAnalysis : MayDepOnAnalysis {
+    .decl isDerivedFromStep(elem: ctxProvider.ElementInContext, elemDep: ctxProvider.ElementInContext)
+
+    isDerivedFromStep(element, element) :-
+        ctxProvider.executionState(element).
+
+    isDerivedFromStep([id, context], [dep, context]) :-
+        ctxProvider.elementInContext(_, id, context),
+        ctxProvider.elementInContext(_, dep, context),
+        directDependency(id, dep).
+
+    // Argument dependencies for goto and branch transfers // TODO: Is this even relevant for mustDepOn?
+    isDerivedFromStep([toArg, context], [fromArg, context]) :-
+        ctxProvider.elementInContext(_, toArg, context),
+        ctxProvider.elementInContext(_, fromArg, context),
+        directArgumentTransfer(_, from, to, fromArg, toArg),
+        directArgumentTransfer(_, from2, to, _, toArg),
+        !(directArgumentTransfer(_, from2, to, _, toArg), from != from2). // Only one transfer leading to this block
+
+    // Argument dependency for jump transfers (into a nested context)
+    isDerivedFromStep([toArg, calleeContext], [fromArg, callerContext]) :-
+        ctxProvider.contextForCall(callee, transfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        ctxProvider.elementInContext(_, fromArg, callerContext), transferArgument(transfer, fromArg, index),
+        ctxProvider.elementInContext(_, toArg, calleeContext), argument(toArg, callee, index),
+        ctxProvider.elementInContext(calleeCtx, callee, callerContext),
+        programFlow.inEdgeCount(calleeCtx, 1).
+
+    // Return dependency for jump transfers (from a nested context)
+    isDerivedFromStep([arg, callerContext], [ret, calleeContext]) :-
+        ctxProvider.contextForCall(_, jumpTransfer, callerContext, calleeContext), // callerCtx -> transfer -> (callee) calleeCtx
+        ctxProvider.elementInContext(_, returnTransfer, calleeContext),
+        ctxProvider.elementInContext(_, arg, callerContext), argument(arg, continuation, index),
+        ctxProvider.elementInContext(_, ret, calleeContext), transferArgument(returnTransfer, ret, index),
+        jump(jumpTransfer, _, _, continuation),
+        return(returnTransfer, _),
+        ctxProvider.elementInContext(continuationCtx, continuation, callerContext),
+        programFlow.inEdgeCount(continuationCtx, 1). // TODO: check callerContext
+
+
+    // Storage
+    isDerivedFromStep(storeElem, valueElem) :-
+        ctxProvider.elementInContext(storeElem, store, context),
+        ctxProvider.elementInContext(valueElem, value, context),
+        store(store, _, value).
+
+    // Dependency on store, if precedingStore is unique
+    isDerivedFromStep(elemLoad, elemStore) :-
+        storageAnalysis.accessPrecedingStore(elemLoad, elemStore),
+        count : { storageAnalysis.accessPrecedingStore(elemLoad, _) } = 1.
+
+    TRANSITIVE(isDerivedFromStep, isDerivedFrom, ctxProvider.ElementInContext) //> isDerivedFrom
+    EXPAND_RECORD2(isDerivedFrom, Element, ctxProvider.Context) //> isDerivedFrom2
+
+    TO_STRING_2(isDerivedFromStep, ctxProvider.executionStateToString) //> isDerivedFromStepToString
+    TO_STRING_2(isDerivedFrom, ctxProvider.executionStateToString) //> isDerivedFromToString
+}

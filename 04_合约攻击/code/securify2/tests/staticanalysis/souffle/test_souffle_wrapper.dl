@@ -1,0 +1,19 @@
+.decl output_0_a()
+.decl output_0_b()
+
+.decl output_1(a: symbol)
+
+.decl output_2_a(a: symbol, b: symbol)
+.decl output_2_b(a: symbol, b: symbol)
+
+output_0_a().
+
+output_1("test").
+
+output_2_a("a", "").
+
+.output output_0_a
+.output output_0_b
+.output output_1
+.output output_2_a
+.output output_2_b

@@ -1,0 +1,15 @@
+.decl valueOf(ssa: ctxProvider.ElementInContext, value: symbol)
+valueOf(constInContext, value) :- const(const, value), ctxProvider.elementInContext(constInContext, const, _).
+valueOf(assignInContext, constValue) :-
+	valueOf(constInContext, constValue), assign(assign, const),
+	ctxProvider.elementInContext(assignInContext, assign, context),
+	ctxProvider.elementInContext(constInContext, const, context).
+
+.decl valueUnknown(ssa: ctxProvider.ElementInContext)
+valueUnknown(ssa) :- ctxProvider.executionState(ssa), !valueOf(ssa, _).
+
+.decl valueKnown(ssa: ctxProvider.ElementInContext)
+valueKnown(ssa) :- ctxProvider.executionState(ssa), valueOf(ssa, _).
+
+.decl valueIsConstant(ssa: ctxProvider.ElementInContext)
+valueIsConstant(ssa) :- valueKnown(ssa).

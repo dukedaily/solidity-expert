@@ -1,0 +1,56 @@
+
+#ifndef MACRO_UTILS
+
+    #define MACRO_UTILS
+
+    #define LOG(rel) \
+        .output rel(IO=stdout)
+
+    #define SIZE(rel) \
+        .printsize rel
+
+    #define LOG_LIST(rel, rel_tpe, tpe) \
+        .decl _log_ ## rel(id: rel_tpe, tail: rel_tpe, val: tpe) \
+              _log_ ## rel(id, tail, val) :- rel(id), [val, tail] = id. \
+        LOG(_log_ ## rel)
+
+    // Transitive rule over any binary relation
+    #define TRANSITIVE_CLOSURE_RULE(rel) \
+        rel(a, c) :- rel(a, b), rel(b, c).
+
+    // Computes the transitive over any binary relation
+    #define TRANSITIVE_CLOSURE(rel, tpe) \
+        .decl rel ## Transitive(a: tpe, b: tpe) \
+        rel ## Transitive(a, b) :- rel(a, b). \
+        rel ## Transitive(a, c) :- rel(a, b), rel ## Transitive(b, c).
+
+    #define TRANSITIVE(rel, relTransitive, tpe) \
+        .decl relTransitive(a: tpe, b: tpe) \
+        relTransitive(a, b) :- rel(a, b). \
+        relTransitive(a, c) :- rel(a, b), relTransitive(b, c).
+
+    // Creates 0-based index over any relation. Relation must be stable.
+    #define MAKE_INDEX(idx, rel, tpe) \
+        .decl _idx_ ## idx(e: tpe, n: number) _idx_ ## idx(e, $) :- rel(e). \
+        .decl _min_ ## idx(n: number) _min_ ## idx(n) :- n = min c : { _idx_ ## idx(_, c) }. \
+        .decl idx(e: tpe, n: number) idx(e, n - start) :- _idx_ ## idx(e, n), _min_ ## idx(start).
+
+
+    #define STR_JOIN(...) JOIN1(CT(__VA_ARGS__))(__VA_ARGS__)
+    #define JOIN1(N) JOIN2(N)
+    #define JOIN2(N) STR_JOIN ## N
+
+    #define CT(...) VALS(__VA_ARGS__, 5, 4, 3, 2, 1)
+    #define VALS(N1, N2, N3, N4, N5, N, ...) N
+
+    #define STR_JOIN1(A) A
+    #define STR_JOIN2(A, ...) cat(A, STR_JOIN1(__VA_ARGS__))
+    #define STR_JOIN3(A, ...) cat(A, STR_JOIN2(__VA_ARGS__))
+    #define STR_JOIN4(A, ...) cat(A, STR_JOIN3(__VA_ARGS__))
+    #define STR_JOIN5(A, ...) cat(A, STR_JOIN4(__VA_ARGS__))
+
+    #define UNIQUE(rel) \
+        1 = count : { rel }
+
+#endif
+
