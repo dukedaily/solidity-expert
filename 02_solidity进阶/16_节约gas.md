@@ -141,10 +141,32 @@ contract GasGolf {
 
   
 
-参考链接：https://medium.com/coinmonks/smart-contracts-gas-optimization-techniques-2bd07add0e86
+## 参考链接
+
+1. https://medium.com/coinmonks/smart-contracts-gas-optimization-techniques-2bd07add0e86
+2. https://www.alchemy.com/overviews/solidity-gas-optimization
 
 
 
 
 
-https://www.alchemy.com/overviews/solidity-gas-optimization
+
+
+
+
+
+
+
+
+EOA: 
+
+CA: EOA NONCE + SALT + Bytecode
+
+
+
+create: nonce + bytecode
+
+create2
+
+
+

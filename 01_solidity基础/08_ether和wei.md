@@ -18,4 +18,3 @@ contract EtherUnits {
     bool public isOneEther = 1 ether == 1e18;
 }
 ```
-

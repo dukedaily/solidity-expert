@@ -4,9 +4,9 @@
 
 ![image-20220906214046327](assets/image-20220906214046327.png)
 
-在合约内部可以使用关键字**new**创建新的合约；
-
-在0.8.0版本之后，new增加了salt选项，从而支持了create2的特性（通过salt可以计算出创建合约的地址）。
+- 使用create创建合约时，内部逻辑为：新生成地址 = hash(创建者地址, nonce)，不可预测，因为nonce是变化的
+- 使用create2创建合约时，内部逻辑为：新生成地址 = hash("0xFF",创建者地址, salt, bytecode)，可以预测，因为没有变量
+- 在0.8.0版本之后，new增加了salt选项，从而支持了create2的特性（通过salt可以计算出创建合约的地址）。
 
 ```js
 // SPDX-License-Identifier: MIT
