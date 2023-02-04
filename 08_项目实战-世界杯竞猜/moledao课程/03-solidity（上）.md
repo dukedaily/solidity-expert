@@ -1,5 +1,14 @@
 # Solidity基础语法
 
+## 环境准备
+
+- 添加测试网络：https://chainlist.org/chain/97
+- faucet：https://testnet.bnbchain.org/faucet-smart
+- 浏览器：https://testnet.bscscan.com/
+- remix：https://remix.ethereum.org/#optimize=false&version=soljson-v0.8.18+commit.87f61d96.js
+
+
+
 ## 两种账户
 
 - EOA：Externally Owned Account，与一个私钥一一对应，例如小狐狸里面的account1就是EOA
