@@ -2822,29 +2822,29 @@ contract GasGolf {
 <li><strong>Contract size</strong> (messages, modifiers, functions) -&gt; 优化合约size</li>
 <li><strong>Solidity compiler optimizer</strong> -&gt; 开启优化中 </li>
 </ol>
-<h2 id="1-minimize-on-chain-data"><a name="1-minimize-on-chain-data" class="plugin-anchor" href="#1-minimize-on-chain-data"><i class="fa fa-link" aria-hidden="true"></i></a>1. Minimize on-chain data</h2>
+<h3 id="1-minimize-on-chain-data"><a name="1-minimize-on-chain-data" class="plugin-anchor" href="#1-minimize-on-chain-data"><i class="fa fa-link" aria-hidden="true"></i></a>1. Minimize on-chain data</h3>
 <ul>
 <li>Event：如果链上合约不需要调用的数据，可以使用event，由链下监听，提供只读操作；</li>
 <li>IPFS：大数据可以上传到ipfs，然后将对应的id存储在链上；</li>
 <li>无状态合约：如果只是为了存储key-value，那么在合约中不需要状态变量存储，而是仅仅通过参数记录，让链下程序去解析交易，读取参数，从而读取到key-value数据；</li>
 <li>默克尔根（Merkle Proofs）：快速验证数据，合约不用存储太多内容。</li>
 </ul>
-<h2 id="2-minimize-on-chain-operations"><a name="2-minimize-on-chain-operations" class="plugin-anchor" href="#2-minimize-on-chain-operations"><i class="fa fa-link" aria-hidden="true"></i></a>2. Minimize on-chain operations</h2>
+<h3 id="2-minimize-on-chain-operations"><a name="2-minimize-on-chain-operations" class="plugin-anchor" href="#2-minimize-on-chain-operations"><i class="fa fa-link" aria-hidden="true"></i></a>2. Minimize on-chain operations</h3>
 <ul>
 <li>string：string内在也是bytes，尽量使用bytes替代，可以减少EVM计算，减少gas消耗；</li>
 <li>返回storage值：直接返回storage如果有必要的话，具体内部数据，让链下程序解析；</li>
 <li>Local Storage：使用local storage变量，可节约开销，不要使用memory进行copy一遍操作；</li>
 <li>Batching（批量操作）：如果有批量操作需要，可以提供相应接口，避免用户发起相同交易。</li>
 </ul>
-<h2 id="3-memory-locations"><a name="3-memory-locations" class="plugin-anchor" href="#3-memory-locations"><i class="fa fa-link" aria-hidden="true"></i></a>3. Memory locations</h2>
+<h3 id="3-memory-locations"><a name="3-memory-locations" class="plugin-anchor" href="#3-memory-locations"><i class="fa fa-link" aria-hidden="true"></i></a>3. Memory locations</h3>
 <p>四种存储位置gas消耗（由低到高）：calldata -&gt; stack -&gt; memory -&gt; storage.</p>
 <ul>
 <li>Calldata：一般用在参数中，修饰引用数据类型（array、string），限定external function，尽量使用，便宜；</li>
-<li>Stack：函数体中值类型的数据，自动修饰为stack类型；</li>
 <li>Memory：对于存储引用类型的数据时，完全拷贝（你没有看错，反而更便宜）比storage便宜；</li>
 <li>Storage：最贵，非必要，不使用。</li>
+<li>Stack：函数体中值类型的数据，自动修饰为stack类型；</li>
 </ul>
-<h2 id="4-variables-ordering"><a name="4-variables-ordering" class="plugin-anchor" href="#4-variables-ordering"><i class="fa fa-link" aria-hidden="true"></i></a>4. Variables ordering</h2>
+<h3 id="4-variables-ordering"><a name="4-variables-ordering" class="plugin-anchor" href="#4-variables-ordering"><i class="fa fa-link" aria-hidden="true"></i></a>4. Variables ordering</h3>
 <ul>
 <li>Storage slots（槽）大小是32字节，但并不是所有的类型都能填满（bool，int8等）；</li>
 <li>调整顺序，可以优化storage使用空间：<ul>
@@ -2853,49 +2853,291 @@ contract GasGolf {
 </ul>
 </li>
 </ul>
-<h2 id="5-preferred-data-types"><a name="5-preferred-data-types" class="plugin-anchor" href="#5-preferred-data-types"><i class="fa fa-link" aria-hidden="true"></i></a>5. Preferred data types</h2>
+<h3 id="5-preferred-data-types"><a name="5-preferred-data-types" class="plugin-anchor" href="#5-preferred-data-types"><i class="fa fa-link" aria-hidden="true"></i></a>5. Preferred data types</h3>
 <ul>
 <li>如果定义变量的类型原本可以填满整个槽位，那么就填满ta，而不要使用更短的数据类型。</li>
 <li>例如：如果定义数据类型：datatype：uint8，但是opcode原则上是处理：uint256的，那么会对空余部分填充：0，这反而会增加evm对gas的开销，所以更好的方法是：直接定义datatype为：uint256。</li>
 </ul>
-<h2 id="6-libraries"><a name="6-libraries" class="plugin-anchor" href="#6-libraries"><i class="fa fa-link" aria-hidden="true"></i></a>6. Libraries</h2>
+<h3 id="6-libraries"><a name="6-libraries" class="plugin-anchor" href="#6-libraries"><i class="fa fa-link" aria-hidden="true"></i></a>6. Libraries</h3>
 <p>库有两种表现形式：</p>
 <ul>
 <li>Embedded Libraries：当lib中的方法都是internal的时候，会自动内联到合约中，此时对节约gas不起作用；</li>
 <li>Deployed Libraries：当lib中有public或external方法时，此时会单独部署lib合约，我们可以使用一个lib地址关联到不同合约来达到节约gas的目的。</li>
 </ul>
-<h2 id="7-minimal-proxies-erc-1167"><a name="7-minimal-proxies-erc-1167" class="plugin-anchor" href="#7-minimal-proxies-erc-1167"><i class="fa fa-link" aria-hidden="true"></i></a>7. Minimal Proxies (ERC 1167)</h2>
+<h3 id="7-minimal-proxies-erc-1167"><a name="7-minimal-proxies-erc-1167" class="plugin-anchor" href="#7-minimal-proxies-erc-1167"><i class="fa fa-link" aria-hidden="true"></i></a>7. Minimal Proxies (ERC 1167)</h3>
 <ul>
 <li>这是一个标准，用于clone合约</li>
 <li>openzeppelin合约中clone就源于此</li>
 </ul>
-<h2 id="8-constructor"><a name="8-constructor" class="plugin-anchor" href="#8-constructor"><i class="fa fa-link" aria-hidden="true"></i></a>8. Constructor</h2>
+<h3 id="8-constructor"><a name="8-constructor" class="plugin-anchor" href="#8-constructor"><i class="fa fa-link" aria-hidden="true"></i></a>8. Constructor</h3>
 <ul>
 <li>构造函数中可以传递immutable数据，如果可能，尽量使用constant，这样开销更小。</li>
 </ul>
-<h2 id="9-contract-size"><a name="9-contract-size" class="plugin-anchor" href="#9-contract-size"><i class="fa fa-link" aria-hidden="true"></i></a>9. Contract Size</h2>
+<h3 id="9-contract-size"><a name="9-contract-size" class="plugin-anchor" href="#9-contract-size"><i class="fa fa-link" aria-hidden="true"></i></a>9. Contract Size</h3>
 <ul>
 <li>合约最大支持24K</li>
 <li>减少Logs/ Message：require后面的des，event的使用，都影响合约size</li>
 <li>使用opcode：这个看情况而定，opcode可能减少部署开销，却引来调用开销的增加。</li>
 <li>修饰器Modifier：modifer中wrapped一个函数，在函数中实现具体逻辑 // TODO</li>
 </ul>
-<h2 id="10-solidity-compiler-optimizer"><a name="10-solidity-compiler-optimizer" class="plugin-anchor" href="#10-solidity-compiler-optimizer"><i class="fa fa-link" aria-hidden="true"></i></a>10. Solidity compiler optimizer</h2>
+<h3 id="10-solidity-compiler-optimizer"><a name="10-solidity-compiler-optimizer" class="plugin-anchor" href="#10-solidity-compiler-optimizer"><i class="fa fa-link" aria-hidden="true"></i></a>10. Solidity compiler optimizer</h3>
 <ul>
 <li><p>开启编译器optimize，这个是有双面性的，一定会使得合约size变小；</p>
 </li>
 <li><p>但是可能会使部分函数的逻辑变复杂（code bigger），增加函数的执行开销。</p>
 </li>
 </ul>
+<h2 id="solidity-gas-optimizations-tricks"><a name="solidity-gas-optimizations-tricks" class="plugin-anchor" href="#solidity-gas-optimizations-tricks"><i class="fa fa-link" aria-hidden="true"></i></a>Solidity Gas Optimizations Tricks</h2>
+<h3 id="1-使用最新版本solidity"><a name="1-使用最新版本solidity" class="plugin-anchor" href="#1-使用最新版本solidity"><i class="fa fa-link" aria-hidden="true"></i></a>1. 使用最新版本solidity</h3>
+<p>EVM的升级会带来gas的优化</p>
+<h3 id="2-for循环优化"><a name="2-for循环优化" class="plugin-anchor" href="#2-for循环优化"><i class="fa fa-link" aria-hidden="true"></i></a>2. for循环优化</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// 避免重复计算长度</span>
+uint length = arr.length;
+<span class="hljs-comment">// ++i 可以减少一次赋值，初始化i放在for里面</span>
+<span class="hljs-keyword">for</span> (uint i; i &lt; length;) {
+      <span class="hljs-comment">// unchecked可以减少溢出校验</span>
+    unchecked { ++i; }
+}
+</code></pre>
+<h3 id="3-使用calldata代替memory"><a name="3-使用calldata代替memory" class="plugin-anchor" href="#3-使用calldata代替memory"><i class="fa fa-link" aria-hidden="true"></i></a>3. 使用calldata代替memory</h3>
+<p>calldata是存储不可修改的函数参数的位置，仅支持external函数，使用calldata可以减少一次将参数复制到memory的操作。</p>
+<p>从calldata中加载使用：calldataload，从memory中加载使用：mload</p>
+<h3 id="4-尽量使用immutable代替state-variable"><a name="4-尽量使用immutable代替state-variable" class="plugin-anchor" href="#4-尽量使用immutable代替state-variable"><i class="fa fa-link" aria-hidden="true"></i></a>4. 尽量使用immutable代替state variable</h3>
+<p><a href="https://eips.ethereum.org/EIPS/eip-2929" target="_blank">EIP-2929</a> 对slot的操作引入了cold slot（消耗2100 gas）和warm slot（消耗100 gas）的概念，但是依然很贵，而修饰为immutable的变量会保存在bytecode中，使用时使用的是push，仅消耗3gas</p>
+<h3 id="5-使用immutable代替constant（计算keccak时）"><a name="5-使用immutable代替constant（计算keccak时）" class="plugin-anchor" href="#5-使用immutable代替constant（计算keccak时）"><i class="fa fa-link" aria-hidden="true"></i></a>5. 使用immutable代替constant（计算keccak时）</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
+pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.9</span>;
+
+contract Immutables is AccessControl {
+    uint256 public gas;
+    bytes32 public immutable MANAGER_ROLE_IMMUT;
+
+      <span class="hljs-comment">// 每次使用都需要重新计算hash值</span>
+    bytes32 public constant MANAGER_ROLE_CONST = keccak256(<span class="hljs-string">&apos;MANAGER_ROLE&apos;</span>);
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-comment">// 仅在构造时计算hash一次</span>
+        MANAGER_ROLE_IMMUT = keccak256(<span class="hljs-string">&apos;MANAGER_ROLE&apos;</span>);
+        _setupRole(MANAGER_ROLE_CONST, msg.sender);
+        _setupRole(MANAGER_ROLE_IMMUT, msg.sender);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">immutableCheck</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+        gas = gasleft();
+        <span class="hljs-built_in">require</span>(hasRole(MANAGER_ROLE_IMMUT, msg.sender), <span class="hljs-string">&apos;Caller is not in manager role&apos;</span>); <span class="hljs-comment">// 24408 gas</span>
+        gas -= gasleft();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">constantCheck</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+        gas = gasleft();
+        <span class="hljs-built_in">require</span>(hasRole(MANAGER_ROLE_CONST, msg.sender), <span class="hljs-string">&apos;Caller is not in manager role&apos;</span>); <span class="hljs-comment">// 24419 gas</span>
+        gas -= gasleft();
+    }
+}
+</code></pre>
+<h3 id="6-使用modifier代替function"><a name="6-使用modifier代替function" class="plugin-anchor" href="#6-使用modifier代替function"><i class="fa fa-link" aria-hidden="true"></i></a>6. 使用modifier代替function</h3>
+<p>经过对比，modifier合约的foo方法更加节约gas</p>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
+pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.9</span>;
+
+contract Inlined {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNotExpired</span>(<span class="hljs-params">bool _true</span>) <span class="hljs-title">internal</span> <span class="hljs-title">view</span> </span>{
+        <span class="hljs-built_in">require</span>(_true == <span class="hljs-literal">true</span>, <span class="hljs-string">&quot;Exchange: EXPIRED&quot;</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">bool _test</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint</span>) </span>{
+        isNotExpired(_test);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+}
+
+contract Modifier {
+    modifier <span class="hljs-function"><span class="hljs-title">isNotExpired</span>(<span class="hljs-params">bool _true</span>)</span> {
+        <span class="hljs-built_in">require</span>(_true == <span class="hljs-literal">true</span>, <span class="hljs-string">&quot;Exchange: EXPIRED&quot;</span>);
+        _;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">bool _test</span>) <span class="hljs-title">public</span> <span class="hljs-title">isNotExpired</span>(<span class="hljs-params">_test</span>)<span class="hljs-title">returns</span>(<span class="hljs-params">uint</span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+}
+</code></pre>
+<h3 id="7-modifier中使用internal函数减少合约size"><a name="7-modifier中使用internal函数减少合约size" class="plugin-anchor" href="#7-modifier中使用internal函数减少合约size"><i class="fa fa-link" aria-hidden="true"></i></a>7. modifier中使用internal函数减少合约size</h3>
+<p>尽量将modifier中的条件判断逻辑写在单独的internal view函数中，可以减少合约size，从而减少gas消耗。</p>
+<p>以下代码中，onlyOwner在多处使用，使用越多节约效果越明显</p>
+<pre><code class="lang-js">pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.10</span>;
+
+contract Context {
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_msgSender</span>(<span class="hljs-params"></span>) <span class="hljs-title">internal</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">address</span>) </span>{
+        <span class="hljs-keyword">return</span> msg.sender;
+    }
+}
+
+contract Ownable is Context {
+    address public owner = _msgSender();
+
+    modifier <span class="hljs-function"><span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">require</span>(owner == _msgSender(), <span class="hljs-string">&quot;Ownable: caller is not the owner&quot;</span>);
+        _;
+    }
+}
+contract Ownable2 is Context {
+    address public owner = _msgSender();
+
+    modifier <span class="hljs-function"><span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>)</span> {
+        _checkOwner();
+        _;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_checkOwner</span>(<span class="hljs-params"></span>) <span class="hljs-title">internal</span> <span class="hljs-title">view</span> <span class="hljs-title">virtual</span> </span>{
+        <span class="hljs-built_in">require</span>(owner == _msgSender(), <span class="hljs-string">&quot;Ownable: caller is not the owner&quot;</span>);
+    }
+}
+<span class="hljs-comment">// This is deployment gas cost for each function</span>
+<span class="hljs-comment">// 0: 107172</span>
+<span class="hljs-comment">// 1: 145772</span>
+<span class="hljs-comment">// 2: 181610</span>
+<span class="hljs-comment">// 3: 198170</span>
+<span class="hljs-comment">// 4: 214532</span>
+<span class="hljs-comment">// 5: 241059</span>
+contract T1 is Ownable {
+    event Call(bytes4 selector);
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f0</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f0.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f1.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f2.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f3</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f3.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f4</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f4.selector); }
+}
+<span class="hljs-comment">// 0: 107172</span>
+<span class="hljs-comment">// 1: 147908</span>
+<span class="hljs-comment">// 2: 165818</span>
+<span class="hljs-comment">// 3: 183506</span>
+<span class="hljs-comment">// 4: 192500</span>
+<span class="hljs-comment">// 5: 211682</span>
+contract T2 is Ownable2 {
+    event Call(bytes4 selector);
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f0</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f0.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f1.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f2.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f3</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f3.selector); }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f4</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>) </span>{ emit Call(<span class="hljs-built_in">this</span>.f4.selector); }
+}
+</code></pre>
+<p>验证结果：</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230208111811060.png" alt="image-20230208111811060"></p>
+<h3 id="8--is-cheaper-than-"><a name="8--is-cheaper-than-" class="plugin-anchor" href="#8--is-cheaper-than-"><i class="fa fa-link" aria-hidden="true"></i></a>8. &gt;= is cheaper than &gt;</h3>
+<p>可以减少内部校验是否为0的逻辑</p>
+<p>Non-strict inequalities (<code>&gt;=</code>) are cheaper than strict ones (<code>&gt;</code>). This is due to some supplementary checks (<code>ISZERO</code>, 3 gas)).</p>
+<pre><code class="lang-js">uint256 public gas;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkStrict</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+    gas = gasleft();
+    <span class="hljs-built_in">require</span>(<span class="hljs-number">999999999999999999</span> &gt; <span class="hljs-number">1</span>); <span class="hljs-comment">// gas 5017</span>
+    gas -= gasleft();
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkNonStrict</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+    gas = gasleft();
+    <span class="hljs-built_in">require</span>(<span class="hljs-number">999999999999999999</span> &gt;= <span class="hljs-number">1</span>); <span class="hljs-comment">// gas 5006</span>
+    gas -= gasleft(); 
+}
+</code></pre>
+<h3 id="9-使用shr和shl来代替乘除法"><a name="9-使用shr和shl来代替乘除法" class="plugin-anchor" href="#9-使用shr和shl来代替乘除法"><i class="fa fa-link" aria-hidden="true"></i></a>9. 使用SHR和SHL来代替乘除法</h3>
+<p>DIV使用5gas，SHR使用3gas，而且后者不用额外校验除数为0的逻辑，更加节约gas</p>
+<h3 id="10-使用多个require代替使用"><a name="10-使用多个require代替使用" class="plugin-anchor" href="#10-使用多个require代替使用"><i class="fa fa-link" aria-hidden="true"></i></a>10. 使用多个require代替使用&amp;&amp;</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
+pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.9</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;hardhat/console.sol&quot;</span>;
+
+contract Requires {
+    uint256 public gas;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check1</span>(<span class="hljs-params">uint x</span>) <span class="hljs-title">public</span> </span>{
+        gas = gasleft();  
+        <span class="hljs-built_in">console</span>.log(gasleft());
+        <span class="hljs-built_in">require</span>(x == <span class="hljs-number">0</span> &amp;&amp; x &lt; <span class="hljs-number">1</span> ); <span class="hljs-comment">// gas cost 22156</span>
+        <span class="hljs-built_in">console</span>.log(gasleft());
+        gas -= gasleft();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check2</span>(<span class="hljs-params">uint x</span>) <span class="hljs-title">public</span> </span>{
+        gas = gasleft(); 
+        <span class="hljs-built_in">console</span>.log(gasleft());
+        <span class="hljs-built_in">require</span>(x == <span class="hljs-number">0</span>); <span class="hljs-comment">// gas cost 22148</span>
+        <span class="hljs-built_in">require</span>(x &lt; <span class="hljs-number">1</span>);
+        <span class="hljs-built_in">console</span>.log(gasleft());
+        gas -= gasleft();
+    }
+}
+</code></pre>
+<h3 id="11使用自定义error代替reverterr-info"><a name="11使用自定义error代替reverterr-info" class="plugin-anchor" href="#11使用自定义error代替reverterr-info"><i class="fa fa-link" aria-hidden="true"></i></a>11.使用自定义error代替revert(&quot;err info&quot;)</h3>
+<p><a href="https://blog.soliditylang.org/2021/04/21/custom-errors/" target="_blank">https://blog.soliditylang.org/2021/04/21/custom-errors/</a></p>
+<p>语义更加丰富，同时节约gas，高效</p>
+<h3 id="12-publicprivateinternalexternal等"><a name="12-publicprivateinternalexternal等" class="plugin-anchor" href="#12-publicprivateinternalexternal等"><i class="fa fa-link" aria-hidden="true"></i></a>12. public/private/internal/external等</h3>
+<p>在调用层面，四个修饰符gas fee没有不同之处</p>
+<p>但是在部署的时候，public币private和internal更贵一些</p>
+<h3 id="13-对状态变量进行caching节约gas"><a name="13-对状态变量进行caching节约gas" class="plugin-anchor" href="#13-对状态变量进行caching节约gas"><i class="fa fa-link" aria-hidden="true"></i></a>13. 对状态变量进行caching节约gas</h3>
+<p>一个状态变量如果在一个函数中会被使用多次，那么使用memory进行caching可以节约gas</p>
+<p>SLOAD：100gas</p>
+<p>MLOAD：3 gas</p>
+<h3 id="14-对结构体格外注意"><a name="14-对结构体格外注意" class="plugin-anchor" href="#14-对结构体格外注意"><i class="fa fa-link" aria-hidden="true"></i></a>14. 对结构体格外注意</h3>
+<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
+pragma solidity <span class="hljs-number">0.8</span><span class="hljs-number">.9</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;hardhat/console.sol&quot;</span>;
+
+contract Requires {
+    event Unlock(address _sender, uint256 _nftIndex, uint256 _amt);
+
+    <span class="hljs-comment">// struct LockPosition use 3 slots</span>
+    mapping(<span class="hljs-function"><span class="hljs-params">uint256</span> =&gt;</span> LockPosition) positions;
+
+    struct LockPosition {
+        address owner;
+        uint256 unlockAt;
+        uint256 lockAmount;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unlock</span>(<span class="hljs-params">uint256 _nftIndex</span>) <span class="hljs-title">external</span> </span>{
+        <span class="hljs-comment">// 3 SLOADs and 3 MSTORES</span>
+        <span class="hljs-comment">// 从storage读取三个变量，并且复制到memory中</span>
+        LockPosition memory position = positions[_nftIndex]; <span class="hljs-comment">// gas: costing 3 SLOADs while only lockAmount is needed twice. </span>
+
+        <span class="hljs-comment">//Replace &quot;memory&quot; with &quot;storage&quot; and cache only position.lockAmount</span>
+        <span class="hljs-built_in">require</span>(position.owner == msg.sender, <span class="hljs-string">&quot;unauthorized&quot;</span>);
+        <span class="hljs-built_in">require</span>(position.unlockAt &lt;= block.timestamp, <span class="hljs-string">&quot;locked&quot;</span>);
+
+        <span class="hljs-keyword">delete</span> positions[_nftIndex];
+        payable(msg.sender).transfer(position.lockAmount);
+
+        emit Unlock(msg.sender, _nftIndex, position.lockAmount);
+     }
+
+     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unlockOptimize</span>(<span class="hljs-params">uint256 _nftIndex</span>) <span class="hljs-title">external</span> </span>{
+        LockPosition storage position = positions[_nftIndex]; 
+
+        uint256 amt = position.lockAmount;
+
+        <span class="hljs-comment">//Replace &quot;memory&quot; with &quot;storage&quot; and cache only position.lockAmount</span>
+        <span class="hljs-built_in">require</span>(position.owner == msg.sender, <span class="hljs-string">&quot;unauthorized&quot;</span>);
+        <span class="hljs-built_in">require</span>(position.unlockAt &lt;= block.timestamp, <span class="hljs-string">&quot;locked&quot;</span>);
+
+        <span class="hljs-keyword">delete</span> positions[_nftIndex];
+        payable(msg.sender).transfer(amt);
+
+        emit Unlock(msg.sender, _nftIndex, amt);
+     }
+}
+</code></pre>
+<h3 id="15-复用非零值的状态变量更节约gas"><a name="15-复用非零值的状态变量更节约gas" class="plugin-anchor" href="#15-复用非零值的状态变量更节约gas"><i class="fa fa-link" aria-hidden="true"></i></a>15. 复用非零值的状态变量更节约gas</h3>
+<p>Writing to an Existing Storage Slot Is Cheaper Than Using a New One</p>
+<p><a href="https://eips.ethereum.org/EIPS/eip-2200" target="_blank">https://eips.ethereum.org/EIPS/eip-2200</a></p>
+<pre><code class="lang-sh">EIP — 2200 changed a lot with gas, and now <span class="hljs-keyword">if</span> you hold 1 Wei of a token it’s cheaper to use the token than <span class="hljs-keyword">if</span> you hold 0. There is a lot to unpack here so just google EIP 2200 and learn <span class="hljs-keyword">if</span> you want, but <span class="hljs-keyword">in</span> general, <span class="hljs-keyword">if</span> you need to use a storage slot, don’t empty it <span class="hljs-keyword">if</span> you plan to refill it later.
+</code></pre>
 <h2 id="参考链接"><a name="参考链接" class="plugin-anchor" href="#参考链接"><i class="fa fa-link" aria-hidden="true"></i></a>参考链接</h2>
 <ol>
 <li><a href="https://medium.com/coinmonks/smart-contracts-gas-optimization-techniques-2bd07add0e86" target="_blank">https://medium.com/coinmonks/smart-contracts-gas-optimization-techniques-2bd07add0e86</a></li>
 <li><a href="https://www.alchemy.com/overviews/solidity-gas-optimization" target="_blank">https://www.alchemy.com/overviews/solidity-gas-optimization</a></li>
+<li><a href="https://medium.com/better-programming/solidity-gas-optimizations-and-tricks-2bcee0f9f1f2" target="_blank">https://medium.com/better-programming/solidity-gas-optimizations-and-tricks-2bcee0f9f1f2</a></li>
 </ol>
-<p>EOA: </p>
-<p>CA: EOA NONCE + SALT + Bytecode</p>
-<p>create: nonce + bytecode</p>
-<p>create2</p>
 
                                 
                                 </section>
@@ -2923,7 +3165,7 @@ contract GasGolf {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第16节:节约gas","level":"1.8.16","depth":2,"next":{"title":"第17节:type","level":"1.8.17","depth":2,"path":"02_solidity进阶/17_type.md","ref":"02_solidity进阶/17_type.md","articles":[]},"previous":{"title":"第15节:import","level":"1.8.15","depth":2,"path":"02_solidity进阶/15_import.md","ref":"02_solidity进阶/15_import.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/16_节约gas.md","mtime":"2023-02-03T10:19:03.098Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-03T10:24:11.204Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第16节:节约gas","level":"1.8.16","depth":2,"next":{"title":"第17节:type","level":"1.8.17","depth":2,"path":"02_solidity进阶/17_type.md","ref":"02_solidity进阶/17_type.md","articles":[]},"previous":{"title":"第15节:import","level":"1.8.15","depth":2,"path":"02_solidity进阶/15_import.md","ref":"02_solidity进阶/15_import.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/16_节约gas.md","mtime":"2023-02-08T07:48:46.055Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-08T09:29:59.622Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
