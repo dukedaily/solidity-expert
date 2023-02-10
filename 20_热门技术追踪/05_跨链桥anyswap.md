@@ -1,45 +1,14 @@
+# 第5节：跨链桥anyswap
 
-
-# 参考文档
-
-https://docs.multichain.org/getting-startted
+参考文档：https://docs.multichain.org/getting-startted
 
 # 链下依赖：SMPC
 
 multichain有一个MPC network自己的网络，这个网络主要是用来维护签名私钥的
 
+# Bridge&Router
 
-
-# 产品迭代历史
-
-```sh
-Bridge
-
-V2版本（2020）
-
-- A -》 B
-
-- 在A链使用MPC合约锁定Token，在B链发行Wrapped Token
-- 当B -〉A转换的时候，在B链将Wrapped Token销毁掉，在A链将Token解冻
-
-V3版本（2021）
-
-- 多链、cross-chains，依赖SMPC网络
-- 支持主币
-- 支持已经存在的资产
-
-最新
-
-- 支持NFT
-```
-
-
-
-# Bridge&Router（可忽略）
-
-在跨链过程中，可以选择不同的router，有点类似于uniswap的兑换路由。
-
-需要sign，跨链免费，但是gasfee为0.03（当前），跨链是时间为10～30分钟，最小跨链金额0.004ETH，最大1700ETH
+在跨链过程中，可以选择不同的router，有点类似于uniswap的兑换路由。需要sign，跨链免费，但是gasfee为0.03（当前），跨链是时间为10～30分钟，最小跨链金额0.004ETH，最大1700ETH
 
 ![image-20221105112209697](https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-021542.png)
 
@@ -82,8 +51,6 @@ V3版本（2021）
 # 测试网络（不可用）
 
 目前测试网络仅支持rinkeby和FTM，测试没成功：https://docs.multichain.org/developer-guide/token-router-testnet
-
-
 
 # 各方角色
 
