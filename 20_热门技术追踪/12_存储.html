@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第6节:以太坊POS · HonKit</title>
+        <title>第12节:存储 · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -64,8 +64,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="13_ENS.html" />
     
-    <link rel="prev" href="05_跨链桥.html" />
+    
+    <link rel="prev" href="11_DID.html" />
     
 
     </head>
@@ -2664,7 +2666,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22.3" data-path="04_从HD钱包到MPC钱包.html">
+        <li class="chapter " data-level="1.22.3" data-path="03_以太坊POS.html">
+            
+                <a href="03_以太坊POS.html">
+            
+                    
+                    第3节:以太坊POS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.4" data-path="04_从HD钱包到MPC钱包.html">
             
                 <a href="04_从HD钱包到MPC钱包.html">
             
@@ -2677,12 +2692,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22.4" data-path="05_跨链桥.html">
+        <li class="chapter " data-level="1.22.5" data-path="05_跨链桥anyswap.html">
             
-                <a href="05_跨链桥.html">
+                <a href="05_跨链桥anyswap.html">
             
                     
-                    第5节:跨链桥
+                    第5节:跨链桥anyswap
             
                 </a>
             
@@ -2690,12 +2705,103 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.22.5" data-path="06_以太坊POS.html">
+        <li class="chapter " data-level="1.22.6" data-path="06_跨链桥wormhole.html">
             
-                <a href="06_以太坊POS.html">
+                <a href="06_跨链桥wormhole.html">
             
                     
-                    第6节:以太坊POS
+                    第6节:跨链桥wormhole
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.7" data-path="07_智能钱包.html">
+            
+                <a href="07_智能钱包.html">
+            
+                    
+                    第7节:智能钱包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.8" data-path="08_MEV.html">
+            
+                <a href="08_MEV.html">
+            
+                    
+                    第8节:MEV
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.9" data-path="09_稳定币.html">
+            
+                <a href="09_稳定币.html">
+            
+                    
+                    第9节:09_稳定币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.10" data-path="10_EIP1559.html">
+            
+                <a href="10_EIP1559.html">
+            
+                    
+                    第10节:EIP1559
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.11" data-path="11_DID.html">
+            
+                <a href="11_DID.html">
+            
+                    
+                    第11节:DID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.22.12" data-path="12_存储.html">
+            
+                <a href="12_存储.html">
+            
+                    
+                    第12节:存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.13" data-path="13_ENS.html">
+            
+                <a href="13_ENS.html">
+            
+                    
+                    第13节:ENS
             
                 </a>
             
@@ -2738,7 +2844,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第6节:以太坊POS</a>
+        <a href=".." >第12节:存储</a>
     </h1>
 </div>
 
@@ -2750,28 +2856,16 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第6节：以太坊pos"><a name="第6节：以太坊pos" class="plugin-anchor" href="#第6节：以太坊pos"><i class="fa fa-link" aria-hidden="true"></i></a>第6节：以太坊POS</h1>
-<h2 id="基础知识"><a name="基础知识" class="plugin-anchor" href="#基础知识"><i class="fa fa-link" aria-hidden="true"></i></a>基础知识</h2>
-<ol>
-<li>出块时间固定，每隔12秒为一个slot；</li>
-<li>每32个slot组成一个epoch（6.4分钟/epoch）；</li>
-<li>用户如果想要参与共识网络，需要先质押32个ETH，然后等待专门的交易将其加入验证者集合；</li>
-<li>每个epoch之前，会通过VRF将验证者集合均匀的分配到32个slot中，每个slot中会随机的选出一个区块提议者。在每个slot中，提议者生成区块，分配到该slot的验证者子集对区块进行验证和投票；==（那将会产生32个区块？？）== 如何收敛区块？</li>
-<li>在POS模式之下，区块生成不再需要比拼算力，而是按照随机指派而来</li>
-</ol>
-<h2 id="区别"><a name="区别" class="plugin-anchor" href="#区别"><i class="fa fa-link" aria-hidden="true"></i></a>区别</h2>
-<p>POW：概率确定性</p>
-<p>POS：最终确定性</p>
-<h2 id="关键质押比"><a name="关键质押比" class="plugin-anchor" href="#关键质押比"><i class="fa fa-link" aria-hidden="true"></i></a>关键质押比</h2>
-<h3 id="最终性延迟：33"><a name="最终性延迟：33" class="plugin-anchor" href="#最终性延迟：33"><i class="fa fa-link" aria-hidden="true"></i></a>最终性延迟：33%</h3>
-<p>当攻击者控制的ETH超过了这个数量，那么其就有能力组织信标链最终确定，而无需精细的控制其他验证器的操作，这是因为最终确定信标链，必须有2/3质押的ETH证明检查点对。如果1/3被恶意控制（或未能证明），那么2/3的绝对多数就不可能存在，对此的防御措施是信标链的<strong>消极惩罚机制</strong>（Inactivity Leak）</p>
-<p>消极惩罚标识了那些未能证明或证明与大多数人相反的验证器，这些非证明验证器拥有的质押ETH会逐步流失，直到最终他们的总数比例不到1/3，这样区块才能再次finalize。</p>
-<h3 id="双重最终性：50"><a name="双重最终性：50" class="plugin-anchor" href="#双重最终性：50"><i class="fa fa-link" aria-hidden="true"></i></a>双重最终性：50%</h3>
-<p>当恶意验证者控制达到50%比例的时候，他可以进行分叉。具体做法为：攻击者需要使用其全部的50%质押权益与诚实的验证器集进行相反的投票，从而维持两个分叉并防止最终确认性（34也可以做到，但是需要精确控制网络流量）。在四个epoch时期之后，两个分叉上的消极惩罚机制将激活。</p>
-<p>因为每个分叉都会看到其一半的验证器无法证明。每个分叉都会惩罚验证集的另一半质押权益，最终导致两条链以代表2/3绝对多数不同验证器完成。</p>
-<h3 id="控制区块的过去未来：66"><a name="控制区块的过去未来：66" class="plugin-anchor" href="#控制区块的过去未来：66"><i class="fa fa-link" aria-hidden="true"></i></a>控制区块的过去&amp;未来：66%</h3>
-<p>超过2/3时，攻击者可以任意的选择他们喜欢的分叉，最终确定它。作为绝对多数的质押着，攻击者将始终控制区块的内容，其拥有花费、回滚、再次话费的能力，他还能审查某些交易并随意重组区块链。</p>
-<p>当出现双重最终性、最终性反转等情况时，就只能通过链下恢复了。例如theDAO攻击事件，最终到这ETH与ETC分叉。</p>
+                                <h1 id="第12节：存储"><a name="第12节：存储" class="plugin-anchor" href="#第12节：存储"><i class="fa fa-link" aria-hidden="true"></i></a>第12节：存储</h1>
+<p><a href="https://mp.weixin.qq.com/s/KDpI6OTMCpDsOgDUDCg6sg" target="_blank">https://mp.weixin.qq.com/s/KDpI6OTMCpDsOgDUDCg6sg</a></p>
+<h2 id="arweave"><a name="arweave" class="plugin-anchor" href="#arweave"><i class="fa fa-link" aria-hidden="true"></i></a>Arweave</h2>
+<ul>
+<li>arweave是链上存储，永久存储，做为web3的底层，不要求用户存储所有数据，但是通过一种激励模型，促使矿工存在竞争模式，鼓励矿工存储副本数较少的数据，从而提高收益</li>
+<li>可以在上面开发应用，它是基于存储型的区块链，不是与ETH进行配合的项目</li>
+<li>permadao学习</li>
+</ul>
+<h2 id="ipfs"><a name="ipfs" class="plugin-anchor" href="#ipfs"><i class="fa fa-link" aria-hidden="true"></i></a>ipfs</h2>
+<p>ipfs是链下存储，ipfs对数据进行分片，加密，主要存储临时文件，对标阿里云、亚马逊等，它是P2P网络存储，不存在链上，给链上提供证明即可</p>
 
                                 
                                 </section>
@@ -2783,10 +2877,14 @@
 
             
                 
-                <a href="05_跨链桥.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第5节:跨链桥">
+                <a href="11_DID.html" class="navigation navigation-prev " aria-label="Previous page: 第11节:DID">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="13_ENS.html" class="navigation navigation-next " aria-label="Next page: 第13节:ENS">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -2795,7 +2893,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第6节:以太坊POS","level":"1.22.5","depth":2,"previous":{"title":"第5节:跨链桥","level":"1.22.4","depth":2,"path":"20_热门技术追踪/05_跨链桥.md","ref":"20_热门技术追踪/05_跨链桥.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"20_热门技术追踪/06_以太坊POS.md","mtime":"2022-12-11T07:15:38.815Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-08T09:29:59.622Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第12节:存储","level":"1.22.12","depth":2,"next":{"title":"第13节:ENS","level":"1.22.13","depth":2,"path":"20_热门技术追踪/13_ENS.md","ref":"20_热门技术追踪/13_ENS.md","articles":[]},"previous":{"title":"第11节:DID","level":"1.22.11","depth":2,"path":"20_热门技术追踪/11_DID.md","ref":"20_热门技术追踪/11_DID.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"20_热门技术追踪/12_存储.md","mtime":"2023-02-10T03:54:33.187Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-10T03:57:48.319Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

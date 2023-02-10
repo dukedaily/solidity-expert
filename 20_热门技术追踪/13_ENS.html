@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第5节:跨链桥 · HonKit</title>
+        <title>第13节:ENS · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -64,10 +64,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="06_以太坊POS.html" />
     
-    
-    <link rel="prev" href="04_从HD钱包到MPC钱包.html" />
+    <link rel="prev" href="12_存储.html" />
     
 
     </head>
@@ -2666,7 +2664,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22.3" data-path="04_从HD钱包到MPC钱包.html">
+        <li class="chapter " data-level="1.22.3" data-path="03_以太坊POS.html">
+            
+                <a href="03_以太坊POS.html">
+            
+                    
+                    第3节:以太坊POS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.4" data-path="04_从HD钱包到MPC钱包.html">
             
                 <a href="04_从HD钱包到MPC钱包.html">
             
@@ -2679,12 +2690,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.22.4" data-path="05_跨链桥.html">
+        <li class="chapter " data-level="1.22.5" data-path="05_跨链桥anyswap.html">
             
-                <a href="05_跨链桥.html">
+                <a href="05_跨链桥anyswap.html">
             
                     
-                    第5节:跨链桥
+                    第5节:跨链桥anyswap
             
                 </a>
             
@@ -2692,12 +2703,103 @@
             
         </li>
     
-        <li class="chapter " data-level="1.22.5" data-path="06_以太坊POS.html">
+        <li class="chapter " data-level="1.22.6" data-path="06_跨链桥wormhole.html">
             
-                <a href="06_以太坊POS.html">
+                <a href="06_跨链桥wormhole.html">
             
                     
-                    第6节:以太坊POS
+                    第6节:跨链桥wormhole
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.7" data-path="07_智能钱包.html">
+            
+                <a href="07_智能钱包.html">
+            
+                    
+                    第7节:智能钱包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.8" data-path="08_MEV.html">
+            
+                <a href="08_MEV.html">
+            
+                    
+                    第8节:MEV
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.9" data-path="09_稳定币.html">
+            
+                <a href="09_稳定币.html">
+            
+                    
+                    第9节:09_稳定币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.10" data-path="10_EIP1559.html">
+            
+                <a href="10_EIP1559.html">
+            
+                    
+                    第10节:EIP1559
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.11" data-path="11_DID.html">
+            
+                <a href="11_DID.html">
+            
+                    
+                    第11节:DID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.12" data-path="12_存储.html">
+            
+                <a href="12_存储.html">
+            
+                    
+                    第12节:存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.22.13" data-path="13_ENS.html">
+            
+                <a href="13_ENS.html">
+            
+                    
+                    第13节:ENS
             
                 </a>
             
@@ -2740,7 +2842,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第5节:跨链桥</a>
+        <a href=".." >第13节:ENS</a>
     </h1>
 </div>
 
@@ -2752,161 +2854,11 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="参考文档"><a name="参考文档" class="plugin-anchor" href="#参考文档"><i class="fa fa-link" aria-hidden="true"></i></a>参考文档</h1>
-<p><a href="https://docs.multichain.org/getting-startted" target="_blank">https://docs.multichain.org/getting-startted</a></p>
-<h1 id="链下依赖：smpc"><a name="链下依赖：smpc" class="plugin-anchor" href="#链下依赖：smpc"><i class="fa fa-link" aria-hidden="true"></i></a>链下依赖：SMPC</h1>
-<p>multichain有一个MPC network自己的网络，这个网络主要是用来维护签名私钥的</p>
-<h1 id="产品迭代历史"><a name="产品迭代历史" class="plugin-anchor" href="#产品迭代历史"><i class="fa fa-link" aria-hidden="true"></i></a>产品迭代历史</h1>
-<pre><code class="lang-sh">Bridge
-
-V2版本（2020）
-
-- A -》 B
-
-- 在A链使用MPC合约锁定Token，在B链发行Wrapped Token
-- 当B -〉A转换的时候，在B链将Wrapped Token销毁掉，在A链将Token解冻
-
-V3版本（2021）
-
-- 多链、cross-chains，依赖SMPC网络
-- 支持主币
-- 支持已经存在的资产
-
-最新
-
-- 支持NFT
-</code></pre>
-<h1 id="bridgerouter（可忽略）"><a name="bridgerouter（可忽略）" class="plugin-anchor" href="#bridgerouter（可忽略）"><i class="fa fa-link" aria-hidden="true"></i></a>Bridge&amp;Router（可忽略）</h1>
-<p>在跨链过程中，可以选择不同的router，有点类似于uniswap的兑换路由。</p>
-<p>需要sign，跨链免费，但是gasfee为0.03（当前），跨链是时间为10～30分钟，最小跨链金额0.004ETH，最大1700ETH</p>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-021542.png" alt="image-20221105112209697"></p>
-<p>存款流程</p>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-021755.png" alt="image-20221105112905413"></p>
-<p>取款流程</p>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-21756.png" alt="image-20221105112922970"></p>
-<h2 id="cross-bridge"><a name="cross-bridge" class="plugin-anchor" href="#cross-bridge"><i class="fa fa-link" aria-hidden="true"></i></a>Cross-Bridge</h2>
-<blockquote>
-<p> <strong>The Cross-Chain Bridges are a foundation block of Multichain</strong>: A Bridge allows an asset on one chain to be &apos;sent&apos; to another chain.</p>
-</blockquote>
-<p>每次创建bridge的时候，所有桥上的资产有node来共同维护，创建持有，并在跨链的时候，转给目标用户的钱包地址。</p>
-<h2 id="cross-router"><a name="cross-router" class="plugin-anchor" href="#cross-router"><i class="fa fa-link" aria-hidden="true"></i></a>Cross-Router</h2>
-<blockquote>
-<p>Enables any assets to be transferred between multiple chains, no matter if they are native or created with Multichain&apos;s Bridge.</p>
-</blockquote>
-<h3 id="1-native-assets"><a name="1-native-assets" class="plugin-anchor" href="#1-native-assets"><i class="fa fa-link" aria-hidden="true"></i></a>1. NATIVE Assets</h3>
-<p>对于已经存在的Token资产，使用liquidate pool来解决，为了防止流动性不足，使用自己发行的anyToken来进行过渡（用于处理pool资金不足的情况）</p>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-021757.png" alt="image-20221105124234564"></p>
-<h3 id="2-bridged-assets"><a name="2-bridged-assets" class="plugin-anchor" href="#2-bridged-assets"><i class="fa fa-link" aria-hidden="true"></i></a>2. Bridged Assets</h3>
-<p>使用AnyswapV5ERC20.sol新创建的token，此时不需要lp池子</p>
-<h3 id="3-hybird-nativebridge-assets"><a name="3-hybird-nativebridge-assets" class="plugin-anchor" href="#3-hybird-nativebridge-assets"><i class="fa fa-link" aria-hidden="true"></i></a>3. Hybird Native/Bridge Assets</h3>
-<p>混合模式，有token，也要新mint的，For FTM, The Router uses native FTM on Ethereum, Binance Smart Chain and Fantom Opera, but is Bridged to Cronos, Telos, Boba, Celo and Harmony.</p>
-<h1 id="测试网络（不可用）"><a name="测试网络（不可用）" class="plugin-anchor" href="#测试网络（不可用）"><i class="fa fa-link" aria-hidden="true"></i></a>测试网络（不可用）</h1>
-<p>目前测试网络仅支持rinkeby和FTM，测试没成功：<a href="https://docs.multichain.org/developer-guide/token-router-testnet" target="_blank">https://docs.multichain.org/developer-guide/token-router-testnet</a></p>
-<h1 id="各方角色"><a name="各方角色" class="plugin-anchor" href="#各方角色"><i class="fa fa-link" aria-hidden="true"></i></a>各方角色</h1>
-<h2 id="官方部署合约"><a name="官方部署合约" class="plugin-anchor" href="#官方部署合约"><i class="fa fa-link" aria-hidden="true"></i></a>官方部署合约</h2>
-<ol>
-<li>部署Admin</li>
-<li>部署实现：AnyCallV7Upgradeable</li>
-<li>部署：AnycallV7Proxy，内部通过data指定来initialize的参数data</li>
-</ol>
-<h2 id="用户部署a链合约"><a name="用户部署a链合约" class="plugin-anchor" href="#用户部署a链合约"><i class="fa fa-link" aria-hidden="true"></i></a>用户部署A链合约</h2>
-<p>A链合约中，根据业务需求，最终调用AnycallV7Proxy的anyCall方法，调用后请求会发送到SMPC网络，最终传递到B链</p>
-<pre><code class="lang-js">pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.10</span>;
-
-<span class="hljs-comment">/// IAnycallProxy interface of the anycall proxy</span>
-interface IAnycallProxy {
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">executor</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address</span>)</span>;
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">anyCall</span>(<span class="hljs-params">
-        address _to, <span class="hljs-comment">// B链合约地址</span>
-        bytes calldata _data, <span class="hljs-comment">//B链执行的数据 </span>
-        uint256 _toChainID, <span class="hljs-comment">// B链ID</span>
-        uint256 _flags,
-        bytes calldata _extdata
-    </span>) <span class="hljs-title">external</span> <span class="hljs-title">payable</span></span>;
-}
-</code></pre>
-<h2 id="用户部署b链合约"><a name="用户部署b链合约" class="plugin-anchor" href="#用户部署b链合约"><i class="fa fa-link" aria-hidden="true"></i></a>用户部署B链合约</h2>
-<p>B链合约中，需要实现一个方法，供SMPC网络调用</p>
-<pre><code>function anyExecute(bytes calldata data) external override onlyExecutor returns (bool success, bytes memory result)
-</code></pre><h1 id="工作流程"><a name="工作流程" class="plugin-anchor" href="#工作流程"><i class="fa fa-link" aria-hidden="true"></i></a>工作流程</h1>
-<p>anycall proxy is a universal protocal to complete cross-chain interaction.</p>
-<ol>
-<li>the client call <code>AnycallV7Proxy::anyCall</code><ul>
-<li>on the originating chain</li>
-<li>to submit a request for a cross chain interaction</li>
-</ul>
-</li>
-<li>the mpc network verify the request and call <code>AnycallV7Proxy::anyExec</code><ul>
-<li>on the destination chain</li>
-<li>to execute a cross chain interaction (exec <code>IApp::anyExecute</code>)</li>
-</ul>
-</li>
-<li>if step 2 failed and step 1 has set allow fallback flags,<ul>
-<li>then emit a <code>LogAnyCall</code> log on the destination chain</li>
-<li>to cause fallback on the originating chain (exec <code>IApp::anyFallback</code>)</li>
-</ul>
-</li>
-</ol>
-<h1 id="自己运行demo"><a name="自己运行demo" class="plugin-anchor" href="#自己运行demo"><i class="fa fa-link" aria-hidden="true"></i></a>自己运行demo</h1>
-<p><a href="https://github.com/dukedaily/multchain-anycallv7-example" target="_blank">https://github.com/dukedaily/multchain-anycallv7-example</a></p>
-<pre><code class="lang-sh"><span class="hljs-comment"># 0x48636063bD54f705E8c5b5858a0462F896c05ADC</span>
-yarn hardhat deploy --network ftmtest
-
-<span class="hljs-comment"># 0x8B43B8E728Af345830732A6A0Bd78BB754Fd51a3</span>
-yarn hardhat deploy --network bnbtest
-
- yarn hardhat run ./scripts/1testanycall.js --network bnbtest
-</code></pre>
-<h2 id="运行成功分析"><a name="运行成功分析" class="plugin-anchor" href="#运行成功分析"><i class="fa fa-link" aria-hidden="true"></i></a>运行成功分析</h2>
+                                <h1 id="第13节：ens"><a name="第13节：ens" class="plugin-anchor" href="#第13节：ens"><i class="fa fa-link" aria-hidden="true"></i></a>第13节：ENS</h1>
 <ul>
-<li>在bsc测试网发送交易，此时会调用官方anyCallProxyV7里面的 <a href="https://testnet.bscscan.com/tx/0x52f6fbfbfb0119bbb655946672f56368d9a10b5686fa9b6428207123e09a39bc" target="_blank">anyCall</a>，发送事件；</li>
-<li>SMPC网络会监听事件，然后在B链发起调用；</li>
-<li>B链调用是有官方的anyCallProxyV7发起调用的，调用B链合约的<a href="https://testnet.ftmscan.com/tx/0x56a7c1d1c38c4adc9795d55ab418f8bf18ab012f118137556c0fbedf1ebd4961" target="_blank">anyExec</a>方法。</li>
+<li>youtube科普原理：<a href="https://www.youtube.com/watch?v=P8RlPsjGaR8" target="_blank">https://www.youtube.com/watch?v=P8RlPsjGaR8</a></li>
+<li>ho w does ens work: <a href="https://medium.com/xord/ethereum-name-service-ens-how-does-it-work-6d16486451ea" target="_blank">https://medium.com/xord/ethereum-name-service-ens-how-does-it-work-6d16486451ea</a> - Ens: <a href="https://medium.com/sunflowercorporation/what-is-ethereum-name-service-ens-8b768843fdc6" target="_blank">https://medium.com/sunflowercorporation/what-is-ethereum-name-service-ens-8b768843fdc6</a></li>
 </ul>
-<p><a href="https://testnet.ftmscan.com/tx/0x56a7c1d1c38c4adc9795d55ab418f8bf18ab012f118137556c0fbedf1ebd4961#eventlog" target="_blank">点击查看</a></p>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-21758.png" alt="image-20221105172320826"></p>
-<h2 id="a链bsc效果（发送交易）"><a name="a链bsc效果（发送交易）" class="plugin-anchor" href="#a链bsc效果（发送交易）"><i class="fa fa-link" aria-hidden="true"></i></a><a href="https://testnet.bscscan.com/tx/0x52f6fbfbfb0119bbb655946672f56368d9a10b5686fa9b6428207123e09a39bc" target="_blank">A链BSC效果（发送交易）</a></h2>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-021759.png" alt="image-20221105172453919"></p>
-<h2 id="b链ftm效果（执行交易，获取消息）"><a name="b链ftm效果（执行交易，获取消息）" class="plugin-anchor" href="#b链ftm效果（执行交易，获取消息）"><i class="fa fa-link" aria-hidden="true"></i></a><a href="https://testnet.ftmscan.com/tx/0x56a7c1d1c38c4adc9795d55ab418f8bf18ab012f118137556c0fbedf1ebd4961" target="_blank">B链FTM效果（执行交易，获取消息）</a></h2>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2022-11-20-021801.png" alt="image-20221105172352072"></p>
-<h1 id="涉及到的地址"><a name="涉及到的地址" class="plugin-anchor" href="#涉及到的地址"><i class="fa fa-link" aria-hidden="true"></i></a>涉及到的地址</h1>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Address</th>
-<th>Chained</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A链BSC Dapp</td>
-<td>0x8B43B8E728Af345830732A6A0Bd78BB754Fd51a3</td>
-<td>97</td>
-</tr>
-<tr>
-<td>B链FTM Dapp</td>
-<td>0x48636063bD54f705E8c5b5858a0462F896c05ADC</td>
-<td>4002</td>
-</tr>
-<tr>
-<td>A链BSC官方Proxy</td>
-<td>0xcBd52F7E99eeFd9cD281Ea84f3D903906BB677EC</td>
-<td>97</td>
-</tr>
-<tr>
-<td>B链FTM官方Proxy</td>
-<td>0xfCea2c562844A7D385a7CB7d5a79cfEE0B673D99</td>
-<td>4002</td>
-</tr>
-</tbody>
-</table>
-<h1 id="结论"><a name="结论" class="plugin-anchor" href="#结论"><i class="fa fa-link" aria-hidden="true"></i></a>结论</h1>
-<ol>
-<li>目前集成multichain的demo已经跑通</li>
-<li>multichain需要依赖他们自己的SMPC网络（主要是完成区中心化签名问题，多个节点维护私钥）</li>
-</ol>
 
                                 
                                 </section>
@@ -2918,14 +2870,10 @@ yarn hardhat deploy --network bnbtest
 
             
                 
-                <a href="04_从HD钱包到MPC钱包.html" class="navigation navigation-prev " aria-label="Previous page: 第4节:从HD钱包到MPC钱包">
+                <a href="12_存储.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第12节:存储">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="06_以太坊POS.html" class="navigation navigation-next " aria-label="Next page: 第6节:以太坊POS">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -2934,7 +2882,7 @@ yarn hardhat deploy --network bnbtest
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:跨链桥","level":"1.22.4","depth":2,"next":{"title":"第6节:以太坊POS","level":"1.22.5","depth":2,"path":"20_热门技术追踪/06_以太坊POS.md","ref":"20_热门技术追踪/06_以太坊POS.md","articles":[]},"previous":{"title":"第4节:从HD钱包到MPC钱包","level":"1.22.3","depth":2,"path":"20_热门技术追踪/04_从HD钱包到MPC钱包.md","ref":"20_热门技术追踪/04_从HD钱包到MPC钱包.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"20_热门技术追踪/05_跨链桥.md","mtime":"2023-02-03T10:19:03.106Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-08T09:29:59.622Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第13节:ENS","level":"1.22.13","depth":2,"previous":{"title":"第12节:存储","level":"1.22.12","depth":2,"path":"20_热门技术追踪/12_存储.md","ref":"20_热门技术追踪/12_存储.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"20_热门技术追踪/13_ENS.md","mtime":"2023-02-10T03:54:53.191Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-10T03:57:48.319Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
