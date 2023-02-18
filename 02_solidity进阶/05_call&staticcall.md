@@ -21,7 +21,7 @@
 (bool success, bytes memory data) = _addr.call(abi.encodeWithSignature("doesNotExist()"));
 ```
 
-调用不存在的方法（又不存在fallback）时，交易会调用成功，但是第一个参数为：false，所以使用call调用后一定要检查success状态
+注意，当调用的方法不存在，且合约又未实现fallback时，**交易会调用成功，但是第一个参数为：false**，所以使用call调用后一定要检查success状态
 
 
 
@@ -37,6 +37,16 @@ contract Receiver {
     fallback() external payable {
         emit Received(msg.sender, msg.value, "Fallback was called");
     }
+
+    function foo(string memory _message, uint _x) public payable returns (uint) {
+        emit Received(msg.sender, msg.value, _message);
+
+        return _x + 1;
+    }
+}
+
+contract ReceiverWithOutFallback {
+    event Received(address caller, uint amount, string message);
 
     function foo(string memory _message, uint _x) public payable returns (uint) {
         emit Received(msg.sender, msg.value, _message);

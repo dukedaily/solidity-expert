@@ -1,11 +1,14 @@
 # 第7节：selector
 
-1. 当调用某个function时，具体调用function的信息会被拼装成**calldata**，calldata的前4个字节就是这个function的selector，其中：
+当我们调用某个function时，具体调用function的信息会被拼装成**calldata**，calldata的前4个字节就是这个function的selector，selector是一个function的唯一标识。
 
-   1. 通过selector可以知道调用的是哪个function；
-   2. calldata 可以通过msg.data获取。
 
-2. 通过拼装selector和函数参数，我们可以在A合约中得到calldata，并在A合约中通过call方法去调用B合约中的方法，从而实现合约间的调用。举例，下面的代码功能是：在当前合约中使用**call**调用**addr**地址中的**transfer**方法：
+
+## 四种方式计算selecor
+
+1. 方式1：abi.encodeWithSignature
+
+   拼装selector和函数参数，我们可以在A合约中得到calldata，并在A合约中通过call方法去调用B合约中的方法，从而实现合约间的调用。举例，下面的代码功能是：在当前合约中使用**call**调用**addr**地址中的**transfer**方法：
 
    ```js
    // 在合约中，一个function的4字节selector可以通过abi.encodeWithSignature(...)来获取
@@ -15,24 +18,25 @@
    // 调用合约
    addr.call(transferSelector, 0xSomeAddress, 100); 
    
-   // 一般会写成一行
+   // 一般会写成一行，简写如下：
    // addr.call(abi.encodeWithSignature("transfer(address,uint256)"), 0xSomeAddress, 100);
    ```
 
-3. 另外一种计算selector的方式为：（keccak256即sha3哈希算法）
+2. 方式2：keccak256方法（sha3哈希算法）
 
    ```js
-   bytes4(keccak256(bytes("transfer(address,uint256)"))) //不用关心返回值，不用放在这里面计算。
+   //注意我们这里做hash时，仅处理函数名与参数，并不会计算函数返回值
+   bytes4(keccak256(bytes("transfer(address,uint256)"))) 
    ```
 
-4. 在合约内部也可以直接获取selector
+3. 方式3：在合约内部也可以直接获取selector
 
    ```js
    // 假设当前合约内有transfer函数
    this.transfer.selector
    ```
 
-5. 也可以使用abi.encodeCall方式获取
+4. 方式4：也可以使用abi.encodeCall方式获取
 
    ```js
    interface IERC20 {
@@ -45,7 +49,7 @@
    }
    ```
 
-### 完整demo：
+## 完整demo
 
 ```js
 // SPDX-License-Identifier: MIT
@@ -94,7 +98,7 @@ contract FunctionSelector {
 }
 ```
 
-### 补充知识点
+## 其他知识点
 
 1. 一般提到signature的方法指的是函数原型：
 
@@ -137,10 +141,6 @@ contract FunctionSelector {
    // keccak256与sha3和算法相同  ==》  brew install sha3sum
    // sha256属于sha2系列(与sha3不同)。
    ```
-   
-5. 
-
-
 
 
 
