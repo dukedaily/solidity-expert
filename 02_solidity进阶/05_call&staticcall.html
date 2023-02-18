@@ -2869,7 +2869,7 @@
 <p>对于存在的方法，不建议使用call方式调用。</p>
 <pre><code class="lang-js">(bool success, bytes memory data) = _addr.call(abi.encodeWithSignature(<span class="hljs-string">&quot;doesNotExist()&quot;</span>));
 </code></pre>
-<p>调用不存在的方法（又不存在fallback）时，交易会调用成功，但是第一个参数为：false，所以使用call调用后一定要检查success状态</p>
+<p>注意，当调用的方法不存在，且合约又未实现fallback时，<strong>交易会调用成功，但是第一个参数为：false</strong>，所以使用call调用后一定要检查success状态</p>
 <h2 id="完整demo"><a name="完整demo" class="plugin-anchor" href="#完整demo"><i class="fa fa-link" aria-hidden="true"></i></a>完整demo:</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
@@ -2880,6 +2880,16 @@ contract Receiver {
     fallback() external payable {
         emit Received(msg.sender, msg.value, <span class="hljs-string">&quot;Fallback was called&quot;</span>);
     }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">string memory _message, uint _x</span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        emit Received(msg.sender, msg.value, _message);
+
+        <span class="hljs-keyword">return</span> _x + <span class="hljs-number">1</span>;
+    }
+}
+
+contract ReceiverWithOutFallback {
+    event Received(address caller, uint amount, string message);
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">string memory _message, uint _x</span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
         emit Received(msg.sender, msg.value, _message);
@@ -2956,7 +2966,7 @@ contract Caller {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:call&staticcall","level":"1.8.5","depth":2,"next":{"title":"第6节:keccak256","level":"1.8.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"previous":{"title":"第4节:encode_encodePacked","level":"1.8.4","depth":2,"path":"02_solidity进阶/04_encode_encodePacked.md","ref":"02_solidity进阶/04_encode_encodePacked.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/05_call&staticcall.md","mtime":"2023-01-04T05:02:56.791Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-10T03:57:48.319Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第5节:call&staticcall","level":"1.8.5","depth":2,"next":{"title":"第6节:keccak256","level":"1.8.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"previous":{"title":"第4节:encode_encodePacked","level":"1.8.4","depth":2,"path":"02_solidity进阶/04_encode_encodePacked.md","ref":"02_solidity进阶/04_encode_encodePacked.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/05_call&staticcall.md","mtime":"2023-02-14T05:32:12.379Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-18T12:06:20.338Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

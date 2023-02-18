@@ -2857,14 +2857,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="第7节：selector"><a name="第7节：selector" class="plugin-anchor" href="#第7节：selector"><i class="fa fa-link" aria-hidden="true"></i></a>第7节：selector</h1>
+<p>当我们调用某个function时，具体调用function的信息会被拼装成<strong>calldata</strong>，calldata的前4个字节就是这个function的selector，selector是一个function的唯一标识。</p>
+<h2 id="四种方式计算selecor"><a name="四种方式计算selecor" class="plugin-anchor" href="#四种方式计算selecor"><i class="fa fa-link" aria-hidden="true"></i></a>四种方式计算selecor</h2>
 <ol>
-<li><p>当调用某个function时，具体调用function的信息会被拼装成<strong>calldata</strong>，calldata的前4个字节就是这个function的selector，其中：</p>
-<ol>
-<li>通过selector可以知道调用的是哪个function；</li>
-<li>calldata 可以通过msg.data获取。</li>
-</ol>
-</li>
-<li><p>通过拼装selector和函数参数，我们可以在A合约中得到calldata，并在A合约中通过call方法去调用B合约中的方法，从而实现合约间的调用。举例，下面的代码功能是：在当前合约中使用<strong>call</strong>调用<strong>addr</strong>地址中的<strong>transfer</strong>方法：</p>
+<li><p>方式1：abi.encodeWithSignature</p>
+<p>拼装selector和函数参数，我们可以在A合约中得到calldata，并在A合约中通过call方法去调用B合约中的方法，从而实现合约间的调用。举例，下面的代码功能是：在当前合约中使用<strong>call</strong>调用<strong>addr</strong>地址中的<strong>transfer</strong>方法：</p>
 <pre><code class="lang-js"><span class="hljs-comment">// 在合约中，一个function的4字节selector可以通过abi.encodeWithSignature(...)来获取</span>
 <span class="hljs-comment">// &quot;0xa9059cbb&quot;</span>
 bytes memory transferSelector = abi.encodeWithSignature(<span class="hljs-string">&quot;transfer(address,uint256)&quot;</span>);
@@ -2872,20 +2869,21 @@ bytes memory transferSelector = abi.encodeWithSignature(<span class="hljs-string
 <span class="hljs-comment">// 调用合约</span>
 addr.call(transferSelector, 0xSomeAddress, <span class="hljs-number">100</span>); 
 
-<span class="hljs-comment">// 一般会写成一行</span>
+<span class="hljs-comment">// 一般会写成一行，简写如下：</span>
 <span class="hljs-comment">// addr.call(abi.encodeWithSignature(&quot;transfer(address,uint256)&quot;), 0xSomeAddress, 100);</span>
 </code></pre>
 </li>
-<li><p>另外一种计算selector的方式为：（keccak256即sha3哈希算法）</p>
-<pre><code class="lang-js">bytes4(keccak256(bytes(<span class="hljs-string">&quot;transfer(address,uint256)&quot;</span>))) <span class="hljs-comment">//不用关心返回值，不用放在这里面计算。</span>
+<li><p>方式2：keccak256方法（sha3哈希算法）</p>
+<pre><code class="lang-js"><span class="hljs-comment">//注意我们这里做hash时，仅处理函数名与参数，并不会计算函数返回值</span>
+bytes4(keccak256(bytes(<span class="hljs-string">&quot;transfer(address,uint256)&quot;</span>)))
 </code></pre>
 </li>
-<li><p>在合约内部也可以直接获取selector</p>
+<li><p>方式3：在合约内部也可以直接获取selector</p>
 <pre><code class="lang-js"><span class="hljs-comment">// 假设当前合约内有transfer函数</span>
 <span class="hljs-built_in">this</span>.transfer.selector
 </code></pre>
 </li>
-<li><p>也可以使用abi.encodeCall方式获取</p>
+<li><p>方式4：也可以使用abi.encodeCall方式获取</p>
 <pre><code class="lang-js">interface IERC20 {
         <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address, uint</span>) <span class="hljs-title">external</span></span>;
 }
@@ -2897,7 +2895,7 @@ addr.call(transferSelector, 0xSomeAddress, <span class="hljs-number">100</span>)
 </code></pre>
 </li>
 </ol>
-<h3 id="完整demo："><a name="完整demo：" class="plugin-anchor" href="#完整demo："><i class="fa fa-link" aria-hidden="true"></i></a>完整demo：</h3>
+<h2 id="完整demo"><a name="完整demo" class="plugin-anchor" href="#完整demo"><i class="fa fa-link" aria-hidden="true"></i></a>完整demo</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
 
@@ -2943,7 +2941,7 @@ contract FunctionSelector {
     }
 }
 </code></pre>
-<h3 id="补充知识点"><a name="补充知识点" class="plugin-anchor" href="#补充知识点"><i class="fa fa-link" aria-hidden="true"></i></a>补充知识点</h3>
+<h2 id="其他知识点"><a name="其他知识点" class="plugin-anchor" href="#其他知识点"><i class="fa fa-link" aria-hidden="true"></i></a>其他知识点</h2>
 <ol>
 <li><p>一般提到signature的方法指的是函数原型：</p>
 <pre><code class="lang-js"><span class="hljs-string">&quot;transfer(address,uint256)&quot;</span>
@@ -2979,7 +2977,6 @@ contract FunctionSelector {
 <span class="hljs-comment">// sha256属于sha2系列(与sha3不同)。</span>
 </code></pre>
 </li>
-<li></li>
 </ol>
 
                                 
@@ -3008,7 +3005,7 @@ contract FunctionSelector {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:selector","level":"1.8.7","depth":2,"next":{"title":"第8节:send_ether","level":"1.8.8","depth":2,"path":"02_solidity进阶/08_send_ether.md","ref":"02_solidity进阶/08_send_ether.md","articles":[]},"previous":{"title":"第6节:keccak256","level":"1.8.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/07_selector.md","mtime":"2023-01-04T05:04:23.007Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-10T03:57:48.319Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:selector","level":"1.8.7","depth":2,"next":{"title":"第8节:send_ether","level":"1.8.8","depth":2,"path":"02_solidity进阶/08_send_ether.md","ref":"02_solidity进阶/08_send_ether.md","articles":[]},"previous":{"title":"第6节:keccak256","level":"1.8.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/07_selector.md","mtime":"2023-02-14T06:50:12.239Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-18T12:06:20.338Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2859,11 +2859,42 @@
                                 <h1 id="第12节：new合约"><a name="第12节：new合约" class="plugin-anchor" href="#第12节：new合约"><i class="fa fa-link" aria-hidden="true"></i></a>第12节：new合约</h1>
 <p>创建合约时，在世界状态中，增加一个地址与账户的信息。</p>
 <p><img src="assets/image-20220906214046327.png" alt="image-20220906214046327"></p>
+<p>在EVM层面，一共有两个操作码（OPCODE）可以用来创建合约：</p>
 <ul>
-<li>使用create创建合约时，内部逻辑为：新生成地址 = hash(创建者地址, nonce)，不可预测，因为nonce是变化的</li>
-<li>使用create2创建合约时，内部逻辑为：新生成地址 = hash(&quot;0xFF&quot;,创建者地址, salt, bytecode)，可以预测，因为没有变量</li>
-<li>在0.8.0版本之后，new增加了salt选项，从而支持了create2的特性（通过salt可以计算出创建合约的地址）。</li>
+<li>create：<ul>
+<li>原理：新生成地址 = hash(创建者地址, nonce)</li>
+<li>特点：不可预测，因为nonce是变化的</li>
 </ul>
+</li>
+<li>create2：<ul>
+<li>原理：新生成地址 = hash(&quot;0xFF&quot;,创建者地址, salt, bytecodeHash)</li>
+<li>特点：可以预测，因为没有变量</li>
+</ul>
+</li>
+</ul>
+<p>在编码时，我们可以直接使用汇编来创建新合约，也可以使用solidity中的new关键字来创建新合约：</p>
+<ul>
+<li><p>使用汇编方式：</p>
+<pre><code class="lang-js">assembly {
+  create(参数...)
+}
+
+assembly {
+  create2(参数...)
+}
+</code></pre>
+</li>
+<li><p>使用new方式创建：</p>
+<pre><code class="lang-js"><span class="hljs-comment">// 内部调用create</span>
+<span class="hljs-keyword">new</span> ContractName(参数...)
+
+<span class="hljs-comment">// 内部调用create2</span>
+<span class="hljs-comment">// 在0.8.0版本之后，new增加了salt选项，从而支持了create2的特性（通过salt可以计算出创建合约的地址）。</span>
+<span class="hljs-keyword">new</span> ContractName{<span class="hljs-attr">salt</span>: _salt}(参数...)
+</code></pre>
+</li>
+</ul>
+<h2 id="demo验证"><a name="demo验证" class="plugin-anchor" href="#demo验证"><i class="fa fa-link" aria-hidden="true"></i></a>demo验证</h2>
 <pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
 pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
 
@@ -2953,7 +2984,7 @@ contract CarFactory {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第12节:new_create2","level":"1.8.12","depth":2,"next":{"title":"第13节:delete","level":"1.8.13","depth":2,"path":"02_solidity进阶/13_delete.md","ref":"02_solidity进阶/13_delete.md","articles":[]},"previous":{"title":"第11节:合约间调用","level":"1.8.11","depth":2,"path":"02_solidity进阶/11_合约间调用.md","ref":"02_solidity进阶/11_合约间调用.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/12_new_create2.md","mtime":"2023-02-03T10:19:03.098Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-10T03:57:48.319Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第12节:new_create2","level":"1.8.12","depth":2,"next":{"title":"第13节:delete","level":"1.8.13","depth":2,"path":"02_solidity进阶/13_delete.md","ref":"02_solidity进阶/13_delete.md","articles":[]},"previous":{"title":"第11节:合约间调用","level":"1.8.11","depth":2,"path":"02_solidity进阶/11_合约间调用.md","ref":"02_solidity进阶/11_合约间调用.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/12_new_create2.md","mtime":"2023-02-15T08:26:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-18T12:06:20.338Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
