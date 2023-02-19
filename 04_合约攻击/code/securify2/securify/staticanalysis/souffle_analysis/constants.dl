@@ -1,2 +1,0 @@
-//#define SOLIDITY_DEFAULT_FALLBACK "$_default_fallback_$"
-#define SOLIDITY_DEFAULT_FALLBACK "the default fallback function"
