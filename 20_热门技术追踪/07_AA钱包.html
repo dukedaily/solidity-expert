@@ -2901,6 +2901,27 @@
 <li>批量交易（e.g. Gnosis Safe）</li>
 <li>纯链上游戏中，无需多次签名（Session Key）</li>
 </ol>
+<h1 id="aa钱包几个问题"><a name="aa钱包几个问题" class="plugin-anchor" href="#aa钱包几个问题"><i class="fa fa-link" aria-hidden="true"></i></a>AA钱包几个问题</h1>
+<h2 id="1-使用aa钱包有哪些好处？"><a name="1-使用aa钱包有哪些好处？" class="plugin-anchor" href="#1-使用aa钱包有哪些好处？"><i class="fa fa-link" aria-hidden="true"></i></a>1. 使用AA钱包有哪些好处？</h2>
+<ol>
+<li>简化账户管理：使用 AA 钱包，你可以使用单个钱包地址管理多个以太坊账户。这可以帮助简化账户管理并减少遗失资金的风险。</li>
+<li>提高安全性：AA 钱包通常是以智能合约的形式实现的，可以提供多因素认证、交易确认和基于角色的访问控制等额外的安全功能。</li>
+<li>增强功能：由于 AA 钱包是以智能合约的形式实现的，它们可以提供超出简单账户管理的额外功能。例如，一些 AA 钱包包括对去中心化金融（DeFi）协议、代币兑换和其他高级功能的支持。</li>
+<li>降低交易费用：通过将多个以太坊账户合并到单个 AA 钱包中，你可以减少管理资金所需的交易次数，从而有助于降低交易费用。</li>
+<li>更好的隐私：AA 钱包可以提供比传统钱包更好的隐私，因为它们不会将你的个别以太坊地址暴露给公众。相反，你的交易将通过 AA 钱包地址路由，有助于保持你在以太坊网络上的活动</li>
+</ol>
+<h2 id="2-账户抽象（aa）是什么意思？"><a name="2-账户抽象（aa）是什么意思？" class="plugin-anchor" href="#2-账户抽象（aa）是什么意思？"><i class="fa fa-link" aria-hidden="true"></i></a>2. 账户抽象（AA）是什么意思？</h2>
+<ol>
+<li>“账户抽象”（Account Abstract，简称AA）钱包一词来自于该钱包使用一个抽象账户来管理多个以太坊账户。换句话说，AA钱包通过将多个账户抽象成一个单一实体来抽象管理多个账户的复杂性。</li>
+<li>这个术语最初是由Gnosis Safe团队引入的，他们在以太坊上开发了其中一种最早的AA钱包。 Gnosis Safe AA钱包允许用户使用单个钱包地址管理多个以太坊账户，并提供额外的安全功能，例如多因素认证、交易确认和基于角色的访问控制。</li>
+<li>“账户抽象”这个术语反映了该钱包抽象管理多个账户的核心功能。这可以帮助简化账户管理并减少遗失资金的风险。总的来说，“账户抽象”是一个描述性的名称，准确反映了这种类型的智能合约钱包的核心功能。</li>
+</ol>
+<h2 id="3-使用aa钱包，用户必须持有一个eoa吗？"><a name="3-使用aa钱包，用户必须持有一个eoa吗？" class="plugin-anchor" href="#3-使用aa钱包，用户必须持有一个eoa吗？"><i class="fa fa-link" aria-hidden="true"></i></a>3. 使用AA钱包，用户必须持有一个EOA吗？</h2>
+<p>使用AA钱包的过程中，用户需要至少拥有一个EOA账户，这是因为EOA账户是与以太坊网络的交互必须的账户。EOA账户用于在链上进行交易签名，并用于与链上节点进行通信。在使用AA钱包时，用户可以将其多个EOA账户的私钥添加到AA钱包中进行管理，并使用AA钱包的功能进行交易、发送和接收以太币等操作。因此，AA钱包实际上是一个基于智能合约的多签钱包，需要至少一个EOA账户才能进行操作。</p>
+<h2 id="4-压缩交易可以带来哪些益处？"><a name="4-压缩交易可以带来哪些益处？" class="plugin-anchor" href="#4-压缩交易可以带来哪些益处？"><i class="fa fa-link" aria-hidden="true"></i></a>4. 压缩交易可以带来哪些益处？</h2>
+<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2023-03-04-014423.jpg" alt="Image"></p>
+<h1 id="源码解析"><a name="源码解析" class="plugin-anchor" href="#源码解析"><i class="fa fa-link" aria-hidden="true"></i></a>源码解析</h1>
+<p>// TODO</p>
 <h1 id="选读"><a name="选读" class="plugin-anchor" href="#选读"><i class="fa fa-link" aria-hidden="true"></i></a>选读</h1>
 <ol>
 <li><a href="https://mp.weixin.qq.com/s/ZQAVSPHmRCGwtniuItT57w" target="_blank">https://mp.weixin.qq.com/s/ZQAVSPHmRCGwtniuItT57w</a></li>
@@ -2949,7 +2970,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:AA钱包","level":"1.23.7","depth":2,"next":{"title":"第8节:MEV","level":"1.23.8","depth":2,"path":"20_热门技术追踪/08_MEV.md","ref":"20_热门技术追踪/08_MEV.md","articles":[]},"previous":{"title":"第6节:跨链桥wormhole","level":"1.23.6","depth":2,"path":"20_热门技术追踪/06_跨链桥wormhole.md","ref":"20_热门技术追踪/06_跨链桥wormhole.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"20_热门技术追踪/07_AA钱包.md","mtime":"2023-03-04T00:30:02.741Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-04T00:32:01.241Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:AA钱包","level":"1.23.7","depth":2,"next":{"title":"第8节:MEV","level":"1.23.8","depth":2,"path":"20_热门技术追踪/08_MEV.md","ref":"20_热门技术追踪/08_MEV.md","articles":[]},"previous":{"title":"第6节:跨链桥wormhole","level":"1.23.6","depth":2,"path":"20_热门技术追踪/06_跨链桥wormhole.md","ref":"20_热门技术追踪/06_跨链桥wormhole.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"20_热门技术追踪/07_AA钱包.md","mtime":"2023-03-04T02:45:44.268Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-04T02:46:13.797Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
