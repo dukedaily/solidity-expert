@@ -34,7 +34,7 @@ export {
 导出时，使用变量，在目的地使用成员形式
 
 ```js
-// 导出
+// 导出时
 export const Utils = {
     getInstance
 }
@@ -73,3 +73,9 @@ async function main() {
 }
 ```
 
+
+
+## 总结
+
+1. export xxx ,被称为named export, 一个文件可以export 多个name export，在使用的地方，直接使用花括号进行destruction，类似 import {xxx} fro "./kkk"
+2. export default yyy，表示这个文件中最重要的导出是yyy，在使用的时候 不需要结构，直接倒入即可，类似import Hello from "./kkk"
