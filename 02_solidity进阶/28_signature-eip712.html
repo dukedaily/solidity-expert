@@ -2731,12 +2731,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.23.7" data-path="../20_热门技术追踪/07_智能钱包.html">
+        <li class="chapter " data-level="1.23.7" data-path="../20_热门技术追踪/07_AA钱包.html">
             
-                <a href="../20_热门技术追踪/07_智能钱包.html">
+                <a href="../20_热门技术追踪/07_AA钱包.html">
             
                     
-                    第7节:智能钱包
+                    第7节:AA钱包
             
                 </a>
             
@@ -2996,6 +2996,18 @@ contract TestEIP712 {
     id, amt, workers, signature
 )
 </code></pre>
+<p>后端处理签名，生成session逻辑：</p>
+<p>使用签名信息与后台服务进行关联通常需要在客户端和服务器端之间建立一种安全的协议或机制，以确保签名信息的真实性和有效性。以下是一个可能的实现方案：</p>
+<ol>
+<li>客户端使用Metamask进行签名，并将签名结果发送到服务器端。</li>
+<li>服务器端验证签名信息的有效性，包括验证签名是否来自于正确的Metamask账户、签名是否正确、签名是否已过期等。</li>
+<li>如果签名信息有效，则服务器端将为该用户创建一个会话，并生成一个随机的token作为该会话的唯一标识符。</li>
+<li>服务器端将该token返回给客户端，并要求客户端在后续的请求中携带该token。</li>
+<li>客户端将该token存储在本地，例如使用LocalStorage或Cookie等方式。</li>
+<li>在后续的请求中，客户端将该token作为请求头或请求参数携带，并发送到服务器端。</li>
+<li>服务器端验证该token的有效性，并将与该token关联的用户信息作为请求处理的上下文。</li>
+</ol>
+<p>通过这种方式，可以实现一个安全可靠的身份验证和会话管理机制，确保用户的身份信息和请求数据不会被篡改或伪造。同时，还可以在客户端和服务器端之间实现一些额外的安全措施，例如使用HTTPS协议、加密通信数据、限制请求频率等，以提高整个系统的安全性和可靠性。</p>
 
                                 
                                 </section>
@@ -3023,7 +3035,7 @@ contract TestEIP712 {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第28节:signature-eip712","level":"1.9.28","depth":2,"next":{"title":"第三章:token协议","level":"1.10","depth":1,"path":"03_token协议/README.md","ref":"03_token协议/README.md","articles":[{"title":"第1节:ERC20","level":"1.10.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.10.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.10.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.10.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:EIP2612","level":"1.10.5","depth":2,"path":"03_token协议/05_EIP2612.md","ref":"03_token协议/05_EIP2612.md","articles":[]},{"title":"第6节:EIP712","level":"1.10.6","depth":2,"path":"03_token协议/06_EIP712.md","ref":"03_token协议/06_EIP712.md","articles":[]},{"title":"第7节:ERC5114_SBT","level":"1.10.7","depth":2,"path":"03_token协议/07_ERC5114_SBT.md","ref":"03_token协议/07_ERC5114_SBT.md","articles":[]},{"title":"第8节:ERC1820","level":"1.10.8","depth":2,"path":"03_token协议/08_ERC1820.md","ref":"03_token协议/08_ERC1820.md","articles":[]},{"title":"第9节:狗屁Metaverse","level":"1.10.9","depth":2,"path":"03_token协议/09_metaverse.md","ref":"03_token协议/09_metaverse.md","articles":[]},{"title":"第10节:NFT理念探讨","level":"1.10.10","depth":2,"path":"03_token协议/10_NFT理念探讨.md","ref":"03_token协议/10_NFT理念探讨.md","articles":[]}]},"previous":{"title":"第27节:permit2","level":"1.9.27","depth":2,"path":"02_solidity进阶/27_permit2.md","ref":"02_solidity进阶/27_permit2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/28_signature-eip712.md","mtime":"2022-12-17T02:20:27.070Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-02-19T02:25:28.481Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第28节:signature-eip712","level":"1.9.28","depth":2,"next":{"title":"第三章:token协议","level":"1.10","depth":1,"path":"03_token协议/README.md","ref":"03_token协议/README.md","articles":[{"title":"第1节:ERC20","level":"1.10.1","depth":2,"path":"03_token协议/01_ERC20.md","ref":"03_token协议/01_ERC20.md","articles":[]},{"title":"第2节:ERC721","level":"1.10.2","depth":2,"path":"03_token协议/02_ERC721.md","ref":"03_token协议/02_ERC721.md","articles":[]},{"title":"第3节:ERC1155","level":"1.10.3","depth":2,"path":"03_token协议/03_ERC1155.md","ref":"03_token协议/03_ERC1155.md","articles":[]},{"title":"第4节:ERC165","level":"1.10.4","depth":2,"path":"03_token协议/04_ERC165.md","ref":"03_token协议/04_ERC165.md","articles":[]},{"title":"第5节:EIP2612","level":"1.10.5","depth":2,"path":"03_token协议/05_EIP2612.md","ref":"03_token协议/05_EIP2612.md","articles":[]},{"title":"第6节:EIP712","level":"1.10.6","depth":2,"path":"03_token协议/06_EIP712.md","ref":"03_token协议/06_EIP712.md","articles":[]},{"title":"第7节:ERC5114_SBT","level":"1.10.7","depth":2,"path":"03_token协议/07_ERC5114_SBT.md","ref":"03_token协议/07_ERC5114_SBT.md","articles":[]},{"title":"第8节:ERC1820","level":"1.10.8","depth":2,"path":"03_token协议/08_ERC1820.md","ref":"03_token协议/08_ERC1820.md","articles":[]},{"title":"第9节:狗屁Metaverse","level":"1.10.9","depth":2,"path":"03_token协议/09_metaverse.md","ref":"03_token协议/09_metaverse.md","articles":[]},{"title":"第10节:NFT理念探讨","level":"1.10.10","depth":2,"path":"03_token协议/10_NFT理念探讨.md","ref":"03_token协议/10_NFT理念探讨.md","articles":[]}]},"previous":{"title":"第27节:permit2","level":"1.9.27","depth":2,"path":"02_solidity进阶/27_permit2.md","ref":"02_solidity进阶/27_permit2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"02_solidity进阶/28_signature-eip712.md","mtime":"2023-02-23T12:22:00.841Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-04T00:32:01.241Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
