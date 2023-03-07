@@ -6,37 +6,40 @@
 
 在EVM层面，一共有两个操作码（OPCODE）可以用来创建合约：
 
-- create：
-  - 原理：新生成地址 = hash(创建者地址, nonce)
-  - 特点：不可预测，因为nonce是变化的
-- create2：
-  - 原理：新生成地址 = hash("0xFF",创建者地址, salt, bytecodeHash)
-  - 特点：可以预测，因为没有变量
+1. create：
+
+- 原理：新生成地址 = hash(创建者地址, nonce)
+- 特点：不可预测，因为nonce是变化的
+
+2. create2：
+
+- 原理：新生成地址 = hash("0xFF",创建者地址, salt, bytecodeHash)
+- 特点：可以预测，因为没有变量
 
 在编码时，我们可以直接使用汇编来创建新合约，也可以使用solidity中的new关键字来创建新合约：
 
-- 使用汇编方式：
+1. 使用汇编方式：
 
-  ```js
-  assembly {
-    create(参数...)
-  }
-  
-  assembly {
-    create2(参数...)
-  }
-  ```
+```js
+assembly {
+  create(参数...)
+}
 
-- 使用new方式创建：
+assembly {
+  create2(参数...)
+}
+```
 
-  ```js
-  // 内部调用create
-  new ContractName(参数...)
-  
-  // 内部调用create2
-  // 在0.8.0版本之后，new增加了salt选项，从而支持了create2的特性（通过salt可以计算出创建合约的地址）。
-  new ContractName{salt: _salt}(参数...)
-  ```
+2. 使用new方式创建：
+
+```js
+// 内部调用create
+new ContractName(参数...)
+
+// 内部调用create2
+// 在0.8.0版本之后，new增加了salt选项，从而支持了create2的特性（通过salt可以计算出创建合约的地址）。
+new ContractName{salt: _salt}(参数...)
+```
 
 ## demo验证
 

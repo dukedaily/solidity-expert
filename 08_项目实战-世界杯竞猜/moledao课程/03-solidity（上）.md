@@ -1,4 +1,16 @@
-# Solidity基础语法
+# Solidity基础语法（上）
+
+## 讲师介绍
+
+资深web3开发者，前bybit交易所defi团队Tech Lead，MoleDAO技术顾问，国内第一批区块链布道者，专注海外defi,dex,AA钱包等业务方向。
+
+- 公众号：[阿杜在新加坡](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5NDQ0NDAxNQ==&action=getalbum&album_id=2529739108240556033&scene=173&from_msgid=2247484601&from_itemidx=1&count=3&nolastread=1#wechat_redirect) 
+- github：[以太坊教程](https://github.com/dukedaily)
+- B站：[杜旭duke](https://www.bilibili.com/video/BV1EY4y1c7Yq/?vd_source=42fe91bf6d16ec8841b22ea520184d76)
+- Youtube：[duke du](https://www.youtube.com/watch?v=Wpf5KkgzElc&list=PLO_KaIZjoik9oY-Rs9BsDkHY2RJy7WcE-)
+- Twitter：[dukedu2022](https://twitter.com/home)
+
+
 
 ## 环境准备
 
@@ -14,6 +26,8 @@
 - EOA：Externally Owned Account，与一个私钥一一对应，例如小狐狸里面的account1就是EOA
 - CA：Contract Account，合约账户，没有私钥与之对应，我们部署的合约就是一个CA，它也可以持有资金。
 
+![image-20230306200110543](https://duke-typora.s3.amazonaws.com/ipic/2023-03-06-120111.png)
+
 
 
 ## 第一个dapp
@@ -26,9 +40,11 @@
 pragma solidity ^0.8.13;
 
 // 关键字 contract 跟java的class一样  智能合约是Inbox      
-contract Inbox{
+contract Inbox {
     
-    // 状态变量，存在链上
+
+  
+   // 状态变量，存在链上
 	string public message;
     
     // 构造函数
@@ -162,15 +178,15 @@ contract Variables {
 | block.timestamp             | (uint)当前块的时间戳                                       | 常用 |
 | gasleft()                   | (uint)当前还剩的gas                                        |      |
 | tx.origin                   | (address)交易的原始发送者的地址，只能是EOA                 | 常用 |
-| msg.sender                  | (address)当前调用发起人的地址（可能是合约CA，也可能是EOA） | 常用 |
+| ==msg.sender==              | (address)当前调用发起人的地址（可能是合约CA，也可能是EOA） | 常用 |
 | msg.sig                     | (bytes4)调用数据的前四个字节（函数标识符）                 | 常用 |
-| msg.value                   | (uint)这个消息所附带的货币量，单位为wei                    | 常用 |
-| msg.data                    | (bytes)完整的调用数据（calldata)                           | 常用 |
+| ==msg.value==               | (uint)这个消息所附带的货币量，单位为wei                    | 常用 |
+| ==msg.data==                | (bytes)完整的调用数据（calldata)                           | 常用 |
 | tx.gasprice                 | (uint) 交易的gas价格                                       |      |
 
 
 
-## 常量constant
+## 常量 constant
 
 1. 常量与变量相对，需要硬编码在合约中，合约部署之后，无法改变。
 2. 常量更加节约gas，一般用大写来代表常量。
@@ -187,7 +203,7 @@ contract Constants {
 }
 ```
 
-## 不可变量immutable
+## 不可变量 immutable
 
 1. 与常量类似，但是不必硬编码，可以在构造函数时传值，部署后无法改变。
 2. immutable仅支持值类型（如：int，address，bytes8），不支持非值类型（如：string，bytes）
@@ -216,6 +232,7 @@ contract Immutable {
 
 - 常用单位为：wei，gwei，ether
 - 不含任何后缀的默认单位是 wei
+- 1 ether = 10^9 gwei
 - 1 gwei = 10^9 wei
 
 ```js
@@ -223,6 +240,7 @@ contract Immutable {
 pragma solidity ^0.8.13;
 
 contract EtherUnits {
+  	uint price = 0.1 ether;
     uint public oneWei = 1 wei;
     // 1 wei is equal to 1
     bool public isOneWei = 1 wei == 1;
@@ -402,14 +420,16 @@ contract ViewAndPure {
     function add(uint i, uint j) public pure returns (uint) {
         return i + j;
     }
+
+    function setX(uint num) public {
+        x = num;
+    }
 }
 ```
 
 ## bytes和string
 
-byteN、bytes、string直接的关系：
-
-![image-20220506194856017](/Users/sg00537ml/personal/solidity-expert/01_solidity基础/assets/image-20220506194856017.png)
+byteN、bytes、string直接的关系
 
 **bytes:**
 
@@ -758,220 +778,6 @@ contract Child is Base {
     }
 }
 ```
-
-## abstract
-
-手册：https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=abstract#abstract-contracts
-
-抽象合约的作用是将函数定义和具体实现分离，从而实现解耦、可拓展性，其使用规则为：
-
-1. 当合约中有未实现的函数时，则合约必须修饰为abstract；
-2. 当合约继承的base合约中有构造函数，但是当前合约并没有对其进行传参时，则必须修饰为abstract；
-3. abstract合约中未实现的函数必须在子合约中实现，即所有在abstract中定义的函数都必须有实现；
-4. abstract合约不能单独部署，必须被继承后才能部署；
-
-```js
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.6.0 <0.9.0;
-
-abstract contract Animal {
-    string public species;
-    constructor(string memory _base) {
-        species = _base;
-    }
-}
-
-abstract contract Feline {
-    uint public num;
-    function utterance() public pure virtual returns (bytes32);
-
-    function base(uint _num) public returns(uint, string memory) {
-        num = _num;
-        return (num, "hello world!");
-    }
-}
-
-// 由于Animal中的构造函数没有进行初始化，所以必须修饰为abstract
-abstract contract Cat1 is Feline, Animal {
-    function utterance() public pure override returns (bytes32) { 
-      return "miaow"; 
-    }
-}
-
-contract Cat2 is Feline, Animal("Animal") {
-    function utterance() public pure override returns (bytes32) { 
-      return "miaow"; 
-    }
-}
-```
-
-## interface
-
-可以使用Interface完成多个合约之间进行交互，interface有如下特性：
-
-1. 接口中定义的function不能存在具体实现；
-2. 接口可以继承；
-3. 所有的function必须定义为external；
-4. 接口中不能存在constructor函数；
-5. **接口中不能定义状态变量。**
-6. [abstract和interface的区别](https://medium.com/upstate-interactive/solidity-how-to-know-when-to-use-abstract-contracts-vs-interfaces-874cab860c56)
-
-```js
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
-
-contract Counter {
-    uint public count;
-
-    function increment() external {
-        count += 1;
-    }
-}
-
-interface IBase {
-    function count() external view returns (uint);
-}
-
-interface ICounter is IBase {
-    function increment() external;
-}
-
-contract MyContract {
-    function incrementCounter(address _counter) external {
-        ICounter(_counter).increment();
-    }
-
-    function getCount(address _counter) external view returns (uint) {
-        return ICounter(_counter).count();
-    }
-}
-```
-
-uniswap demo:
-
-```js
-// Uniswap example
-interface UniswapV2Factory {
-    function getPair(address tokenA, address tokenB)
-        external
-        view
-        returns (address pair);
-}
-
-interface UniswapV2Pair {
-    function getReserves()
-        external
-        view
-        returns (
-            uint112 reserve0,
-            uint112 reserve1,
-            uint32 blockTimestampLast
-        );
-}
-
-contract UniswapExample {
-    address private factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
-    address private dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
-    address private weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-
-    function getTokenReserves() external view returns (uint, uint) {
-        address pair = UniswapV2Factory(factory).getPair(dai, weth);
-        (uint reserve0, uint reserve1, ) = UniswapV2Pair(pair).getReserves();
-        return (reserve0, reserve1);
-    }
-}
-```
-
-## library
-
-库与合约类似，限制：不能在库中定义状态变量，不能向库地址中转入ether，库有两种存在形式：
-
-1. 内嵌（embedded）：当库中所有的方法都是internal时，此时会将库代码内嵌在调用合约中，不会单独部署库合约；
-2. 链接（linked）：当库中含有external或public方法时，此时会单独将库合约部署，并在调用合约部署时链接link到库合约。
-   1. 可以复用的代码可以编写到库中，不同的调用者可以linked到相同的库，因此会更加节约gas；
-   2. 对于linked库合约，调用合约使用delegatecall进行调用，所以上下文为调用合约；
-   3. 部署工具（如remix）会帮我们自动部署&链接合约库。
-
-```js
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
-
-// 1. 只有internal方法，会内嵌到调用合约中
-library SafeMath {
-    function add(uint x, uint y) internal pure returns (uint) {
-        uint z = x + y;
-        require(z >= x, "uint overflow");
-
-        return z;
-    }
-}
-
-library Math {
-    function sqrt(uint y) internal pure returns (uint z) {
-        if (y > 3) {
-            z = y;
-            uint x = y / 2 + 1;
-            while (x < z) {
-                z = x;
-                x = (y / x + x) / 2;
-            }
-        } else if (y != 0) {
-            z = 1;
-        }
-        // else z = 0 (default value)
-    }
-}
-
-contract TestSafeMath {
-  	// 对uint类型增加SafeMath的方法，
-  	// 1. 后续定义的uint变量就会自动绑定SafeMath提供的方法: uint x;
-  	// 2. 这个变量会作为第一个参数传递给函数: x.add(y);
-    using SafeMath for uint;
-
-    uint public MAX_UINT = 2**256 - 1;
-		
-  	// 用法1：x.方法(y)
-    function testAdd(uint x, uint y) public pure returns (uint) {
-        return x.add(y);
-    }
-
-  	// 用法2：库.方法(x)
-    function testSquareRoot(uint x) public pure returns (uint) {
-        return Math.sqrt(x);
-    }
-}
-
-// 2. 存在public方法时，会单独部署库合约，并且第一个参数是状态变量类型
-library Array {
-  	// 修改调用者状态变量的方式，第一个参数是状态变量本身
-    function remove(uint[] storage arr, uint index) public {
-        // Move the last element into the place to delete
-        require(arr.length > 0, "Can't remove from empty array");
-        arr[index] = arr[arr.length - 1];
-        arr.pop();
-    }
-}
-
-contract TestArray {
-    using Array for uint[];
-
-    uint[] public arr;
-
-    function testArrayRemove() public {
-        for (uint i = 0; i < 3; i++) {
-            arr.push(i);
-        }
-
-        arr.remove(1);
-
-        assert(arr.length == 2);
-        assert(arr[0] == 0);
-        assert(arr[1] == 2);
-    }
-}
-```
-
-## 
 
 # ERC20（标准Token）
 
