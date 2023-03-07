@@ -3,7 +3,7 @@
 <html lang="" >
     <head>
         <meta charset="UTF-8">
-        <title>第c节:世界杯竞猜_solidity（上） · HonKit</title>
+        <title>第a节:世界杯竞猜_区块链基础（上） · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -64,10 +64,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="04-solidity（下）.html" />
+    <link rel="next" href="02-区块链基础（下）.html" />
     
     
-    <link rel="prev" href="02-区块链基础（下）.html" />
+    <link rel="prev" href="../" />
     
 
     </head>
@@ -1870,7 +1870,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.15.1" data-path="01-区块链基础（上）.html">
+        <li class="chapter active" data-level="1.15.1" data-path="01-区块链基础（上）.html">
             
                 <a href="01-区块链基础（上）.html">
             
@@ -1896,7 +1896,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.15.3" data-path="03-solidity（上）.html">
+        <li class="chapter " data-level="1.15.3" data-path="03-solidity（上）.html">
             
                 <a href="03-solidity（上）.html">
             
@@ -2896,7 +2896,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >第c节:世界杯竞猜_solidity（上）</a>
+        <a href="../.." >第a节:世界杯竞猜_区块链基础（上）</a>
     </h1>
 </div>
 
@@ -2908,9 +2908,8 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="solidity基础语法（上）"><a name="solidity基础语法（上）" class="plugin-anchor" href="#solidity基础语法（上）"><i class="fa fa-link" aria-hidden="true"></i></a>Solidity基础语法（上）</h1>
-<h2 id="讲师介绍"><a name="讲师介绍" class="plugin-anchor" href="#讲师介绍"><i class="fa fa-link" aria-hidden="true"></i></a>讲师介绍</h2>
-<p>资深web3开发者，前bybit交易所defi团队Tech Lead，MoleDAO技术顾问，国内第一批区块链布道者，专注海外defi,dex,AA钱包等业务方向。</p>
+                                <h2 id="讲师介绍"><a name="讲师介绍" class="plugin-anchor" href="#讲师介绍"><i class="fa fa-link" aria-hidden="true"></i></a>讲师介绍</h2>
+<p>资深web3开发者，bybit交易所defi团队Tech Lead，MoleDAO技术顾问，国内第一批区块链布道者，专注海外defi,dex,AA钱包等业务方向。</p>
 <ul>
 <li>公众号：<a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5NDQ0NDAxNQ==&amp;action=getalbum&amp;album_id=2529739108240556033&amp;scene=173&amp;from_msgid=2247484601&amp;from_itemidx=1&amp;count=3&amp;nolastread=1#wechat_redirect" target="_blank">阿杜在新加坡</a> </li>
 <li>github：<a href="https://github.com/dukedaily" target="_blank">以太坊教程</a></li>
@@ -2918,928 +2917,239 @@
 <li>Youtube：<a href="https://www.youtube.com/watch?v=Wpf5KkgzElc&amp;list=PLO_KaIZjoik9oY-Rs9BsDkHY2RJy7WcE-" target="_blank">duke du</a></li>
 <li>Twitter：<a href="https://twitter.com/home" target="_blank">dukedu2022</a></li>
 </ul>
-<h2 id="环境准备"><a name="环境准备" class="plugin-anchor" href="#环境准备"><i class="fa fa-link" aria-hidden="true"></i></a>环境准备</h2>
+<h2 id="学习收获"><a name="学习收获" class="plugin-anchor" href="#学习收获"><i class="fa fa-link" aria-hidden="true"></i></a>学习收获</h2>
 <ul>
-<li>添加测试网络：<a href="https://chainlist.org/chain/97" target="_blank">https://chainlist.org/chain/97</a></li>
-<li>faucet：<a href="https://testnet.bnbchain.org/faucet-smart" target="_blank">https://testnet.bnbchain.org/faucet-smart</a></li>
-<li>浏览器：<a href="https://testnet.bscscan.com/" target="_blank">https://testnet.bscscan.com/</a></li>
-<li>remix：<a href="https://remix.ethereum.org/#optimize=false&amp;version=soljson-v0.8.18+commit.87f61d96.js" target="_blank">https://remix.ethereum.org/#optimize=false&amp;version=soljson-v0.8.18+commit.87f61d96.js</a></li>
+<li>区块链入门基础知识：区块链、比特币、以太坊、Hash算法、加密算法、共识机制</li>
+<li>钱包相关知识：私钥、地址、钱包分类、cex与dex、钱包未来趋势</li>
+<li>智能合约知识：合约简介、部署合约、与合约交互</li>
 </ul>
-<h2 id="两种账户"><a name="两种账户" class="plugin-anchor" href="#两种账户"><i class="fa fa-link" aria-hidden="true"></i></a>两种账户</h2>
+<h2 id="学习路径"><a name="学习路径" class="plugin-anchor" href="#学习路径"><i class="fa fa-link" aria-hidden="true"></i></a>学习路径</h2>
 <ul>
-<li>EOA：Externally Owned Account，与一个私钥一一对应，例如小狐狸里面的account1就是EOA</li>
-<li>CA：Contract Account，合约账户，没有私钥与之对应，我们部署的合约就是一个CA，它也可以持有资金。</li>
+<li>以太坊学习：<a href="https://github.com/dukedaily/solidity-expert（800+star）" target="_blank">https://github.com/dukedaily/solidity-expert（800+star）</a></li>
+<li>比特币学习：<a href="https://github.com/dukedaily/go-bitcoin-demo" target="_blank">https://github.com/dukedaily/go-bitcoin-demo</a></li>
 </ul>
-<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2023-03-06-120111.png" alt="image-20230306200110543"></p>
-<h2 id="第一个dapp"><a name="第一个dapp" class="plugin-anchor" href="#第一个dapp"><i class="fa fa-link" aria-hidden="true"></i></a>第一个dapp</h2>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105125248724.png" alt="image-20230105125248724"></p>
+<h1 id="一、区块链概述"><a name="一、区块链概述" class="plugin-anchor" href="#一、区块链概述"><i class="fa fa-link" aria-hidden="true"></i></a>一、区块链概述</h1>
+<h2 id="1-区块链"><a name="1-区块链" class="plugin-anchor" href="#1-区块链"><i class="fa fa-link" aria-hidden="true"></i></a>1. 区块链</h2>
+<p>什么是区块链？这本是一个笼统的概念，网上描述的天花乱坠，我这里将其简化为几个小概念，消化了就入门了：</p>
 <ol>
-<li>写状态变量（上链）是一笔交易（tx），需要矿工打包，所以需要花费资金；</li>
-<li>读取状态变量，是从账本中获取数据，不是一笔交易，所以免费。（必须加上view）</li>
+<li><strong>交易</strong>：在区块链世界里面，我们把所有的交互行为（买东西、投票、转账）统称为一个交易（Transaction，简写为Tx）</li>
+<li><strong>区块</strong>：在一个特定的时间段内（如10分钟）会产生N笔交易，我们把这些交易打包到一起之后，称之为区块（Block）</li>
+<li><strong>区块链</strong>：在更长的一段时间内（如60分钟）会产生很多区块，我们这些区块（Block）以特定的规则链接🔗到一起之后，就称之为区块链（Blockchain）</li>
 </ol>
-<pre><code class="lang-js"><span class="hljs-comment">// 指定编译器版本，版本标识符</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-<span class="hljs-comment">// 关键字 contract 跟java的class一样  智能合约是Inbox      </span>
-contract Inbox {
-
-
-
-   <span class="hljs-comment">// 状态变量，存在链上</span>
-    string public message;
-
-    <span class="hljs-comment">// 构造函数</span>
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">string memory initMessage</span>)</span> {
-        <span class="hljs-comment">// 本地变量</span>
-        string memory tmp = initMessage;
-        message = tmp;
-    }
-
-    <span class="hljs-comment">// 写操作，需要支付手续费</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMessage</span>(<span class="hljs-params">string memory _newMessage</span>) <span class="hljs-title">public</span> </span>{
-        message = _newMessage;
-    }
-
-    <span class="hljs-comment">// 读操作，不需要支付手续费</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMessage</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> message;
-    }
-}
-</code></pre>
-<h2 id="基础数据类型"><a name="基础数据类型" class="plugin-anchor" href="#基础数据类型"><i class="fa fa-link" aria-hidden="true"></i></a>基础数据类型</h2>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105101902121.png" alt="image-20230105101902121"></p>
+<h3 id="哈希算法"><a name="哈希算法" class="plugin-anchor" href="#哈希算法"><i class="fa fa-link" aria-hidden="true"></i></a>哈希算法</h3>
+<p>hash就是内容的指纹，与内容一一对应，在线演示：<a href="https://emn178.github.io/online-tools/sha256.html" target="_blank">https://emn178.github.io/online-tools/sha256.html</a> ，hash在区块链中的用途：</p>
 <ul>
-<li>int（有符号整型，有正有负）int默认为int256</li>
-<li>uint（无符号整型，无负数）uint默认为uint256</li>
-<li>以8位为区间，支持int8，int16，int24 至 int256（uint同理）</li>
-<li>bool类型：true，false</li>
-<li>定长字节：bytes1~bytes32</li>
-<li>地址：address（20个字节，40个16进制字符，共160位），如：0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</li>
+<li>将区块前后链接起来</li>
+<li>将私钥和地址链接起来：私钥-&gt; 公钥-&gt; 地址</li>
+<li>私钥签名</li>
+<li>快速校验交易有效性</li>
+<li>...</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Primitives {
-    bool public flag = <span class="hljs-literal">true</span>;
-
-    <span class="hljs-comment">/*
-    uint stands for unsigned integer, meaning non negative integers
-    different sizes are available
-        uint8   ranges from 0` to 2 ** 8 - 1
-        uint16  ranges from 0 to 2 ** 16 - 1
-        ...
-        uint256 ranges from 0 to 2 ** 256 - 1
-    */</span>
-    uint8 public u8 = <span class="hljs-number">1</span>;
-    uint public u256 = <span class="hljs-number">456</span>;
-    uint public u = <span class="hljs-number">123</span>; <span class="hljs-comment">// uint is an alias for uint256</span>
-
-    <span class="hljs-comment">/*
-    Negative numbers are allowed for int types.
-    Like uint, different ranges are available from int8 to int256
-
-    int256 ranges from -2 ** 255 to 2 ** 255 - 1
-    int128 ranges from -2 ** 127 to 2 ** 127 - 1
-    */</span>
-    int8 public i8 = -<span class="hljs-number">1</span>;
-    int public i256 = <span class="hljs-number">456</span>;
-    int public i = -<span class="hljs-number">123</span>; <span class="hljs-comment">// int is same as int256</span>
-
-    <span class="hljs-comment">// minimum and maximum of int</span>
-    int public minInt = type(int).min;
-    int public maxInt = type(int).max;
-
-    address public addr = <span class="hljs-number">0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c</span>;
-
-    <span class="hljs-comment">/*
-    In Solidity, the data type byte represent a sequence of bytes. 
-    Solidity presents two type of bytes types :
-
-     - fixed-sized byte arrays
-     - dynamically-sized byte arrays.
-
-     The term bytes in Solidity represents a dynamic array of bytes. 
-     It’s a shorthand for byte[] .
-    */</span>
-    bytes1 a = <span class="hljs-number">0xb5</span>; <span class="hljs-comment">//  [10110101]</span>
-    bytes1 b = <span class="hljs-number">0x56</span>; <span class="hljs-comment">//  [01010110]</span>
-
-    <span class="hljs-comment">// Default values</span>
-    <span class="hljs-comment">// Unassigned variables have a default value</span>
-    bool public defaultBoo; <span class="hljs-comment">// false</span>
-    uint public defaultUint; <span class="hljs-comment">// 0</span>
-    int public defaultInt; <span class="hljs-comment">// 0</span>
-    address public defaultAddr; <span class="hljs-comment">// 0x0000000000000000000000000000000000000000</span>
-}
-</code></pre>
-<h2 id="变量variables"><a name="变量variables" class="plugin-anchor" href="#变量variables"><i class="fa fa-link" aria-hidden="true"></i></a>变量variables</h2>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105101943149.png" alt="image-20230105101943149"></p>
 <ul>
-<li><strong>状态变量（state）</strong><ul>
-<li>定义在合约内，函数外</li>
-<li>存储在链上</li>
+<li>唯一性</li>
+<li>抗碰撞性</li>
+<li>不可逆性</li>
 </ul>
-</li>
-<li><strong>本地变量（local）</strong><ul>
-<li>定义在函数内</li>
-<li>不会存储在链上</li>
-</ul>
-</li>
-<li><strong>全局变量（global）</strong><ul>
-<li>与当前合约无关，描述整个区块链的信息（时间、块高等）</li>
-</ul>
-</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Variables {
-    <span class="hljs-comment">// State variables are stored on the blockchain.</span>
-    string public msg = <span class="hljs-string">&quot;Hello&quot;</span>;
-    uint public age = <span class="hljs-number">26</span>;
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-comment">// Local variables are not saved to the blockchain.</span>
-        uint i = <span class="hljs-number">456</span>;
-
-        <span class="hljs-comment">// Here are some global variables</span>
-        uint height = block.blocks; <span class="hljs-comment">// Current block height</span>
-        address sender = msg.sender; <span class="hljs-comment">// address of the caller</span>
-    }
-}
-</code></pre>
-<p>描述区块链信息的全局变量，常用如下：</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105100924711.png" alt="image-20230105100924711"></p>
+<p>得到的hash长度取决于hash算法</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105100819145.png" alt="image-20230105100819145"></p>
+<h3 id="传统记账方式"><a name="传统记账方式" class="plugin-anchor" href="#传统记账方式"><i class="fa fa-link" aria-hidden="true"></i></a>传统记账方式</h3>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101170342997.png" alt="image-20230101170342997"></p>
+<h3 id="区块链记账方式"><a name="区块链记账方式" class="plugin-anchor" href="#区块链记账方式"><i class="fa fa-link" aria-hidden="true"></i></a>区块链记账方式</h3>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101163054020.png" alt="image-20230101163054020"></p>
+<h3 id="记账方式对比"><a name="记账方式对比" class="plugin-anchor" href="#记账方式对比"><i class="fa fa-link" aria-hidden="true"></i></a>记账方式对比</h3>
 <table>
 <thead>
 <tr>
-<th>函数</th>
-<th>含义</th>
-<th>备注</th>
+<th>对比项</th>
+<th>传统记账</th>
+<th>比特币记账</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>blockhash(uint blockNumber)</td>
-<td>(byte32)哈希值</td>
-<td></td>
+<td>交易记录存储位置</td>
+<td>账单</td>
+<td>区块</td>
 </tr>
 <tr>
-<td>block.coinbase</td>
-<td>(address) 当前块矿工的地址</td>
-<td></td>
+<td>周期</td>
+<td>记账 写满了翻⻚(无论时间多久)</td>
+<td>10分钟翻⻚(无论交易多少)</td>
 </tr>
 <tr>
-<td>block.difficulty</td>
-<td>(uint)当前块的难度</td>
-<td></td>
+<td>记账人</td>
+<td>老会计</td>
+<td>比特币客户端节点</td>
 </tr>
 <tr>
-<td>block.gaslimit</td>
-<td>(uint)当前块的gaslimit</td>
-<td></td>
+<td>奖励</td>
+<td>死工资</td>
+<td>记账奖励+手续费</td>
 </tr>
 <tr>
-<td>block.number</td>
-<td>(uint)当前区块的块号</td>
-<td></td>
+<td>记账成本</td>
+<td>鸵⻦蓝黑墨水</td>
+<td>非常耗电/ 设备损耗</td>
 </tr>
 <tr>
-<td>block.timestamp</td>
-<td>(uint)当前块的时间戳</td>
-<td>常用</td>
-</tr>
-<tr>
-<td>gasleft()</td>
-<td>(uint)当前还剩的gas</td>
-<td></td>
-</tr>
-<tr>
-<td>tx.origin</td>
-<td>(address)交易的原始发送者的地址，只能是EOA</td>
-<td>常用</td>
-</tr>
-<tr>
-<td>==msg.sender==</td>
-<td>(address)当前调用发起人的地址（可能是合约CA，也可能是EOA）</td>
-<td>常用</td>
-</tr>
-<tr>
-<td>msg.sig</td>
-<td>(bytes4)调用数据的前四个字节（函数标识符）</td>
-<td>常用</td>
-</tr>
-<tr>
-<td>==msg.value==</td>
-<td>(uint)这个消息所附带的货币量，单位为wei</td>
-<td>常用</td>
-</tr>
-<tr>
-<td>==msg.data==</td>
-<td>(bytes)完整的调用数据（calldata)</td>
-<td>常用</td>
-</tr>
-<tr>
-<td>tx.gasprice</td>
-<td>(uint) 交易的gas价格</td>
+<td>账本数量</td>
+<td>1</td>
+<td>所有节点人手一份</td>
 </tr>
 </tbody>
 </table>
-<h2 id="常量-constant"><a name="常量-constant" class="plugin-anchor" href="#常量-constant"><i class="fa fa-link" aria-hidden="true"></i></a>常量 constant</h2>
-<ol>
-<li>常量与变量相对，需要硬编码在合约中，合约部署之后，无法改变。</li>
-<li>常量更加节约gas，一般用大写来代表常量。</li>
-<li>高阶用法：clone合约时，如果合约内有初始值，必须使用constant，否则clone的新合约初始值为空值。</li>
-</ol>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Constants {
-    <span class="hljs-comment">// coding convention to uppercase constant variables</span>
-    address public constant MY_ADDRESS = <span class="hljs-number">0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span>;
-    uint public constant MY_UINT = <span class="hljs-number">123</span>;
-}
-</code></pre>
-<h2 id="不可变量-immutable"><a name="不可变量-immutable" class="plugin-anchor" href="#不可变量-immutable"><i class="fa fa-link" aria-hidden="true"></i></a>不可变量 immutable</h2>
-<ol>
-<li>与常量类似，但是不必硬编码，可以在构造函数时传值，部署后无法改变。</li>
-<li>immutable仅支持值类型（如：int，address，bytes8），不支持非值类型（如：string，bytes）</li>
-</ol>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Immutable {
-    <span class="hljs-comment">// coding convention to uppercase constant variables</span>
-    address public immutable MY_ADDRESS;
-    uint public immutable MY_UINT;
-      bytes1 public immutable MY_BYTES1 = <span class="hljs-number">0xff</span>;
-      <span class="hljs-comment">// string public immutable greetings = &quot;hello&quot;;  // error</span>
-
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">uint _myUint</span>)</span> {
-        MY_ADDRESS = msg.sender;
-        MY_UINT = _myUint;
-    }
-}
-</code></pre>
-<h2 id="ether和wei"><a name="ether和wei" class="plugin-anchor" href="#ether和wei"><i class="fa fa-link" aria-hidden="true"></i></a>ether和wei</h2>
+<h3 id="区块链记账完整过程"><a name="区块链记账完整过程" class="plugin-anchor" href="#区块链记账完整过程"><i class="fa fa-link" aria-hidden="true"></i></a>区块链记账完整过程</h3>
 <ul>
-<li>常用单位为：wei，gwei，ether</li>
-<li>不含任何后缀的默认单位是 wei</li>
-<li>1 ether = 10^9 gwei</li>
-<li>1 gwei = 10^9 wei</li>
-</ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract EtherUnits {
-      uint price = <span class="hljs-number">0.1</span> ether;
-    uint public oneWei = <span class="hljs-number">1</span> wei;
-    <span class="hljs-comment">// 1 wei is equal to 1</span>
-    bool public isOneWei = <span class="hljs-number">1</span> wei == <span class="hljs-number">1</span>;
-
-    uint public oneEther = <span class="hljs-number">1</span> ether;
-    <span class="hljs-comment">// 1 ether is equal to 10^18 wei</span>
-    bool public isOneEther = <span class="hljs-number">1</span> ether == <span class="hljs-number">1e18</span>;
-}
-</code></pre>
-<h2 id="msg三人组"><a name="msg三人组" class="plugin-anchor" href="#msg三人组"><i class="fa fa-link" aria-hidden="true"></i></a>msg三人组</h2>
-<p>当用户发起一笔交易时，相当于向合约发送一个消息(msg)，这笔交易可能会涉及到三个重要的全局变量，具体如下：</p>
-<ol>
-<li><strong>msg.sender</strong>：表示这笔交易的调用者是谁（地址），同一个交易，不同的用户调用，msg.sender不同；</li>
-<li><strong>msg.value</strong>：表示调用这笔交易时，携带的ether数量，这些以太坊由msg.sender支付，转入到当前合约（wei单位整数）；<ol>
-<li>注意：一个函数（或地址）如果想接收ether，需要将其修饰为：<strong>payable</strong>。</li>
-</ol>
+<li><p>交易签名（第二节会讲细节）</p>
 </li>
-<li><strong>msg.data</strong>：表示调用这笔交易的信息，由函数签名和函数参数（16进制字符串），组成代理模式时常用msg.data（后续讲解）。</li>
-</ol>
-<h3 id="msgsender"><a name="msgsender" class="plugin-anchor" href="#msgsender"><i class="fa fa-link" aria-hidden="true"></i></a>msg.sender</h3>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract MsgSender {
-    address public owner;
-    uint256 public value;
-    address public caller;
-
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-comment">//在部署合约的时候，设置一个全局唯一的合约所有者，后面可以使用权限控制</span>
-        owner = msg.sender;
-    }
-
-    <span class="hljs-comment">//1. 对与合约而言，msg.sender是一个可以改变的值，并不一定是合约的创造者</span>
-    <span class="hljs-comment">//2. 任何人调用了合约的方法，那么这笔交易中的from就是当前合约中的msg.sender</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setValue</span>(<span class="hljs-params">uint256 input</span>) <span class="hljs-title">public</span> </span>{
-        value = input;
-        caller = msg.sender;
-    }
-}
-</code></pre>
-<h3 id="msgvalue"><a name="msgvalue" class="plugin-anchor" href="#msgvalue"><i class="fa fa-link" aria-hidden="true"></i></a>msg.value</h3>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract MsgValue {
-
-    <span class="hljs-comment">// uint256 public money;</span>
-    mapping(<span class="hljs-function"><span class="hljs-params">address</span>=&gt;</span> uint256) public personToMoney;
-
-    <span class="hljs-comment">// 函数里面使用了msg.value，那么函数要修饰为payable</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">play</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{
-
-        <span class="hljs-comment">// 如果转账不是100wei，那么参与失败</span>
-        <span class="hljs-comment">// 否则成功，并且添加到维护的mapping中</span>
-        <span class="hljs-built_in">require</span>(msg.value == <span class="hljs-number">100</span>, <span class="hljs-string">&quot;should equal to 100!&quot;</span>);
-        personToMoney[msg.sender] = msg.value;
-    }
-
-    <span class="hljs-comment">// 查询当前合约的余额</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBalance</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint256</span>) </span>{
-        <span class="hljs-keyword">return</span> address(<span class="hljs-built_in">this</span>).balance;
-    }
-}
-</code></pre>
-<h3 id="msgdata"><a name="msgdata" class="plugin-anchor" href="#msgdata"><i class="fa fa-link" aria-hidden="true"></i></a>msg.data</h3>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract MsgData {
-    event Data(bytes data, bytes4 sig);
-
-    <span class="hljs-comment">// input0: addr: 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4</span>
-    <span class="hljs-comment">// input1: amt : 1</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address addr, uint256 amt</span>) <span class="hljs-title">public</span> </span>{
-        bytes memory data = msg.data;
-
-        <span class="hljs-comment">// msg.sig 表示当前方法函数签名（4字节）</span>
-        <span class="hljs-comment">// msg.sig 等价于 this.transfer.selector</span>
-        emit Data(data, msg.sig);
-    }
-
-    <span class="hljs-comment">//output: </span>
-    <span class="hljs-comment">// - data: 0xa9059cbb0000000000000000000000005b38da6a701c568545dcfcb03fcb875f56beddc40000000000000000000000000000000000000000000000000000000000000001</span>
-    <span class="hljs-comment">// - sig: 0xa9059cbb</span>
-
-    <span class="hljs-comment">// 对data进行分析：</span>
-    <span class="hljs-comment">// 0xa9059cbb //前四字节</span>
-    <span class="hljs-comment">// 0000000000000000000000005b38da6a701c568545dcfcb03fcb875f56beddc4 //第一个参数占位符（32字节）</span>
-    <span class="hljs-comment">// 0000000000000000000000000000000000000000000000000000000000000001 //第二个参数占位符（32字节）</span>
-}
-</code></pre>
-<h2 id="payable"><a name="payable" class="plugin-anchor" href="#payable"><i class="fa fa-link" aria-hidden="true"></i></a>payable</h2>
-<ol>
-<li>一个函数（或地址）如果想接收ether，需要将其修饰为：<strong>payable</strong>。</li>
-<li>address常用方法：<ol>
-<li>balance(): 查询当前地址的ether余额</li>
-<li>transfer(uint): 合约向当前地址转指定数量的ether，如果失败会回滚</li>
-<li>send(uint): 合约向当前地址转指定数量的ether，如果失败会返回false，不回滚（不建议使用send）</li>
-</ol>
+<li><p>P2P网络（Peer-To-Peer）</p>
 </li>
-</ol>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Payable {
-    <span class="hljs-comment">// 1. Payable address can receive Ether</span>
-    address payable public owner;
-
-    <span class="hljs-comment">// 2. Payable constructor can receive Ether</span>
-    <span class="hljs-title">constructor</span>(<span class="hljs-params"></span>) <span class="hljs-title">payable</span> {
-        owner = payable(msg.sender);
-    }
-
-    <span class="hljs-comment">// 3. Function to deposit Ether into this contract.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deposit</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{}
-
-    <span class="hljs-comment">// 4. Call this function along with some Ether.</span>
-    <span class="hljs-comment">// The function will throw an error since this function is not payable.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">notPayable</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{}
-
-    <span class="hljs-comment">// 5. Function to withdraw all Ether from this contract.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withdraw</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        uint amount = address(<span class="hljs-built_in">this</span>).balance;
-        owner.transfer(amount);
-    }
-
-    <span class="hljs-comment">// 6. Function to transfer Ether from this contract to address from input</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address payable _to, uint _amount</span>) <span class="hljs-title">public</span> </span>{
-        _to.transfer(_amount);
-    }
-}
-</code></pre>
-<h2 id="gas相关"><a name="gas相关" class="plugin-anchor" href="#gas相关"><i class="fa fa-link" aria-hidden="true"></i></a>gas相关</h2>
-<p><strong>gas描述执行一笔交易时需要花费多少ether！（1 ether = 10^18wei)</strong></p>
-<p>交易手续费 = <strong>gas_used * gas_price</strong>，其中：</p>
-<ol>
-<li>gas：是数量单位，uint</li>
-<li>gas_used：表示一笔交易实际消耗的gas数量</li>
-<li>gas_price：每个gas的价格，单位是wei或gwei</li>
-<li>gas limit：表示你允许这一笔交易消耗的gas上限，用户自己设置（防止因为bug导致的损失）<ol>
-<li>如果gas_used小于gas_limit，剩余gas会返回给用户，这个值不再合约层面设置，在交易层面设置（如metamask）</li>
-<li>如果gas_used大于gas_limit，交易失败，资金不退回</li>
-</ol>
+<li><p>矿工、挖矿、算力</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101172109393.png" alt="image-20230101172109393"></p>
 </li>
-<li>block gas limit：表示一个区块能够允许的最大gas数量，由区块链网络设置</li>
-</ol>
-<h2 id="view和pure"><a name="view和pure" class="plugin-anchor" href="#view和pure"><i class="fa fa-link" aria-hidden="true"></i></a>view和pure</h2>
-<p>view和pure用于修饰Getter函数（只读取数据的函数），其中：</p>
-<ol>
-<li><strong>view</strong>：表示函数中不会修改状态变量，只是读取；</li>
-<li><strong>pure</strong>：表示函数中不会使用状态变量，既不修改也不读取。</li>
-</ol>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract ViewAndPure {
-    uint public x = <span class="hljs-number">1</span>;
-
-    <span class="hljs-comment">// Promise not to modify the state.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addToX</span>(<span class="hljs-params">uint y</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
-        <span class="hljs-keyword">return</span> x + y;
-    }
-
-    <span class="hljs-comment">// Promise not to modify or read from the state.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">uint i, uint j</span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
-        <span class="hljs-keyword">return</span> i + j;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setX</span>(<span class="hljs-params">uint num</span>) <span class="hljs-title">public</span> </span>{
-        x = num;
-    }
-}
-</code></pre>
-<h2 id="bytes和string"><a name="bytes和string" class="plugin-anchor" href="#bytes和string"><i class="fa fa-link" aria-hidden="true"></i></a>bytes和string</h2>
-<p>byteN、bytes、string直接的关系</p>
-<p><strong>bytes:</strong></p>
-<ul>
-<li>bytes是动态数组，相当于byte数组（如：byte[10])</li>
-<li>支持push方法添加</li>
-<li>可以与string相互转换</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract  Bytes {
-    bytes public name;
-
-    <span class="hljs-comment">//1. 获取字节长度</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLen</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint256</span>) </span>{
-        <span class="hljs-keyword">return</span> name.length;
-    }
-
-    <span class="hljs-comment">//2. 可以不分空间，直接进行字符串赋值，会自动分配空间</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setValue</span>(<span class="hljs-params">bytes memory input</span>) <span class="hljs-title">public</span> </span>{
-        name = input;
-    }
-
-    <span class="hljs-comment">//3. 支持push操作，在bytes最后面追加元素</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pushData</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        name.push(<span class="hljs-string">&quot;h&quot;</span>);
-    }
-}
-</code></pre>
-<p><strong>string:</strong></p>
+<p>对于一个特定的区块链项目，其区块的产生、链接、同步方式、同步时间等是有特定的规则的，大体上可以用下面这张图来描述。</p>
 <ul>
-<li>string 动态尺寸的UTF-8编码字符串，是特殊的可变字节数组</li>
-<li>string <strong>不支持下标索引</strong>、<strong>不支持length、push方法</strong></li>
-<li>string <strong>可以修改(需通过bytes转换)</strong></li>
+<li>第一步：由用户自己创建交易（转账等），私钥签名</li>
+<li>第二步：由矿工校验交易，打包到本地交易池，并广播改交易</li>
+<li>第三步：下一个记账周期开始时，开始进行挖矿竞争</li>
+<li>第四步：矿工A挖矿成功，全网广播</li>
+<li>第五步：多个矿工对挖矿交易进行确认无误</li>
+<li>第六步：矿工A获得挖矿奖励，全网同步账本，重复第一步</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract  <span class="hljs-built_in">String</span> {
-    string public name = <span class="hljs-string">&quot;lily&quot;</span>;   
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setName</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        bytes(name)[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;L&quot;</span>;   
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLength</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint256</span>) </span>{
-        <span class="hljs-keyword">return</span> bytes(name).length;
-    }
-}
-</code></pre>
-<h2 id="struct"><a name="struct" class="plugin-anchor" href="#struct"><i class="fa fa-link" aria-hidden="true"></i></a>struct</h2>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105104658568.png" alt="image-20230105104658568"></p>
+<p>出块逻辑：</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101174253076.png" alt="image-20230101174253076"></p>
+<h2 id="2-比特币"><a name="2-比特币" class="plugin-anchor" href="#2-比特币"><i class="fa fa-link" aria-hidden="true"></i></a>2. 比特币</h2>
+<p>还是要说说比特币，它诞生于2009年，最初是C++实现的，它的功能非常纯粹：就是用来转账的，基本没法在上面做二次开发，比如想自己基于比特币开发一个DAPP（去中心化应用），这个是不可能的。</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/btc.png" alt="btc"></p>
+<p>这也是为什么后来会出现以太坊这个区块链项目，以太坊的存在弥补了比特币无法二次开发的问题，不过这也是中本聪（比特币的创造者）的本意，咱不搞那些花里胡哨的功能，聚焦金融，安全稳定。</p>
+<h3 id="在线演示"><a name="在线演示" class="plugin-anchor" href="#在线演示"><i class="fa fa-link" aria-hidden="true"></i></a>在线演示</h3>
 <ul>
-<li>自定义结构类型，将不同的数据类型组合到一个结构中，目前支持参数传递结构体。</li>
-<li>枚举和结构体都可以定义在另外一个文件中，进行import后使用</li>
+<li>演示比特币基础（账本）：<a href="https://andersbrownworth.com/blockchain/hash" target="_blank">https://andersbrownworth.com/blockchain/hash</a></li>
+<li>演示比特币进阶（签名）：<a href="https://andersbrownworth.com/blockchain/public-private-keys/keys" target="_blank">https://andersbrownworth.com/blockchain/public-private-keys/keys</a>   <strong>（讲完钱包地址后再演示）</strong></li>
+<li>demo的难度值：0001000000000000000000000000000000000000000000000000000000000000</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101164435228.png" alt="image-20230101164435228"></p>
+<p>在币圈一般都称之为：大饼，各种牛鬼蛇神币种的涨跌基本完全看大饼的脸色，大饼每四年减产一次（即挖矿的奖励减半），大约在2140年时会全部挖完（2100w枚），比特币总量计算如下：<code>totalBTC.go</code></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
 
-contract Todos {
-    struct Todo {
-        string text;
-        bool completed;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    total := <span class="hljs-number">0.0</span>     <span class="hljs-comment">//总量</span>
+    interval := <span class="hljs-number">21.0</span> <span class="hljs-comment">//区块间隔，万单位</span>
+
+    reward := <span class="hljs-number">50.0</span> <span class="hljs-comment">//奖励数量，最初50个</span>
+
+    <span class="hljs-keyword">for</span> reward != <span class="hljs-number">0</span> {
+        <span class="hljs-comment">//累加挖矿值</span>
+        amount := reward * interval
+
+        total += amount <span class="hljs-comment">//总量</span>
+
+        reward *= <span class="hljs-number">0.5</span> <span class="hljs-comment">//奖励减半</span>
     }
 
-    <span class="hljs-comment">// An array of &apos;Todo&apos; structs</span>
-    Todo[] public todos;
-
-      <span class="hljs-comment">// [[&quot;hello&quot;, true], [&quot;world&quot;, false]]</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createByElement</span>(<span class="hljs-params">Todo[] memory _todos</span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; _todos.length; i++) {
-            todos.push(_todos[i]);
-        }
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create</span>(<span class="hljs-params">string memory _text</span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-comment">// 3 ways to initialize a struct</span>
-        <span class="hljs-comment">// - calling it like a function</span>
-        todos.push(Todo(_text, <span class="hljs-literal">false</span>));
-
-        <span class="hljs-comment">// key value mapping</span>
-        todos.push(Todo({<span class="hljs-attr">text</span>: _text, <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>}));
-
-        <span class="hljs-comment">// initialize an empty struct and then update it</span>
-        Todo memory todo;
-        todo.text = _text;
-        <span class="hljs-comment">// todo.completed initialized to false</span>
-
-        todos.push(todo);
-    }
-
-    <span class="hljs-comment">// Solidity automatically created a getter for &apos;todos&apos; so</span>
-    <span class="hljs-comment">// you don&apos;t actually need this function.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">uint _index</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory text, bool completed</span>) </span>{
-        Todo storage todo = todos[_index];
-        <span class="hljs-keyword">return</span> (todo.text, todo.completed);
-    }
-
-    <span class="hljs-comment">// update text</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params">uint _index, string memory _text</span>) <span class="hljs-title">public</span> </span>{
-        Todo storage todo = todos[_index];
-        todo.text = _text;
-    }
-
-    <span class="hljs-comment">// update completed</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toggleCompleted</span>(<span class="hljs-params">uint _index</span>) <span class="hljs-title">public</span> </span>{
-        Todo storage todo = todos[_index];
-        todo.completed = !todo.completed;
-    }
+    fmt.Printf(<span class="hljs-string">&quot;total : %fw\n&quot;</span>, total)
 }
 </code></pre>
-<h2 id="mapping"><a name="mapping" class="plugin-anchor" href="#mapping"><i class="fa fa-link" aria-hidden="true"></i></a>mapping</h2>
+<h2 id="3-以太坊"><a name="3-以太坊" class="plugin-anchor" href="#3-以太坊"><i class="fa fa-link" aria-hidden="true"></i></a>3. 以太坊</h2>
+<p>在比特币问世前期，只有小范围内的人了解它。4年之后，一个俄罗斯的小伙子受到了比特币设计的启示，来了灵感，并于2013年首次提出了以太坊（Ethereum）的概念，并将其定位为：下一代加密货币与去中心化应用平台，并拉开了一个新时代的序幕。</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/v_ethereum.png" alt="v_ethereum"></p>
+<h3 id="比特币vs以太坊"><a name="比特币vs以太坊" class="plugin-anchor" href="#比特币vs以太坊"><i class="fa fa-link" aria-hidden="true"></i></a>比特币vs以太坊</h3>
 <ul>
-<li>定义：mapping(keyType =&gt; valueType)  myMapping</li>
-<li>key可以是任意类型，value可以是任意类型（value也可以是mapping或者数组）</li>
-<li>mapping不支持迭代器</li>
-<li>不需要实例化等，定义后直接可以使用</li>
+<li>功能定位不同：BTC为金融转账而设计，Ethereum是一个操作系统，==可以运行程序==（世界级计算机）；</li>
+<li>账户体系不同：BTC和以太坊的账户体系完全不同，比特币是找零机制，以太坊是账户体系；</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Mapping {
-    <span class="hljs-comment">// Mapping from address to uint</span>
-    mapping(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) public myMap;
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">address _addr</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
-        <span class="hljs-comment">// Mapping always returns a value.</span>
-        <span class="hljs-comment">// If the value was never set, it will return the default value.</span>
-        <span class="hljs-keyword">return</span> myMap[_addr];
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">set</span>(<span class="hljs-params">address _addr, uint _i</span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-comment">// Update the value at this address</span>
-        myMap[_addr] = _i;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span>(<span class="hljs-params">address _addr</span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-comment">// Reset the value to the default value.</span>
-        <span class="hljs-keyword">delete</span> myMap[_addr];
-    }
-}
-
-contract NestedMapping {
-    <span class="hljs-comment">// Nested mapping (mapping from address to another mapping)</span>
-    mapping(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> mapping(<span class="hljs-function"><span class="hljs-params">uint</span> =&gt;</span> bool)) public nested;
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params">address _addr1, uint _i</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>) </span>{
-        <span class="hljs-comment">// You can get values from a nested mapping</span>
-        <span class="hljs-comment">// even when it is not initialized</span>
-        <span class="hljs-keyword">return</span> nested[_addr1][_i];
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">set</span>(<span class="hljs-params">
-        address _addr1,
-        uint _i,
-        bool _boo
-    </span>) <span class="hljs-title">public</span> </span>{
-        nested[_addr1][_i] = _boo;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">remove</span>(<span class="hljs-params">address _addr1, uint _i</span>) <span class="hljs-title">public</span> </span>{
-        <span class="hljs-keyword">delete</span> nested[_addr1][_i];
-    }
-}
-</code></pre>
-<h2 id="修饰器modifier"><a name="修饰器modifier" class="plugin-anchor" href="#修饰器modifier"><i class="fa fa-link" aria-hidden="true"></i></a>修饰器modifier</h2>
-<p>修饰器用于修饰函数，在函数执行前或执行后进行调用，经常用于：</p>
-<ol>
-<li>权限控制</li>
-<li>参数校验</li>
-<li>防止重入攻击等</li>
-</ol>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract FunctionModifier {
-    <span class="hljs-comment">// We will use these variables to demonstrate how to use modifiers.</span>
-    address public owner;
-    uint public x = <span class="hljs-number">10</span>;
-    bool public locked;
-
-    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-comment">// Set the transaction sender as the owner of the contract.</span>
-        owner = msg.sender;
-    }
-
-    <span class="hljs-comment">// 1. Modifier to check that the caller is the owner of the contract.</span>
-    modifier <span class="hljs-function"><span class="hljs-title">onlyOwner</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">require</span>(msg.sender == owner, <span class="hljs-string">&quot;Not owner&quot;</span>);
-        <span class="hljs-comment">// Underscore is a special character only used inside</span>
-        <span class="hljs-comment">// a function modifier and it tells Solidity to</span>
-        <span class="hljs-comment">// execute the rest of the code.</span>
-        _;
-    }
-
-    <span class="hljs-comment">// 2. Modifiers can take inputs. This modifier checks that the</span>
-    <span class="hljs-comment">// address passed in is not the zero address.</span>
-    modifier <span class="hljs-function"><span class="hljs-title">validAddress</span>(<span class="hljs-params">address _addr</span>)</span> {
-        <span class="hljs-built_in">require</span>(_addr != address(<span class="hljs-number">0</span>), <span class="hljs-string">&quot;Not valid address&quot;</span>);
-        _;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changeOwner</span>(<span class="hljs-params">address _newOwner</span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyOwner</span> <span class="hljs-title">validAddress</span>(<span class="hljs-params">_newOwner</span>) </span>{
-        owner = _newOwner;
-    }
-
-    <span class="hljs-comment">// Modifiers can be called before and / or after a function.</span>
-    <span class="hljs-comment">// This modifier prevents a function from being called while</span>
-    <span class="hljs-comment">// it is still executing.</span>
-    modifier <span class="hljs-function"><span class="hljs-title">noReentrancy</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">require</span>(!locked, <span class="hljs-string">&quot;No reentrancy&quot;</span>);
-
-        locked = <span class="hljs-literal">true</span>;
-        _;
-        locked = <span class="hljs-literal">false</span>;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decrement</span>(<span class="hljs-params">uint i</span>) <span class="hljs-title">public</span> <span class="hljs-title">noReentrancy</span> </span>{
-        x -= i;
-
-        <span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">1</span>) {
-            decrement(i - <span class="hljs-number">1</span>);
-        }
-    }
-}
-</code></pre>
-<h2 id="事件event"><a name="事件event" class="plugin-anchor" href="#事件event"><i class="fa fa-link" aria-hidden="true"></i></a>事件Event</h2>
-<p>事件是区块链上的日志，每当用户发起操作的时候，可以发送相应的事件，常用于：</p>
-<ol>
-<li>监听用户对合约的调用</li>
-<li>便宜的存储（用合约存储更加昂贵）</li>
-</ol>
-<p>通过链下程序（如：subgraph）对合约进行事件监听，可以对Event进行搜集整理，从而做好数据统计，常用方式：</p>
-<ol>
-<li>合约触发后发送事件</li>
-<li>subgraph对合约事件进行监听，计算（如：统计用户数量）</li>
-<li>前端程序直接访问subgraph的服务，获得统计数据（这避免了在合约层面统计数据的费用，并且获取速度更快）</li>
-</ol>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-contract Event {
-    <span class="hljs-comment">// Event declaration</span>
-    <span class="hljs-comment">// Up to 3 parameters can be indexed.</span>
-    <span class="hljs-comment">// Indexed parameters helps you filter the logs by the indexed parameter</span>
-    event Log(address indexed sender, string message); <span class="hljs-comment">// 修饰为indexed</span>
-    event AnotherLog(); <span class="hljs-comment">// 无参数的事件</span>
-      event TestAnonymous(address indexed sender, uint256 num) anonymous; <span class="hljs-comment">// 匿名事件</span>
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
-        emit Log(msg.sender, <span class="hljs-string">&quot;Hello World!&quot;</span>);
-        emit Log(msg.sender, <span class="hljs-string">&quot;Hello EVM!&quot;</span>);
-        emit AnotherLog();
-    }
-}
-</code></pre>
-<h2 id="可见性visibility"><a name="可见性visibility" class="plugin-anchor" href="#可见性visibility"><i class="fa fa-link" aria-hidden="true"></i></a>可见性visibility</h2>
-<p>合约的方法和状态变量需要使用关键字进行修饰，从而决定其是否可以被其他合约调用，修饰符包括：</p>
+<h3 id="功能定位不同"><a name="功能定位不同" class="plugin-anchor" href="#功能定位不同"><i class="fa fa-link" aria-hidden="true"></i></a>功能定位不同</h3>
 <ul>
-<li>public：所有的合约和外部账户（EOA）都可以调用；</li>
-<li>private：只允许合约内部调用；</li>
-<li>internal：仅允许合约内部以及子合约中调用；</li>
-<li>external：仅允许外部地址(EOA或CA)调用，合约内部及子合约都不能调用；(早期版本可以使用this调用external方法)</li>
+<li>比特币本身就是有价值的数字黄金，专用于金融。</li>
+<li>以太坊ETH自身不是为了金融转账，以太坊的主要目的是支持智能合约。由于需要用ETH来支付调用合约的gasfee，所以ETH才有价值。</li>
 </ul>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
+<h3 id="账户模型对比"><a name="账户模型对比" class="plugin-anchor" href="#账户模型对比"><i class="fa fa-link" aria-hidden="true"></i></a>账户模型对比</h3>
+<p>UTXO：unspent transaction output，未消费的output，里面是用户持有的btc，相当于零钱</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101165058685.png" alt="image-20230101165058685"></p>
+<h2 id="4-公链｜联盟链｜私链"><a name="4-公链｜联盟链｜私链" class="plugin-anchor" href="#4-公链｜联盟链｜私链"><i class="fa fa-link" aria-hidden="true"></i></a>4. 公链｜联盟链｜私链</h2>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101163913856.png" alt="image-20230101163913856"></p>
+<p>运行geth演示，genesis.json，<a href="https://www.jianshu.com/p/c66b74d9dc35" target="_blank">参考文章</a></p>
+<pre><code class="lang-json">{
+<span class="hljs-string">&quot;config&quot;</span>: {
+<span class="hljs-string">&quot;chainId&quot;</span>: <span class="hljs-number">66</span>,
+<span class="hljs-string">&quot;homesteadBlock&quot;</span>: <span class="hljs-number">0</span>,
+<span class="hljs-string">&quot;eip150Block&quot;</span>: <span class="hljs-number">0</span>,
+<span class="hljs-string">&quot;eip155Block&quot;</span>: <span class="hljs-number">0</span>,
+<span class="hljs-string">&quot;eip158Block&quot;</span>: <span class="hljs-number">0</span>
+},
+<span class="hljs-string">&quot;coinbase&quot;</span> : <span class="hljs-string">&quot;0x0000000000000000000000000000000000000000&quot;</span>, 
 
-contract Base {
-    <span class="hljs-comment">// Private function can only be called</span>
-    <span class="hljs-comment">// - inside this contract</span>
-    <span class="hljs-comment">// Contracts that inherit this contract cannot call this function.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">privateFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">private</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;private function called&quot;</span>;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testPrivateFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> privateFunc();
-    }
-
-    <span class="hljs-comment">// Internal function can be called</span>
-    <span class="hljs-comment">// - inside this contract</span>
-    <span class="hljs-comment">// - inside contracts that inherit this contract</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">internalFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">internal</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;internal function called&quot;</span>;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testInternalFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">virtual</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> internalFunc();
-    }
-
-    <span class="hljs-comment">// Public functions can be called</span>
-    <span class="hljs-comment">// - inside this contract</span>
-    <span class="hljs-comment">// - inside contracts that inherit this contract</span>
-    <span class="hljs-comment">// - by other contracts and accounts</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">publicFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;public function called&quot;</span>;
-    }
-
-    <span class="hljs-comment">// External functions can only be called</span>
-    <span class="hljs-comment">// - by other contracts and accounts</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">externalFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;external function called&quot;</span>;
-    }
-
-    <span class="hljs-comment">// This function will not compile since we&apos;re trying to call</span>
-    <span class="hljs-comment">// an external function here.</span>
-    <span class="hljs-comment">// function testExternalFunc() public pure returns (string memory) {</span>
-    <span class="hljs-comment">//     return externalFunc();</span>
-    <span class="hljs-comment">// }</span>
-
-    <span class="hljs-comment">// State variables</span>
-    string private privateVar = <span class="hljs-string">&quot;my private variable&quot;</span>;
-    string internal internalVar = <span class="hljs-string">&quot;my internal variable&quot;</span>;
-    string public publicVar = <span class="hljs-string">&quot;my public variable&quot;</span>;
-    <span class="hljs-comment">// State variables cannot be external so this code won&apos;t compile.</span>
-    <span class="hljs-comment">// string external externalVar = &quot;my external variable&quot;;</span>
-}
-
-contract Child is Base {
-    <span class="hljs-comment">// Inherited contracts do not have access to private functions</span>
-    <span class="hljs-comment">// and state variables.</span>
-    <span class="hljs-comment">// function testPrivateFunc() public pure returns (string memory) {</span>
-    <span class="hljs-comment">//     return privateFunc();</span>
-    <span class="hljs-comment">// }</span>
-
-    <span class="hljs-comment">// Internal function call be called inside child contracts.</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testInternalFunc</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">override</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
-        <span class="hljs-keyword">return</span> internalFunc();
-    }
+<span class="hljs-string">&quot;difficulty&quot;</span> : <span class="hljs-string">&quot;0x40000&quot;</span>,
+<span class="hljs-string">&quot;extraData&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,
+<span class="hljs-string">&quot;gasLimit&quot;</span> : <span class="hljs-string">&quot;0xffffffff&quot;</span>,
+<span class="hljs-string">&quot;nonce&quot;</span> : <span class="hljs-string">&quot;0x0000000000000042&quot;</span>,
+<span class="hljs-string">&quot;mixhash&quot;</span> : <span class="hljs-string">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>,
+<span class="hljs-string">&quot;parentHash&quot;</span> : <span class="hljs-string">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>,
+<span class="hljs-string">&quot;timestamp&quot;</span> : <span class="hljs-string">&quot;0x00&quot;</span>,
+<span class="hljs-string">&quot;alloc&quot;</span>: { }
 }
 </code></pre>
-<h1 id="erc20（标准token）"><a name="erc20（标准token）" class="plugin-anchor" href="#erc20（标准token）"><i class="fa fa-link" aria-hidden="true"></i></a>ERC20（标准Token）</h1>
+<p>执行命令：</p>
+<pre><code class="lang-sh"><span class="hljs-comment"># 初始化</span>
+geth --datadir . init genesis.json
+
+<span class="hljs-comment"># 启动私链</span>
+geth --datadir . --networkid 66 console
+
+<span class="hljs-comment"># 查看账户</span>
+eth.accounts
+
+<span class="hljs-comment"># 创建账户</span>
+personal.newAccount(<span class="hljs-string">&quot;1024&quot;</span>)
+
+<span class="hljs-comment"># 查询余额</span>
+eth.getBalance(eth.accounts[0])
+
+<span class="hljs-comment"># 挖矿</span>
+<span class="hljs-comment"># miner.start(1);admin.sleepBlocks(0.5);miner.stop();</span>
+
+<span class="hljs-comment"># 查看区块高度</span>
+eth.blockNumber
+
+<span class="hljs-comment"># 查看创世块交易</span>
+eth.getBlock(1)
+</code></pre>
+<h2 id="5-共识机制"><a name="5-共识机制" class="plugin-anchor" href="#5-共识机制"><i class="fa fa-link" aria-hidden="true"></i></a>5. 共识机制</h2>
+<h3 id="pow"><a name="pow" class="plugin-anchor" href="#pow"><i class="fa fa-link" aria-hidden="true"></i></a>POW</h3>
+<p>工作量证明(POW:Proof of work)是指出示结果表示你做过一件事情，获取结果的过程很曲折，验证 却很简单。</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101172109393.png" alt="image-20230101172109393"></p>
+<p>计算过程如下图：（在线工具演示）</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230101171613731.png" alt="image-20230101171613731"></p>
+<h3 id="pos"><a name="pos" class="plugin-anchor" href="#pos"><i class="fa fa-link" aria-hidden="true"></i></a>POS</h3>
+<p>Proof of Stake权益证明，2022年9月15日，以太坊由pow转为pos，为后续的以太坊2.0做准备，pos特点如下：</p>
 <ol>
-<li>EIP: Ethereum Improvement Propose </li>
-<li>任何遵从<a href="https://eips.ethereum.org/EIPS/eip-20" target="_blank">EIP-20协议</a>（ERC20标准）的Contract都属于ERC20 Token</li>
+<li>slot：出块时间固定，每隔12秒为一个slot；</li>
+<li>epoch：每32个slot组成一个epoch（6.4分钟/epoch）；</li>
+<li>用户如果想要参与共识网络，需要先质押32个ETH，然后等待专门的交易将其加入验证者集合；</li>
+<li>每个epoch之前，会通过VRF将验证者集合均匀的分配到32个slot中，每个slot中会随机的选出一个区块提议者。在每个slot中，提议者生成区块，分配到该slot的验证者子集对区块进行验证和投票；</li>
+<li>在POS模式之下，区块生成不再需要比拼算力，而是按照随机指派而来</li>
+<li>POW：概率确定性、POS：最终确定性</li>
+<li>==POS是以太坊发展重要一环，扩容前置条件、结合L2==</li>
+<li>深入理解pos，<a href="https://news.marsbit.co/20221008222518399952.html" target="_blank">点击查看</a></li>
 </ol>
-<h2 id="标准接口"><a name="标准接口" class="plugin-anchor" href="#标准接口"><i class="fa fa-link" aria-hidden="true"></i></a>标准接口</h2>
-<pre><code class="lang-js"><span class="hljs-comment">// 6 REQUIRED FUNCTIONS</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address _owner</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 balance</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address _to, uint256 _value</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool success</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params">address _from, address _to, uint256 _value</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool success</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address _spender, uint256 _value</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool success</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address _owner, address _spender</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 remaining</span>)
-
-// 2 <span class="hljs-title">REQUIRED</span> <span class="hljs-title">EVENTS</span>
-<span class="hljs-title">event</span> <span class="hljs-title">Transfer</span>(<span class="hljs-params">address indexed _from, address indexed _to, uint256 _value</span>)
-<span class="hljs-title">event</span> <span class="hljs-title">Approval</span>(<span class="hljs-params">address indexed _owner, address indexed _spender, uint256 _value</span>)
-
-// 3. <span class="hljs-title">OPTIONAL</span> <span class="hljs-title">FUNCTIONS</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symbol</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint8</span>)
-</span></span></span></span></span></span></span></span></span></code></pre>
-<h2 id="发行token"><a name="发行token" class="plugin-anchor" href="#发行token"><i class="fa fa-link" aria-hidden="true"></i></a>发行Token</h2>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-<span class="hljs-comment">// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.0.0/contracts/token/ERC20/IERC20.sol</span>
-interface IERC20 {
-      <span class="hljs-comment">// 6 REQUIRED FUNCTIONS</span>
-      <span class="hljs-comment">// 总发行量</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>;  <span class="hljs-comment">// -&gt; 总发行量 100000000 * 10**decimals</span>
-
-      <span class="hljs-comment">// 标准decimal： 18</span>
-      <span class="hljs-comment">// USDT: 6</span>
-      <span class="hljs-comment">// WBTC: 8</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address account</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 指定账户的余额</span>
-
-    <span class="hljs-comment">// 币的持有人直接调用，进行转账</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address recipient, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
-
-      <span class="hljs-comment">// 最常用的！！</span>
-      <span class="hljs-comment">// 1. 我这个owner对合约进行approve，此时approve内部会修改allowance变量</span>
-      <span class="hljs-comment">// 2. 合约内部调用transferFrom来支配owner的token</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params"> <span class="hljs-comment">// spender就是这个合约</span>
-        address sender,    <span class="hljs-comment">// owner</span>
-        address recipient,    <span class="hljs-comment">// 转给谁</span>
-        uint amount <span class="hljs-comment">// 金额</span>
-    </span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
-
-
-    <span class="hljs-comment">// owner: 币的持有人</span>
-      <span class="hljs-comment">// spender: 是指定帮助花费的代理人（被授权的人）</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>)</span>; <span class="hljs-comment">// 授权的额度</span>
-
-    <span class="hljs-comment">// decimals view，这是一个public 的变量，自动提供了一个读取的方法 // 返回精度</span>
-      <span class="hljs-comment">// 持有人对spender进行授权，在approve内部，会调用msg.sender来知道owner是谁</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
-
-      <span class="hljs-comment">// 2 REQUIRED EVENTS</span>
-      <span class="hljs-comment">// 事件</span>
-    event Transfer(address indexed <span class="hljs-keyword">from</span>, address indexed to, uint value);
-    event Approval(address indexed owner, address indexed spender, uint value);
-
-    <span class="hljs-comment">// 3. OPTIONAL FUNCTIONS</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symbol</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string</span>)
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint8</span>)
-}
-</span></span></span></code></pre>
-<p>以下是ERC20的案例：</p>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./IERC20.sol&quot;</span>;
-
-contract ERC20 is IERC20 {
-    uint public totalSupply;
-    mapping(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) public balanceOf;
-    mapping(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> mapping(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint)) public allowance;
-    string public name = <span class="hljs-string">&quot;Solidity by Example&quot;</span>;
-    string public symbol = <span class="hljs-string">&quot;SOLBYEX&quot;</span>;
-    uint8 public decimals = <span class="hljs-number">18</span>;
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address recipient, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>) </span>{
-        balanceOf[msg.sender] -= amount;
-        balanceOf[recipient] += amount;
-        emit Transfer(msg.sender, recipient, amount);
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>) </span>{
-        allowance[msg.sender][spender] = amount;
-        emit Approval(msg.sender, spender, amount);
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params">
-        address sender,
-        address recipient,
-        uint amount
-    </span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>) </span>{
-        allowance[sender][msg.sender] -= amount;
-        balanceOf[sender] -= amount;
-        balanceOf[recipient] += amount;
-        emit Transfer(sender, recipient, amount);
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mint</span>(<span class="hljs-params">uint amount</span>) <span class="hljs-title">external</span> </span>{
-        balanceOf[msg.sender] += amount;
-        totalSupply += amount;
-        emit Transfer(address(<span class="hljs-number">0</span>), msg.sender, amount);
-    }
-
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burn</span>(<span class="hljs-params">uint amount</span>) <span class="hljs-title">external</span> </span>{
-        balanceOf[msg.sender] -= amount;
-        totalSupply -= amount;
-        emit Transfer(msg.sender, address(<span class="hljs-number">0</span>), amount);
-    }
-}
-</code></pre>
-<p>可以使用openzeppelin库进行创建自己的token：</p>
-<pre><code class="lang-js"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span>
-pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.13</span>;
-
-<span class="hljs-comment">// import &quot;https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.0.0/contracts/token/ERC20/ERC20.sol&quot;;</span>
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;</span>;
-
-
-contract MyToken is ERC20 {
-    <span class="hljs-title">constructor</span>(<span class="hljs-params">string memory name, string memory symbol</span>) <span class="hljs-title">ERC20</span>(<span class="hljs-params">name, symbol</span>) {
-        <span class="hljs-comment">// Mint 100 tokens to msg.sender</span>
-        <span class="hljs-comment">// Similar to how</span>
-        <span class="hljs-comment">// 1 dollar = 100 cents</span>
-        <span class="hljs-comment">// 1 token = 1 * (10 ** decimals)</span>
-        _mint(msg.sender, <span class="hljs-number">100</span> * <span class="hljs-number">10</span>**uint(decimals()));
-    }
-
-    <span class="hljs-comment">// 默认是18，可以进行override</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">override</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint8</span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-number">6</span>;
-    }
-}
-</code></pre>
-<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/approve%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" alt="approve流程图"></p>
+<p><img src="https://duke-typora.s3.amazonaws.com/ipic/2023-01-16-113139.png" alt="image-20230116193139056"></p>
+<h2 id="6-其他概念"><a name="6-其他概念" class="plugin-anchor" href="#6-其他概念"><i class="fa fa-link" aria-hidden="true"></i></a>6. 其他概念</h2>
+<ul>
+<li><p>分叉、双花，详细介绍，<a href="https://zhuanlan.zhihu.com/p/94500557" target="_blank">点击查看</a></p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105104137194.png" alt="image-20230105104137194"></p>
+</li>
+<li><p>不可能三角：可扩展性、去中心化、安全性</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20230105103349916.png" alt="image-20230105103349916"></p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -3851,12 +3161,12 @@ contract MyToken is ERC20 {
 
             
                 
-                <a href="02-区块链基础（下）.html" class="navigation navigation-prev " aria-label="Previous page: 第b节:世界杯竞猜_区块链基础（下）">
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 第八章:项目实战-世界杯竞猜">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="04-solidity（下）.html" class="navigation navigation-next " aria-label="Next page: 第d节:世界杯竞猜_solidity（下）">
+                <a href="02-区块链基础（下）.html" class="navigation navigation-next " aria-label="Next page: 第b节:世界杯竞猜_区块链基础（下）">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -3867,7 +3177,7 @@ contract MyToken is ERC20 {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第c节:世界杯竞猜_solidity（上）","level":"1.15.3","depth":2,"next":{"title":"第d节:世界杯竞猜_solidity（下）","level":"1.15.4","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.md","articles":[]},"previous":{"title":"第b节:世界杯竞猜_区块链基础（下）","level":"1.15.2","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","mtime":"2023-03-06T12:47:47.472Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-07T14:40:57.767Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第a节:世界杯竞猜_区块链基础（上）","level":"1.15.1","depth":2,"next":{"title":"第b节:世界杯竞猜_区块链基础（下）","level":"1.15.2","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.md","articles":[]},"previous":{"title":"第八章:项目实战-世界杯竞猜","level":"1.15","depth":1,"path":"08_项目实战-世界杯竞猜/README.md","ref":"08_项目实战-世界杯竞猜/README.md","articles":[{"title":"第a节:世界杯竞猜_区块链基础（上）","level":"1.15.1","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/01-区块链基础（上）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/01-区块链基础（上）.md","articles":[]},{"title":"第b节:世界杯竞猜_区块链基础（下）","level":"1.15.2","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.md","articles":[]},{"title":"第c节:世界杯竞猜_solidity（上）","level":"1.15.3","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","articles":[]},{"title":"第d节:世界杯竞猜_solidity（下）","level":"1.15.4","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.md","articles":[]},{"title":"第1节:世界杯竞猜_solidity","level":"1.15.5","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","articles":[]},{"title":"第2节:世界杯竞猜_hardhat","level":"1.15.6","depth":2,"path":"08_项目实战-世界杯竞猜/02_世界杯竞猜_hardhat.md","ref":"08_项目实战-世界杯竞猜/02_世界杯竞猜_hardhat.md","articles":[]},{"title":"第3节:世界杯竞猜_ERC20","level":"1.15.7","depth":2,"path":"08_项目实战-世界杯竞猜/03_世界杯竞猜_ERC20.md","ref":"08_项目实战-世界杯竞猜/03_世界杯竞猜_ERC20.md","articles":[]},{"title":"第4节:世界杯竞猜_subgraph","level":"1.15.8","depth":2,"path":"08_项目实战-世界杯竞猜/04_世界杯竞猜_subgraph.md","ref":"08_项目实战-世界杯竞猜/04_世界杯竞猜_subgraph.md","articles":[]},{"title":"第5节:世界杯竞猜_airdrop","level":"1.15.9","depth":2,"path":"08_项目实战-世界杯竞猜/05-世界杯竞猜_airdrop.md","ref":"08_项目实战-世界杯竞猜/05-世界杯竞猜_airdrop.md","articles":[]},{"title":"第6节:世界杯竞猜_upgrade","level":"1.15.10","depth":2,"path":"08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.md","ref":"08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.md","articles":[]},{"title":"第7节:世界杯竞猜_链下签名","level":"1.15.11","depth":2,"path":"08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.md","ref":"08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.md","articles":[]},{"title":"第8节:世界杯竞猜_多签钱包","level":"1.15.12","depth":2,"path":"08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.md","ref":"08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.md","articles":[]},{"title":"第9节:世界杯竞猜_Go交互","level":"1.15.13","depth":2,"path":"08_项目实战-世界杯竞猜/09_世界杯竞猜_Go交互合约.md","ref":"08_项目实战-世界杯竞猜/09_世界杯竞猜_Go交互合约.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-search","-lunr","toggle-chapters","page-toc-button","include-codeblock","anchors","js-console"],"pluginsConfig":{"toggle-chapters":{},"page-toc-button":{},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"anchors":{},"js-console":{},"highlight":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"08_项目实战-世界杯竞猜/moledao课程/01-区块链基础（上）.md","mtime":"2023-02-18T16:12:00.693Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-07T14:40:57.767Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
