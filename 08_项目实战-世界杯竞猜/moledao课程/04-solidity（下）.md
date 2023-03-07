@@ -566,7 +566,7 @@ contract Proxy {
 
 1. 使用汇编方式：
 
-```assembly
+```js
 assembly {
   create(参数...)
 }
