@@ -8,3 +8,12 @@
 - ERC721，这个就是我们所谓的NFT（Non-Fungible Token），加密猫，无聊猿等。
 - ERC1155，这是介于ERC20和ERC721之间的协议，属于半同质化合约协议（Semi Non-Fungible Token），它属于在Token层面是同质化，在Id层面是非同质化的Token
 - 其他协议，待定
+
+
+
+
+
+## ERC和EIP的定义与区别？
+
+
+

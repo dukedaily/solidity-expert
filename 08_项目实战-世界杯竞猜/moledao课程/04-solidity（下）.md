@@ -18,7 +18,7 @@
 
 1. 接口中定义的function不能存在具体实现；
 2. 接口可以继承；
-3. 所有的function必须定义为external；
+3. 所有的function必须定义为external；public，internal，private
 4. 接口中不能存在constructor函数；
 5. 接口中不能定义状态变量；
 6. [abstract和interface的区别](https://medium.com/upstate-interactive/solidity-how-to-know-when-to-use-abstract-contracts-vs-interfaces-874cab860c56)
@@ -106,6 +106,7 @@ pragma solidity ^0.8.13;
 
 // 1. 只有internal方法，会内嵌到调用合约中
 library SafeMath {
+  
     function add(uint x, uint y) internal pure returns (uint) {
         uint z = x + y;
         require(z >= x, "uint overflow");
@@ -140,7 +141,7 @@ contract TestSafeMath {
 		
   	// 用法1：x.方法(y)
     function testAdd(uint x, uint y) public pure returns (uint) {
-        //return x.add(y);
+       //return x.add(y);
       return SafeMath.add(x,y);
     }
 
@@ -334,8 +335,8 @@ contract GuessTheMagicWord {
 
 有三种方式可以向合约地址转ether：
 
-1. transfer（21000 gas， throw error）
-2. ~~send（21000 gas，return bool）~~
+1. ~~send（21000 gas，return bool）~~
+2. transfer（21000 gas， throw error）
 3. call（传递交易剩余的gas或设置gas，不限定21000gas，return bool）(推荐使用)
 
 总结：transfer() 和 send() 函数使用 2300 gas 以防止重入攻击，但公链升级后可能导致 gas 不足。所以推荐使用 call() 函数，但需做好重入攻击防护。
@@ -529,6 +530,19 @@ contract Implementation {
     }
 }
 
+contract ImplementationV2 {
+    // NOTE: storage layout must be the same as contract A
+    uint public num;
+    address public sender;
+    uint public value;
+
+    function setVars(uint _num) public payable {
+        num = _num*2;
+        sender = msg.sender;
+        value = msg.value;
+    }
+}
+
 // 注意：执行后，Proxy中的sender值为EOA的地址，而不是A合约的地址  (调用链EOA-> Proxy::setVars -> Implementation::setVars)
 contract Proxy {
     uint public num;
@@ -543,6 +557,8 @@ contract Proxy {
     }
 }
 ```
+
+
 
 ## create&create2
 
