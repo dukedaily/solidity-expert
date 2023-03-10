@@ -16,9 +16,9 @@
     * [第9节:区块链就业](00_blockchain基础/09_区块链就业.md)
     * [第10节:solidity岗位要求](00_blockchain基础/10_solidity岗位要求.md)
     * [第11节:rpc节点](00_blockchain基础/11_rpc节点.md)
-    * [第12节:以太坊白皮书](00_blockchain基础/12_以太坊白皮书.md)
-    * [第13节:如何参与](00_blockchain基础/13_如何参与.md)
-    * [第14节:EIP](00_blockchain基础/14_EIP.md)
+    * [第12节:12_etherscan](00_blockchain基础/12_etherscan.md)
+    * [第13节:13_区块链黑话](00_blockchain基础/13_区块链黑话.md)
+    * [第20节:20_如何参与](00_blockchain基础/20_如何参与.md)
 * [第一章:solidity基础](01_solidity基础/README.md)
     * [第1节:helloworld](01_solidity基础/01_helloworld.md)
     * [第2节:第一个dapp](01_solidity基础/02_第一个dapp.md)
@@ -211,10 +211,7 @@
     * [第7节:AA钱包](20_热门技术追踪/07_AA钱包.md)
     * [第8节:MEV](20_热门技术追踪/08_MEV.md)
     * [第9节:09_稳定币](20_热门技术追踪/09_稳定币.md)
-    * [第10节:EIP1559](20_热门技术追踪/10_EIP1559.md)
     * [第11节:DID](20_热门技术追踪/11_DID.md)
     * [第12节:存储](20_热门技术追踪/12_存储.md)
     * [第13节:ENS](20_热门技术追踪/13_ENS.md)
     * [第14节:GnosisSafe](20_热门技术追踪/14_gnosisSafe.md)
-    <!-- * [第6节:MEV](20_热门技术追踪/06_MEV.md) -->
-    <!-- * [第7节:DID](20_热门技术追踪/07_DID.md)  -->
