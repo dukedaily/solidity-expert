@@ -1,0 +1,43 @@
+.book-summary ul.summary {
+  overflow-y: scroll;
+  height: calc(100% - 196px);
+  position: absolute;
+  width: 300px;
+}
+
+.sidebar-addition {
+  position:fixed;
+  height: 150px;
+  width: 300px;
+  left: 0;
+  bottom: 0;
+  background: #fafafa;
+  border-top: 1px solid rgba(0,0,0,.07);
+  border-right: 1px solid rgba(0,0,0,.07);
+  text-align: center;
+  display: none;
+}
+
+.sidebar-addition img {
+  height: 90%;
+  margin: 2.5%;
+  float: left;
+}
+
+.sidebar-addition p {
+  line-height: 150%;
+  padding: 10px;
+  margin: 0 0 10px 0;
+}
+
+.sidebar-addition .btn {
+  background: rgba(0,0,0,.07);
+  color: rgba(0,0,0,0.4);
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.with-summary .sidebar-addition {
+  display: block;
+}

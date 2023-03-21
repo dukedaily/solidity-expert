@@ -1,0 +1,19 @@
+.language-picker table td {
+	padding: 8px;
+	height: 30px;
+	text-align: center;
+}
+.language-picker table a {
+	display: inline-block;
+	padding: 5px;
+	width: 100%;
+	text-align: center;
+	background-color: #eee;
+	color: #000;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.language-picker table a.current {
+	background-color: #fafafa;
+	color: #008cff;
+}

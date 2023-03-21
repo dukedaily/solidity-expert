@@ -1,0 +1,14 @@
+.code-label {
+    background-color: rgba(0,0,0,0.07);
+    display: inline-block;
+    font-size: small;
+    line-height: inherit;
+    margin-bottom: 0px !important;
+    padding: 2px 8px;
+}
+p.code-label + p {
+    display: none;
+}
+pre{
+    margin-top: 0 !important;
+}

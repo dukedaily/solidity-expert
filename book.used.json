@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "-search",
+    "-lunr",
+    "toggle-chapters",
+    "page-toc-button",
+    "include-codeblock",
+    "anchors",
+    "js-console"
+  ]
+}

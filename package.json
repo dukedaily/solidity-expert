@@ -1,29 +1,37 @@
 {
-    "name": "solidity-expert",
-    "description": "a solidity tutorial makes you a dapp expert",
-    "homepage": "https://dukedaily.github.io/solidity-expert/",
-    "devDependencies": {
-        "hardhat": "^2.11.1",
-        "honkit": "^3.7.1"
-    },
-    "scripts": {
-        "build": "honkit build",
-        "serve": "honkit serve",
-        "deploy": "gh-pages -d _book"
-    },
-    "dependencies": {
-        "@haxcms/gitbook-2-outline-schema": "^0.0.13",
-        "gh-pages": "^3.2.3",
-        "gitbook-plugin-anchors": "^0.7.1",
-        "gitbook-plugin-canonical-link": "^2.0.3",
-        "gitbook-plugin-custom-favicon": "0.0.4",
-        "gitbook-plugin-ga": "^1.0.0",
-        "gitbook-plugin-github-issue-feedback": "^1.4.0",
-        "gitbook-plugin-include-codeblock": "^3.2.3",
-        "gitbook-plugin-js-console": "^3.0.4",
-        "gitbook-plugin-outline": "^0.0.3",
-        "gitbook-plugin-page-toc-button": "^0.1.1",
-        "gitbook-plugin-toggle-chapters": "^0.0.3",
-        "gitbook-summary-to-path": "^1.1.0"
-    }
+  "name": "solidity-expert",
+  "description": "a solidity tutorial makes you a dapp expert",
+  "homepage": "https://dukedaily.github.io/solidity-expert/",
+  "devDependencies": {
+    "hardhat": "^2.11.1",
+    "honkit": "^3.7.1"
+  },
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve",
+    "deploy": "gh-pages -d _book"
+  },
+  "dependencies": {
+    "@haxcms/gitbook-2-outline-schema": "^0.0.13",
+    "gh-pages": "^3.2.3",
+    "gitbook-plugin-anchors": "^0.7.1",
+    "gitbook-plugin-canonical-link": "^2.0.3",
+    "gitbook-plugin-custom-favicon": "0.0.4",
+    "gitbook-plugin-github-issue-feedback": "^1.4.0",
+    "gitbook-plugin-include-codeblock": "^3.2.3",
+    "gitbook-plugin-js-console": "^3.0.4",
+    "gitbook-plugin-outline": "^0.0.3",
+    "gitbook-plugin-page-toc-button": "^0.1.1",
+    "gitbook-plugin-toggle-chapters": "^0.0.3",
+    "gitbook-plugin-codeblock-label": "*",
+    "gitbook-plugin-collapsible-menu": "*",
+    "gitbook-plugin-ga": "^2.0.0",
+    "gitbook-plugin-github": "2.0.0",
+    "gitbook-plugin-heading-anchors": "^1.0.3",
+    "gitbook-plugin-language-picker": "*",
+    "gitbook-plugin-richquotes": "0.0.9",
+    "gitbook-plugin-sectionx-ex": "*",
+    "gitbook-plugin-sidebar-ad": "*",
+    "gitbook-summary-to-path": "^1.1.0"
+  }
 }
