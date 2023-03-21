@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code'
-make: Leaving directory `/Users/sg00537ml/个人文件/solidity-expert/08_项目实战-世界杯竞猜/code'
- 
-make: *** No targets specified and no makefile found.  Stop.
-

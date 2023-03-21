@@ -1,9 +1,8 @@
 {
   "plugins": [
-    "toggle-chapters",
-    "outline",
     "-search",
     "-lunr",
+    "toggle-chapters",
     "page-toc-button",
     "include-codeblock",
     "anchors",
