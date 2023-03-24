@@ -19,7 +19,7 @@
 
 本教程为GitHub开源项目：https://github.com/dukedaily/solidity-expert  请点亮star，谢谢您的支持！
 
-![image-20221104075923978](assets/image-20221104075923978.png)
+![image-20221104075923978](./cn/assets/image-20221104075923978.png)
 
 ## 学习资源
 
@@ -39,4 +39,4 @@
 
 ## 马上入群
 
-<img src="assets/image-20220810134215759.png" alt="image-20220810134215759" width="200" height="230" />
+<img src="./cn/assets/image-20220810134215759.png" alt="image-20220810134215759" width="200" height="230" />

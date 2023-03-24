@@ -340,12 +340,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.12" data-path="../../00_blockchain基础/12_以太坊白皮书.md">
+        <li class="chapter " data-level="1.7.12" data-path="../../00_blockchain基础/12_etherscan.html">
             
-                <span>
+                <a href="../../00_blockchain基础/12_etherscan.html">
             
                     
-                    第12节:以太坊白皮书
+                    第12节:12_etherscan
             
                 </a>
             
@@ -353,12 +353,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.13" data-path="../../00_blockchain基础/13_如何参与.html">
+        <li class="chapter " data-level="1.7.13" data-path="../../00_blockchain基础/13_区块链黑话.html">
             
-                <a href="../../00_blockchain基础/13_如何参与.html">
+                <a href="../../00_blockchain基础/13_区块链黑话.html">
             
                     
-                    第13节:如何参与
+                    第13节:13_区块链黑话
             
                 </a>
             
@@ -366,12 +366,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.14" data-path="../../00_blockchain基础/14_EIP.html">
+        <li class="chapter " data-level="1.7.14" data-path="../../00_blockchain基础/20_如何参与.html">
             
-                <a href="../../00_blockchain基础/14_EIP.html">
+                <a href="../../00_blockchain基础/20_如何参与.html">
             
                     
-                    第14节:EIP
+                    第20节:20_如何参与
             
                 </a>
             
@@ -2848,20 +2848,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.23.10" data-path="../../20_热门技术追踪/10_EIP1559.md">
-            
-                <span>
-            
-                    
-                    第10节:EIP1559
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.23.11" data-path="../../20_热门技术追踪/11_DID.html">
+        <li class="chapter " data-level="1.23.10" data-path="../../20_热门技术追踪/11_DID.html">
             
                 <a href="../../20_热门技术追踪/11_DID.html">
             
@@ -2874,7 +2861,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.23.12" data-path="../../20_热门技术追踪/12_存储.html">
+        <li class="chapter " data-level="1.23.11" data-path="../../20_热门技术追踪/12_存储.html">
             
                 <a href="../../20_热门技术追踪/12_存储.html">
             
@@ -2887,12 +2874,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.23.13" data-path="../../20_热门技术追踪/13_ENS.html">
+        <li class="chapter " data-level="1.23.12" data-path="../../20_热门技术追踪/13_ENS.html">
             
                 <a href="../../20_热门技术追踪/13_ENS.html">
             
                     
                     第13节:ENS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.13" data-path="../../20_热门技术追踪/14_gnosisSafe.html">
+            
+                <a href="../../20_热门技术追踪/14_gnosisSafe.html">
+            
+                    
+                    第14节:GnosisSafe
             
                 </a>
             
@@ -2980,7 +2980,7 @@
 <ol>
 <li>接口中定义的function不能存在具体实现；</li>
 <li>接口可以继承；</li>
-<li>所有的function必须定义为external；</li>
+<li>所有的function必须定义为external；public，internal，private</li>
 <li>接口中不能存在constructor函数；</li>
 <li>接口中不能定义状态变量；</li>
 <li><a href="https://medium.com/upstate-interactive/solidity-how-to-know-when-to-use-abstract-contracts-vs-interfaces-874cab860c56" target="_blank">abstract和interface的区别</a></li>
@@ -3063,6 +3063,7 @@ pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.
 
 <span class="hljs-comment">// 1. 只有internal方法，会内嵌到调用合约中</span>
 library SafeMath {
+
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">uint x, uint y</span>) <span class="hljs-title">internal</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
         uint z = x + y;
         <span class="hljs-built_in">require</span>(z &gt;= x, <span class="hljs-string">&quot;uint overflow&quot;</span>);
@@ -3097,7 +3098,7 @@ contract TestSafeMath {
 
       <span class="hljs-comment">// 用法1：x.方法(y)</span>
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">testAdd</span>(<span class="hljs-params">uint x, uint y</span>) <span class="hljs-title">public</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
-        <span class="hljs-comment">//return x.add(y);</span>
+       <span class="hljs-comment">//return x.add(y);</span>
       <span class="hljs-keyword">return</span> SafeMath.add(x,y);
     }
 
@@ -3279,8 +3280,8 @@ contract GuessTheMagicWord {
 <p><strong>如何发送ether？</strong></p>
 <p>有三种方式可以向合约地址转ether：</p>
 <ol>
-<li>transfer（21000 gas， throw error）</li>
 <li><del>send（21000 gas，return bool）</del></li>
+<li>transfer（21000 gas， throw error）</li>
 <li>call（传递交易剩余的gas或设置gas，不限定21000gas，return bool）(推荐使用)</li>
 </ol>
 <p>总结：transfer() 和 send() 函数使用 2300 gas 以防止重入攻击，但公链升级后可能导致 gas 不足。所以推荐使用 call() 函数，但需做好重入攻击防护。</p>
@@ -3453,6 +3454,19 @@ contract Implementation {
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setVars</span>(<span class="hljs-params">uint _num</span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{
         num = _num;
+        sender = msg.sender;
+        value = msg.value;
+    }
+}
+
+contract ImplementationV2 {
+    <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> storage layout must be the same as contract A</span>
+    uint public num;
+    address public sender;
+    uint public value;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setVars</span>(<span class="hljs-params">uint _num</span>) <span class="hljs-title">public</span> <span class="hljs-title">payable</span> </span>{
+        num = _num*<span class="hljs-number">2</span>;
         sender = msg.sender;
         value = msg.value;
     }
@@ -3650,7 +3664,7 @@ contract Caller {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第d节:世界杯竞猜_solidity（下）","level":"1.15.4","depth":2,"next":{"title":"第1节:世界杯竞猜_solidity","level":"1.15.5","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","articles":[]},"previous":{"title":"第c节:世界杯竞猜_solidity（上）","level":"1.15.3","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","sidebar-ad","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"sidebar-ad":{"imageUrl":"https://duke-typora.s3.amazonaws.com/ipic/2023-03-21-%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%8A%E5%96%9C.jpg","url":"https://duke-typora.s3.amazonaws.com/ipic/2023-03-21-130235.png","description":"什么是惊喜？","btnText":"点击查看"},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"cn","gitbook":"*"},"file":{"path":"08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.md","mtime":"2023-03-08T05:01:28.054Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-21T13:58:47.330Z"},"basePath":"../..","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"第d节:世界杯竞猜_solidity（下）","level":"1.15.4","depth":2,"next":{"title":"第1节:世界杯竞猜_solidity","level":"1.15.5","depth":2,"path":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","ref":"08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.md","articles":[]},"previous":{"title":"第c节:世界杯竞猜_solidity（上）","level":"1.15.3","depth":2,"path":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","ref":"08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","sidebar-ad","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"sidebar-ad":{"imageUrl":"https://duke-typora.s3.amazonaws.com/ipic/2023-03-21-%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%8A%E5%96%9C.jpg","url":"https://duke-typora.s3.amazonaws.com/ipic/2023-03-21-130235.png","description":"什么是惊喜？","btnText":"点击查看"},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"cn","gitbook":"*"},"file":{"path":"08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.md","mtime":"2023-03-21T15:36:03.535Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-03-24T13:01:02.247Z"},"basePath":"../..","book":{"language":"cn"}});
         });
     </script>
 </div>
