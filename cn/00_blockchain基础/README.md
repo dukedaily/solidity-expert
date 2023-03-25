@@ -18,7 +18,7 @@
 - 需要Alchemy登录: https://goerlifaucet.com/
 - 需要Twitter登录，有粉丝要求：https://faucet.paradigm.xyz/
 - 浏览器：https://goerli.etherscan.io/
-- **花ETH购买**：https://testnetbridge.com/（2023年3月24日，价格1GoerliETH = 0.17U)
+- **花ETH购买**：https://testnetbridge.com/ （2023年3月24日，价格1GoerliETH = 0.17U)
 
 
 
