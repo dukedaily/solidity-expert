@@ -32,20 +32,21 @@
 ## 4. 实用工具
 
 1. solidity manual：https://docs.soliditylang.org/en/v0.8.17/
-2. 地址生成协议（BIP32-BIP44）在线体验：https://iancoleman.io/bip39/#english
-3. 在线keccak256：https://emn178.github.io/online-tools/keccak_256.html
-4. Ether-> wei converter: https://eth-converter.com/
-5. URL编码转中文：https://cafewebmaster.com/online_tools/rawurldecode
-6. Json格式化：https://www.json.cn/
-7. 转成hex：http://www.metools.info/learn/l120.html
-8. abiEncoder：https://abi.hashex.org/
-9. move在线环境：https://playground.pontem.network/
-10. js在线环境：https://playcode.io/1018304
-11. Web3 playground: https://web3playground.io/
-12. 以太坊交易解析：https://flightwallet.github.io/decode-eth-tx/
-13. gorm手册：http://gorm.io/zh_CN/docs/index.html
-14. 知识图谱：https://www.processon.com/view/link/5a9ba4c8e4b0a9d22eb3bdf0#map
-15. gin学习：https://blog.csdn.net/e421083458/article/details/91994788
-16. [Cross chain Dapp starter kit (ETH / Moralis)](https://reactjsexample.com/cross-chain-dapp-starter-kit-eth-moralis/)
-17. 学习以太坊：https://learnblockchain.cn/books/geth/part1.html
-18. makefile：https://www.cnblogs.com/idorax/p/9306528.html
+2. sign-verify: https://app.mycrypto.com/sign-message
+3. 地址生成协议（BIP32-BIP44）在线体验：https://iancoleman.io/bip39/#english
+4. 在线keccak256：https://emn178.github.io/online-tools/keccak_256.html
+5. Ether-> wei converter: https://eth-converter.com/
+6. URL编码转中文：https://cafewebmaster.com/online_tools/rawurldecode
+7. Json格式化：https://www.json.cn/
+8. 转成hex：http://www.metools.info/learn/l120.html
+9. abiEncoder：https://abi.hashex.org/
+10. move在线环境：https://playground.pontem.network/
+11. js在线环境：https://playcode.io/1018304
+12. Web3 playground: https://web3playground.io/
+13. 以太坊交易解析：https://flightwallet.github.io/decode-eth-tx/
+14. gorm手册：http://gorm.io/zh_CN/docs/index.html
+15. 知识图谱：https://www.processon.com/view/link/5a9ba4c8e4b0a9d22eb3bdf0#map
+16. gin学习：https://blog.csdn.net/e421083458/article/details/91994788
+17. [Cross chain Dapp starter kit (ETH / Moralis)](https://reactjsexample.com/cross-chain-dapp-starter-kit-eth-moralis/)
+18. 学习以太坊：https://learnblockchain.cn/books/geth/part1.html
+19. makefile：https://www.cnblogs.com/idorax/p/9306528.html
