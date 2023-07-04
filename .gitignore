@@ -3,3 +3,4 @@ _book
 .DS_Store
 publish.sh
 .vscode
+.obsidian

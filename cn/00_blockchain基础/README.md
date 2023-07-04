@@ -24,7 +24,8 @@
 
 ## 3. Bsc 测试网
 
-- faucet：https://testnet.bnbchain.org/faucet-smart
+- 已经废弃faucet：https://testnet.bnbchain.org/faucet-smart
+- 更新为在discord领取: https://discord.com/app/invite-with-guild-onboarding/bnbchain
 - 浏览器：https://testnet.bscscan.com/
 
 
