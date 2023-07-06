@@ -1,1 +1,0 @@
-¡Desbloquea el vault para pasar de nivel!
