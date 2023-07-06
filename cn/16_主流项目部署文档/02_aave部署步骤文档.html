@@ -1,0 +1,3793 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <title>第16节:aave部署步骤文档 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-richquotes/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-language-picker/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="01_uniswapV2部署文档.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../Moledao.html">
+            
+                <a href="../Moledao.html">
+            
+                    
+                    加入MoleDAO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <a target="_blank" href="https://github.com/dukedaily/solidity-expert">
+            
+                    
+                    Github
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    扫码入群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../赞助作者️.html">
+            
+                <a href="../赞助作者️.html">
+            
+                    
+                    赞助作者☕️
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../SUMMARY.html">
+            
+                <a href="../SUMMARY.html">
+            
+                    
+                    课程目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../思维导图.html">
+            
+                <a href="../思维导图.html">
+            
+                    
+                    思维导图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../00_blockchain基础/">
+            
+                <a href="../00_blockchain基础/">
+            
+                    
+                    第0章:blockchain基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../00_blockchain基础/01_什么是区块链.html">
+            
+                <a href="../00_blockchain基础/01_什么是区块链.html">
+            
+                    
+                    第1节:什么是区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../00_blockchain基础/02_什么是比特币.html">
+            
+                <a href="../00_blockchain基础/02_什么是比特币.html">
+            
+                    
+                    第2节:什么是比特币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../00_blockchain基础/03_什么是以太坊.html">
+            
+                <a href="../00_blockchain基础/03_什么是以太坊.html">
+            
+                    
+                    第3节:什么是以太坊
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../00_blockchain基础/04_App与Dapp.html">
+            
+                <a href="../00_blockchain基础/04_App与Dapp.html">
+            
+                    
+                    第4节:App与Dapp异同
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../00_blockchain基础/05_DAPP技术栈.html">
+            
+                <a href="../00_blockchain基础/05_DAPP技术栈.html">
+            
+                    
+                    第5节:DAPP技术栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../00_blockchain基础/06_web3优质学习资源.html">
+            
+                <a href="../00_blockchain基础/06_web3优质学习资源.html">
+            
+                    
+                    第6节:web3优质学习资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../00_blockchain基础/07_钱包与地址.html">
+            
+                <a href="../00_blockchain基础/07_钱包与地址.html">
+            
+                    
+                    第7节:钱包与地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../00_blockchain基础/08_Remix教程.html">
+            
+                <a href="../00_blockchain基础/08_Remix教程.html">
+            
+                    
+                    第8节:Remix教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../00_blockchain基础/09_区块链就业.html">
+            
+                <a href="../00_blockchain基础/09_区块链就业.html">
+            
+                    
+                    第9节:区块链就业
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../00_blockchain基础/10_solidity岗位要求.html">
+            
+                <a href="../00_blockchain基础/10_solidity岗位要求.html">
+            
+                    
+                    第10节:solidity岗位要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../00_blockchain基础/11_rpc节点.html">
+            
+                <a href="../00_blockchain基础/11_rpc节点.html">
+            
+                    
+                    第11节:rpc节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../00_blockchain基础/12_etherscan.html">
+            
+                <a href="../00_blockchain基础/12_etherscan.html">
+            
+                    
+                    第12节:12_etherscan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="../00_blockchain基础/13_区块链黑话.html">
+            
+                <a href="../00_blockchain基础/13_区块链黑话.html">
+            
+                    
+                    第13节:13_区块链黑话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.14" data-path="../00_blockchain基础/20_如何参与.html">
+            
+                <a href="../00_blockchain基础/20_如何参与.html">
+            
+                    
+                    第20节:20_如何参与
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../01_solidity基础/">
+            
+                <a href="../01_solidity基础/">
+            
+                    
+                    第一章:solidity基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../01_solidity基础/01_helloworld.html">
+            
+                <a href="../01_solidity基础/01_helloworld.html">
+            
+                    
+                    第1节:helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../01_solidity基础/02_第一个dapp.html">
+            
+                <a href="../01_solidity基础/02_第一个dapp.html">
+            
+                    
+                    第2节:第一个dapp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../01_solidity基础/03_基础数据类型.html">
+            
+                <a href="../01_solidity基础/03_基础数据类型.html">
+            
+                    
+                    第3节:基础数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../01_solidity基础/04_变量variables.html">
+            
+                <a href="../01_solidity基础/04_变量variables.html">
+            
+                    
+                    第4节:变量variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../01_solidity基础/05_常量constant.html">
+            
+                <a href="../01_solidity基础/05_常量constant.html">
+            
+                    
+                    第5节:常量constant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../01_solidity基础/06_不可变量immutable.html">
+            
+                <a href="../01_solidity基础/06_不可变量immutable.html">
+            
+                    
+                    第6节:不可变量immutable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../01_solidity基础/07_读写状态变量.html">
+            
+                <a href="../01_solidity基础/07_读写状态变量.html">
+            
+                    
+                    第7节:读写状态变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../01_solidity基础/08_ether和wei.html">
+            
+                <a href="../01_solidity基础/08_ether和wei.html">
+            
+                    
+                    第8节:ether和wei
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../01_solidity基础/09_gas和gasprice.html">
+            
+                <a href="../01_solidity基础/09_gas和gasprice.html">
+            
+                    
+                    第9节:gas和gasprice
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../01_solidity基础/10_ifElse.html">
+            
+                <a href="../01_solidity基础/10_ifElse.html">
+            
+                    
+                    第10节:ifElse
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="../01_solidity基础/11_forWhileLoop.html">
+            
+                <a href="../01_solidity基础/11_forWhileLoop.html">
+            
+                    
+                    第11节:forWhileLoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12" data-path="../01_solidity基础/12_bytes和string.html">
+            
+                <a href="../01_solidity基础/12_bytes和string.html">
+            
+                    
+                    第12节:bytes和string
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13" data-path="../01_solidity基础/13_映射Mapping.html">
+            
+                <a href="../01_solidity基础/13_映射Mapping.html">
+            
+                    
+                    第13节:映射Mapping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.14" data-path="../01_solidity基础/14_数组Array.html">
+            
+                <a href="../01_solidity基础/14_数组Array.html">
+            
+                    
+                    第14节:数组Array
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.15" data-path="../01_solidity基础/15_枚举Enum.html">
+            
+                <a href="../01_solidity基础/15_枚举Enum.html">
+            
+                    
+                    第15节:枚举Enum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.16" data-path="../01_solidity基础/16_结构体Struct.html">
+            
+                <a href="../01_solidity基础/16_结构体Struct.html">
+            
+                    
+                    第16节:结构体Struct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.17" data-path="../01_solidity基础/17_memory_storage_calldata.html">
+            
+                <a href="../01_solidity基础/17_memory_storage_calldata.html">
+            
+                    
+                    第17节:storage_calldata
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.18" data-path="../01_solidity基础/18_函数Function.html">
+            
+                <a href="../01_solidity基础/18_函数Function.html">
+            
+                    
+                    第18节:函数Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.19" data-path="../01_solidity基础/19_view和pure.html">
+            
+                <a href="../01_solidity基础/19_view和pure.html">
+            
+                    
+                    第19节:view和pure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.20" data-path="../01_solidity基础/20_error.html">
+            
+                <a href="../01_solidity基础/20_error.html">
+            
+                    
+                    第20节:error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.21" data-path="../01_solidity基础/21_修饰器modifier.html">
+            
+                <a href="../01_solidity基础/21_修饰器modifier.html">
+            
+                    
+                    第21节:修饰器modifier
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.22" data-path="../01_solidity基础/22_事件Event.html">
+            
+                <a href="../01_solidity基础/22_事件Event.html">
+            
+                    
+                    第22节:事件Event
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.23" data-path="../01_solidity基础/23_继承的方法_重写.html">
+            
+                <a href="../01_solidity基础/23_继承的方法_重写.html">
+            
+                    
+                    第23节:继承的方法_重写
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.24" data-path="../01_solidity基础/24_继承状态变量_覆盖.html">
+            
+                <a href="../01_solidity基础/24_继承状态变量_覆盖.html">
+            
+                    
+                    第24节:继承状态变量_覆盖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.25" data-path="../01_solidity基础/25_构造函数.html">
+            
+                <a href="../01_solidity基础/25_构造函数.html">
+            
+                    
+                    第25节:构造函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.26" data-path="../01_solidity基础/26_可见性visibility.html">
+            
+                <a href="../01_solidity基础/26_可见性visibility.html">
+            
+                    
+                    第26节:可见性visibility
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.27" data-path="../01_solidity基础/27_abstract.html">
+            
+                <a href="../01_solidity基础/27_abstract.html">
+            
+                    
+                    第27节:abstract
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.28" data-path="../01_solidity基础/28_interface.html">
+            
+                <a href="../01_solidity基础/28_interface.html">
+            
+                    
+                    第28节:interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.29" data-path="../01_solidity基础/29_library.html">
+            
+                <a href="../01_solidity基础/29_library.html">
+            
+                    
+                    第29节:library
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.30" data-path="../01_solidity基础/30_传递结构体.html">
+            
+                <a href="../01_solidity基础/30_传递结构体.html">
+            
+                    
+                    第30节:传递结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../02_solidity进阶/">
+            
+                <a href="../02_solidity进阶/">
+            
+                    
+                    第二章:solidity进阶
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../02_solidity进阶/01_全局变量.html">
+            
+                <a href="../02_solidity进阶/01_全局变量.html">
+            
+                    
+                    第1节:全局变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../02_solidity进阶/02_msg三人组.html">
+            
+                <a href="../02_solidity进阶/02_msg三人组.html">
+            
+                    
+                    第2节:msg三人组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../02_solidity进阶/03_payable.html">
+            
+                <a href="../02_solidity进阶/03_payable.html">
+            
+                    
+                    第3节:payable
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../02_solidity进阶/04_encode_encodePacked.html">
+            
+                <a href="../02_solidity进阶/04_encode_encodePacked.html">
+            
+                    
+                    第4节:encode_encodePacked
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../02_solidity进阶/05_call&staticcall.html">
+            
+                <a href="../02_solidity进阶/05_call&staticcall.html">
+            
+                    
+                    第5节:call&staticcall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../02_solidity进阶/06_keccak256.html">
+            
+                <a href="../02_solidity进阶/06_keccak256.html">
+            
+                    
+                    第6节:keccak256
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../02_solidity进阶/07_selector.html">
+            
+                <a href="../02_solidity进阶/07_selector.html">
+            
+                    
+                    第7节:selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../02_solidity进阶/08_send_ether.html">
+            
+                <a href="../02_solidity进阶/08_send_ether.html">
+            
+                    
+                    第8节:send_ether
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../02_solidity进阶/09_delegatecall.html">
+            
+                <a href="../02_solidity进阶/09_delegatecall.html">
+            
+                    
+                    第9节:delegatecall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../02_solidity进阶/10_fallback.html">
+            
+                <a href="../02_solidity进阶/10_fallback.html">
+            
+                    
+                    第10节:fallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../02_solidity进阶/11_合约间调用.html">
+            
+                <a href="../02_solidity进阶/11_合约间调用.html">
+            
+                    
+                    第11节:合约间调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../02_solidity进阶/12_new_create2.html">
+            
+                <a href="../02_solidity进阶/12_new_create2.html">
+            
+                    
+                    第12节:new_create2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../02_solidity进阶/13_delete.html">
+            
+                <a href="../02_solidity进阶/13_delete.html">
+            
+                    
+                    第13节:delete
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../02_solidity进阶/14_try_catch.html">
+            
+                <a href="../02_solidity进阶/14_try_catch.html">
+            
+                    
+                    第14节:try_catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../02_solidity进阶/15_import.html">
+            
+                <a href="../02_solidity进阶/15_import.html">
+            
+                    
+                    第15节:import
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../02_solidity进阶/16_节约gas.html">
+            
+                <a href="../02_solidity进阶/16_节约gas.html">
+            
+                    
+                    第16节:节约gas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.17" data-path="../02_solidity进阶/17_type.html">
+            
+                <a href="../02_solidity进阶/17_type.html">
+            
+                    
+                    第17节:type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.18" data-path="../02_solidity进阶/18_assembly.html">
+            
+                <a href="../02_solidity进阶/18_assembly.html">
+            
+                    
+                    第18节:assembly
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.19" data-path="../02_solidity进阶/19_merkleTree.html">
+            
+                <a href="../02_solidity进阶/19_merkleTree.html">
+            
+                    
+                    第19节:merkleTree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.20" data-path="../02_solidity进阶/20_signature.html">
+            
+                <a href="../02_solidity进阶/20_signature.html">
+            
+                    
+                    第20节:signature
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.21" data-path="../02_solidity进阶/21_permit.html">
+            
+                <a href="../02_solidity进阶/21_permit.html">
+            
+                    
+                    第21节:permit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.22" data-path="../02_solidity进阶/22_math.html">
+            
+                <a href="../02_solidity进阶/22_math.html">
+            
+                    
+                    第22节:math
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.23" data-path="../02_solidity进阶/23_timelock.html">
+            
+                <a href="../02_solidity进阶/23_timelock.html">
+            
+                    
+                    第23节:timelock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.24" data-path="../02_solidity进阶/24_upgrade.html">
+            
+                <a href="../02_solidity进阶/24_upgrade.html">
+            
+                    
+                    第24节:upgrade
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.25" data-path="../02_solidity进阶/25_eventLog.html">
+            
+                <a href="../02_solidity进阶/25_eventLog.html">
+            
+                    
+                    第25节:eventLog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.26" data-path="../02_solidity进阶/26_selfdestruct.html">
+            
+                <a href="../02_solidity进阶/26_selfdestruct.html">
+            
+                    
+                    第26节:selfdestruct
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.27" data-path="../02_solidity进阶/27_permit2.html">
+            
+                <a href="../02_solidity进阶/27_permit2.html">
+            
+                    
+                    第27节:permit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.28" data-path="../02_solidity进阶/28_signature-eip712.html">
+            
+                <a href="../02_solidity进阶/28_signature-eip712.html">
+            
+                    
+                    第28节:signature-eip712
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../03_EIP协议/">
+            
+                <a href="../03_EIP协议/">
+            
+                    
+                    第三章:EIP协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../03_EIP协议/01_ERC20.html">
+            
+                <a href="../03_EIP协议/01_ERC20.html">
+            
+                    
+                    第1节:ERC20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../03_EIP协议/02_ERC721.html">
+            
+                <a href="../03_EIP协议/02_ERC721.html">
+            
+                    
+                    第2节:ERC721
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../03_EIP协议/03_ERC1155.html">
+            
+                <a href="../03_EIP协议/03_ERC1155.html">
+            
+                    
+                    第3节:ERC1155
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../03_EIP协议/04_ERC165.html">
+            
+                <a href="../03_EIP协议/04_ERC165.html">
+            
+                    
+                    第4节:ERC165
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../03_EIP协议/05_EIP2612.html">
+            
+                <a href="../03_EIP协议/05_EIP2612.html">
+            
+                    
+                    第5节:EIP2612
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../03_EIP协议/06_EIP712.html">
+            
+                <a href="../03_EIP协议/06_EIP712.html">
+            
+                    
+                    第6节:EIP712
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../03_EIP协议/07_ERC5114.html">
+            
+                <a href="../03_EIP协议/07_ERC5114.html">
+            
+                    
+                    第7节:ERC5114
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../03_EIP协议/08_ERC1820.html">
+            
+                <a href="../03_EIP协议/08_ERC1820.html">
+            
+                    
+                    第8节:ERC1820
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../03_EIP协议/09_ERC4626.html">
+            
+                <a href="../03_EIP协议/09_ERC4626.html">
+            
+                    
+                    第9节:ERC4626
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../03_EIP协议/10_EIP1559.html">
+            
+                <a href="../03_EIP协议/10_EIP1559.html">
+            
+                    
+                    第10节:EIP1559
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../03_EIP协议/20_NFT理念探讨.html">
+            
+                <a href="../03_EIP协议/20_NFT理念探讨.html">
+            
+                    
+                    第20节:NFT理念探讨
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../03_EIP协议/21_metaverse.html">
+            
+                <a href="../03_EIP协议/21_metaverse.html">
+            
+                    
+                    第21节:Metaverse
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../04_合约攻击/">
+            
+                <a href="../04_合约攻击/">
+            
+                    
+                    第四章:合约攻击
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../04_合约攻击/01_重入攻击.html">
+            
+                <a href="../04_合约攻击/01_重入攻击.html">
+            
+                    
+                    第1节:重入攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../04_合约攻击/02_返回值校验.html">
+            
+                <a href="../04_合约攻击/02_返回值校验.html">
+            
+                    
+                    第2节:返回值校验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../04_合约攻击/03_合约自杀导致Dos.html">
+            
+                <a href="../04_合约攻击/03_合约自杀导致Dos.html">
+            
+                    
+                    第3节:合约自杀导致Dos
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../04_合约攻击/04_读取私有变量.html">
+            
+                <a href="../04_合约攻击/04_读取私有变量.html">
+            
+                    
+                    第4节:读取私有变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../04_合约攻击/11_安全事故1-poly网络哈希碰撞攻击.html">
+            
+                <a href="../04_合约攻击/11_安全事故1-poly网络哈希碰撞攻击.html">
+            
+                    
+                    第11节:安全事故1-poly网络哈希碰撞攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../04_合约攻击/12_安全事故2-OP代币重放攻击.html">
+            
+                <a href="../04_合约攻击/12_安全事故2-OP代币重放攻击.html">
+            
+                    
+                    第12节:安全事故2-OP代币重放攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="../04_合约攻击/13_安全事故3-FTX因免手续费提币攻击.html">
+            
+                <a href="../04_合约攻击/13_安全事故3-FTX因免手续费提币攻击.html">
+            
+                    
+                    第13节:安全事故3-FTX因免手续费提币攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="../04_合约攻击/14_安全事故4-profanity弱随机数暴力破解攻击.html">
+            
+                <a href="../04_合约攻击/14_安全事故4-profanity弱随机数暴力破解攻击.html">
+            
+                    
+                    第14节:安全事故4-profanity弱随机数暴力破解攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="../04_合约攻击/15_安全事故5-出块相关攻击.html">
+            
+                <a href="../04_合约攻击/15_安全事故5-出块相关攻击.html">
+            
+                    
+                    第15节:安全事故5-出块相关攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="../04_合约攻击/16_安全事故6-msgvalue持久化问题.html">
+            
+                <a href="../04_合约攻击/16_安全事故6-msgvalue持久化问题.html">
+            
+                    
+                    第16节:安全事故6-msgvalue持久化问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../04_合约攻击/17_安全事故7-用EOA来call方法攻击.html">
+            
+                <a href="../04_合约攻击/17_安全事故7-用EOA来call方法攻击.html">
+            
+                    
+                    第17节:安全事故7-用EOA来call方法攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../04_合约攻击/18_安全事故8-可燃烧代币攻击.html">
+            
+                <a href="../04_合约攻击/18_安全事故8-可燃烧代币攻击.html">
+            
+                    
+                    第18节:安全事故8-可燃烧代币攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../04_合约攻击/19_安全事故9-签名验证攻击.html">
+            
+                <a href="../04_合约攻击/19_安全事故9-签名验证攻击.html">
+            
+                    
+                    第19节:安全事故9-签名验证攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../04_合约攻击/20_安全事故10-delegatecall攻击.html">
+            
+                <a href="../04_合约攻击/20_安全事故10-delegatecall攻击.html">
+            
+                    
+                    第20节:安全事故10-delegatecall攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.15" data-path="../04_合约攻击/21_安全事故11-tx.origin攻击.html">
+            
+                <a href="../04_合约攻击/21_安全事故11-tx.origin攻击.html">
+            
+                    
+                    第21节:安全事故11-tx.origin攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.16" data-path="../04_合约攻击/22_安全事故12-DOS攻击.html">
+            
+                <a href="../04_合约攻击/22_安全事故12-DOS攻击.html">
+            
+                    
+                    第22节:安全事故12-DOS攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.17" data-path="../04_合约攻击/23_安全事故13-encodePacked攻击.html">
+            
+                <a href="../04_合约攻击/23_安全事故13-encodePacked攻击.html">
+            
+                    
+                    第23节:安全事故13-encodePacked攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.18" data-path="../04_合约攻击/24_安全事故14-短地址攻击.html">
+            
+                <a href="../04_合约攻击/24_安全事故14-短地址攻击.html">
+            
+                    
+                    第24节:安全事故14-短地址攻击
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.19" data-path="../04_合约攻击/30_智能合约编写一般原则.html">
+            
+                <a href="../04_合约攻击/30_智能合约编写一般原则.html">
+            
+                    
+                    第30节:智能合约编写一般原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.20" data-path="../04_合约攻击/31_智能合约编写系统规则.html">
+            
+                <a href="../04_合约攻击/31_智能合约编写系统规则.html">
+            
+                    
+                    第31节:智能合约编写系统规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.21" data-path="../04_合约攻击/32_智能合约编写最佳实践.html">
+            
+                <a href="../04_合约攻击/32_智能合约编写最佳实践.html">
+            
+                    
+                    第32节:智能合约编写最佳实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.22" data-path="../04_合约攻击/33_Solgraph.html">
+            
+                <a href="../04_合约攻击/33_Solgraph.html">
+            
+                    
+                    第33节:Solgraph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.23" data-path="../04_合约攻击/34_Mythril.html">
+            
+                <a href="../04_合约攻击/34_Mythril.html">
+            
+                    
+                    第34节:Mythril
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.24" data-path="../04_合约攻击/35_Slither.html">
+            
+                <a href="../04_合约攻击/35_Slither.html">
+            
+                    
+                    第35节:Slither
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.25" data-path="../04_合约攻击/36_REMIX静态扫描工具.html">
+            
+                <a href="../04_合约攻击/36_REMIX静态扫描工具.html">
+            
+                    
+                    第36节:REMIX静态扫描工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.26" data-path="../04_合约攻击/37_SECURIF.html">
+            
+                <a href="../04_合约攻击/37_SECURIF.html">
+            
+                    
+                    第37节:SECURIF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../05_hardhat框架/">
+            
+                <a href="../05_hardhat框架/">
+            
+                    
+                    第五章:hardhat框架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../05_hardhat框架/01_QuickStart.html">
+            
+                <a href="../05_hardhat框架/01_QuickStart.html">
+            
+                    
+                    第1节:QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../05_hardhat框架/02_单元测试.html">
+            
+                <a href="../05_hardhat框架/02_单元测试.html">
+            
+                    
+                    第2节:单元测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../05_hardhat框架/03_fork主网.html">
+            
+                <a href="../05_hardhat框架/03_fork主网.html">
+            
+                    
+                    第3节:fork主网
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../05_hardhat框架/04_多版本编译.html">
+            
+                <a href="../05_hardhat框架/04_多版本编译.html">
+            
+                    
+                    第4节:多版本编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../05_hardhat框架/05_多网络部署相同地址.html">
+            
+                <a href="../05_hardhat框架/05_多网络部署相同地址.html">
+            
+                    
+                    第5节:多网络部署相同地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../05_hardhat框架/06_实用插件.html">
+            
+                <a href="../05_hardhat框架/06_实用插件.html">
+            
+                    
+                    第6节:实用插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../06_ethers/">
+            
+                <a href="../06_ethers/">
+            
+                    
+                    第六章:ethers
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../06_ethers/01_Node.js介绍.html">
+            
+                <a href="../06_ethers/01_Node.js介绍.html">
+            
+                    
+                    第1节:Node.js介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../07_subgraph/">
+            
+                <a href="../07_subgraph/">
+            
+                    
+                    第七章:subgraph
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../07_subgraph/00_命令速查.html">
+            
+                <a href="../07_subgraph/00_命令速查.html">
+            
+                    
+                    第0节:命令速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../07_subgraph/01_概述.html">
+            
+                <a href="../07_subgraph/01_概述.html">
+            
+                    
+                    第1节:概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../07_subgraph/02_实战教程.html">
+            
+                <a href="../07_subgraph/02_实战教程.html">
+            
+                    
+                    第2节:教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../08_项目实战-世界杯竞猜/">
+            
+                <a href="../08_项目实战-世界杯竞猜/">
+            
+                    
+                    第八章:项目实战-世界杯竞猜
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../08_项目实战-世界杯竞猜/moledao课程/01-区块链基础（上）.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/moledao课程/01-区块链基础（上）.html">
+            
+                    
+                    第a节:世界杯竞猜_区块链基础（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/moledao课程/02-区块链基础（下）.html">
+            
+                    
+                    第b节:世界杯竞猜_区块链基础（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="../08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/moledao课程/03-solidity（上）.html">
+            
+                    
+                    第c节:世界杯竞猜_solidity（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.4" data-path="../08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/moledao课程/04-solidity（下）.html">
+            
+                    
+                    第d节:世界杯竞猜_solidity（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.5" data-path="../08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/01_世界杯竞猜_solidity.html">
+            
+                    
+                    第1节:世界杯竞猜_solidity
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.6" data-path="../08_项目实战-世界杯竞猜/02_世界杯竞猜_hardhat.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/02_世界杯竞猜_hardhat.html">
+            
+                    
+                    第2节:世界杯竞猜_hardhat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.7" data-path="../08_项目实战-世界杯竞猜/03_世界杯竞猜_ERC20.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/03_世界杯竞猜_ERC20.html">
+            
+                    
+                    第3节:世界杯竞猜_ERC20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.8" data-path="../08_项目实战-世界杯竞猜/04_世界杯竞猜_subgraph.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/04_世界杯竞猜_subgraph.html">
+            
+                    
+                    第4节:世界杯竞猜_subgraph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.9" data-path="../08_项目实战-世界杯竞猜/05-世界杯竞猜_airdrop.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/05-世界杯竞猜_airdrop.html">
+            
+                    
+                    第5节:世界杯竞猜_airdrop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.10" data-path="../08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.html">
+            
+                    
+                    第6节:世界杯竞猜_upgrade
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.11" data-path="../08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.html">
+            
+                    
+                    第7节:世界杯竞猜_链下签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.12" data-path="../08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.html">
+            
+                    
+                    第8节:世界杯竞猜_多签钱包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.13" data-path="../08_项目实战-世界杯竞猜/09_世界杯竞猜_Go交互合约.html">
+            
+                <a href="../08_项目实战-世界杯竞猜/09_世界杯竞猜_Go交互合约.html">
+            
+                    
+                    第9节:世界杯竞猜_Go交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../09_EVM详解/">
+            
+                <a href="../09_EVM详解/">
+            
+                    
+                    第九章:EVM详解
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../09_EVM详解/01_OPCode手册.html">
+            
+                <a href="../09_EVM详解/01_OPCode手册.html">
+            
+                    
+                    第1节:OPCode手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="../09_EVM详解/02-evm-puzzles.html">
+            
+                <a href="../09_EVM详解/02-evm-puzzles.html">
+            
+                    
+                    第2节:EVM-PUZZLES挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="../09_EVM详解/03-汇编概述.html">
+            
+                <a href="../09_EVM详解/03-汇编概述.html">
+            
+                    
+                    第3节:汇编概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../10_EVM反汇编/">
+            
+                <a href="../10_EVM反汇编/">
+            
+                    
+                    第十章:EVM反汇编
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../10_EVM反汇编/01_反汇编初步了解.html">
+            
+                <a href="../10_EVM反汇编/01_反汇编初步了解.html">
+            
+                    
+                    第1节:反汇编初步了解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../10_EVM反汇编/02_合约部署都做了啥.html">
+            
+                <a href="../10_EVM反汇编/02_合约部署都做了啥.html">
+            
+                    
+                    第2节:合约部署都做了啥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../10_EVM反汇编/03_各种类型是如何存储的.html">
+            
+                <a href="../10_EVM反汇编/03_各种类型是如何存储的.html">
+            
+                    
+                    第3节:各种类型是如何存储的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../10_EVM反汇编/04_五种程序终止命令介绍.html">
+            
+                <a href="../10_EVM反汇编/04_五种程序终止命令介绍.html">
+            
+                    
+                    第4节:五种程序终止命令介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.5" data-path="../10_EVM反汇编/05_function执行流程.html">
+            
+                <a href="../10_EVM反汇编/05_function执行流程.html">
+            
+                    
+                    第5节:function执行流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.6" data-path="../10_EVM反汇编/06_智能合约Layout分析.html">
+            
+                <a href="../10_EVM反汇编/06_智能合约Layout分析.html">
+            
+                    
+                    第6节:智能合约Layout分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.7" data-path="../10_EVM反汇编/07_合约间调用.html">
+            
+                <a href="../10_EVM反汇编/07_合约间调用.html">
+            
+                    
+                    第7节:合约间调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../11_精通比特币/">
+            
+                <a href="../11_精通比特币/">
+            
+                    
+                    第十一章:精通比特币
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../11_精通比特币/day1-01-交易演变.html">
+            
+                <a href="../11_精通比特币/day1-01-交易演变.html">
+            
+                    
+                    第1节:day1-交易演变
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../11_精通比特币/day1-02-比特币诞生背景.html">
+            
+                <a href="../11_精通比特币/day1-02-比特币诞生背景.html">
+            
+                    
+                    第2节:day1-比特币诞生背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../11_精通比特币/day1-03-比特币概述.html">
+            
+                <a href="../11_精通比特币/day1-03-比特币概述.html">
+            
+                    
+                    第3节:day1-比特币概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.4" data-path="../11_精通比特币/day1-04-比特币依赖技术.html">
+            
+                <a href="../11_精通比特币/day1-04-比特币依赖技术.html">
+            
+                    
+                    第4节:day1-比特币依赖技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.5" data-path="../11_精通比特币/day1-05-比特币结构.html">
+            
+                <a href="../11_精通比特币/day1-05-比特币结构.html">
+            
+                    
+                    第5节:day1-比特币结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.6" data-path="../11_精通比特币/day1-06-v1链条.html">
+            
+                <a href="../11_精通比特币/day1-06-v1链条.html">
+            
+                    
+                    第6节:day1-v1链条
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.7" data-path="../11_精通比特币/day1-07-Bitcoin客户端.html">
+            
+                <a href="../11_精通比特币/day1-07-Bitcoin客户端.html">
+            
+                    
+                    第7节:day1-Bitcoin客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.8" data-path="../11_精通比特币/day2-01-v2挖矿.html">
+            
+                <a href="../11_精通比特币/day2-01-v2挖矿.html">
+            
+                    
+                    第8节:day2-v2挖矿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.9" data-path="../11_精通比特币/day2-02-v3存储.html">
+            
+                <a href="../11_精通比特币/day2-02-v3存储.html">
+            
+                    
+                    第9节:day2-v3存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.10" data-path="../11_精通比特币/day3-01-交易原理.html">
+            
+                <a href="../11_精通比特币/day3-01-交易原理.html">
+            
+                    
+                    第10节:day3-交易原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.11" data-path="../11_精通比特币/day3-02-v4余额.html">
+            
+                <a href="../11_精通比特币/day3-02-v4余额.html">
+            
+                    
+                    第11节:day3-v4余额
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.12" data-path="../11_精通比特币/day4-01-v4转账.html">
+            
+                <a href="../11_精通比特币/day4-01-v4转账.html">
+            
+                    
+                    第12节:day4-v4转账
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.13" data-path="../11_精通比特币/day4-02-v5钱包.html">
+            
+                <a href="../11_精通比特币/day4-02-v5钱包.html">
+            
+                    
+                    第13节:day4-v5钱包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.14" data-path="../11_精通比特币/day5-01-v5签名.html">
+            
+                <a href="../11_精通比特币/day5-01-v5签名.html">
+            
+                    
+                    第14节:day5-v5签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../12_精通以太坊/">
+            
+                <a href="../12_精通以太坊/">
+            
+                    
+                    第十二章:精通以太坊
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../12_精通以太坊/01_以太坊架构.html">
+            
+                <a href="../12_精通以太坊/01_以太坊架构.html">
+            
+                    
+                    第1节:以太坊架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../13_openzeppelin解析/">
+            
+                <a href="../13_openzeppelin解析/">
+            
+                    
+                    第十三章:openzeppelin解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="../13_openzeppelin解析/01_accessControl.html">
+            
+                <a href="../13_openzeppelin解析/01_accessControl.html">
+            
+                    
+                    第1节:AccessControl
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.2" data-path="../13_openzeppelin解析/02_EnumerableSet.html">
+            
+                <a href="../13_openzeppelin解析/02_EnumerableSet.html">
+            
+                    
+                    第2节:EnumerableSet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.3" data-path="../13_openzeppelin解析/03_EnumerableMap.html">
+            
+                <a href="../13_openzeppelin解析/03_EnumerableMap.html">
+            
+                    
+                    第3节:EnumerableMap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.4" data-path="../13_openzeppelin解析/04_BitMaps.html">
+            
+                <a href="../13_openzeppelin解析/04_BitMaps.html">
+            
+                    
+                    第4节:BitMaps
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.5" data-path="../13_openzeppelin解析/05_DoubleEndedQueue.html">
+            
+                <a href="../13_openzeppelin解析/05_DoubleEndedQueue.html">
+            
+                    
+                    第5节:DoubleEndedQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.6" data-path="../13_openzeppelin解析/06_ECDSA.html">
+            
+                <a href="../13_openzeppelin解析/06_ECDSA.html">
+            
+                    
+                    第6节:ECDSA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.7" data-path="../13_openzeppelin解析/07_SignatureChecker.html">
+            
+                <a href="../13_openzeppelin解析/07_SignatureChecker.html">
+            
+                    
+                    第7节:SignatureChecker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20.8" data-path="../13_openzeppelin解析/08_EIP712.html">
+            
+                <a href="../13_openzeppelin解析/08_EIP712.html">
+            
+                    
+                    第8节:EIP712
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../14_Golang合约交互/">
+            
+                <a href="../14_Golang合约交互/">
+            
+                    
+                    第十四章:Golang合约交互
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="../14_Golang合约交互/01_编译部署合约.html">
+            
+                <a href="../14_Golang合约交互/01_编译部署合约.html">
+            
+                    
+                    第1节:编译部署合约
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="../14_Golang合约交互/02_读写合约.html">
+            
+                <a href="../14_Golang合约交互/02_读写合约.html">
+            
+                    
+                    第2节:读写合约
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.3" data-path="../14_Golang合约交互/03_SendTx转账.html">
+            
+                <a href="../14_Golang合约交互/03_SendTx转账.html">
+            
+                    
+                    第3节:SendTx转账
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.4" data-path="../14_Golang合约交互/04_SendRawTx转账.html">
+            
+                <a href="../14_Golang合约交互/04_SendRawTx转账.html">
+            
+                    
+                    第4节:SendRawTx转账
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.5" data-path="../14_Golang合约交互/05_订阅事件.html">
+            
+                <a href="../14_Golang合约交互/05_订阅事件.html">
+            
+                    
+                    第5节:订阅事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.6" data-path="../14_Golang合约交互/06_解析事件.html">
+            
+                <a href="../14_Golang合约交互/06_解析事件.html">
+            
+                    
+                    第6节:解析事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../15_热门技术追踪/">
+            
+                <a href="../15_热门技术追踪/">
+            
+                    
+                    第十五:热门技术追踪
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="../15_热门技术追踪/01_从Layer1到Layer3.html">
+            
+                <a href="../15_热门技术追踪/01_从Layer1到Layer3.html">
+            
+                    
+                    第1节:从Layer0到Layer3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.2" data-path="../15_热门技术追踪/02_以太坊扩容方案.html">
+            
+                <a href="../15_热门技术追踪/02_以太坊扩容方案.html">
+            
+                    
+                    第2节:以太坊扩容方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.3" data-path="../15_热门技术追踪/03_以太坊POS.html">
+            
+                <a href="../15_热门技术追踪/03_以太坊POS.html">
+            
+                    
+                    第3节:以太坊POS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.4" data-path="../15_热门技术追踪/04_从HD钱包到MPC钱包.html">
+            
+                <a href="../15_热门技术追踪/04_从HD钱包到MPC钱包.html">
+            
+                    
+                    第4节:从HD钱包到MPC钱包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.5" data-path="../15_热门技术追踪/05_跨链桥anyswap.html">
+            
+                <a href="../15_热门技术追踪/05_跨链桥anyswap.html">
+            
+                    
+                    第5节:跨链桥anyswap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.6" data-path="../15_热门技术追踪/06_跨链桥wormhole.html">
+            
+                <a href="../15_热门技术追踪/06_跨链桥wormhole.html">
+            
+                    
+                    第6节:跨链桥wormhole
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.7" data-path="../15_热门技术追踪/07_AA钱包.html">
+            
+                <a href="../15_热门技术追踪/07_AA钱包.html">
+            
+                    
+                    第7节:AA钱包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.8" data-path="../15_热门技术追踪/08_MEV.html">
+            
+                <a href="../15_热门技术追踪/08_MEV.html">
+            
+                    
+                    第8节:MEV
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.9" data-path="../15_热门技术追踪/09_稳定币.html">
+            
+                <a href="../15_热门技术追踪/09_稳定币.html">
+            
+                    
+                    第9节:09_稳定币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.10" data-path="../15_热门技术追踪/11_DID.html">
+            
+                <a href="../15_热门技术追踪/11_DID.html">
+            
+                    
+                    第11节:DID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.11" data-path="../15_热门技术追踪/12_存储.html">
+            
+                <a href="../15_热门技术追踪/12_存储.html">
+            
+                    
+                    第12节:存储
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.12" data-path="../15_热门技术追踪/13_ENS.html">
+            
+                <a href="../15_热门技术追踪/13_ENS.html">
+            
+                    
+                    第13节:ENS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.13" data-path="../15_热门技术追踪/14_gnosisSafe.html">
+            
+                <a href="../15_热门技术追踪/14_gnosisSafe.html">
+            
+                    
+                    第14节:GnosisSafe
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第十六:主流项目部署文档
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="01_uniswapV2部署文档.html">
+            
+                <a href="01_uniswapV2部署文档.html">
+            
+                    
+                    第16节:uniswapV2部署文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.23.2" data-path="02_aave部署步骤文档.html">
+            
+                <a href="02_aave部署步骤文档.html">
+            
+                    
+                    第16节:aave部署步骤文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第16节:aave部署步骤文档</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="基础准备">基础准备</h1>
+<p>获取ETH水龙头</p>
+<pre><code class="lang-sh">https://faucet.paradigm.xyz/
+</code></pre>
+<p>alchemy</p>
+<pre><code class="lang-sh">https://eth-kovan.alchemyapi.io/v2/-qZ8NcwdvM8gsbxWyFl_Iw9znBN5UV3t
+</code></pre>
+<h1 id="一、合约">一、合约</h1>
+<p>完整部署：</p>
+<pre><code class="lang-sh">npm run aave:kovan:full:migration:add-registry
+</code></pre>
+<p>超时了可以注释：aave.mainnet.ts里面的tasks</p>
+<p>也可以从中间环节开始运行，注意中间没有run命令，直接跟task名字</p>
+<pre><code class="lang-sh">hh full:initialize-lending-pool --pool Aave --network kovan
+</code></pre>
+<h2 id="1-使用官方资产部署">1. 使用官方资产部署</h2>
+<pre><code class="lang-sh">LendingPoolAddressesProvider: 0x604393277F9941756eF0660e52a891D80DDA9A8D
+LendingPool: 0x71b364b8f6a8eC762C491c35A2eeeECC2318FfBC
+LendingPoolConfigurator: 0xF58B5e7260A15d877de7c3feD692206467334F1D
+StableAndVariableTokensHelper: 0xca0Cc5078B70b2A044a68a3d62168B1E70DDeE6B
+ATokensAndRatesHelper: 0x3fCd82134F4D8d255dB8E13C104BfC1Ff75E7062
+AToken: 0xFf7203d4a95FB96edeAFbC824ebfA0227Ce39818
+DelegationAwareAToken: 0xC37111E660ec4aa36e87f88eFb234B82a2FF7AF0
+StableDebtToken: 0xBdfa271e8b528f317C5EDF696DFD192996bAa59a
+VariableDebtToken: 0x3e9E6972bdDd4BBb6b05602fA658e937E41DF2c8
+AaveProtocolDataProvider: 0x63d6A6bF940d6D23113a393BEe99EA5AA16ad599
+WETHGateway: 0xCb2148c72a5f43e92150e4f0bF638b9eCdAc2eEb
+DefaultReserveInterestRateStrategy: 0x5A2c62bcE4b26Bc72B7Df2f04904d298499d98F9
+rateStrategyStableTwo: 0x4d44D18925047F92f53bED911bC120A0FdD7CBA3
+rateStrategyWETH: 0x5A2c62bcE4b26Bc72B7Df2f04904d298499d98F9
+LendingPoolCollateralManagerImpl: 0x0E5914f696965cA1a7eCdfa17738EE28dCEb3c5D
+LendingPoolCollateralManager: 0x0E5914f696965cA1a7eCdfa17738EE28dCEb3c5D
+WalletBalanceProvider: 0x1d0Aa32eF595a7641d8Fd4ff3F077BFe6699318F
+UiPoolDataProvider: 0xD74c7b782B50C02fbB7aD48D4117D157D415A68A
+</code></pre>
+<p>自己部署需要哪些准备：</p>
+<ol>
+<li>所有的资产需要自己部署合约，DAI、WBTC等，ETH还是使用WETH官方的。币种可以直接使用</li>
+<li>chainlink自己mock，实现getPrice和setPrice方法，设置到Aggregator中</li>
+<li>ui的水龙头不再使用，我们自己发送币种。先试试：deploy-new-asset</li>
+</ol>
+<h2 id="2-前端需要的地址">2. 前端需要的地址</h2>
+<p>部署UniswapRepayAdapter，根据参数，添加一个部署命令到package.json中。</p>
+<p>其中需要：LendingPoolAddressesProvider、router2、weth参数，都是我们自己部署的。</p>
+<p>执行，记录地址，放在前端页面的：baseUniswapAdapter字段</p>
+<pre><code class="lang-sh">npx hardhat --network kovan deploy-UniswapRepayAdapter --provider 0x604393277F9941756eF0660e52a891D80DDA9A8D --router 0xDC292C81e24efB77Bc69e6d3727E3727EC1bF170 --weth 0xd0a1e359811322d97991e03f863a0c30c2cf029c
+
+<span class="hljs-comment">#0xaA0871B294198B81311108fC1E6a7e09C09aBD97，自己</span>
+</code></pre>
+<p>执行，记录地址，这个就是UiPoolDataProviderV2，==注意是V2==，放在前端页面的：uiPoolDataProvider字段</p>
+<p>==（自动部署脚本好像已经部署这个了）==（是的，不需要自己部署了）</p>
+<pre><code class="lang-sh">npm run dev:deployUIProviderV2
+
+<span class="hljs-comment">#0x6062ad399E47BF75AEa0b3c5BE7077c1E8664Dcb，官方</span>
+<span class="hljs-comment">#0x65c596620a4370DE9ed110e6594538b1E71E8bb7，自己</span>
+</code></pre>
+<p>执行，记录地址，放在前端页面的：uiIncentiveDataProvider字段</p>
+<pre><code class="lang-sh">npm run dev:deployUIIncentivesProviderV2
+
+<span class="hljs-comment">#0x9842E5B7b7C6cEDfB1952a388e050582Ff95645b，官方</span>
+<span class="hljs-comment">#0xeCF1236E20a5bDF828a1FbA4FAaAC8ad991752F7，自己</span>
+</code></pre>
+<h2 id="3-经验小结">3. 经验小结</h2>
+<ol>
+<li><p>经常time out，需要反复重试。</p>
+</li>
+<li><p>lending pool脚本中，这两处总出错：我猜想是因为已经设置过了。但是看代码有没有看到相应逻辑</p>
+<pre><code class="lang-sh">addressesProvider.setLendingPoolImpl
+addressesProvider.setLendingPoolConfiguratorImpl
+</code></pre>
+</li>
+<li><p>LendingPoolImpl和LendingPool地址不同，相当于代理关系，同一个addressesProvider只能set一次</p>
+</li>
+<li><p>LendingPoolConfiguratorImpl和LendingPoolConfigurator地址不同，相当于代理关系，同一个addressesProvider只能set一次</p>
+</li>
+<li><p>LendingPoolImpl和LendingPoolConfiguratorImpl可以设置到配置文件中，common.ts中。</p>
+</li>
+<li><p>下面这种格式的输出来自原：withSaveAndVerify下面的registerContractInJsonDb</p>
+<pre><code class="lang-sh">*** AaveOracle ***
+
+Network: kovan
+tx: 0x78a8aad426a131a6f9d9b962e251e5c132348414c6d009d89e68d326cbadabe7
+contract address: 0x4578344f10246e3dc96b7D2c6E7854fF3798678A
+deployer address: 0xEf884C06F2aBf71040ff28976E3a85DDa8813ab2
+gas price: 3000000000
+gas used: 781715
+
+******
+</code></pre>
+</li>
+<li><p>部署过程出错的少，设置的时候经常出错，一般是 timeout。</p>
+</li>
+<li><p>每个资产的借款利率BorrowRate有一个默认的固定设置：LendingRateOracleRatesCommon结构，我们将commons.ts中LendingRateOracle字段设置为空即可，这样就会使用LendingRateOracleRatesCommon的数据。</p>
+</li>
+<li><p>在部署自己资产、chainlink时，在部署oracle环节，chainlink里面需要加上USD地址</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220106224136944.png" alt="image-20220106224136944"></p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220106224210279.png" alt="image-20220106224210279"></p>
+</li>
+<li><p>emergencyAdmin和PoolAdmin是两个地址，emergencyAdmin是index：1， PoolAdmin是index：0。</p>
+</li>
+</ol>
+<h2 id="4-如何添加单个新资产">4. 如何添加单个新资产</h2>
+<ol>
+<li><p>在index中选中本次要添加的资产，已经添加过的要注释掉。(直接这样增加有问题)</p>
+</li>
+<li><p>在initialize脚本中，将config之后的逻辑注释掉。</p>
+</li>
+<li><p>直接执行initialize脚本。（在migration脚本中，将前面的环节注释掉）。</p>
+</li>
+</ol>
+<h2 id="5-配置了固定地址">5. 配置了固定地址</h2>
+<p>这些地址部署一次后可以重复使用，commons.ts</p>
+<table>
+<thead>
+<tr>
+<th>配置参数</th>
+<th>json名字</th>
+<th>地址</th>
+<th>部署环节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ProviderRegistry</td>
+<td></td>
+<td>0xbC7Fe19757b45b7821Ea56Ab7d145FFE1Fa23DE4</td>
+<td></td>
+</tr>
+<tr>
+<td>LendingPoolCollateralManager</td>
+<td></td>
+<td>0x0E5914f696965cA1a7eCdfa17738EE28dCEb3c5D</td>
+<td>initialize中</td>
+</tr>
+<tr>
+<td>LendingPoolConfigurator</td>
+<td></td>
+<td>0xE246D9c2dFF32DF7ee8129122BCAc2f858B7c95f</td>
+<td>lending_pool中</td>
+</tr>
+<tr>
+<td>LendingPool（这是impl）</td>
+<td></td>
+<td>0x8f254f0358Bd7814672A98ebBb11491681dd1f94</td>
+<td>lending_pool中</td>
+</tr>
+<tr>
+<td>AaveOracle</td>
+<td></td>
+<td>0x4578344f10246e3dc96b7D2c6E7854fF3798678A</td>
+<td>oracle中</td>
+</tr>
+</tbody>
+</table>
+<h1 id="二、部署自己的资产chainlink">二、部署自己的资产&amp;chainlink</h1>
+<p>运行：这个token源码中对mint没有权限校验，可以添加上。</p>
+<pre><code class="lang-sh"><span class="hljs-comment">#npx hardhat dev:deploy-all-mock-tokens --network kovan --verify</span>
+
+<span class="hljs-comment">#不要加verify了，已经verify过了，否则很慢</span>
+npx hardhat dev:deploy-all-mock-tokens --network kovan
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>address</th>
+<th>mock chainlink eg. DAI/ETH</th>
+<th>token decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WETH(官方)</td>
+<td>0xd0a1e359811322d97991e03f863a0c30c2cf029c</td>
+<td></td>
+<td>18</td>
+</tr>
+<tr>
+<td>DAI</td>
+<td>0x749B1c911170A5aFEb68d4B278cD5405C718fc7F</td>
+<td>0x8a40f7E2c2E9Fa3d9aDced37f9b6949F30df8A33, 18</td>
+<td>18</td>
+</tr>
+<tr>
+<td>LINK</td>
+<td>0xb450d49CaF849875d63ADDdd5868EC1A8bfF2d29</td>
+<td>0x4f8B341B5CDB526fE0ec6e0F0FA6D2D1A97aBAc5, 18</td>
+<td>18</td>
+</tr>
+<tr>
+<td>WBTC</td>
+<td>0x5D14d5F575a8B17801633fccaa5C0Ed78e657BdA</td>
+<td>0x0b93B7dcf417E4A43318bB2699c3e7475A9D3501, 18</td>
+<td>8</td>
+</tr>
+<tr>
+<td>USDC</td>
+<td>0x3878E7d2a355FB01a06db656690Cb8795f6663F2</td>
+<td>0xD399CA4eEE55d8B32F5185fCe3E4e8C50C24D74F</td>
+<td>6</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>deployer：0xEf884C06F2aBf71040ff28976E3a85DDa8813ab2</li>
+<li>任何人都有mint权限</li>
+</ol>
+<h2 id="1-mock-chainlink源码">1. mock chainlink源码</h2>
+<p><del>页面使用：展示价格专用ETH/DAI专用</del>（这个是错的）</p>
+<p><del>合约层面使用下面这个，主要是dai的价格不同。前者直接返回10000000000000，下面这个显示：9676888686749（计算得到，相对于eth）</del></p>
+<h2 id="0-aave追踪uniswap价格">0. aave追踪uniswap价格</h2>
+<p>前端页面也使用这个，symbol和decimals分别是：ETH,8，其他币种分别填写WBTC,18等。</p>
+<pre><code class="lang-js">
+<span class="hljs-comment">// File: chainlinkMock/ours/IERC20.sol</span>
+
+<span class="hljs-comment">/**
+ *Submitted for verification at Etherscan.io on 2022-01-12
+ */</span>
+
+<span class="hljs-comment">// File: contracts/IERC20.sol</span>
+
+<span class="hljs-comment">// OpenZeppelin Contracts v4.4.1 (token/ERC20/IERC20.sol)</span>
+
+pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@dev </span>Interface of the ERC20 standard as defined in the EIP.
+ */</span>
+interface IERC20 {
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Returns the decimals.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Returns the amount of tokens in existence.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Returns the amount of tokens owned by `account`.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address account</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Moves `amount` tokens from the caller&apos;s account to `recipient`.
+   *
+   * Returns a boolean value indicating whether the operation succeeded.
+   *
+   * Emits a {Transfer} event.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address recipient, uint256 amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Returns the remaining number of tokens that `spender` will be
+   * allowed to spend on behalf of `owner` through {transferFrom}. This is
+   * zero by default.
+   *
+   * This value changes when {approve} or {transferFrom} are called.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Sets `amount` as the allowance of `spender` over the caller&apos;s tokens.
+   *
+   * Returns a boolean value indicating whether the operation succeeded.
+   *
+   * IMPORTANT: Beware that changing an allowance with this method brings the risk
+   * that someone may use both the old and the new allowance by unfortunate
+   * transaction ordering. One possible solution to mitigate this race
+   * condition is to first reduce the spender&apos;s allowance to 0 and set the
+   * desired value afterwards:
+   * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+   *
+   * Emits an {Approval} event.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint256 amount</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Moves `amount` tokens from `sender` to `recipient` using the
+   * allowance mechanism. `amount` is then deducted from the caller&apos;s
+   * allowance.
+   *
+   * Returns a boolean value indicating whether the operation succeeded.
+   *
+   * Emits a {Transfer} event.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params">
+    address sender,
+    address recipient,
+    uint256 amount
+  </span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Emitted when `value` tokens are moved from one account (`from`) to
+   * another (`to`).
+   *
+   * Note that `value` may be zero.
+   */</span>
+  event Transfer(address indexed <span class="hljs-keyword">from</span>, address indexed to, uint256 value);
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Emitted when the allowance of a `spender` for an `owner` is set by
+   * a call to {approve}. `value` is the new allowance.
+   */</span>
+  event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+<span class="hljs-comment">// File: chainlinkMock/ours/IUniswapV2Pair.sol</span>
+
+pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span>;
+
+interface IUniswapV2Pair {
+  event Approval(address indexed owner, address indexed spender, uint256 value);
+  event Transfer(address indexed <span class="hljs-keyword">from</span>, address indexed to, uint256 value);
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">name</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symbol</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">decimals</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint8</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">totalSupply</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">balanceOf</span>(<span class="hljs-params">address owner</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allowance</span>(<span class="hljs-params">address owner, address spender</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">approve</span>(<span class="hljs-params">address spender, uint256 value</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer</span>(<span class="hljs-params">address to, uint256 value</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferFrom</span>(<span class="hljs-params">
+    address <span class="hljs-keyword">from</span>,
+    address to,
+    uint256 value
+  </span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bool</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">DOMAIN_SEPARATOR</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bytes32</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PERMIT_TYPEHASH</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">bytes32</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nonces</span>(<span class="hljs-params">address owner</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">permit</span>(<span class="hljs-params">
+    address owner,
+    address spender,
+    uint256 value,
+    uint256 deadline,
+    uint8 v,
+    bytes32 r,
+    bytes32 s
+  </span>) <span class="hljs-title">external</span></span>;
+
+  event Mint(address indexed sender, uint256 amount0, uint256 amount1);
+  event Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to);
+  event Swap(
+    address indexed sender,
+    uint256 amount0In,
+    uint256 amount1In,
+    uint256 amount0Out,
+    uint256 amount1Out,
+    address indexed to
+  );
+  event Sync(uint112 reserve0, uint112 reserve1);
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MINIMUM_LIQUIDITY</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factory</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">token0</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">token1</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReserves</span>(<span class="hljs-params"></span>)
+    <span class="hljs-title">external</span>
+    <span class="hljs-title">view</span>
+    <span class="hljs-title">returns</span> (<span class="hljs-params">
+      uint112 reserve0,
+      uint112 reserve1,
+      uint32 blockTimestampLast
+    </span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">price0CumulativeLast</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">price1CumulativeLast</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">kLast</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mint</span>(<span class="hljs-params">address to</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 liquidity</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">burn</span>(<span class="hljs-params">address to</span>) <span class="hljs-title">external</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256 amount0, uint256 amount1</span>)</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">swap</span>(<span class="hljs-params">
+    uint256 amount0Out,
+    uint256 amount1Out,
+    address to,
+    bytes calldata data
+  </span>) <span class="hljs-title">external</span></span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">skim</span>(<span class="hljs-params">address to</span>) <span class="hljs-title">external</span></span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sync</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span></span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initialize</span>(<span class="hljs-params">address, address</span>) <span class="hljs-title">external</span></span>;
+}
+
+<span class="hljs-comment">// File: chainlinkMock/ours/mockChainlinkFollowUniswap.sol</span>
+
+
+pragma solidity <span class="hljs-number">0.6</span><span class="hljs-number">.12</span>;
+
+
+
+contract MockAggregator {
+  uint256 private _latestAnswer;
+  string public symbol;
+  address public addr;
+  uint256 public decimals;
+  mapping(<span class="hljs-function"><span class="hljs-params">bytes32</span> =&gt;</span> address) symbolPairs;
+
+  bytes32 ETH = keccak256(abi.encodePacked(<span class="hljs-string">&apos;ETH&apos;</span>));
+  bytes32 DAI = keccak256(abi.encodePacked(<span class="hljs-string">&apos;DAI&apos;</span>));
+  bytes32 WBTC = keccak256(abi.encodePacked(<span class="hljs-string">&apos;WBTC&apos;</span>));
+  bytes32 CHAINLINK = keccak256(abi.encodePacked(<span class="hljs-string">&apos;CHAINLINK&apos;</span>));
+  bytes32 MKR = keccak256(abi.encodePacked(<span class="hljs-string">&apos;MKR&apos;</span>));
+  bytes32 USDC = keccak256(abi.encodePacked(<span class="hljs-string">&apos;USDC&apos;</span>));
+
+  <span class="hljs-comment">/*
+  dai addr：0x749B1c911170A5aFEb68d4B278cD5405C718fc7F
+
+  token地址比dai大的：
+  1. 0xd0a1e359811322d97991e03f863a0c30c2cf029c, weth
+  2. 0xb450d49CaF849875d63ADDdd5868EC1A8bfF2d29, link
+  3. 0xF7190d0ed47b3E081D16925396A03363DdB82281, mkr（清算使用）
+
+
+  token地址比dai小
+  1. 0x5D14d5F575a8B17801633fccaa5C0Ed78e657BdA, wbtc
+  2. 0x3878E7d2a355FB01a06db656690Cb8795f6663F2, usdc（清算使用）
+
+  */</span>
+
+  <span class="hljs-comment">//dai: token0</span>
+  <span class="hljs-comment">//eth: token1</span>
+  <span class="hljs-comment">//pair地址</span>
+  address public ethDaiPairAddr = <span class="hljs-number">0xc2a84f8e6a1a6011ccE0854C482217def6FbA8eE</span>;
+  address public wbtcDaiPairAddr = <span class="hljs-number">0x7a30b9AAe79374c440D5f7A0388696C8bfB76677</span>;
+  address public chainlinkDaiPairAddr = <span class="hljs-number">0xCdD4b06f6FF77B8D338FAB21606B8356A1C7ed14</span>;
+  address public usdcPair = <span class="hljs-number">0x5170C73cc49A68bEA24eEEea5f2ea0a070999484</span>;
+
+  <span class="hljs-comment">//大小写居然还有关系，直接使用remix提示的地址来更新就行了。</span>
+  address public mkrDaiPairAddr = <span class="hljs-number">0x560CcA4DE9eB4f42021F1A383825AB906ffFFA4c</span>;
+
+  address public daiAddr = <span class="hljs-number">0x749B1c911170A5aFEb68d4B278cD5405C718fc7F</span>;
+
+  <span class="hljs-title">constructor</span>(<span class="hljs-params">string memory _symbol, uint256 _decimals</span>) <span class="hljs-title">public</span> {
+    symbolPairs[ETH] = ethDaiPairAddr;
+    symbolPairs[DAI] = ethDaiPairAddr;
+    symbolPairs[WBTC] = wbtcDaiPairAddr;
+    symbolPairs[CHAINLINK] = chainlinkDaiPairAddr;
+    symbolPairs[MKR] = mkrDaiPairAddr;
+    symbolPairs[USDC] = usdcPair;
+
+    bytes32 symbol_ = keccak256(abi.encodePacked(_symbol));
+    <span class="hljs-built_in">require</span>(symbolPairs[symbol_] != address(<span class="hljs-number">0</span>), <span class="hljs-string">&apos;not support token symbol!&apos;</span>);
+    symbol = _symbol;
+    decimals = _decimals;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">latestAnswer</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>) </span>{
+    bytes32 symbol_ = keccak256(abi.encodePacked(symbol));
+    (uint256 priceTmp, uint256 decimalsTmp) = getTokenPriceToDai(ethDaiPairAddr);
+
+    <span class="hljs-keyword">if</span> (symbol_ == ETH) {
+      <span class="hljs-keyword">return</span> (priceTmp * <span class="hljs-number">10</span>**decimals) / <span class="hljs-number">10</span>**decimalsTmp;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (symbol_ == DAI) {
+      <span class="hljs-keyword">return</span> <span class="hljs-number">10</span>**decimals / (priceTmp / <span class="hljs-number">10</span>**decimalsTmp);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">return</span> getTokenPriceToEth(symbolPairs[symbol_]);
+    }
+  }
+
+  <span class="hljs-comment">// calculate price based on pair reserves</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTokenPriceToEth</span>(<span class="hljs-params">address pairAddress</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256</span>) </span>{
+    <span class="hljs-comment">//数量，这个币种的精度，wbc，8；chainlink，18</span>
+    (uint256 toDaiPrice, uint256 decimals1) = getTokenPriceToDai(pairAddress);
+    (uint256 daiEthPrice, uint256 decimals2) = getTokenPriceToDai(ethDaiPairAddr);
+    uint256 v1 = toDaiPrice*<span class="hljs-number">10</span>**decimals / <span class="hljs-number">10</span>**decimals1;
+    uint256 v2 = daiEthPrice / <span class="hljs-number">10</span>**decimals2;
+
+    <span class="hljs-keyword">return</span> (v1 / v2);
+  }
+
+  <span class="hljs-comment">// calculate price based on pair reserves</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTokenPriceToDai</span>(<span class="hljs-params">address pairAddress</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint256, uint256</span>) </span>{
+    IUniswapV2Pair pair = IUniswapV2Pair(pairAddress);
+    IERC20 token0 = IERC20(pair.token0());
+    IERC20 token1 = IERC20(pair.token1());
+
+    (uint256 Res0, uint256 Res1, ) = pair.getReserves();
+    <span class="hljs-keyword">if</span> (address(token0) == daiAddr) {
+      <span class="hljs-comment">//比dai地址大,eth, link</span>
+      uint256 res0 = Res0 * (<span class="hljs-number">10</span>**token1.decimals());
+
+      <span class="hljs-comment">//103453 * 10^decimals</span>
+      <span class="hljs-keyword">return</span> (res0 / Res1, token0.decimals());
+    }
+
+    <span class="hljs-comment">//mkr, usdc</span>
+    uint256 res1 = Res1 * (<span class="hljs-number">10</span>**token0.decimals());
+    <span class="hljs-keyword">return</span> (res1 / Res0, token1.decimals());
+  }
+}
+</code></pre>
+<p>调用方法，参考：</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { ethers } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;ethers&quot;</span>;
+<span class="hljs-keyword">const</span> { ethereum } = <span class="hljs-built_in">window</span>;
+<span class="hljs-keyword">if</span> (ethereum) {
+    <span class="hljs-keyword">var</span> provider = <span class="hljs-keyword">new</span> ethers.providers.Web3Provider(ethereum);
+}
+
+<span class="hljs-keyword">const</span> uniswapUsdcAddress = <span class="hljs-string">&quot;0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc&quot;</span>;
+<span class="hljs-keyword">const</span> uniswapAbi = ... <span class="hljs-comment">// get the abi from https://etherscan.io/address/0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc#code</span>
+
+<span class="hljs-keyword">const</span> getUniswapContract = <span class="hljs-keyword">async</span> address =&gt; <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> ethers.Contract(address, uniswapAbi, provider);
+
+<span class="hljs-keyword">const</span> getEthUsdPrice = <span class="hljs-keyword">async</span> () =&gt; <span class="hljs-keyword">await</span> getUniswapContract(uniswapUsdcAddress)
+    .then(<span class="hljs-function"><span class="hljs-params">contract</span> =&gt;</span> contract.getReserves())
+    .then(<span class="hljs-function"><span class="hljs-params">reserves</span> =&gt;</span> <span class="hljs-built_in">Number</span>(reserves._reserve0) / <span class="hljs-built_in">Number</span>(reserves._reserve1) * <span class="hljs-number">1e12</span>); <span class="hljs-comment">// times 10^12 because usdc only has 6 decimals</span>
+</code></pre>
+<p>chainlink所有的价格都是对标ETH的，例如：</p>
+<pre><code class="lang-sh">DAI: <span class="hljs-string">&apos;0x22B58f1EbEDfCA50feF632bD73368b2FdA96D541&apos;</span>
+</code></pre>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220106164452409.png" alt="image-20220106164452409"></p>
+<ol>
+<li>查询链接：<a href="https://docs.chain.link/docs/ethereum-addresses/" target="_blank">https://docs.chain.link/docs/ethereum-addresses/</a></li>
+<li>eth的价格我们先不管了，直接把所有的资产按照aave的价格设置一下，然后添加到配置文件中。已经更新在上面的资产中了。</li>
+<li>所有对ETH的资产，chainlink，decimal都是18位。</li>
+</ol>
+<h2 id="2-使用自己资产部署">2. 使用自己资产部署</h2>
+<pre><code class="lang-sh">N<span class="hljs-comment"># Contracts: 20</span>
+LendingPoolAddressesProvider: 0x8bD206df9853d23bE158A9F7065Cf60A7A5F05DF
+LendingPool: 0x57110816Db545D4A3910dDba38fB17221a8EB506
+LendingPoolConfigurator: 0x13A25AEAEFCe2b501f5D7c9D0C728c04A5411f4e
+StableAndVariableTokensHelper: 0xdF394485470400Ec71Bb88f3622EFBa40D926414
+ATokensAndRatesHelper: 0x9367522153a417D2FD81aECbBc223d20f326a035
+AToken: 0x134365dC86dD078e45317Cf89D423DFe83D23C36
+DelegationAwareAToken: 0xa32599a37944Cb9230B4B546B664e407BB683B03
+StableDebtToken: 0x8105961c17DCe4e14ccA8ea59eBDbF986ea96dC8
+VariableDebtToken: 0xc2fEfC6b24C9f256d15D693F2B91fa00E68ffB31
+LendingRateOracle: 0x0D7Ef5F367144139a09fd3E09d7Cce8362e60955
+AaveProtocolDataProvider: 0xBE24eEC0e36B39346Ccb1DFF7a4A9ef58383358E
+WETHGateway: 0xD1774E644a8e48eE18E25299f1329A19c7Dc5B63
+DefaultReserveInterestRateStrategy: 0xf028382d843bA8DaD4F6D6ef7EEc228523897062
+rateStrategyStableTwo: 0x3a0E7e516937cE32C584ddcA4D7EbFf52e989B6B
+rateStrategyVolatileOne: 0x12098A065498d4aeC6Fcf054CBfE7554739aB661
+rateStrategyStableThree: 0x92bb7bdB9E10b1FfEA31dAf35DaA3199976C6Ea3
+rateStrategyVolatileTwo: 0x569F92308c3F7d50d7Cf0920f8d00e2A47508f3a
+rateStrategyWETH: 0xf028382d843bA8DaD4F6D6ef7EEc228523897062
+WalletBalanceProvider: 0xbb148A3BE0819d92c6ACA1F7788E2876ca2Ab245
+UiPoolDataProvider: 0x071E4378Fe60153925C8aC858DAA1C91CFCf2557
+</code></pre>
+<p>baseUniswapAdapter:(前端使用)</p>
+<pre><code class="lang-sh">npx hardhat --network kovan deploy-UniswapRepayAdapter --provider 0x8bD206df9853d23bE158A9F7065Cf60A7A5F05DF --router 0xDC292C81e24efB77Bc69e6d3727E3727EC1bF170 --weth 0xd0a1e359811322d97991e03f863a0c30c2cf029c
+
+<span class="hljs-comment">#0x5A88CCf2a7C0adA99ef602570a9864c195cc818B</span>
+</code></pre>
+<p>uiIncentiveDataProvider:(前端使用)</p>
+<pre><code class="lang-sh">npm run dev:deployUIIncentivesProviderV2
+
+<span class="hljs-comment">#0xF826701Bb4Db3d60255280D9a0F8bD7aBA83927C</span>
+</code></pre>
+<h2 id="3-verify">3. verify</h2>
+<p>aave工程化代码写的真好啊，考虑的非常周全了。</p>
+<pre><code class="lang-sh">npm run kovan:verify
+</code></pre>
+<h1 id="三、日常操作">三、日常操作</h1>
+<h2 id="1-unpause市场">1. unpause市场</h2>
+<p>刚刚部署的资产市场是pause的，需要手动设置为unpause才能正常使用</p>
+<pre><code class="lang-sh">hh full:unpause --pool Aave --network kovan
+</code></pre>
+<h2 id="2-冻结market">2. 冻结market</h2>
+<p>对某个asset的市场进行暂停使用，可以执行如下命令。</p>
+<pre><code class="lang-sh">hh full:freeze --pool Aave --network kovan
+
+<span class="hljs-comment">#内部会调用freezeReserve(MKR地址)</span>
+<span class="hljs-comment">#注意emergencyAdmin和PoolAdmin是两个地址，emergencyAdmin是index：1， PoolAdmin是index：0。</span>
+</code></pre>
+<h2 id="3-如果错误了点击了其他市场">3. 如果错误了点击了其他市场</h2>
+<p>需要清理浏览器cache，否则一直出现网络错误。</p>
+<h2 id="4-更新预言机地址">==4. 更新预言机地址==</h2>
+<ol>
+<li><p>将预言机部署好（==1. mock chainlink源码==），并填写到对应的配置文件中，单独运行task：3_oracles.ts，会将每个资产的oracle以键值对的形式添加到aaveOracle这个合约中，运行如下命令：</p>
+<pre><code class="lang-sh">hh full:deploy-oracles --pool Aave --network kovan
+</code></pre>
+</li>
+<li><p>上面都是给合约使用的，下面需要部署一个地址，ETH/USD，用于给ui界面展示价格，更新ETH/USD地址，这个合约与之前的oracle合约（==1. mock chainlink源码==）代码相同，只是输入的参数decimals是8，其他的是18。部署之后，在constants.ts中chainlinkEthUsdAggregatorProxy和chainlinkAggregatorProxy中都要修改成这个地址，然后运行命令：</p>
+<pre><code class="lang-sh">npm run dev:deployUIProviderV2
+</code></pre>
+<p>将地址更新到aave-ui中的ui-config/networks.ts中：</p>
+<pre><code class="lang-sh">uiPoolDataProvider: <span class="hljs-string">&apos;0x60311E24f29208C2E3490F8e66414Ded4C75Ee32&apos;</span>, //duke 自己的
+</code></pre>
+</li>
+</ol>
+<h2 id="5-清算">5. 清算</h2>
+<p>清算doc：<a href="https://docs.aave.com/developers/guides/liquidations" target="_blank">https://docs.aave.com/developers/guides/liquidations</a></p>
+<p>调整完chainlink价格：20-》30，健康系数变为0.71&lt; 1，可以被清算</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220109232037128.png" alt="image-20220109232037128"></p>
+<p>参数：</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220109232337665.png" alt="image-20220109232337665"></p>
+<h1 id="四、页面">四、页面</h1>
+<h2 id="1-srcui-config文件夹">1. src/ui-config文件夹</h2>
+<h3 id="11-networksts中">1.1 networks.ts中</h3>
+<p>这四个都是要修改的，1，2，4是上面部署的，3是subgraph需要额外部署。</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220106080811172.png" alt="image-20220106080811172"></p>
+<h3 id="12-marketsindex中">1.2. markets/index中</h3>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220105163959326.png" alt="image-20220105163959326"></p>
+<h2 id="2-启动页面">2. 启动页面</h2>
+<pre><code class="lang-sh">npm run start:dev
+</code></pre>
+<h2 id="3-出现的错误">3. 出现的错误</h2>
+<h3 id="11-错误1">1.1. 错误1</h3>
+<p>network中的uiPoolDataProvider中，传入LendingPoolAddressesProvider地址，可以获取支持的资产列表，所以我们需要手动设置一下。这个是因为部署了uiPoolDataProvider而不是uiPoolDataProviderV2（V2是对的）</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220105165935332.png" alt="image-20220105165935332"></p>
+<h3 id="12-错误2">1.2. 错误2</h3>
+<p>可能是LENDING_POOL的原因，存款失败（approve成功，说明rpc是可以用的）。（这个是因为setPause未设置false）导致的。</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220105181112193.png" alt="image-20220105181112193"></p>
+<h3 id="13-错误3：">1.3 错误3：</h3>
+<p>存款，再借款之后，会经常出现这个错误，需要重新启动页面服务才可以。</p>
+<p>不知道是不是和subgraph有关系。</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220106080110063.png" alt="image-20220106080110063"></p>
+<p>切换成英文对应的错误是：</p>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220106122517037.png" alt="image-20220106122517037"></p>
+<p>这个发生在我存入了eth之后，对应的链接如下，切换了热点之后，多刷新几次，果然重新恢复了，难道真是网络问题？？</p>
+<pre><code class="lang-sh">http://localhost:3000/deposit/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-0xd0a1e359811322d97991e03f863a0c30c2cf029c0x604393277f9941756ef0660e52a891d80dda9a8d/confirmation?amount=0.1
+</code></pre>
+<p>通过将rpc修改为我们自己的alchemy之后，这个问题暂时没有再出现：</p>
+<pre><code class="lang-sh">    publicJsonRPCUrl: [<span class="hljs-string">&apos;https://eth-kovan.alchemyapi.io/v2/-qZ8NcwdvM8gsbxWyFl_Iw9znBN5UV3t&apos;</span>, <span class="hljs-string">&apos;https://kovan.poa.network&apos;</span>],
+</code></pre>
+<h3 id="14-错误4：">1.4 错误4：</h3>
+<p>当使用自己的资产和chainlink配置到ui中后，一直展示上面的Reload错误，这个是因为:uiPoolDataProvider引起的（切换成官方的就可以正常显示）。部署这个合约的两个参数是两个ETH/USD的地址，我改成自己的了，也许少了方法。</p>
+<h3 id="15-为什么test2网络上，mkrd价格是8而不是89">1.5 为什么test2网络上，mkrd价格是8而不是8.9</h3>
+<h2 id="4-github启动页面">4. github启动页面</h2>
+<p><a href="https://medium.com/mobile-web-dev/how-to-build-and-deploy-a-react-app-to-github-pages-in-less-than-5-minutes-d6c4ffd30f14" target="_blank">https://medium.com/mobile-web-dev/how-to-build-and-deploy-a-react-app-to-github-pages-in-less-than-5-minutes-d6c4ffd30f14</a></p>
+<p>react手册：<a href="https://create-react-app.dev/docs/deployment/" target="_blank">https://create-react-app.dev/docs/deployment/</a></p>
+<ol>
+<li>安装</li>
+</ol>
+<pre><code class="lang-sh">npm install gh-pages --save-dev
+</code></pre>
+<ol>
+<li>修改package.json，这里经常出错，注意是：https，个人账户.github.io，repo名字</li>
+</ol>
+<pre><code class="lang-sh">  <span class="hljs-string">&quot;homepage&quot;</span>: <span class="hljs-string">&quot;https://chfry-finance.github.io/chfry-aave-interface&quot;</span>,
+</code></pre>
+<ol>
+<li>添加deploy命令</li>
+</ol>
+<pre><code class="lang-sh">    <span class="hljs-string">&quot;deploy&quot;</span>: <span class="hljs-string">&quot;gh-pages -d build&quot;</span>,
+</code></pre>
+<ol>
+<li>进行编译&amp;部署</li>
+</ol>
+<pre><code class="lang-sh">npm run build
+
+npm run deploy
+</code></pre>
+<ol>
+<li>进入到github项目：chfry-aave-interface，进入setting界面，进入pages页面，选择分支：gh-pages，这个分支是deploy后自动生成了，里面存放的是静态页面的信息。即刚刚build时生成的内容。</li>
+</ol>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220109212659732.png" alt="image-20220109212659732"></p>
+<ol>
+<li>访问：<a href="https://chfry-finance.github.io/markets，部署成功！" target="_blank">https://chfry-finance.github.io/markets，部署成功！</a></li>
+</ol>
+<p><img src="https://duke-typora.s3.ap-southeast-1.amazonaws.com/uPic/image-20220109212728497.png" alt="image-20220109212728497"></p>
+<ol>
+<li>如果无法显示：考虑清除这个Application的本地缓存，检查package.json的homepage设置的值。</li>
+</ol>
+<h1 id="三、dsa联调">三、DSA联调</h1>
+<p>aave官方地址：</p>
+<pre><code class="lang-js">    <span class="hljs-comment">// Aave Lending Pool Provider    </span>
+        AaveLendingPoolProviderInterface internal constant aaveProvider =
+        AaveLendingPoolProviderInterface(
+            <span class="hljs-number">0x88757f2f99175387aB4C6a4b3067c77A695b0349</span>
+        );
+    <span class="hljs-comment">// Aave Protocol Data Provider</span>
+    AaveDataProviderInterface internal constant aaveData =
+        AaveDataProviderInterface(<span class="hljs-number">0x3c73A5E5785cAC854D468F727c606C07488a29D6</span>);
+
+    AavePriceOracleInterface internal constant aavePrice =
+        AavePriceOracleInterface(<span class="hljs-number">0xB8bE51E6563BB312Cbb2aa26e352516c25c26ac1</span>);
+</code></pre>
+<p>使用我自己部署的地址（自己的token，自己的chainlink）</p>
+<pre><code class="lang-sh">AaveLendingPoolProviderInterface: 0x8bD206df9853d23bE158A9F7065Cf60A7A5F05DF
+AaveDataProviderInterface:  0xBE24eEC0e36B39346Ccb1DFF7a4A9ef58383358E
+AavePriceOracleInterface:  0x4578344f10246e3dc96b7D2c6E7854fF3798678A
+</code></pre>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="01_uniswapV2部署文档.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第16节:uniswapV2部署文档">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第16节:aave部署步骤文档","level":"1.23.2","depth":2,"previous":{"title":"第16节:uniswapV2部署文档","level":"1.23.1","depth":2,"path":"16_主流项目部署文档/01_uniswapV2部署文档.md","ref":"16_主流项目部署文档/01_uniswapV2部署文档.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"cn","gitbook":"*"},"file":{"path":"16_主流项目部署文档/02_aave部署步骤文档.md","mtime":"2023-03-21T14:01:28.364Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-07-06T00:35:17.027Z"},"basePath":"..","book":{"language":"cn"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-heading-anchors/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-language-picker/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
