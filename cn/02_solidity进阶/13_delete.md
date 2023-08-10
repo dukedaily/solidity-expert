@@ -1,7 +1,7 @@
 # 第13节：delete
 
 1. delete操作符可以用于任何变量(map除外)，将其设置成默认值；
-2. 如果对动态数组使用delete，则删除所有元素，其长度变为0: uint[ ] array0 ;   arry0 = new uint[](10)；
+2. 如果对动态数组使用delete，则删除所有元素，其长度变为0: uint[ ] array0 ;   arry0 = new uint[] (10)；
 3. 如果对静态数组使用delete，则重置所有索引的值，数组长度不变: uint[10] array1 = [1,2,3,4,5,6]；
 4. 如果对map类型使用delete，什么都不会发生；
 5. 但如果对map类型中的一个键使用delete，则会删除与该键相关的值。

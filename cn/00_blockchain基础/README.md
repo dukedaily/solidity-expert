@@ -33,7 +33,7 @@
 ## 4. 实用工具
 
 1. solidity manual：https://docs.soliditylang.org/en/v0.8.17/
-2. sign-verify: https://app.mycrypto.com/sign-message
+2. sign-verify: https://app.mycrypto.com/sign-message， 可选工具：https://etherscan.io/verifiedSignatures#
 3. 地址生成协议（BIP32-BIP44）在线体验：https://iancoleman.io/bip39/#english
 4. 在线keccak256：https://emn178.github.io/online-tools/keccak_256.html
 5. Ether-> wei converter: https://eth-converter.com/
@@ -45,7 +45,8 @@
 11. js在线环境：https://playcode.io/1018304
 12. Web3 playground: https://web3playground.io/
 13. 以太坊交易解析：https://flightwallet.github.io/decode-eth-tx/
-15. 知识图谱：https://www.processon.com/view/link/5a9ba4c8e4b0a9d22eb3bdf0#map
-17. [Cross chain Dapp starter kit (ETH / Moralis)](https://reactjsexample.com/cross-chain-dapp-starter-kit-eth-moralis/)
-18. 学习以太坊：https://learnblockchain.cn/books/geth/part1.html
-19. makefile：https://www.cnblogs.com/idorax/p/9306528.html
+14. 知识图谱：https://www.processon.com/view/link/5a9ba4c8e4b0a9d22eb3bdf0#map
+15. [Cross chain Dapp starter kit (ETH / Moralis)](https://reactjsexample.com/cross-chain-dapp-starter-kit-eth-moralis/)
+16. 学习以太坊：https://learnblockchain.cn/books/geth/part1.html
+17. makefile：https://www.cnblogs.com/idorax/p/9306528.html
+18. GraphvizOnline: https://dreampuf.github.io/GraphvizOnline/
