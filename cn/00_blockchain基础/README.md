@@ -50,3 +50,4 @@
 16. 学习以太坊：https://learnblockchain.cn/books/geth/part1.html
 17. makefile：https://www.cnblogs.com/idorax/p/9306528.html
 18. GraphvizOnline: https://dreampuf.github.io/GraphvizOnline/
+19. 批量生产地址（限测试使用）：https://ikalas.com/app/eth-batch-wallet-generator
