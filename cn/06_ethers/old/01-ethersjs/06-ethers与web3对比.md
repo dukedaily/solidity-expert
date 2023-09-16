@@ -1,8 +1,6 @@
+# web3
 
-
-## web3
-
-### 发送交易
+## 发送交易
 
 如果是使用node，不是使用浏览器，那么需要分两步来做，并且指定私钥。
 
@@ -30,9 +28,7 @@ this.dsa.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction)
 this.dsa.web3.eth.sendTransaction(transactionConfig)
 ```
 
-
-
-### 区别：
+## 区别
 
 ```js
 //signTransaction:
@@ -68,15 +64,7 @@ const contract = new this.dsa.web3.eth.Contract(Abi.basics.erc20, params.to)
 调用sendTransaction(txObj)  // <<=== 发送交易
 ```
 
-
-
-
-
-
-
-
-
-## ethers
+### ethers
 
 使用ethers没有
 
