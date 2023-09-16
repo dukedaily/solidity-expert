@@ -1,12 +1,8 @@
-## provider
+# provider
 
-所有读取链上数据信息的操作都是有provider提供的
-
-所有写、签名等数据都是wallet实现的。
-
-
-
-与链上信息交互的内容使用provider
+1. 所有读取链上数据信息的操作都是有provider提供的
+2. 所有写、签名等数据都是wallet实现的。
+3. 与链上信息交互的内容使用provider
 
 ```js
 // 可以使用任何标准网络名称做参数：
@@ -19,13 +15,8 @@
 let provider = ethers.getDefaultProvider('ropsten');
 ```
 
-
-
-也可以直接调用合约，是低级调用，不建议
-
-
-
-获取账号余额
+4. 也可以直接调用合约，是低级调用，不建议
+5. 获取账号余额
 
 ```js
 let address = "0x02F024e0882B310c6734703AB9066EdD3a10C6e0";
@@ -39,7 +30,7 @@ provider.getBalance(address).then((balance) => {
 });
 ```
 
-获取当前状态：
+6. 获取当前状态：
 
 ```js
 provider.getBlockNumber().then((blockNumber) => {
@@ -54,9 +45,7 @@ provider.getGasPrice().then((gasPrice) => {
 });
 ```
 
-
-
-为什么要使用wait
+7. 为什么要使用wait
 
 ```js
     //sendTransaction内部会使用wallet进行签名:signedTransaction
@@ -89,11 +78,7 @@ recepit: {
 }
 ```
 
-
-
-
-
-使用第三方链接：
+8. 使用第三方链接：
 
 ```js
 // 可以使用任何标准网络名称做参数：
@@ -113,27 +98,24 @@ let etherscanProvider = new ethers.providers.EtherscanProvider('ropsten');
 let infuraProvider = new ethers.providers.InfuraProvider('ropsten');
 ```
 
-链接自定义节点：
+8. 链接自定义节点：
 
 ```js
 // 在使用JSON-RPC API时，将自动检测网络
 
-
 // 默认: http://localhost:8545
 let httpProvider = new ethers.providers.JsonRpcProvider();
-
 
 // 通过定制 URL 连接 :
 let url = "http://something-else.com:8546";
 let customHttpProvider = new ethers.providers.JsonRpcProvider(url);
-
 
 // 通过 IPC 命名管道
 let path = "/var/run/parity.ipc";
 let ipcProvider = new ethers.providers.IpcProvider(path);
 ```
 
-链接一个已有的web3
+9. 链接一个已有的web3
 
 ```js
 // 使用 Web3 provider 时, 自动检测网络
@@ -144,15 +126,8 @@ let currentProvider = new web3.providers.HttpProvider('http://localhost:8545');
 let web3Provider = new ethers.providers.Web3Provider(currentProvider);
 ```
 
-
-
-关系：
-
-InfuraProvider顶层是JsonRpcProvider
-
-
-
-## 原生ethers自己的rpc交互
+10. 关系：InfuraProvider顶层是JsonRpcProvider
+11. 原生ethers自己的rpc交互
 
 ```js
 let ethers = require('ethers')

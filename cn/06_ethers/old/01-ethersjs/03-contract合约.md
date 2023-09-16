@@ -1,3 +1,5 @@
+# Contract
+
 ![image-20220102093343079](assets/image-20220102093343079.png)
 
 ## 合约代码
@@ -26,8 +28,6 @@ contract SimpleStorage {
     }
 }
 ```
-
-
 
 ## 部署合约
 

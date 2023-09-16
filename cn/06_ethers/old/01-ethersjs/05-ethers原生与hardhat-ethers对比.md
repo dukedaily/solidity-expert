@@ -1,6 +1,5 @@
-## 原生：
-
-### 部署合约
+# 原生ethers
+## 部署合约
 
 ```js
 //let web3Provider = new ethers.providers.Web3Provider(currentProvider);
@@ -16,7 +15,7 @@ let tx = await contract.deployed()
 await tx.await()
 ```
 
-### 调用合约：
+## 调用合约
 
 ```js
 let provider = ethers.getDefaultProvider('kovan')
@@ -35,9 +34,8 @@ let tx = await contract.setValue(100).wait()
 
 
 
-## hardhat-ethers
-
-### 部署合约
+# hardhat ethers
+## 部署合约
 
 ```js
 const hre = require("hardhat");
@@ -54,7 +52,7 @@ await contract.deployed();
 
 
 
-### 调用合约
+## 调用合约
 
 ```js
 const [deployer] = await ethers.getSigners()
@@ -124,41 +122,5 @@ function getContractAt(nameOrAbi: string | any[], address: string, signer?: ethe
 function getSigners() => Promise<ethers.Signer[]>;
 
 function getSigner(address: string) => Promise<ethers.Signer>;
-```
-
-
-
-## 原生用法
-
-```js
-
-const sleep = (ms: number) =>
-    new Promise((resolve) =>
-        setTimeout(() => {
-            resolve(1);
-        }, ms)
-    );
-async function waitForMint(tx: string) {
-    let result = null;
-    do {
-        result = await provider.getTransactionReceipt(tx);
-    } while (result === null);
-    console.log('sleep 20s')
-    await sleep(20000);
-}
-
-async function deployContract(signer: any, contractJSON: any, args?: any[]) {
-    let factory = new ethers.ContractFactory(
-        contractJSON.abi,
-        contractJSON.bytecode,
-        signer
-    );
-    if (!args) args = [];
-    let ins = await factory.deploy(...args, {
-        gasPrice: ethers.utils.parseUnits("10", "gwei"),
-    });
-    await waitForMint(ins.deployTransaction.hash);
-    return ins;
-}
 ```
 
