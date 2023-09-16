@@ -5,9 +5,7 @@
 - 公众号：[阿杜在新加坡](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU5NDQ0NDAxNQ==&action=getalbum&album_id=2529739108240556033&scene=173&from_msgid=2247484601&from_itemidx=1&count=3&nolastread=1#wechat_redirect) 
 - github：[以太坊教程](https://github.com/dukedaily)
 - B站：[杜旭duke](https://www.bilibili.com/video/BV1EY4y1c7Yq/?vd_source=42fe91bf6d16ec8841b22ea520184d76)
-- Youtube：[duke du](https://www.youtube.com/watch?v=Wpf5KkgzElc&list=PLO_KaIZjoik9oY-Rs9BsDkHY2RJy7WcE-)
-- Twitter：[dukedu2022](https://twitter.com/home)
-- 微信: Adugii
+- 微信：Adugii
 
 
 
@@ -38,7 +36,7 @@
 
 保证安全的核心在于：随机数的空间足够大，否则会被暴力破解，出现过安全事件
 
-地址生成在线工具：https://www.rfctools.com/ethereum-address-test-tool/
+以太坊地址生成在线工具：https://www.rfctools.com/ethereum-address-test-tool/
 
 ```sh
 # privateKey：
