@@ -62,7 +62,7 @@ npx hardhat test
 
 ![image-20221008085748424](assets/image-20221008085748424.png)
 
-至此，官方代码我们已经验证完成（逻辑很简单，请自行阅读，如有疑问请咨询：Adugii），接下来我们需要改造成自己的代码！
+至此，官方代码我们已经验证完成（逻辑很简单，请自行阅读，如有疑问请咨询：dukeweb3），接下来我们需要改造成自己的代码！
 
 
 
@@ -291,6 +291,6 @@ npx hardhat verify 0xD0f85823D7e118BB7fa4D460A25851fCf99f7Fa9 1665193342  --netw
 
 ---
 
-加V入群：Adugii，公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)，一起抱团拥抱web3，下期见！
+加V入群：dukeweb3，公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)，一起抱团拥抱web3，下期见！
 
 > 关于作者：国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。
