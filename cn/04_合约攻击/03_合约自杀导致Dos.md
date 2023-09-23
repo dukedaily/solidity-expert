@@ -1,6 +1,6 @@
 # 第3节：Self Destruct
 
-> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
 合约自杀时，会将合约自身持有的ether全部转入到指定地址之中。
 

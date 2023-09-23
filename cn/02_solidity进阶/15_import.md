@@ -1,5 +1,9 @@
 # 第15节：import
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 我们可以使用import将本地的.sol文件或外部（github或openzeppelin等）.sol导入进来
 
 ```js

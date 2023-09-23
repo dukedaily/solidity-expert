@@ -1,6 +1,10 @@
 # 第17节：type
 
-https://docs.soliditylang.org/en/v0.6.5/units-and-global-variables.html#meta-type
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
+
 
 type(x) 可以返回x类型的对象信息，例如：
 
@@ -65,3 +69,4 @@ contract TestStorage {
 }
 ```
 
+更多内容：https://docs.soliditylang.org/en/v0.6.5/units-and-global-variables.html#meta-type

@@ -1,5 +1,13 @@
 # 第28节：signature-EIP712
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
+
+
+参考文章：
+
 1. https://medium.com/coinmonks/eip712-a-full-stack-example-e12185b03d54
 2. https://github.com/apurbapokharel/EIP712Example
 3. 手册：https://docs.ethers.org/v5/api/signer/#Signer-signTypedData

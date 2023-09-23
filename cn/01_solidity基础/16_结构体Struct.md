@@ -1,5 +1,9 @@
 # 第16节：结构体Struct
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 自定义结构类型，将不同的数据类型组合到一个结构中，目前支持参数传递结构体。
 
 枚举和结构体都可以定义在另外一个文件中，进行import后使用

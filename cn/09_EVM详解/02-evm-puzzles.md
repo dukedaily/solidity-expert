@@ -1,6 +1,6 @@
 # 第8节：EVM-PUZZLE
 
-> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
 
 

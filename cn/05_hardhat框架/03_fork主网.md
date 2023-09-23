@@ -1,5 +1,9 @@
 # 第3节：fork主网
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 hardhat提供了一个模拟主网的功能，使得我们可以直接使用主网的数据进行测试，需要我们：
 
 1. 在配置文件hardhat.confit.ts中启动fork开关、指定网络、指定块高；

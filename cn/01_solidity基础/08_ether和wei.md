@@ -1,5 +1,9 @@
 # 第8节：ether和wei
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 - 常用单位为：wei，gwei，ether
 - 不含任何后缀的默认单位是 wei
 - 1 gwei = 10^9 wei

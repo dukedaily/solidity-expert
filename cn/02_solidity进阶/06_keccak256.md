@@ -1,5 +1,9 @@
 # 第6节：keccak256哈希算法
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 keccak256用于计算哈希，属于sha3算法，与sha256（属于sha2算法不同），keccak256使用场景如下：
 
 1. 用于生成唯一id；

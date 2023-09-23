@@ -1,5 +1,9 @@
 # 第2节：msg.sender、msg.value、msg.data
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 当用户发起一笔交易时，相当于向合约发送一个消息(msg)，这笔交易可能会涉及到三个重要的全局变量，具体如下：
 
 1. **msg.sender**：表示这笔交易的调用者是谁（地址），同一个交易，不同的用户调用，msg.sender不同；

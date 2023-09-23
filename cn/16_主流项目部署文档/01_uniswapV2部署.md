@@ -1,4 +1,8 @@
-# 第1节：uniswapV2部署文档	
+# 第1节：uniswapV2部署文档
+
+>  小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com	
 
 ## 一、概述
 

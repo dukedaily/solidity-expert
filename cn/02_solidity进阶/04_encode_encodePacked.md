@@ -1,5 +1,9 @@
 # 第4节：abi.encode、abi.decode、abi.encodePacked
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 1. abi.**encode**：可以将data编码成bytes，生成的bytes总是32字节的倍数，不足32为会自动填充（用于给合约调用）；
 2. abi.**decode**：可以将bytes解码成data（可以只解析部分字段）
 3. abi.**encodePacked**：与abi.encode类似，但是生成的bytes是压缩过的（有些类型不会自动填充，无法传递给合约调用）。

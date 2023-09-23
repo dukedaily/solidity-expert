@@ -1,5 +1,9 @@
 # 第三章：Token协议
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 从本章开始，我们将从语法层面跳出来，开始关注协议相关内容，由于Token协议是我们日常接触最多的落地应用，所以我们从Token合约入手。
 
 我们将介绍主流的协议，包括：

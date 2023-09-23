@@ -1,5 +1,9 @@
 # 第17节：存储位置-memory、storage、calldata
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 solidity中的存储位置分为三种，使用memory、storage、calldata来进行区分：
 
 - storage：属于状态变量，数据会存储在链上，仅适用于所有引用类型：string，bytes，数组，结构体，mapping等；

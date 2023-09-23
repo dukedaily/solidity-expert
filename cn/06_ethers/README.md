@@ -1,4 +1,9 @@
 # 第六章：ethers库
+
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 ethers.js是一个轻量级的以太坊sdk，目前在很多场合已经替换web3.js，使用ethers可以方便的与以太坊网络进行交互，包括：部署合约、调用合约、钱包相关、utils等，包括主流快拦下hardhat也默认与ethers进行集成。
 
 

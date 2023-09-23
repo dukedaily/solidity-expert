@@ -1,5 +1,9 @@
 # 第10节：solidity岗位要求
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+>职场进阶: https://dukeweb3.com
+
 以下是网上招聘需求的汇总，仅供参考。初级：语法、中高级：语法+协议、专家：语法+协议+上下游技术栈
 
 

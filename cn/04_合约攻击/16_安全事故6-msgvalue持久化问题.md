@@ -1,6 +1,6 @@
 # 第16节：安全事故5-msgvalue持久化问题
 
-> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
 
 在如下代码中，存在msg.value被重复使用的问题：在delegatecall中，msg.value与当前batch函数中msg.value一致，这可能导致错误。
 

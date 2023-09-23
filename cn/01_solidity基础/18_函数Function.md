@@ -1,5 +1,9 @@
 # 第18节：函数Function
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 - 可以返回多个数据，使用（）包裹起来即可
 - 可以对返回值命名，此时可以省略return关键字
 - 可以解构返回值，对忽略的返回值直接使用逗号留空

@@ -1,5 +1,9 @@
 # 第9节: delegatecall
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 delegatecall与call相似，也是底层调用合约方式，特点是：
 
 1. 当A合约使用delegatecall调用B合约的方法时，B合约的代码被执行，但是**使用的是A合约的上下文**，包括A合约的状态变量，msg.sender，msg.value等；

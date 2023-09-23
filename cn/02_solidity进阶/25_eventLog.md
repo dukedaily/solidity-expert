@@ -1,12 +1,16 @@
 # 第25节：Event Log
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
+
+
 ## 概述
 
 https://blog.chain.link/events-and-logging-in-solidity-zh/
 
 https://ethereum.stackexchange.com/questions/3418/how-does-ethereum-make-use-of-bloom-filters/3426
-
-
 
 - Log也在区块链账本中，但是它不是链上数据；
 - Log是由交易执行产生的数据，它是不需要共识的，可以通过重新执行交易生成；

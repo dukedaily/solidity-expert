@@ -1,14 +1,14 @@
 # 第11章：精通比特币
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 
 
 今天介绍一下2018年讲的一套五天的比特币课程，课程在制作过程中参考了 GitHub开源项目：[blockchain_go](https://github.com/Jeiwan/blockchain_go)
 
-
-
 当时花了3个多月，反复修正、录制，终于完成了这个5天的课程。
-
-
 
 上周末查看旧资料，不巧又把它翻出来了，想来好东西不能放着吃灰啊，所以就花了点时间把课件重新梳理了一下，于是就有了这个章节。
 

@@ -1,5 +1,9 @@
 # 第26节：可见性visibility
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 合约的方法和状态变量需要使用关键字进行修饰，从而决定其是否可以被其他合约调用，修饰符包括：
 
 - public：所有的合约和外部账户（EOA）都可以调用；

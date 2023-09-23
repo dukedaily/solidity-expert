@@ -1,5 +1,9 @@
 # 第3节：payable
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 1. 一个函数（或地址）如果想接收ether，需要将其修饰为：**payable**。
 2. address常用方法：
    1. balance(): 查询当前地址的ether余额

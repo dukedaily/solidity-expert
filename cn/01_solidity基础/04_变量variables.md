@@ -1,5 +1,9 @@
 # 第4节:语法-变量
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 以太坊一共有三种类型的变量
 
 - **状态变量（state）**

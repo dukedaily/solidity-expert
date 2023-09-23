@@ -1,5 +1,9 @@
 # 第5节：call&staticcall
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 **call**是一种底层调用合约的方式，可以在合约内调用其他合约，call语法为：
 
 ```js

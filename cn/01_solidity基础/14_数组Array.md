@@ -1,5 +1,9 @@
 # 第14节：数组
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 1. 定长数组（编译时确定）和动态数组
 2. 下面的arr和arr2是相同的，arr2多了三个初始化的值，arr2也支持push和pop操作
 3. 2022年，数组可以直接在构造函数中赋值

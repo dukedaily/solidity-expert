@@ -1,5 +1,9 @@
 # 第1节: Nodejs介绍
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 
 
 为了学习etherjs，我们需要先掌握必要的js知识，大体包括：变量、函数、数组、类、await/async语法、import等，掌握本文内容就足够了（2个小时就能掌握）。

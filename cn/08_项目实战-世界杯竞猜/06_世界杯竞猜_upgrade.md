@@ -1,6 +1,8 @@
 # 第6节：世界杯竞猜（upgrade）
 
-> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
 
 ## 概述
 
@@ -20,13 +22,12 @@
 
 我们本节聚焦在transparent方式（第一种），这是最主流的升级方案。
 
-
-
+- [USDC合约](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48#code)
 - [点击查看代码](https://github.com/dukedaily/solidity-expert/tree/main/08_项目实战-世界杯竞猜)
-
 - [点击查看效果](https://goerli.etherscan.io/address/0x3ee1fa4d194c32428464b6725317fa0d3af380e8#code)
+- [点击查看视频](https://dukeweb3.com/courses/enrolled/2187286)
 
-- ETH的USDC是可升级的，[点击查看](https://etherscan.io/address/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48#code)
+
 
 ## 升级分析
 

@@ -1,5 +1,9 @@
 # 第8节：Remix教程
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+>职场进阶: https://dukeweb3.com
+
 **Remix在线编译器**是最流行的合约开发工具，对于新入门的开发者，非常友好，我们前期直接使用remix进行学习，
 
 

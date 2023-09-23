@@ -1,5 +1,9 @@
 # 第21节：修饰器modifier
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 修饰器用于修饰函数，在函数执行前或执行后进行调用，经常用于：
 
 1. 权限控制

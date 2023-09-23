@@ -1,5 +1,9 @@
 # 第20节：链下签名signature-EIP191
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 在openzeppelin标准合约中，已经实现了对ECDSA标准合约，我们拆解一下，整个签名验证过程可以分为三个阶段（详见下图）
 
 1. 阶段一：打包原始消息，生成hash

@@ -1,5 +1,9 @@
 # 第15节：枚举Enum
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 枚举可以避免魔数，让程序更加易读，更好的进行状态管理，默认第一个值是：0
 
 ```js

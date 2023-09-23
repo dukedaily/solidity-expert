@@ -1,5 +1,9 @@
 # 第12节：new合约
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 创建合约时，在世界状态中，增加一个地址与账户的信息。
 
 ![image-20220906214046327](assets/image-20220906214046327.png)

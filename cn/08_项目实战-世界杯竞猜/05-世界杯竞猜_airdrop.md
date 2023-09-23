@@ -1,23 +1,19 @@
 # 第5节：世界杯竞猜（airdrop）
 
-> 本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
 
 ## 概述
 
-1. WorldCup合约（已经完成）✅
-
-1. 发行一个worldCupToken（新合约）
-
-1. 统计玩家Play的历史，计算每个人分配多少（由subgraph进行链下统计）
-
-1. 管理员分配奖励（新合约）
-
-1. 用户领取奖励
-
-
-
-- [点击查看效果](https://goerli.etherscan.io/tx/0x5959f3fcc6eff7358663b740bff3ce097ed40bf5742634139f6dee0df3cb5f80)
-- [点击请求当前玩家数据](https://thegraph.com/hosted-service/subgraph/dukedaily/worldcup)
+- WorldCup合约（已经完成）✅
+- 发行一个worldCupToken（新合约）
+- 统计玩家Play的历史，计算每个人分配多少（由subgraph进行链下统计）
+- 管理员分配奖励（新合约）
+- 用户领取奖励
+- [点击查看交易](https://goerli.etherscan.io/tx/0x5959f3fcc6eff7358663b740bff3ce097ed40bf5742634139f6dee0df3cb5f80)
+- [点击请求subgraph](https://thegraph.com/hosted-service/subgraph/dukedaily/worldcup)
+- [点击查看视频](https://dukeweb3.com/courses/enrolled/2187286)
 
 
 

@@ -1,5 +1,9 @@
 # 第10节：fallback
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 1. fallback是特殊的函数，无参数，无返回值；
 2. 何时会被调用：
    1. 当被调用的方法不存在时，fallback会被调用，属于default函数；

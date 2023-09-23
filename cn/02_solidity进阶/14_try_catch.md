@@ -1,5 +1,9 @@
 # 第14节：try/catch
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 try/catch仅可以捕捉在调用external函数或创建合约中抛出的异常信息。
 
 ```js

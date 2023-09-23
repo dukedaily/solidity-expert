@@ -1,5 +1,13 @@
 # 第18节：assembly汇编
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
+
+
+汇编语言为我们编写合约提供了更大的灵活度，solidity是建立在汇编之上的高级语言，方便开发：
+
 1. [汇编在写库的时候很实用，提供更加细颗粒度的编写](https://docs.soliditylang.org/en/latest/assembly.html)
 2. [汇编语言为Yul语法](https://docs.soliditylang.org/en/latest/yul.html#yul)
 3. 使用assembly { ... }包裹

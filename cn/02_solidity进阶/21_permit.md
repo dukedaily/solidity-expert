@@ -1,8 +1,10 @@
 # 第21节：permit
 
-## 概述
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
 
-参考code教程：https://github.com/t4sk/hello-erc20-permit
+本文教程参考：https://github.com/t4sk/hello-erc20-permit
 
 
 

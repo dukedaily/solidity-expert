@@ -1,6 +1,8 @@
 # 第27节：abstract
 
-手册：https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=abstract#abstract-contracts
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
 
 抽象合约的作用是将函数定义和具体实现分离，从而实现解耦、可拓展性，其使用规则为：
 
@@ -44,3 +46,4 @@ contract Cat2 is Feline, Animal("Animal") {
 }
 ```
 
+手册：https://docs.soliditylang.org/en/v0.8.14/contracts.html?highlight=abstract#abstract-contracts

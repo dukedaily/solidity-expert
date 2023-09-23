@@ -1,13 +1,16 @@
 # 第1节 世界杯竞猜（solidity）
 
->  本文收录于我的开源项目：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>  小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+>  职场进阶: https://dukeweb3.com
 
 ## 概述
 
 通过学习，初步了解以太坊开发的基础工具链，通过一个案例（世界杯精彩）实战，使大家掌握基本的solidity开发，完成语法学习。
 
 1. [点击查看效果](https://solidity-expert-worldcup.vercel.app/)
-2. [点击获取代码](https://github.com/dukedaily/solidity-expert/blob/main/08_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C/code/contracts/contracts/WorldCup.sol)
+2. [点击获取代码](https://github.com/dukedaily/solidity-expert/tree/main/cn/08_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C/code/contracts)
+3. [点击查看视频](https://dukeweb3.com/courses/enrolled/2187286)
 
 ## 学习目标
 

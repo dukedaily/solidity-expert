@@ -1,5 +1,9 @@
 # 第9节：Gas相关
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 ![image-20220914075834102](assets/image-20220914075834102.png)
 
 **gas描述执行一笔交易时需要花费多少ether！（1 ether = 10^18wei)**

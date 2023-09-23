@@ -1,5 +1,9 @@
 # 第13节：Mapping
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 - 定义：mapping(keyType => valueType)  myMapping
 - key可以是任意类型，value可以是任意类型（value也可以是mapping或者数组）
 - mapping不支持迭代器

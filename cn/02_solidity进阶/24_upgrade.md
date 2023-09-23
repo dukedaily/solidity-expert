@@ -2,4 +2,10 @@
 
 # 第24节：可升级合约upgrade
 
-详见：[第6节：世界杯竞猜（upgrade）](https://dukedaily.github.io/solidity-expert/08_%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C/06_%E4%B8%96%E7%95%8C%E6%9D%AF%E7%AB%9E%E7%8C%9C_upgrade.html)
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
+
+
+详见下文：世界杯竞猜项目

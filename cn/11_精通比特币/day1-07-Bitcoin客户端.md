@@ -1,5 +1,9 @@
 # 一、工具下载
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 ## 1. [地址](https://bitcoincore.org/en/download/)
 
 这里面可以下载命令行工具和图像化客户端，图形化可自行下载安装，但是先不要运行，看完本教程再运行。

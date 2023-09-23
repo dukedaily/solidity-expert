@@ -1,5 +1,9 @@
 # 第16节：节约gas
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 1. 使用calldata替换memory
 2. 将状态变量加载到memory中
 3. 使用++i替换i++

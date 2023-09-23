@@ -1,5 +1,9 @@
 # 第22节：事件Event
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 事件是区块链上的日志，每当用户发起操作的时候，可以发送相应的事件，常用于：
 
 1. 监听用户对合约的调用
