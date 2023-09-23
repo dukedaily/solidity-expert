@@ -24,17 +24,18 @@
 ## 学习资源
 
 - gitbook：  [点击阅读](https://dukedaily.github.io/solidity-expert/)
+- 进阶教程: [https://dukeweb3.com](https://dukeweb3.com)
 - 视频教程：[油管](https://www.youtube.com/channel/UCSc6tGnLIFvVMXs-ilDyb4A)、[B站](https://space.bilibili.com/102710441/channel/seriesdetail?sid=2537685&ctype=0)
 
 ## 关于作者
 
 国内第一批区块链布道者；2017年开始专注于区块链教育(btc, eth, fabric)，目前base新加坡，专注海外defi,dex,元宇宙等业务方向。
 
-- 微信：Adugii
+- 微信：dukeweb3
 - 公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)
 - Twitter：[dukedu2022](https://twitter.com/dukedu2022)
 - 加入电报：https://t.me/+bEy-E0l4KHhlODRl
-- **个人网站**：https://dukedu.notion.site/
+- **个人网站**：https://dukeweb3.com
 
 
 ## 马上入群
