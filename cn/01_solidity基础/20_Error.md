@@ -1,5 +1,9 @@
 # 第20节：错误Error
 
+> 小白入门：https://github.com/dukedaily/solidity-expert ，欢迎star转发，文末加V入群。
+>
+> 职场进阶: https://dukeweb3.com
+
 合约中发生错误时，整个交易状态都会进行回滚，一共有三个错误处理方式，具体如下：
 
 1. require：一般用于参数有效性校验，最常用。消耗的gas不会退回，剩余的gas退回；（条件为真，继续向下执行）

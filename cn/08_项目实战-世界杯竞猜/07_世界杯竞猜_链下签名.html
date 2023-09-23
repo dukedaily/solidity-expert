@@ -3015,14 +3015,18 @@
                                 
                                 <h1 id="第7节：世界杯竞猜（链下签名）">第7节：世界杯竞猜（链下签名）</h1>
 <blockquote>
-<p>本文收录于我的开源项目：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+<p>小白入门：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
+<p>职场进阶: <a href="https://dukeweb3.com" target="_blank">https://dukeweb3.com</a></p>
 </blockquote>
 <h2 id="概述">概述</h2>
 <p>在区块链应用中，我们有很多需要使用链下签名的场景，例如：</p>
 <ol>
 <li>NFT白名单、空投等：管理员对每个白名单地址生成一个链下签名，mint或claim的时候，会传入这个链下签名，合约内部会对签名进行校验，从而完成白名单功能。</li>
 <li>permit功能：将approve和transferFrom合并为一笔交易，例如：uniswap的移除流动性功能。可以有效节约用户的gas费用。</li>
-<li>多签钱包：多个owner进行签名，最后一个owner进行执行即可。</li>
+<li><p>多签钱包：多个owner进行签名，最后一个owner进行执行即可。</p>
+</li>
+<li><p><a href="https://dukeweb3.com/courses/enrolled/2187286" target="_blank">点击查看视频</a></p>
+</li>
 </ol>
 <h2 id="签名介绍">签名介绍</h2>
 <p>什么是签名呢？ 我们在使用opensea的时候，经常会提示我们进行数字签名，如下图：</p>
@@ -3373,7 +3377,7 @@ contract VerifySignature {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第7节:世界杯竞猜_链下签名","level":"1.15.11","depth":2,"next":{"title":"第8节:世界杯竞猜_多签钱包","level":"1.15.12","depth":2,"path":"08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.md","ref":"08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.md","articles":[]},"previous":{"title":"第6节:世界杯竞猜_upgrade","level":"1.15.10","depth":2,"path":"08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.md","ref":"08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"cn","gitbook":"*"},"file":{"path":"08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.md","mtime":"2023-03-21T14:01:27.000Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-09-16T09:31:59.945Z"},"basePath":"..","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"第7节:世界杯竞猜_链下签名","level":"1.15.11","depth":2,"next":{"title":"第8节:世界杯竞猜_多签钱包","level":"1.15.12","depth":2,"path":"08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.md","ref":"08_项目实战-世界杯竞猜/08_世界杯竞猜_多签钱包.md","articles":[]},"previous":{"title":"第6节:世界杯竞猜_upgrade","level":"1.15.10","depth":2,"path":"08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.md","ref":"08_项目实战-世界杯竞猜/06_世界杯竞猜_upgrade.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"cn","gitbook":"*"},"file":{"path":"08_项目实战-世界杯竞猜/07_世界杯竞猜_链下签名.md","mtime":"2023-09-23T13:17:06.320Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2023-09-23T13:41:23.603Z"},"basePath":"..","book":{"language":"cn"}});
         });
     </script>
 </div>
