@@ -34,7 +34,7 @@
 - 公众号：[阿杜在新加坡](https://mp.weixin.qq.com/s/kjBUa2JHCbOI_2UKmZxjJQ)
 - Twitter：[dukedu2022](https://twitter.com/dukedu2022)
 - 加入电报：https://t.me/+bEy-E0l4KHhlODRl
-- **个人网站**：https://dukedu.notion.site/
+- **个人网站**：https://dukeweb3.com/
 
 
 ## 马上入群
