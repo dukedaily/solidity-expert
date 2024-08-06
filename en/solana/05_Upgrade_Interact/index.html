@@ -1,0 +1,582 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>05_Upgrade_Interact · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-richquotes/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-language-picker/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../06_Rust_Basic_Syntax/" />
+    
+    
+    <link rel="prev" href="../04_Error_Handler/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../00_Tools/">
+            
+                <a href="../00_Tools/">
+            
+                    
+                    00_Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../01_Helloworld/">
+            
+                <a href="../01_Helloworld/">
+            
+                    
+                    01_Helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../02_Arithmetic_Types/">
+            
+                <a href="../02_Arithmetic_Types/">
+            
+                    
+                    02_Arithmetic_Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../03_Anchor_Program_IDL/">
+            
+                <a href="../03_Anchor_Program_IDL/">
+            
+                    
+                    03_Anchor_Program_IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../04_Error_Handler/">
+            
+                <a href="../04_Error_Handler/">
+            
+                    
+                    04_Error_Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    05_Upgrade_Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../06_Rust_Basic_Syntax/">
+            
+                <a href="../06_Rust_Basic_Syntax/">
+            
+                    
+                    06_Rust_Basic_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../07_Rust_Interesting_Syntax/">
+            
+                <a href="../07_Rust_Interesting_Syntax/">
+            
+                    
+                    07_Rust_Interesting_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../08_Function-like_procedural_macro/">
+            
+                <a href="../08_Function-like_procedural_macro/">
+            
+                    
+                    08_Function-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../09_Attribute_Custom_macro/">
+            
+                <a href="../09_Attribute_Custom_macro/">
+            
+                    
+                    09_Attribute_Custom_macro-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../10_Visibility_Inherience/">
+            
+                <a href="../10_Visibility_Inherience/">
+            
+                    
+                    10_Visibility_Inherience
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../11_Block_Variables/">
+            
+                <a href="../11_Block_Variables/">
+            
+                    
+                    11_Block_Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../12_Beyond-The-Block_Sysvars/">
+            
+                <a href="../12_Beyond-The-Block_Sysvars/">
+            
+                    
+                    12_Beyond-The-Block_Sysvars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../13_Event_Log_Transaction/">
+            
+                <a href="../13_Event_Log_Transaction/">
+            
+                    
+                    13_Event_Log_Transaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../14_Tx.Origin_onlyOwner/">
+            
+                <a href="../14_Tx.Origin_onlyOwner/">
+            
+                    
+                    14_Tx.Origin_onlyOwner
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../15_Txfee_Compute-unit/">
+            
+                <a href="../15_Txfee_Compute-unit/">
+            
+                    
+                    15_Txfee_Compute-unit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >05_Upgrade_Interact</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="upgradeinteract">UPGRADE_INTERACT</h1>
+<p><img src="assets/935a00_6f744496166444cbbd0621def8ead449~mv2.jpg" alt="solana anchor deploy"></p>
+<p>We will div into Solana deployment process throughout this session.</p>
+<h2 id="deploy-and-upgrade">Deploy and Upgrade</h2>
+<p>create a new program day_5 via command</p>
+<pre><code class="lang-sh">anchor new day_5
+</code></pre>
+<p>start logs</p>
+<pre><code class="lang-sh">solana logs
+</code></pre>
+<p>build and deploy this new program solely by the specific flag: <code>-p</code></p>
+<pre><code class="lang-sh"><span class="hljs-comment"># -p, --program-name &lt;PROGRAM_NAME&gt;</span>
+anchor build -p day_5
+</code></pre>
+<p><img src="assets/image-20240722213104150.png" alt="image-20240722213104150"></p>
+<p>deploy <code>anchor deploy -p day_5</code></p>
+<p><img src="assets/image-20240722213251626.png" alt="image-20240722213251626"></p>
+<p>re-run this deploy command again: <code>anchor deploy -p day_5</code></p>
+<p><img src="assets/image-20240722213331633.png" alt="image-20240722213331633"></p>
+<p>as you may see:</p>
+<ol>
+<li>When we deploy for the first time, it&apos;s truely deployed, but it&apos;s called <code>upgrade</code> if we redeploy. </li>
+<li>The program id remains the same.</li>
+</ol>
+<p>from this we can understand that: </p>
+<ol>
+<li>By default,  a solana program is mutable. </li>
+<li>We can upgrade the sc (smart contract) in Solana without a Proxy, the upgradability is supported natively.</li>
+</ol>
+<p><strong>But if so, how can we guarantee that a program is not changed abusively by the owner?</strong></p>
+<h2 id="forfeit-ownership">Forfeit ownership</h2>
+<p>In solidity, a commonly way to balance the upgrade power and minimal changes to the sc is to deploy a proxy sc,  and give up the super power by  transfer the ownership to ZERO address later on if no bugs are found.</p>
+<p>in solana, we can achieve this much easier by the following command.</p>
+<pre><code class="lang-sh">solana program set-upgrade-authority &lt;PROGRAM_ID&gt; --url localhost --final
+</code></pre>
+<p>this command will set the authority to None, so no one can redeploy anylong, let&apos;s try it out!</p>
+<p><img src="assets/image-20240722220413448.png" alt="image-20240722220413448"></p>
+<p>as you can see, after the first command got executed, the Authority field becomes None, which means no super admin retains anymore. and when i try to deploy day_5 again, it complains that this program is no longer upgradeable, perfect!</p>
+<h2 id="how-to-interact-with-a-program">How To Interact With A Program</h2>
+<p>when we try to make a sc call via ethers.js in ethereum, we need to specific two things: <code>ABI</code> and <code>sc address</code>.</p>
+<ul>
+<li>SC Address: we can get the <code>bytecode</code> of a sc by Address.</li>
+<li>ABI: Application Binary Interface, which can be used to parse the bytecode.</li>
+</ul>
+<p>In solana, we do it same way, but with different names:</p>
+<ul>
+<li>Program ID: same to solidity address.</li>
+<li>IDL: Interface Definition Language, same to ABI, we cover this concept in <code>day_3</code>.</li>
+</ul>
+<h2 id="update-testcase">Update Testcase</h2>
+<p>Create <code>tests/day_5.ts</code></p>
+<pre><code class="lang-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> anchor <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@coral-xyz/anchor&quot;</span>;
+<span class="hljs-keyword">import</span> { Program } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@coral-xyz/anchor&quot;</span>;
+
+<span class="hljs-keyword">import</span> fs <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;fs&apos;</span>
+<span class="hljs-keyword">let</span> idl = <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(<span class="hljs-string">&apos;target/idl/day_5.json&apos;</span>, <span class="hljs-string">&apos;utf-8&apos;</span>))
+
+describe(<span class="hljs-string">&quot;day_5&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+  anchor.setProvider(anchor.AnchorProvider.env());
+
+  <span class="hljs-comment">// const programID = &quot;HNdiq7jWsmQ33GPmRd95NR3Momr8pcUVx3GB7MuJMhU&quot;;</span>
+  <span class="hljs-keyword">const</span> program = <span class="hljs-keyword">new</span> Program(idl, anchor.getProvider());
+  it.only(<span class="hljs-string">&quot;Is initialized!&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> program.methods.initialize().rpc();
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Your transaction signature&quot;</span>, tx);
+  });
+});
+</code></pre>
+<p>We will load the new program with idl, the address locates in the day_5.json.</p>
+<p>execute the test code without new deployment.(it will fail if we do so, cos we have already deprecated the upgradability before).</p>
+<pre><code class="lang-sh">anchor <span class="hljs-built_in">test</span> --skip-local-validator -p day_5 --skip-deploy
+</code></pre>
+<p><img src="assets/image-20240722232711597.png" alt="image-20240722232711597"></p>
+<p>the <code>initialize</code>function called successfully!</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>solana support upgradibility natively and can forfeit afterwards.</li>
+</ol>
+<h2 id="links">Links</h2>
+<ul>
+<li>day5 original article: <a href="https://www.rareskills.io/post/solana-anchor-deploy" target="_blank">https://www.rareskills.io/post/solana-anchor-deploy</a></li>
+<li>source code: <a href="https://github.com/dukedaily/solana-expert-code/tree/day_5" target="_blank">https://github.com/dukedaily/solana-expert-code/tree/day_5</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../04_Error_Handler/" class="navigation navigation-prev " aria-label="Previous page: 04_Error_Handler">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../06_Rust_Basic_Syntax/" class="navigation navigation-next " aria-label="Next page: 06_Rust_Basic_Syntax">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"05_Upgrade_Interact","level":"1.7","depth":1,"next":{"title":"06_Rust_Basic_Syntax","level":"2.1","depth":1,"path":"solana/06_Rust_Basic_Syntax/README.md","ref":"solana/06_Rust_Basic_Syntax/README.md","articles":[]},"previous":{"title":"04_Error_Handler","level":"1.6","depth":1,"path":"solana/04_Error_Handler/README.md","ref":"solana/04_Error_Handler/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"en","gitbook":"*"},"file":{"path":"solana/05_Upgrade_Interact/README.md","mtime":"2024-08-01T13:42:45.396Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2024-08-06T14:29:16.219Z"},"basePath":"../..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-heading-anchors/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-language-picker/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,671 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>03_Anchor_Program_IDL · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-richquotes/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-language-picker/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../04_Error_Handler/" />
+    
+    
+    <link rel="prev" href="../02_Arithmetic_Types/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../00_Tools/">
+            
+                <a href="../00_Tools/">
+            
+                    
+                    00_Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../01_Helloworld/">
+            
+                <a href="../01_Helloworld/">
+            
+                    
+                    01_Helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../02_Arithmetic_Types/">
+            
+                <a href="../02_Arithmetic_Types/">
+            
+                    
+                    02_Arithmetic_Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    03_Anchor_Program_IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../04_Error_Handler/">
+            
+                <a href="../04_Error_Handler/">
+            
+                    
+                    04_Error_Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../05_Upgrade_Interact/">
+            
+                <a href="../05_Upgrade_Interact/">
+            
+                    
+                    05_Upgrade_Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../06_Rust_Basic_Syntax/">
+            
+                <a href="../06_Rust_Basic_Syntax/">
+            
+                    
+                    06_Rust_Basic_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../07_Rust_Interesting_Syntax/">
+            
+                <a href="../07_Rust_Interesting_Syntax/">
+            
+                    
+                    07_Rust_Interesting_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../08_Function-like_procedural_macro/">
+            
+                <a href="../08_Function-like_procedural_macro/">
+            
+                    
+                    08_Function-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../09_Attribute_Custom_macro/">
+            
+                <a href="../09_Attribute_Custom_macro/">
+            
+                    
+                    09_Attribute_Custom_macro-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../10_Visibility_Inherience/">
+            
+                <a href="../10_Visibility_Inherience/">
+            
+                    
+                    10_Visibility_Inherience
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../11_Block_Variables/">
+            
+                <a href="../11_Block_Variables/">
+            
+                    
+                    11_Block_Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../12_Beyond-The-Block_Sysvars/">
+            
+                <a href="../12_Beyond-The-Block_Sysvars/">
+            
+                    
+                    12_Beyond-The-Block_Sysvars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../13_Event_Log_Transaction/">
+            
+                <a href="../13_Event_Log_Transaction/">
+            
+                    
+                    13_Event_Log_Transaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../14_Tx.Origin_onlyOwner/">
+            
+                <a href="../14_Tx.Origin_onlyOwner/">
+            
+                    
+                    14_Tx.Origin_onlyOwner
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../15_Txfee_Compute-unit/">
+            
+                <a href="../15_Txfee_Compute-unit/">
+            
+                    
+                    15_Txfee_Compute-unit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >03_Anchor_Program_IDL</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="anchor-program-idl">ANCHOR PROGRAM IDL</h1>
+<p><img src="assets/935a00_383c33e21e624c6dbface694c92bd6a5~mv2.jpg" alt="img"></p>
+<h2 id="idl">IDL</h2>
+<p>The IDL(Interface Definition Language)  is a Json file that describes how to interfact with solana program, it&apos;s the same concept of What ABI(Application Binary Interface) to Ethereum.</p>
+<p>You can find the whole Source code under branch <code>day_3</code>: </p>
+<pre><code class="lang-sh">git checkout day_3
+</code></pre>
+<h2 id="no-param-fn">No Param Fn</h2>
+<p>create a new program by command</p>
+<pre><code class="lang-sh">anchor new day_3
+</code></pre>
+<p>update <code>day_3/src/lib.rs</code> as below:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> anchor_lang::prelude::*;
+
+<span class="hljs-comment">// this id would be generated automatically by the new command</span>
+declare_id!(<span class="hljs-string">&quot;69QhaCVcUsq5n6cSfx2TyoCve4wHY2Fzreu8aEET5x5g&quot;</span>);
+
+<span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_3 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-comment">// this is new!!</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">boaty_mc_boatface</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-literal">Ok</span>(())
+    }
+}
+
+<span class="hljs-meta">#[derive(Accounts)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Initialize</span></span> {}
+</code></pre>
+<p>create file: <code>tests/day_3.ts</code> and put the code to:</p>
+<pre><code class="lang-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> anchor <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@coral-xyz/anchor&quot;</span>;
+<span class="hljs-keyword">import</span> { Program } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@coral-xyz/anchor&quot;</span>;
+<span class="hljs-keyword">import</span> { Day3 } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../target/types/day_3&quot;</span>;
+
+describe(<span class="hljs-string">&quot;day_3&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// Configure the client to use the local cluster.</span>
+  anchor.setProvider(anchor.AnchorProvider.env());
+
+  <span class="hljs-keyword">const</span> program = anchor.workspace.Day3 <span class="hljs-keyword">as</span> Program&lt;Day3&gt;;
+
+  it.only(<span class="hljs-string">&quot;Call bodaty mcboatface&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> program.methods.boatyMcBoatface().rpc();
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Your transaction signature&quot;</span>, tx);
+  })
+});
+</code></pre>
+<p>Execute: <code>anchor build</code> and you can find the idl files under folder: <code>target/idl</code></p>
+<p><img src="assets/image-20240721105824466.png" alt="image-20240721105824466"></p>
+<p>Open <code>day_3.json</code> and take a look at the checkpoints from: 1~4</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;address&quot;</span>: <span class="hljs-string">&quot;69QhaCVcUsq5n6cSfx2TyoCve4wHY2Fzreu8aEET5x5g&quot;</span>,
+  <span class="hljs-string">&quot;metadata&quot;</span>: {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;day_3&quot;</span>,  <span class="hljs-comment">// checkpoint1: program name.</span>
+    <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+    <span class="hljs-string">&quot;spec&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Created with Anchor&quot;</span>
+  },
+  <span class="hljs-string">&quot;instructions&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;boatyMcBoatface&quot;</span>, <span class="hljs-comment">// checkpoint2: function name, it converts to camel case.</span>
+      <span class="hljs-string">&quot;discriminator&quot;</span>: [
+        <span class="hljs-number">74</span>,
+        <span class="hljs-number">55</span>,
+        <span class="hljs-number">233</span>,
+        <span class="hljs-number">42</span>,
+        <span class="hljs-number">15</span>,
+        <span class="hljs-number">104</span>,
+        <span class="hljs-number">59</span>,
+        <span class="hljs-number">136</span>
+      ],
+      <span class="hljs-string">&quot;accounts&quot;</span>: [], <span class="hljs-comment">// checkpoint3: empty, will discuss this later.</span>
+      <span class="hljs-string">&quot;args&quot;</span>: [] <span class="hljs-comment">// checkpoint4: empty, cos we dont pass anything.</span>
+    }
+  ]
+}
+</code></pre>
+<h2 id="with-param-fn">With Param Fn</h2>
+<p>add two more functions to <code>day_3/src/lib.rs</code> and build again.</p>
+<pre><code class="lang-rust">    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>(ctx: Context&lt;Initialize&gt;, a: <span class="hljs-built_in">u64</span>, b: <span class="hljs-built_in">u64</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+      <span class="hljs-keyword">let</span> sum = a + b;
+      msg!(<span class="hljs-string">&quot;Sum is {}&quot;</span>, sum);  
+      <span class="hljs-literal">Ok</span>(())
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sub</span></span>(ctx: Context&lt;Initialize&gt;, a: <span class="hljs-built_in">u64</span>, b: <span class="hljs-built_in">u64</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+      <span class="hljs-keyword">let</span> difference = a - b;
+      msg!(<span class="hljs-string">&quot;Difference is {}&quot;</span>, difference);  
+      <span class="hljs-literal">Ok</span>(())
+    }
+</code></pre>
+<p>check <code>target/idl/day_3.json</code>, apart from the stale info, we can see the ABI of the new functions easily.</p>
+<p><img src="assets/image-20240721111153466.png" alt="image-20240721111153466"></p>
+<p>run <code>anchor test --skip-local-validator</code> to test.  you can try to <code>restart</code> the local validator if failed, and delete folder  <code>target</code> and <code>build</code> again it keeps failing, under most cases you would succeed.</p>
+<p><img src="assets/image-20240721112530108.png" alt="image-20240721112530108"></p>
+<h2 id="initialize-struct">Initialize Struct</h2>
+<p>this <code>Initialize</code> within <code>ctx: Context&lt;Initialize&gt;</code> is not a keyword, it can be any arbitrary string, as long as it&apos;s consistent with the defination under <code>#[derive(Accounts)]</code></p>
+<p><img src="assets/image-20240721113254217.png" alt="image-20240721113254217"></p>
+<p>we can create a new program to test it out</p>
+<pre><code class="lang-sh">anchor new day_3_1
+</code></pre>
+<p>update the code to:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> anchor_lang::prelude::*;
+
+declare_id!(<span class="hljs-string">&quot;Ab8YxzsdF4WQnbzxEReNF7qa7P7Jz8zBnXjbiqRaHg4x&quot;</span>);
+
+<span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_3_1 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-comment">// checkpoint1: ArbitraryStr</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">non_empty_account_example</span></span>(ctx: Context&lt;ArbitraryStr&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-literal">Ok</span>(())
+    }
+}
+
+<span class="hljs-comment">// checkpoint2</span>
+<span class="hljs-meta">#[derive(Accounts)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ArbitraryStr</span></span>&lt;<span class="hljs-symbol">&apos;info</span>&gt; { 
+    signer: Signer&lt;<span class="hljs-symbol">&apos;info</span>&gt;,
+    another_signer: Signer&lt;<span class="hljs-symbol">&apos;info</span>&gt;,
+}
+</code></pre>
+<p>as you may see, we change the name from <code>Initializ</code>e to <code>ArbitraryStr</code> and add two signers. we will cover the Accounts details later, you as for now, you can think it as analogous to <code>tx.origin</code> in Solidity</p>
+<p>run <code>anchor build</code> and check <code>target/idl/day_3_1.json</code>, you can see the signers under <code>accounts</code> field:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;address&quot;</span>: <span class="hljs-string">&quot;Ab8YxzsdF4WQnbzxEReNF7qa7P7Jz8zBnXjbiqRaHg4x&quot;</span>,
+  <span class="hljs-string">&quot;metadata&quot;</span>: {
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;day_3_1&quot;</span>,
+    <span class="hljs-string">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+    <span class="hljs-string">&quot;spec&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;Created with Anchor&quot;</span>
+  },
+  <span class="hljs-string">&quot;instructions&quot;</span>: [
+    {
+      <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;non_empty_account_example&quot;</span>,
+      <span class="hljs-string">&quot;discriminator&quot;</span>: [
+        <span class="hljs-number">127</span>,
+        <span class="hljs-number">98</span>,
+        <span class="hljs-number">185</span>,
+        <span class="hljs-number">163</span>,
+        <span class="hljs-number">43</span>,
+        <span class="hljs-number">215</span>,
+        <span class="hljs-number">73</span>,
+        <span class="hljs-number">172</span>
+      ],
+      <span class="hljs-string">&quot;accounts&quot;</span>: [ <span class="hljs-comment">// checkpoint1: signers listed here as defined in lib.rs</span>
+        {
+          <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;signer&quot;</span>,
+          <span class="hljs-string">&quot;signer&quot;</span>: <span class="hljs-literal">true</span>
+        },
+        {
+          <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;another_signer&quot;</span>,
+          <span class="hljs-string">&quot;signer&quot;</span>: <span class="hljs-literal">true</span>
+        }
+      ],
+      <span class="hljs-string">&quot;args&quot;</span>: []
+    }
+  ]
+}
+</code></pre>
+<p>you can stroll up and see the <code>accounts</code> is an empty array in <code>day_3.json</code> as the default <code>Initialize</code>sets to empty in the source code.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>There is no concept of  <code>Contructor</code> function in solana</li>
+<li>IDL is the same as ABI in solidity</li>
+</ol>
+<h2 id="links">Links</h2>
+<ul>
+<li>day3 oritinal article : <a href="https://www.rareskills.io/post/anchor-idl" target="_blank">https://www.rareskills.io/post/anchor-idl</a></li>
+<li>source code: <a href="https://github.com/dukedaily/solana-expert-code/tree/day_3" target="_blank">https://github.com/dukedaily/solana-expert-code/tree/day_3</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../02_Arithmetic_Types/" class="navigation navigation-prev " aria-label="Previous page: 02_Arithmetic_Types">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../04_Error_Handler/" class="navigation navigation-next " aria-label="Next page: 04_Error_Handler">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"03_Anchor_Program_IDL","level":"1.5","depth":1,"next":{"title":"04_Error_Handler","level":"1.6","depth":1,"path":"solana/04_Error_Handler/README.md","ref":"solana/04_Error_Handler/README.md","articles":[]},"previous":{"title":"02_Arithmetic_Types","level":"1.4","depth":1,"path":"solana/02_Arithmetic_Types/README.md","ref":"solana/02_Arithmetic_Types/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"en","gitbook":"*"},"file":{"path":"solana/03_Anchor_Program_IDL/README.md","mtime":"2024-08-01T13:42:45.395Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2024-08-06T14:29:16.219Z"},"basePath":"../..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-heading-anchors/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-language-picker/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

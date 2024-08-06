@@ -1,0 +1,603 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>12_Beyond-The-Block_Sysvars · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-richquotes/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-language-picker/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../13_Event_Log_Transaction/" />
+    
+    
+    <link rel="prev" href="../11_Block_Variables/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../00_Tools/">
+            
+                <a href="../00_Tools/">
+            
+                    
+                    00_Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../01_Helloworld/">
+            
+                <a href="../01_Helloworld/">
+            
+                    
+                    01_Helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../02_Arithmetic_Types/">
+            
+                <a href="../02_Arithmetic_Types/">
+            
+                    
+                    02_Arithmetic_Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../03_Anchor_Program_IDL/">
+            
+                <a href="../03_Anchor_Program_IDL/">
+            
+                    
+                    03_Anchor_Program_IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../04_Error_Handler/">
+            
+                <a href="../04_Error_Handler/">
+            
+                    
+                    04_Error_Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../05_Upgrade_Interact/">
+            
+                <a href="../05_Upgrade_Interact/">
+            
+                    
+                    05_Upgrade_Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../06_Rust_Basic_Syntax/">
+            
+                <a href="../06_Rust_Basic_Syntax/">
+            
+                    
+                    06_Rust_Basic_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../07_Rust_Interesting_Syntax/">
+            
+                <a href="../07_Rust_Interesting_Syntax/">
+            
+                    
+                    07_Rust_Interesting_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../08_Function-like_procedural_macro/">
+            
+                <a href="../08_Function-like_procedural_macro/">
+            
+                    
+                    08_Function-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../09_Attribute_Custom_macro/">
+            
+                <a href="../09_Attribute_Custom_macro/">
+            
+                    
+                    09_Attribute_Custom_macro-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../10_Visibility_Inherience/">
+            
+                <a href="../10_Visibility_Inherience/">
+            
+                    
+                    10_Visibility_Inherience
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../11_Block_Variables/">
+            
+                <a href="../11_Block_Variables/">
+            
+                    
+                    11_Block_Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    12_Beyond-The-Block_Sysvars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../13_Event_Log_Transaction/">
+            
+                <a href="../13_Event_Log_Transaction/">
+            
+                    
+                    13_Event_Log_Transaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../14_Tx.Origin_onlyOwner/">
+            
+                <a href="../14_Tx.Origin_onlyOwner/">
+            
+                    
+                    14_Tx.Origin_onlyOwner
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../15_Txfee_Compute-unit/">
+            
+                <a href="../15_Txfee_Compute-unit/">
+            
+                    
+                    15_Txfee_Compute-unit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >12_Beyond-The-Block_Sysvars</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="beyond-the-block-sysvars">BEYOND THE BLOCK: SYSVARS</h1>
+<p><img src="assets/935a00_b49fad623fe34f7598cfaf32c96e45f1~mv2.jpg" alt="Solana sysvars"></p>
+<p>In Solana, sysvars are<code>read-only system accounts</code> that give Solana programs access to the blockchain state as well as network information. They are similar to Ethereum <code>global variables</code>, which also enable smart contracts to access network or blockchain state information, but they have unique public addresses like the Etherem precompiles.</p>
+<h2 id="slot-vs-blocks">Slot vs blocks</h2>
+<p>Differentiating between solana slots and blocks--A slot is a window of time(about 400ms, millisecond) where a designated leader can produce a block.A slot contains a block(the same kind of block on Ethereum, i.e a list of transactions).However, a slot might not contain a block if the block failed to produce a block during that slot. Their relationship is illustrated below:</p>
+<p><img src="assets/image-20240804082146215.png" alt="image-20240804082146215"></p>
+<p>Although every block maps to exactly one solt, the block hash is not the same as the slot hash.</p>
+<p>Let&apos;s take an example from the image below from the Solana block explorer:</p>
+<p><img src="assets/image-20240804084805064.png" alt="image-20240804084805064"></p>
+<p>Click the slot number: <a href="https://explorer.solana.com/block/285943947?cluster=testnet" target="_blank">285,943,947</a>, you will get the details of this slot.</p>
+<p><img src="assets/image-20240804085001970.png" alt="image-20240804085001970"></p>
+<p>As a test, click on any slot number in the explorer <a href="https://explorer.solana.com/address/SysvarS1otHashes111111111111111111111111111/slot-hashes?cluster=testnet" target="_blank">here</a> and try it out.</p>
+<h2 id="accessing-via-get-method">Accessing Via Get Method</h2>
+<p>In Anchor programs, you can access sysvars in two ways: either by using the anchor&apos;s get method wrapper, or by treating it as an account in your <code>#[Derive(Accounts)]</code> using it&apos;s public address.</p>
+<p>Not all sysvars can be accessed using Anchor&apos;s get method, <code>Clock</code>, <code>EpochSchedule</code> are available for example.</p>
+<h3 id="clock">Clock</h3>
+<p> <code>Clock</code> has been covered in last tutorial.</p>
+<h3 id="epochschedule">EpochSchedule</h3>
+<p>Let&apos;s try EpochSchedule directly</p>
+<pre><code class="lang-sh">anchor new day_12
+</code></pre>
+<pre><code class="lang-rust"><span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_12 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">initialize</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-keyword">let</span> epoch = EpochSchedule::get()?;
+        msg!(<span class="hljs-string">&quot;Epoch: {:?}&quot;</span>, epoch);
+        <span class="hljs-literal">Ok</span>(())
+    }
+}
+</code></pre>
+<p>result:</p>
+<p><img src="assets/image-20240804194026134.png" alt="image-20240804194026134"></p>
+<h3 id="rent">Rent</h3>
+<p>add another function and test</p>
+<pre><code class="lang-rust">    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">rent_test</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-keyword">let</span> rent = Rent::get()?;
+        msg!(<span class="hljs-string">&quot;Rent: {:?}&quot;</span>, rent);
+        <span class="hljs-literal">Ok</span>(())
+    }
+</code></pre>
+<p>result:</p>
+<p><img src="assets/image-20240804194518734.png" alt="image-20240804194518734"></p>
+<h2 id="accessing-via-public-address">Accessing Via Public Address</h2>
+<p>For sysvars that don&apos;t support the get method, we can access them using their public addresses.</p>
+<p>Any expections to this will be specified.</p>
+<pre><code class="lang-sh"> anchor new day_12_1
+</code></pre>
+<p>Add:</p>
+<pre><code class="lang-rust">    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_stake_history</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-keyword">let</span> arr = [ctx.accounts.stake_history.clone()];
+        <span class="hljs-keyword">let</span> acc_iter = &amp;<span class="hljs-keyword">mut</span> arr.iter();
+        <span class="hljs-keyword">let</span> sh_sysvar_info = next_account_info(acc_iter)?;
+        msg!(<span class="hljs-string">&quot;Stake History Sysvar: {:?}&quot;</span>, sh_sysvar_info);
+        <span class="hljs-literal">Ok</span>(())
+    }
+</code></pre>
+<p>update Initialize with new account:</p>
+<pre><code class="lang-rust">
+<span class="hljs-meta">#[derive(Accounts)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Initialize</span></span>&lt;<span class="hljs-symbol">&apos;info</span>&gt; {
+    <span class="hljs-comment">/// CHECK:</span>
+    <span class="hljs-keyword">pub</span> stake_history: AccountInfo&lt;<span class="hljs-symbol">&apos;info</span>&gt;,
+}
+</code></pre>
+<p>update test file:</p>
+<pre><code class="lang-rust">import * <span class="hljs-keyword">as</span> anchor from <span class="hljs-string">&quot;@coral-xyz/anchor&quot;</span>;
+import { Program } from <span class="hljs-string">&quot;@coral-xyz/anchor&quot;</span>;
+import { Day12 } from &apos;../target/types/day_12&apos;;
+
+describe(<span class="hljs-string">&quot;day_12&quot;</span>, () =&gt; {
+  anchor.setProvider(anchor.AnchorProvider.env());
+  <span class="hljs-keyword">const</span> program = anchor.workspace.Day12 <span class="hljs-keyword">as</span> Program&lt;Day12&gt;;
+  <span class="hljs-keyword">const</span> stakeHistoryPubKey = new anchor.web3.PublicKey(<span class="hljs-string">&quot;SysvarStakeHistory1111111111111111111111111&quot;</span>);
+
+  it(<span class="hljs-string">&quot;should succeed to get epoch schedule!&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> program.methods.initialize().rpc();
+    console.log(<span class="hljs-string">&quot;You tx signature:&quot;</span>, tx);
+  })
+
+  it(<span class="hljs-string">&quot;should succeed to get rent info!&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> program.methods.rentTest().rpc();
+    console.log(<span class="hljs-string">&quot;You tx signature:&quot;</span>, tx);
+  })
+
+  it.only(<span class="hljs-string">&quot;should succeed to get stake history info!&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> tx = <span class="hljs-keyword">await</span> program.methods.
+      getStakeHistory().
+      accounts({
+        stakeHistory: stakeHistoryPubKey
+      }).rpc();
+    console.log(<span class="hljs-string">&quot;You tx signature:&quot;</span>, tx);
+  })
+})
+</code></pre>
+<p>result:</p>
+<p><img src="assets/image-20240804202020364.png" alt="image-20240804202020364"></p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<h2 id="links">Links</h2>
+<ul>
+<li>day_12 original article: <a href="https://www.rareskills.io/post/solana-sysvar" target="_blank">https://www.rareskills.io/post/solana-sysvar</a></li>
+<li>source code: <a href="https://github.com/dukedaily/solana-expert-code/tree/day_12" target="_blank">https://github.com/dukedaily/solana-expert-code/tree/day_12</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../11_Block_Variables/" class="navigation navigation-prev " aria-label="Previous page: 11_Block_Variables">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../13_Event_Log_Transaction/" class="navigation navigation-next " aria-label="Next page: 13_Event_Log_Transaction">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"12_Beyond-The-Block_Sysvars","level":"3.2","depth":1,"next":{"title":"13_Event_Log_Transaction","level":"3.3","depth":1,"path":"solana/13_Event_Log_Transaction/README.md","ref":"solana/13_Event_Log_Transaction/README.md","articles":[]},"previous":{"title":"11_Block_Variables","level":"3.1","depth":1,"path":"solana/11_Block_Variables/README.md","ref":"solana/11_Block_Variables/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"en","gitbook":"*"},"file":{"path":"solana/12_Beyond-The-Block_Sysvars/README.md","mtime":"2024-08-04T12:20:36.461Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2024-08-06T14:29:16.219Z"},"basePath":"../..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-heading-anchors/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-language-picker/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

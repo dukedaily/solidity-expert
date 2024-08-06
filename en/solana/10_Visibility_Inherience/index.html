@@ -1,0 +1,701 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>10_Visibility_Inherience · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-richquotes/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-language-picker/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-codeblock-label/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../11_Block_Variables/" />
+    
+    
+    <link rel="prev" href="../09_Attribute_Custom_macro/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../00_Tools/">
+            
+                <a href="../00_Tools/">
+            
+                    
+                    00_Tools
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../01_Helloworld/">
+            
+                <a href="../01_Helloworld/">
+            
+                    
+                    01_Helloworld
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../02_Arithmetic_Types/">
+            
+                <a href="../02_Arithmetic_Types/">
+            
+                    
+                    02_Arithmetic_Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../03_Anchor_Program_IDL/">
+            
+                <a href="../03_Anchor_Program_IDL/">
+            
+                    
+                    03_Anchor_Program_IDL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../04_Error_Handler/">
+            
+                <a href="../04_Error_Handler/">
+            
+                    
+                    04_Error_Handler
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../05_Upgrade_Interact/">
+            
+                <a href="../05_Upgrade_Interact/">
+            
+                    
+                    05_Upgrade_Interact
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../06_Rust_Basic_Syntax/">
+            
+                <a href="../06_Rust_Basic_Syntax/">
+            
+                    
+                    06_Rust_Basic_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../07_Rust_Interesting_Syntax/">
+            
+                <a href="../07_Rust_Interesting_Syntax/">
+            
+                    
+                    07_Rust_Interesting_Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../08_Function-like_procedural_macro/">
+            
+                <a href="../08_Function-like_procedural_macro/">
+            
+                    
+                    08_Function-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../09_Attribute_Custom_macro/">
+            
+                <a href="../09_Attribute_Custom_macro/">
+            
+                    
+                    09_Attribute_Custom_macro-like_procedural_macro
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    10_Visibility_Inherience
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../11_Block_Variables/">
+            
+                <a href="../11_Block_Variables/">
+            
+                    
+                    11_Block_Variables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../12_Beyond-The-Block_Sysvars/">
+            
+                <a href="../12_Beyond-The-Block_Sysvars/">
+            
+                    
+                    12_Beyond-The-Block_Sysvars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../13_Event_Log_Transaction/">
+            
+                <a href="../13_Event_Log_Transaction/">
+            
+                    
+                    13_Event_Log_Transaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../14_Tx.Origin_onlyOwner/">
+            
+                <a href="../14_Tx.Origin_onlyOwner/">
+            
+                    
+                    14_Tx.Origin_onlyOwner
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../15_Txfee_Compute-unit/">
+            
+                <a href="../15_Txfee_Compute-unit/">
+            
+                    
+                    15_Txfee_Compute-unit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >10_Visibility_Inherience</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="visibility-and-inherience">VISIBILITY AND INHERIENCE</h1>
+<p><img src="assets/935a00_0cc717e55a18467587b68a28852aa476~mv2.jpg" alt="rust function visibility"></p>
+<p>There are four types of function visibility in solidity, they are:</p>
+<ul>
+<li>public: accessible from within the contract and externally.</li>
+<li>external: accessible from outside the contract only.</li>
+<li>internal: accessible within the contract and inheriting contracts.</li>
+<li>private: accessible within the contract only.</li>
+</ul>
+<p>That&apos;s see how we can acchieve this in Solana.</p>
+<h2 id="public-functions">Public functions</h2>
+<p>We can define a function with the <code>pub</code> prefix to indicate that it is public.</p>
+<p>All the functions we have defined since day_1 till date arel all public functions:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">public_function</span></span>(ctx: Contex&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+  <span class="hljs-comment">//...</span>
+  <span class="hljs-literal">Ok</span>(())
+}
+</code></pre>
+<p>You cannot remove the <code>pub</code>keyword for functions inside of the module(mod) labeled <code>#[program]</code>, it willnot compile.</p>
+<p>Solana don&apos;t have external functions.</p>
+<h2 id="internal-functions">Internal functions</h2>
+<p>Rust, and hence Solana, does not have &quot;class&quot; the way solidity does, as Rust is not object-oriented, and Rust uses modules to organize code.</p>
+<ol>
+<li>define a mode <code>pub mod internal_func</code>inside <code>pub mod day_10</code></li>
+<li>call <code>internal_func1</code>within <code>initialize</code> via mod_name::function_name</li>
+</ol>
+<pre><code class="lang-rust"><span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_10 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">initialize</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        msg!(<span class="hljs-string">&quot;Greetings from: {:?}&quot;</span>, ctx.program_id);
+
+        <span class="hljs-keyword">let</span> number = get_number();
+        msg!(<span class="hljs-string">&quot;Number: {:?}&quot;</span>, number);
+
+        <span class="hljs-keyword">let</span> num = internal_func::internal_func1();
+        msg!(<span class="hljs-string">&quot;Internal num: {:?}&quot;</span>, num);
+        <span class="hljs-literal">Ok</span>(())
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> internal_func {
+        <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">internal_func1</span></span>() -&gt; <span class="hljs-built_in">u64</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">20</span>;
+        }
+    }
+}
+</code></pre>
+<p>define another mod within this file <code>lib.rs</code> but outside of <code>pub mod day_10</code>, </p>
+<p>import and call function of mod <code>internal_func</code></p>
+<pre><code class="lang-rust"><span class="hljs-keyword">mod</span> call {
+    <span class="hljs-keyword">use</span> crate::day_10;
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">call_internal_func</span></span>() {
+        <span class="hljs-keyword">let</span> num = day_10::internal_func::internal_func1();
+        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Internal num: {:?}&quot;</span>, num);
+    }
+}
+</code></pre>
+<p>the full code:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> anchor_lang::prelude::*;
+
+declare_id!(<span class="hljs-string">&quot;C7Qm8zwexesfhk4CSeEKJkasuPsUE1RPQPepsr36wkNS&quot;</span>);
+
+<span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_10 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">initialize</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        msg!(<span class="hljs-string">&quot;Greetings from: {:?}&quot;</span>, ctx.program_id);
+
+        <span class="hljs-keyword">let</span> number = get_number(); <span class="hljs-comment">// &lt;--call a single function outside any mod</span>
+        msg!(<span class="hljs-string">&quot;Number: {:?}&quot;</span>, number);
+
+        <span class="hljs-keyword">let</span> num = internal_func::internal_func1();
+        msg!(<span class="hljs-string">&quot;Internal num: {:?}&quot;</span>, num);
+        <span class="hljs-literal">Ok</span>(())
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> internal_func {
+        <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">internal_func1</span></span>() -&gt; <span class="hljs-built_in">u64</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">20</span>;
+        }
+    }
+}
+
+<span class="hljs-comment">// This is a outer module</span>
+<span class="hljs-keyword">mod</span> call {
+    <span class="hljs-keyword">use</span> crate::day_10;
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">call_internal_func</span></span>() {
+        <span class="hljs-keyword">let</span> num = day_10::internal_func::internal_func1();
+        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Internal num: {:?}&quot;</span>, num);
+    }
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_number</span></span>() -&gt; <span class="hljs-built_in">u64</span> {
+    <span class="hljs-number">10</span>
+}
+
+<span class="hljs-meta">#[derive(Accounts)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Initialize</span></span> {}
+</code></pre>
+<p>add test cases and run: (can get the source code down below).</p>
+<p><img src="assets/image-20240731222940520.png" alt="image-20240731222940520"></p>
+<p>this is how we acchieve internal functions, it can be accessed by parent <code>mod (day_10)</code>, and outside <code>mod call</code> as well.</p>
+<h2 id="private-functions">Private functions</h2>
+<p>Definiing a function within a specific module and ensuring they are not exposed outside that scope is a way to achieve private visibility:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> anchor_lang::prelude::*;
+
+declare_id!(<span class="hljs-string">&quot;C7Qm8zwexesfhk4CSeEKJkasuPsUE1RPQPepsr36wkNS&quot;</span>);
+
+<span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_10 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">initialize</span></span>(ctx: Context&lt;Initialize&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-comment">// the reset code</span>
+
+        <span class="hljs-keyword">let</span> msg = some_private_function::private_func();
+        msg!(<span class="hljs-string">&quot;Private function: {:?}&quot;</span>, msg);
+        <span class="hljs-literal">Ok</span>(())
+    }
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> some_private_function {
+        <span class="hljs-keyword">use</span> std::string;
+        <span class="hljs-keyword">pub</span>(<span class="hljs-keyword">in</span> crate::day_10) <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">private_func</span></span>() -&gt; string::<span class="hljs-built_in">String</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello private function!&quot;</span>.to_string();
+        }
+    }
+}
+
+<span class="hljs-comment">// This is a outer module</span>
+<span class="hljs-keyword">mod</span> call {
+    <span class="hljs-keyword">use</span> crate::day_10;
+    <span class="hljs-comment">// the reset code</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">call_private_func</span></span>() {
+        <span class="hljs-keyword">let</span> msg = day_10::some_private_function::private_func();
+        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Private function: {:?}&quot;</span>, msg);
+    }
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_number</span></span>() -&gt; <span class="hljs-built_in">u64</span> {
+    <span class="hljs-number">10</span>
+}
+
+<span class="hljs-meta">#[derive(Accounts)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Initialize</span></span> {}
+</code></pre>
+<p>The <code>pub(in crate::day_10)</code> keyword indicates that <code>private_func</code> function is only visible within <code>day_10</code> module, let&apos;s build again!</p>
+<pre><code class="lang-sh">anchor build -p day_10
+</code></pre>
+<p>result:</p>
+<p><img src="assets/image-20240801075234627.png" alt="image-20240801075234627"></p>
+<p>This shows that <code>private_func</code> is not publicly accessible and cannot be invoked from outside the module where it is visible. Check out <a href="https://doc.rust-lang.org/beta/reference/visibility-and-privacy.html#pubin-path-pubcrate-pubsuper-and-pubself" target="_blank">visibility and privacy</a> in Rust docs for more.</p>
+<h2 id="rust-module">Rust Module</h2>
+<p>Let&apos;s split our code into separate files to better manage our codebase. We can use the <code>mod</code> keyword to achieve this.</p>
+<pre><code class="lang-sh">anchor new day_10_1
+</code></pre>
+<p>create a file <code>calculate.rs</code>with the following code:</p>
+<pre><code class="lang-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>(a: <span class="hljs-built_in">u64</span>, b: <span class="hljs-built_in">u64</span>) -&gt; <span class="hljs-built_in">u64</span> {
+    a + b
+}
+
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sub</span></span>(a: <span class="hljs-built_in">u64</span>, b: <span class="hljs-built_in">u64</span>) -&gt; <span class="hljs-built_in">u64</span> {
+    a - b
+}
+</code></pre>
+<p>import calculate within <code>lib.rs</code></p>
+<pre><code class="lang-rust"><span class="hljs-keyword">use</span> anchor_lang::prelude::*;
+
+declare_id!(<span class="hljs-string">&quot;AeRhxgytoVWqgZuzXz9R6qgphF9jJ9yoeFbHjNFBZBFf&quot;</span>);
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> calculate;
+
+<span class="hljs-meta">#[program]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> day_10_1 {
+    <span class="hljs-keyword">use</span> super::*;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">myAdd</span></span>(_ctx: Context&lt;Initialize&gt;, a: <span class="hljs-built_in">u64</span>, b: <span class="hljs-built_in">u64</span>) -&gt; <span class="hljs-built_in">Result</span>&lt;()&gt; {
+        <span class="hljs-keyword">let</span> res = calculate::add(a, b);
+        msg!(<span class="hljs-string">&quot;Result: {:?}&quot;</span>, res); <span class="hljs-comment">// a: 10, b: 20, res: 30</span>
+        <span class="hljs-literal">Ok</span>(())
+    }
+}
+
+<span class="hljs-meta">#[derive(Accounts)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Initialize</span></span> {}
+</code></pre>
+<p>Be careful with the way that we import mod <code>calculate</code>, should be the same.</p>
+<p><img src="assets/image-20240801214059151.png" alt="image-20240801214059151"></p>
+<p>Build successfully.</p>
+<pre><code class="lang-sh"> anchor build -p day_10_1
+</code></pre>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ol>
+<li>functions under <code>#[program]</code> mod must be public: Adding <code>pub</code> keyword prior to function names</li>
+<li>it&apos;s allowed to declare functions without pub inside the files out of a mod</li>
+<li>A file&apos;s name is also it&apos;s module name</li>
+</ol>
+<h2 id="links">Links</h2>
+<ul>
+<li>day_10 original article:</li>
+<li>source code:</li>
+</ul>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../09_Attribute_Custom_macro/" class="navigation navigation-prev " aria-label="Previous page: 09_Attribute_Custom_macro-like_procedural_macro">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../11_Block_Variables/" class="navigation navigation-next " aria-label="Next page: 11_Block_Variables">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"10_Visibility_Inherience","level":"2.5","depth":1,"next":{"title":"11_Block_Variables","level":"3.1","depth":1,"path":"solana/11_Block_Variables/README.md","ref":"solana/11_Block_Variables/README.md","articles":[]},"previous":{"title":"09_Attribute_Custom_macro-like_procedural_macro","level":"2.4","depth":1,"path":"solana/09_Attribute_Custom_macro/README.md","ref":"solana/09_Attribute_Custom_macro/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"root":"./","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"esversion":"2022","nodeversion":"18.12.0","npmversion":"8.19.2","triplebackticks":"```","console":"<a class=\"gitbook-plugin-js-console\" aria-hidden=\"true\"></a>"},"language":"en","gitbook":"*"},"file":{"path":"solana/10_Visibility_Inherience/README.md","mtime":"2024-08-01T13:50:19.533Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2024-08-06T14:29:16.219Z"},"basePath":"../..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-heading-anchors/anchor-style.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-language-picker/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-js-console/console-ui.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
