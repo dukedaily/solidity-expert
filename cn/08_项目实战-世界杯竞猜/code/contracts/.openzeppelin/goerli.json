@@ -1,0 +1,338 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x1204371AC0e5176f4B8c5B2F16C2Bec551b6FC1a",
+    "txHash": "0x9b192d06fbb6fc6f049a8864b724165f760f8ddc3ac05dadb8082f419ffc65df"
+  },
+  "proxies": [
+    {
+      "address": "0x3EE1FA4d194C32428464B6725317fA0D3af380E8",
+      "txHash": "0x40cd34dc8f32dcb10066f1caebb810808d25e12e8286a8dad95244b8741117b9",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "e433880ff3257a3011ffde898d23414c4a3aa80f4c0debb525f238879d3ff07b": {
+      "address": "0xEd76dF8C173256F8290Af29D1409C3C09AE02f68",
+      "txHash": "0xed5772064fbb03467548e2b7f35fd9a23486f2c456cb7217e1533a3d92cedeaf",
+      "layout": {
+        "solcVersion": "0.8.9",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "admin",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:16"
+          },
+          {
+            "label": "currRound",
+            "offset": 22,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:17"
+          },
+          {
+            "label": "players",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_uint8,t_mapping(t_address,t_struct(Player)532_storage))",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:25"
+          },
+          {
+            "label": "countryToPlayers",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint8,t_mapping(t_enum(Country)491,t_array(t_address)dyn_storage))",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:27"
+          },
+          {
+            "label": "winnerVaults",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:32"
+          },
+          {
+            "label": "deadline",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:36"
+          },
+          {
+            "label": "lockedAmts",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "WorldCupV1",
+            "src": "contracts/upgrade/WorldCupV1.sol:38"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(Country)491": {
+            "label": "enum WorldCupV1.Country",
+            "members": [
+              "GERMANY",
+              "FRANCH",
+              "CHINA",
+              "BRAZIL",
+              "KOREA"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(Player)532_storage)": {
+            "label": "mapping(address => struct WorldCupV1.Player)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_enum(Country)491,t_array(t_address)dyn_storage)": {
+            "label": "mapping(enum WorldCupV1.Country => address[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_enum(Country)491,t_uint256)": {
+            "label": "mapping(enum WorldCupV1.Country => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint8,t_mapping(t_address,t_struct(Player)532_storage))": {
+            "label": "mapping(uint8 => mapping(address => struct WorldCupV1.Player))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint8,t_mapping(t_enum(Country)491,t_array(t_address)dyn_storage))": {
+            "label": "mapping(uint8 => mapping(enum WorldCupV1.Country => address[]))",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Player)532_storage": {
+            "label": "struct WorldCupV1.Player",
+            "members": [
+              {
+                "label": "isSet",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "counts",
+                "type": "t_mapping(t_enum(Country)491,t_uint256)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "8529beaaeb6cc68d0cc9d91866af116a3fa242ed496bb59ae05ba05ba0efaba4": {
+      "address": "0x4cB210F91B6D95978d1cF055DDf88701C57C01f0",
+      "txHash": "0x864a1c1240d0f25d94bcb20cae045b21e34f809295b5908e438d963ece5669e4",
+      "layout": {
+        "solcVersion": "0.8.9",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "admin",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:16"
+          },
+          {
+            "label": "currRound",
+            "offset": 22,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:17"
+          },
+          {
+            "label": "players",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_uint8,t_mapping(t_address,t_struct(Player)540_storage))",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:25"
+          },
+          {
+            "label": "countryToPlayers",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint8,t_mapping(t_enum(Country)493,t_array(t_address)dyn_storage))",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:27"
+          },
+          {
+            "label": "winnerVaults",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:31"
+          },
+          {
+            "label": "deadline",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:34"
+          },
+          {
+            "label": "lockedAmts",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:36"
+          },
+          {
+            "label": "changeCount",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256",
+            "contract": "WorldCupV2",
+            "src": "contracts/upgrade/WorldCupV2.sol:39"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(Country)493": {
+            "label": "enum WorldCupV2.Country",
+            "members": [
+              "GERMANY",
+              "FRANCH",
+              "CHINA",
+              "BRAZIL",
+              "KOREA"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_struct(Player)540_storage)": {
+            "label": "mapping(address => struct WorldCupV2.Player)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_enum(Country)493,t_array(t_address)dyn_storage)": {
+            "label": "mapping(enum WorldCupV2.Country => address[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_enum(Country)493,t_uint256)": {
+            "label": "mapping(enum WorldCupV2.Country => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint8,t_mapping(t_address,t_struct(Player)540_storage))": {
+            "label": "mapping(uint8 => mapping(address => struct WorldCupV2.Player))",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint8,t_mapping(t_enum(Country)493,t_array(t_address)dyn_storage))": {
+            "label": "mapping(uint8 => mapping(enum WorldCupV2.Country => address[]))",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Player)540_storage": {
+            "label": "struct WorldCupV2.Player",
+            "members": [
+              {
+                "label": "isSet",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "counts",
+                "type": "t_mapping(t_enum(Country)493,t_uint256)",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}

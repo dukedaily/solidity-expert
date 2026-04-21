@@ -1,0 +1,2 @@
+*.md linguist-language=solidity
+*.sol linguist-language=solidity

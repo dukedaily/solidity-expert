@@ -1,0 +1,7 @@
+node_modules/
+_book
+.DS_Store
+publish.sh
+.vscode
+.obsidian
+.env

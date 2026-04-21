@@ -640,9 +640,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.20" data-path="../01_solidity基础/20_error.html">
+        <li class="chapter " data-level="1.8.20" data-path="../01_solidity基础/20_error.md">
             
-                <a href="../01_solidity基础/20_error.html">
+                <span>
             
                     
                     第20节:error
@@ -1023,9 +1023,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.18" data-path="18_assembly.html">
+        <li class="chapter " data-level="1.9.18" data-path="18_assembly.md">
             
-                <a href="18_assembly.html">
+                <span>
             
                     
                     第18节:assembly
@@ -3290,19 +3290,14 @@ contract Caller {
 </code></pre>
 <h2 id="staticcall：">STATICCALL：</h2>
 <ul>
-<li><p>Staticcall与CALL相同，但是不允许修改任何状态变量，它会将写操作的函数，当成读操作的函数来执行，一旦在执行中发现被调用方法修改状态变量，即revert，这是为了安全🔐考虑而新增的<a href="https://eips.ethereum.org/EIPS/eip-214" target="_blank">OPCODE</a>。</p>
+<li><p><a href="https://eips.ethereum.org/EIPS/eip-214" target="_blank">https://eips.ethereum.org/EIPS/eip-214</a></p>
 </li>
-<li><p>即使是修饰为view的函数，但是其内部实现也可能恶意的修改了状态变量，如果直接使用call调用，则可能因状态变量被修改会遭到被恶意攻击，但是如果使用staticcall的话，完全可以杜绝被修改。</p>
+<li><p>Since byzantium staticcall can be used as well. This is basically the same as call, but will revert if the called function modifies the state in any way.</p>
 </li>
-</ul>
-<h2 id="demo">demo</h2>
-<p>在Transparent模式的代理合约逻辑中，就使用了staticcall，从而让proxyAmin能够免费的调用父合约的admin函数，从而从slot中返回代理合约的管理员。这部分会在合约升级章节介绍，这是admin() 函数原型，可见它不是view的，<a href="https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/upstream-v3.2.0-solc-0.7-patched/contracts/proxy/TransparentUpgradeableProxy.sol" target="_blank">源码</a></p>
-<pre><code class="lang-javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">admin</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> <span class="hljs-title">ifAdmin</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address admin_</span>) </span>{
-        admin_ = _admin();
-    }
-</code></pre>
-<p>但是我们可以通过staticcall完成对写操作的模拟执行，不会消耗gas（前提是不会修改状态变量）</p>
-<pre><code class="lang-javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProxyAdmin</span>(<span class="hljs-params">TransparentUpgradeableProxy proxy</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">virtual</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address</span>) </span>{
+<li><p>与CALL相同，但是不允许修改任何状态变量，是为了安全🔐考虑而新增的OPCODE</p>
+</li>
+<li><p>在Transparent模式的代理合约逻辑中，就使用了staticcall，从而让proxyAmin能够免费的调用父合约的admin函数，从而从slot中返回代理合约的管理员。这部分会在合约升级章节介绍。</p>
+<pre><code class="lang-js">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProxyAdmin</span>(<span class="hljs-params">TransparentUpgradeableProxy proxy</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">virtual</span> <span class="hljs-title">returns</span> (<span class="hljs-params">address</span>) </span>{
         <span class="hljs-comment">// We need to manually run the static call since the getter cannot be flagged as view</span>
         <span class="hljs-comment">// bytes4(keccak256(&quot;admin()&quot;)) == 0xf851a440</span>
         (bool success, bytes memory returndata) = address(proxy).staticcall(hex<span class="hljs-string">&quot;f851a440&quot;</span>);
@@ -3310,6 +3305,8 @@ contract Caller {
         <span class="hljs-keyword">return</span> abi.decode(returndata, (address));
     }
 </code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -3337,7 +3334,7 @@ contract Caller {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第5节:call&staticcall","level":"1.9.5","depth":2,"next":{"title":"第6节:keccak256","level":"1.9.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"previous":{"title":"第4节:encode_encodePacked","level":"1.9.4","depth":2,"path":"02_solidity进阶/04_encode_encodePacked.md","ref":"02_solidity进阶/04_encode_encodePacked.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"cn","gitbook":"*"},"file":{"path":"02_solidity进阶/05_call&staticcall.md","mtime":"2026-04-21T08:29:14.495Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2026-04-21T08:47:35.077Z"},"basePath":"..","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"第5节:call&staticcall","level":"1.9.5","depth":2,"next":{"title":"第6节:keccak256","level":"1.9.6","depth":2,"path":"02_solidity进阶/06_keccak256.md","ref":"02_solidity进阶/06_keccak256.md","articles":[]},"previous":{"title":"第4节:encode_encodePacked","level":"1.9.4","depth":2,"path":"02_solidity进阶/04_encode_encodePacked.md","ref":"02_solidity进阶/04_encode_encodePacked.md","articles":[]},"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"cn","gitbook":"*"},"file":{"path":"02_solidity进阶/05_call&staticcall.md","mtime":"2026-04-21T08:50:37.375Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2026-04-21T08:51:06.352Z"},"basePath":"..","book":{"language":"cn"}});
         });
     </script>
 </div>
