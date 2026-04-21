@@ -27,7 +27,7 @@ console.log("当前块:", block);
 const provider = new ethers.BrowserProvider(window.ethereum);
 
 // 请求钱包连接
-await window.ethereum.request({ method: "eth_requestAccounts" });
+await provider.send("eth_requestAccounts", []);
 
 // 获取当前账户 Signer
 const signer = await provider.getSigner(); // v6: async
