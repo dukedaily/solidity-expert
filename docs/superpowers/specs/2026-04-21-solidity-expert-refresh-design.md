@@ -55,7 +55,7 @@ Every new or edited lesson must match the existing voice. Patterns observed from
 - Chinese prose, English code comments (preserve source-material comments).
 - Length target: basics lesson 20–60 lines; advanced lesson with multiple demos 100–200 lines.
 
-Saved to memory so the style is enforced across future sessions.
+Saved to auto-memory at `~/.claude/projects/-Users-duke-du-mybooks-solidity-expert/memory/feedback_writing_style.md` so the style is enforced across future Claude Code sessions.
 
 ## Workstreams (full catalog)
 
@@ -90,7 +90,7 @@ All work stays on branch `refresh-2026`. Commits land incrementally. No fixed sc
 2. `git rm -r --cached` each committed `node_modules/` tree.
 3. Add / tighten `.gitignore` — ensure `node_modules/`, `.env`, build artifacts, OS junk (`.DS_Store`) are ignored everywhere.
 4. Verify `npm run serve` still builds the book.
-5. Verify Ch 8 code subdirs still usable via `npm i` after fresh clone.
+5. After cleanup, run `cd cn/08_项目实战-世界杯竞猜/code/contracts && npm i` locally once to confirm the Ch 8 project still installs cleanly from a fresh tree — this is pre-M1.2 validation, not a deliverable. M1.2's banner will surface the same `npm i` instruction to future readers.
 
 **Commit:** `chore: remove committed node_modules, tighten gitignore`
 
@@ -110,6 +110,8 @@ All work stays on branch `refresh-2026`. Commits land incrementally. No fixed sc
 ### M1.3 — Stablecoin chapter scaffold (W2 structural)
 
 **Chapter slot:** `cn/19_稳定币/` — skips the unwired ghost folders `17_Tools` and `18_Gas优化80 Tips` to avoid collision. Wired as `第十九章: 稳定币` in `cn/SUMMARY.md`.
+
+A previously untracked `cn/稳定币/` draft folder (USDO intro + 2025 market analysis) was removed by the author before this spec was finalized. M1 writes fresh content in the author's voice rather than porting those drafts; no content migration step is required.
 
 **Topic list** (6 lessons; progresses simple → complex, ends on USDO / RWA for (ii) signal):
 
