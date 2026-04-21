@@ -65,9 +65,9 @@ deal(address(token), user, 1_000 ether);  // 直接给地址分发 token
 vm.store(target, slot, value);            // 直接写 storage slot
 
 // 快照与回滚
-uint256 snap = vm.snapshot();
+uint256 snap = vm.snapshotState();
 // ... 做一些操作
-vm.revertTo(snap);
+vm.revertToState(snap);
 ```
 
 ## Revert 断言

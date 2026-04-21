@@ -48,8 +48,8 @@ cast abi-encode "transfer(address,uint256)" $ALICE 1000
 ### 工具函数
 
 ```shell
-cast --to-wei 1.5 ether             # → 1500000000000000000
-cast --from-wei 1500000000000000000  # → 1.5
+cast to-wei 1.5 ether                # → 1500000000000000000
+cast from-wei 1500000000000000000    # → 1.5
 cast keccak "foo"                    # keccak256 hash
 cast chain-id                        # 当前 RPC 的 chain id
 ```
@@ -110,4 +110,4 @@ Type: bytes32
 
 forge 管项目、cast 管命令行交互、anvil 管本地链、chisel 管片段验证。四件套覆盖从开发到部署的完整链路。
 
-至此 Foundry 章节结束。下一章回到 ethers，看看如何从链下用 JS 与合约交互。
+至此 Foundry 章节结束。下一章回到 ethers（目前为 v5 版本，v6 重写进行中），看看如何从链下用 JS 与合约交互。

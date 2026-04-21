@@ -103,7 +103,7 @@ function run() external {
 
 ## 部署记录
 
-广播结果保存在 `broadcast/<Script>/<chainId>/run-latest.json`，包含交易 hash、合约地址、日志。CI 和前端可直接读取。
+广播结果保存在 `broadcast/<ScriptName>.s.sol/<chainId>/run-latest.json`，包含交易 hash、合约地址、日志。CI 和前端可直接读取。
 
 ## 小结
 

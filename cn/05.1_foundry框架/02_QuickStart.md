@@ -94,7 +94,7 @@ contract CounterTest is Test {
 
 - `test_` 开头：普通单元测试，一次运行。
 - `testFuzz_` 开头：参数化模糊测试，每个参数自动跑 256 次（可调）。
-- `testFork_`、`invariant_` 等后续章节展开。
+- `invariant_` 后续章节展开。Fork 测试沿用 `test_` 命名，无特殊前缀。
 
 ## 小结
 
