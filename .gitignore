@@ -4,3 +4,4 @@ _book
 publish.sh
 .vscode
 .obsidian
+.env
