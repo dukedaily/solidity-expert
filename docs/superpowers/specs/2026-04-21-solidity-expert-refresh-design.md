@@ -12,7 +12,7 @@
 - Foundry chapter (`05.1_foundry框架`) is a 1-file stub while Foundry now dominates Solidity development.
 - ethers chapter (`06_ethers`) has 3 lessons, no mention of v6 (breaking migration from v5 is mandatory now).
 - Protocol deployment chapter (`16_主流项目部署文档`) covers only UniV2 / AaveV2 / CompoundV2 — V3 / V4 exist and are what people deploy in 2026.
-- `cn/08_项目实战-世界杯竞猜/code/contracts/node_modules/` is **committed into git** (includes Truffle deps) — repo hygiene bomb.
+- `cn/08_项目实战-世界杯竞猜/code/contracts/` holds a Hardhat + Truffle project from 2022. `node_modules/` is correctly ignored by a subdirectory `.gitignore` (not committed), but the chapter itself reads as half-abandoned and the root `.gitignore` has no `.env` rule — defense-in-depth gap.
 - Ghost chapter folders `17_Tools` and `18_Gas优化80 Tips` exist on disk but are not wired into `SUMMARY.md` — not rendered.
 - Ch 15 "hot tech tracking" contains an `anyswap` lesson (project effectively defunct); landscape moved on (ERC-4337 production, restaking, intents).
 - Fundamentals chapters (0–4) are structurally sound, mostly pragma `^0.8.13` — readable, not embarrassing.
@@ -63,7 +63,7 @@ Each workstream is independently shippable. Sizes are rough. **M1 pulls from W1,
 
 | #   | Workstream                        | Deliverable                                                                                     | Size | Milestone              |
 | --- | --------------------------------- | ----------------------------------------------------------------------------------------------- | ---- | ---------------------- |
-| W1  | Repo hygiene                      | `node_modules/` removed from Ch 8 `code/`; `.gitignore` tightened; `npm run serve` still builds | S    | **M1**                 |
+| W1  | Repo hygiene                      | Root `.gitignore` tightened (`.env` added); Ch 8 `node_modules/` already correctly ignored      | S    | **M1**                 |
 | W2  | Stablecoin chapter (new Ch 19)    | New chapter with scaffold + progressively filled lessons                                        | L    | **M1 (partial) → M2**  |
 | W3  | Foundry chapter (Ch 5.1)          | Stub → 6–8 lessons (quickstart, forge test, cheatcodes, fork, invariants, deploy, verify)       | M–L  | M2                     |
 | W4  | ethers v6 rewrite (Ch 6)          | v5→v6 migration page + refreshed code samples                                                   | M    | M2                     |
@@ -86,18 +86,13 @@ All work stays on branch `refresh-2026`. Commits land incrementally. No fixed sc
 
 **Actions:**
 
-1. Inspect `cn/08_项目实战-世界杯竞猜/code/` structure; identify committed `node_modules` directories.
-2. `git rm -r --cached` each committed `node_modules/` tree.
-3. Add / tighten `.gitignore` — ensure `node_modules/`, `.env`, build artifacts, OS junk (`.DS_Store`) are ignored everywhere.
-4. Verify `npm run serve` still builds the book.
-5. After cleanup, run `cd cn/08_项目实战-世界杯竞猜/code/contracts && npm i` locally once to confirm the Ch 8 project still installs cleanly from a fresh tree — this is pre-M1.2 validation, not a deliverable. M1.2's banner will surface the same `npm i` instruction to future readers.
+1. Confirm baseline: `git ls-files | grep -c 'node_modules/'` returns `0` (no tracked node_modules anywhere in the repo — subdirectory `.gitignore` at `cn/08_项目实战-世界杯竞猜/code/contracts/.gitignore` already handles Ch 8).
+2. Add `.env` to the root `.gitignore` (defense in depth — future chapter code subdirs using dotenv will inherit the rule).
+3. Verify `npm run serve` still builds the book.
 
-**Commit:** `chore: remove committed node_modules, tighten gitignore`
+**Commit:** `chore: add .env to gitignore`
 
-**Risks & mitigations:**
-
-- Removing node_modules does not rewrite history — historical clones still contain them. That is acceptable. No `git filter-repo` / force-push in M1.
-- If `npm run serve` breaks because a node_modules path was referenced by an include plugin, revert and add the path to `.gitignore` only (no `git rm`). The goal is "no more new `node_modules` commits," not a history rewrite.
+**Notes:** W1 is a small cleanup, not the major hygiene overhaul the original spec premise assumed. The repo is already hygienic at the tracking layer. The "alive again" signal for M1 comes primarily from W8 (banner) and W2 (new chapter) — W1 is retained for defense-in-depth and completeness.
 
 ### M1.2 — Ch 8 archival banner (W8)
 
