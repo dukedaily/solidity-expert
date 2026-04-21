@@ -3,14 +3,11 @@ import {
   createClient,
   chain,
   configureChains,
-  useAccount,
 } from 'wagmi'
 import {
   ConnectKitProvider,
   ConnectKitButton,
-  getDefaultClient,
 } from 'connectkit'
-import { ConnectInfo } from './conponents/Button/Connect'
 import { Play } from './conponents/Button/Play'
 import { Finalize } from './conponents/Button/Finalize'
 import { ClaimReward } from './conponents/Button/ClaimReward'
