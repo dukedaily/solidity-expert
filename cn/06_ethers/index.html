@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>第六章:ethers · HonKit</title>
+        <title>第六章:ethers（v6） · HonKit</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 3.7.3">
@@ -72,7 +72,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01_Node.js介绍.html" />
+    <link rel="next" href="01_概览与安装.html" />
     
     
     <link rel="prev" href="../05.1_foundry框架/07_Cast-Anvil-Chisel.html" />
@@ -1915,7 +1915,7 @@
                 <a href="./">
             
                     
-                    第六章:ethers
+                    第六章:ethers（v6）
             
                 </a>
             
@@ -1924,12 +1924,77 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.14.1" data-path="01_Node.js介绍.html">
+        <li class="chapter " data-level="1.14.1" data-path="01_概览与安装.html">
             
-                <a href="01_Node.js介绍.html">
+                <a href="01_概览与安装.html">
             
                     
-                    第1节:Node.js介绍
+                    第1节:ethers v6 概览与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="02_Provider与Signer.html">
+            
+                <a href="02_Provider与Signer.html">
+            
+                    
+                    第2节:Provider与Signer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="03_读合约.html">
+            
+                <a href="03_读合约.html">
+            
+                    
+                    第3节:读合约
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="04_写合约与事件.html">
+            
+                <a href="04_写合约与事件.html">
+            
+                    
+                    第4节:写合约与事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="05_工具函数.html">
+            
+                <a href="05_工具函数.html">
+            
+                    
+                    第5节:工具函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="06_v5到v6迁移速查.html">
+            
+                <a href="06_v5到v6迁移速查.html">
+            
+                    
+                    第6节:v5到v6迁移速查
             
                 </a>
             
@@ -3208,7 +3273,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第六章:ethers</a>
+        <a href=".." >第六章:ethers（v6）</a>
     </h1>
 </div>
 
@@ -3220,19 +3285,22 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="第六章：ethers库">第六章：ethers库</h1>
+                                <h1 id="第六章：ethers（v6）">第六章：ethers（v6）</h1>
 <blockquote>
 <p>小白入门：<a href="https://github.com/dukedaily/solidity-expert" target="_blank">https://github.com/dukedaily/solidity-expert</a> ，欢迎star转发，文末加V入群。</p>
 <p>职场进阶: <a href="https://dukeweb3.com" target="_blank">https://dukeweb3.com</a></p>
 </blockquote>
-<p>ethers.js是一个轻量级的以太坊sdk，目前在很多场合已经替换web3.js，使用ethers可以方便的与以太坊网络进行交互，包括：部署合约、调用合约、钱包相关、utils等，包括主流快拦下hardhat也默认与ethers进行集成。</p>
-<ul>
-<li>手册：<a href="https://docs.ethers.io/v5/" target="_blank">https://docs.ethers.io/v5/</a></li>
-<li>ethersjs学习1：<a href="https://github.com/WTFAcademy/WTF-Ethers" target="_blank">https://github.com/WTFAcademy/WTF-Ethers</a></li>
-<li>ethersjs学习2：<a href="https://www.youtube.com/watch?v=yk7nVp5HTCk" target="_blank">https://www.youtube.com/watch?v=yk7nVp5HTCk</a></li>
-<li>在线环境：<a href="https://playcode.io/" target="_blank">https://playcode.io/</a></li>
-<li><strong>go语言与nodejs对比</strong>：<a href="https://github.com/dukedaily/golang-for-nodejs-developers" target="_blank">https://github.com/dukedaily/golang-for-nodejs-developers</a></li>
-</ul>
+<p>ethers 是前端和 Node.js 端与 EVM 链交互的主流库。本章基于 <strong>v6</strong>（2023 发布）展开，全篇采用当前版本的 API。若项目仍停留在 v5，请直接跳到第 6 节的迁移速查。</p>
+<h2 id="目录">目录</h2>
+<ol>
+<li><a href="01_概览与安装.html">第1节：ethers v6 概览与安装</a></li>
+<li><a href="02_Provider与Signer.html">第2节：Provider 与 Signer</a></li>
+<li><a href="03_读合约.html">第3节：读合约</a></li>
+<li><a href="04_写合约与事件.html">第4节：写合约与事件</a></li>
+<li><a href="05_工具函数.html">第5节：工具函数</a></li>
+<li><a href="06_v5到v6迁移速查.html">第6节：v5 到 v6 迁移速查</a></li>
+</ol>
+<p>历史 v5 内容保留在 <code>old/</code> 目录，供仍维护 v5 项目的读者参考。</p>
 
                                 
                                 </section>
@@ -3249,7 +3317,7 @@
                 </a>
                 
                 
-                <a href="01_Node.js介绍.html" class="navigation navigation-next " aria-label="Next page: 第1节:Node.js介绍">
+                <a href="01_概览与安装.html" class="navigation navigation-next " aria-label="Next page: 第1节:ethers v6 概览与安装">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -3260,7 +3328,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第六章:ethers","level":"1.14","depth":1,"next":{"title":"第1节:Node.js介绍","level":"1.14.1","depth":2,"path":"06_ethers/01_Node.js介绍.md","ref":"06_ethers/01_Node.js介绍.md","articles":[]},"previous":{"title":"第7节:Cast-Anvil-Chisel","level":"1.13.7","depth":2,"path":"05.1_foundry框架/07_Cast-Anvil-Chisel.md","ref":"05.1_foundry框架/07_Cast-Anvil-Chisel.md","articles":[]},"articles":[{"title":"第1节:Node.js介绍","level":"1.14.1","depth":2,"path":"06_ethers/01_Node.js介绍.md","ref":"06_ethers/01_Node.js介绍.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"cn","gitbook":"*"},"file":{"path":"06_ethers/README.md","mtime":"2026-04-21T08:50:37.445Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2026-04-21T08:51:06.352Z"},"basePath":"..","book":{"language":"cn"}});
+            gitbook.page.hasChanged({"page":{"title":"第六章:ethers（v6）","level":"1.14","depth":1,"next":{"title":"第1节:ethers v6 概览与安装","level":"1.14.1","depth":2,"path":"06_ethers/01_概览与安装.md","ref":"06_ethers/01_概览与安装.md","articles":[]},"previous":{"title":"第7节:Cast-Anvil-Chisel","level":"1.13.7","depth":2,"path":"05.1_foundry框架/07_Cast-Anvil-Chisel.md","ref":"05.1_foundry框架/07_Cast-Anvil-Chisel.md","articles":[]},"articles":[{"title":"第1节:ethers v6 概览与安装","level":"1.14.1","depth":2,"path":"06_ethers/01_概览与安装.md","ref":"06_ethers/01_概览与安装.md","articles":[]},{"title":"第2节:Provider与Signer","level":"1.14.2","depth":2,"path":"06_ethers/02_Provider与Signer.md","ref":"06_ethers/02_Provider与Signer.md","articles":[]},{"title":"第3节:读合约","level":"1.14.3","depth":2,"path":"06_ethers/03_读合约.md","ref":"06_ethers/03_读合约.md","articles":[]},{"title":"第4节:写合约与事件","level":"1.14.4","depth":2,"path":"06_ethers/04_写合约与事件.md","ref":"06_ethers/04_写合约与事件.md","articles":[]},{"title":"第5节:工具函数","level":"1.14.5","depth":2,"path":"06_ethers/05_工具函数.md","ref":"06_ethers/05_工具函数.md","articles":[]},{"title":"第6节:v5到v6迁移速查","level":"1.14.6","depth":2,"path":"06_ethers/06_v5到v6迁移速查.md","ref":"06_ethers/06_v5到v6迁移速查.md","articles":[]}],"dir":"ltr"},"config":{"plugins":["heading-anchors@1.0.3","ga@1.0.1","richquotes@0.0.9","github@2.0.0","language-picker","toggle-chapters","codeblock-label","-search","-lunr","page-toc-button","include-codeblock","js-console"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"language-picker":{"grid-columns":3},"github":{"url":"https://github.com/dukedaily/solidity-expert"},"codeblock-label":{},"fontsettings":{"theme":"white","family":"sans","size":2},"js-console":{},"richquotes":{"default":false},"heading-anchors":{},"highlight":{},"page-toc-button":{},"ga":{"configuration":"auto","token":"UA-51680040-3"},"include-codeblock":{"check":false,"edit":false,"lang":"","fixlang":false,"template":"default","theme":"chrome","unindent":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"cn","gitbook":"*"},"file":{"path":"06_ethers/README.md","mtime":"2026-04-21T09:57:26.694Z","type":"markdown"},"gitbook":{"version":"3.7.3","time":"2026-04-21T09:57:54.525Z"},"basePath":"..","book":{"language":"cn"}});
         });
     </script>
 </div>
