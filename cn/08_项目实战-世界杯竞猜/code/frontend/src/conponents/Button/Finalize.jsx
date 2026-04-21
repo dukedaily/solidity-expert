@@ -1,12 +1,8 @@
-import { ethers } from 'ethers'
 import * as React from 'react'
 import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
-  chainId,
-  chain,
-  useAccount,
 } from 'wagmi'
 import worldcup_abi from '../../abi/worldcup_abi_v2.json'
 import { Input, Button } from 'antd'
